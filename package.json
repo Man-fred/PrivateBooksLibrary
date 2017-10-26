@@ -1,0 +1,25 @@
+{
+  "name": "de.bcss.phonegap.privatebookslibrary",
+  "version": "1.0.0",
+  "displayName": "PrivateBooksLibrary",
+  "cordova": {
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-console": {},
+      "cordova-plugin-statusbar": {},
+      "phonegap-plugin-barcodescanner": {}
+    }
+  },
+  "dependencies": {
+    "cordova-android": "6.3.0",
+    "cordova-ios": "~4.5.2",
+    "cordova-plugin-console": "~1.0.1",
+    "cordova-plugin-statusbar": "~1.0.1",
+    "cordova-plugin-whitelist": "~1.2.0",
+    "phonegap-plugin-barcodescanner": "~7.0.0"
+  }
+}
