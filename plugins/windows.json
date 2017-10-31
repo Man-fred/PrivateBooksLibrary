@@ -1,0 +1,34 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "PrivateBooksLibrary"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "PrivateBooksLibrary"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "PrivateBooksLibrary"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "PACKAGE_NAME": "PrivateBooksLibrary"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "PrivateBooksLibrary"
+    },
+    "cordova-plugin-sqlite-2": {
+      "PACKAGE_NAME": "PrivateBooksLibrary"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "PrivateBooksLibrary"
+    }
+  }
+}

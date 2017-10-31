@@ -1,5 +1,6 @@
 // Initialize app
 var myApp = new Framework7();
+var db = new PouchDB('pouch');
 
 // If we need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
@@ -13,6 +14,21 @@ var mainView = myApp.addView('.view-main', {
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function () {
     console.log("Device is ready!");
+        var parentElement = document.getElementById('deviceready');
+        var listeningElement = parentElement.querySelector('.listening');
+        var receivedElement = parentElement.querySelector('.received');
+
+        listeningElement.setAttribute('style', 'display:none;');
+        receivedElement.setAttribute('style', 'display:block;');
+
+        var display = document.getElementById('pouchdb-display');
+        
+        //var idb = new PouchDB('idbpouch', {adapter: 'idb'});//idb', 'leveldb', 'websql', or 'http'
+        //var websql = new PouchDB('websqlpouch', {adapter: 'websql'});
+        
+        display.innerHTML += (db.adapter ? '&#10003; PouchDB is working.<br/>' : '&#10007; PouchDB is not working.<br/>');
+        //display.innerHTML += (idb.adapter ? '&#10003; IndexedDB is supported.<br/>' : '&#10007; IndexedDB is not supported.<br/>');
+        //display.innerHTML += (websql.adapter ? '&#10003; WebSQL is supported.<br/>' : '&#10007; WebSQL is not supported.<br/>');
 });
 
 
@@ -70,7 +86,7 @@ $$('.scan').on('click', function () {
     });
 });
 $$('.encode').on('click', function () {
-    var scanner = cordova.require("cordova/plugin/BarcodeScanner");
+    var scanner = cordova.plugins.barcodeScanner;
 
     scanner.encode(scanner.Encode.TEXT_TYPE, "http://www.nhl.com", function (success) {
         alert("encode success: " + success);

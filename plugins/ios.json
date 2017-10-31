@@ -19,7 +19,17 @@
     "phonegap-plugin-barcodescanner": {
       "CAMERA_USAGE_DESCRIPTION": " ",
       "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
+    },
+    "cordova-plugin-sqlite-2": {
+      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
+    }
+  }
 }

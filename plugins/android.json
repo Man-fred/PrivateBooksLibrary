@@ -18,6 +18,12 @@
     },
     "phonegap-plugin-barcodescanner": {
       "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
+    },
+    "cordova-plugin-sqlite-2": {
+      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
     }
   },
   "dependent_plugins": {}

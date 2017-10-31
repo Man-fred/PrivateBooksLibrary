@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "PrivateBooksLibrary",
+  "short_name": "PrivateBooksLibrary",
+  "version": "de.bcss.phonegap.PrivateBooksLibrary",
+  "description": "A basic Framework7 template for PhoneGap.",
+  "author": "Apache Cordova Team",
+  "icons": [],
+  "start_url": "index.html"
+}

@@ -25,10 +25,14 @@
         <preference name="BackupWebStorage" value="none" />
     </platform>
     <preference name="DisallowOverscroll" value="true" />
+    <engine name="ios" spec="~4.5.2" />
+    <engine name="android" spec="6.3.0" />
+    <engine name="windows" spec="5.0.0" />
+    <engine name="browser" spec="^5.0.1" />
     <plugin name="cordova-plugin-whitelist" spec="~1.2.0" />
     <plugin name="cordova-plugin-console" spec="~1.0.1" />
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
     <plugin name="phonegap-plugin-barcodescanner" spec="~7.0.0" />
-    <engine name="ios" spec="~4.5.2" />
-    <engine name="android" spec="6.3.0" />
+    <plugin name="cordova-plugin-file" spec="^4.3.3" />
+    <plugin name="cordova-plugin-sqlite-2" spec="^1.0.4" />
 </widget>
