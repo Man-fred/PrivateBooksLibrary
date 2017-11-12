@@ -1,4 +1,5 @@
 ﻿var db;
+var system;
 var seite = "";
 var myApp = {
 //CREATE TABLE ZZOSHO ( Z_PK INTEGER PRIMARY KEY, Z_ENT INTEGER, Z_OPT INTEGER, ZFAVOR INTEGER, ZSTATE INTEGER, ZCHECKDATE TIMESTAMP, ZREADDATE TIMESTAMP, ZRELEASEDATE TIMESTAMP, ZISBNCODE VARCHAR, ZAUTHOR VARCHAR, ZAUTHORKANA VARCHAR, ZCODE VARCHAR, ZMEMO VARCHAR, ZPRICE VARCHAR, ZPUBLISHER VARCHAR, ZTICDSSYNCID VARCHAR, ZTITLE VARCHAR, ZIMAGE BLOB )
@@ -77,6 +78,10 @@ var myApp = {
         menu: true,
         action: "show_element",
         fields: {
+            name: {
+                name: "name",
+                title: "Verbindung"
+            },
             dbServer: {
                 name: "dbServer",
                 title: "Server"
@@ -109,13 +114,21 @@ var myApp = {
                 name: "appHorsename",
                 title: "Thema"
             },
-            apiIsbndb : {
+            apiIsbndb: {
                 name: "apiIsbndb",
                 title: "apiIsbndb"
             },
-            apiLibrarything : {
+            apiLibrarything: {
                 name: "apiLibrarything",
                 title: "apiLibrarything"
+            },
+            apiAmazonId: {
+                name: "apiAmazonId",
+                title: "apiAmazonId"
+            },
+            apiAmazonKey: {
+                name: "apiAmazonKey",
+                title: "apiAmazonKey"
             }
         },
         data: []
@@ -232,8 +245,8 @@ var dbPass = '';
 var dbIdPublic;        //couchdb
 var dbIdPrivate;       //pouchdb
 var remote;            //couchdb
-var startDom =false, startDb = false, startOk = false;
-var apiLibrarything ="", apiIsbndb = "";
+var startDom = false, startDb = false, startOk = false;
+var apiLibrarything = "", apiIsbndb = "";
 $(document).bind("mobileinit", function () {
     // Make your jQuery Mobile framework configuration changes here!
     $.support.cors = true;
@@ -256,6 +269,7 @@ document.addEventListener("deviceready", function () {
     }
     db.get(dbIdPrivate + '_login').then(function (doc) {
         if (doc !== null) {
+            system = doc;
             dbServer = doc.dbServer;
             dbPort = doc.dbPort;
             dbName = doc.dbName;
@@ -266,6 +280,12 @@ document.addEventListener("deviceready", function () {
             apiIsbndb = doc.apiIsbndb;
             apiLibrarything = doc.apiLibrarything;
             //myApp.horse.title = doc.appHorsename;
+            /*
+             if(!exist(doc.name)) {
+             doc.name="Server";
+             db.put(doc);
+             }
+             */
             $('#appTitle').html(appTitle);
             //$('#m_horse').val(myApp.horse.title);
             console.log(dbIdPrivate);
@@ -283,6 +303,7 @@ document.addEventListener("deviceready", function () {
         dbIdPublic = dbIdPrivate;
         db.put({
             _id: dbIdPrivate + '_login',
+            name: 'Server',
             type: 'db',
             dbServer: dbServer,
             dbPort: dbPort,
@@ -556,6 +577,7 @@ document.addEventListener("deviceready", function () {
         result += '<input type="checkbox" id="showDeleted" onchange="show_element(\'\')"> showDeleted';
         $("#mainmenu").html(result);
     }
+    mainmenu();
 
     $('#scansearch').click(function () {
         function booksearch(index) {
@@ -566,7 +588,7 @@ document.addEventListener("deviceready", function () {
                     // Typical action to be performed when the document is ready:
                     //document.getElementById("result").innerHTML = xhttp.responseText;
                     var erg;
-                    if (index === 5) {
+                    if (index === 5 || index === 7) {
                         /*
                          if (document.implementation && document.implementation.createDocument) {
                          erg = new DOMParser().parseFromString(xhttp.responseText, 'text/xml');
@@ -577,7 +599,12 @@ document.addEventListener("deviceready", function () {
                          alert("Your browser can't handle this script");
                          }
                          */
-                        erg = JSON.parse(xhttp.responseXML);
+                        var xml = xhttp.responseXML;
+                        try {
+                            erg = JSON.parse(xml2json(xml, "  "));
+                        } catch (e) {
+                            console.log(e);
+                        }
                     } else {
                         erg = JSON.parse(xhttp.responseText);
                     }
@@ -637,7 +664,41 @@ document.addEventListener("deviceready", function () {
                             break;
                         case 5: //noch kein Treffer
                             //    erg.getElementsByTagName("title")[0].childNodes[0].nodeValue;
-                           if (erg) {
+                            if (erg) {
+                                ok = true;
+                            }
+                            break;
+                        case 6: //noch kein Treffer
+                            //    erg.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                            if (erg) {
+                                $("#scan_name").val(erg.Items.Item.ItemAttributes.Title);
+                                $("#scan_publisher").val(erg.Items.Item.ItemAttributes.Publisher);
+                                $("#scan_releasedate").val(erg.Items.Item.ItemAttributes.PublicationDate); //ReleaseDate
+                                $("#scan_author").val(erg.Items.Item.ItemAttributes.Author);
+                                $("#scan_isbn").val(erg.Items.Item.ItemAttributes.EAN);
+                                $("#scan_price").val(erg.Items.Item.OfferSummary.LowestNewPrice.FormattedPrice);
+                                $("#scan_thumbnail").val(erg.Items.Item.MediumImage.URL);
+                                $("#scan_smallThumbnail").val(erg.Items.Item.SmallImage.URL);
+                                $("#scan_url").val(erg.Items.Item.DetailPageURL);
+                                $("#scan_link").attr("href", erg.Items.Item.DetailPageURL);
+                                $("#scan_img").attr("src", erg.Items.Item.MediumImage.URL);
+                                ok = true;
+                            }
+                            break;
+                        case 7: //noch kein Treffer
+                            //    erg.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                            if (erg) {
+                                $("#scan_name").val(erg.ItemLookupResponse.Items[1].Item.ItemAttributes.Title);
+                                $("#scan_publisher").val(erg.ItemLookupResponse.Items[1].Item.ItemAttributes.Publisher);
+                                $("#scan_releasedate").val(erg.ItemLookupResponse.Items[1].Item.ItemAttributes.PublicationDate); //ReleaseDate
+                                $("#scan_author").val(erg.ItemLookupResponse.Items[1].Item.ItemAttributes.Author);
+                                $("#scan_isbn").val(erg.ItemLookupResponse.Items[1].Item.ItemAttributes.EAN);
+                                $("#scan_price").val(erg.ItemLookupResponse.Items[1].Item.OfferSummary.LowestNewPrice.FormattedPrice);
+                                $("#scan_thumbnail").val(erg.ItemLookupResponse.Items[1].Item.MediumImage.URL);
+                                $("#scan_smallThumbnail").val(erg.ItemLookupResponse.Items[1].Item.SmallImage.URL);
+                                $("#scan_url").val(erg.ItemLookupResponse.Items[1].Item.DetailPageURL);
+                                $("#scan_link").attr("href", erg.ItemLookupResponse.Items[1].Item.DetailPageURL);
+                                $("#scan_img").attr("src", erg.ItemLookupResponse.Items[1].Item.MediumImage.URL);
                                 ok = true;
                             }
                     }
@@ -651,7 +712,7 @@ document.addEventListener("deviceready", function () {
                     searchString = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + $('#bc_text').val();
                     break;
                 case 1:
-                    searchString = "http://isbndb.com/api/v2/json/"+apiIsbndb+"/book/" + $('#bc_text').val();
+                    searchString = "http://isbndb.com/api/v2/json/" + apiIsbndb + "/book/" + $('#bc_text').val();
                     break;
                 case 2:
                     searchString = "http://xisbn.worldcat.org/webservices/xid/isbn/" + $('#bc_text').val() + "?method=getMetadata&format=json&fl=*";
@@ -665,24 +726,37 @@ document.addEventListener("deviceready", function () {
                 case 5:
                     searchString = "http://www.librarything.com/services/rest/1.1/?method=librarything.ck.getwork&isbn=" + $('#bc_text').val() + "&apikey=" + apiLibrarything;
                     break;
+                case 6:
+                    searchString = "http://bcss.de/api/request.php?isbn="+$('#bc_text').val();
+                    break;
+                case 7:
+                   searchString = "http://" + opHelper.getHost() + opHelper.getUri('ItemSearch', {
+                        'SearchIndex': 'Books',
+                        'IdType': 'ISBN',
+                        'ItemId': $('#bc_text').val(),
+                        'ResponseGroup': 'ItemAttributes'
+                    })
             }
             console.log(searchString);
             xhttp.open("GET", searchString, true);
             xhttp.send();
             return(ok);
         }
-        if (!booksearch(0))
-          if (!booksearch(2))
-            if (!booksearch(3))
-              if (!booksearch(4))
-                if (!booksearch(5))
-                   booksearch(1);
+        booksearch(0);
+        /*
+         if (!booksearch(0))
+         if (!booksearch(2))
+         if (!booksearch(3))
+         if (!booksearch(4))
+         if (!booksearch(5))
+         booksearch(1);
+         */
     });
-    mainmenu();
     if (!startOk && startDb) {
         startOk = true;
         show_element("books");
     }
+    $( "#mypanel" ).trigger( "updatelayout" );
     startDom = true;
     if (syncDom) {
 
@@ -770,11 +844,19 @@ function show_all(table) {
 //    PouchDB.debug.enable('pouchdb:find');
 
     var mySelektor = {
-        name: {$gt: null},
+     //   name: {$gt: null},
         _id: {$gte: dbId + '_' + table, $lte: dbId + '_' + table + '_'}
     };
     if (!$('#showDeleted').is(':checked')) {
         mySelektor.DBdeleted = {$exists: false};
+    }
+    var myFind = {
+        selector: mySelektor
+    };
+    if (table !== 'login'){
+        mySelektor.name = {$gt: null};
+        myFind.sort = ['name'];
+        myFind.use_index = "indexNameId";
     }
     db.createIndex({
         index: {
@@ -785,11 +867,8 @@ function show_all(table) {
     }).then(function (result) {
         console.log(result);
         console.log(mySelektor);
-        return db.find({
-            selector: mySelektor
-            ,sort: ['name']
-            , use_index: "indexNameId"
-        });
+        //return db.find({ selector: mySelektor, sort: ['name'], use_index: "indexNameId" });
+        return db.find(myFind);
     }).then(function (result) {
         var first = true;
         var table = "";
@@ -833,7 +912,7 @@ function show_all(table) {
 }
 
 function show_scan(aktiveSeite) {
-    $('#todoapp').hide();
+    //$('#todoapp').hide();
     if (aktiveSeite !== seite) {
         if (aktiveSeite !== "") {
             $('#t_' + seite).hide();
@@ -870,6 +949,13 @@ function show_seite(aktiveSeite) {
     var result = '<div id="t_' + aktiveSeite + '" name="t_' + aktiveSeite + '" class="t_seite"><table>';
     if (aktiveSeite == "books")
         result += '<tr><td colspan="2"><img id="img_' + aktiveSeite + '" height="200" src="blank.jpg"/></td></tr>';
+    if (aktiveSeite == "scan") {
+        result += '<p>erkannter Barcode <input id="bc_text"/> (<span id="bc_format"></span>) Beispiel: 9783802587849</p>';
+        result += '<p><a href="#" name="scansearch" id="scansearch">Suchen</a><br /><span id="result"></span></p>';
+        //result += '<input type="button" name="addBtn" value="Add" id="addBtn" />';
+        result += '<p><span id="result"></span></p>';
+        result += '<tr><td colspan="2"><img id="img_' + aktiveSeite + '" height="200" src="blank.jpg"/></td></tr>';
+    }
     $.each(myApp[aktiveSeite].header, function () {
         result += '<tr>';
         if (this.select) {
@@ -926,8 +1012,10 @@ function show_data(id) {
         if (doc) {
             if (seite === "books") {
                 var test = (doc["_attachments"] !== undefined);
-                if (test) test = (doc._attachments["image"] !== undefined);
-                if (test) test = (doc._attachments.image["data"] !== undefined);
+                if (test)
+                    test = (doc._attachments["image"] !== undefined);
+                if (test)
+                    test = (doc._attachments.image["data"] !== undefined);
                 if (test) {
                     $('#img_' + seite).attr("src", 'data:image/jpeg;base64, ' + doc._attachments.image.data);
                 } else if (doc['thumbnail']) {

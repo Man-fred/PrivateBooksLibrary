@@ -6,83 +6,59 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>VanillaJS • TodoMVC</title>
         <link rel="stylesheet" href="lib/jQueryMobile/jquery.mobile-1.4.5.min.css" />
-        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" href="css/a_pp.css">
         <!--[if IE]>
           <script src="style/ie.js"></script>
         <![endif]-->
     </head>
     <body>
-        <div class="container">
-            <header id="header">
-                <h1>Apache Cordova</h1>
-                <div id="deviceready" class="blink">
-                    <p class="event listening">Connecting to Device</p>
-                    <p class="event received" style="display:none;">Device is Ready</p>
+        <div  data-role="page" class="c_ontainer">
+            <div data-role="panel" id="mypanel">
+                <!-- panel content goes here -->
+                <div id="s_ingledata">
+                    <form>
+                        <fieldset>
+                            <div id="table"></div>
+                            <hr />
+                            <div id="action">
+                                <input type="button" name="addBtn" value="Add" id="addBtn" />  
+                                <input type="button" name="updateBtn" value="Update" id="updateBtn" />  
+                                <input type="button" name="deleteBtn" value="Delete" id="deleteBtn" />  
+                                <input type="button" name="clearBtn" value="Clear" id="clearBtn" />  
+
+                            </div>
+                            <div id="result"></div>  
+                        </fieldset>
+                    </form>  
+                    <div id="record_info">
+                        <div>DBTimestamp <span id="DBTimestamp"></span></div>
+                        <div>DBversion  <span id="DBversion"></span></div>
+                        <div>DBstate <span id="DBstate"></span></div>
+                        <div>DBok <span id="DBok"></span></div>
+                        <div>DBreason <span id="DBreason"></span></div>
+                        <div>_id <span id="_id"></span></div>
+                        <div>_rev <span id="_rev"></span></div>
+                    </div>
                 </div>
+            </div><!-- /panel -->
+            <header data-role="header" id="header">
                 <h1 id="appTitle">Horse Diary</h1>
-                <h2>Büchersammlung</h2>
+                <div><span id="deviceready" class="blink">
+                        <span class="event listening">Connecting to Device</span><span class="event received" style="display:none;">Device is Ready</span>
+                    </span><span>, Server </span>
+                    <span id="sync-wrapper">
+                        <span id="sync-success">Currently syncing</span>
+                        <span id="sync-error">There was a problem syncing</span>
+                    </span></div>
                 <div id="mainmenu"></div>
             </header>
-                    <div id="singledata">
-                        <form>
-                            <fieldset>
-                                <div id="table"></div>
-                                <hr />
-                                <div id="action">
-                                    <input type="button" name="addBtn" value="Add" id="addBtn" />  
-                                    <input type="button" name="updateBtn" value="Update" id="updateBtn" />  
-                                    <input type="button" name="deleteBtn" value="Delete" id="deleteBtn" />  
-                                    <input type="button" name="clearBtn" value="Clear" id="clearBtn" />  
-
-                                </div>
-                                <div id="result"></div>  
-                            </fieldset>
-                        </form>  
-                        <div id="record_info">
-                            <div>DBTimestamp <span id="DBTimestamp"></span></div>
-                            <div>DBversion  <span id="DBversion"></span></div>
-                            <div>DBstate <span id="DBstate"></span></div>
-                            <div>DBok <span id="DBok"></span></div>
-                            <div>DBreason <span id="DBreason"></span></div>
-                            <div>_id <span id="_id"></span></div>
-                            <div>_rev <span id="_rev"></span></div>
-                        </div>
-                    </div>
-                   <div id="datalist"></div>  
-             <footer id="footer">
+            <div role="main" class="ui-content jqm-content">
+                <div id="datalist"></div>  
+            </div>
+            <footer id="footer">
                 <div id="display"></div>
                 <span id="todo-count"></span>
-                <div id="sync-wrapper">
-                    <div id="sync-success">Currently syncing</div>
-                    <div id="sync-error">There was a problem syncing</div>
-                </div>
             </footer>
-           <section>
-                <div id="t_scan" style="display:none;">
-                    <h2>Buchdaten ergänzen</h2>
-                    <fieldset>
-                        <p>erkannter Barcode <input id="bc_text"/> (<span id="bc_format"></span>) Beispiel: 9783802587849</p>
-                        <p><a href="#" name="scansearch" id="scansearch">Suchen</a><br /><span id="result"></span></p>
-                        <input type="button" name="addBtn" value="Add" id="addBtn" />
-                        <p><span id="result"></span></p>
-                        <p>ISBN <input id="scan_isbn" /></p>
-                        <p>Titel <input id="scan_name" /></p>
-                        <p>Autor <input id="scan_author" /></p>
-                        <p>Verlag <input id="scan_publisher" /></p>
-                        <p>Erscheinungsdatum <input id="scan_releasedate" /></p>
-                        <p>Link <input id="scan_url" /></p>
-                        <p>Cover <input id="scan_thumbnail" /></p>
-                        <p>kleines Bild <input id="scan_smallThumbnail" /></p>
-                        <p>Quelle <input id="scan_source" /></p>
-                        <p><a href="#" id="scan_link" class="topcoat-button" target="_blank">Weitere Informationen</a></p>
-                        <img id="scan_img" src="blank.jpg"/>
-                        <p><a href="#" class="topcoat-button" onclick="window.open('http://www.google.de', '_self', 'location=yes');">This Webview</a></p>
-                        <p><a href="#" class="topcoat-button" onclick="window.plugins.childBrowser.showWebPage('http://www.google.com', {});">ChildBrowser</a></p>
-                    </fieldset>
-                </div>
-                <div id="todoapp">
-                 </div>
-            </section>
         </div>
         <script type="text/javascript" src="cordova.js"></script>
         <script src="js/jquery-3.2.1.min.js"></script>
@@ -90,10 +66,16 @@
         <script src="js/pouchdb.min.js"></script> <!-- 6.3.4 -->
         <script src="js/pouchdb.find.js"></script>
         <script src="js/pouchdb.authentication.js"></script>
+        <script src="lib/crypto/core.min.js"></script> <!-- 3.1.9-1 -->
+        <script src="lib/crypto/sha256.min.js"></script>
+        <script src="lib/crypto/hmac.min.js"></script>
+        <script src="lib/crypto/enc-base64.min.js"></script>
+        <script src="lib/apac/apac.js"></script>
+        <script src="lib/xml2json/xml2json.js"></script>
         <!-- script src="js/pouchdb.load.min.js"></script --> <!-- 1.4.6 -->
         <!-- script src="js/pouchdb.cordova-sqlite.js"></script -->
         <script src="js/cookie.js"></script>
         <script src="js/app.js"></script>
-        <script src="js/firstbulk.js"></script>
+        <!-- script src="js/firstbulk.js"></script -->
     </body>
 </html>

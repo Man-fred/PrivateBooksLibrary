@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+      <form name='SearchTerms' action=simplestore.php method='GET'>
+<table align='left'>
+
+      <tr><td valign='top'>
+        <b>Choose a Category</b><br>
+          <select name='SearchIndex'>
+            <option value='Books'>Books</option>
+            <option value='DVD'>DVD</option>
+            <option value='Music'>Music</option>
+          </select>
+      </td></tr>
+      <tr><td><b>Enter Keywords</b><br><input type='text' name='Keywords' size='40'/></td></tr>
+      <tr><td><input type='hidden' name='Action' value='Search'>/td></tr>
+      <tr><td><input type='hidden' name='CartId' value='<?php print($CartId); ?>'></td></tr>
+      <tr><td><input type='hidden' name='HMAC' value='<?php print($HMAC);?>' >/td></tr>
+      <tr align='center'><td><input type='submit'/></td></tr>
+
+</table>
+      </form> 
+    </body>
+</html>

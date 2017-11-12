@@ -19,6 +19,7 @@
     }
   },
   "dependencies": {
+    "apac": "^3.0.2",
     "cordova-android": "6.3.0",
     "cordova-browser": "^5.0.1",
     "cordova-ios": "~4.5.2",
@@ -29,6 +30,7 @@
     "cordova-plugin-statusbar": "~1.0.1",
     "cordova-plugin-whitelist": "~1.2.0",
     "cordova-windows": "5.0.0",
+    "crypto": "^1.0.1",
     "phonegap-plugin-barcodescanner": "~7.0.0"
   }
 }
