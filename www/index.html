@@ -5,77 +5,102 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>VanillaJS • TodoMVC</title>
-        <link rel="stylesheet" href="lib/jQueryMobile/jquery.mobile-1.4.5.min.css" />
-        <link rel="stylesheet" href="css/a_pp.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" href="css/ui.css">
         <!--[if IE]>
           <script src="style/ie.js"></script>
         <![endif]-->
     </head>
     <body>
-        <div  data-role="page" class="c_ontainer">
-            <div data-role="panel" id="mypanel">
-                <!-- panel content goes here -->
-                <div id="s_ingledata">
-                    <form>
-                        <fieldset>
-                            <div id="table"></div>
-                            <hr />
-                            <div id="action">
-                                <input type="button" name="addBtn" value="Add" id="addBtn" />  
-                                <input type="button" name="updateBtn" value="Update" id="updateBtn" />  
-                                <input type="button" name="deleteBtn" value="Delete" id="deleteBtn" />  
-                                <input type="button" name="clearBtn" value="Clear" id="clearBtn" />  
+        <div class="header">
+            <div id="top">
+                <div id="appRedo">↻</div>                    
+                <span id="appTitle">Bücher</span>
+            </div>
+            <div id="message">message</div>
+        </div>
+        <div id='layout'>
+            <!-- Menu toggle -->
+            <a href="#menu" id="menuLink" class="menu-link">
+                <!-- Hamburger icon -->
+                <span></span>
+            </a>
+            <div id="menu">
+                <div id="menuPos" class="pure-menu">
+                    <a class="pure-menu-heading" href="#">Auswahl</a>
 
+                    <ul id='sidelist' class="pure-menu-list"></ul>
+                </div>
+            </div>
+            <div id="main">
+                <div class="content">
+                    <div id="page1">
+                        <form class="pure-form">
+                            <fieldset>
+                                <button  type="button" class="pure-button" onclick="show_data('')" >+</button>&nbsp;<button  type="button"  class="pure-button" onclick="show_scan('books')" >&#xf02a;</button>&nbsp;<input type="text" id="appSearch" onkeyup="mySearch()" placeholder="Search for names..">
+                                <!-- input id="appSearch" type="search" placeholder="Titel oder Autor ..."  -->
+                                <!-- button type="submit" class="pure-button pure-button-primary">Suchen</button -->
+                            </fieldset>
+                        </form>                
+                        <div id="dataform"></div>
+                        <div id="datalist"></div>  
+                        <div id="mySearchAZ"></div>
+                    </div>
+
+                    <div id="page2">
+                        <button type="submit" class="pure-button-primary" onclick="show_page1(1)" class="pure-button pure-button-primary">Zurück</button>
+                        <div id="singledata">
+                            <form id="singleform" class="pure-form">
+                                <fieldset>
+                                    <div id="formdata"></div>
+                                    <hr />
+                                    <div id="action">
+                                        <button type="button"  class="pure-button" name="addBtn" id="addBtn">Add</button>
+                                        <button type="button"  class="pure-button" name="updateBtn" id="updateBtn">Update</button>
+                                        <button type="button"  class="pure-button" name="deleteBtn" id="deleteBtn">Delete</button>
+                                        <button type="button"  class="pure-button" name="clearBtn" id="clearBtn">Clear</button>
+
+                                    </div>
+                                    <div id="result"></div>  
+                                </fieldset>
+                            </form>  
+                            <div id="record_info">
+                                <div>DBTimestamp <span id="DBTimestamp"></span></div>
+                                <div>DBversion  <span id="DBversion"></span></div>
+                                <div>DBstate <span id="DBstate"></span></div>
+                                <div>DBok <span id="DBok"></span></div>
+                                <div>DBreason <span id="DBreason"></span></div>
+                                <div>_id <span id="_id"></span></div>
+                                <div>_rev <span id="_rev"></span></div>
                             </div>
-                            <div id="result"></div>  
-                        </fieldset>
-                    </form>  
-                    <div id="record_info">
-                        <div>DBTimestamp <span id="DBTimestamp"></span></div>
-                        <div>DBversion  <span id="DBversion"></span></div>
-                        <div>DBstate <span id="DBstate"></span></div>
-                        <div>DBok <span id="DBok"></span></div>
-                        <div>DBreason <span id="DBreason"></span></div>
-                        <div>_id <span id="_id"></span></div>
-                        <div>_rev <span id="_rev"></span></div>
+                        </div>
                     </div>
                 </div>
-            </div><!-- /panel -->
-            <header data-role="header" id="header">
-                <h1 id="appTitle">Horse Diary</h1>
-                <div><span id="deviceready" class="blink">
-                        <span class="event listening">Connecting to Device</span><span class="event received" style="display:none;">Device is Ready</span>
-                    </span><span>, Server </span>
-                    <span id="sync-wrapper">
-                        <span id="sync-success">Currently syncing</span>
-                        <span id="sync-error">There was a problem syncing</span>
-                    </span></div>
-                <div id="mainmenu"></div>
-            </header>
-            <div role="main" class="ui-content jqm-content">
-                <div id="datalist"></div>  
             </div>
-            <footer id="footer">
-                <div id="display"></div>
-                <span id="todo-count"></span>
-            </footer>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script src="js/jquery-3.2.1.min.js"></script>
-        <script src="lib/jQueryMobile/jquery.mobile-1.4.5.min.js"></script>
-        <script src="js/pouchdb.min.js"></script> <!-- 6.3.4 -->
-        <script src="js/pouchdb.find.js"></script>
-        <script src="js/pouchdb.authentication.js"></script>
-        <script src="lib/crypto/core.min.js"></script> <!-- 3.1.9-1 -->
-        <script src="lib/crypto/sha256.min.js"></script>
-        <script src="lib/crypto/hmac.min.js"></script>
-        <script src="lib/crypto/enc-base64.min.js"></script>
-        <script src="lib/apac/apac.js"></script>
-        <script src="lib/xml2json/xml2json.js"></script>
-        <!-- script src="js/pouchdb.load.min.js"></script --> <!-- 1.4.6 -->
-        <!-- script src="js/pouchdb.cordova-sqlite.js"></script -->
-        <script src="js/cookie.js"></script>
-        <script src="js/app.js"></script>
-        <!-- script src="js/firstbulk.js"></script -->
-    </body>
+        <footer  class="pure-flex-rw" id="footer">
+            <span id="deviceready" class="blink"><span class="event listening">Connecting to Device</span><span class="event received" style="display:none;">Device is Ready</span></span>, Server&nbsp;<span id="sync-wrapper">undefined</span>
+        </footer>
+    </div>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <!-- script src="lib/jQueryMobile/jquery.mobile-1.4.5.min.js"></script -->
+    <script src="js/pouchdb.min.js"></script> <!-- 6.3.4 -->
+    <script src="js/pouchdb.find.js"></script>
+    <script src="js/pouchdb.authentication.js"></script>
+    <!--script src="lib/crypto/core.min.js"></script> <!-- 3.1.9-1 -->
+    <!--script src="lib/crypto/sha256.min.js"></script -->
+    <!--script src="lib/crypto/hmac.min.js"></script -->
+    <!--script src="lib/crypto/enc-base64.min.js"></script -->
+    <!--script src="lib/apac/apac.js"></script -->
+    <script src="lib/xml2json/xml2json.js"></script>
+    <!-- script src="js/pouchdb.load.min.js"></script --> <!-- 1.4.6 -->
+    <!-- script src="js/pouchdb.cordova-sqlite.js"></script -->
+    <script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+    <script src="js/cookie.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+    <!-- script src="js/firstbulk.js"></script -->
+</body>
 </html>
