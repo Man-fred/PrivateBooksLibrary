@@ -1003,6 +1003,9 @@ Hides the menu at `48em`, but modify this based on your app's needs.
     #layout.active .menu-link {
         left: 150px;
     }
+    #partner{
+        float: right;
+    }
     footer {
         /*padding: 2px 40px 2px 40px;*/
     }
@@ -1012,6 +1015,9 @@ Hides the menu at `48em`, but modify this based on your app's needs.
     #mySearchAZ {
         width:60px;
     }
+input, select, textarea {
+    width: calc(100% - 10em);
+}
 }
 
 @media (max-width: 48em) {
