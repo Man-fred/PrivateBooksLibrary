@@ -121,8 +121,7 @@ jsprojManager.prototype = {
         copyToOutputDirectory.text = 'Always';
         children.push(copyToOutputDirectory);
 
-        var item = createItemGroupElement('ItemGroup/Content', sourcePath, targetConditions, children);
-
+        var item = createItemGroupElement('ItemGroup/None', sourcePath, targetConditions, children);
         this._getMatchingProjects(targetConditions).forEach(function (project) {
             project.appendToRoot(item);
         });
@@ -131,11 +130,11 @@ jsprojManager.prototype = {
     removeResourceFileFromProject: function (relPath, targetConditions) {
         events.emit('verbose', 'jsprojManager.removeResourceFile(relPath: ' + relPath + ', targetConditions: ' + JSON.stringify(targetConditions) + ')');
         this._getMatchingProjects(targetConditions).forEach(function (project) {
-            project.removeItemGroupElement('ItemGroup/Content', relPath, targetConditions);
+            project.removeItemGroupElement('ItemGroup/None', relPath, targetConditions);
         });
     },
 
-    addReference: function (relPath, targetConditions, implPath) {
+    addReference: function (relPath, targetConditions) {
         events.emit('verbose', 'jsprojManager.addReference(incText: ' + relPath + ', targetConditions: ' + JSON.stringify(targetConditions) + ')');
 
         // add hint path with full path
@@ -148,13 +147,6 @@ jsprojManager.prototype = {
             var mdFileTag = new et.Element("IsWinMDFile");
             mdFileTag.text = "true";
             children.push(mdFileTag);
-        }
-
-        // We only need to add <Implementation> tag when dll base name differs from winmd name
-        if (implPath && path.basename(relPath, '.winmd') !== path.basename(implPath, '.dll')) {
-            var implementTag = new et.Element('Implementation');
-            implementTag.text = path.basename(implPath);
-            children.push(implementTag);
         }
 
         var item = createItemGroupElement('ItemGroup/Reference', path.basename(relPath, extName), targetConditions, children);

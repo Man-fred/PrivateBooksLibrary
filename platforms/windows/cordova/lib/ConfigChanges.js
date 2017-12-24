@@ -82,7 +82,7 @@ function cloneObject(obj) {
  * @return {String} name of capability
  */
 function getCapabilityName(capability) {
-    var reg = /Name\s*=\s*"(.*?)"/;
+    var reg = /Name="(\w+)"/i;
     return capability.xml.match(reg)[1];
 }
 
@@ -136,7 +136,7 @@ function compareCapabilities(firstCap, secondCap) {
 function generateUapCapabilities(capabilities) {
 
     function hasCapabilityChange(change) {
-        return /^\s*<(\w+:)?(Device)?Capability\s/.test(change.xml);
+        return /^\s*<Capability\s/.test(change.xml);
     }
 
     function createPrefixedCapabilityChange(change) {
@@ -144,10 +144,8 @@ function generateUapCapabilities(capabilities) {
             return change;
         }
 
-        //  If capability is already prefixed, avoid adding another prefix
-        var replaceXML = change.xml.indexOf('uap:') > 0 ? change.xml : change.xml.replace(/Capability/, 'uap:Capability');
         return {
-            xml: replaceXML,
+            xml: change.xml.replace(/Capability/, 'uap:Capability'),
             count: change.count,
             before: change.before
         };

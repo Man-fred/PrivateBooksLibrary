@@ -1,30 +1,25 @@
 {
-  "prepare_queue": {
-    "installed": [],
-    "uninstalled": []
-  },
-  "config_munge": {
-    "files": {}
-  },
-  "installed_plugins": {
-    "cordova-plugin-console": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
     },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
+    "config_munge": {
+        "files": {}
     },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "io.cordova.myapp387c96"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "io.cordova.myapp387c96"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "io.cordova.myapp387c96"
+        }
     },
-    "phonegap-plugin-barcodescanner": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
-    },
-    "cordova-plugin-file": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
-    },
-    "cordova-plugin-sqlite-2": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "io.cordova.myapp387c96"
+        }
     }
-  },
-  "dependent_plugins": {}
 }

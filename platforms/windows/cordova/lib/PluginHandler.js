@@ -53,36 +53,18 @@ var handlers = {
     },
     'resource-file':{
         install:function(obj, plugin, project, options) {
-            if (obj.reference) {
-                // do not copy, but reference the file in the plugin folder. This allows to
-                // have multiple source files map to the same target and select the appropriate
-                // one based on the current build settings, e.g. architecture.
-                // also, we don't check for existence. This allows to insert build variables
-                // into the source file name, e.g.
-                // <resource-file src="$(Platform)/My.dll" target="My.dll" />
-                var relativeSrcPath = getPluginFilePath(plugin, obj.src, project.projectFolder);
-                project.addResourceFileToProject(relativeSrcPath, obj.target, getTargetConditions(obj));
-            } else {
-                // if target already exists, emit warning to consider using a reference instead of copying
-                if (fs.existsSync(path.resolve(project.root, obj.target))) {
-                    events.emit('warn', '<resource-file> with target ' + obj.target + ' already exists and will be overwritten ' +
-                    'by a <resource-file> with the same target. Consider using the attribute reference="true" in the ' +
-                    '<resource-file> tag to avoid overwriting files with the same target. Using reference will not copy files ' +
-                    'to the destination, instead will create a reference to the source path.');
-                }
-                // as per specification resource-file target is specified relative to platform root
-                copyFile(plugin.dir, obj.src, project.root, obj.target);
-                project.addResourceFileToProject(obj.target, obj.target, getTargetConditions(obj));
-            }
+            // do not copy, but reference the file in the plugin folder. This allows to
+            // have multiple source files map to the same target and select the appropriate
+            // one based on the current build settings, e.g. architecture.
+            // also, we don't check for existence. This allows to insert build variables
+            // into the source file name, e.g.
+            // <resource-file src="$(Platform)/My.dll" target="My.dll" />
+            var relativeSrcPath = getPluginFilePath(plugin, obj.src, project.projectFolder);
+            project.addResourceFileToProject(relativeSrcPath, obj.target, getTargetConditions(obj));
         },
         uninstall:function(obj, plugin, project, options) {
-            if (obj.reference) {
-                var relativeSrcPath = getPluginFilePath(plugin, obj.src, project.projectFolder);
-                project.removeResourceFileFromProject(relativeSrcPath, getTargetConditions(obj));
-            } else {
-                removeFile(project.root, obj.target);
-                project.removeResourceFileFromProject(obj.target, getTargetConditions(obj));
-            }
+            var relativeSrcPath = getPluginFilePath(plugin, obj.src, project.projectFolder);
+            project.removeResourceFileFromProject(relativeSrcPath, getTargetConditions(obj));
         }
     },
     'lib-file': {
@@ -104,7 +86,6 @@ var handlers = {
             var dest = src;
             var type = obj.type;
             var targetDir = obj.targetDir || '';
-            var implementPath = obj.implementation;
 
             if(type === 'projectReference') {
                 dest = path.join(path.relative(project.projectFolder, plugin.dir), targetDir, src);
@@ -113,10 +94,7 @@ var handlers = {
                 // path.join ignores empty paths passed so we don't check whether targetDir is not empty
                 dest = path.join('plugins', plugin.id, targetDir, path.basename(src));
                 copyFile(plugin.dir, src, project.root, dest);
-                if (implementPath) {
-                    copyFile(plugin.dir, implementPath, project.root, path.join(path.dirname(dest), path.basename(implementPath)));
-                }
-                project.addReference(dest, getTargetConditions(obj), implementPath);
+                project.addReference(dest, getTargetConditions(obj));
             }
 
         },
@@ -226,7 +204,7 @@ function copyFile (plugin_dir, src, project_dir, dest, link) {
     dest = path.resolve(project_dir, dest);
 
     // check that dest path is located in project directory
-    if (dest.indexOf(path.resolve(project_dir)) !== 0)
+    if (dest.indexOf(project_dir) !== 0)
         throw new CordovaError('Destination "' + dest + '" for source file "' + src + '" is located outside the project');
 
     shell.mkdir('-p', path.dirname(dest));
