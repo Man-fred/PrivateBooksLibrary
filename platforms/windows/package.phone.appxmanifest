@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-    <Identity Name="de.bcss.phonegap.PrivateBooksLibrary" Publisher="CN=$username$" Version="1.0.0.0" />
-    <mp:PhoneIdentity PhoneProductId="3a1d1b80-bae6-11e7-b809-dbf7d9a0f423" PhonePublisherId="db093ed5-53b1-45f7-af72-751e8f36ab80" />
+    <Identity Name="35337ManfredBielemeierBCS.PrivateBooksLibrary" Publisher="CN=$username$" Version="0.1.1.0" />
+    <mp:PhoneIdentity PhoneProductId="42b4a7c0-e7fc-11e7-a9cd-b70fd555f9ac" PhonePublisherId="db093ed5-53b1-45f7-af72-751e8f36ab80" />
     <Properties>
-        <DisplayName>PrivateBooksLibrary</DisplayName>
-        <PublisherDisplayName>Apache Cordova Team</PublisherDisplayName>
+        <DisplayName>Private Books Library</DisplayName>
+        <PublisherDisplayName>Manfred Bielemeier (BCSS Software &amp; Beratung GmbH)</PublisherDisplayName>
         <Logo>images\StoreLogo.png</Logo>
-        <Description>A basic Framework7 template for PhoneGap.</Description>
+        <Description>Ein leeres Projekt, das Apache Cordova verwendet, damit Sie eine App für mehrere mobile Plattformen erstellen können: Android, iOS und die universelle Windows-Plattform.</Description>
     </Properties>
     <Prerequisites>
         <OSMinVersion>6.3.1</OSMinVersion>
@@ -16,8 +16,8 @@
         <Resource Language="x-generate" />
     </Resources>
     <Applications>
-        <Application Id="de.bcss.phonegap.PrivateBooksLibrary" StartPage="www/index.html">
-            <m3:VisualElements BackgroundColor="transparent" Description="A basic Framework7 template for PhoneGap." DisplayName="PrivateBooksLibrary" ForegroundText="light" Square150x150Logo="images\Square150x150Logo.png" Square44x44Logo="images\Square44x44Logo.png">
+        <Application Id="io.cordova.myapp387c96" StartPage="www/index.html">
+            <m3:VisualElements BackgroundColor="transparent" Description="Ein leeres Projekt, das Apache Cordova verwendet, damit Sie eine App für mehrere mobile Plattformen erstellen können: Android, iOS und die universelle Windows-Plattform." DisplayName="PrivateBooksLibrary" ForegroundText="light" Square150x150Logo="images\Square150x150Logo.png" Square44x44Logo="images\Square44x44Logo.png">
                 <m3:DefaultTile Square71x71Logo="images\Square71x71Logo.png" Wide310x150Logo="images\Wide310x150Logo.png">
                     <m3:ShowNameOnTiles>
                         <m3:ShowOn Tile="square150x150Logo" />
@@ -31,6 +31,9 @@
                     <m3:Rotation Preference="landscapeFlipped" />
                 </m3:InitialRotationPreference>
             </m3:VisualElements>
+            <ApplicationContentUriRules>
+                <Rule Match="https://pbl.bcss.de" Type="include" />
+            </ApplicationContentUriRules>
         </Application>
     </Applications>
     <Capabilities>

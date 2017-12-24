@@ -789,7 +789,7 @@ The content `<div>` is where all your content goes.
 */
 .content {
     /* margin: 130px 24px 50px auto; */
-    width: 100%;
+    width: calc(-120px + 100%);
     height: 100%;
     /*max-width: 800px;*/
     line-height: 1.6em;

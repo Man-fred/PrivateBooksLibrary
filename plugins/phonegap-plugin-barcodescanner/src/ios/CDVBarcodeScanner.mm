@@ -118,8 +118,6 @@
 - (UIImage*)buildReticleImage;
 - (void)shutterButtonPressed;
 - (IBAction)cancelButtonPressed:(id)sender;
-- (IBAction)flipCameraButtonPressed:(id)sender;
-- (IBAction)torchButtonPressed:(id)sender;
 
 @end
 
@@ -940,7 +938,7 @@ parentViewController:(UIViewController*)parentViewController
 }
 
 //--------------------------------------------------------------------------
-- (IBAction)shutterButtonPressed {
+- (void)shutterButtonPressed {
     self.shutterPressed = YES;
 }
 
@@ -949,12 +947,12 @@ parentViewController:(UIViewController*)parentViewController
     [self.processor performSelector:@selector(barcodeScanCancelled) withObject:nil afterDelay:0];
 }
 
-- (IBAction)flipCameraButtonPressed:(id)sender
+- (void)flipCameraButtonPressed:(id)sender
 {
     [self.processor performSelector:@selector(flipCamera) withObject:nil afterDelay:0];
 }
 
-- (IBAction)torchButtonPressed:(id)sender
+- (void)torchButtonPressed:(id)sender
 {
   [self.processor performSelector:@selector(toggleTorch) withObject:nil afterDelay:0];
 }
@@ -969,16 +967,7 @@ parentViewController:(UIViewController*)parentViewController
         NSLog(@"%@", @"An error occurred loading the overlay xib.  It appears that the overlayView outlet is not set.");
         return nil;
     }
-	
-	self.overlayView.autoresizesSubviews = YES;
-    self.overlayView.autoresizingMask    = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.overlayView.opaque              = NO;
-	
-	CGRect bounds = self.view.bounds;
-    bounds = CGRectMake(0, 0, bounds.size.width, bounds.size.height);
-	
-	[self.overlayView setFrame:bounds];
-	
+
     return self.overlayView;
 }
 
