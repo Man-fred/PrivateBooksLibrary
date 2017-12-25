@@ -675,7 +675,9 @@ $(window).on("load, resize", function() {
     if (viewportWidth < 600) {
             $("#singleform").removeClass(" pure-form-aligned").addClass("pure-form pure-form-stacked");
     } else {
-            $("#singleform").addClass("pure-form pure-form-aligned").removeClass("pure-form-stacked");
+        $("#partner").innerHTML =
+            '<iframe src="https://rcm-eu.amazon-adsystem.com/e/cm?o=3&p=29&l=ur1&category=books&banner=1AXGA69NGEE3MYR7ZNG2&f=ifr&linkID=d5d77bd50e3d0c95cef3edf83dd6cc87&t=bielemeierde-21&tracking_id=bielemeierde-21" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>';
+        $("#singleform").addClass("pure-form pure-form-aligned").removeClass("pure-form-stacked");
     }
 });
 
