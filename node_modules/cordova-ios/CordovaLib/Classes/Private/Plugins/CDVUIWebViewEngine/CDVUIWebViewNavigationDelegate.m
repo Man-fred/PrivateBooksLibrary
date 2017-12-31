@@ -78,11 +78,9 @@
 
     NSURL* errorUrl = vc.errorURL;
     if (errorUrl) {
-        errorUrl = [NSURL URLWithString:[NSString stringWithFormat:@"?error=%@", [message stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLPathAllowedCharacterSet]] relativeToURL:errorUrl];
+        errorUrl = [NSURL URLWithString:[NSString stringWithFormat:@"?error=%@", [message stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] relativeToURL:errorUrl];
         NSLog(@"%@", [errorUrl absoluteString]);
-        if(error.code != NSURLErrorCancelled) {
-            [theWebView loadRequest:[NSURLRequest requestWithURL:errorUrl]];
-        }
+        [theWebView loadRequest:[NSURLRequest requestWithURL:errorUrl]];
     }
 }
 

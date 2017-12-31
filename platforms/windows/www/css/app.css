@@ -1,285 +1,292 @@
 ﻿/* static footer */
-html, body {
-    height: 100%;
-    padding: 0;
+html,
+body {
+  height: 100%;
+  padding: 0;
 }
 body {
-    margin: auto;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between
+  margin: auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
 }
-header, footer {
-    /*color: white;*/
-    /*background-color: black;*/
-    clear: left;
-    text-align: center;
+header,
+footer {
+  /*color: white;*/
+  /*background-color: black;*/
+  clear: left;
+  text-align: center;
+  white-space: nowrap;
 }
 .header {
-    margin: 0;
-    color: #333;
-    text-align: center;
-    padding: 2.5em 0;
-    border-bottom: 1px solid #eee;
+  margin: 0;
+  color: #333;
+  text-align: center;
+  padding: 2.5em 0;
+  border-bottom: 1px solid #eee;
 }
-
 .pure-flex-rw {
-    display: flex;
-    flex-flow: row wrap;
+  display: flex;
+  flex-flow: row wrap;
+}
+#partner {
+  float: right;
 }
 main {
-    flex: 1 1 auto; /*For IE11*/
-    display: flex;
-    line-height: 1;
+  flex: 1 1 auto;
+  /*For IE11*/
+  display: flex;
+  line-height: 1;
 }
 #top {
-    top:0px;
-    position:fixed !important;
-    /*position:absolute;*/
-    /*height: 24px;*/
-    z-index: 900; /* so the menu or its navicon stays above all content */
-    /*padding: 0.6em 0 0.6em 0.6em;*/
-    width: 100%;
-    background: #1f8dd6;
-    font-size: 110%;
-    text-transform: uppercase;
-    color: #fff;
-    margin: 0;
+  top: 0px;
+  position: fixed !important;
+  z-index: 900;
+  /* so the menu or its navicon stays above all content */
+  width: 100%;
+  background: #1f8dd6;
+  font-size: 110%;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+  height: 44px;
+  display: table-cell;
+  vertical-align: middle;
 }
 footer {
-    z-index: 1000; /* so the menu or its navicon stays above all content */
-    background: rgb(55,55,55);
-    bottom:0px;
-    position:fixed !important;
-    position:absolute;
-    height:25px;
-    width:100%;
+  z-index: 1000;
+  /* so the menu or its navicon stays above all content */
+  background: #373737;
+  bottom: 0px;
+  position: fixed !important;
+  position: absolute;
+  height: 25px;
+  width: 100%;
 }
-
-#appTitle{
-    /*float: left;*/
-    vertical-align:middle;
+#appTitle {
+  /*float: left;*/
+  padding-left: 150px;
+  width: calc(100% -  150px  - 2 *  44px);
 }
-#appRedo{
-    float: right;
-    font-size: 200%;
-    font-weight:bold;
-    padding: 0 10px 0 10px;
+.title-button {
+  float: right;
+  font-size: 200%;
+  font-weight: bold;
+  /*padding: 0 10px 0 10px;*/
+  width: 44px;
+  display: block;
+  margin: 0px auto;
+  text-align: center;
+  vertical-align: middle;
 }
-
 div.container {
-    width: 100%;
-    border: 1px solid gray;
+  width: 100%;
+  border: 1px solid gray;
 }
-
 .header h1 {
-    margin: 0.2em 0;
-    font-size: 3em;
-    font-weight: 300;
+  margin: 0.2em 0;
+  font-size: 3em;
+  font-weight: 300;
 }
 .header h2 {
-    font-weight: 300;
-    color: #ccc;
-    padding: 0;
-    margin-top: 0;
+  font-weight: 300;
+  color: #ccc;
+  padding: 0;
+  margin-top: 0;
 }
 .headerR {
-    float: right;
+  float: right;
 }
-
 #todoapp {
-    width: 100%
+  width: 100%;
 }
-
 #singledata {
-    /*    position: fixed; top: 6em; left: 0px; */
-    width: 100%;
-    /*max-width: 34em;*/
-    float:left;
-    margin: 0;
-    padding: 0em;
+  /*    position: fixed; top: 6em; left: 0px; */
+  width: 100%;
+  /*max-width: 34em;*/
+  float: left;
+  margin: 0;
+  padding: 0em;
 }
 #datalist {
-    /*margin-left: 34em;
+  /*margin-left: 34em;
     border-left: 1px solid gray;*/
-    padding: 1em 0;
-    /* overflow: hidden; */
+  padding: 1em 0;
+  /* overflow: hidden; */
 }
 #f_ooter {
-    width: 50%;
-    color: #777;
-    padding: 0 15px;
-    position: absolute;
-    right: 0;
-    bottom: -31px;
-    left: 0;
-    height: 50px;
-    z-index: 1;
-
+  width: 50%;
+  color: #777;
+  padding: 0 15px;
+  position: absolute;
+  right: 0;
+  bottom: -31px;
+  left: 0;
+  height: 50px;
+  z-index: 1;
 }
-
 table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
 }
-
 tr:nth-child(even) {
-    background-color: #dddddd;
+  background-color: #dddddd;
 }
-
-form div { border: none; }
-
+form div {
+  border: none;
+}
 fieldset {
-    width: 100%;
-    padding: 1em;
-    background: #efefef;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;	
-    /* Webkit */
-    background: -webkit-gradient(linear, left top, left bottom, from(white), to(lightgray));
-    /* Firefox */
-    background: -moz-linear-gradient(top, white, lightgray);
-    /* Internet Explorer < 8 */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF, endColorstr=#EFEFEF);
-    /* IE 8 */
-    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF, endColorstr=#EFEFEF)";
+  width: 100%;
+  padding: 1em;
+  background: #efefef;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  /* Webkit */
+  background: -webkit-gradient(linear, left top, left bottom, from(white), to(lightgray));
+  /* Firefox */
+  background: -moz-linear-gradient(top, white, lightgray);
+  /* Internet Explorer < 8 */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF, endColorstr=#EFEFEF);
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#FFFFFF, endColorstr=#EFEFEF)";
 }
-
 legend {
-    background: white;	
-    padding: 0.6em;
-    border: 1px solid lightgray;
-    -webkit-box-shadow: inset 1px 1px 3px rgba(0,0,0,0.1);  
-    -moz-box-shadow: inset 2px 2px 3px rgba(0,0,0,0.1); 
-    box-shadow: inset 2px 2px 3px rgba(0,0,0,0.1); 
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
+  background: white;
+  padding: 0.6em;
+  border: 1px solid lightgray;
+  -webkit-box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
-
 label {
-    width: 6em;
-    display: inline-block;
-    text-align: right;
+  width: 6em;
+  display: inline-block;
+  text-align: right;
 }
-div>label:first-child {
-    width: 8em;
-    text-align: left;
-    padding-top: 0.3em;
-    vertical-align:top;
+div > label:first-child {
+  width: 8em;
+  text-align: left;
+  padding-top: 0.3em;
+  vertical-align: top;
 }
-input, select, textarea {
-    width: 90%;
-    padding: 0.3em;
-    border: 1px solid lightgray;
-    -webkit-box-shadow: inset 1px 1px 3px rgba(0,0,0,0.1);  
-    -moz-box-shadow: inset 1px 1px 3px rgba(0,0,0,0.1); 
-    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.1); 
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
+input,
+select,
+textarea {
+  width: 90%;
+  padding: 0.3em;
+  border: 1px solid lightgray;
+  -webkit-box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
-input:hover,select:hover,textarea:hover {
-    background: #ffc;
-    border: 1px solid #555;
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);  
-    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2); 
-    box-shadow: 0 0 10px rgba(0,0,0,0.2); 
+input:hover,
+select:hover,
+textarea:hover {
+  background: #ffc;
+  border: 1px solid #555;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-input:focus,select:focus,textarea:focus {
-    border: 1px solid lightgray;
-    -webkit-box-shadow: 0 0 10px rgba(32,204,255,0.7);  
-    -moz-box-shadow: 0 0 10px rgba(32,204,255,0.7); 
-    box-shadow: 0 0 10px rgba(32,204,255,0.7); 
-    outline: none;
+input:focus,
+select:focus,
+textarea:focus {
+  border: 1px solid lightgray;
+  -webkit-box-shadow: 0 0 10px rgba(32, 204, 255, 0.7);
+  -moz-box-shadow: 0 0 10px rgba(32, 204, 255, 0.7);
+  box-shadow: 0 0 10px rgba(32, 204, 255, 0.7);
+  outline: none;
 }
-
-input#strasse { width: 18em; }
-
-input#ort { width: 17em; }
-
-input[type="checkbox"], input[type="radio"] {
-    width: auto;
-    border: none; /* IE */
+input#strasse {
+  width: 18em;
 }
-.form_short { width: 10em; }
-
-.form_4 { width: 4em; }
-
-.form_5 { width: 5em; }
-
-.form_check label { display: inline; }
-
-label[for^="news"] { display: inline; }
-
-.form_check input { margin-left: 7em; }
-
-input#news_ja, input#news_nein { margin-left: 7em; }
-
+input#ort {
+  width: 17em;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto;
+  border: none;
+  /* IE */
+}
+.form_short {
+  width: 10em;
+}
+.form_4 {
+  width: 4em;
+}
+.form_5 {
+  width: 5em;
+}
+.form_check label {
+  display: inline;
+}
+label[for^="news"] {
+  display: inline;
+}
+.form_check input {
+  margin-left: 7em;
+}
+input#news_ja,
+input#news_nein {
+  margin-left: 7em;
+}
 input[type="button"] {
-    width: 24%;
+  width: 24%;
 }
-input[type="submit"], input[type="reset"] {
-    width: 10em;
-    padding: 0.6em;
-    background: #fafafa;
-    border: 1px solid #aaa;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
-    /* Webkit */
-    background-image: -webkit-gradient(
-        linear, left top, left bottom,
-        color-stop(0.1, rgb(250,250,250)),
-        color-stop(1, rgb(204,204,204))
-        );
-    /* Firefox */
-    background-image: -moz-linear-gradient(
-        top,
-        rgb(250,250,250) 10%,
-        rgb(204,204,204) 100%
-        );	
-    -webkit-box-shadow: 0px 0px 5px rgba(255,255,255,0.8); 
-    -moz-box-shadow:  0px 0px 5px rgba(255,255,255,0.8); 
-    box-shadow: 0px 0px 5px rgba(255,255,255,0.8); 
-    text-shadow: 1px 1px 1px rgba(255,255,255,0.8); 
+input[type="submit"],
+input[type="reset"] {
+  width: 10em;
+  padding: 0.6em;
+  background: #fafafa;
+  border: 1px solid #aaa;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  /* Webkit */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.1, #fafafa), color-stop(1, #cccccc));
+  /* Firefox */
+  background-image: -moz-linear-gradient(top, #fafafa 10%, #cccccc 100%);
+  -webkit-box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);
+  -moz-box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);
+  box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.8);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.8);
 }
 input[type="submit"] {
-    margin-left: 10em;
-    margin-right: 0.2em;
-    font-weight:bold;
+  margin-left: 10em;
+  margin-right: 0.2em;
+  font-weight: bold;
 }
-input[type="submit"]:hover, input[type="submit"]:focus {
-    border-color: #3a3;
-    color: #3a3;
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  border-color: #3a3;
+  color: #3a3;
 }
-input[type="reset"]:hover, input[type="reset"]:focus {
-    border-color: #f55;
-    color: #f55;
+input[type="reset"]:hover,
+input[type="reset"]:focus {
+  border-color: #f55;
+  color: #f55;
 }
-
 input[type="submit"]:active,
 input[type="reset"]:active {
-    /* Webkit */
-    background-image: -webkit-gradient(
-        linear, left bottom, left top,
-        color-stop(0.1, rgb(250,250,250)),
-        color-stop(1, rgb(204,204,204))
-        );
-    /* Firefox */
-    background-image: -moz-linear-gradient(
-        bottom,
-        rgb(250,250,250) 10%,
-        rgb(204,204,204) 100%
-        );	
+  /* Webkit */
+  background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.1, #fafafa), color-stop(1, #cccccc));
+  /* Firefox */
+  background-image: -moz-linear-gradient(bottom, #fafafa 10%, #cccccc 100%);
 }
 /* 
 fieldset{  width: 31em;
@@ -303,7 +310,7 @@ button {
 body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.4em;
-  background: #eaeaea url('bg.png');
+  background: #eaeaea url('../../less/bg.png');
   color: #4d4d4d;
   width: 550px;
   margin: 0 auto;
@@ -681,369 +688,363 @@ label[for='toggle-all'] {
   }
 }
 */
-.hidden{
-    /*    display:none;*/
+.hidden {
+  /*    display:none;*/
 }
-
-#sync-error, #sync-success {
-    display: none;
+#sync-error,
+#sync-success {
+  display: none;
 }
-
 [data-sync-state=syncing] #sync-success {
-    display: block;
+  display: block;
 }
-
 [data-sync-state=error] #sync-error {
-    display: block;
+  display: block;
 }
 .t_seite {
-    display: none;
+  display: none;
 }
 #myTableList {
-    table-layout: fixed;
+  table-layout: fixed;
 }
 #myTableList tbody tr td {
-    padding: 1px;
+  padding: 1px;
 }
 .books-title {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    font-weight: bold;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  float: left;
 }
 .books-author {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .books-date {
-    width: 120px;
-    /*background-color: #D00000;*/
-    float: left;
+  width: 120px;
+  /*background-color: #D00000;*/
+  float: left;
 }
 .books-image {
-    width: auto;
-    height: 80px;
-    display: block; /*for the img inside your div */ 
-margin: 0 auto; 
+  width: auto;
+  height: 80px;
+  display: block;
+  /*for the img inside your div */
+  margin: 0 auto;
 }
 .books-img-tr {
-    width: 52px;
+  width: 52px;
 }
 .books-img {
-    width: 50px;
-    text-indent: -50%;
-    overflow: hidden;
+  width: 50px;
+  text-indent: -50%;
+  overflow: hidden;
 }
 .books-state {
-    width: 120px;
-    float: left;
+  width: 120px;
+  float: left;
 }
 /* https://codepen.io/SitePoint/pen/hewAv 
    schönes Scrollverhalten bei horizontalem Menü und sticky header*/
-
 /*https://purecss.io/layouts/side-menu/# */
 /* side-menu.css */
 body {
-    color: #777;
+  color: #777;
 }
-
 .pure-img-responsive {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
-
 /*
 Add transition to containers so they can push in and out.
 */
 #layout,
 #menu,
 .menu-link {
-    -webkit-transition: all 0.2s ease-out;
-    -moz-transition: all 0.2s ease-out;
-    -ms-transition: all 0.2s ease-out;
-    -o-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -ms-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
-
 /*
 This is the parent `<div>` that contains the menu and the content area.
 */
 #layout {
-    position: relative;
-    left: 0;
-    padding-left: 0;
-    padding-bottom: 29px; /* footer height */
-    height: 100%;
+  position: relative;
+  left: 0;
+  padding-left: 0;
+  padding-bottom: 29px;
+  /* footer height */
+  height: 100%;
 }
 #layout.active #menu {
-    left: 150px;
-    width: 150px;
+  left: 150px;
+  width: 150px;
 }
-
 #layout.active .menu-link {
-    left: 150px;
+  left: 150px;
 }
 /*
 The content `<div>` is where all your content goes.
 */
 .content {
-    /* margin: 130px 24px 50px auto; */
-    width: calc(-120px + 100%);
-    height: 100%;
-    /*max-width: 800px;*/
-    line-height: 1.6em;
+  /* margin: 130px 24px 50px auto; */
+  height: 100%;
+  /*max-width: 800px;*/
+  line-height: 1.6em;
 }
-
 .content-subhead {
-    margin: 50px 0 20px 0;
-    font-weight: 300;
-    color: #888;
+  margin: 50px 0 20px 0;
+  font-weight: 300;
+  color: #888;
 }
-
-
-
 /*
 The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
 appears on the left side of the page.
 */
-
 #menu {
-    margin-left: -150px; /* "#menu" width */
-    width: 150px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 950; /* so the menu or its navicon stays above all content */
-    background: #191818;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+  margin-left: -150px;
+  /* "#menu" width */
+  width: 150px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 950;
+  /* so the menu or its navicon stays above all content */
+  background: #191818;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 /*
 All anchors inside the menu should be styled like this.
 */
 #menu a {
-    color: #999;
-    border: none;
-    padding: 0.6em 0 0.6em 0.6em;
+  color: #999;
+  border: none;
+  padding: 0.6em 0 0.6em 0.6em;
 }
-
 /*
 Remove all background/borders, since we are applying them to #menu.
 */
 #menu .pure-menu,
 #menu .pure-menu ul {
-    border: none;
-    background: transparent;
+  border: none;
+  background: transparent;
 }
-
 /*
 Add that light border to separate items into groups.
 */
 #menu .pure-menu ul,
 #menu .pure-menu .menu-item-divided {
-    border-top: 1px solid #333;
+  border-top: 1px solid #333;
 }
 /*
 Change color of the anchor links on hover/focus.
 */
 #menu .pure-menu li a:hover,
 #menu .pure-menu li a:focus {
-    background: #333;
+  background: #333;
 }
-
 /*
 This styles the selected menu item `<li>`.
 */
 #menu .pure-menu-selected,
 #menu .pure-menu-heading {
-    background: #1f8dd6;
+  background: #1f8dd6;
 }
 /*
 This styles a link within a selected menu item `<li>`.
 */
 #menu .pure-menu-selected a {
-    color: #fff;
+  color: #fff;
 }
-
 /*
 This styles the menu heading.
 */
 #menu .pure-menu-heading {
-    font-size: 110%;
-    color: #fff;
-    margin: 0;
+  font-size: 110%;
+  color: #fff;
+  margin: 0;
 }
-
 /* -- Dynamic Button For Responsive Menu -------------------------------------*/
-
 /*
 The button to open/close the Menu is custom-made and not part of Pure. Here's
 how it works:
 */
-
 /*
 `.menu-link` represents the responsive menu toggle that shows/hides on
 small screens.
 */
 .menu-link {
-    position: fixed;
-    display: block; /* show this only on small screens */
-    top: 0;
-    left: 0; /* "#menu width" */
-    background: #000;
-    background: rgba(0,0,0,0.7);
-    font-size: 10px; /* change this value to increase/decrease button size */
-    z-index: 1000;
-    width: 2em;
-    height: auto;
-    padding: 2.1em 1.6em;
+  position: fixed;
+  display: block;
+  /* show this only on small screens */
+  top: 0;
+  left: 0;
+  /* "#menu width" */
+  background: #000;
+  background: rgba(0, 0, 0, 0.7);
+  font-size: 10px;
+  /* change this value to increase/decrease button size */
+  z-index: 1000;
+  width: 2em;
+  height: auto;
+  padding: 2.1em 1.6em;
 }
-
 .menu-link:hover,
 .menu-link:focus {
-    background: #000;
+  background: #000;
 }
-
 .menu-link span {
-    position: relative;
-    display: block;
+  position: relative;
+  display: block;
 }
-
 .menu-link span,
 .menu-link span:before,
 .menu-link span:after {
-    background-color: #fff;
-    width: 100%;
-    height: 0.2em;
+  background-color: #fff;
+  width: 100%;
+  height: 0.2em;
 }
-
 .menu-link span:before,
 .menu-link span:after {
-    position: absolute;
-    margin-top: -0.6em;
-    content: " ";
+  position: absolute;
+  margin-top: -0.6em;
+  content: " ";
 }
-
 .menu-link span:after {
-    margin-top: 0.6em;
+  margin-top: 0.6em;
 }
-    #page1 {
-        padding-right: 30px;
-    }
-
+#page1 {
+  padding-right: 30px;
+}
 /************ rechte Sortierleiste ***********/
 #mySearchAZ {
-    background: rgb(200,200,200);
-    top: 43px;
-    right: 0;
-    bottom: 25px;
-    z-index: 800; /* so the menu or its navicon stays above all content */
-    position:fixed !important;
-    position:absolute;
-    width:30px;
-    display: flex;
-    display: -moz-flex;
-    display: -webkit-flex;
-    flex-direction: column;
-    -moz-flex-direction: column;
-    -webkit-flex-direction: column;
+  background: #c8c8c8;
+  top: 44px;
+  right: 0;
+  bottom: 25px;
+  z-index: 800;
+  /* so the menu or its navicon stays above all content */
+  position: fixed !important;
+  position: absolute;
+  width: 30px;
+  display: flex;
+  display: -moz-flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -moz-flex-direction: column;
+  -webkit-flex-direction: column;
 }
 .searchlist {
-    text-align: center;
-    flex: 1 1 auto;
-    -moz-flex: 1 1 auto;
-    -webkit-flex: 1 1 auto;
+  text-align: center;
+  flex: 1 1 auto;
+  -moz-flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
 }
 .searchlink {
-    text-align: center;
-    display:block;
-    height: 100% ;
-    text-decoration: none;
+  text-align: center;
+  display: block;
+  height: 100%;
+  text-decoration: none;
 }
 .searchlink:hover,
 .searchlink:focus {
-    background: #000;
+  background: #000;
+}
+#main {
+  width: 100%;
 }
 /* -- Responsive Styles (Media Queries) ------------------------------------- */
-
+#page1 {
+  margin-left: 18px;
+  width: calc(100% -  18px  -  30px);
+}
+#page2 {
+  margin-left: 18px;
+  width: calc(100% -  18px);
+}
 /*
 Hides the menu at `48em`, but modify this based on your app's needs.
 */
-@media (min-width: 48em) {
-
-    .header,
-    .content {
-        /*padding-left: 2em;*/
-        /*padding-right: 2em;*/
-    }
-    .content {
-        /*padding: 0 2em;*/
-    }
-
-    #layout {
-        padding-left: 150px; /* left col width "#menu" */
-        left: 0;
-        width: calc(100% - 150px);
-    }
-    #menu {
-        left: 150px;
-    }
-
-    .menu-link {
-        position: fixed;
-        left: 150px;
-        display: none;
-    }
-    #main{
-        margin-left: 18px;
-        width: calc(100% - 18px)
-    }
-    #layout.active .menu-link {
-        left: 150px;
-    }
-    #partner{
-        float: right;
-    }
-    footer {
-        /*padding: 2px 40px 2px 40px;*/
-    }
-    #page1 {
-        padding-right: 60px;
-    }
-    #mySearchAZ {
-        width:60px;
-    }
-input, select, textarea {
-    width: calc(100% - 10em);
+@media (min-width: 600px) {
+  .header,
+  .content {
+    /*padding-left: 2em;*/
+    /*padding-right: 2em;*/
+  }
+  .content {
+    width: calc(100% -  120px);
+    /*padding: 0 2em;*/
+  }
+  #layout {
+    padding-left: 150px;
+    /* left col width "#menu" */
+    left: 0;
+    width: calc(100% -  120px  -  30px);
+  }
+  #menu {
+    left: 150px;
+  }
+  .menu-link {
+    position: fixed;
+    left: 150px;
+    display: none;
+  }
+  #layout.active .menu-link {
+    left: 150px;
+  }
+  footer {
+    /*padding: 2px 40px 2px 40px;*/
+  }
+  #page1 {
+    padding-right: 30px;
+  }
+  #mySearchAZ {
+    right: 120px;
+    width: 30px;
+  }
+  input,
+  select,
+  textarea {
+    width: calc(100% -  10em);
+  }
+  .books-favor {
+    width: 32px;
+    float: right;
+    font-size: 40px;
+  }
 }
-}
-
-@media (max-width: 48em) {
-    /* Only apply this when the window is small. Otherwise, the following
+@media (max-width: 599px) {
+  /* Only apply this when the window is small. Otherwise, the following
     case results in extra padding on the left:
         * Make the window small.
         * Tap the menu to trigger the active state.
         * Make the window large again.
     */
-    #layout.active {
-        position: relative;
-        left: 150px;
-    }
-    #main{
-        margin-left: 8px;
-        width: calc(100% - 38px)
-    }
-    .content {
-        padding: 0;
-    }
-    footer {
-        /* padding: 2px; */
-    }
+  #layout.active {
+    position: relative;
+    left: 150px;
+  }
+  #xxmain {
+    margin-left: 8px;
+    width: calc(100% -  36px);
+  }
+  .content {
+    width: 100%;
+    padding: 0;
+  }
+  footer {
+    /* padding: 2px; */
+  }
+  .books-favor {
+    width: 24px;
+    float: right;
+    font-size: 24px;
+  }
 }
-
-
-
-
 /*******************************************************/

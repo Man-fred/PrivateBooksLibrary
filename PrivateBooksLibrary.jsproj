@@ -96,6 +96,9 @@
     <Content Include="**\**" Exclude="**\platforms\**;**\bin\**;**\bld\**;**\node_modules\**;**\simulation\**;**\plugins\**;.gitignore;PrivateBooksLibrary.*" />
   </ItemGroup>
   <ItemGroup>
+    <Content Remove="www\data\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Remove="res\native\windows\Package.StoreAssociation.xml" />
   </ItemGroup>
   <ItemGroup>

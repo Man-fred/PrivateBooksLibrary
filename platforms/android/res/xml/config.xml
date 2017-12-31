@@ -4,17 +4,10 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="Camera">
-        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
-    </feature>
-    <feature name="BarcodeScanner">
-        <param name="android-package" value="com.phonegap.plugins.barcodescanner.BarcodeScanner" />
-    </feature>
     <name>PrivateBooksLibrary</name>
-    <description>Ein leeres Projekt, das Apache Cordova verwendet, damit Sie eine App für mehrere mobile Plattformen erstellen können: Android, iOS und die universelle Windows-Plattform.</description>
+    <description>Ein leeres Projekt, das Apache Cordova verwendet, damit Sie eine App fÃ¼r mehrere mobile Plattformen erstellen kÃ¶nnen: Android, iOS und die universelle Windows-Plattform.</description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">Manfred Bielemeier</author>
     <vs:template-name>BlankJS</vs:template-name>
-    <vs:toolsetVersion>6.3.1</vs:toolsetVersion>
     <content src="index.html" />
     <access origin="https://pbl.bcss.de" />
     <allow-intent href="http://*/*" />
@@ -26,6 +19,14 @@
     <vs:platformSpecificValues>
         <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.1.1.0" />
     </vs:platformSpecificValues>
+    <config-file parent="/Package/Capabilities" target="package.appxmanifest">
+        <DeviceCapability Name="webcam" />
+    </config-file>
+    <config-file parent="/Package/Capabilities" target="package.windows10.appxmanifest">
+        <DeviceCapability Name="microphone" />
+        <DeviceCapability Name="webcam" />
+    </config-file>
+    <vs:toolsetVersion>6.3.1</vs:toolsetVersion>
     <allow-intent href="market:*" />
     <icon density="ldpi" src="res/icons/android/icon-36-ldpi.png" />
     <icon density="mdpi" src="res/icons/android/icon-48-mdpi.png" />

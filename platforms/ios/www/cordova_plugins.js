@@ -25,14 +25,6 @@ module.exports = [
     ]
   },
   {
-    "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
-    "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
-    "pluginId": "phonegap-plugin-barcodescanner",
-    "clobbers": [
-      "cordova.plugins.barcodeScanner"
-    ]
-  },
-  {
     "id": "cordova-plugin-file.DirectoryEntry",
     "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
     "pluginId": "cordova-plugin-file",
@@ -212,6 +204,14 @@ module.exports = [
     "clobbers": [
       "sqlitePlugin"
     ]
+  },
+  {
+    "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+    "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+    "pluginId": "phonegap-plugin-barcodescanner",
+    "clobbers": [
+      "cordova.plugins.barcodeScanner"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -220,10 +220,10 @@ module.exports.metadata =
   "cordova-plugin-console": "1.0.7",
   "cordova-plugin-statusbar": "1.0.1",
   "cordova-plugin-whitelist": "1.2.2",
-  "phonegap-plugin-barcodescanner": "7.0.0",
   "cordova-plugin-compat": "1.2.0",
   "cordova-plugin-file": "4.3.3",
-  "cordova-plugin-sqlite-2": "1.0.4"
+  "cordova-plugin-sqlite-2": "1.0.4",
+  "phonegap-plugin-barcodescanner": "7.0.0"
 };
 // BOTTOM OF METADATA
 });

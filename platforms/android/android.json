@@ -1,131 +1,62 @@
 {
-    "prepare_queue": {
-        "installed": [],
-        "uninstalled": []
-    },
-    "config_munge": {
-        "files": {
-            "res/xml/config.xml": {
-                "parents": {
-                    "/*": [
-                        {
-                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"BarcodeScanner\"><param name=\"android-package\" value=\"com.phonegap.plugins.barcodescanner.BarcodeScanner\" /></feature>",
-                            "count": 1
-                        }
-                    ]
-                }
-            },
-            "AndroidManifest.xml": {
-                "parents": {
-                    "/*": [
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 1
-                        }
-                    ],
-                    "application": [
-                        {
-                            "xml": "<provider android:authorities=\"${applicationId}.provider\" android:exported=\"false\" android:grantUriPermissions=\"true\" android:name=\"android.support.v4.content.FileProvider\"><meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/provider_paths\" /></provider>",
-                            "count": 1
-                        }
-                    ],
-                    "/manifest/application": [
-                        {
-                            "xml": "<activity android:clearTaskOnLaunch=\"true\" android:configChanges=\"orientation|keyboardHidden|screenSize\" android:exported=\"false\" android:name=\"com.google.zxing.client.android.CaptureActivity\" android:theme=\"@android:style/Theme.NoTitleBar.Fullscreen\" android:windowSoftInputMode=\"stateAlwaysHidden\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<activity android:label=\"Share\" android:name=\"com.google.zxing.client.android.encode.EncodeActivity\" />",
-                            "count": 1
-                        }
-                    ],
-                    "/manifest": [
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.CAMERA\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-permission android:name=\"android.permission.FLASHLIGHT\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<uses-feature android:name=\"android.hardware.camera\" android:required=\"true\" />",
-                            "count": 1
-                        }
-                    ]
-                }
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {
+      "res/xml/config.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
             }
+          ]
         }
-    },
-    "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.cordova.myapp387c96"
-        },
-        "cordova-plugin-compat": {
-            "PACKAGE_NAME": "io.cordova.myapp387c96"
-        },
-        "cordova-plugin-camera": {
-            "PACKAGE_NAME": "io.cordova.myapp387c96"
-        },
-        "phonegap-plugin-barcodescanner": {
-            "PACKAGE_NAME": "io.cordova.myapp387c96"
+      },
+      "AndroidManifest.xml": {
+        "parents": {
+          "/*": [],
+          "application": [],
+          "/manifest/application": [],
+          "/manifest": []
         }
-    },
-    "dependent_plugins": {},
-    "modules": [
-        {
-            "id": "cordova-plugin-camera.Camera",
-            "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
-            "pluginId": "cordova-plugin-camera",
-            "clobbers": [
-                "Camera"
-            ]
-        },
-        {
-            "id": "cordova-plugin-camera.CameraPopoverOptions",
-            "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
-            "pluginId": "cordova-plugin-camera",
-            "clobbers": [
-                "CameraPopoverOptions"
-            ]
-        },
-        {
-            "id": "cordova-plugin-camera.camera",
-            "file": "plugins/cordova-plugin-camera/www/Camera.js",
-            "pluginId": "cordova-plugin-camera",
-            "clobbers": [
-                "navigator.camera"
-            ]
-        },
-        {
-            "id": "cordova-plugin-camera.CameraPopoverHandle",
-            "file": "plugins/cordova-plugin-camera/www/CameraPopoverHandle.js",
-            "pluginId": "cordova-plugin-camera",
-            "clobbers": [
-                "CameraPopoverHandle"
-            ]
-        },
-        {
-            "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
-            "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
-            "pluginId": "phonegap-plugin-barcodescanner",
-            "clobbers": [
-                "cordova.plugins.barcodeScanner"
-            ]
+      },
+      "package.appxmanifest": {
+        "parents": {
+          "/Package/Capabilities": [
+            {
+              "xml": "<DeviceCapability Name=\"webcam\" />",
+              "count": 252
+            }
+          ]
         }
-    ],
-    "plugin_metadata": {
-        "cordova-plugin-whitelist": "1.2.2",
-        "cordova-plugin-compat": "1.2.0",
-        "cordova-plugin-camera": "2.4.1",
-        "phonegap-plugin-barcodescanner": "6.0.8"
+      },
+      "package.windows10.appxmanifest": {
+        "parents": {
+          "/Package/Capabilities": [
+            {
+              "xml": "<DeviceCapability Name=\"microphone\" />",
+              "count": 252
+            },
+            {
+              "xml": "<DeviceCapability Name=\"webcam\" />",
+              "count": 252
+            }
+          ]
+        }
+      }
     }
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [],
+  "plugin_metadata": {
+    "cordova-plugin-whitelist": "1.2.2"
+  }
 }

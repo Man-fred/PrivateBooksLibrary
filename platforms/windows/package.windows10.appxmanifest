@@ -6,7 +6,7 @@
         <DisplayName>Private Books Library</DisplayName>
         <PublisherDisplayName>Manfred Bielemeier (BCSS Software &amp; Beratung GmbH)</PublisherDisplayName>
         <Logo>images\StoreLogo.png</Logo>
-        <Description>Ein leeres Projekt, das Apache Cordova verwendet, damit Sie eine App für mehrere mobile Plattformen erstellen können: Android, iOS und die universelle Windows-Plattform.</Description>
+        <Description>Ein leeres Projekt, das Apache Cordova verwendet, damit Sie eine App fÃ¼r mehrere mobile Plattformen erstellen kÃ¶nnen: Android, iOS und die universelle Windows-Plattform.</Description>
     </Properties>
     <Dependencies>
         <TargetDeviceFamily MaxVersionTested="10.0.10240.0" MinVersion="10.0.10240.0" Name="Windows.Universal" />
@@ -16,7 +16,7 @@
     </Resources>
     <Applications>
         <Application Id="io.cordova.myapp387c96" StartPage="ms-appx-web://35337manfredbielemeierbcs.privatebookslibrary/www/index.html">
-            <uap:VisualElements BackgroundColor="#464646" Description="Ein leeres Projekt, das Apache Cordova verwendet, damit Sie eine App für mehrere mobile Plattformen erstellen können: Android, iOS und die universelle Windows-Plattform." DisplayName="PrivateBooksLibrary" Square150x150Logo="images\Square150x150Logo.png" Square44x44Logo="images\Square44x44Logo.png">
+            <uap:VisualElements BackgroundColor="#464646" Description="Ein leeres Projekt, das Apache Cordova verwendet, damit Sie eine App fÃ¼r mehrere mobile Plattformen erstellen kÃ¶nnen: Android, iOS und die universelle Windows-Plattform." DisplayName="PrivateBooksLibrary" Square150x150Logo="images\Square150x150Logo.png" Square44x44Logo="images\Square44x44Logo.png">
                 <uap:SplashScreen Image="images\splashscreen.png" />
                 <uap:DefaultTile ShortName="PrivateBooksLibrary" Square310x310Logo="images\Square310x310Logo.png" Square71x71Logo="images\Square71x71Logo.png" Wide310x150Logo="images\Wide310x150Logo.png" />
                 <uap:InitialRotationPreference>
@@ -32,5 +32,7 @@
     </Applications>
     <Capabilities>
         <Capability Name="internetClient" />
+        <DeviceCapability Name="microphone" />
+        <DeviceCapability Name="webcam" />
     </Capabilities>
 </Package>

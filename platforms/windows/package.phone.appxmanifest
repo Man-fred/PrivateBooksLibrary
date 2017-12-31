@@ -6,7 +6,7 @@
         <DisplayName>Private Books Library</DisplayName>
         <PublisherDisplayName>Manfred Bielemeier (BCSS Software &amp; Beratung GmbH)</PublisherDisplayName>
         <Logo>images\StoreLogo.png</Logo>
-        <Description>Ein leeres Projekt, das Apache Cordova verwendet, damit Sie eine App für mehrere mobile Plattformen erstellen können: Android, iOS und die universelle Windows-Plattform.</Description>
+        <Description>Ein leeres Projekt, das Apache Cordova verwendet, damit Sie eine App fÃ¼r mehrere mobile Plattformen erstellen kÃ¶nnen: Android, iOS und die universelle Windows-Plattform.</Description>
     </Properties>
     <Prerequisites>
         <OSMinVersion>6.3.1</OSMinVersion>
@@ -17,7 +17,7 @@
     </Resources>
     <Applications>
         <Application Id="io.cordova.myapp387c96" StartPage="www/index.html">
-            <m3:VisualElements BackgroundColor="transparent" Description="Ein leeres Projekt, das Apache Cordova verwendet, damit Sie eine App für mehrere mobile Plattformen erstellen können: Android, iOS und die universelle Windows-Plattform." DisplayName="PrivateBooksLibrary" ForegroundText="light" Square150x150Logo="images\Square150x150Logo.png" Square44x44Logo="images\Square44x44Logo.png">
+            <m3:VisualElements BackgroundColor="transparent" Description="Ein leeres Projekt, das Apache Cordova verwendet, damit Sie eine App fÃ¼r mehrere mobile Plattformen erstellen kÃ¶nnen: Android, iOS und die universelle Windows-Plattform." DisplayName="PrivateBooksLibrary" ForegroundText="light" Square150x150Logo="images\Square150x150Logo.png" Square44x44Logo="images\Square44x44Logo.png">
                 <m3:DefaultTile Square71x71Logo="images\Square71x71Logo.png" Wide310x150Logo="images\Wide310x150Logo.png">
                     <m3:ShowNameOnTiles>
                         <m3:ShowOn Tile="square150x150Logo" />

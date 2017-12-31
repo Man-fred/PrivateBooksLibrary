@@ -16,4 +16,7 @@
     <AppxBuildConfigurationSelection>x64</AppxBuildConfigurationSelection>
     <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Windows-ARM'">
+    <DebuggerFlavor>WindowsMobileDevice</DebuggerFlavor>
+  </PropertyGroup>
 </Project>

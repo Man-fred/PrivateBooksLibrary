@@ -14,6 +14,30 @@
             }
           ]
         }
+      },
+      "package.appxmanifest": {
+        "parents": {
+          "/Package/Capabilities": [
+            {
+              "xml": "<DeviceCapability Name=\"webcam\" />",
+              "count": 253
+            }
+          ]
+        }
+      },
+      "package.windows10.appxmanifest": {
+        "parents": {
+          "/Package/Capabilities": [
+            {
+              "xml": "<DeviceCapability Name=\"microphone\" />",
+              "count": 253
+            },
+            {
+              "xml": "<DeviceCapability Name=\"webcam\" />",
+              "count": 253
+            }
+          ]
+        }
       }
     }
   },
@@ -27,9 +51,6 @@
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
     },
-    "phonegap-plugin-barcodescanner": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
-    },
     "cordova-plugin-compat": {
       "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
     },
@@ -38,6 +59,9 @@
     },
     "cordova-plugin-sqlite-2": {
       "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },
   "dependent_plugins": {},
@@ -49,20 +73,6 @@
       "clobbers": [
         "window.StatusBar"
       ]
-    },
-    {
-      "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
-      "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
-      "pluginId": "phonegap-plugin-barcodescanner",
-      "clobbers": [
-        "cordova.plugins.barcodeScanner"
-      ]
-    },
-    {
-      "file": "plugins/phonegap-plugin-barcodescanner/src/browser/BarcodeScannerProxy.js",
-      "id": "phonegap-plugin-barcodescanner.BarcodeScannerProxy",
-      "pluginId": "phonegap-plugin-barcodescanner",
-      "runs": true
     },
     {
       "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
@@ -250,15 +260,29 @@
       "clobbers": [
         "sqlitePlugin"
       ]
+    },
+    {
+      "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+      "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+      "pluginId": "phonegap-plugin-barcodescanner",
+      "clobbers": [
+        "cordova.plugins.barcodeScanner"
+      ]
+    },
+    {
+      "file": "plugins/phonegap-plugin-barcodescanner/src/browser/BarcodeScannerProxy.js",
+      "id": "phonegap-plugin-barcodescanner.BarcodeScannerProxy",
+      "pluginId": "phonegap-plugin-barcodescanner",
+      "runs": true
     }
   ],
   "plugin_metadata": {
     "cordova-plugin-console": "1.0.7",
     "cordova-plugin-statusbar": "1.0.1",
     "cordova-plugin-whitelist": "1.2.2",
-    "phonegap-plugin-barcodescanner": "7.0.0",
     "cordova-plugin-compat": "1.2.0",
     "cordova-plugin-file": "4.3.3",
-    "cordova-plugin-sqlite-2": "1.0.4"
+    "cordova-plugin-sqlite-2": "1.0.4",
+    "phonegap-plugin-barcodescanner": "7.0.0"
   }
 }

@@ -10,16 +10,9 @@
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "Private Books Library"
         },
-        "cordova-plugin-camera": {
-            "PACKAGE_NAME": "Private Books Library"
-        },
         "phonegap-plugin-barcodescanner": {
             "PACKAGE_NAME": "Private Books Library"
         }
     },
-    "dependent_plugins": {
-        "cordova-plugin-compat": {
-            "PACKAGE_NAME": "Private Books Library"
-        }
-    }
+    "dependent_plugins": {}
 }

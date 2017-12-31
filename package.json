@@ -1,7 +1,33 @@
 {
-    "name": "PrivateBooksLibrary",
-    "version": "1.0.0",
-    "private": true,
-    "dependencies": {
+  "name": "PrivateBooksLibrary",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "cordova-android": "5.2.1",
+    "cordova-ios": "4.2.0",
+    "cordova-windows": "4.4.2",
+    "cordova-plugin-whitelist": "1.2.2",
+    "cordova-plugin-console": "~1.0.7",
+    "cordova-plugin-file": "~4.3.3",
+    "cordova-plugin-sqlite-2": "~1.0.4",
+    "cordova-plugin-statusbar": "~1.0.1",
+    "phonegap-plugin-barcodescanner": "~7.0.0"
+  },
+  "cordova": {
+    "platforms": [
+      "android",
+      "ios",
+      "windows"
+    ],
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-console": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-sqlite-2": {},
+      "cordova-plugin-statusbar": {},
+      "phonegap-plugin-barcodescanner": {
+        "CAMERA_USAGE_DESCRIPTION": "Barcode-Scan"
+      }
     }
+  }
 }

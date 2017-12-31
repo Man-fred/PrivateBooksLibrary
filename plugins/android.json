@@ -9,17 +9,7 @@
     "installed_plugins": {
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "io.cordova.myapp387c96"
-        },
-        "cordova-plugin-camera": {
-            "PACKAGE_NAME": "io.cordova.myapp387c96"
-        },
-        "phonegap-plugin-barcodescanner": {
-            "PACKAGE_NAME": "io.cordova.myapp387c96"
         }
     },
-    "dependent_plugins": {
-        "cordova-plugin-compat": {
-            "PACKAGE_NAME": "io.cordova.myapp387c96"
-        }
-    }
+    "dependent_plugins": {}
 }
