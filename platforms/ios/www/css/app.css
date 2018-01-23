@@ -1,4 +1,5 @@
-﻿/* static footer */
+﻿/* mit Werbung @partner-right: 120px;*/
+/* static footer */
 html,
 body {
   height: 100%;
@@ -22,7 +23,7 @@ footer {
   margin: 0;
   color: #333;
   text-align: center;
-  padding: 2.5em 0;
+  padding: 44px 0 0 0;
   border-bottom: 1px solid #eee;
 }
 .pure-flex-rw {
@@ -63,10 +64,27 @@ footer {
   height: 25px;
   width: 100%;
 }
+#info-sync {
+  float: left;
+  width: 33%;
+  display: block;
+}
+[data-sync-state=syncing] #info-sync {
+  background-color: darkorange;
+}
+[data-sync-state=error] #info-sync {
+  background-color: red;
+}
+#record_show {
+  width: 100%;
+  padding: 10px 0;
+  background-color: lightblue;
+  margin-top: 2px;
+}
 #appTitle {
-  /*float: left;*/
+  float: right;
   padding-left: 150px;
-  width: calc(100% -  150px  - 2 *  44px);
+  width: calc(100% -  282px);
 }
 .title-button {
   float: right;
@@ -74,8 +92,9 @@ footer {
   font-weight: bold;
   /*padding: 0 10px 0 10px;*/
   width: 44px;
+  height: 36px;
   display: block;
-  margin: 0px auto;
+  margin: 4px auto;
   text-align: center;
   vertical-align: middle;
 }
@@ -106,12 +125,12 @@ div.container {
   /*max-width: 34em;*/
   float: left;
   margin: 0;
-  padding: 0em;
+  padding: 0 0 25px 0;
 }
 #datalist {
   /*margin-left: 34em;
     border-left: 1px solid gray;*/
-  padding: 1em 0;
+  padding: 44px 0 25px 0;
   /* overflow: hidden; */
 }
 #f_ooter {
@@ -688,18 +707,32 @@ label[for='toggle-all'] {
   }
 }
 */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#loading {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  z-index: 999;
+  border: 0.25rem solid rgba(50, 50, 50, 0.2);
+  border-top-color: #323232;
+  animation: spin 1s infinite linear;
+}
+#loading--double {
+  border-style: double;
+  border-width: .5rem;
+}
 .hidden {
   /*    display:none;*/
-}
-#sync-error,
-#sync-success {
-  display: none;
-}
-[data-sync-state=syncing] #sync-success {
-  display: block;
-}
-[data-sync-state=error] #sync-error {
-  display: block;
 }
 .t_seite {
   display: none;
@@ -716,11 +749,29 @@ label[for='toggle-all'] {
   text-overflow: ellipsis;
   font-weight: bold;
   float: left;
+  width: calc(100% -  81px);
+}
+@media only screen and (min-width: 568px) {
+  .books-title {
+    width: calc(100% -  89px);
+  }
+}
+.books-favor {
+  width: 24px;
+  float: right;
+  font-size: 24px;
+}
+@media only screen and (min-width: 568px) {
+  .books-favor {
+    width: 32px;
+    font-size: 32px;
+  }
 }
 .books-author {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  width: calc(100% -  57px);
 }
 .books-date {
   width: 120px;
@@ -734,17 +785,29 @@ label[for='toggle-all'] {
   /*for the img inside your div */
   margin: 0 auto;
 }
-.books-img-tr {
-  width: 52px;
-}
 .books-img {
-  width: 50px;
+  width: 52px;
+  margin-right: 5px;
   text-indent: -50%;
   overflow: hidden;
+  float: left;
 }
 .books-state {
   width: 120px;
   float: left;
+}
+#book-image {
+  width: auto;
+  height: 200px;
+  display: block;
+  /*for the img inside your div */
+  margin: 0 auto;
+  float: left;
+}
+#book-favor {
+  width: 32px;
+  float: right;
+  font-size: 40px;
 }
 /* https://codepen.io/SitePoint/pen/hewAv 
    schönes Scrollverhalten bei horizontalem Menü und sticky header*/
@@ -776,9 +839,27 @@ This is the parent `<div>` that contains the menu and the content area.
   position: relative;
   left: 0;
   padding-left: 0;
-  padding-bottom: 29px;
-  /* footer height */
+  padding-bottom: 25px;
   height: 100%;
+  width: calc(100% -  0px);
+}
+@media only screen and (min-width: 568px) {
+  #layout {
+    padding-left: 150px;
+    /* left col width "#menu" */
+    width: calc(100% -  150px);
+  }
+}
+/* Only apply this when the window is small. Otherwise, the following case results in extra padding on the left:
+    * Make the window small.
+    * Tap the menu to trigger the active state.
+    * Make the window large again.
+*/
+@media only screen and (max-width: 567px) {
+  #layout.active {
+    position: relative;
+    left: 150px;
+  }
 }
 #layout.active #menu {
   left: 150px;
@@ -791,10 +872,17 @@ This is the parent `<div>` that contains the menu and the content area.
 The content `<div>` is where all your content goes.
 */
 .content {
-  /* margin: 130px 24px 50px auto; */
   height: 100%;
   /*max-width: 800px;*/
   line-height: 1.6em;
+  width: calc(100% -  0px);
+  padding: 0;
+}
+@media only screen and (min-width: 568px) {
+  .content {
+    width: calc(100% -  150px);
+    padding-left: 150px;
+  }
 }
 .content-subhead {
   margin: 50px 0 20px 0;
@@ -818,6 +906,11 @@ appears on the left side of the page.
   background: #191818;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+}
+@media only screen and (min-width: 568px) {
+  #menu {
+    left: 150px;
+  }
 }
 /*
 All anchors inside the menu should be styled like this.
@@ -891,9 +984,17 @@ small screens.
   font-size: 10px;
   /* change this value to increase/decrease button size */
   z-index: 1000;
-  width: 2em;
-  height: auto;
-  padding: 2.1em 1.6em;
+  height: 44px;
+  width: 16px;
+  height: 8px;
+  padding: 18px 14px;
+}
+@media only screen and (min-width: 568px) {
+  .menu-link {
+    position: fixed;
+    left: 150px;
+    display: none;
+  }
 }
 .menu-link:hover,
 .menu-link:focus {
@@ -919,9 +1020,6 @@ small screens.
 .menu-link span:after {
   margin-top: 0.6em;
 }
-#page1 {
-  padding-right: 30px;
-}
 /************ rechte Sortierleiste ***********/
 #mySearchAZ {
   background: #c8c8c8;
@@ -939,6 +1037,16 @@ small screens.
   flex-direction: column;
   -moz-flex-direction: column;
   -webkit-flex-direction: column;
+}
+@media only screen and (min-width: 568px) {
+  #mySearchAZ {
+    right: 0px;
+    width: 30px;
+  }
+}
+.myTableAnchor {
+  position: absolute;
+  top: - 44px;
 }
 .searchlist {
   text-align: center;
@@ -961,12 +1069,18 @@ small screens.
 }
 /* -- Responsive Styles (Media Queries) ------------------------------------- */
 #page1 {
-  margin-left: 18px;
-  width: calc(100% -  18px  -  30px);
+  margin-left: 10px;
+  width: calc(100% -  40px);
+  padding-right: 30px;
+}
+@media only screen and (min-width: 568px) {
+  #page1 {
+    width: calc(100% -  40px);
+  }
 }
 #page2 {
-  margin-left: 18px;
-  width: calc(100% -  18px);
+  margin-left: 10px;
+  width: calc(100% -  10px);
 }
 /*
 Hides the menu at `48em`, but modify this based on your app's needs.
@@ -977,74 +1091,25 @@ Hides the menu at `48em`, but modify this based on your app's needs.
     /*padding-left: 2em;*/
     /*padding-right: 2em;*/
   }
-  .content {
-    width: calc(100% -  120px);
-    /*padding: 0 2em;*/
-  }
-  #layout {
-    padding-left: 150px;
-    /* left col width "#menu" */
-    left: 0;
-    width: calc(100% -  120px  -  30px);
-  }
-  #menu {
-    left: 150px;
-  }
-  .menu-link {
-    position: fixed;
-    left: 150px;
-    display: none;
-  }
-  #layout.active .menu-link {
-    left: 150px;
-  }
   footer {
     /*padding: 2px 40px 2px 40px;*/
   }
   #page1 {
     padding-right: 30px;
   }
-  #mySearchAZ {
-    right: 120px;
-    width: 30px;
-  }
   input,
   select,
   textarea {
     width: calc(100% -  10em);
   }
-  .books-favor {
-    width: 32px;
-    float: right;
-    font-size: 40px;
-  }
 }
 @media (max-width: 599px) {
-  /* Only apply this when the window is small. Otherwise, the following
-    case results in extra padding on the left:
-        * Make the window small.
-        * Tap the menu to trigger the active state.
-        * Make the window large again.
-    */
-  #layout.active {
-    position: relative;
-    left: 150px;
-  }
   #xxmain {
     margin-left: 8px;
-    width: calc(100% -  36px);
-  }
-  .content {
-    width: 100%;
-    padding: 0;
+    width: calc(100% -  20px);
   }
   footer {
     /* padding: 2px; */
-  }
-  .books-favor {
-    width: 24px;
-    float: right;
-    font-size: 24px;
   }
 }
 /*******************************************************/

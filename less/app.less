@@ -1,12 +1,32 @@
-@partner-right: 120px;
+// Breakpoints
+// ------------------------- Source: http://blog.scur.pl/2012/06/variable-media-queries-less-css/
+@highdensity: ~"only screen and (-webkit-min-device-pixel-ratio: 1.5)", ~"only screen and (min--moz-device-pixel-ratio: 1.5)", ~"only screen and (-o-min-device-pixel-ratio: 3/2)", ~"only screen and (min-device-pixel-ratio: 1.5)";
+@mobile: ~"only screen and (max-width: 529px)";
+@tablet: ~"only screen and (min-width: 530px) and (max-width: 949px)";
+@desktop: ~"only screen and (min-width: 950px) and (max-width: 1128px)";
+@desktop-xl: ~"only screen and (min-width: 1129px)";
+//pure CSS
+@xs: ~"only screen and (max-width: 567px)"; // 35.5 em 568px .pure-u-sm-*
+@sm: ~"only screen and (min-width: 568px) and (max-width: 767px)"; // 35.5 em 568px .pure-u-sm-*
+@sm-gt: ~"only screen and (min-width: 568px)";
+@md: ~"only screen and (min-width: 768px) and (max-width: 1023px)"; // 48em 768px .pure-u-md-*
+@lg: ~"only screen and (min-width: 1024px) and (max-width: 1279px)"; // 64em 1024px .pure-u-lg-*
+@xl: ~"only screen and (min-width: 1280px)"; // 80em 1280px .pure-u-xl-*
+
+/* mit Werbung @partner-right: 120px;*/
+@partner-right: 0px;
 @menu-left: 150px;
 @searchAZ000: 30px;
 @searchAZ600: 30px;
-@content-padding: 18px;
+@content-margin: 8px;
+@content-padding: 10px;
 @top-height: 44px;
 @footer-height: 25px;
-
 @title-button: 44px;
+@books-img: 52px;
+@books-img-margin: 5px;
+@books-favor: 24px;
+@books-favor-sm: 32px;
 
 /* static footer */
 html, body {
@@ -33,7 +53,7 @@ header, footer {
     margin: 0;
     color: #333;
     text-align: center;
-    padding: 2.5em 0;
+    padding: @top-height 0 0 0;
     border-bottom: 1px solid #eee;
 }
 
@@ -77,10 +97,29 @@ footer {
     width: 100%;
 }
 
+#info-sync {
+    float: left;
+    width: 33%;
+    display: block;
+}
+[data-sync-state=syncing] #info-sync {
+    background-color: darkorange;
+}
+
+[data-sync-state=error] #info-sync {
+    background-color: red;
+}
+#record_show {
+    width: 100%;
+    padding: 10px 0;
+    background-color: lightblue;
+    margin-top: 2px;
+}
+
 #appTitle {
-    /*float: left;*/
+    float: right;
     padding-left: @menu-left;
-    width: calc(~"100% - " @menu-left ~" - 2 * " @title-button);
+    width: calc(~"100% - " @menu-left + 3 * @title-button);
 }
 
 .title-button {
@@ -89,8 +128,9 @@ footer {
     font-weight: bold;
     /*padding: 0 10px 0 10px;*/
     width: @title-button;
+    height: @top-height - 8;
     display: block;
-    margin: 0px auto;
+    margin: 4px auto;
     text-align: center;
     vertical-align: middle;
 }
@@ -127,13 +167,13 @@ div.container {
     /*max-width: 34em;*/
     float: left;
     margin: 0;
-    padding: 0em;
+    padding: 0 0 @footer-height 0;
 }
 
 #datalist {
     /*margin-left: 34em;
     border-left: 1px solid gray;*/
-    padding: 1em 0;
+    padding: @top-height 0 @footer-height 0;
     /* overflow: hidden; */
 }
 
@@ -223,34 +263,34 @@ input, select, textarea {
     border-radius: 3px;
 }
 
-    input:hover, select:hover, textarea:hover {
-        background: #ffc;
-        border: 1px solid #555;
-        -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
+input:hover, select:hover, textarea:hover {
+    background: #ffc;
+    border: 1px solid #555;
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
 
-    input:focus, select:focus, textarea:focus {
-        border: 1px solid lightgray;
-        -webkit-box-shadow: 0 0 10px rgba(32,204,255,0.7);
-        -moz-box-shadow: 0 0 10px rgba(32,204,255,0.7);
-        box-shadow: 0 0 10px rgba(32,204,255,0.7);
-        outline: none;
-    }
+input:focus, select:focus, textarea:focus {
+    border: 1px solid lightgray;
+    -webkit-box-shadow: 0 0 10px rgba(32,204,255,0.7);
+    -moz-box-shadow: 0 0 10px rgba(32,204,255,0.7);
+    box-shadow: 0 0 10px rgba(32,204,255,0.7);
+    outline: none;
+}
 
-    input#strasse {
-        width: 18em;
-    }
+input#strasse {
+    width: 18em;
+}
 
-    input#ort {
-        width: 17em;
-    }
+input#ort {
+    width: 17em;
+}
 
-    input[type="checkbox"], input[type="radio"] {
-        width: auto;
-        border: none; /* IE */
-    }
+input[type="checkbox"], input[type="radio"] {
+    width: auto;
+    border: none; /* IE */
+}
 
 .form_short {
     width: 10em;
@@ -308,10 +348,10 @@ input[type="submit"] {
     font-weight: bold;
 }
 
-    input[type="submit"]:hover, input[type="submit"]:focus {
-        border-color: #3a3;
-        color: #3a3;
-    }
+input[type="submit"]:hover, input[type="submit"]:focus {
+    border-color: #3a3;
+    color: #3a3;
+}
 
 input[type="reset"]:hover, input[type="reset"]:focus {
     border-color: #f55;
@@ -725,20 +765,41 @@ label[for='toggle-all'] {
   }
 }
 */
+
+@base-line-height: 24px; 
+@white: rgb(50,50,50);
+@off-white: rgba(50,50,50, 0.2); 
+@spin-duration: 1s; 
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#loading {
+    border-radius: 50%;
+    width: @base-line-height;
+    height: @base-line-height;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    z-index: 999;
+    border: .25rem solid @off-white;
+    border-top-color: @white;
+    animation: spin @spin-duration infinite linear;
+
+    &--double {
+        border-style: double;
+        border-width: .5rem;
+    }
+}
+
 .hidden {
     /*    display:none;*/
-}
-
-#sync-error, #sync-success {
-    display: none;
-}
-
-[data-sync-state=syncing] #sync-success {
-    display: block;
-}
-
-[data-sync-state=error] #sync-error {
-    display: block;
 }
 
 .t_seite {
@@ -749,9 +810,9 @@ label[for='toggle-all'] {
     table-layout: fixed;
 }
 
-    #myTableList tbody tr td {
-        padding: 1px;
-    }
+#myTableList tbody tr td {
+    padding: 1px;
+}
 
 .books-title {
     overflow: hidden;
@@ -759,12 +820,29 @@ label[for='toggle-all'] {
     text-overflow: ellipsis;
     font-weight: bold;
     float: left;
+    width: calc(~"100% - " @books-img + @books-img-margin + @books-favor);
+
+    @media @sm-gt {
+        width: calc(~"100% - " @books-img + @books-img-margin + @books-favor-sm);
+    }
+}
+
+.books-favor {
+    width: @books-favor;
+    float: right;
+    font-size: @books-favor;
+
+    @media @sm-gt {
+        width: @books-favor-sm;
+        font-size: @books-favor-sm;
+    }
 }
 
 .books-author {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    width: calc(~"100% - " @books-img + @books-img-margin);
 }
 
 .books-date {
@@ -780,23 +858,36 @@ label[for='toggle-all'] {
     margin: 0 auto;
 }
 
-.books-img-tr {
-    width: 52px;
-}
-
 .books-img {
-    width: 50px;
+    width: @books-img;
+    margin-right: @books-img-margin;
     text-indent: -50%;
     overflow: hidden;
+    float: left;
 }
 
 .books-state {
     width: 120px;
     float: left;
 }
+
+#book-image {
+    width: auto;
+    height: 200px;
+    display: block; /*for the img inside your div */
+    margin: 0 auto;
+    float: left;
+}
+
+#book-favor {
+    width: 32px;
+    float: right;
+    font-size: 40px;
+}
+
+
 /* https://codepen.io/SitePoint/pen/hewAv 
    schönes Scrollverhalten bei horizontalem Menü und sticky header*/
-
 /*https://purecss.io/layouts/side-menu/# */
 /* side-menu.css */
 body {
@@ -807,7 +898,6 @@ body {
     max-width: 100%;
     height: auto;
 }
-
 /*
 Add transition to containers so they can push in and out.
 */
@@ -820,7 +910,6 @@ Add transition to containers so they can push in and out.
     -o-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
 }
-
 /*
 This is the parent `<div>` that contains the menu and the content area.
 */
@@ -828,8 +917,25 @@ This is the parent `<div>` that contains the menu and the content area.
     position: relative;
     left: 0;
     padding-left: 0;
-    padding-bottom: 29px; /* footer height */
+    padding-bottom: @footer-height;
     height: 100%;
+    width: calc(~"100% - " @partner-right);
+
+    @media @sm-gt {
+        padding-left: @menu-left; /* left col width "#menu" */
+        width: calc(~"100% - " @menu-left + @partner-right);
+    }
+}
+/* Only apply this when the window is small. Otherwise, the following case results in extra padding on the left:
+    * Make the window small.
+    * Tap the menu to trigger the active state.
+    * Make the window large again.
+*/
+#layout.active {
+    @media @xs {
+        position: relative;
+        left: @menu-left;
+    }
 }
 
 #layout.active #menu {
@@ -844,10 +950,16 @@ This is the parent `<div>` that contains the menu and the content area.
 The content `<div>` is where all your content goes.
 */
 .content {
-    /* margin: 130px 24px 50px auto; */
     height: 100%;
     /*max-width: 800px;*/
     line-height: 1.6em;
+    width: calc(~"100% - " @partner-right);
+    padding: 0;
+
+    @media @sm-gt {
+        width: calc(~"100% - " @menu-left + @partner-right);
+        padding-left: @menu-left;
+    }
 }
 
 .content-subhead {
@@ -855,14 +967,10 @@ The content `<div>` is where all your content goes.
     font-weight: 300;
     color: #888;
 }
-
-
-
 /*
 The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
 appears on the left side of the page.
 */
-
 #menu {
     margin-left: -@menu-left; /* "#menu" width */
     width: @menu-left;
@@ -874,70 +982,67 @@ appears on the left side of the page.
     background: #191818;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+
+    @media @sm-gt {
+        left: @menu-left;
+    }
 }
-    /*
+/*
 All anchors inside the menu should be styled like this.
 */
-    #menu a {
-        color: #999;
-        border: none;
-        padding: 0.6em 0 0.6em 0.6em;
-    }
-
-    /*
+#menu a {
+    color: #999;
+    border: none;
+    padding: 0.6em 0 0.6em 0.6em;
+}
+/*
 Remove all background/borders, since we are applying them to #menu.
 */
-    #menu .pure-menu,
-    #menu .pure-menu ul {
-        border: none;
-        background: transparent;
-    }
-
-        /*
+#menu .pure-menu,
+#menu .pure-menu ul {
+    border: none;
+    background: transparent;
+}
+/*
 Add that light border to separate items into groups.
 */
-        #menu .pure-menu ul,
-        #menu .pure-menu .menu-item-divided {
-            border-top: 1px solid #333;
-        }
-        /*
+#menu .pure-menu ul,
+#menu .pure-menu .menu-item-divided {
+    border-top: 1px solid #333;
+}
+/*
 Change color of the anchor links on hover/focus.
 */
-        #menu .pure-menu li a:hover,
-        #menu .pure-menu li a:focus {
-            background: #333;
-        }
-
-    /*
+#menu .pure-menu li a:hover,
+#menu .pure-menu li a:focus {
+    background: #333;
+}
+/*
 This styles the selected menu item `<li>`.
 */
-    #menu .pure-menu-selected,
-    #menu .pure-menu-heading {
-        background: #1f8dd6;
-    }
-        /*
+#menu .pure-menu-selected,
+#menu .pure-menu-heading {
+    background: #1f8dd6;
+}
+/*
 This styles a link within a selected menu item `<li>`.
 */
-        #menu .pure-menu-selected a {
-            color: #fff;
-        }
-
-    /*
+#menu .pure-menu-selected a {
+    color: #fff;
+}
+/*
 This styles the menu heading.
 */
-    #menu .pure-menu-heading {
-        font-size: 110%;
-        color: #fff;
-        margin: 0;
-    }
-
+#menu .pure-menu-heading {
+    font-size: 110%;
+    color: #fff;
+    margin: 0;
+}
 /* -- Dynamic Button For Responsive Menu -------------------------------------*/
-
 /*
 The button to open/close the Menu is custom-made and not part of Pure. Here's
 how it works:
 */
-
 /*
 `.menu-link` represents the responsive menu toggle that shows/hides on
 small screens.
@@ -951,44 +1056,46 @@ small screens.
     background: rgba(0,0,0,0.7);
     font-size: 10px; /* change this value to increase/decrease button size */
     z-index: 1000;
-    width: 2em;
-    height: auto;
-    padding: 2.1em 1.6em;
+    height: @top-height;
+    width: 16px;
+    height: 8px;
+    padding: 18px 14px;
+
+    @media @sm-gt {
+        position: fixed;
+        left: @menu-left;
+        display: none;
+    }
 }
 
-    .menu-link:hover,
-    .menu-link:focus {
-        background: #000;
-    }
-
-    .menu-link span {
-        position: relative;
-        display: block;
-    }
-
-        .menu-link span,
-        .menu-link span:before,
-        .menu-link span:after {
-            background-color: #fff;
-            width: 100%;
-            height: 0.2em;
-        }
-
-            .menu-link span:before,
-            .menu-link span:after {
-                position: absolute;
-                margin-top: -0.6em;
-                content: " ";
-            }
-
-            .menu-link span:after {
-                margin-top: 0.6em;
-            }
-
-#page1 {
-    padding-right: 30px;
+.menu-link:hover,
+.menu-link:focus {
+    background: #000;
 }
 
+.menu-link span {
+    position: relative;
+    display: block;
+}
+
+.menu-link span,
+.menu-link span:before,
+.menu-link span:after {
+    background-color: #fff;
+    width: 100%;
+    height: 0.2em;
+}
+
+.menu-link span:before,
+.menu-link span:after {
+    position: absolute;
+    margin-top: -0.6em;
+    content: " ";
+}
+
+.menu-link span:after {
+    margin-top: 0.6em;
+}
 /************ rechte Sortierleiste ***********/
 #mySearchAZ {
     background: rgb(200,200,200);
@@ -1005,8 +1112,16 @@ small screens.
     flex-direction: column;
     -moz-flex-direction: column;
     -webkit-flex-direction: column;
-}
 
+    @media @sm-gt {
+        right: @partner-right;
+        width: @searchAZ600;
+    }
+}
+.myTableAnchor {
+    position: absolute;
+    top: - @top-height;
+}
 .searchlist {
     text-align: center;
     flex: 1 1 auto;
@@ -1021,10 +1136,10 @@ small screens.
     text-decoration: none;
 }
 
-    .searchlink:hover,
-    .searchlink:focus {
-        background: #000;
-    }
+.searchlink:hover,
+.searchlink:focus {
+    background: #000;
+}
 
 #main {
     width: 100%;
@@ -1032,13 +1147,18 @@ small screens.
 /* -- Responsive Styles (Media Queries) ------------------------------------- */
 #page1 {
     margin-left: @content-padding;
-    width: calc(~"100% - " @content-padding ~" - " @searchAZ000);
+    width: calc(~"100% - " @content-padding + @searchAZ000); //
+    padding-right: @searchAZ000;
+
+    @media @sm-gt {
+        width: calc(~"100% - " @content-padding + @searchAZ600);
+    }
 }
+
 #page2 {
     margin-left: @content-padding;
     width: calc(~"100% - " @content-padding);
 }
-
 /*
 Hides the menu at `48em`, but modify this based on your app's needs.
 */
@@ -1050,31 +1170,11 @@ Hides the menu at `48em`, but modify this based on your app's needs.
         /*padding-right: 2em;*/
     }
 
-    .content {
-        width: calc(~"100% - " @partner-right);
-        /*padding: 0 2em;*/
-    }
-
-    #layout {
-        padding-left: @menu-left; /* left col width "#menu" */
-        left: 0;
-        width: calc(~"100% - " @partner-right ~" - " @searchAZ600);
-    }
-
-    #menu {
-        left: @menu-left;
-    }
-
-    .menu-link {
-        position: fixed;
-        left: @menu-left;
-        display: none;
-    }
 
 
-    #layout.active .menu-link {
-        left: @menu-left;
-    }
+
+
+
 
     footer {
         /*padding: 2px 40px 2px 40px;*/
@@ -1084,54 +1184,21 @@ Hides the menu at `48em`, but modify this based on your app's needs.
         padding-right: @searchAZ000;
     }
 
-    #mySearchAZ {
-            right: @partner-right;
-            width: @searchAZ600;
-    }
 
     input, select, textarea {
         width: calc(~"100% - " 10em);
     }
-    .books-favor {
-        width: 32px;
-        float: right;
-        font-size: 40px;
-    }
 }
 
 @media (max-width: 599px) {
-    /* Only apply this when the window is small. Otherwise, the following
-    case results in extra padding on the left:
-        * Make the window small.
-        * Tap the menu to trigger the active state.
-        * Make the window large again.
-    */
-    #layout.active {
-        position: relative;
-        left: @menu-left;
-    }
-
     #xxmain {
         margin-left: 8px;
         width: calc(~"100% - " (2 * @content-padding));
     }
 
-    .content {
-        width: 100%;
-        padding: 0;
-    }
 
     footer {
         /* padding: 2px; */
     }
-    .books-favor {
-        width: 24px;
-        float: right;
-        font-size: 24px;
-    }
 }
-
-
-
-
 /*******************************************************/

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport"
+        content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <link rel="stylesheet" href="zuul.css">
+  <title>SQLite Plugin 2 test suite</title>
+</head>
+<body>
+<div id="zuul"></div>
+<script>
+  (function (root) {
+    root.zuul || (root.zuul = {});
+    root.zuul.ui = "mocha-bdd";
+    root.zuul.title = "sqlite-plugin-2";
+  }(this));
+</script>
+<script>
+  (function () {
+    window.ZUUL = {};
+
+    // Zuul/Appium add globals, and we want Mocha to ignore them
+    window.frame = null;
+    window.isLoaded = false;
+
+    window.getZuulMessages = function getZuulMessages() {
+      return window.zuul_msg_bus ?
+        window.zuul_msg_bus.splice(0, window.zuul_msg_bus.length) :
+        [];
+    };
+
+    document.addEventListener('deviceready', function () {
+      ['zuul-framework.js', 'zuul-client.js'].forEach(function (scriptName) {
+        var script = document.createElement('script');
+        script.src = scriptName;
+        document.body.appendChild(script);
+      });
+    });
+  })();
+</script>
+<script type="text/javascript" src="cordova.js"></script>
+</body>
+</html>

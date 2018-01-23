@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 define('PBL',1);
 error_reporting (E_ALL);
 
@@ -9,11 +9,12 @@ include("config.php");
 include("classes/cdb.php");
 include("classes/cdbExeption.php");
 
-$test_db = 'pbl-5837-5880-3408-4238';
-$test_pass = 'v54wjtzjtzju';
-$prefix = "0.3";
-
 $couchdb = new CouchDB($test_db, CDB_HOST, CDB_PORT, CDB_USER, CDB_PASS);
+
+$doc = $couchdb->db_create($test_db, $test_pass);
+
+//$doc = db_delete($test_db);
+print_r($doc);
 
 	$view_result = $couchdb->send('/'.$prefix.'_state_0', 'PUT', '{"name": "0","long": "not owned"}');
 	$view_result = $couchdb->send('/'.$prefix.'_state_1', 'PUT', '{"name": "1","long": "ordered"}');

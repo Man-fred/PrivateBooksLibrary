@@ -1,36 +1,20 @@
 {
-  "_from": "cordova-plugin-sqlite-2",
-  "_id": "cordova-plugin-sqlite-2@1.0.4",
-  "_inBundle": false,
-  "_integrity": "sha1-66A9343E0mUvFl4KI1MSsO6yCuo=",
-  "_location": "/cordova-plugin-sqlite-2",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "tag",
-    "registry": true,
-    "raw": "cordova-plugin-sqlite-2",
-    "name": "cordova-plugin-sqlite-2",
-    "escapedName": "cordova-plugin-sqlite-2",
-    "rawSpec": "",
-    "saveSpec": null,
-    "fetchSpec": "latest"
+  "name": "cordova-plugin-sqlite-2",
+  "version": "1.0.4",
+  "description": "Cordova SQLite Plugin 2",
+  "scripts": {
+    "build": "rimraf dist && mkdirp dist && browserify -t rollupify -s sqlitePlugin src/javascript/index.js > dist/sqlite-plugin.js",
+    "build-test": "bash ./bin/build-test.sh",
+    "lint": "eslint src test/*js",
+    "test": "npm run test-device",
+    "test-local": "zuul --ui mocha-bdd --local 9000 --no-coverage test/test.js",
+    "test-phantom": "npm run build && zuul --ui mocha-bdd --phantom --no-coverage test/test.js",
+    "test-android": "PLATFORM=android npm run test-device",
+    "test-ios": "PLATFORM=ios npm run test-device",
+    "test-device": "npm run build && RUN=0 npm run build-test && bash ./bin/run-and-test-appium.sh",
+    "test-perf": "bash ./bin/test-perf.sh",
+    "prepublish": "npm run build"
   },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-sqlite-2/-/cordova-plugin-sqlite-2-1.0.4.tgz",
-  "_shasum": "eba03ddf8dc4d2652f165e0a235312b0eeb20aea",
-  "_spec": "cordova-plugin-sqlite-2",
-  "_where": "C:\\Users\\Manfred\\Documents\\PhoneGap\\PrivateBooksLibrary",
-  "author": {
-    "name": "Nolan Lawson",
-    "email": "nolan@nolanlawson.com"
-  },
-  "bugs": {
-    "url": "https://github.com/nolanlawson/cordova-plugin-sqlite-2/issues"
-  },
-  "bundleDependencies": false,
   "cordova": {
     "id": "cordova-plugin-sqlite-2",
     "platforms": [
@@ -38,8 +22,23 @@
       "ios"
     ]
   },
-  "deprecated": false,
-  "description": "Cordova SQLite Plugin 2",
+  "repository": "https://github.com/nolanlawson/cordova-plugin-sqlite-2.git",
+  "keywords": [
+    "cordova",
+    "sqlite",
+    "sqlite3",
+    "websql",
+    "database",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "Nolan Lawson <nolan@nolanlawson.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/nolanlawson/cordova-plugin-sqlite-2/issues"
+  },
+  "homepage": "https://github.com/nolanlawson/cordova-plugin-sqlite-2#readme",
   "devDependencies": {
     "appium": "1.5.1",
     "bluebird": "3.3.4",
@@ -80,36 +79,5 @@
     "src/ios",
     "plugin.xml",
     "dist"
-  ],
-  "homepage": "https://github.com/nolanlawson/cordova-plugin-sqlite-2#readme",
-  "keywords": [
-    "cordova",
-    "sqlite",
-    "sqlite3",
-    "websql",
-    "database",
-    "ecosystem:cordova",
-    "cordova-android",
-    "cordova-ios"
-  ],
-  "license": "Apache-2.0",
-  "name": "cordova-plugin-sqlite-2",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nolanlawson/cordova-plugin-sqlite-2.git"
-  },
-  "scripts": {
-    "build": "rimraf dist && mkdirp dist && browserify -t rollupify -s sqlitePlugin src/javascript/index.js > dist/sqlite-plugin.js",
-    "build-test": "bash ./bin/build-test.sh",
-    "lint": "eslint src test/*js",
-    "prepublish": "npm run build",
-    "test": "npm run test-device",
-    "test-android": "PLATFORM=android npm run test-device",
-    "test-device": "npm run build && RUN=0 npm run build-test && bash ./bin/run-and-test-appium.sh",
-    "test-ios": "PLATFORM=ios npm run test-device",
-    "test-local": "zuul --ui mocha-bdd --local 9000 --no-coverage test/test.js",
-    "test-perf": "bash ./bin/test-perf.sh",
-    "test-phantom": "npm run build && zuul --ui mocha-bdd --phantom --no-coverage test/test.js"
-  },
-  "version": "1.0.4"
+  ]
 }

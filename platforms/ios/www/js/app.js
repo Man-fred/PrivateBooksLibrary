@@ -2,6 +2,8 @@ var db;
 var system;
 var seite = "";
 var appPage = 1;
+var appSort = 'name';
+var appSortUp = true;
 var myApp = {
 //CREATE TABLE ZZOSHO ( Z_PK INTEGER PRIMARY KEY, Z_ENT INTEGER, Z_OPT INTEGER, ZFAVOR INTEGER, ZSTATE INTEGER, ZCHECKDATE TIMESTAMP, ZREADDATE TIMESTAMP, ZRELEASEDATE TIMESTAMP, ZISBNCODE VARCHAR, ZAUTHOR VARCHAR, ZAUTHORKANA VARCHAR, ZCODE VARCHAR, ZMEMO VARCHAR, ZPRICE VARCHAR, ZPUBLISHER VARCHAR, ZTICDSSYNCID VARCHAR, ZTITLE VARCHAR, ZIMAGE BLOB )
     books: {
@@ -66,8 +68,8 @@ var myApp = {
             },
             favor: {
                 name: "favor",
-                title: "favor",
-                noField: 1
+                title: "favor"
+                //, noField: 1
             },
             url: {
                 name: "url",
@@ -123,7 +125,7 @@ var myApp = {
     login: {
         name: "login",
         title: "Params",
-        menu: true,
+        //menu: true,
         action: "fill_datalist",
         head: true,
         tr: '',
@@ -141,11 +143,11 @@ var myApp = {
                 name: "dbPort",
                 title: "Port"
             },
-            dbName: {
+            /*dbName: {
                 name: "dbName",
                 title: "Datenbank"
                 , noList: 1
-            },
+            },*/
             dbUser: {
                 name: "dbUser",
                 title: "User"
@@ -236,7 +238,7 @@ var myApp = {
 
 };
 
-var dbName = 'pbl-894788' //'pbl-61h(fx';
+var dbName = 'PBL001.db'; //pbl-894788' //'pbl-61h(fx';
 /*var dbServer = 'http://fhem.fritz.box';
  var dbPort = '5984';
  var dbUser = 'p-todo';
@@ -253,6 +255,7 @@ var dbSync;            //sync-handle, used to stop syncing
 var startDom = false, startDb = false, startOk = false;
 var apiLibrarything = "", apiIsbndb = "";
 var viewportWidth;
+var infoSync;
 /* nur jQuery Mobile
  $(document).bind("mobileinit", function () {
  // Make your jQuery Mobile framework configuration changes here!
@@ -260,117 +263,119 @@ var viewportWidth;
  $.mobile.allowCrossDomainPages = true;
  });
  */
+var oldLog = console.log;
+console.log1 = function (message, a2, a3, a4) {
+    $("#info-log").append('<li>' + message + '</li>');
+    oldLog.apply(console, arguments);
+};
+
+window.onerror = function (message, source, lineno, colno, error) {
+    console.log(message + ' ' + source + ' (' + lineno + ', ' + colno + ') ' + error);
+}
+
+function dbNew() {
+    //Test for browser wbSQL compatibility
+
+    if (((typeof cordova !== "undefined" && cordova.platformId !== 'browser') || typeof PhoneGap !== "undefined" || typeof phonegap !== "undefined")
+        && typeof sqlitePlugin !== 'undefined' && typeof openDatabase !== 'undefined') {
+        db = new PouchDB(dbName, { adapter: 'cordova-sqlite' });
+        console.log('Database: Cordova');
+    } else if (!isChrome() && window.openDatabase) {
+        db = new PouchDB(dbName, { adapter: 'websql' });
+        console.log('Database: webSQL');
+    } else {
+        db = new PouchDB(dbName, { revs_limit: 1, auto_compaction: true });
+        console.log('Database: Pouchdb');
+    }
+dbIdPrivate = cookie('dbId');
+if (dbIdPrivate === null) {
+    dbIdPrivate = Math.random();
+    cookie('dbId', dbIdPrivate, 3650);
+}
+db.get(dbIdPrivate + '_login').then(function (doc) {
+    if (doc !== null) {
+        system = doc;
+        dbServer = doc.dbServer;
+        dbPort = doc.dbPort;
+        dbName = doc.dbUser;
+        dbUser = doc.dbUser;
+        dbPass = doc.dbPass;
+        dbIdPublic = doc.dbId;
+        appTitle = doc.appTitle;
+        apiIsbndb = doc.apiIsbndb;
+        apiLibrarything = doc.apiLibrarything;
+        //myApp.horse.title = doc.appHorsename;
+        /*
+         if(!exist(doc.name)) {
+         doc.name="Server";
+         db.put(doc);
+         }
+         */
+        $('#appTitle').html(appTitle);
+        //$('#m_horse').val(myApp.horse.title);
+        console.log(dbIdPrivate);
+        console.log(dbIdPublic);
+        if (!startOk && startDom) {
+            startOk = true;
+            fill_datalist("books");
+        }
+        startDb = true;
+        remoteLogin();
+    }
+}).catch(function (err) {
+    // ersten Datensatz anlegen, falls nicht vorhanden    
+    dbIdPublic = dbIdPrivate;
+    db.put({
+        _id: dbIdPrivate + '_login',
+        name: 'Server',
+        type: 'db',
+        dbServer: dbServer,
+        dbPort: dbPort,
+        //dbName: dbName,
+        dbUser: dbUser,
+        dbPass: dbPass,
+        dbId: dbIdPublic,
+        title: dbIdPublic + '_login'
+    }).then(function (response) {
+        console.log(dbIdPrivate);
+        console.log(dbIdPublic);
+        console.log(response);
+        // handle response
+        remoteLogin();
+    }).catch(function (err) {
+        console.log(err);
+        });
+    });
+}
+
+function dbRenew(destroy = false, create = true) {
+    if (window.confirm('lokale Datenbank löschen?')) {
+        db.destroy().then(function () {
+            // database destroyed
+            dbNew();
+        }).catch(function (err) {
+            // error occurred
+        })
+    }
+}
 
 document.addEventListener("deviceready", function () {
     'use strict';
     var appTitle = 'Private Books Library';
     $('#appTitle').html(appTitle);
+    infoSync = document.getElementById('info-sync');
 
-    var syncDom = document.getElementById('sync-wrapper');
-
-    db = new PouchDB(dbName);
-
-    dbIdPrivate = cookie('dbId');
-    if (dbIdPrivate === null) {
-        dbIdPrivate = Math.random();
-        cookie('dbId', dbIdPrivate, 3650);
-    }
-    db.get(dbIdPrivate + '_login').then(function (doc) {
-        if (doc !== null) {
-            system = doc;
-            dbServer = doc.dbServer;
-            dbPort = doc.dbPort;
-            dbName = doc.dbName;
-            dbUser = doc.dbUser;
-            dbPass = doc.dbPass;
-            dbIdPublic = doc.dbId;
-            appTitle = doc.appTitle;
-            apiIsbndb = doc.apiIsbndb;
-            apiLibrarything = doc.apiLibrarything;
-            //myApp.horse.title = doc.appHorsename;
-            /*
-             if(!exist(doc.name)) {
-             doc.name="Server";
-             db.put(doc);
-             }
-             */
-            $('#appTitle').html(appTitle);
-            //$('#m_horse').val(myApp.horse.title);
-            console.log(dbIdPrivate);
-            console.log(dbIdPublic);
-            if (!startOk && startDom) {
-                startOk = true;
-                fill_datalist("books");
-            }
-            startDb = true;
-            remoteLogin();
-        }
-    }).catch(function (err) {
-        // ersten Datensatz anlegen, falls nicht vorhanden    
-        dbIdPublic = dbIdPrivate;
-        db.put({
-            _id: dbIdPrivate + '_login',
-            name: 'Server',
-            type: 'db',
-            dbServer: dbServer,
-            dbPort: dbPort,
-            dbName: dbName,
-            dbUser: dbUser,
-            dbPass: dbPass,
-            dbId: dbIdPublic,
-            title: dbIdPublic + '_login'
-        }).then(function (response) {
-            console.log(dbIdPrivate);
-            console.log(dbIdPublic);
-            console.log(response);
-            // handle response
-            remoteLogin();
-        }).catch(function (err) {
-            console.log(err);
-        });
-    });
+    dbNew();
+    
 
     db.changes({
         since: 'now',
         live: true
     }).on('change', showDocs);
-    /*
-     copyDatabaseFile('pbl-61h(fx').then(function () {
-     // using the Cordova SQLite plugin. Make sure this plugin is loaded correctly!
-     db = new PouchDB('pbl-61h(fx', {adapter: 'cordova-sqlite'});
-     return db.allDocs({include_docs: true});
-     }).then(function (results) {
-     var pre = document.createElement('pre');
-     pre.innerHTML = JSON.stringify(results, null, '  ');
-     document.body.appendChild(pre);
-     }).catch(console.log.bind(console));
-     */
 
-    /*/ einmalige initialisierung
-     db.get('_local/preloaded2').then(function (doc) {
-     }).catch(function (err) {
-     if (err.name !== 'not_found') {
-     throw err;
-     }
-     // we got a 404, so the local docuent doesn't exist. so let's preload!
-     return db.load('books.json').then(function () {
-     // create the local document to note that we've preloaded
-     return db.put({_id: '_local/preloaded2'});
-     });
-     }).then(function () {
-     return db.allDocs({include_docs: true});
-     }).then(function (res) {
-     $('#display').innerHTML = JSON.stringify(res, null, '  ');
-     console.log(res);
-     }).catch(console.log.bind(console));
-     db.allDocs({include_docs: true}).then(function (res) {
-     $('#display').innerHTML = JSON.stringify(res, null, '  ');
-     }).catch(console.log.bind(console));
-     */
-
-    var parentElement = document.getElementById('deviceready');
-    var listeningElement = parentElement.querySelector('.listening');
-    var receivedElement = parentElement.querySelector('.received');
+    var infoDev = document.getElementById('info-dev');
+    var listeningElement = infoDev.querySelector('.listening');
+    var receivedElement = infoDev.querySelector('.received');
 
     listeningElement.setAttribute('style', 'display:none;');
     receivedElement.setAttribute('style', 'display:block;');
@@ -396,59 +401,6 @@ document.addEventListener("deviceready", function () {
          */
     }
 
-    function remoteLogin() {
-        if (dbServer && dbPort) {
-            if (dbSync) {
-                // sync active, stopping first before connecting to another server
-                dbSync.cancel();
-            }
-            remote = new PouchDB(dbServer + ':' + dbPort + '/' + dbName, {skip_setup: true});
-            remote.login(dbUser, dbPass, function (err, response) {
-                if (err) {
-                    console.log("!1!");
-                    console.log(err);
-                    console.log("!1!");
-                    if (err.name === 'unauthorized') {
-                        // name or password incorrect
-                        syncDom.innerHTML = 'server: name or password incorrect';
-                    } else {
-                        // cosmic rays, a meteor, etc.
-                        syncDom.innerHTML = err.name;
-                    }
-                } else {
-                    sync();
-                }
-            });
-        } else {
-            syncDom.innerHTML = 'local database';
-        }
-    }
-
-    // Initialise a sync with the remote server
-    function sync() {
-        syncDom.setAttribute('data-sync-state', 'syncing');
-        dbSync = remote.sync(db, {live: true, retry: true
-        }).on('change', function (info) {
-            syncDom.innerHTML = 'server: change ' + info.ok;
-        }).on('paused', function (err) {
-            syncDom.innerHTML = 'server: paused ' + (err ? err : '');
-        }).on('active', function () {
-            syncDom.innerHTML = 'server: active ';
-        }).on('denied', function (err) {
-            syncDom.innerHTML = 'server: denied ' + err;
-        }).on('error', function (err) {
-            syncDom.setAttribute('data-sync-state', 'error');
-            syncDom.innerHTML = 'server: error ' + err;
-        }).on('complete', function (info) {
-            syncDom.setAttribute('data-sync-state', 'insync');
-            syncDom.innerHTML = 'server: complete ' + info.ok;
-        });
-    }
-    
-    // There was some form or error syncing
-    function syncError() {
-        syncDom.setAttribute('data-sync-state', 'error');
-    }
 
 
 
@@ -518,7 +470,14 @@ document.addEventListener("deviceready", function () {
                 });
                 setSync(doc, 'upd');
                 if (seite === "login") {
+                    dbServer = doc.dbServer;
+                    dbPort = doc.dbPort;
+                    dbName = doc.dbUser;
+                    dbUser = doc.dbUser;
+                    dbPass = doc.dbPass;
                     dbIdPublic = doc.dbId;
+                    remoteLogin();
+
                     appTitle = doc.appTitle;
                     //myApp.main.title = doc.appHorsename;
                     $('#appTitle').html(appTitle);
@@ -619,6 +578,9 @@ document.addEventListener("deviceready", function () {
                 result += '<li class="pure-menu-item" onclick="' + this.action + '(\'' + this.name + '\')"><a class="pure-menu-link" href="#">' + this.title + '</a></li>';
             }
         });
+        //if (debugOutput)
+            result += '<li class="pure-menu-item" onclick="show_pageLog()"><a class="pure-menu-link" href="#">Console.Log</a></li>';
+
         $("#sidelist").html(result);
     }
     mainmenu();
@@ -631,7 +593,7 @@ document.addEventListener("deviceready", function () {
     }
     $("#mypanel").trigger("updatelayout");
     startDom = true;
-    if (syncDom) {
+    if (infoSync) {
 
     }
 });
@@ -639,18 +601,71 @@ document.addEventListener("deviceready", function () {
 $(window).on("load, resize", function() {
     var viewportTemp = $(window).width();
     if (viewportWidth < 600 ? viewportTemp >= 600 : viewportTemp < 600) {
-        console.log(viewportTemp);
+        //console.log(viewportTemp);
     }
     viewportWidth = viewportTemp;
-    if (viewportWidth < 600) {
-        $("#partner").html('xx');
+    if (viewportWidth < 568) {
+        //$("#partner").html('');
         $("#singleform").removeClass(" pure-form-aligned").addClass("pure-form pure-form-stacked");
     } else {
-        $("#partner")//.html('zz');
-            .html('<iframe src="https://rcm-eu.amazon-adsystem.com/e/cm?o=3&p=29&l=ur1&category=books&f=ifr&linkID=d5d77bd50e3d0c95cef3edf83dd6cc87&t=bielemeierde-21&tracking_id=bielemeierde-21" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>');
+        //$("#partner").html('<iframe src="https://rcm-eu.amazon-adsystem.com/e/cm?o=3&p=29&l=ur1&category=books&f=ifr&linkID=d5d77bd50e3d0c95cef3edf83dd6cc87&t=bielemeierde-21&tracking_id=bielemeierde-21" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>');
         $("#singleform").addClass("pure-form pure-form-aligned").removeClass("pure-form-stacked");
     }
 });
+
+function remoteLogin() {
+    if (dbServer && dbPort) {
+        if (dbSync) {
+            // sync active, stopping first before connecting to another server
+            dbSync.cancel();
+        }
+        remote = new PouchDB(dbServer + ':' + dbPort + '/' + dbName, { skip_setup: true });
+        remote.login(dbUser, dbPass, function (err, response) {
+            if (err) {
+                console.log(err);
+                if (err.name === 'unauthorized') {
+                    // name or password incorrect
+                    infoSync.innerHTML = 'unauthorized';//'server: name or password incorrect';
+                } else {
+                    // cosmic rays, a meteor, etc.
+                    infoSync.innerHTML = err.name;
+                }
+            } else {
+                infoSync.innerHTML = 'sync';
+                sync();
+            }
+        });
+    } else {
+        infoSync.innerHTML = 'local';
+    }
+}
+
+// Initialise a sync with the remote server
+function sync() {
+    infoSync.setAttribute('data-sync-state', 'syncing');
+    dbSync = remote.sync(db, {
+        live: true, retry: true
+    }).on('change', function (info) {
+        infoSync.innerHTML = 'server: change ' + info.change.ok;
+    }).on('paused', function (err) {
+        infoSync.innerHTML = 'server: paused ' + (err ? err : '');
+    }).on('active', function () {
+        infoSync.innerHTML = 'server: active ';
+    }).on('denied', function (err) {
+        infoSync.innerHTML = 'server: denied ' + err;
+    }).on('error', function (err) {
+        infoSync.setAttribute('data-sync-state', 'error');
+        infoSync.innerHTML = 'server: error ' + err;
+    }).on('complete', function (info) {
+        infoSync.setAttribute('data-sync-state', 'insync');
+        infoSync.innerHTML = 'server: complete ' + info.ok;
+    });
+}
+
+// There was some form or error syncing
+function syncError() {
+    infoSync.setAttribute('data-sync-state', 'error');
+}
 
 function search_isbn(singleIsbn) {
     function booksearch(index) {
@@ -763,10 +778,18 @@ function show_all_header(s) {
 function set_index(mySort) {
     var myIndex = {};
     switch (mySort) {
+        case 'id':
+            myIndex.fields = ['_id'];
+            break;
         case 'name':
             myIndex.fields = ['name', '_id', 'DBdeleted'];
             myIndex.name = 'indexNameId';
             myIndex.ddoc = 'indexNameId';
+            break;
+        case 'author':
+            myIndex.fields = ['author', 'releasedate','_id', 'DBdeleted'];
+            myIndex.name = 'indexAuthorDateId';
+            myIndex.ddoc = 'indexAuthorDateId';
             break;
         case 'isbn':
             myIndex.fields = ['isbn', '_id', 'DBdeleted'];
@@ -804,9 +827,15 @@ function set_find(table, mySort, singleIsbn) {
     if (table !== 'login') {
         switch (mySort) {
             case 'name':
-                mySelektor.name = {$gt: null};
+                mySelektor.name = { $gt: null };
                 myFind.sort = ['name'];
                 myFind.use_index = "indexNameId";
+                break;
+            case 'author':
+                mySelektor.author = { $gt: null };
+                mySelektor.releasedate = { $gt: null };
+                myFind.sort = ['author','releasedate'];
+                myFind.use_index = "indexAuthorDateId";
                 break;
             case 'isbn':
                 if (singleIsbn) {
@@ -818,12 +847,20 @@ function set_find(table, mySort, singleIsbn) {
                 myFind.use_index = "indexIsbnId";
                 break;
             case 'date':
-                mySelektor.releasedate = {$gt: null};
-                myFind.sort = ['releasedate'];
+                mySelektor.releasedate = { $gt: null };
+                myFind.sort = [{ releasedate: 'desc' }];
                 myFind.use_index = "indexDateId";
+                myFind.limit = 10;
         }
     }
     return myFind;
+}
+
+function sort_books(a, b) {
+    switch (appSort) {
+        case 'name': return (a.doc.name > b.doc.name ? 1 : (a.doc.name < b.doc.name ? -1 : 0));
+        case 'date': return (a.doc.releasedate > b.doc.releasedate ? 1 : (a.doc.releasedate < b.doc.releasedate ? -1 : 0));
+    }
 }
 
 function show_all(table, mySort = 'name', singleIsbn = "") {
@@ -834,25 +871,50 @@ function show_all(table, mySort = 'name', singleIsbn = "") {
 //        , endkey: dbIdPublic + '_' + table  //+ table
 //    PouchDB.debug.enable('pouchdb:find');
     console.log('show_all ' + table);
+    var loading = document.getElementById("loading");
+    loading.style.display = "block";
+    if (table == "books") {
+        if (appSort == mySort) {
+            appSortUp = !appSortUp;
+        } else {
+            appSort = mySort;
+        }
+        $("#sort_name").toggleClass("fa-sort-up", appSortUp && appSort == "name");
+        $("#sort_name").toggleClass("fa-sort-down", !appSortUp && appSort == "name");
+        $("#sort_name").toggleClass("fa-sort", appSort !== "name");
+        $("#sort_id").toggleClass("fa-sort-up", appSortUp && appSort == "id");
+        $("#sort_id").toggleClass("fa-sort-down", !appSortUp && appSort == "id");
+        $("#sort_id").toggleClass("fa-sort", appSort !== "id");
+        $("#sort_date").toggleClass("fa-sort-up", appSortUp && appSort == "date");
+        $("#sort_date").toggleClass("fa-sort-down", !appSortUp && appSort == "date");
+        $("#sort_date").toggleClass("fa-sort", appSort !== "date");
+        $("#sort_author").toggleClass("fa-sort-up", appSortUp && appSort == "author");
+        $("#sort_author").toggleClass("fa-sort-down", !appSortUp && appSort == "author");
+        $("#sort_author").toggleClass("fa-sort", appSort !== "author");
+    }
 
-    db.createIndex({
-        index: set_index(mySort)
-    }).then(function (result) {
-        console.log(result);
-        //console.log(myFind);
-        //return db.find({ selector: mySelektor, sort: ['name'], use_index: "indexNameId" });
-        return db.find(set_find(table, mySort, singleIsbn));
-    }).then(function (result) {
+
+    db.allDocs({
+        startkey: dbIdPublic + '_' + table
+        ,endkey: dbIdPublic + '_' + table + 'a'
+        ,include_docs: true
+        //,attachments: true
+    })
+    .then(function (result) {
         console.log('show_all result');
+        console.log(result);
+        result.docs = result.rows;
         if (result.docs.length > 1 | seite !== 'books' | (result.docs.length === 0 && !singleIsbn)) {
             var first = true;
             var table = "";
+            var dataform = '';
             var mySortPos = '';
-            var mySearchlist = '<div class="searchlist"><a class="searchlink" href="#appSearch">&#x1F50D;</a></div>';
+            var mySearchlist = '<div class="searchlist"><a class="searchlink" href="#appSearchAnchor">&#x1F50D;</a></div>';
             var releasedate;
             var releaseyear;
+            result.docs.sort(sort_books);
             $.each(result.docs, function () {
-                var s = this;
+                var s = this.doc;
                 //console.log(s);
                 if (first) {
                     first = false;
@@ -862,39 +924,42 @@ function show_all(table, mySort = 'name', singleIsbn = "") {
                         table = '<table id ="myTableList">';
                     }
                 }
-                if (seite === 'books') {
+                if (myApp[seite].tr === 'books') {
+                    if (s['source'] !== '11') {
+                        s['releasedate'] = (new Date(parseInt(s['releasedate']) + (24 * 60 * 60 * 1000))).toISOString();
+                        s['source'] = '11';
+                        db.put(s).then(function () {
+                        }).catch(function (err) {
+                            console.log(err);
+                        });
+                    }
                     //15.04.2008 -> 14.4.1977 -> 978393600
                     //27:10:2011 -> 25:10:1980
-                    var test = (parseInt(s['releasedate']) + 978307200) * 1000;
-                    releasedate = new Date(test);
-                    releaseyear = releasedate.getFullYear();
+                    //releasedate = new Date(parseInt(s['releasedate']));
+                    releaseyear = s['releasedate'].substr(0, 4);
 
+                    table += '<tr><td onclick="show_data(\'' + s['_id'] + '\')" ><div style="position:relative;">';
                     if (mySort === 'name' && mySortPos !== s['name'].substr(0, 1)) {
                         mySortPos = s['name'].substr(0, 1);
-                        table += '<tr id="myTableSort' + mySortPos + '">';
+                        table += '<div id="myTableSort' + mySortPos + '" class="myTableAnchor"></div>';
                         mySearchlist += '<div class="searchlist"><a class="searchlink" href="#myTableSort' + mySortPos + '">' + mySortPos + '</a></div>';
                     } else if (mySort === 'date' && mySortPos !== releaseyear) {
                         mySortPos = releaseyear;
-                        table += '<tr id="myTableSort' + mySortPos + '">';
+                        table += '<div id="myTableSort' + mySortPos + '" class="myTableAnchor"></div>';
                         mySearchlist += '<div class="searchlist"><a class="searchlink" href="#myTableSort' + mySortPos + '">' + mySortPos + '</a></div>';
-                    } else {
-                        table += '<tr>';
                     }
-                }
-                if (myApp[seite].tr === 'books') {
-                    table += '<td class="books-img-tr" onclick="show_data(\'' + s['_id'] +
-                        '\')" ><div  class="books-img"><img class="books-image" data-src="' + s['_id'] + '" src="data: image/png; base64, R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="/></div></td>';
-                    table += '<td onclick="show_data(\'' + s['_id'] + '\')" >';
+                    //table += '<div class="books-img-tr" ';
+                    table += '<div id="' + s['_id'] +'"><div  class="books-img"><img class="books-image" data-src="' + s['_id'] + '" src="data: image/png; base64, R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="/></div>';
+                    //table += '</td><td onclick="show_data(\'' + s['_id'] + '\')" >';
                     table += '<div class="books-title">' + s['name'] + '</div>';
-                    table += '<div class="books-favor">' + bookFavor(s['favor']) + '</div>';
+                    table += '<div class="books-favor" >' + bookFavor(s['favor']) + '</div>'; //onclick="set_book_favor(this, \'' + s['_id'] + '\')"
                     table += '<div class="books-author">' + s['author'] + '</div>';
                     if (releaseyear > 1800)
-                        table += '<div class="books-date">' + releasedate.toLocaleDateString() + '</div>'; //
+                        table += '<div class="books-date">' + s['releasedate'].substr(0, 10) + '</div>'; //
                     else
                         table += '<div class="books-date">&nbsp;</div>';
                     table += '<div class="books-state">' + s['ent'] + '&nbsp;' + s['opt'] + '&nbsp;' + bookState(s['state']) + '</div>';
-                    table += '</td>';
-
+                    table += '</div></div></td>';
                 } else {
                     if ($('#showDeleted').is(':checked')) {
                         table += '<td>' + (this.DBdeleted ? '*' : '&nbsp') + '</td>';
@@ -951,8 +1016,11 @@ function show_all(table, mySort = 'name', singleIsbn = "") {
             }
         }
         console.log('show_all end');
+        loading.style.display = "none";
     }).catch(function (err) {
         console.log(err);
+        console.log('show_all end');
+        loading.style.display = "none";
     });
 }
 
@@ -1005,8 +1073,8 @@ function show_seite(aktiveSeite) {
         result += '<p>erkannter Barcode <input id="bc_text"/> (<span id="bc_format"></span>) Beispiel: 9783802587849</p>';
         result += '<p><a href="#" name="scansearch" id="scansearch">Suchen</a><br /><span id="result"></span></p>';
         result += '<p><span id="result"></span></p>';
-        result += '<div class="book-img"><img  class="pure-img" id="img_' + aktiveSeite + '" height="200" src="blank.jpg"/></div>';
-        result += '<div class="book-favor" id="books_favor">' + bookFavor("0") + '</div>';
+        result += '<div id="book-image"><img  class="pure-img" id="img_' + aktiveSeite + '" height="200" src="blank.jpg"/></div>';
+        result += '<div id="book-favor">' + bookFavor("0") + '</div>';
     }
     $.each(myApp[aktiveSeite].header, function () {
         result += '<div class="pure-control-group"><label for="' + aktiveSeite + '_' + this.name + '">'+this.title+'</label>';
@@ -1036,9 +1104,30 @@ function show_seite(aktiveSeite) {
         }
     });
     result += '</div>';
+    if (seite === "login") {
+        result += '<p>Font Awesome by Dave Gandy - <a href="https://fontawesome.com/">https://fontawesome.com/</a></p>';
+    }
     $('#formdata').append(result);
 
 }
+
+function set_book_favor(div, id) {
+    //var div = $this;
+    db.get(id).then(function (doc) {
+        // handle doc
+        if (doc) {
+            doc.favor = (doc.favor === "0") ? "1" : "0";
+            db.put(doc).then(function (doc1) {
+                div.innerHTML = bookFavor(doc['favor']);
+            }).catch(function (err) {
+                console.log(err);
+            });
+        }
+    }).catch(function (err) {
+        console.log(err);
+    });
+}
+
 function getScrollY() {
     if (self.pageYOffset) // all except Explorer
     {
@@ -1056,9 +1145,11 @@ function getScrollY() {
 function setScrollY(y) {
     window.scrollTo(0, y);
 }
+
 function show_page1(setzen) {
     $('#page1').show();
     $('#page2').hide();
+    $('#pageLog').hide();
     if (setzen)
         setScrollY(scrollY);
     appPage = 1;
@@ -1075,8 +1166,24 @@ function show_page2(aktiveSeite) {
 
     $('#page2').show();
     $('#page1').hide();
+    $('#pageLog').hide();
     setScrollY(0);
     appPage = 2;
+}
+function show_pageLog() {
+    $('#pageLog').show();
+    $('#page1').hide();
+    $('#page2').hide();
+    appPage = 1;
+}
+
+function show_div(div = "record_show") {
+    var x = document.getElementById(div);
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
 }
 
 function select(table, id, name, field, visible, selected = null) {
@@ -1084,8 +1191,7 @@ function select(table, id, name, field, visible, selected = null) {
         $("#" + id + '_' + name).empty();
         $("#" + id + '_' + name).append($('<option></option>'));
         $.each(myApp[table].data, function (k, v) {
-            $("#" + id + '_' + name).append('<option ' + (selected === k ? 'selected="selected"' : '') + ' value="' + k + '">' + v + '</option>');
-            myApp[table].data[this[field]] = this[visible];
+            $("#" + id + '_' + name).append('<option ' + (parseInt(selected) === k ? 'selected="selected"' : '') + ' value="' + k + '">' + v + '</option>');
         });
     } else {
         db.find({
@@ -1123,11 +1229,8 @@ function show_data(id, neueSeite = seite) {
             if (doc) {
                 if (seite === "books") {
                     $('#img_' + seite).attr("src", bookImage(doc));
-                    $('#books_favor').val(bookFavor(doc['favor']));
-                    var test = (parseInt(doc['releasedate']) + 978307200) * 1000;
-                    releasedate = new Date(test);
-                    doc['releasedate'] = releasedate.toLocaleDateString();
-                    doc['checkdate'] = new Date((parseInt(doc['releasedate']) + 978307200) * 1000).toLocaleDateString();
+                    $('#book-favor').replaceWith('<div id="book-favor" onclick="set_book_favor(this, \''+doc['_id']+'\')">'+bookFavor(doc['favor'])+'</div>');
+                    doc['checkdate'] = new Date(parseInt(doc['releasedate'])).toISOString();//toLocaleDateString();
 
                 }
                 $.each(myApp[seite].header, function () {
@@ -1198,13 +1301,20 @@ function mySearch() {
 
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[1];
+        td = tr[i].getElementsByClassName("books-title")[0];
         if (td) {
             if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
                 tr[i].style.display = "";
             } else {
-                tr[i].style.display = "none";
-            }
+                td = tr[i].getElementsByClassName("books-author")[0];
+                if (td) {
+                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+             }
         }
     }
 }
@@ -1283,29 +1393,25 @@ function bookOpt(opt) {
     }
 }
 
-// copy a database file from www/ in the app directory to the data directory
-function copyDatabaseFile(dbName) {
-    var sourceFileName = cordova.file.applicationDirectory + 'www/' + dbName;
-    var targetDirName = cordova.file.dataDirectory;
-    // resolve the source and target filenames simultaneously
-    return Promise.all([
-        new Promise(function (resolve, reject) {
-            resolveLocalFileSystemURL(sourceFileName, resolve, reject);
-        }),
-        new Promise(function (resolve, reject) {
-            resolveLocalFileSystemURL(targetDirName, resolve, reject);
-        })
-    ]).then(function (files) {
-        var sourceFile = files[0];
-        var targetDir = files[1];
-        // try to fetch the target file, to check if it exists
-        return new Promise(function (resolve, reject) {
-            targetDir.getFile(dbName, {}, resolve, reject);
-        }).catch(function () {
-            // target file doesn't exist already, so copy it
-            return new Promise(function (resolve, reject) {
-                sourceFile.copyTo(targetDir, dbName, resolve, reject);
-            });
-        });
-    });
+function isChrome() {
+    var isChromium = window.chrome,
+        winNav = window.navigator,
+        vendorName = winNav.vendor,
+        isOpera = winNav.userAgent.indexOf("OPR") > -1,
+        isIEedge = winNav.userAgent.indexOf("Edge") > -1,
+        isIOSChrome = winNav.userAgent.match("CriOS");
+
+    if (isIOSChrome) {
+        return false;// true, but in IOS webSQL;
+    } else if (
+        isChromium !== null &&
+        typeof isChromium !== "undefined" &&
+        vendorName === "Google Inc." &&
+        isOpera === false &&
+        isIEedge === false
+    ) {
+        return true;
+    } else {
+        return false;
+    }
 }

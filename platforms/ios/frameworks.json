@@ -1,5 +1,5 @@
 {
-    "libsqlite3.dylib": 1,
+    "libsqlite3.dylib": 2,
     "libiconv.dylib": 1,
     "AVFoundation.framework": 1,
     "CoreVideo.framework": 1,

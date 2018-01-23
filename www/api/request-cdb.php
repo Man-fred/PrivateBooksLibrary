@@ -7,9 +7,6 @@ include("config.php");
 include("classes/cdb.php");
 include("classes/cdbExeption.php");
 
-$test_db = 'pbl-3837-5880-3408-4238';
-$test_pass = 'v54wjtzjtzju';
-
 $couchdb = new CouchDB($db, CDB_HOST, CDB_PORT, CDB_USER, CDB_PASS);
 
 $doc = $couchdb->db_create($test_db, $test_pass);
