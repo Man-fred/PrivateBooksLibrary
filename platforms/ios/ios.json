@@ -35,6 +35,14 @@
                         {
                             "xml": "<feature name=\"SQLitePlugin\"><param name=\"ios-package\" value=\"SQLitePlugin\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"AppCenterAnalytics\"><param name=\"ios-package\" value=\"AppCenterAnalyticsPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"AppCenterCrashes\"><param name=\"ios-package\" value=\"AppCenterCrashesPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -54,7 +62,7 @@
                     "/Package/Capabilities": [
                         {
                             "xml": "<DeviceCapability Name=\"webcam\" />",
-                            "count": 479
+                            "count": 481
                         }
                     ]
                 }
@@ -64,11 +72,11 @@
                     "/Package/Capabilities": [
                         {
                             "xml": "<DeviceCapability Name=\"microphone\" />",
-                            "count": 479
+                            "count": 481
                         },
                         {
                             "xml": "<DeviceCapability Name=\"webcam\" />",
-                            "count": 479
+                            "count": 481
                         }
                     ]
                 }
@@ -96,6 +104,15 @@
             "PACKAGE_NAME": "io.cordova.myapp387c96"
         },
         "cordova-plugin-sqlite-2": {
+            "PACKAGE_NAME": "io.cordova.myapp387c96"
+        },
+        "cordova-plugin-appcenter-shared": {
+            "PACKAGE_NAME": "io.cordova.myapp387c96"
+        },
+        "cordova-plugin-appcenter-analytics": {
+            "PACKAGE_NAME": "io.cordova.myapp387c96"
+        },
+        "cordova-plugin-appcenter-crashes": {
             "PACKAGE_NAME": "io.cordova.myapp387c96"
         }
     },
@@ -313,6 +330,22 @@
             "clobbers": [
                 "sqlitePlugin"
             ]
+        },
+        {
+            "id": "cordova-plugin-appcenter-analytics.Analytics",
+            "file": "plugins/cordova-plugin-appcenter-analytics/www/Analytics.js",
+            "pluginId": "cordova-plugin-appcenter-analytics",
+            "clobbers": [
+                "AppCenter.Analytics"
+            ]
+        },
+        {
+            "id": "cordova-plugin-appcenter-crashes.Crashes",
+            "file": "plugins/cordova-plugin-appcenter-crashes/www/Crashes.js",
+            "pluginId": "cordova-plugin-appcenter-crashes",
+            "clobbers": [
+                "AppCenter.Crashes"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -322,6 +355,9 @@
         "cordova-plugin-compat": "1.2.0",
         "cordova-plugin-file": "4.3.3",
         "phonegap-plugin-barcodescanner": "7.0.0",
-        "cordova-plugin-sqlite-2": "1.0.4"
+        "cordova-plugin-sqlite-2": "1.0.4",
+        "cordova-plugin-appcenter-shared": "0.1.3",
+        "cordova-plugin-appcenter-analytics": "0.1.3",
+        "cordova-plugin-appcenter-crashes": "0.1.3"
     }
 }

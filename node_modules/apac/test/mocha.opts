@@ -1,2 +1,0 @@
---require test/assign-globals.js
---reporter progress

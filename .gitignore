@@ -5,8 +5,11 @@
 [Pp]lugins/remote_ios.json
 [Pp]latforms/
 /AppPackages/
+/api/
 /bin/
 /bld/
 platforms/
 /merges/
 /simulation/
+build.json
+config.xml

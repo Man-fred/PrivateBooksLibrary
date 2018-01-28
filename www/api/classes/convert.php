@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 function clean_hex(input, remove_0x) {
     input = input.toUpperCase();
 

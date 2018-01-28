@@ -216,6 +216,22 @@ module.exports = [
         "clobbers": [
             "sqlitePlugin"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-appcenter-analytics/www/Analytics.js",
+        "id": "cordova-plugin-appcenter-analytics.Analytics",
+        "pluginId": "cordova-plugin-appcenter-analytics",
+        "clobbers": [
+            "AppCenter.Analytics"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-appcenter-crashes/www/Crashes.js",
+        "id": "cordova-plugin-appcenter-crashes.Crashes",
+        "pluginId": "cordova-plugin-appcenter-crashes",
+        "clobbers": [
+            "AppCenter.Crashes"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -227,7 +243,10 @@ module.exports.metadata =
     "cordova-plugin-compat": "1.2.0",
     "cordova-plugin-file": "4.3.3",
     "cordova-plugin-sqlite-2": "1.0.4",
-    "phonegap-plugin-barcodescanner": "7.0.0"
+    "phonegap-plugin-barcodescanner": "7.0.0",
+    "cordova-plugin-appcenter-shared": "0.1.3",
+    "cordova-plugin-appcenter-analytics": "0.1.3",
+    "cordova-plugin-appcenter-crashes": "0.1.3"
 }
 // BOTTOM OF METADATA
 });

@@ -1,10 +1,10 @@
 {
   "android": {
     "release": {
-      "keystore": "",
-      "storePassword": "",
-      "alias": "",
-      "password": "",
+      "keystore": "c:\\usr\\local\\keystore\\bcss.keystore",
+      "storePassword": "JSZLY7EhnpJRsvI8a7or",
+      "alias": "bcssGmbH",
+      "password": "JSZLY7EhnpJRsvI8a7or",
       "keystoreType": ""
     }
   },

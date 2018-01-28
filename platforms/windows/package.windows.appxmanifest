@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
-    <Identity Name="35337ManfredBielemeierBCS.PrivateBooksLibrary" Publisher="CN=$username$" Version="0.1.2.0" />
+    <Identity Name="35337ManfredBielemeierBCS.PrivateBooksLibrary" Publisher="CN=$username$" Version="0.1.4.0" />
     <Properties>
         <DisplayName>Private Books Library</DisplayName>
         <PublisherDisplayName>Manfred Bielemeier (BCSS Software &amp; Beratung GmbH)</PublisherDisplayName>
         <Logo>images\StoreLogo.png</Logo>
-        <Description>Ein leeres Projekt, das Apache Cordova verwendet, damit Sie eine App fÃ¼r mehrere mobile Plattformen erstellen kÃ¶nnen: Android, iOS und die universelle Windows-Plattform.</Description>
+        <Description>Verwalten Sie Ihre private Büchersammlung und Ihre eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.</Description>
     </Properties>
     <Prerequisites>
         <OSMinVersion>6.3.0</OSMinVersion>
@@ -16,7 +16,7 @@
     </Resources>
     <Applications>
         <Application Id="io.cordova.myapp387c96" StartPage="www/index.html">
-            <m2:VisualElements BackgroundColor="#464646" Description="Ein leeres Projekt, das Apache Cordova verwendet, damit Sie eine App fÃ¼r mehrere mobile Plattformen erstellen kÃ¶nnen: Android, iOS und die universelle Windows-Plattform." DisplayName="PrivateBooksLibrary" ForegroundText="light" Square150x150Logo="images\Square150x150Logo.png" Square30x30Logo="images\Square30x30Logo.png">
+            <m2:VisualElements BackgroundColor="#464646" Description="Verwalten Sie Ihre private Büchersammlung und Ihre eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren." DisplayName="PrivateBooksLibrary" ForegroundText="light" Square150x150Logo="images\Square150x150Logo.png" Square30x30Logo="images\Square30x30Logo.png">
                 <m2:DefaultTile Square310x310Logo="images\Square310x310Logo.png" Square70x70Logo="images\Square70x70Logo.png" Wide310x150Logo="images\Wide310x150Logo.png">
                     <m2:ShowNameOnTiles>
                         <m2:ShowOn Tile="square150x150Logo" />

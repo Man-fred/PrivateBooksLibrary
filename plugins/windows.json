@@ -15,7 +15,17 @@
     },
     "cordova-plugin-sqlite-2": {
       "PACKAGE_NAME": "Private Books Library"
+    },
+    "cordova-plugin-appcenter-analytics": {
+      "PACKAGE_NAME": "Private Books Library"
+    },
+    "cordova-plugin-appcenter-crashes": {
+      "PACKAGE_NAME": "Private Books Library"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-appcenter-shared": {
+      "PACKAGE_NAME": "Private Books Library"
+    }
+  }
 }

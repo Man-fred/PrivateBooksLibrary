@@ -33,6 +33,11 @@
 		5DC9A3C85D2D48E4A0480594 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B573B804A81344D39DB6EF02 /* QuartzCore.framework */; };
 		FBFFB5127D2D4398B4469CD1 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E702789A823483A91F149B5 /* CoreImage.framework */; };
 		B402A28DFD06472B80C08B92 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B31EF76C3C48F88B748C9E /* AudioToolbox.framework */; };
+		FEFF64C119D24711B68FBA7C /* AppCenterShared.m in Sources */ = {isa = PBXBuildFile; fileRef = 4954954FCDF74C2C92354332 /* AppCenterShared.m */; };
+		30A009FC49D1419789E06073 /* AppCenterAnalyticsPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE85E152E784DE2AAE067B8 /* AppCenterAnalyticsPlugin.m */; };
+		167451B574184135A616826F /* AppCenterCrashesPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D2ED6E9777F4076A264196A /* AppCenterCrashesPlugin.m */; };
+		68F3C7CCA2644D85994458CD /* CordovaCrashesDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D79DCAC90FB468C9B633877 /* CordovaCrashesDelegate.m */; };
+		039F73C97C724821B423C3F9 /* CrashesUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 12BF39DC6C5C47E5A02F1707 /* CrashesUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +102,16 @@
 		B573B804A81344D39DB6EF02 /* QuartzCore.framework */ = {isa = PBXFileReference; name = "QuartzCore.framework"; path = "System/Library/Frameworks/QuartzCore.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		2E702789A823483A91F149B5 /* CoreImage.framework */ = {isa = PBXFileReference; name = "CoreImage.framework"; path = "System/Library/Frameworks/CoreImage.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		84B31EF76C3C48F88B748C9E /* AudioToolbox.framework */ = {isa = PBXFileReference; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		4954954FCDF74C2C92354332 /* AppCenterShared.m */ = {isa = PBXFileReference; name = "AppCenterShared.m"; path = "cordova-plugin-appcenter-shared/AppCenterShared.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		BF714F03016D4FF7B88F9438 /* AppCenterShared.h */ = {isa = PBXFileReference; name = "AppCenterShared.h"; path = "cordova-plugin-appcenter-shared/AppCenterShared.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		DAE85E152E784DE2AAE067B8 /* AppCenterAnalyticsPlugin.m */ = {isa = PBXFileReference; name = "AppCenterAnalyticsPlugin.m"; path = "cordova-plugin-appcenter-analytics/AppCenterAnalyticsPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		3FE5DE9A2AF745C0AF5232B7 /* AppCenterAnalyticsPlugin.h */ = {isa = PBXFileReference; name = "AppCenterAnalyticsPlugin.h"; path = "cordova-plugin-appcenter-analytics/AppCenterAnalyticsPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		6D2ED6E9777F4076A264196A /* AppCenterCrashesPlugin.m */ = {isa = PBXFileReference; name = "AppCenterCrashesPlugin.m"; path = "cordova-plugin-appcenter-crashes/AppCenterCrashesPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		4D79DCAC90FB468C9B633877 /* CordovaCrashesDelegate.m */ = {isa = PBXFileReference; name = "CordovaCrashesDelegate.m"; path = "cordova-plugin-appcenter-crashes/CordovaCrashesDelegate.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		12BF39DC6C5C47E5A02F1707 /* CrashesUtils.m */ = {isa = PBXFileReference; name = "CrashesUtils.m"; path = "cordova-plugin-appcenter-crashes/CrashesUtils.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		A324B29D76E04AFBA13197F3 /* AppCenterCrashesPlugin.h */ = {isa = PBXFileReference; name = "AppCenterCrashesPlugin.h"; path = "cordova-plugin-appcenter-crashes/AppCenterCrashesPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		BF3CBFC3DAA449119169707B /* CordovaCrashesDelegate.h */ = {isa = PBXFileReference; name = "CordovaCrashesDelegate.h"; path = "cordova-plugin-appcenter-crashes/CordovaCrashesDelegate.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		2632696473F84FE7AE8E03EE /* CrashesUtils.h */ = {isa = PBXFileReference; name = "CrashesUtils.h"; path = "cordova-plugin-appcenter-crashes/CrashesUtils.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +246,16 @@
 				C4F4E43E90C8439882DBD778 /* CDVBarcodeScanner.mm */,
 				71E4E15C896B4E4EA4CAF0EB /* zxing-all-in-one.cpp */,
 				2059655A188748269FA2B01D /* zxing-all-in-one.h */,
+				4954954FCDF74C2C92354332 /* AppCenterShared.m */,
+				BF714F03016D4FF7B88F9438 /* AppCenterShared.h */,
+				DAE85E152E784DE2AAE067B8 /* AppCenterAnalyticsPlugin.m */,
+				3FE5DE9A2AF745C0AF5232B7 /* AppCenterAnalyticsPlugin.h */,
+				6D2ED6E9777F4076A264196A /* AppCenterCrashesPlugin.m */,
+				4D79DCAC90FB468C9B633877 /* CordovaCrashesDelegate.m */,
+				12BF39DC6C5C47E5A02F1707 /* CrashesUtils.m */,
+				A324B29D76E04AFBA13197F3 /* AppCenterCrashesPlugin.h */,
+				BF3CBFC3DAA449119169707B /* CordovaCrashesDelegate.h */,
+				2632696473F84FE7AE8E03EE /* CrashesUtils.h */,
 			);
 			name = Plugins;
 			path = "PrivateBooksLibrary/Plugins";
@@ -353,6 +378,11 @@
 				AE476B274392469292DD4748 /* SQLitePlugin.m in Sources */,
 				FF2CCECB4A044ED2AF6C056E /* CDVBarcodeScanner.mm in Resources */,
 				4467C8D90FA1439C80EF085C /* zxing-all-in-one.cpp in Resources */,
+				FEFF64C119D24711B68FBA7C /* AppCenterShared.m in Sources */,
+				30A009FC49D1419789E06073 /* AppCenterAnalyticsPlugin.m in Sources */,
+				167451B574184135A616826F /* AppCenterCrashesPlugin.m in Sources */,
+				68F3C7CCA2644D85994458CD /* CordovaCrashesDelegate.m in Sources */,
+				039F73C97C724821B423C3F9 /* CrashesUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

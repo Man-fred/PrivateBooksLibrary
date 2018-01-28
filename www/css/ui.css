@@ -1,4 +1,4 @@
-#appRefresh {
+#appSettings {
     mask: url(../img/svg/solid/cog.svg) no-repeat;
     /*mask-size: cover;*/
     -webkit-mask: url(../img/svg/solid/cog.svg) no-repeat;
@@ -6,7 +6,7 @@
     background-color: white;
     /* background-size: 30px 30px; */
 }
-#appSettings {
+#appRefresh {
     mask: url(../img/svg/solid/sync.svg) no-repeat;
     /*mask-size: cover;*/
     -webkit-mask: url(../img/svg/solid/sync.svg) no-repeat;

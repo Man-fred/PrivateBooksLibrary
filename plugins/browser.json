@@ -24,11 +24,20 @@
     },
     "cordova-plugin-sqlite-2": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-appcenter-analytics": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-appcenter-crashes": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },
   "dependent_plugins": {
     "cordova-plugin-compat": {
       "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
+    },
+    "cordova-plugin-appcenter-shared": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   }
 }

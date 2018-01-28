@@ -1,7 +1,10 @@
-﻿[
+[
   {
     "outputFile": "www/css/app.css",
     "inputFile": "less/app.less",
-    "minify": { "enabled": true }
+    "minify": {
+      "enabled": true
+    },
+    "sourceMap": false
   }
 ]

@@ -249,6 +249,8 @@ dependencies {
     // SUB-PROJECT DEPENDENCIES START
     debugCompile project(path: "CordovaLib", configuration: "debug")
     releaseCompile project(path: "CordovaLib", configuration: "release")
+    compile "com.microsoft.appcenter:appcenter-analytics:1.1.0"
+    compile "com.microsoft.appcenter:appcenter-crashes:1.1.0"
     // SUB-PROJECT DEPENDENCIES END
 }
 

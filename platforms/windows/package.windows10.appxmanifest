@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Package IgnorableNamespaces="uap mp" xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10">
-    <Identity Name="35337ManfredBielemeierBCS.PrivateBooksLibrary" Publisher="CN=AA5C0D05-3922-4B44-B0B1-F3D608226E35" Version="0.1.2.0" />
+    <Identity Name="35337ManfredBielemeierBCS.PrivateBooksLibrary" Publisher="CN=AA5C0D05-3922-4B44-B0B1-F3D608226E35" Version="0.1.4.0" />
     <mp:PhoneIdentity PhoneProductId="42b4a7c0-e7fc-11e7-a9cd-b70fd555f9ac" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
     <Properties>
         <DisplayName>Private Books Library</DisplayName>
         <PublisherDisplayName>Manfred Bielemeier (BCSS Software &amp; Beratung GmbH)</PublisherDisplayName>
         <Logo>images\StoreLogo.png</Logo>
-        <Description>Ein leeres Projekt, das Apache Cordova verwendet, damit Sie eine App fÃ¼r mehrere mobile Plattformen erstellen kÃ¶nnen: Android, iOS und die universelle Windows-Plattform.</Description>
+        <Description>Verwalten Sie Ihre private Büchersammlung und Ihre eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.</Description>
     </Properties>
     <Dependencies>
         <TargetDeviceFamily MaxVersionTested="10.0.10240.0" MinVersion="10.0.10240.0" Name="Windows.Universal" />
@@ -16,7 +16,7 @@
     </Resources>
     <Applications>
         <Application Id="io.cordova.myapp387c96" StartPage="ms-appx-web://35337manfredbielemeierbcs.privatebookslibrary/www/index.html">
-            <uap:VisualElements BackgroundColor="#464646" Description="Ein leeres Projekt, das Apache Cordova verwendet, damit Sie eine App fÃ¼r mehrere mobile Plattformen erstellen kÃ¶nnen: Android, iOS und die universelle Windows-Plattform." DisplayName="PrivateBooksLibrary" Square150x150Logo="images\Square150x150Logo.png" Square44x44Logo="images\Square44x44Logo.png">
+            <uap:VisualElements BackgroundColor="#464646" Description="Verwalten Sie Ihre private Büchersammlung und Ihre eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren." DisplayName="PrivateBooksLibrary" Square150x150Logo="images\Square150x150Logo.png" Square44x44Logo="images\Square44x44Logo.png">
                 <uap:SplashScreen Image="images\splashscreen.png" />
                 <uap:DefaultTile ShortName="PrivateBooksLibrary" Square310x310Logo="images\Square310x310Logo.png" Square71x71Logo="images\Square71x71Logo.png" Wide310x150Logo="images\Wide310x150Logo.png" />
                 <uap:InitialRotationPreference>

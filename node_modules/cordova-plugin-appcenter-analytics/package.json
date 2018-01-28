@@ -1,0 +1,59 @@
+{
+  "_from": "cordova-plugin-appcenter-analytics",
+  "_id": "cordova-plugin-appcenter-analytics@0.1.3",
+  "_inBundle": false,
+  "_integrity": "sha512-pZog4HGeH1JS7ro4gkg+V6geflDIoaKCfoz1U7i7R/5v46IHTzM0KyVfTtcFI+ruUSiAiTKecrnDUJG2aoAcjg==",
+  "_location": "/cordova-plugin-appcenter-analytics",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-appcenter-analytics",
+    "name": "cordova-plugin-appcenter-analytics",
+    "escapedName": "cordova-plugin-appcenter-analytics",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-appcenter-analytics/-/cordova-plugin-appcenter-analytics-0.1.3.tgz",
+  "_shasum": "a1b47f0c025f75f27b6299d6cbc40e710d07c3da",
+  "_spec": "cordova-plugin-appcenter-analytics",
+  "_where": "C:\\Users\\Manfred\\Documents\\PhoneGap\\PrivateBooksLibrary",
+  "author": {
+    "name": "Microsoft Corporation"
+  },
+  "bugs": {
+    "url": "https://github.com/Microsoft/appcenter-sdk-cordova/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "appcenter-analytics",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Provides Microsoft Azure App Center Analytics client for Cordova",
+  "homepage": "https://github.com/Microsoft/appcenter-sdk-cordova/blob/master/README.md",
+  "keywords": [
+    "microsoft",
+    "azure",
+    "app center",
+    "analytics",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-appcenter-analytics",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Microsoft/appcenter-sdk-cordova.git"
+  },
+  "version": "0.1.3"
+}

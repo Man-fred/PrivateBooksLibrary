@@ -19,4 +19,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Windows-ARM'">
     <DebuggerFlavor>WindowsMobileDevice</DebuggerFlavor>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android'">
+    <DebuggerFlavor>AndroidEmulator</DebuggerFlavor>
+    <AndroidEmulatorID>AndroidDevice;Gerät</AndroidEmulatorID>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
+    <DebuggerFlavor>AndroidEmulator</DebuggerFlavor>
+    <AndroidEmulatorID>AndroidDevice;Gerät</AndroidEmulatorID>
+  </PropertyGroup>
 </Project>
