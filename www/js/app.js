@@ -1150,6 +1150,10 @@ function show_page1(setzen) {
     $('#page1').show();
     $('#page2').hide();
     $('#pageLog').hide();
+    if (seite !== 'books')
+        $('#dataformBooks').hide()
+    else
+        $('#dataformBooks').show();
     if (setzen)
         setScrollY(scrollY);
     appPage = 1;

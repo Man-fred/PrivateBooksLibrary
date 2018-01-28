@@ -72,6 +72,14 @@ main {
     line-height: 1;
 }
 
+.content {
+    height: 100%;
+    /*max-width: 800px;*/
+    line-height: 1.6em;
+    width: calc(~"100% - " @partner-right);
+    padding: 0;
+}
+
 #top {
     top: 0px;
     position: fixed !important;
@@ -949,18 +957,6 @@ This is the parent `<div>` that contains the menu and the content area.
 /*
 The content `<div>` is where all your content goes.
 */
-.content {
-    height: 100%;
-    /*max-width: 800px;*/
-    line-height: 1.6em;
-    width: calc(~"100% - " @partner-right);
-    padding: 0;
-
-    @media @sm-gt {
-        width: calc(~"100% - " @menu-left + @partner-right);
-        padding-left: @menu-left;
-    }
-}
 
 .content-subhead {
     margin: 50px 0 20px 0;

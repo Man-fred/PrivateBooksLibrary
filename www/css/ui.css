@@ -7,15 +7,15 @@
     /* background-size: 30px 30px; */
 }
 #appRefresh {
-    mask: url(../img/svg/solid/sync.svg) no-repeat;
+    mask: url(../img/svg/solid/sync.svg); /*no-repeat*/
     /*mask-size: cover;*/
-    -webkit-mask: url(../img/svg/solid/sync.svg) no-repeat;
+    -webkit-mask: url(../img/svg/solid/sync.svg) ; /*no-repeat*/
     /*-webkit-mask-size: cover;*/
     background-color: white;
     /* background-size: 30px 30px; */
 }
 #appReturn {
-    mask: url(../img/svg/solid/arrow-alt-circle-left.svg) no-repeat;
+    mask: url(../img/svg/solid/arrow-alt-circle-left.svg);
     /*mask-size: cover;*/
     -webkit-mask: url(../img/svg/solid/arrow-alt-circle-left.svg) no-repeat;
     /*-webkit-mask-size: cover;*/

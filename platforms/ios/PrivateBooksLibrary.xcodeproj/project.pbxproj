@@ -21,7 +21,6 @@
 		24329A06E3634A8D88597D82 /* CDVFile.m in Sources */ = {isa = PBXBuildFile; fileRef = F7513C1DD5BB45489F5CA9D2 /* CDVFile.m */; };
 		CF7974C4D4F149AD88BBCDD9 /* CDVLocalFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 61CB6B2EB39A44D5957CB9ED /* CDVLocalFilesystem.m */; };
 		883301D1B7F24A878363666C /* CDVAssetLibraryFilesystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF750AF4204024957DB72B /* CDVAssetLibraryFilesystem.m */; };
-		AE476B274392469292DD4748 /* SQLitePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = E6828E6598994D60B2BB593E /* SQLitePlugin.m */; };
 		22707FBFA34D44EBB259A754 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A9B53621C04179963F28D8 /* libsqlite3.dylib */; };
 		FF2CCECB4A044ED2AF6C056E /* CDVBarcodeScanner.mm in Resources */ = {isa = PBXBuildFile; fileRef = C4F4E43E90C8439882DBD778 /* CDVBarcodeScanner.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4467C8D90FA1439C80EF085C /* zxing-all-in-one.cpp in Resources */ = {isa = PBXBuildFile; fileRef = 71E4E15C896B4E4EA4CAF0EB /* zxing-all-in-one.cpp */; };
@@ -88,8 +87,6 @@
 		64510621AABE4BFD9AB8F71D /* CDVFile.h */ = {isa = PBXFileReference; name = "CDVFile.h"; path = "cordova-plugin-file/CDVFile.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		47EAC83D84D741F8AAC43F30 /* CDVLocalFilesystem.h */ = {isa = PBXFileReference; name = "CDVLocalFilesystem.h"; path = "cordova-plugin-file/CDVLocalFilesystem.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		0015DB1F3F71477CAA05F0FF /* CDVAssetLibraryFilesystem.h */ = {isa = PBXFileReference; name = "CDVAssetLibraryFilesystem.h"; path = "cordova-plugin-file/CDVAssetLibraryFilesystem.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		E6828E6598994D60B2BB593E /* SQLitePlugin.m */ = {isa = PBXFileReference; name = "SQLitePlugin.m"; path = "cordova-plugin-sqlite-2/SQLitePlugin.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		4395DDCC3C584B658FCFE588 /* SQLitePlugin.h */ = {isa = PBXFileReference; name = "SQLitePlugin.h"; path = "cordova-plugin-sqlite-2/SQLitePlugin.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		B9A9B53621C04179963F28D8 /* libsqlite3.dylib */ = {isa = PBXFileReference; name = "libsqlite3.dylib"; path = "usr/lib/libsqlite3.dylib"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = compiled.mach-o.dylib; explicitFileType = undefined; includeInIndex = 0; };
 		C4F4E43E90C8439882DBD778 /* CDVBarcodeScanner.mm */ = {isa = PBXFileReference; name = "CDVBarcodeScanner.mm"; path = "phonegap-plugin-barcodescanner/CDVBarcodeScanner.mm"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		71E4E15C896B4E4EA4CAF0EB /* zxing-all-in-one.cpp */ = {isa = PBXFileReference; name = "zxing-all-in-one.cpp"; path = "phonegap-plugin-barcodescanner/zxing-all-in-one.cpp"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
@@ -241,8 +238,6 @@
 				64510621AABE4BFD9AB8F71D /* CDVFile.h */,
 				47EAC83D84D741F8AAC43F30 /* CDVLocalFilesystem.h */,
 				0015DB1F3F71477CAA05F0FF /* CDVAssetLibraryFilesystem.h */,
-				E6828E6598994D60B2BB593E /* SQLitePlugin.m */,
-				4395DDCC3C584B658FCFE588 /* SQLitePlugin.h */,
 				C4F4E43E90C8439882DBD778 /* CDVBarcodeScanner.mm */,
 				71E4E15C896B4E4EA4CAF0EB /* zxing-all-in-one.cpp */,
 				2059655A188748269FA2B01D /* zxing-all-in-one.h */,
@@ -375,7 +370,6 @@
 				24329A06E3634A8D88597D82 /* CDVFile.m in Sources */,
 				CF7974C4D4F149AD88BBCDD9 /* CDVLocalFilesystem.m in Sources */,
 				883301D1B7F24A878363666C /* CDVAssetLibraryFilesystem.m in Sources */,
-				AE476B274392469292DD4748 /* SQLitePlugin.m in Sources */,
 				FF2CCECB4A044ED2AF6C056E /* CDVBarcodeScanner.mm in Resources */,
 				4467C8D90FA1439C80EF085C /* zxing-all-in-one.cpp in Resources */,
 				FEFF64C119D24711B68FBA7C /* AppCenterShared.m in Sources */,

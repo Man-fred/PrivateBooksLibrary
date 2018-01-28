@@ -4,7 +4,7 @@
   "name": "PrivateBooksLibrary",
   "short_name": "PrivateBooksLibrary",
   "version": "io.cordova.myapp387c96",
-  "description": "Ein leeres Projekt, das Apache Cordova verwendet, damit Sie eine App fÃ¼r mehrere mobile Plattformen erstellen kÃ¶nnen: Android, iOS und die universelle Windows-Plattform.",
+  "description": "Verwalten Sie Ihre private Büchersammlung und Ihre eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.",
   "author": "Manfred Bielemeier",
   "icons": [],
   "start_url": "index.html"

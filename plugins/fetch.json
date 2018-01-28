@@ -25,14 +25,6 @@
       "CAMERA_USAGE_DESCRIPTION": "Barcode-Scan"
     }
   },
-  "cordova-sqlite-storage": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-sqlite-storage"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-sqlite-2": {
     "source": {
       "type": "git",
