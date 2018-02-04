@@ -90,20 +90,27 @@ footer {
 }
 #appTitle {
   float: right;
-  padding-left: 150px;
-  width: calc(100% -  282px);
+  padding-top: 0.6em;
+  width: calc(100% -  176px);
+  text-align: center;
+}
+@media only screen and (min-width: 568px) {
+  #appTitle {
+    width: calc(100% -  282px);
+  }
 }
 .title-button {
   float: right;
   font-size: 200%;
   font-weight: bold;
   /*padding: 0 10px 0 10px;*/
-  width: 44px;
+  width: 36px;
   height: 36px;
   display: block;
-  margin: 4px auto;
+  margin: 4px;
   text-align: center;
   vertical-align: middle;
+  cursor: pointer;
 }
 div.container {
   width: 100%;
@@ -804,8 +811,8 @@ label[for='toggle-all'] {
   float: left;
 }
 #book-image {
-  width: auto;
-  height: 200px;
+  width: 8em;
+  height: auto;
   display: block;
   /*for the img inside your div */
   margin: 0 auto;
@@ -1038,21 +1045,26 @@ small screens.
     width: 50px;
   }
 }
+.relative {
+  position: relative;
+}
 .myTableAnchor {
   position: absolute;
-  top: - 44px;
+  top: -44px;
 }
 .searchlist {
   text-align: center;
   flex: 1 1 auto;
   -moz-flex: 1 1 auto;
   -webkit-flex: 1 1 auto;
+  height: 0.5em;
 }
 .searchlink {
   text-align: center;
   display: block;
   height: 100%;
   text-decoration: none;
+  font-size: 0.7em;
 }
 .searchlink:hover,
 .searchlink:focus {

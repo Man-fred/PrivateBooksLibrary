@@ -88,7 +88,6 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
-apply from: "cordova-plugin-appcenter-push/myapp387c96-AppCenterPush.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras = file('build-extras.gradle').exists()
@@ -250,9 +249,6 @@ dependencies {
     // SUB-PROJECT DEPENDENCIES START
     debugCompile project(path: "CordovaLib", configuration: "debug")
     releaseCompile project(path: "CordovaLib", configuration: "release")
-    compile "com.microsoft.appcenter:appcenter-analytics:1.1.0"
-    compile "com.microsoft.appcenter:appcenter-crashes:1.1.0"
-    compile "com.microsoft.appcenter:appcenter-push:1.1.0"
     // SUB-PROJECT DEPENDENCIES END
 }
 

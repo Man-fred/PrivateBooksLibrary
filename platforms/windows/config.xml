@@ -13,12 +13,7 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <vs:platformSpecificValues>
-        <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.1.5.0">
-            <vs:appxPackageIsForStore>True</vs:appxPackageIsForStore>
-            <vs:appxBundle>Always</vs:appxBundle>
-            <vs:appxBundlePlatforms>x86|x64|arm</vs:appxBundlePlatforms>
-            <vs:packageOutputPath>C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\AppPackages\</vs:packageOutputPath>
-        </vs:platformSpecificWidget>
+        <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.1.5.0" />
     </vs:platformSpecificValues>
     <config-file parent="/Package/Capabilities" target="package.appxmanifest">
         <DeviceCapability Name="webcam" />
