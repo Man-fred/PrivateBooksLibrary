@@ -1,14 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-        "id": "cordova-plugin-statusbar.statusbar",
-        "pluginId": "cordova-plugin-statusbar",
-        "clobbers": [
-            "window.StatusBar"
-        ]
-    },
-    {
         "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
         "id": "cordova-plugin-file.DirectoryEntry",
         "pluginId": "cordova-plugin-file",
@@ -188,14 +180,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-plugin-sqlite-2/dist/sqlite-plugin.js",
-        "id": "cordova-plugin-sqlite-2.sqlitePlugin",
-        "pluginId": "cordova-plugin-sqlite-2",
-        "clobbers": [
-            "sqlitePlugin"
-        ]
-    },
-    {
         "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
         "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
         "pluginId": "phonegap-plugin-barcodescanner",
@@ -210,12 +194,18 @@ module.exports = [
         "runs": true
     },
     {
-        "file": "plugins/cordova-plugin-sqlite-2/dist/sqlite-plugin.js",
-        "id": "cordova-plugin-sqlite-2.sqlitePlugin",
-        "pluginId": "cordova-plugin-sqlite-2",
+        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+        "id": "cordova-plugin-statusbar.statusbar",
+        "pluginId": "cordova-plugin-statusbar",
         "clobbers": [
-            "sqlitePlugin"
+            "window.StatusBar"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-statusbar/src/browser/StatusBarProxy.js",
+        "id": "cordova-plugin-statusbar.StatusBarProxy",
+        "pluginId": "cordova-plugin-statusbar",
+        "runs": true
     },
     {
         "file": "plugins/cordova-plugin-appcenter-analytics/www/Analytics.js",
@@ -232,21 +222,29 @@ module.exports = [
         "clobbers": [
             "AppCenter.Crashes"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-appcenter-push/www/Push.js",
+        "id": "cordova-plugin-appcenter-push.Push",
+        "pluginId": "cordova-plugin-appcenter-push",
+        "clobbers": [
+            "AppCenter.Push"
+        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
     "cordova-plugin-console": "1.0.7",
-    "cordova-plugin-statusbar": "1.0.1",
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-compat": "1.2.0",
     "cordova-plugin-file": "4.3.3",
-    "cordova-plugin-sqlite-2": "1.0.4",
     "phonegap-plugin-barcodescanner": "7.0.0",
+    "cordova-plugin-statusbar": "2.4.1",
     "cordova-plugin-appcenter-shared": "0.1.3",
     "cordova-plugin-appcenter-analytics": "0.1.3",
-    "cordova-plugin-appcenter-crashes": "0.1.3"
+    "cordova-plugin-appcenter-crashes": "0.1.3",
+    "cordova-plugin-appcenter-push": "0.1.3"
 }
 // BOTTOM OF METADATA
 });

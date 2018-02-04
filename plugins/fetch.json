@@ -25,11 +25,10 @@
       "CAMERA_USAGE_DESCRIPTION": "Barcode-Scan"
     }
   },
-  "cordova-plugin-sqlite-2": {
+  "cordova-plugin-statusbar": {
     "source": {
-      "type": "git",
-      "url": "https://github.com/nolanlawson/cordova-plugin-sqlite-2",
-      "subdir": "."
+      "type": "registry",
+      "id": "cordova-plugin-statusbar@2.4.1"
     },
     "is_top_level": true,
     "variables": {}
@@ -54,6 +53,14 @@
     "source": {
       "type": "registry",
       "id": "cordova-plugin-appcenter-crashes"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-appcenter-push": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-appcenter-push"
     },
     "is_top_level": true,
     "variables": {}

@@ -17,16 +17,18 @@
 @partner-right: 0px;
 @menu-left: 150px;
 @searchAZ000: 30px;
-@searchAZ600: 30px;
+@searchAZ600: 50px;
 @content-margin: 8px;
 @content-padding: 10px;
 @top-height: 44px;
 @footer-height: 25px;
-@title-button: 44px;
+@title-margin: 4px;
+@title-button: @top-height - 2 * @title-margin;
 @books-img: 52px;
 @books-img-margin: 5px;
 @books-favor: 24px;
 @books-favor-sm: 32px;
+@page2-label: 8em;
 
 /* static footer */
 html, body {
@@ -126,8 +128,12 @@ footer {
 
 #appTitle {
     float: right;
-    padding-left: @menu-left;
-    width: calc(~"100% - " @menu-left + 3 * @title-button);
+    padding-top: 0.6em;
+    width: calc(~"100% - " 4 * @top-height);
+    text-align:center;
+    @media @sm-gt {
+        width: calc(~"100% - " @menu-left + 3 * @top-height);
+    }
 }
 
 .title-button {
@@ -136,11 +142,12 @@ footer {
     font-weight: bold;
     /*padding: 0 10px 0 10px;*/
     width: @title-button;
-    height: @top-height - 8;
+    height: @title-button;
     display: block;
-    margin: 4px auto;
+    margin: @title-margin;
     text-align: center;
     vertical-align: middle;
+    cursor: pointer;
 }
 
 div.container {
@@ -253,7 +260,7 @@ label {
 }
 
 div > label:first-child {
-    width: 8em;
+    width: @page2-label;
     text-align: left;
     padding-top: 0.3em;
     vertical-align: top;
@@ -880,8 +887,8 @@ label[for='toggle-all'] {
 }
 
 #book-image {
-    width: auto;
-    height: 200px;
+    width: @page2-label;
+    height: auto;
     display: block; /*for the img inside your div */
     margin: 0 auto;
     float: left;
@@ -1114,15 +1121,19 @@ small screens.
         width: @searchAZ600;
     }
 }
+.relative {
+    position:relative;
+}
 .myTableAnchor {
     position: absolute;
-    top: - @top-height;
+    top: -@top-height;
 }
 .searchlist {
     text-align: center;
     flex: 1 1 auto;
     -moz-flex: 1 1 auto;
     -webkit-flex: 1 1 auto;
+    height: 0.5em;
 }
 
 .searchlink {
@@ -1130,6 +1141,7 @@ small screens.
     display: block;
     height: 100%;
     text-decoration: none;
+    font-size: 0.7em;
 }
 
 .searchlink:hover,

@@ -13,13 +13,16 @@
     "phonegap-plugin-barcodescanner": {
       "PACKAGE_NAME": "Private Books Library"
     },
-    "cordova-plugin-sqlite-2": {
+    "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "Private Books Library"
     },
     "cordova-plugin-appcenter-analytics": {
       "PACKAGE_NAME": "Private Books Library"
     },
     "cordova-plugin-appcenter-crashes": {
+      "PACKAGE_NAME": "Private Books Library"
+    },
+    "cordova-plugin-appcenter-push": {
       "PACKAGE_NAME": "Private Books Library"
     }
   },

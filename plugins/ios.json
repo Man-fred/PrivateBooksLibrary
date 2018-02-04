@@ -10,9 +10,6 @@
     "cordova-plugin-console": {
       "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
     },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
-    },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
     },
@@ -23,13 +20,16 @@
       "CAMERA_USAGE_DESCRIPTION": "Barcode-Scan",
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     },
-    "cordova-plugin-sqlite-2": {
+    "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     },
     "cordova-plugin-appcenter-analytics": {
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     },
     "cordova-plugin-appcenter-crashes": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
+    },
+    "cordova-plugin-appcenter-push": {
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     }
   },

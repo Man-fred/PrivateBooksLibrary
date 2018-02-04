@@ -1,24 +1,31 @@
 #appSettings {
-    mask: url(../img/svg/solid/cog.svg) no-repeat;
-    /*mask-size: cover;*/
-    -webkit-mask: url(../img/svg/solid/cog.svg) no-repeat;
-    /*-webkit-mask-size: cover;*/
-    background-color: white;
-    /* background-size: 30px 30px; */
+    background: url(../img/svg/solid/cog-white.svg) ;
 }
 #appRefresh {
-    mask: url(../img/svg/solid/sync.svg); /*no-repeat*/
-    /*mask-size: cover;*/
-    -webkit-mask: url(../img/svg/solid/sync.svg) ; /*no-repeat*/
-    /*-webkit-mask-size: cover;*/
-    background-color: white;
-    /* background-size: 30px 30px; */
+    background: url(../img/svg/solid/sync.svg); /*no-repeat*/
 }
 #appReturn {
-    mask: url(../img/svg/solid/arrow-alt-circle-left.svg);
-    /*mask-size: cover;*/
-    -webkit-mask: url(../img/svg/solid/arrow-alt-circle-left.svg) no-repeat;
-    /*-webkit-mask-size: cover;*/
-    background-color: white;
-    /* background-size: 30px 30px; */
+    background: url(../img/svg/solid/arrow-alt-circle-left.svg);
 }
+#appScan {
+    background: url(../img/svg/solid/barcode.svg);
+}
+span.deleteicon {
+    position: relative;
+}
+
+    span.deleteicon span {
+        position: absolute;
+        display: block;
+        top: 2px;
+        right: 4px;
+        width: 16px;
+        height: 16px;
+        background: url(../img/svg/solid/times-circle-gray.svg);
+        cursor: pointer;
+    }
+
+    span.deleteicon input {
+        padding-right: 16px;
+        box-sizing: border-box;
+    }

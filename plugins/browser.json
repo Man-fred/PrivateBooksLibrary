@@ -10,9 +10,6 @@
     "cordova-plugin-console": {
       "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
     },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
-    },
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
     },
@@ -22,13 +19,16 @@
     "phonegap-plugin-barcodescanner": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
-    "cordova-plugin-sqlite-2": {
+    "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
     "cordova-plugin-appcenter-analytics": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
     "cordova-plugin-appcenter-crashes": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-appcenter-push": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },

@@ -39,6 +39,13 @@ main {
   display: flex;
   line-height: 1;
 }
+.content {
+  height: 100%;
+  /*max-width: 800px;*/
+  line-height: 1.6em;
+  width: calc(100% -  0px);
+  padding: 0;
+}
 #top {
   top: 0px;
   position: fixed !important;
@@ -871,19 +878,6 @@ This is the parent `<div>` that contains the menu and the content area.
 /*
 The content `<div>` is where all your content goes.
 */
-.content {
-  height: 100%;
-  /*max-width: 800px;*/
-  line-height: 1.6em;
-  width: calc(100% -  0px);
-  padding: 0;
-}
-@media only screen and (min-width: 568px) {
-  .content {
-    width: calc(100% -  150px);
-    padding-left: 150px;
-  }
-}
 .content-subhead {
   margin: 50px 0 20px 0;
   font-weight: 300;
@@ -1041,7 +1035,7 @@ small screens.
 @media only screen and (min-width: 568px) {
   #mySearchAZ {
     right: 0px;
-    width: 30px;
+    width: 50px;
   }
 }
 .myTableAnchor {
@@ -1075,7 +1069,7 @@ small screens.
 }
 @media only screen and (min-width: 568px) {
   #page1 {
-    width: calc(100% -  40px);
+    width: calc(100% -  60px);
   }
 }
 #page2 {

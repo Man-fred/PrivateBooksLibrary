@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Private Books Library</title>
-    <!-- -->script type="application/javascript" src="lib/log/console-log-html.min.js" --><!--script -->
+    <!-- script type="application/javascript" src="lib/log/console-log-html.min.js" >< script -->
     <script src="js/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="lib/pure/pure-min.css">
     <script defer src="lib/fontawesome/js/fontawesome-all.js"></script>
@@ -49,8 +49,8 @@
                             <div id="dataformBooks">
                                 <form class="pure-form">
                                     <fieldset>
-                                        <button type="button" class="pure-button" onclick="show_data('')">+</button>&nbsp;
-                                        <button type="button" class="pure-button" onclick="show_scan('books')">Scan</button>&nbsp;
+                                        <button type="button" class="pure-button" onclick="show_data('')" title="Neues Buch">+</button>&nbsp;
+                                        <button type="button" id="appScan" class="pure-button" onclick="scan()" title="Barcode scannen">&nbsp;</button>&nbsp;
                                         <span class="pure-button-group" role="group" aria-label="Sort">
                                             <button type="button" class="pure-button" onclick="show_all('books','id')">ID&nbsp;<i id="sort_id" class="fas fa-sort"></i></button>&nbsp;
                                             <button type="button" class="pure-button" onclick="show_all('books')">Name&nbsp;<i id="sort_name" class="fas fa-sort-up"></i></button>&nbsp;
@@ -58,8 +58,11 @@
                                             <button type="button" class="pure-button" onclick="show_all('books','author')">Autor&nbsp;<i id="sort_author" class="fas fa-sort"></i></button>&nbsp;
                                         </span>
                                         <!-- <button type="button" class="pure-button" onclick="dbRenew()">DB Renew</button>&nbsp; -->
-                                        <input type="text" id="appSearch" onkeyup="mySearch()" placeholder="Titel oder Autor ...">
-                                    </fieldset>
+                                        <span class="deleteicon">
+                                            <input type="text" id="appSearch" onkeyup="mySearch()" placeholder="Titel oder Autor ...">
+                                            <span onclick="$(this).prev('input').val('').trigger('change').focus();"></span>
+                                        </span>
+    </fieldset>
                                 </form>
                             </div>
                         </div>
@@ -69,7 +72,6 @@
                 </div>
 
                 <div id="page2">
-                    <button type="submit" onclick="show_page1(1)" class="pure-button pure-button-primary">Zurück</button>
                     <div id="singledata">
                         <form id="singleform" class="pure-form">
                             <fieldset>
