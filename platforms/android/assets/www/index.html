@@ -18,8 +18,18 @@
 </head>
 <body>
     <div id="top">
-        <div id="appRefresh" class="title-button"></div>
-        <div id="appSettings" class="title-button"></div>
+        <div class="right pure-menu-horizontal">
+            <ul class="pure-menu-list">
+                <li id="mSettings" class="pure-menu-item pure-menu-has-children pure-menu-allow-hover title-button">
+                    <a href="#" class="pure-menu-link">&nbsp;</a>
+                    <ul class="pure-menu-children">
+                        <li class="pure-menu-item"><a id="appSettings" href="#" class="pure-menu-link">Settings</a></li>
+                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sync</a></li>
+                    </ul>
+                </li>
+                <li id="appRefresh" class="pure-menu-item title-button"><a href="#" class="pure-menu-link">&nbsp;</a></li>
+            </ul>
+        </div>
         <div id="appTitle">Bücher</div>
         <div id="appReturn" class="title-button"></div>
     </div>

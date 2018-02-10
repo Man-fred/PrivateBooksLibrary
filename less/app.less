@@ -16,6 +16,7 @@
 /* mit Werbung @partner-right: 120px;*/
 @partner-right: 0px;
 @menu-left: 150px;
+@menu-right: 190px;
 @searchAZ000: 30px;
 @searchAZ600: 50px;
 @content-margin: 8px;
@@ -130,8 +131,10 @@ footer {
     float: right;
     padding-top: 0.6em;
     width: calc(~"100% - " 4 * @top-height);
-    text-align:center;
+    white-space: nowrap;
+    text-align:left;
     @media @sm-gt {
+        text-align: center;
         width: calc(~"100% - " @menu-left + 3 * @top-height);
     }
 }
@@ -189,7 +192,11 @@ div.container {
     /*margin-left: 34em;
     border-left: 1px solid gray;*/
     padding: @top-height 0 @footer-height 0;
-    /* overflow: hidden; */
+    overflow: auto;
+}
+#datalistScroll {
+    width: 100%;
+    height: 2000px;
 }
 
 #f_ooter {
@@ -990,6 +997,10 @@ appears on the left side of the page.
         left: @menu-left;
     }
 }
+.right {
+    float:right;
+    width: 2 * @top-height;
+}
 /*
 All anchors inside the menu should be styled like this.
 */
@@ -1015,198 +1026,217 @@ Add that light border to separate items into groups.
 }
 /*
 Change color of the anchor links on hover/focus.
-*/
-#menu .pure-menu li a:hover,
-#menu .pure-menu li a:focus {
+#menu*/
+ .pure-menu li a:hover,
+ .pure-menu li a:focus {
     background: #333;
 }
 /*
 This styles the selected menu item `<li>`.
-*/
-#menu .pure-menu-selected,
-#menu .pure-menu-heading {
+#menu*/
+ .pure-menu-selected,
+ .pure-menu-heading {
     background: #1f8dd6;
 }
 /*
 This styles a link within a selected menu item `<li>`.
 */
-#menu .pure-menu-selected a {
+#menu .pure-menu-item {
+    height: @top-height;
+}
+ .pure-menu-selected a {
     color: #fff;
 }
 /*
 This styles the menu heading.
 */
-#menu .pure-menu-heading {
+ .pure-menu-heading {
     font-size: 110%;
     color: #fff;
     margin: 0;
 }
-/* -- Dynamic Button For Responsive Menu -------------------------------------*/
-/*
+.pure-menu-horizontal .pure-menu-children {
+    left: @top-height - @menu-right;
+    width: @menu-right;
+}
+
+    /* -- Dynamic Button For Responsive Menu -------------------------------------*/
+    /*
 The button to open/close the Menu is custom-made and not part of Pure. Here's
 how it works:
 */
-/*
+    /*
 `.menu-link` represents the responsive menu toggle that shows/hides on
 small screens.
 */
-.menu-link {
-    position: fixed;
-    display: block; /* show this only on small screens */
-    top: 0;
-    left: 0; /* "#menu width" */
-    background: #000;
-    background: rgba(0,0,0,0.7);
-    font-size: 10px; /* change this value to increase/decrease button size */
-    z-index: 1000;
-    height: @top-height;
-    width: 16px;
-    height: 8px;
-    padding: 18px 14px;
-
-    @media @sm-gt {
+    .menu-link {
         position: fixed;
-        left: @menu-left;
-        display: none;
+        display: block; /* show this only on small screens */
+        top: 0;
+        left: 0; /* "#menu width" */
+        background: #000;
+        background: rgba(0,0,0,0.7);
+        font-size: 10px; /* change this value to increase/decrease button size */
+        z-index: 1000;
+        height: @top-height;
+        width: 16px;
+        height: 8px;
+        padding: 18px 14px;
+
+        @media @sm-gt {
+            position: fixed;
+            left: @menu-left;
+            display: none;
+        }
     }
-}
 
-.menu-link:hover,
-.menu-link:focus {
-    background: #000;
-}
-
-.menu-link span {
-    position: relative;
-    display: block;
-}
-
-.menu-link span,
-.menu-link span:before,
-.menu-link span:after {
-    background-color: #fff;
-    width: 100%;
-    height: 0.2em;
-}
-
-.menu-link span:before,
-.menu-link span:after {
-    position: absolute;
-    margin-top: -0.6em;
-    content: " ";
-}
-
-.menu-link span:after {
-    margin-top: 0.6em;
-}
-/************ rechte Sortierleiste ***********/
-#mySearchAZ {
-    background: rgb(200,200,200);
-    top: @top-height;
-    right: 0;
-    bottom: @footer-height;
-    z-index: 800; /* so the menu or its navicon stays above all content */
-    position: fixed !important;
-    position: absolute;
-    width: @searchAZ000;
-    display: flex;
-    display: -moz-flex;
-    display: -webkit-flex;
-    flex-direction: column;
-    -moz-flex-direction: column;
-    -webkit-flex-direction: column;
-
-    @media @sm-gt {
-        right: @partner-right;
-        width: @searchAZ600;
+    .menu-link:hover,
+    .menu-link:focus {
+        background: #000;
     }
-}
-.relative {
-    position:relative;
-}
-.myTableAnchor {
-    position: absolute;
-    top: -@top-height;
-}
-.searchlist {
-    text-align: center;
-    flex: 1 1 auto;
-    -moz-flex: 1 1 auto;
-    -webkit-flex: 1 1 auto;
-    height: 0.5em;
-}
 
-.searchlink {
-    text-align: center;
-    display: block;
-    height: 100%;
-    text-decoration: none;
-    font-size: 0.7em;
-}
-
-.searchlink:hover,
-.searchlink:focus {
-    background: #000;
-}
-
-#main {
-    width: 100%;
-}
-/* -- Responsive Styles (Media Queries) ------------------------------------- */
-#page1 {
-    margin-left: @content-padding;
-    width: calc(~"100% - " @content-padding + @searchAZ000); //
-    padding-right: @searchAZ000;
-
-    @media @sm-gt {
-        width: calc(~"100% - " @content-padding + @searchAZ600);
+    .menu-link span {
+        position: relative;
+        display: block;
     }
-}
 
-#page2 {
-    margin-left: @content-padding;
-    width: calc(~"100% - " @content-padding);
-}
-/*
+    .menu-link span,
+    .menu-link span:before,
+    .menu-link span:after {
+        background-color: #fff;
+        width: 100%;
+        height: 0.2em;
+    }
+
+    .menu-link span:before,
+    .menu-link span:after {
+        position: absolute;
+        margin-top: -0.6em;
+        content: " ";
+    }
+
+    .menu-link span:after {
+        margin-top: 0.6em;
+    }
+
+    .pure-menu-active > .pure-menu-link, .pure-menu-link:focus, .pure-menu-link:hover {
+        background-color: transparent;
+    }
+
+    .pure-menu-disabled, .pure-menu-heading, .pure-menu-link {
+        padding: 0;
+    }
+    /************ rechte Sortierleiste ***********/
+    #mySearchAZ {
+        background: rgb(200,200,200);
+        top: @top-height;
+        right: 0;
+        bottom: @footer-height;
+        z-index: 800; /* so the menu or its navicon stays above all content */
+        position: fixed !important;
+        position: absolute;
+        width: @searchAZ000;
+        display: flex;
+        display: -moz-flex;
+        display: -webkit-flex;
+        flex-direction: column;
+        -moz-flex-direction: column;
+        -webkit-flex-direction: column;
+
+        @media @sm-gt {
+            right: @partner-right;
+            width: @searchAZ600;
+        }
+    }
+
+    .relative {
+        position: relative;
+    }
+
+    .myTableAnchor {
+        position: absolute;
+        top: -@top-height;
+    }
+
+    .searchlist {
+        text-align: center;
+        flex: 1 1 auto;
+        -moz-flex: 1 1 auto;
+        -webkit-flex: 1 1 auto;
+        height: 0.5em;
+    }
+
+    .searchlink {
+        text-align: center;
+        display: block;
+        height: 100%;
+        text-decoration: none;
+        font-size: 0.7em;
+    }
+
+    .searchlink:hover,
+    .searchlink:focus {
+        /* background: #000;*/
+    }
+
+    #main {
+        width: 100%;
+    }
+    /* -- Responsive Styles (Media Queries) ------------------------------------- */
+    #page1 {
+        margin-left: @content-padding;
+        width: calc(~"100% - " @content-padding + @searchAZ000); //
+        padding-right: @searchAZ000;
+
+        @media @sm-gt {
+            width: calc(~"100% - " @content-padding + @searchAZ600);
+        }
+    }
+
+    #page2 {
+        margin-left: @content-padding;
+        width: calc(~"100% - " @content-padding);
+    }
+    /*
 Hides the menu at `48em`, but modify this based on your app's needs.
 */
-@media (min-width: 600px) {
+    @media (min-width: 600px) {
 
-    .header,
-    .content {
-        /*padding-left: 2em;*/
-        /*padding-right: 2em;*/
+        .header,
+        .content {
+            /*padding-left: 2em;*/
+            /*padding-right: 2em;*/
+        }
+
+
+
+
+
+
+
+        footer {
+            /*padding: 2px 40px 2px 40px;*/
+        }
+
+        #page1 {
+            padding-right: @searchAZ000;
+        }
+
+
+        input, select, textarea {
+            width: calc(~"100% - " 10em);
+        }
     }
 
+    @media (max-width: 599px) {
+        #xxmain {
+            margin-left: 8px;
+            width: calc(~"100% - " (2 * @content-padding));
+        }
 
 
-
-
-
-
-    footer {
-        /*padding: 2px 40px 2px 40px;*/
+        footer {
+            /* padding: 2px; */
+        }
     }
-
-    #page1 {
-        padding-right: @searchAZ000;
-    }
-
-
-    input, select, textarea {
-        width: calc(~"100% - " 10em);
-    }
-}
-
-@media (max-width: 599px) {
-    #xxmain {
-        margin-left: 8px;
-        width: calc(~"100% - " (2 * @content-padding));
-    }
-
-
-    footer {
-        /* padding: 2px; */
-    }
-}
-/*******************************************************/
+    /*******************************************************/

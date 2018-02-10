@@ -535,12 +535,55 @@ document.addEventListener("deviceready", function () {
     $('#appReturn').click(function () {
         show_page1(1);
     });
-
+/*
     $("#myTableList").swipe({
         swipe: function (event, direction, distance, duration, fingerCount) {
             $("#message").text("You swiped " + direction + " for " + distance + "px");
         }
         //,threshold: 10
+    });
+    */
+    var startmove = document.getElementById('mySearchAZ');
+    var moves = document.getElementById('message');
+    var startx = 0;
+    var starty = 0;
+    var dist = 0;
+    startmove.addEventListener("touchstart", function (eve) {
+        var touchobj = eve.changedTouches[0]; // erster Finger
+        startx = parseInt(touchobj.clientX); // X/Y-Koordinaten relativ zum Viewport
+        starty = parseInt(touchobj.clientY);
+        moves.innerHTML = "touch bei X: " + startx + "px, Y: " + starty + "px";
+        eve.preventDefault();
+    });
+    startmove.addEventListener("mousedown", function (eve) {
+        startx = parseInt(eve.clientX); // X/Y-Koordinaten relativ zum Viewport
+        starty = parseInt(eve.clientY);
+        moves.innerHTML = "mouse bei X: " + startx + "px, Y: " + starty + "px";
+        eve.preventDefault();
+    });
+    startmove.addEventListener("touchmove", function (eve) {
+        var touchobj = eve.changedTouches[0]; // erster Finger
+        var distx = parseInt(touchobj.clientX) - startx;
+        var disty = parseInt(touchobj.clientY) - starty;
+        moves.innerHTML = "touch bei X: " + (startx + distx) + "px, Y: " + (starty + disty) + "px";
+        eve.preventDefault();
+    });
+    startmove.addEventListener("mousemove", function (eve) {
+        startx = parseInt(eve.clientX); // X/Y-Koordinaten relativ zum Viewport
+        starty = parseInt(eve.clientY);
+        moves.innerHTML = "mouse bei X: " + startx + "px, Y: " + starty + "px";
+        eve.preventDefault();
+    });
+    startmove.addEventListener("touchend", function (eve) {
+        var touchobj = eve.changedTouches[0]; // reference first touch point for this event
+        moves.innerHTML = "touch bei X: " + touchobj.clientX + "px, Y: " + touchobj.clientY + "px";
+        eve.preventDefault();
+    });
+    startmove.addEventListener("mouseup", function (eve) {
+        startx = parseInt(eve.clientX); // X/Y-Koordinaten relativ zum Viewport
+        starty = parseInt(eve.clientY);
+        moves.innerHTML = "mouse bei X: " + startx + "px, Y: " + starty + "px";
+        eve.preventDefault();
     });
 
     function mainmenu() {
@@ -913,12 +956,12 @@ function show_all_docs_sorted() {
     //appResult[seite].rows.sort(sort_books);
     if (myApp[seite].head) {
         if (appResult[seite].rows.length === 0) {
-            table = show_all_header(null);
+            table = '<div id="datalistScroll">' + show_all_header(null);
         } else {
-            table = show_all_header(appResult[seite].rows[0].doc);
+            table = '<div id="datalistScroll">' + show_all_header(appResult[seite].rows[0].doc);
         }
     } else {
-        table = '<table id ="myTableList"><tbody>';
+        table = '<div id="datalistScroll"><table id ="myTableList"><tbody>';
     }
 
     if (!appResult[seite].tr) {
@@ -1005,7 +1048,7 @@ function show_all_docs_sorted() {
         }
         table += appResult[seite].rows[i].tr0 + tablerow + appResult[seite].rows[i].tr1;
     }
-    table += '</tbody></table>';
+    table += '</tbody></table></div>';
     //alert(table);
     //return table;
     $("#datalist").html(table);
