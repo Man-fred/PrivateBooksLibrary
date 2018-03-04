@@ -6,10 +6,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Private Books Library</title>
-    <!-- script type="application/javascript" src="lib/log/console-log-html.min.js" >< script -->
-    <script src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script data-main="main" src="lib/require.js"></script>
     <link rel="stylesheet" href="lib/pure/pure-min.css">
-    <script defer src="lib/fontawesome/js/fontawesome-all.js"></script>
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/ui.css">
     <!--[if IE]>
@@ -98,7 +97,7 @@
                             </fieldset>
                         </form>
                         <div id="record_info">
-                            <button type="button" class="pure-button" onclick="show_div()">?</button>
+                            <button type="button" class="pure-button" onclick="my.main.show_div()">?</button>
                             <div id="record_show" style="display: none;">
                                 <div>DBTimestamp <span id="DBTimestamp"></span></div>
                                 <div>DBversion  <span id="DBversion"></span></div>
@@ -127,15 +126,5 @@
         ConsoleLogHTML.connect(document.getElementById("info-log")); // Redirect log messages
         // ConsoleLogHTML.disconnect(); // Stop redirecting -->
     <!-- /script -->
-    <script type="text/javascript" src="cordova.js"></script>
-    <script src="js/pouchdb.min.js"></script> <!-- 6.3.4 -->
-    <script src="js/pouchdb.find.js"></script>
-    <script src="js/pouchdb.authentication.js"></script>
-    <script src="js/pouchdb.cordova-sqlite.js"></script>
-    <script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>
-    <script src="js/cookie.js"></script>
-    <script src="js/ui.js"></script>
-    <script src="js/app.js"></script>
-    <!-- script src="js/firstbulk.js"></script -->
 </body>
 </html>

@@ -10,3 +10,6 @@ platforms/
 /simulation/
 build.json
 config.xml
+*.php
+*.php
+*.php

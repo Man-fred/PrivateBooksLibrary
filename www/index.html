@@ -6,10 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Private Books Library</title>
-    <!-- script type="application/javascript" src="lib/log/console-log-html.min.js" >< script -->
-    <script src="js/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="lib/pure/pure-min.css">
-    <script defer src="lib/fontawesome/js/fontawesome-all.js"></script>
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/ui.css">
     <!--[if IE]>
@@ -47,7 +44,7 @@
             </div>
         </div>
         <div id="partner"></div>
-        <div id="main">
+        <div id="main3">
             <div class="header">
                 <div id="message">message</div>
             </div>
@@ -56,23 +53,25 @@
                     <div id="dataform">
                         <div style="position:relative;">
                             <div class="myTableAnchor" id="appSearchAnchor"></div>
+                            <div id="appAdd">
+                                <button type="button" class="pure-button" onclick="app.data.show('')" title="Neuer Eintrag">+</button>
+                            </div>
                             <div id="dataformBooks">
                                 <form class="pure-form">
                                     <fieldset>
-                                        <button type="button" class="pure-button" onclick="show_data('')" title="Neues Buch">+</button>&nbsp;
-                                        <button type="button" id="appScan" class="pure-button" onclick="scan()" title="Barcode scannen">&nbsp;</button>&nbsp;
+                                        <button type="button" id="appScan" class="pure-button" onclick="app.search.scan()" title="Barcode scannen">&nbsp;</button>&nbsp;
                                         <span class="pure-button-group" role="group" aria-label="Sort">
-                                            <button type="button" class="pure-button" onclick="show_all('books','id')">ID&nbsp;<i id="sort_id" class="fas fa-sort"></i></button>&nbsp;
-                                            <button type="button" class="pure-button" onclick="show_all('books')">Name&nbsp;<i id="sort_name" class="fas fa-sort-up"></i></button>&nbsp;
-                                            <button type="button" class="pure-button" onclick="show_all('books','date')">Datum&nbsp;<i id="sort_date" class="fas fa-sort"></i></button>&nbsp;
-                                            <button type="button" class="pure-button" onclick="show_all('books','author')">Autor&nbsp;<i id="sort_author" class="fas fa-sort"></i></button>&nbsp;
+                                            <button type="button" class="pure-button" onclick="app.datalist.show_all('books','id')">ID&nbsp;<i id="sort_id" class="fas fa-sort"></i></button>&nbsp;
+                                            <button type="button" class="pure-button" onclick="app.datalist.show_all('books')">Name&nbsp;<i id="sort_name" class="fas fa-sort-up"></i></button>&nbsp;
+                                            <button type="button" class="pure-button" onclick="app.datalist.show_all('books','date')">Datum&nbsp;<i id="sort_date" class="fas fa-sort"></i></button>&nbsp;
+                                            <button type="button" class="pure-button" onclick="app.datalist.show_all('books','author')">Autor&nbsp;<i id="sort_author" class="fas fa-sort"></i></button>&nbsp;
                                         </span>
                                         <!-- <button type="button" class="pure-button" onclick="dbRenew()">DB Renew</button>&nbsp; -->
-                                        <span class="deleteicon">
-                                            <input type="text" id="appSearch" onkeyup="mySearch()" placeholder="Titel oder Autor ...">
-                                            <span onclick="$(this).prev('input').val('').trigger('change').focus();"></span>
-                                        </span>
-    </fieldset>
+                                        <div class="deleteicon">
+                                            <input type="text" id="appSearch" onkeyup="app.datalist.mySearch()" placeholder="Titel oder Autor ...">
+                                            <span onclick="app.datalist.mySearch('~~')"></span>
+                                        </div>
+                                    </fieldset>
                                 </form>
                             </div>
                         </div>
@@ -98,7 +97,7 @@
                             </fieldset>
                         </form>
                         <div id="record_info">
-                            <button type="button" class="pure-button" onclick="show_div()">?</button>
+                            <button type="button" class="pure-button" onclick="app.ui.show_div()">?</button>
                             <div id="record_show" style="display: none;">
                                 <div>DBTimestamp <span id="DBTimestamp"></span></div>
                                 <div>DBversion  <span id="DBversion"></span></div>
@@ -128,14 +127,7 @@
         // ConsoleLogHTML.disconnect(); // Stop redirecting -->
     <!-- /script -->
     <script type="text/javascript" src="cordova.js"></script>
-    <script src="js/pouchdb.min.js"></script> <!-- 6.3.4 -->
-    <script src="js/pouchdb.find.js"></script>
-    <script src="js/pouchdb.authentication.js"></script>
-    <script src="js/pouchdb.cordova-sqlite.js"></script>
-    <script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>
-    <script src="js/cookie.js"></script>
-    <script src="js/ui.js"></script>
-    <script src="js/app.js"></script>
-    <!-- script src="js/firstbulk.js"></script -->
+    <script type="text/javascript" src="lib/pouchdb.js"></script> <!-- 6.3.4 -->
+    <script data-main="main" src="lib/require.js"></script>
 </body>
 </html>
