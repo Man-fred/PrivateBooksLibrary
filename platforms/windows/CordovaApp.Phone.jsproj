@@ -75,4 +75,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\plugins\phonegap-plugin-barcodescanner\src\windows\lib\WinRTBarcodeReader.csproj" />
     </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\plugins\cordova-plugin-vibration\src\windows\Vibration\Vibration.csproj" />
+    </ItemGroup>
 </Project>

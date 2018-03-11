@@ -9,6 +9,7 @@
     "cordova-plugin-console": "~1.0.7",
     "cordova-plugin-file": "~4.3.3",
     "cordova-plugin-statusbar": "^2.4.1",
+    "cordova-plugin-vibration": "^3.0.1",
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-windows": "4.4.2",
     "phonegap-plugin-barcodescanner": "~7.0.0"
@@ -27,7 +28,8 @@
       "phonegap-plugin-barcodescanner": {
         "CAMERA_USAGE_DESCRIPTION": "Barcode-Scan"
       },
-      "cordova-plugin-statusbar": {}
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-vibration": {}
     }
   }
 }

@@ -185,6 +185,9 @@
              }
              myObj.DBTimestamp = Math.floor(Date.now() / 1000);
              myObj.DBstate = state;
+             if (state === "del") {
+                 myObj.DBdeleted = true;
+             }
              if (!myObj.DBversion) {
                  myObj.DBversion = 1;
              } else {
@@ -193,8 +196,8 @@
              if (table === "")
                  table = app.seite;
              if (!myObj._id) {
-                 if (table === 'state' || table === 'favorite') {
-                     myObj._id = pouch.dbIdPublic + '_' + table + '_' + myObj.name;
+                 if (app.myApp[table].idName){ // === 'state' || table === 'favorite') {
+                     myObj._id = pouch.dbIdPublic + '_' + table + '_' + encodeURI(myObj.name);
                  } else {
                      myObj._id = pouch.dbIdPublic + '_' + table + '2' + (S4() + S4() + "-" + S4() + "-4" + S4().substr(0, 3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
                  }

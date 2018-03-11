@@ -55,10 +55,10 @@
                     result += '</div>';
                 }
             });
-            result += '</div>';
             if (aktiveSeite === "login") {
                 result += '<p>Font Awesome by Dave Gandy - <a href="https://fontawesome.com/">https://fontawesome.com/</a></p>';
             }
+            result += '</div>';
             $('#formdata').append(result);
 
         },
@@ -98,6 +98,7 @@
                         $('#DBstate').html(doc.DBstate);
                         $('#DBversion').html(doc.DBversion);
                         $('#DBok').html(doc.DBok);
+                        $('#DBdeleted').html(doc.DBdeleted);
                         $('#DBreason').html(doc.DBreason);
                         //$('#txtSearch').html(r._id);
                         $('#_id').html(doc._id);
@@ -135,6 +136,8 @@
             $('#DBTimestamp').html('');
             $('#DBServertime').html('');
             $('#DBstate').html('');
+            $('#DBok').html('');
+            $('#DBdeleted').html('');
             $('#_id').html('');
             $('#_rev').html('');
             $('#DBversion').html('');
@@ -218,7 +221,7 @@
 
             var _id = $('#_id').html();
             app.pouch.db.get(_id).then(function (doc) {
-                console.log(doc);
+                //console.log(doc);
                 // handle doc
                 if (doc) {
                     $.each(app.myApp[app.seite].header, function () {
@@ -264,33 +267,19 @@
             app.pouch.db.get(_id).then(function (doc) {
                 // handle doc
                 if (doc) {
-                    app.pouch.db.remove(doc).then(function (doc2) {
-                        // handle doc
-                        if (doc2) {
-                            $('#result').html('Record No. ' + doc._id + ' Deleted Successfully');
-                            app.datalist.fill(app.seite, true);
-                        }
-                        ;
-                    }).catch(function (err) {
-                        $('#result').html('Record No. ' + _id + ' Delete failed');
-                        console.log(err);
-                        });
-                    /*
                     app.pouch.setSync(doc, 'del');
-                    doc._deleted = true;
+                    //doc._deleted = true;
                     app.pouch.db.put(doc).then(function (doc2) {
                         // handle doc
                         if (doc2) {
                             $('#result').html('Record No. ' + doc._id + ' Deleted Successfully');
                             app.datalist.fill(app.seite, true);
                         }
-                        ;
                     }).catch(function (err) {
                         $('#result').html('Record No. ' + _id + ' Delete failed');
                         console.log(err);
                     });
-                    */
-                };
+                }
             }).catch(function (err) {
                 console.log(err);
             });

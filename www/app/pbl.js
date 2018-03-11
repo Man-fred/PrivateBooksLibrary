@@ -1,6 +1,8 @@
 define(function (require) {
     var pbl = {
-        initialize: function () {
+        initialize: function (lang) {
+            app = pbl;
+            app.lang = lang;
             console.log('initialize');
             document.addEventListener('deviceready', this.onDeviceReady, false);
             window.addEventListener("resize", this.onWindowLoadResize);
@@ -12,25 +14,29 @@ define(function (require) {
                 pbl.ui.show_page1(1);
             });
 
+            require(['./tables'], function (tables) {
+                //tables.initialize();
+                pbl.myApp = tables;
+                require(['./data'], function (data) {
+                    data.initialize(pbl.myApp);
+                    pbl.data = data;
+                    pbl.onDeviceReady();
+                });
+                require(['./datalist'], function (datalist) {
+                    datalist.initialize(pbl);
+                    pbl.datalist = datalist;
+                    pbl.onDeviceReady();
+                });
+            });
             require(['./pouch'], function (pouch) {
                 pouch.initialize(pbl);
                 pbl.pouch = pouch;
                 console.log('pouch');
                 pbl.onDeviceReady();
             });
-            require(['./data'], function (data) {
-                data.initialize(pbl.myApp);
-                pbl.data = data;
-                pbl.onDeviceReady();
-            });
-            require(['./datalist'], function (datalist) {
-                datalist.initialize(pbl);
-                pbl.datalist = datalist;
-                pbl.onDeviceReady();
-            });
             require(['./ui'], function (ui) {
                 ui.initialize(pbl);
-                pbl.ui = ui
+                pbl.ui = ui;
                 pbl.onDeviceReady();
             });
             require(['./book'], function (book) {
@@ -45,8 +51,7 @@ define(function (require) {
             });
         },
         ui: null,
-        slide: require('./slide'),
-        myApp: require('./tables'),
+        //slide: require('./slide'),
         //pouch: null,
         menu: require('./menu'),
         //data: null,
@@ -65,6 +70,7 @@ define(function (require) {
         infoDev: null,
         listeningElement: null,
         receivedElement: null,
+        countBooks: 0,
 
         onDeviceReady: function () {
             var appTitle = 'Private Books Library';
@@ -75,6 +81,12 @@ define(function (require) {
 
             pbl.listeningElement.setAttribute('style', 'display:none;');
             pbl.receivedElement.setAttribute('style', 'display:block;');
+            require(['./position'], function (position) {
+                position.initialize(pbl);
+                pbl.position = position;
+                //console.log('pouch');
+                //pbl.onDeviceReady();
+            });
 
             pbl.onWindowLoadResize();
             pbl.dbReady--;
@@ -84,6 +96,8 @@ define(function (require) {
                 console.log('dbNew');
                 pbl.pouch.dbNew();
                 pbl.datalist.fill("books");
+                navigator.vibrate(200);
+                console.log("vibration: "+(navigator.vibrate ? true : false) );
             }
         },
         onWindowLoadResize: function () {
@@ -99,14 +113,13 @@ define(function (require) {
                 //$("#partner").html('<iframe src="https://rcm-eu.amazon-adsystem.com/e/cm?o=3&p=29&l=ur1&category=books&f=ifr&linkID=d5d77bd50e3d0c95cef3edf83dd6cc87&t=bielemeierde-21&tracking_id=bielemeierde-21" width="120" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>');
                 $("#singleform").addClass("pure-form pure-form-aligned").removeClass("pure-form-stacked");
             }
+            //pbl.position.height();
         },
          refresh: function () {
              // page1 active?
-             if (pbl.appPage == 1) {
+             if (pbl.appPage === 1) {
                  pbl.pouch.appResult[pbl.seite] = null;
                  pbl.datalist.fill(pbl.seite, true);
-             } else {
-
              }
              //alert('refresh ' + seite);
          },
@@ -138,7 +151,7 @@ define(function (require) {
                         dbNew();
                     }).catch(function (err) {
                         // error occurred
-                    })
+                    });
                 }
             }
 
@@ -156,7 +169,7 @@ define(function (require) {
 
 
                 $("#mypanel").trigger("updatelayout");
-            };
+            }
 
         }
     };

@@ -36,7 +36,7 @@
         scan_search: function (type, w) {
             // ean / isbn anpassen
             if (!w) {
-                w = $('#bc_text').val()
+                w = $('#bc_text').val();
             }
             if (w.length === 13) {
                 w = w.substr(3, 9);

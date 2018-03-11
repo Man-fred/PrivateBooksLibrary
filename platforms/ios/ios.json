@@ -31,6 +31,10 @@
             {
               "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"Vibration\"><param name=\"ios-package\" value=\"CDVVibration\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -51,7 +55,7 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 646
+              "count": 658
             }
           ]
         }
@@ -61,11 +65,11 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"microphone\" />",
-              "count": 646
+              "count": 658
             },
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 646
+              "count": 658
             }
           ]
         }
@@ -100,6 +104,9 @@
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     },
     "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
+    },
+    "cordova-plugin-vibration": {
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     }
   },
@@ -309,6 +316,15 @@
       "clobbers": [
         "window.StatusBar"
       ]
+    },
+    {
+      "id": "cordova-plugin-vibration.notification",
+      "file": "plugins/cordova-plugin-vibration/www/vibration.js",
+      "pluginId": "cordova-plugin-vibration",
+      "merges": [
+        "navigator.notification",
+        "navigator"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -317,6 +333,7 @@
     "cordova-plugin-compat": "1.2.0",
     "cordova-plugin-file": "4.3.3",
     "phonegap-plugin-barcodescanner": "7.0.0",
-    "cordova-plugin-statusbar": "2.4.1"
+    "cordova-plugin-statusbar": "2.4.1",
+    "cordova-plugin-vibration": "3.0.1"
   }
 }

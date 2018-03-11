@@ -15,9 +15,12 @@ requirejs.config({
 
 // Start loading the main app file. Put all of
 // your application logic in there.'pouchdb',
-requirejs(['jquery', 'pouchdb.authentication', 'pouchdb-replication-stream', 'app/pbl'], function ($, authentication, replication, pbl) {
-    pbl.initialize();
-    app = pbl;
+requirejs(['jquery', 'pouchdb.authentication', 'pouchdb-replication-stream', 'app/pbl', "i18n!nls/lang"],
+    function ($, authentication, replication, pbl, lang) {
+    pbl.initialize(lang);
+    //app = pbl;
+    //app.lang = lang;
+    //alert(navigator.languages+" or "+navigator.language+" or "+navigator.userLanguage + ': '+app.lang.books);
 });
 
 /*

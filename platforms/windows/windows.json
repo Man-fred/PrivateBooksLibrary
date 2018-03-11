@@ -10,7 +10,7 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 653
+              "count": 665
             },
             {
               "xml": "<Capability Name=\"webcam\" />",
@@ -28,11 +28,11 @@
             },
             {
               "xml": "<DeviceCapability Name=\"microphone\" />",
-              "count": 650
+              "count": 662
             },
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 650
+              "count": 662
             }
           ]
         }
@@ -47,6 +47,9 @@
       "PACKAGE_NAME": "Private Books Library"
     },
     "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "Private Books Library"
+    },
+    "cordova-plugin-vibration": {
       "PACKAGE_NAME": "Private Books Library"
     }
   },
@@ -81,11 +84,27 @@
       "file": "plugins/cordova-plugin-statusbar/src/windows/StatusBarProxy.js",
       "pluginId": "cordova-plugin-statusbar",
       "runs": true
+    },
+    {
+      "id": "cordova-plugin-vibration.VibrationProxy",
+      "file": "plugins/cordova-plugin-vibration/src/windows/VibrationProxy.js",
+      "pluginId": "cordova-plugin-vibration",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-vibration.notification",
+      "file": "plugins/cordova-plugin-vibration/www/vibration.js",
+      "pluginId": "cordova-plugin-vibration",
+      "merges": [
+        "navigator.notification",
+        "navigator"
+      ]
     }
   ],
   "plugin_metadata": {
     "cordova-plugin-whitelist": "1.2.2",
     "phonegap-plugin-barcodescanner": "7.0.0",
-    "cordova-plugin-statusbar": "2.4.1"
+    "cordova-plugin-statusbar": "2.4.1",
+    "cordova-plugin-vibration": "3.0.1"
   }
 }

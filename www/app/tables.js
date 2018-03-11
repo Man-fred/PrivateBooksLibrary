@@ -12,11 +12,11 @@
             fields: {
                 title: {
                     name: "name",
-                    title: "title"
+                    title: app.lang.title
                 },
                 author: {
                     name: "author",
-                    title: "author"
+                    title: app.lang.author
                 },
                 publisher: {
                     name: "publisher",
@@ -85,12 +85,13 @@
         },
         authors: {
             name: "authors",
-            title: "Autoren",
+            title: app.lang.authors,
             menu: true,
             action: "app.datalist.fill",
             head: true,
             tr: '',
             btn: { add: true, update: true },
+            idName: true,
             fields: {
                 name: {
                     name: "name",
@@ -107,6 +108,7 @@
             head: true,
             tr: '',
             dataIsConst: true,
+            idName: true,
             btn: { add: true, update: true },
             fields: {
                 name: {
@@ -128,6 +130,7 @@
             head: true,
             tr: '',
             dataIsConst: true,
+            idName: true,
             btn: { add: true, update: true },
             fields: {
                 name: {

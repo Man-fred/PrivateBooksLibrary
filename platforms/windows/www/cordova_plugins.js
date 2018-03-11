@@ -29,6 +29,21 @@ module.exports = [
         "file": "plugins/cordova-plugin-statusbar/src/windows/StatusBarProxy.js",
         "pluginId": "cordova-plugin-statusbar",
         "runs": true
+    },
+    {
+        "id": "cordova-plugin-vibration.VibrationProxy",
+        "file": "plugins/cordova-plugin-vibration/src/windows/VibrationProxy.js",
+        "pluginId": "cordova-plugin-vibration",
+        "runs": true
+    },
+    {
+        "id": "cordova-plugin-vibration.notification",
+        "file": "plugins/cordova-plugin-vibration/www/vibration.js",
+        "pluginId": "cordova-plugin-vibration",
+        "merges": [
+            "navigator.notification",
+            "navigator"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -36,7 +51,8 @@ module.exports.metadata =
 {
     "cordova-plugin-whitelist": "1.2.2",
     "phonegap-plugin-barcodescanner": "7.0.0",
-    "cordova-plugin-statusbar": "2.4.1"
+    "cordova-plugin-statusbar": "2.4.1",
+    "cordova-plugin-vibration": "3.0.1"
 };
 // BOTTOM OF METADATA
 });
