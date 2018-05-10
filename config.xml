@@ -105,9 +105,6 @@
     </config-file>
     <vs:toolsetVersion>6.3.1</vs:toolsetVersion>
     <engine name="browser" />
-    <engine name="android" spec="5.2.1" />
-    <engine name="ios" spec="4.2.0" />
-    <engine name="windows" spec="4.4.2" />
     <plugin name="cordova-plugin-whitelist" spec="1.2.2" />
     <plugin name="cordova-plugin-console" spec="~1.0.7" />
     <plugin name="cordova-plugin-file" spec="~4.3.3" />
@@ -116,4 +113,7 @@
     </plugin>
     <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
     <plugin name="cordova-plugin-vibration" spec="^3.0.1" />
+    <engine name="android" spec="5.2.1" />
+    <engine name="ios" spec="4.2.0" />
+    <engine name="windows" spec="4.4.2" />
 </widget>

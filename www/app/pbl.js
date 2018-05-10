@@ -71,6 +71,7 @@ define(function (require) {
         listeningElement: null,
         receivedElement: null,
         countBooks: 0,
+        countLog: 0,
 
         onDeviceReady: function () {
             var appTitle = 'Private Books Library';
@@ -123,6 +124,14 @@ define(function (require) {
              }
              //alert('refresh ' + seite);
          },
+         log: function (message, a2, a3, a4) {
+             var ng = new Date().toLocaleString();
+             $("#info-log").prepend('<li id="info-log' + pbl.countLog+'">' + ng + ': ' + message + '</li>');
+             if (pbl.countLog > 50) {
+                 $("#info-log" + (pbl.countLog-50)).remove();
+             }
+             pbl.countLog++;
+        },
 
         main: function () {
             /* nur jQuery Mobile

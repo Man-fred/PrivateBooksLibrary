@@ -16,10 +16,11 @@
         dbReady: 2,
         appResult: [],
 
-        infoSync: document.getElementById('info-sync'),
+        infoSync: null,
         initialize: function (pbl) {
             this.pbl = pbl;
-            this.infoSync.innerHTML = 'inizialize';
+            this.infoSync = document.getElementById('info-sync')
+            this.infoSync.innerHTML = 'initialize';
         },
         set: function (doc) {
             this.dbServer = doc.dbServer;
@@ -63,11 +64,24 @@
             }
         },
         newDocs: function (changes) {
-            var test = changes;
+            console.log(changes);
         },
         // Initialise a sync with the remote server
         sync: function () {
             pouch.infoSync.setAttribute('data-sync-state', 'syncing');
+            pouch.db.replicate.from(pouch.dbRemote).on('complete', function (info) {
+                console.log(info.last_seq);
+                app.log('Last Sequence: ' + parseInt(info.last_seq));
+                // then two-way, continuous, retriable sync
+                pouch.dbSync = pouch.db.sync(pouch.dbRemote, { live: true, retry: true })
+                    .on('change', pouch.onSyncChange)
+                    .on('paused', pouch.onSyncPaused)
+                    .on('complete', pouch.onSyncComplete)
+                    .on('active', pouch.onSyncActive)
+                    .on('denied', pouch.onSyncDenied)
+                    .on('error', pouch.onSyncError);
+            }).on('error', pouch.onSyncError);
+            /*
             pouch.dbSync = pouch.dbRemote.sync(pouch.db, {
                 live: true, retry: true
             }).on('change', function (info) {
@@ -85,12 +99,51 @@
                 pouch.infoSync.setAttribute('data-sync-state', 'insync');
                 pouch.infoSync.innerHTML = 'server: complete ' + info.ok;
             });
+            */
         },
+        onSyncChange: function (info) {
+            if (info.direction == "pull") {
+                app.log('Last Sequence: ' + parseInt(info.change.last_seq));
+            };
+            console.log(info);
+            pouch.infoSync.setAttribute('data-sync-state', 'changed');
+            pouch.infoSync.innerHTML = 'server: change ' + info.change.ok;
+        },
+        onSyncPaused: function (err) {
+            pouch.infoSync.setAttribute('data-sync-state', 'paused');
+            pouch.infoSync.innerHTML = 'server: paused ' + (err ? err : '');
+            pouch.db.info().then(function (result) {
+                console.log(result);
+                pouch.infoSync.innerHTML = 'server: paused ' + result.update_seq;
+                app.log('server: paused ' + result.update_seq);
+            }).catch(function (err) {
+                console.log(err);
+            });
 
-        // There was some form or error syncing
+
+        },
+        onSyncActive: function () {
+            pouch.infoSync.setAttribute('data-sync-state', 'paused');
+            pouch.infoSync.innerHTML = 'server: active';
+        },
+        onSyncDenied: function (err) {
+            pouch.infoSync.setAttribute('data-sync-state', 'error');
+            pouch.infoSync.innerHTML = 'server: denied ' + (err ? err : '');
+        },
+        onSyncError: function (err) {
+            pouch.infoSync.setAttribute('data-sync-state', 'error');
+            pouch.infoSync.innerHTML = 'server: error ' + err;
+        },
+        onSyncComplete: function (info) {
+            console.log(info);
+            pouch.infoSync.setAttribute('data-sync-state', 'insync');
+            pouch.infoSync.innerHTML = 'server: complete ' + info.ok;
+        },
+        /*/ There was some form or error syncing
         syncError: function () {
             pouch.infoSync.setAttribute('data-sync-state', 'error');
-         },
+        },
+        */
         dbNew: function () {
             //Test for browser wbSQL compatibility
 

@@ -30,7 +30,7 @@
                 }
             });
             //if (debugOutput)
-            result += '<li class="pure-menu-item" onclick="show_pageLog()"><a class="pure-menu-link" href="#">Console.Log</a></li>';
+            result += '<li class="pure-menu-item" onclick="app.ui.show_pageLog()"><a class="pure-menu-link" href="#">Console.Log</a></li>';
 
             $("#sidelist").html(result);
         }

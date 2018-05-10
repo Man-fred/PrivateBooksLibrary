@@ -10,6 +10,7 @@
         fill: function (aktiveSeite, refresh = false) {
             this.dbReady--;
             if (this.dbReady <= 0) {
+                console.log("****~~~~****");
                 console.log(datalist.pbl.seite);
                 if (aktiveSeite !== datalist.pbl.seite) {
                     if (aktiveSeite !== "") {
