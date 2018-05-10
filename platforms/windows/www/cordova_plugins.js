@@ -44,6 +44,26 @@ module.exports = [
             "navigator.notification",
             "navigator"
         ]
+    },
+    {
+        "id": "cordova-sqlite-storage.SQLitePlugin",
+        "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+        "pluginId": "cordova-sqlite-storage",
+        "clobbers": [
+            "SQLitePlugin"
+        ]
+    },
+    {
+        "id": "cordova-sqlite-storage.SQLiteProxy",
+        "file": "plugins/cordova-sqlite-storage/src/windows/sqlite-proxy.js",
+        "pluginId": "cordova-sqlite-storage",
+        "runs": true
+    },
+    {
+        "id": "cordova-sqlite-storage.SQLite3",
+        "file": "plugins/cordova-sqlite-storage/src/windows/SQLite3-Win-RT/SQLite3JS/js/SQLite3.js",
+        "pluginId": "cordova-sqlite-storage",
+        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -52,7 +72,8 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.2.2",
     "phonegap-plugin-barcodescanner": "7.0.0",
     "cordova-plugin-statusbar": "2.4.1",
-    "cordova-plugin-vibration": "3.0.1"
+    "cordova-plugin-vibration": "3.0.1",
+    "cordova-sqlite-storage": "2.3.1"
 };
 // BOTTOM OF METADATA
 });

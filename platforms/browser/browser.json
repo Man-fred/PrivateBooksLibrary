@@ -20,7 +20,7 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 752
+              "count": 755
             }
           ]
         }
@@ -30,11 +30,11 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"microphone\" />",
-              "count": 752
+              "count": 755
             },
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 752
+              "count": 755
             }
           ]
         }
@@ -61,6 +61,9 @@
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
     "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-sqlite-storage": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },
@@ -290,6 +293,14 @@
         "navigator.notification",
         "navigator"
       ]
+    },
+    {
+      "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+      "id": "cordova-sqlite-storage.SQLitePlugin",
+      "pluginId": "cordova-sqlite-storage",
+      "clobbers": [
+        "SQLitePlugin"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -299,6 +310,7 @@
     "cordova-plugin-file": "4.3.3",
     "phonegap-plugin-barcodescanner": "7.0.0",
     "cordova-plugin-statusbar": "2.4.1",
-    "cordova-plugin-vibration": "3.0.1"
+    "cordova-plugin-vibration": "3.0.1",
+    "cordova-sqlite-storage": "2.3.1"
   }
 }
