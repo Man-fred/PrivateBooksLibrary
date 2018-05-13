@@ -1,3 +1,5 @@
+return;
+
 var db;
 var system;
 var seite = "";
@@ -274,7 +276,7 @@ window.onerror = function (message, source, lineno, colno, error) {
 */
 function dbNew() {
     //Test for browser wbSQL compatibility
-
+    return;
     if (((typeof cordova !== "undefined" && cordova.platformId !== 'browser') || typeof PhoneGap !== "undefined" || typeof phonegap !== "undefined")
         && typeof sqlitePlugin !== 'undefined' && typeof openDatabase !== 'undefined') {
         db = new PouchDB(dbName, { adapter: 'cordova-sqlite' });

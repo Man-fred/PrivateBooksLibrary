@@ -15,6 +15,10 @@
             {
               "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"SQLitePlugin\"><param name=\"android-package\" value=\"io.sqlc.SQLitePlugin\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -37,7 +41,7 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 665
+              "count": 666
             }
           ]
         }
@@ -47,11 +51,11 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"microphone\" />",
-              "count": 665
+              "count": 666
             },
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 665
+              "count": 666
             }
           ]
         }
@@ -75,6 +79,9 @@
     },
     "cordova-plugin-taptic-engine": {
       "PACKAGE_NAME": "io.cordova.myapp387c96"
+    },
+    "cordova-sqlite-evcore-extbuild-free": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
     }
   },
   "dependent_plugins": {},
@@ -94,12 +101,21 @@
       "clobbers": [
         "TapticEngine"
       ]
+    },
+    {
+      "id": "cordova-sqlite-evcore-extbuild-free.SQLitePlugin",
+      "file": "plugins/cordova-sqlite-evcore-extbuild-free/www/SQLitePlugin.js",
+      "pluginId": "cordova-sqlite-evcore-extbuild-free",
+      "clobbers": [
+        "SQLitePlugin"
+      ]
     }
   ],
   "plugin_metadata": {
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-statusbar": "2.4.1",
     "cordova-plugin-vibration": "3.0.1",
-    "cordova-plugin-taptic-engine": "2.1.0"
+    "cordova-plugin-taptic-engine": "2.1.0",
+    "cordova-sqlite-evcore-extbuild-free": "0.9.7"
   }
 }

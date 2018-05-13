@@ -39,6 +39,10 @@
             {
               "xml": "<feature name=\"TapticEngine\"><param name=\"ios-package\" value=\"TapticEngine\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"SQLitePlugin\"><param name=\"ios-package\" value=\"SQLitePlugin\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -59,7 +63,7 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 665
+              "count": 666
             }
           ]
         }
@@ -69,11 +73,11 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"microphone\" />",
-              "count": 665
+              "count": 666
             },
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 665
+              "count": 666
             }
           ]
         }
@@ -114,6 +118,9 @@
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     },
     "cordova-plugin-taptic-engine": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
+    },
+    "cordova-sqlite-evcore-extbuild-free": {
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     }
   },
@@ -340,6 +347,14 @@
       "clobbers": [
         "TapticEngine"
       ]
+    },
+    {
+      "id": "cordova-sqlite-evcore-extbuild-free.SQLitePlugin",
+      "file": "plugins/cordova-sqlite-evcore-extbuild-free/www/SQLitePlugin.js",
+      "pluginId": "cordova-sqlite-evcore-extbuild-free",
+      "clobbers": [
+        "SQLitePlugin"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -350,6 +365,7 @@
     "phonegap-plugin-barcodescanner": "7.0.0",
     "cordova-plugin-statusbar": "2.4.1",
     "cordova-plugin-vibration": "3.0.1",
-    "cordova-plugin-taptic-engine": "2.1.0"
+    "cordova-plugin-taptic-engine": "2.1.0",
+    "cordova-sqlite-evcore-extbuild-free": "0.9.7"
   }
 }
