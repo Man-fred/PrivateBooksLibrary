@@ -5,5 +5,5 @@
     "CoreVideo.framework": 1,
     "QuartzCore.framework": 1,
     "CoreImage.framework": 1,
-    "AudioToolbox.framework": 2
+    "AudioToolbox.framework": 3
 }

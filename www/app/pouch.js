@@ -153,7 +153,7 @@
                 this.db = new PouchDB(this.dbName, { revs_limit: 1, auto_compaction: true, adapter: 'cordova-sqlite' });
                 app.log('Database: Cordova');
             } else if (!this.pbl.ui.isChrome() && window.openDatabase) {
-                this.db = new PouchDB(this.dbName, { revs_limit: 1, auto_compaction: true, adapter: 'websql' });
+                this.db = new PouchDB(this.dbName, { revs_limit: 1, auto_compaction: true, size: 500, adapter: 'websql' });
                 app.log('Database: webSQL');
             } else {
                 this.db = new PouchDB(this.dbName, { revs_limit: 1, auto_compaction: true, size:500 });

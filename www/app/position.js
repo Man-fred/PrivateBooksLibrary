@@ -37,7 +37,8 @@
                 var link = Math.round(100 * position.link.length * (parseInt(touchobj.clientY) - position.startmove.offsetTop) / position.startmove.offsetHeight) / 100;
                 position.moves.innerHTML = "mouse Y: " + link + " / " + position.link[Math.round(link - 0.5)];
                 if (position.linkLast !== position.link[Math.round(link - 0.5)]) {
-                    navigator.vibrate(200);
+                    //navigator.vibrate(200);
+                    TapticEngine.selection();
                     window.location = position.link[Math.round(link - 0.5)];
                     position.linkLast = position.link[Math.round(link - 0.5)];
                 }

@@ -9,11 +9,11 @@ module.exports = [
         ]
     },
     {
-        "id": "cordova-sqlite-legacy.SQLitePlugin",
-        "file": "plugins/cordova-sqlite-legacy/www/SQLitePlugin.js",
-        "pluginId": "cordova-sqlite-legacy",
+        "id": "cordova-plugin-taptic-engine.TapticEngine",
+        "file": "plugins/cordova-plugin-taptic-engine/www/TapticEngine.js",
+        "pluginId": "cordova-plugin-taptic-engine",
         "clobbers": [
-            "SQLitePlugin"
+            "TapticEngine"
         ]
     }
 ];
@@ -23,7 +23,7 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-statusbar": "2.4.1",
     "cordova-plugin-vibration": "3.0.1",
-    "cordova-sqlite-legacy": "2.0.1"
+    "cordova-plugin-taptic-engine": "2.1.0"
 };
 // BOTTOM OF METADATA
 });

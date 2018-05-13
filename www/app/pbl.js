@@ -97,8 +97,8 @@ define(function (require) {
                 console.log('dbNew');
                 pbl.pouch.dbNew();
                 pbl.datalist.fill("books");
-                navigator.vibrate(200);
-                console.log("vibration: "+(navigator.vibrate ? true : false) );
+                //navigator.vibrate(200);
+                //console.log("vibration: "+(navigator.vibrate ? true : false) );
             }
         },
         onWindowLoadResize: function () {

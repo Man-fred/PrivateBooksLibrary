@@ -46,27 +46,11 @@ module.exports = [
         ]
     },
     {
-        "id": "cordova-sqlite-legacy.SQLitePlugin",
-        "file": "plugins/cordova-sqlite-legacy/www/SQLitePlugin.js",
-        "pluginId": "cordova-sqlite-legacy",
+        "id": "cordova-plugin-taptic-engine.TapticEngine",
+        "file": "plugins/cordova-plugin-taptic-engine/www/TapticEngine.js",
+        "pluginId": "cordova-plugin-taptic-engine",
         "clobbers": [
-            "SQLitePlugin"
-        ]
-    },
-    {
-        "id": "cordova-sqlite-legacy.SQLiteProxy",
-        "file": "plugins/cordova-sqlite-legacy/src/windows/sqlite-proxy.js",
-        "pluginId": "cordova-sqlite-legacy",
-        "merges": [
-            ""
-        ]
-    },
-    {
-        "id": "cordova-sqlite-legacy.SQLite3",
-        "file": "plugins/cordova-sqlite-legacy/src/windows/SQLite3-Win-RT/SQLite3JS/js/SQLite3.js",
-        "pluginId": "cordova-sqlite-legacy",
-        "merges": [
-            ""
+            "TapticEngine"
         ]
     }
 ];
@@ -77,7 +61,7 @@ module.exports.metadata =
     "phonegap-plugin-barcodescanner": "7.0.0",
     "cordova-plugin-statusbar": "2.4.1",
     "cordova-plugin-vibration": "3.0.1",
-    "cordova-sqlite-legacy": "2.0.1"
+    "cordova-plugin-taptic-engine": "2.1.0"
 };
 // BOTTOM OF METADATA
 });
