@@ -78,4 +78,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\plugins\cordova-plugin-vibration\src\windows\Vibration\Vibration.csproj" />
     </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\plugins\cordova-sqlite-legacy\src\windows\SQLite3-Win-RT\SQLite3\SQLite3.WindowsPhone\SQLite3.WindowsPhone.vcxproj" />
+    </ItemGroup>
 </Project>

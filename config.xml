@@ -113,8 +113,8 @@
     </plugin>
     <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
     <plugin name="cordova-plugin-vibration" spec="^3.0.1" />
-    <plugin name="cordova-sqlite-storage" spec="^2.3.1" />
     <engine name="android" spec="5.2.1" />
     <engine name="ios" spec="4.2.0" />
     <engine name="windows" spec="4.4.2" />
+    <plugin name="cordova-sqlite-legacy" spec="https://github.com/litehelpers/Cordova-sqlite-legacy-build-support" />
 </widget>

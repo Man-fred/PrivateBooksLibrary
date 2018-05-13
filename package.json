@@ -11,7 +11,7 @@
     "cordova-plugin-statusbar": "^2.4.1",
     "cordova-plugin-vibration": "^3.0.1",
     "cordova-plugin-whitelist": "1.2.2",
-    "cordova-sqlite-storage": "^2.3.1",
+    "cordova-sqlite-legacy": "git+https://github.com/litehelpers/Cordova-sqlite-legacy-build-support.git",
     "cordova-windows": "4.4.2",
     "phonegap-plugin-barcodescanner": "~7.0.0"
   },
@@ -31,7 +31,7 @@
       },
       "cordova-plugin-statusbar": {},
       "cordova-plugin-vibration": {},
-      "cordova-sqlite-storage": {}
+      "cordova-sqlite-legacy": {}
     }
   }
 }

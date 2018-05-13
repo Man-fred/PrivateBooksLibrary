@@ -75,4 +75,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\plugins\phonegap-plugin-barcodescanner\src\windows\lib\WinRTBarcodeReader.csproj" />
     </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\plugins\cordova-sqlite-legacy\src\windows\SQLite3-Win-RT\SQLite3\SQLite3.Windows\SQLite3.Windows.vcxproj" />
+    </ItemGroup>
 </Project>

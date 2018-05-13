@@ -46,24 +46,28 @@ module.exports = [
         ]
     },
     {
-        "id": "cordova-sqlite-storage.SQLitePlugin",
-        "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
-        "pluginId": "cordova-sqlite-storage",
+        "id": "cordova-sqlite-legacy.SQLitePlugin",
+        "file": "plugins/cordova-sqlite-legacy/www/SQLitePlugin.js",
+        "pluginId": "cordova-sqlite-legacy",
         "clobbers": [
             "SQLitePlugin"
         ]
     },
     {
-        "id": "cordova-sqlite-storage.SQLiteProxy",
-        "file": "plugins/cordova-sqlite-storage/src/windows/sqlite-proxy.js",
-        "pluginId": "cordova-sqlite-storage",
-        "runs": true
+        "id": "cordova-sqlite-legacy.SQLiteProxy",
+        "file": "plugins/cordova-sqlite-legacy/src/windows/sqlite-proxy.js",
+        "pluginId": "cordova-sqlite-legacy",
+        "merges": [
+            ""
+        ]
     },
     {
-        "id": "cordova-sqlite-storage.SQLite3",
-        "file": "plugins/cordova-sqlite-storage/src/windows/SQLite3-Win-RT/SQLite3JS/js/SQLite3.js",
-        "pluginId": "cordova-sqlite-storage",
-        "runs": true
+        "id": "cordova-sqlite-legacy.SQLite3",
+        "file": "plugins/cordova-sqlite-legacy/src/windows/SQLite3-Win-RT/SQLite3JS/js/SQLite3.js",
+        "pluginId": "cordova-sqlite-legacy",
+        "merges": [
+            ""
+        ]
     }
 ];
 module.exports.metadata = 
@@ -73,7 +77,7 @@ module.exports.metadata =
     "phonegap-plugin-barcodescanner": "7.0.0",
     "cordova-plugin-statusbar": "2.4.1",
     "cordova-plugin-vibration": "3.0.1",
-    "cordova-sqlite-storage": "2.3.1"
+    "cordova-sqlite-legacy": "2.0.1"
 };
 // BOTTOM OF METADATA
 });

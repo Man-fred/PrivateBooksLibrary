@@ -215,9 +215,9 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-sqlite-storage.SQLitePlugin",
-    "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
-    "pluginId": "cordova-sqlite-storage",
+    "id": "cordova-sqlite-legacy.SQLitePlugin",
+    "file": "plugins/cordova-sqlite-legacy/www/SQLitePlugin.js",
+    "pluginId": "cordova-sqlite-legacy",
     "clobbers": [
       "SQLitePlugin"
     ]
@@ -233,7 +233,7 @@ module.exports.metadata =
   "phonegap-plugin-barcodescanner": "7.0.0",
   "cordova-plugin-statusbar": "2.4.1",
   "cordova-plugin-vibration": "3.0.1",
-  "cordova-sqlite-storage": "2.3.1"
+  "cordova-sqlite-legacy": "2.0.1"
 };
 // BOTTOM OF METADATA
 });
