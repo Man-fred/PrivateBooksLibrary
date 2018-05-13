@@ -1,0 +1,24 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
+    }
+  },
+  "dependent_plugins": {}
+}
