@@ -154,6 +154,7 @@
         dbNew: function () {
             //Test for browser webSQL compatibility
             app.log('Database start in pouch.js');
+            this.infoSync.innerHTML = 'connect local';
             if (typeof cordova !== "undefined") {
                 if (typeof cordova.platformId !== "undefined") {
                     app.log('cordova.platformId: ' + cordova.platformId);
@@ -171,14 +172,15 @@
                 this.db = new PouchDB(this.dbName, { revs_limit: 10, auto_compaction: true, adapter: 'cordova-sqlite' });
                 app.log('Database: Cordova');
             } else if (!this.pbl.ui.isChrome() && window.openDatabase) {
-                this.dbA = new PouchDB(this.dbNameA, { revs_limit: 1, auto_compaction: true, size: 500, adapter: 'websql' });
-                this.db = new PouchDB(this.dbName, { revs_limit: 10, auto_compaction: true, size: 100, adapter: 'websql' });
+                this.dbA = new PouchDB(this.dbNameA, { revs_limit: 10, adapter: 'websql' });
+                this.db = new PouchDB(this.dbName, { revs_limit: 10, adapter: 'websql' });
                 app.log('Database: webSQL');
             } else {
                 this.dbA = new PouchDB(this.dbNameA, { revs_limit: 1, auto_compaction: true, size: 500 });
                 this.db = new PouchDB(this.dbName, { revs_limit: 10, auto_compaction: true, size: 100 });
                 app.log('Database: Pouchdb');
             }
+            this.infoSync.innerHTML = 'connect 2';
             if (cordova.platformId === "ios") {
                 this.dbA.destroy().then(function (response) {
                     app.log(response)
@@ -186,6 +188,7 @@
                     app.log(err);
                 });
             }
+            this.infoSync.innerHTML = 'connect 3';
             pouch.dbLoad();
         },
         dbLoad: function () {
@@ -216,9 +219,10 @@
                 */
                 // Liste 
                 for (var i = 0; i < localStorage.length; i++) {
-                    app.log('localStorage: '+localStorage.key(i));
+                    app.log('localStorage: ' + localStorage.key(i) + ': ' + localStorage.getItem(localStorage.key(i)));
                 };
                 // normale Verarbeitung
+                this.infoSync.innerHTML = 'connect get login';
                 pouch.db.get(pouch.dbIdPrivate + '_login').then(function (doc) {
                     if (doc !== null) {
                         //system = doc;
