@@ -28,12 +28,42 @@ define(function (require) {
             this.menu.addEventListener("click", this.toggleAll);
             this.main3.addEventListener("click", this.toggleMain3);
             this.pbl = pbl;
+            window.addEventListener('click', this.dropdownClose);
         },
+
+        /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
+        dropdown: function (id) {
+            document.getElementById(id).classList.toggle("show");
+    if (id != 'myDropdown1' && document.getElementById('myDropdown1').classList.contains('show')) {
+        document.getElementById('myDropdown1').classList.remove('show')
+    }
+    if (id != 'myDropdown2' && document.getElementById('myDropdown2').classList.contains('show')) {
+        document.getElementById('myDropdown2').classList.remove('show')
+    } 
+},
+
+// Close the dropdown if the user clicks outside of it
+        //window.onclick =
+        dropdownClose: function (event) {
+        if (!event.target.matches('.dropbtn')) {
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    },
 
         show_page1: function (setzen) {
             $('#page1').show();
             $('#page2').hide();
             $('#pageLog').hide();
+            $('#pageAbout').hide();
+            $('#pageContact').hide();
             if (this.pbl.seite === 'books')
                 $('#dataformBooks').show();
             else
@@ -55,6 +85,8 @@ define(function (require) {
             $('#page2').show();
             $('#page1').hide();
             $('#pageLog').hide();
+            $('#pageAbout').hide();
+            $('#pageContact').hide();
             this.setScrollY(0);
             this.pbl.appPage = 2;
         },
@@ -62,6 +94,24 @@ define(function (require) {
             $('#pageLog').show();
             $('#page1').hide();
             $('#page2').hide();
+            $('#pageAbout').hide();
+            $('#pageContact').hide();
+            this.pbl.appPage = 1;
+        },
+        show_pageAbout: function () {
+            $('#pageLog').hide();
+            $('#page1').hide();
+            $('#page2').hide();
+            $('#pageAbout').show();
+            $('#pageContact').hide();
+            this.pbl.appPage = 1;
+        },
+        show_pageContact: function () {
+            $('#pageLog').hide();
+            $('#page1').hide();
+            $('#page2').hide();
+            $('#pageAbout').hide();
+            $('#pageContact').show();
             this.pbl.appPage = 1;
         },
         show_div: function (div = "record_show") {
@@ -142,6 +192,9 @@ define(function (require) {
             } else {
                 return false;
             }
+        },
+        lang: function (s) {
+            return (app.lang[s] ?  app.lang[s] : s);
         }
 
     };

@@ -6,6 +6,7 @@ define(function (require) {
             console.log('initialize');
             document.addEventListener('deviceready', this.onDeviceReady, false);
             window.addEventListener("resize", this.onWindowLoadResize);
+
             $('#appRefresh').click(this.refresh);
             $('#appSettings').click(function () {
                 pbl.data.show(pbl.pouch.dbIdPrivate + '_login', 'login');
@@ -31,7 +32,8 @@ define(function (require) {
             require(['./pouch'], function (pouch) {
                 pouch.initialize(pbl);
                 pbl.pouch = pouch;
-                console.log('pouch');
+                $('#appLogin').click(pbl.pouch.remoteLogin);
+                //console.log('pouch');
                 pbl.onDeviceReady();
             });
             require(['./ui'], function (ui) {

@@ -1,121 +1,105 @@
 {
-  "prepare_queue": {
-    "installed": [],
-    "uninstalled": []
-  },
-  "config_munge": {
-    "files": {
-      "res/xml/config.xml": {
-        "parents": {
-          "/*": [
-            {
-              "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "res/xml/config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
             },
-            {
-              "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/*": [],
+                    "application": [],
+                    "/manifest/application": [],
+                    "/manifest": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
+                            "count": 1
+                        }
+                    ]
+                }
             },
-            {
-              "xml": "<feature name=\"SQLitePlugin\"><param name=\"android-package\" value=\"io.sqlc.SQLitePlugin\" /></feature>",
-              "count": 1
-            }
-          ]
-        }
-      },
-      "AndroidManifest.xml": {
-        "parents": {
-          "/*": [],
-          "application": [],
-          "/manifest/application": [],
-          "/manifest": [
-            {
-              "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
-              "count": 1
-            }
-          ]
-        }
-      },
-      "package.appxmanifest": {
-        "parents": {
-          "/Package/Capabilities": [
-            {
-              "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 666
-            }
-          ]
-        }
-      },
-      "package.windows10.appxmanifest": {
-        "parents": {
-          "/Package/Capabilities": [
-            {
-              "xml": "<DeviceCapability Name=\"microphone\" />",
-              "count": 666
+            "package.appxmanifest": {
+                "parents": {
+                    "/Package/Capabilities": [
+                        {
+                            "xml": "<DeviceCapability Name=\"webcam\" />",
+                            "count": 666
+                        }
+                    ]
+                }
             },
-            {
-              "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 666
+            "package.windows10.appxmanifest": {
+                "parents": {
+                    "/Package/Capabilities": [
+                        {
+                            "xml": "<DeviceCapability Name=\"microphone\" />",
+                            "count": 666
+                        },
+                        {
+                            "xml": "<DeviceCapability Name=\"webcam\" />",
+                            "count": 666
+                        }
+                    ]
+                }
+            },
+            "config.xml": {
+                "parents": {
+                    "/*": []
+                }
             }
-          ]
         }
-      },
-      "config.xml": {
-        "parents": {
-          "/*": []
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "io.cordova.myapp387c96"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "io.cordova.myapp387c96"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "io.cordova.myapp387c96"
+        },
+        "cordova-plugin-taptic-engine": {
+            "PACKAGE_NAME": "io.cordova.myapp387c96"
         }
-      }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "id": "cordova-plugin-statusbar.statusbar",
+            "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+            "pluginId": "cordova-plugin-statusbar",
+            "clobbers": [
+                "window.StatusBar"
+            ]
+        },
+        {
+            "id": "cordova-plugin-taptic-engine.TapticEngine",
+            "file": "plugins/cordova-plugin-taptic-engine/www/TapticEngine.js",
+            "pluginId": "cordova-plugin-taptic-engine",
+            "clobbers": [
+                "TapticEngine"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "cordova-plugin-whitelist": "1.2.2",
+        "cordova-plugin-statusbar": "2.4.1",
+        "cordova-plugin-vibration": "3.0.1",
+        "cordova-plugin-taptic-engine": "2.1.0"
     }
-  },
-  "installed_plugins": {
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
-    },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
-    },
-    "cordova-plugin-vibration": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
-    },
-    "cordova-plugin-taptic-engine": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
-    },
-    "cordova-sqlite-evcore-extbuild-free": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
-    }
-  },
-  "dependent_plugins": {},
-  "modules": [
-    {
-      "id": "cordova-plugin-statusbar.statusbar",
-      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-      "pluginId": "cordova-plugin-statusbar",
-      "clobbers": [
-        "window.StatusBar"
-      ]
-    },
-    {
-      "id": "cordova-plugin-taptic-engine.TapticEngine",
-      "file": "plugins/cordova-plugin-taptic-engine/www/TapticEngine.js",
-      "pluginId": "cordova-plugin-taptic-engine",
-      "clobbers": [
-        "TapticEngine"
-      ]
-    },
-    {
-      "id": "cordova-sqlite-evcore-extbuild-free.SQLitePlugin",
-      "file": "plugins/cordova-sqlite-evcore-extbuild-free/www/SQLitePlugin.js",
-      "pluginId": "cordova-sqlite-evcore-extbuild-free",
-      "clobbers": [
-        "SQLitePlugin"
-      ]
-    }
-  ],
-  "plugin_metadata": {
-    "cordova-plugin-whitelist": "1.2.2",
-    "cordova-plugin-statusbar": "2.4.1",
-    "cordova-plugin-vibration": "3.0.1",
-    "cordova-plugin-taptic-engine": "2.1.0",
-    "cordova-sqlite-evcore-extbuild-free": "0.9.7"
-  }
 }

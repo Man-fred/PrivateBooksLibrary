@@ -15,18 +15,35 @@
 </head>
 <body>
     <div id="top">
-        <div class="right pure-menu-horizontal">
-            <ul class="pure-menu-list">
-                <li id="mSettings" class="pure-menu-item pure-menu-has-children pure-menu-allow-hover title-button">
-                    <a href="#" class="pure-menu-link">&nbsp;</a>
-                    <ul class="pure-menu-children">
-                        <li class="pure-menu-item"><a id="appSettings" href="#" class="pure-menu-link">Settings</a></li>
-                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sync</a></li>
-                        <li class="pure-menu-item"><input type="checkbox" id="showDeleted" name="showDeleted" value="showDeleted">D?</li>
-                    </ul>
-                </li>
-                <li id="appRefresh" class="pure-menu-item title-button"><a href="#" class="pure-menu-link">&nbsp;</a></li>
-            </ul>
+        <!--div class="right pure-menu-horizontal">
+        <ul class="pure-menu-list">
+            <li id="mSettings" class="pure-menu-item pure-menu-has-children pure-menu-allow-hover title-button">
+                <a href="#" class="pure-menu-link">X&nbsp;X</a>
+                <ul class="p-ure-menu-children">
+                    <li class="pure-menu-item"><a id="appSettings" href="#" class="pure-menu-link">Settings</a></li>
+                    <li class="pure-menu-item"><a id="appSync" href="#" class="pure-menu-link">Sync</a></li>
+                    <li class="pure-menu-item"><input type="checkbox" id="showDeleted" name="showDeleted" value="showDeleted">D?</li>
+                </ul>
+            </li>
+            <li id="appRefresh" class="pure-menu-item title-button"><a href="#" class="pure-menu-link">&nbsp;</a></li>
+        </ul>
+    <div -->
+        <div class="dropdown">
+            <button id="mSettings" onclick="app.ui.dropdown('myDropdown1')" class="dropbtn title-button">&nbsp;</button>
+            <div id="myDropdown1" class="dropdown-content">
+                <a id="appSync" class="inactive" href="#">Settings</a>
+                <a id="appSettings" href="#">Config</a>
+                <a id="appAbout" href="#">About</a>
+                <a id="appContact" onclick="app.ui.show_pageContact()" href="#">Contact</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button id="mRefresh" onclick="app.ui.dropdown('myDropdown2')" class="dropbtn title-button">D</button>
+            <div id="myDropdown2" class="dropdown-content">
+                <a id="appRefresh" href="#">Refresh</a>
+                <a id="appLogin" href="#about">Login</a>
+                <a href="#contact">Contact</a>
+            </div>
         </div>
         <div id="appTitle">Bücher</div>
         <div id="appReturn" class="title-button"></div>
@@ -115,6 +132,8 @@
                 <div id="pageLog" style="display: none;">
                     <ul id="info-log"></ul> <!-- I will hold the log messages -->
                 </div>
+                <div id="pageAbout" style="display: none;"></div>
+                <div id="pageContact" style="display: none;"></div>
             </div>
         </div>
     </div>
@@ -128,6 +147,7 @@
         ConsoleLogHTML.connect(document.getElementById("info-log")); // Redirect log messages
         // ConsoleLogHTML.disconnect(); // Stop redirecting -->
     <!-- /script -->
+    <script type="text/javascript" src="/www/WinJS/js/base.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="lib/pouchdb.js"></script> <!-- min.6.4.3 -->
     <script src="lib/pouchdb.cordova-sqlite.js"></script> <!-- 2.0.3 -->

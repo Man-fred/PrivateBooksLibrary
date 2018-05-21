@@ -232,14 +232,6 @@ module.exports = [
         "clobbers": [
             "TapticEngine"
         ]
-    },
-    {
-        "file": "plugins/cordova-sqlite-evcore-extbuild-free/www/SQLitePlugin.js",
-        "id": "cordova-sqlite-evcore-extbuild-free.SQLitePlugin",
-        "pluginId": "cordova-sqlite-evcore-extbuild-free",
-        "clobbers": [
-            "SQLitePlugin"
-        ]
     }
 ];
 module.exports.metadata = 
@@ -252,8 +244,7 @@ module.exports.metadata =
     "phonegap-plugin-barcodescanner": "7.0.0",
     "cordova-plugin-statusbar": "2.4.1",
     "cordova-plugin-vibration": "3.0.1",
-    "cordova-plugin-taptic-engine": "2.1.0",
-    "cordova-sqlite-evcore-extbuild-free": "0.9.7"
+    "cordova-plugin-taptic-engine": "2.1.0"
 }
 // BOTTOM OF METADATA
 });

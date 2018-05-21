@@ -35,13 +35,7 @@
                 position.distx = parseInt(touchobj.clientX) - position.startx;
                 position.disty = parseInt(touchobj.clientY) - position.starty;
                 var link = Math.round(100 * position.link.length * (parseInt(touchobj.clientY) - position.startmove.offsetTop) / position.startmove.offsetHeight) / 100;
-                position.moves.innerHTML = "mouse Y: " + link + " / " + position.link[Math.round(link - 0.5)];
-                if (position.linkLast !== position.link[Math.round(link - 0.5)]) {
-                    //navigator.vibrate(200);
-                    TapticEngine.selection();
-                    window.location = position.link[Math.round(link - 0.5)];
-                    position.linkLast = position.link[Math.round(link - 0.5)];
-                }
+                position.set(link, true);
                 eve.preventDefault();
             });
             position.startmove.addEventListener("mousemove", function (eve) {
@@ -49,11 +43,7 @@
                 position.distx = parseInt(eve.clientX) - position.startx; // X/Y-Koordinaten relativ zum Viewport
                 position.disty = parseInt(eve.clientY) - position.starty;
                 var link = Math.round(100*position.link.length * (eve.clientY - position.startmove.offsetTop) / position.startmove.offsetHeight)/100;
-                position.moves.innerHTML = "mouse Y: " + link + " / " + position.link[Math.round(link - 0.5)];
-                if (position.linkLast !== position.link[Math.round(link - 0.5)]) {
-                    window.location = position.link[Math.round(link - 0.5)];
-                    position.linkLast = position.link[Math.round(link - 0.5)];
-                }
+                position.set(link, false);
                 eve.preventDefault();
             });
             position.startmove.addEventListener("touchend", function (eve) {
@@ -71,6 +61,18 @@
                 position.moves.innerHTML = "mouse bei X: " + (position.startx + position.distx) + "px, Y: " + (position.starty + position.disty) + "px";
                 eve.preventDefault();
             });
+        },
+        set: function (pos, touch) {
+            var newLink = position.link[Math.round(pos - 0.5)];
+            position.moves.innerHTML = "Y: " + pos + " / " + newLink;
+            if (typeof newLink !== 'undefined' && position.linkLast !== newLink) {
+                if (touch) {
+                    //navigator.vibrate(200);
+                    TapticEngine.selection();
+                }
+                window.location = newLink;
+                position.linkLast = newLink;
+            }
         }
     };
     return position;

@@ -10,8 +10,7 @@
         fill: function (aktiveSeite, refresh = false) {
             this.dbReady--;
             if (this.dbReady <= 0) {
-                console.log("****~~~~****");
-                console.log(datalist.pbl.seite);
+                console.log("datalist.fill() "+datalist.pbl.seite);
                 if (aktiveSeite !== datalist.pbl.seite) {
                     if (aktiveSeite !== "") {
                         $('#t_' + datalist.pbl.seite).hide();
@@ -117,7 +116,7 @@
                                     });
                                 } catch (err) { console.log(err); }
                             }
-                            appResult[seite].rows[i].tr0 = '<td onclick="app.data.show(\'' + appResult[seite].rows[i].doc['_id'] + '\')" ><div class="relative">';
+                            appResult[seite].rows[i].tr0 = '<td onclick="app.data.show(\'' + appResult[seite].rows[i].doc['_id'].replace("'", "\\'") + '\')" ><div class="relative">';
                             //tablerow += '<div class="books-img-tr" ';
                             tablerow = '<div id="' + appResult[seite].rows[i].doc['_id'] + '"><div  class="books-img"><img class="books-image" data-src="' + appResult[seite].rows[i].doc['_id'] + '" src="data: image/png; base64, R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="/></div>';
                             //tablerow += '</td><td onclick="show_data(\'' + appResult[seite].rows[i].doc['_id'] + '\')" >';
@@ -237,7 +236,7 @@
             if (!appResult[seite].img) {
                 appResult[seite].img = [];
             }
-            images();
+            //images();
         },
 
         show_all_docs: function (singleIsbn) {

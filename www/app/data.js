@@ -71,6 +71,10 @@
                 $('#updateBtn').prop("disabled", true);
                 $('#deleteBtn').prop("disabled", true);
                 $('#clearBtn').prop("disabled", !this.myApp[this.pbl.seite].btn.add);
+            } else if (id === "contact") {
+                this.pbl.pouch.db.get(id).then(function (doc) {
+                    $('#pageContact').html(doc.html);
+                });
             } else {
                 this.pbl.pouch.db.get(id, { attachments: true }).then(function (doc) {
                     // handle doc

@@ -4,13 +4,15 @@
         cookie: require(['app/cookie'], function (cookie) { pouch.cookieGet(cookie);}),
         dbServer: null,
         dbPort: 6984,
-        dbName: 'PBL001.db', // local name,
+        dbNameA: 'PBL001.db', // local name,
+        dbName:  'PBL001S.db', // local name without attachments,
         dbUser: null,
         dbPass: null,
         dbIdPublic: null,        //couchdb,
         dbIdPrivate: null,       //pouchdb,
 
         db: null,
+        dbA: null,               //attachments (old complete)
         dbRemote: null,          //couchdb,
         dbSync: null,            //sync-handle, used to stop syncing,
         dbReady: 2,
@@ -80,7 +82,12 @@
                     .on('active', pouch.onSyncActive)
                     .on('denied', pouch.onSyncDenied)
                     .on('error', pouch.onSyncError);
-            }).on('error', pouch.onSyncError);
+            }).on('change', pouch.onSyncChange)
+                .on('paused', pouch.onSyncPaused)
+                .on('complete', pouch.onSyncComplete)
+                .on('active', pouch.onSyncActive)
+                .on('denied', pouch.onSyncDenied)
+                .on('error', pouch.onSyncError);
             /*
             pouch.dbSync = pouch.dbRemote.sync(pouch.db, {
                 live: true, retry: true
@@ -107,7 +114,7 @@
             };
             console.log(info);
             pouch.infoSync.setAttribute('data-sync-state', 'changed');
-            pouch.infoSync.innerHTML = 'server: change ' + info.change.ok;
+            pouch.infoSync.innerHTML = 'server: change ' + (typeof info.change == 'undefined' ? 'undefined' : info.change.ok);
         },
         onSyncPaused: function (err) {
             pouch.infoSync.setAttribute('data-sync-state', 'paused');
@@ -147,25 +154,71 @@
         dbNew: function () {
             //Test for browser webSQL compatibility
             app.log('Database start in pouch.js');
-            app.log('cordova.platformId: ' + cordova.platformId);
-            app.log('cordova.sqlitePlugin: ' + sqlitePlugin);
-            app.log('cordova.openDatabase: ' + openDatabase);
+            if (typeof cordova !== "undefined") {
+                if (typeof cordova.platformId !== "undefined") {
+                    app.log('cordova.platformId: ' + cordova.platformId);
+                }
+                if (typeof sqlitePlugin !== "undefined") {
+                    app.log('cordova.sqlitePlugin: ' + sqlitePlugin);
+                }
+                if (typeof openDatabase !== "undefined") {
+                    app.log('cordova.openDatabase: ' + openDatabase);
+                }
+            }
             if ((typeof cordova !== "undefined" && cordova.platformId !== 'browser' )
                 && typeof sqlitePlugin !== 'undefined' && typeof openDatabase !== 'undefined') {
-                this.db = new PouchDB(this.dbName, { revs_limit: 1, auto_compaction: true, adapter: 'cordova-sqlite' });
+                this.dbA = new PouchDB(this.dbNameA, { revs_limit: 1, auto_compaction: true, adapter: 'cordova-sqlite' });
+                this.db = new PouchDB(this.dbName, { revs_limit: 10, auto_compaction: true, adapter: 'cordova-sqlite' });
                 app.log('Database: Cordova');
             } else if (!this.pbl.ui.isChrome() && window.openDatabase) {
-                this.db = new PouchDB(this.dbName, { revs_limit: 1, auto_compaction: true, size: 500, adapter: 'websql' });
+                this.dbA = new PouchDB(this.dbNameA, { revs_limit: 1, auto_compaction: true, size: 500, adapter: 'websql' });
+                this.db = new PouchDB(this.dbName, { revs_limit: 10, auto_compaction: true, size: 100, adapter: 'websql' });
                 app.log('Database: webSQL');
             } else {
-                this.db = new PouchDB(this.dbName, { revs_limit: 1, auto_compaction: true, size:500 });
+                this.dbA = new PouchDB(this.dbNameA, { revs_limit: 1, auto_compaction: true, size: 500 });
+                this.db = new PouchDB(this.dbName, { revs_limit: 10, auto_compaction: true, size: 100 });
                 app.log('Database: Pouchdb');
+            }
+            if (cordova.platformId === "ios") {
+                this.dbA.destroy().then(function (response) {
+                    app.log(response)
+                }).catch(function (err) {
+                    app.log(err);
+                });
             }
             pouch.dbLoad();
         },
         dbLoad: function () {
             pouch.dbReady--;
             if (pouch.dbReady === 0) {
+                //einmalige Kopie von "mit Attachments" zu "nur Metadaten"
+                /*
+                pouch.dbA.allDocs({
+                    include_docs: true
+                    //,attachments: true
+                })
+                .then(function (result) {
+                    for (var i = 0; i < result.rows.length; i++) {
+                        // _rev ist ungültig
+                        delete result.rows[i].doc._rev;
+                        if (result.rows[i].doc._attachments){
+                            delete result.rows[i].doc._attachments;
+                        }
+                        pouch.db.put(result.rows[i].doc)
+                            .catch(function (err) {
+                                console.log('put '+err);
+                        });
+                    }
+                })
+                .catch(function (err) {
+                    console.log('allDocs '+err);
+                });
+                */
+                // Liste 
+                for (var i = 0; i < localStorage.length; i++) {
+                    app.log('localStorage: '+localStorage.key(i));
+                };
+                // normale Verarbeitung
                 pouch.db.get(pouch.dbIdPrivate + '_login').then(function (doc) {
                     if (doc !== null) {
                         //system = doc;

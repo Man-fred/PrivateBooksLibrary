@@ -1,7 +1,7 @@
 #mSettings {
     background: url(../img/svg/solid/cog-white.svg) ;
 }
-#appRefresh {
+#mRefresh {
     background: url(../img/svg/solid/sync.svg); /*no-repeat*/
 }
 #appReturn {

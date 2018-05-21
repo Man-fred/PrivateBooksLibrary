@@ -85,7 +85,7 @@
         },
         authors: {
             name: "authors",
-            title: app.lang.authors,
+            title: "authors",
             menu: true,
             action: "app.datalist.fill",
             head: true,

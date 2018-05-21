@@ -33,7 +33,6 @@
       "cordova-plugin-statusbar": {},
       "cordova-plugin-vibration": {},
       "cordova-plugin-taptic-engine": {},
-      "cordova-sqlite-evcore-extbuild-free": {}
     }
   }
 }
