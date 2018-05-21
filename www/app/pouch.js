@@ -166,6 +166,7 @@
                     app.log('cordova.openDatabase: ' + openDatabase);
                 }
             }
+            /*
             if ((typeof cordova !== "undefined" && cordova.platformId !== 'browser' )
                 && typeof sqlitePlugin !== 'undefined' && typeof openDatabase !== 'undefined') {
                 this.dbA = new PouchDB(this.dbNameA, { revs_limit: 1, auto_compaction: true, adapter: 'cordova-sqlite' });
@@ -180,6 +181,10 @@
                 this.db = new PouchDB(this.dbName, { revs_limit: 10, auto_compaction: true, size: 100 });
                 app.log('Database: Pouchdb');
             }
+            */
+            this.dbA = new PouchDB(this.dbNameA, { revs_limit: 10, auto_compaction: true });
+            this.db = new PouchDB(this.dbName, { revs_limit: 10, auto_compaction: true });
+
             this.infoSync.innerHTML = 'connect 2';
             if (cordova.platformId === "ios") {
                 this.dbA.destroy().then(function (response) {
