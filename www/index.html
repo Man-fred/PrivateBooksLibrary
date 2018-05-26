@@ -16,37 +16,51 @@
 <body>
     <div id="top">
         <!--div class="right pure-menu-horizontal">
-        <ul class="pure-menu-list">
-            <li id="mSettings" class="pure-menu-item pure-menu-has-children pure-menu-allow-hover title-button">
-                <a href="#" class="pure-menu-link">X&nbsp;X</a>
-                <ul class="p-ure-menu-children">
-                    <li class="pure-menu-item"><a id="appSettings" href="#" class="pure-menu-link">Settings</a></li>
-                    <li class="pure-menu-item"><a id="appSync" href="#" class="pure-menu-link">Sync</a></li>
-                    <li class="pure-menu-item"><input type="checkbox" id="showDeleted" name="showDeleted" value="showDeleted">D?</li>
-                </ul>
-            </li>
-            <li id="appRefresh" class="pure-menu-item title-button"><a href="#" class="pure-menu-link">&nbsp;</a></li>
-        </ul>
-    <div -->
+            <ul class="pure-menu-list">
+                <li id="mSettings" class="pure-menu-item pure-menu-has-children pure-menu-allow-hover title-button">
+                    <a href="#" class="pure-menu-link">X&nbsp;X</a>
+                    <ul class="p-ure-menu-children">
+                        <li class="pure-menu-item"><a id="appSettings" href="#" class="pure-menu-link">Settings</a></li>
+                        <li class="pure-menu-item"><a id="appSync" href="#" class="pure-menu-link">Sync</a></li>
+                        <li class="pure-menu-item"><input type="checkbox" id="showDeleted" name="showDeleted" value="showDeleted">D?</li>
+                    </ul>
+                </li>
+                <li id="appRefresh" class="pure-menu-item title-button"><a href="#" class="pure-menu-link">&nbsp;</a></li>
+            </ul>
+        <div -->
         <div class="dropdown">
             <button id="mSettings" onclick="app.ui.dropdown('myDropdown1')" class="dropbtn title-button">&nbsp;</button>
             <div id="myDropdown1" class="dropdown-content">
                 <a id="appSync" class="inactive" href="#">Settings</a>
                 <a id="appSettings" href="#">Config</a>
                 <a id="appAbout" href="#">About</a>
-                <a id="appContact" onclick="app.ui.show_pageContact()" href="#">Contact</a>
+                <a id="appContact" onclick="app.data.show('contact')" href="#">Contact</a>
             </div>
         </div>
         <div class="dropdown">
             <button id="mRefresh" onclick="app.ui.dropdown('myDropdown2')" class="dropbtn title-button">D</button>
             <div id="myDropdown2" class="dropdown-content">
+                <button type="button" class="pure-button" onclick="app.datalist.show_all('books','id')">ID&nbsp;<i id="sort_id" class="fas fa-sort"></i></button>&nbsp;
+                <button type="button" class="pure-button" onclick="app.datalist.show_all('books','name')">Name&nbsp;<i id="sort_name" class="fas fa-sort-up"></i></button>&nbsp;
+                <button type="button" class="pure-button" onclick="app.datalist.show_all('books','date')">Datum&nbsp;<i id="sort_date" class="fas fa-sort"></i></button>&nbsp;
+                <button type="button" class="pure-button" onclick="app.datalist.show_all('books','author')">Autor&nbsp;<i id="sort_author" class="fas fa-sort"></i></button>&nbsp;
                 <a id="appRefresh" href="#">Refresh</a>
+                <!-- <button type="button" class="pure-button" onclick="dbRenew()">DB Renew</button>&nbsp; -->
                 <a id="appLogin" href="#about">Login</a>
-                <a href="#contact">Contact</a>
             </div>
+        </div>
+        <div id="appAdd" class="title-button">
+            <button type="button" onclick="app.data.show('')" title="Neuer Eintrag">+</button>
         </div>
         <div id="appTitle">Bücher</div>
         <div id="appReturn" class="title-button"></div>
+    </div>
+    <div class="header">
+        <div id="message">&nbsp;</div>
+        <div id="appSearchAnchor" class="deleteicon">
+            <input type="text" id="appSearch" onkeyup="app.datalist.mySearch()" placeholder="Titel oder Autor ...">
+            <span onclick="app.datalist.mySearch('~~')"></span>
+        </div>
     </div>
     <div id='layout'>
         <!-- Menu toggle -->
@@ -63,37 +77,19 @@
         </div>
         <div id="partner"></div>
         <div id="main3">
-            <div class="header">
-                <div id="message">&nbsp;</div>
-            </div>
             <div class="content">
                 <div id="page1">
-                    <div id="dataform">
+                    <!-- div id="dataform">
                         <div style="position:relative;">
-                            <div class="myTableAnchor" id="appSearchAnchor"></div>
-                            <div id="appAdd">
-                                <button type="button" class="pure-button" onclick="app.data.show('')" title="Neuer Eintrag">+</button>
-                            </div>
                             <div id="dataformBooks">
                                 <form class="pure-form">
                                     <fieldset>
                                         <button type="button" id="appScan" class="pure-button" onclick="app.search.scan()" title="Barcode scannen">&nbsp;</button>&nbsp;
-                                        <span class="pure-button-group" role="group" aria-label="Sort">
-                                            <button type="button" class="pure-button" onclick="app.datalist.show_all('books','id')">ID&nbsp;<i id="sort_id" class="fas fa-sort"></i></button>&nbsp;
-                                            <button type="button" class="pure-button" onclick="app.datalist.show_all('books','name')">Name&nbsp;<i id="sort_name" class="fas fa-sort-up"></i></button>&nbsp;
-                                            <button type="button" class="pure-button" onclick="app.datalist.show_all('books','date')">Datum&nbsp;<i id="sort_date" class="fas fa-sort"></i></button>&nbsp;
-                                            <button type="button" class="pure-button" onclick="app.datalist.show_all('books','author')">Autor&nbsp;<i id="sort_author" class="fas fa-sort"></i></button>&nbsp;
-                                        </span>
-                                        <!-- <button type="button" class="pure-button" onclick="dbRenew()">DB Renew</button>&nbsp; -->
-                                        <div class="deleteicon">
-                                            <input type="text" id="appSearch" onkeyup="app.datalist.mySearch()" placeholder="Titel oder Autor ...">
-                                            <span onclick="app.datalist.mySearch('~~')"></span>
-                                        </div>
                                     </fieldset>
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div -->
                     <div id="datalist"></div>
                     <div id="mySearchAZ"></div>
                 </div>
@@ -102,6 +98,7 @@
                     <div id="singledata">
                         <form id="singleform" class="pure-form">
                             <fieldset>
+                                <button type="button" id="appScan" class="pure-button" onclick="app.search.scan()" title="Barcode scannen">&nbsp;</button>&nbsp;
                                 <div id="formdata"></div>
                                 <hr />
                                 <div id="action">

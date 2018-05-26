@@ -112,7 +112,7 @@ define(function (require) {
             $('#page2').hide();
             $('#pageAbout').hide();
             $('#pageContact').show();
-            this.pbl.appPage = 1;
+            this.pbl.appPage = 2;
         },
         show_div: function (div = "record_show") {
             var x = document.getElementById(div);

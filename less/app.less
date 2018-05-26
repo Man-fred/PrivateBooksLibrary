@@ -23,6 +23,7 @@
 @content-margin: 8px;
 @content-padding: 10px;
 @top-height: 44px;
+@header-height: 50px;
 @footer-height: 25px;
 @title-margin: 4px;
 @title-button: @top-height - 2 * @title-margin;
@@ -59,9 +60,16 @@ header, footer {
 .header {
     margin: 0;
     color: #333;
+    background-color: whitesmoke;
     text-align: center;
-    padding: @top-height 0 0 0;
+    padding: 0;
     border-bottom: 1px solid #eee;
+    top: @top-height;
+    left: @menu-left;
+    width: calc(~"100% - " @menu-left + @partner-right + @searchAZ600 );
+    height: @header-height;
+    position: fixed !important;
+    z-index: 800;
 }
 
 .pure-flex-rw {
@@ -134,12 +142,12 @@ footer {
 #appTitle {
     float: right;
     padding-top: 0.6em;
-    width: calc(~"100% - " 4 * @top-height);
+    width: calc(~"100% - " 5 * @top-height);
     white-space: nowrap;
     text-align:left;
     @media @sm-gt {
         text-align: center;
-        width: calc(~"100% - " @menu-left + 3 * @top-height);
+        width: calc(~"100% - " @menu-left + 4 * @top-height);
     }
 }
 
@@ -195,7 +203,7 @@ div.container {
 #datalist {
     /*margin-left: 34em;
     border-left: 1px solid gray;*/
-    padding: 4px 0 @footer-height 0;
+    padding: @top-height + @header-height 0 @footer-height 0;
     overflow: auto;
 }
 #datalistScroll {
@@ -1194,7 +1202,7 @@ small screens.
 
     .myTableAnchor {
         position: absolute;
-        top: -@top-height;
+        top: -@top-height - @header-height;
     }
 
     .searchlist {
