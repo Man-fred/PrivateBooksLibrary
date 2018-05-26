@@ -64,10 +64,11 @@ define(function (require) {
             $('#pageLog').hide();
             $('#pageAbout').hide();
             $('#pageContact').hide();
-            if (this.pbl.seite === 'books')
+            if (this.pbl.seite === 'books') {
                 $('#dataformBooks').show();
-            else
+            } else {
                 $('#dataformBooks').hide();
+            }
             if (setzen)
                 this.setScrollY(this.scrollY);
             this.pbl.appPage = 1;
@@ -82,6 +83,7 @@ define(function (require) {
                 $('#t_' + aktiveSeite).show();
             }
 
+            $('#dataformBooks').hide();
             $('#page2').show();
             $('#page1').hide();
             $('#pageLog').hide();
@@ -91,22 +93,25 @@ define(function (require) {
             this.pbl.appPage = 2;
         },
         show_pageLog: function () {
+            $('#dataformBooks').hide();
             $('#pageLog').show();
             $('#page1').hide();
             $('#page2').hide();
             $('#pageAbout').hide();
             $('#pageContact').hide();
-            this.pbl.appPage = 1;
+            this.pbl.appPage = 2;
         },
         show_pageAbout: function () {
+            $('#dataformBooks').hide();
             $('#pageLog').hide();
             $('#page1').hide();
             $('#page2').hide();
             $('#pageAbout').show();
             $('#pageContact').hide();
-            this.pbl.appPage = 1;
+            this.pbl.appPage = 2;
         },
         show_pageContact: function () {
+            $('#dataformBooks').hide();
             $('#pageLog').hide();
             $('#page1').hide();
             $('#page2').hide();

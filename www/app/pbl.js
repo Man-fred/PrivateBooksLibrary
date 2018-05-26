@@ -64,6 +64,7 @@ define(function (require) {
         //appSort: 'name',
         //appSortUp: false,
         appPage: 1,
+        select: '', // Vorauswahl über Menü
         appCheck: [],
         appResult: [],
         apiLibrarything : "",

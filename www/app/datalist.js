@@ -116,7 +116,15 @@
                                     });
                                 } catch (err) { console.log(err); }
                             }
-                            appResult[seite].rows[i].tr0 = '<td onclick="app.data.show(\'' + appResult[seite].rows[i].doc['_id'].replace("'", "\\'") + '\')" ><div class="relative">';
+                            tablerow = '<td status="';
+                            if (appResult[seite].rows[i].doc['favor'] == 1)
+                                tablerow += 'favor ';
+                            if (appResult[seite].rows[i].doc['state'] == 1)
+                                tablerow += 's1 ';
+                            if (appResult[seite].rows[i].doc['state'] == 0)
+                                tablerow += 's0 ';
+                            tablerow += '" onclick="app.data.show(\'' + appResult[seite].rows[i].doc['_id'].replace("'", "\\'") + '\')" ><div class="relative">';
+                            appResult[seite].rows[i].tr0 = tablerow;
                             //tablerow += '<div class="books-img-tr" ';
                             tablerow = '<div id="' + appResult[seite].rows[i].doc['_id'] + '"><div  class="books-img"><img class="books-image" data-src="' + appResult[seite].rows[i].doc['_id'] + '" src="data: image/png; base64, R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="/></div>';
                             //tablerow += '</td><td onclick="show_data(\'' + appResult[seite].rows[i].doc['_id'] + '\')" >';
@@ -150,7 +158,7 @@
                         }
                         tablerow += '</tr>';
                         appResult[seite].rows[i].tr1 = tablerow;
-                    appResult[seite].tr = true;
+                        appResult[seite].tr = true;
                     }
                 
             }
@@ -158,6 +166,7 @@
             if (seite === "books") {
                 appResult[seite].rows.sort(datalist.sort_books);
             }
+            var select = true;
             var showDeleted = $('#showDeleted').is(':checked');
             for (var i = 0; i < appResult[seite].rows.length; i++) {
                 //15.04.2008 -> 14.4.1977 -> 978393600
@@ -192,13 +201,22 @@
                     }
                     var display;
                     countAll++;
-                    if (filter === "" ||
-                        appResult[seite].rows[i].doc['name'].toUpperCase().indexOf(filter) > -1 ||
-                        appResult[seite].rows[i].doc['author'].toUpperCase().indexOf(filter) > -1 ||
-                        appResult[seite].rows[i].doc['isbn'].toUpperCase().indexOf(filter) > -1
-                    ) {
-                        display = "<tr>";
-                        count++;
+                    if (app.select !== '') {
+                        select = appResult[seite].rows[i].doc[app.select];
+                    } else {
+                        select = true;
+                    }
+                    if (select) {
+                        if (filter === "" ||
+                            appResult[seite].rows[i].doc['name'].toUpperCase().indexOf(filter) > -1 ||
+                            appResult[seite].rows[i].doc['author'].toUpperCase().indexOf(filter) > -1 ||
+                            appResult[seite].rows[i].doc['isbn'].toUpperCase().indexOf(filter) > -1
+                        ) {
+                            display = "<tr>";
+                            count++;
+                        } else {
+                            display = '<tr style="display: none;">';
+                        }
                     } else {
                         display = '<tr style="display: none;">';
                     }
@@ -286,9 +304,9 @@
         mySearchClear: function () {
             $(this).prev('input').val('').trigger('change').focus();
         },
-        mySearch: function (test = '') {
+        mySearch: function (test = '', select = '') {
             // Declare variables
-            var input, filter, table, tr, td, i, count = 0, countAll = 0;
+            var input, filter, table, tr, td, i, test, count = 0, countAll = 0;
             if (test === "~~") {
                 $('#appSearch').val('').trigger('change').focus();
                 filter = "";
@@ -298,6 +316,14 @@
                 input = document.getElementById("appSearch");
                 filter = input.value.toUpperCase();
             }
+            if (select == 'all') {
+                select = '';
+                app.select = '';
+            } else if (select == '') {
+                select = app.select;
+            } else {
+                app.select = select;
+            }
             table = document.getElementById("myTableList");
             tr = table.getElementsByTagName("tr");
 
@@ -305,32 +331,45 @@
             for (i = 0; i < tr.length; i++) {
                 count++;
                 countAll++;
-                if (filter) {
-                    td = tr[i].getElementsByClassName("books-title")[0];
-                    if (td) {
-                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                            tr[i].style.display = "";
-                        } else {
-                            td = tr[i].getElementsByClassName("books-author")[0];
-                            if (td) {
-                                if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                                    tr[i].style.display = "";
-                                } else {
-                                    td = tr[i].getElementsByClassName("books-isbn")[0];
-                                    if (td) {
-                                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                                            tr[i].style.display = "";
-                                        } else {
-                                            tr[i].style.display = "none";
-                                            count--;
+                test = true;
+                if (select) {
+                    td = tr[i].cells[0].getAttribute("status");
+                    if (td.indexOf(select) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                        test = false;
+                        count--;
+                    }
+                }
+                if (test) {
+                    if (filter) {
+                        td = tr[i].getElementsByClassName("books-title")[0];
+                        if (td) {
+                            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                tr[i].style.display = "";
+                            } else {
+                                td = tr[i].getElementsByClassName("books-author")[0];
+                                if (td) {
+                                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                        tr[i].style.display = "";
+                                    } else {
+                                        td = tr[i].getElementsByClassName("books-isbn")[0];
+                                        if (td) {
+                                            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                                                tr[i].style.display = "";
+                                            } else {
+                                                tr[i].style.display = "none";
+                                                count--;
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
+                    } else {
+                        tr[i].style.display = "";
                     }
-                } else {
-                    tr[i].style.display = "";
                 }
             }
             datalist.countMessage(count, countAll);

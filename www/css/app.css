@@ -151,7 +151,14 @@ div.container {
   /*max-width: 34em;*/
   float: left;
   margin: 0;
-  padding: 0 0 25px 0;
+  padding: 44px 0 25px 0;
+}
+#bc_search {
+  width: calc(100% -  150px);
+  float: left;
+}
+#appScan {
+  float: left;
 }
 #datalist {
   /*margin-left: 34em;

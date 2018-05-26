@@ -34,28 +34,38 @@
                 <a id="appSync" class="inactive" href="#">Settings</a>
                 <a id="appSettings" href="#">Config</a>
                 <a id="appAbout" href="#">About</a>
+                <a class="inactive" href="#">Rechtliches</a>
+                <a id="appAgb" onclick="app.data.show('AGB')" href="#">Nutzungbedingungen</a>
+                <a id="appContact" onclick="app.data.show('DS')" href="#">Datenschutzerklärung</a>
+                <a id="appContact" onclick="app.data.show('contact')" href="#">Contact</a>
                 <a id="appContact" onclick="app.data.show('contact')" href="#">Contact</a>
             </div>
         </div>
         <div class="dropdown">
-            <button id="mRefresh" onclick="app.ui.dropdown('myDropdown2')" class="dropbtn title-button">D</button>
+            <button id="mRefresh" onclick="app.ui.dropdown('myDropdown2')" class="dropbtn title-button">&nbsp;</button>
             <div id="myDropdown2" class="dropdown-content">
+                <a class="inactive" href="#">Sortierung</a>
                 <button type="button" class="pure-button" onclick="app.datalist.show_all('books','id')">ID&nbsp;<i id="sort_id" class="fas fa-sort"></i></button>&nbsp;
                 <button type="button" class="pure-button" onclick="app.datalist.show_all('books','name')">Name&nbsp;<i id="sort_name" class="fas fa-sort-up"></i></button>&nbsp;
                 <button type="button" class="pure-button" onclick="app.datalist.show_all('books','date')">Datum&nbsp;<i id="sort_date" class="fas fa-sort"></i></button>&nbsp;
                 <button type="button" class="pure-button" onclick="app.datalist.show_all('books','author')">Autor&nbsp;<i id="sort_author" class="fas fa-sort"></i></button>&nbsp;
+                <a class="inactive" href="#">Auswahl</a>
+                <button id="select_all" type="button" class="pure-button" onclick="app.datalist.mySearch('', 'all')">Alle anzeigen<i id="filter_fav" class="fa-check"></i></button>&nbsp;
+                <button id="select_favor" type="button" class="pure-button" onclick="app.datalist.mySearch('', 'favor')">Favoriten&nbsp;<i id="filter_fav" class="fa-check"></i></button>&nbsp;
+                <button id="select_s1" type="button" class="pure-button" onclick="app.datalist.mySearch('', 's1')">bestellt&nbsp;<i id="filter_fav" class="fa-check"></i></button>&nbsp;
+                <a class="inactive" href="#">Sontiges</a>
                 <a id="appRefresh" href="#">Refresh</a>
                 <!-- <button type="button" class="pure-button" onclick="dbRenew()">DB Renew</button>&nbsp; -->
                 <a id="appLogin" href="#about">Login</a>
             </div>
         </div>
-        <div id="appAdd" class="title-button">
-            <button type="button" onclick="app.data.show('')" title="Neuer Eintrag">+</button>
+        <div id="appAdd">
+            <button type="button" class="title-button" onclick="app.data.show('')" title="Neuer Eintrag">+</button>
         </div>
         <div id="appTitle">Bücher</div>
         <div id="appReturn" class="title-button"></div>
     </div>
-    <div class="header">
+    <div  id="dataformBooks" class="header">
         <div id="message">&nbsp;</div>
         <div id="appSearchAnchor" class="deleteicon">
             <input type="text" id="appSearch" onkeyup="app.datalist.mySearch()" placeholder="Titel oder Autor ...">
@@ -80,16 +90,16 @@
             <div class="content">
                 <div id="page1">
                     <!-- div id="dataform">
-                        <div style="position:relative;">
-                            <div id="dataformBooks">
-                                <form class="pure-form">
-                                    <fieldset>
-                                        <button type="button" id="appScan" class="pure-button" onclick="app.search.scan()" title="Barcode scannen">&nbsp;</button>&nbsp;
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
-                    </div -->
+            <div style="position:relative;">
+                <div id="dataformBooks">
+                    <form class="pure-form">
+                        <fieldset>
+                            <button type="button" id="appScan" class="pure-button" onclick="app.search.scan()" title="Barcode scannen">&nbsp;</button>&nbsp;
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div -->
                     <div id="datalist"></div>
                     <div id="mySearchAZ"></div>
                 </div>
@@ -98,7 +108,6 @@
                     <div id="singledata">
                         <form id="singleform" class="pure-form">
                             <fieldset>
-                                <button type="button" id="appScan" class="pure-button" onclick="app.search.scan()" title="Barcode scannen">&nbsp;</button>&nbsp;
                                 <div id="formdata"></div>
                                 <hr />
                                 <div id="action">
@@ -130,7 +139,21 @@
                     <ul id="info-log"></ul> <!-- I will hold the log messages -->
                 </div>
                 <div id="pageAbout" style="display: none;"></div>
-                <div id="pageContact" style="display: none;"></div>
+                <div id="pageDS" style="display: none;">
+                    <h3>Datenschutzerklärung</h3>
+                </div>
+                <div id="pageAGB" style="display: none;">
+                    <h2>Allgemeine Geschäftsbedingungen für die Nutzung der Internetseiten und Mobiltelefon-Dienste von BCSS GmbH</h2>
+                    <h3>Allgemeines</h3>
+                    <p>Die BCSS GmbH (nachfolgend BCSS) stellt Software für mobile Endgeräte (nachfolgend App) zur Verfügung, die es dem Nutzer ermöglicht Bücherlisten anzulegen und zu verwalten.</p>
+                    <h3>Registrierung</h3>
+
+                </div>
+                <div id="pageContact" style="display: none;">
+                    <h2>Contact</h2>
+                    <p>BCSS GmbH<br />Waldstraße 27a<br />22955 Hoisdorf<br />Deutschland</p>
+                    <p>Manfred Bielemeier<br />https://pbl.bcss.de/contact</p>
+                </div>
             </div>
         </div>
     </div>

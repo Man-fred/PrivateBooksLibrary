@@ -21,9 +21,12 @@
             //result += '<div class="pure-control-group"><label for="email">Email Address</label><input id="email" type="email" placeholder="Email Address"></div>';
             //result += '<table>';
             if (aktiveSeite === "books") {
-                result += '<p>erkannter Barcode <input id="bc_text"/> (<span id="bc_format"></span>) Beispiel: 9783802587849</p>';
-                result += '<p><a href="#" name="scansearch" id="scansearch">Suchen</a><br /><span id="result"></span></p>';
-                result += '<p><span id="result"></span></p>';
+                result += '<div id="bc" class="pure-control-group">';
+                result += '<button type="button" id="appScan" class="pure-button" onclick="app.search.scan()" title="Barcode scannen">&nbsp;</button> &nbsp;';
+                result += '<div id="bc_search" class="deleteicon">';
+                result += '<input id="bc_text" placeholder="ISBN, Titel oder Autor ..."/>'; //(<span id="bc_format"></span>)
+                result += '<span onclick="app.data.mySearch(\'~~\')"></span></div><a href="#" name="scansearch" id="scansearch">Suchen</a></div>';
+                //result += '<p><span id="result"></span></p>';
                 result += '<div id="book-image"><img  class="pure-img" id="img_' + aktiveSeite + '" height="200" src="blank.jpg"/></div>';
                 result += '<div id="book-favor">' + data.book.favor("0") + '</div><div class="clear"></div>';
 
@@ -73,9 +76,9 @@
                 $('#clearBtn').prop("disabled", !this.myApp[this.pbl.seite].btn.add);
             } else if (id === "contact") {
                 this.pbl.ui.show_pageContact(id);
-                this.pbl.pouch.db.get(id).then(function (doc) {
+                /*this.pbl.pouch.db.get(id).then(function (doc) {
                     $('#pageContact').html(doc.html);
-                });
+                });*/
             } else {
                 this.pbl.ui.show_page2(neueSeite);
                 this.pbl.pouch.db.get(id, { attachments: true }).then(function (doc) {
@@ -147,6 +150,11 @@
             $('#_id').html('');
             $('#_rev').html('');
             $('#DBversion').html('');
+        },
+        mySearch: function (test = '') {
+            if (test === "~~") {
+                $('#bc_text').val('').trigger('change').focus();
+            }
         },
         select: function (table, id, name, field, visible, selected = null) {
             if (app.myApp[table].data && app.myApp[table].dataIsConst) {
