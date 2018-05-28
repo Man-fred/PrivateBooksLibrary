@@ -262,4 +262,34 @@
   <PropertyGroup />
   <PropertyGroup />
   <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup>
+    <AppxPackageIsForStore>True</AppxPackageIsForStore>
+  </PropertyGroup>
+  <PropertyGroup>
+    <BuildAppxUploadPackageForUap>True</BuildAppxUploadPackageForUap>
+  </PropertyGroup>
+  <PropertyGroup>
+    <_ProjectNToolchainEnabled>True</_ProjectNToolchainEnabled>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ProjectNProfileEnabled>True</ProjectNProfileEnabled>
+  </PropertyGroup>
+  <PropertyGroup>
+    <BuildingInsideVisualStudio>True</BuildingInsideVisualStudio>
+  </PropertyGroup>
 </Project>

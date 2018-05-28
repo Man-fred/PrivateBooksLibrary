@@ -39,7 +39,7 @@
             table += '<table id="myTableList"><thead>';
             //table += '<th>ID</th>';
             //var cb = $('#showDeleted');
-            if ($('#showDeleted').is(':checked')) {
+            if (app.showDeleted) {
                 table += '<th id="disabled">Deleted?</th>';
             }
             $.each(app.myApp[app.seite].fields, function () {
@@ -167,13 +167,12 @@
                 appResult[seite].rows.sort(datalist.sort_books);
             }
             var select = true;
-            var showDeleted = $('#showDeleted').is(':checked');
             for (var i = 0; i < appResult[seite].rows.length; i++) {
                 //15.04.2008 -> 14.4.1977 -> 978393600
                 //27:10:2011 -> 25:10:1980
                 //releasedate = new Date(parseInt(s['releasedate']));
                 tablerow = "";
-                if (showDeleted || !appResult[seite].rows[i].doc.DBdeleted) {
+                if (app.showDeleted || !appResult[seite].rows[i].doc.DBdeleted) {
                     if (seite === "books") {
                         /*if (!appResult[seite].rows[i].doc.DBdeleted) {
                             var myObj = {};
@@ -183,8 +182,8 @@
                         }*/
                         if (datalist.appSort === 'name') {
                             title = appResult[seite].rows[i].doc['name'].substr(0, 1);
-                            if (mySortPos !== title) {
-                                mySortPos = title;
+                            if (mySortPos !== title && (mySortPos == '' || (title >= 'A' && title <= 'Z')) ) {
+                                title >= 'A' ? mySortPos = title : mySortPos = '#';
                                 tablerow = '<div id="myTableSort' + mySortPos + '" class="myTableAnchor"></div>';
                                 //mySearchlist += '<div class="searchlist"><a class="searchlink" href="#myTableSort' + mySortPos + '">' + mySortPos + '</a></div>';
                                 mySearchlist += '<div class="searchlist">' + mySortPos + '</div>';
@@ -192,10 +191,11 @@
                             }
                         } else if (datalist.appSort === 'date') {
                             releaseyear = appResult[seite].rows[i].doc['releasedate'].substr(0, 4);
-                            if (mySortPos !== releaseyear) {
-                                mySortPos = releaseyear;
+                            if (mySortPos !== releaseyear && (mySortPos == '' || releaseyear >= 2000) ) {
+                                releaseyear >= 2000 ? mySortPos = releaseyear : mySortPos ='<2000';
                                 tablerow = '<div id="myTableSort' + mySortPos + '" class="myTableAnchor"></div>';
-                                mySearchlist += '<div class="searchlist"><a class="searchlink" href="#myTableSort' + mySortPos + '">' + mySortPos + '</a></div>';
+                                mySearchlist += '<div class="searchlist">' + mySortPos + '</div>';
+                                app.position.link.push("#myTableSort" + mySortPos);
                             }
                         }
                     }
@@ -220,7 +220,7 @@
                     } else {
                         display = '<tr style="display: none;">';
                     }
-                    if (showDeleted && seite !== "books") {
+                    if (app.showDeleted && seite !== "books") {
                         table += display + appResult[seite].rows[i].tr0 +
                             '<td>' + (appResult[seite].rows[i].doc.DBdeleted ? '*' : '&nbsp') + '</td>' +
                             tablerow + appResult[seite].rows[i].tr1;
@@ -374,6 +374,13 @@
             }
             datalist.countMessage(count, countAll);
             return count;
+        },
+        showDeleted: function () {
+            app.showDeleted = !app.showDeleted;
+            //var test = document.getElementById("showDeleted");
+            document.getElementById("showDeleted").innerHTML= 'Gelöschtes&nbsp;'+(app.showDeleted ? 'verbergen' : 'anzeigen');
+            datalist.pbl.pouch.getAll(app.seite, '', datalist.show_all_docs);
+
         },
         countMessage: function (count, countAll) {
             var message = "";

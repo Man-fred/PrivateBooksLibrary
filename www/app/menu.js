@@ -29,9 +29,6 @@
                     result += '<li class="pure-menu-item" onclick="' + this.action + '(\'' + this.name + '\')"><a class="pure-menu-link" href="#">' + app.ui.lang(this.title) + '</a></li>';
                 }
             });
-            //if (debugOutput)
-            result += '<li class="pure-menu-item" onclick="app.ui.show_pageLog()"><a class="pure-menu-link" href="#">Console.Log</a></li>';
-
             $("#sidelist").html(result);
         }
     };

@@ -21,6 +21,17 @@ define(function (require) {
         main3: document.getElementById('main3'),
         layout: document.getElementById('layout'),
         loading: document.getElementById("loading"),
+        dataformBooks: document.getElementById("dataformBooks"),
+        appSearchAnchor: document.getElementById("appSearchAnchor"),
+        pageLog: document.getElementById("pageLog"),
+        page1: document.getElementById("page1"),
+        page2: document.getElementById("page2"),
+        pageAbout: document.getElementById("pageAbout"),
+        pageAGB: document.getElementById("pageAGB"),
+        pageDS: document.getElementById("pageDS"),
+        pageContact: document.getElementById("pageContact"),
+        page: this.page1,
+
         scrollY: 0,
 
         initialize: function (pbl) {
@@ -57,21 +68,32 @@ define(function (require) {
             }
         }
     },
-
-        show_page1: function (setzen) {
-            $('#page1').show();
-            $('#page2').hide();
-            $('#pageLog').hide();
-            $('#pageAbout').hide();
-            $('#pageContact').hide();
-            if (this.pbl.seite === 'books') {
-                $('#dataformBooks').show();
-            } else {
-                $('#dataformBooks').hide();
+        show: function (neu) {
+            if (neu !== ui.page) {
+                neu.style.display = "block";
+                ui.page.style.display = "none";
+                ui.page = neu;
             }
+            if (neu == page1) {
+                ui.dataformBooks.style.display = "block";
+                if (this.pbl.seite === 'books') {
+                    ui.appSearchAnchor.style.display = "block";
+                } else {
+                    ui.appSearchAnchor.style.display = "none";
+                }
+                this.pbl.appPage = 1;
+            } else if (neu == page2) {
+                ui.dataformBooks.style.display = "none";
+                this.pbl.appPage = 2;
+            } else {
+                ui.dataformBooks.style.display = "none";
+                this.pbl.appPage = 3;
+            }
+        },
+        show_page1: function (setzen) {
+            ui.show(page1);
             if (setzen)
                 this.setScrollY(this.scrollY);
-            this.pbl.appPage = 1;
         },
         show_page2: function (aktiveSeite) {
             this.getScrollY();
@@ -82,44 +104,10 @@ define(function (require) {
                 this.pbl.seite = aktiveSeite;
                 $('#t_' + aktiveSeite).show();
             }
-
-            $('#dataformBooks').hide();
-            $('#page2').show();
-            $('#page1').hide();
-            $('#pageLog').hide();
-            $('#pageAbout').hide();
-            $('#pageContact').hide();
+            ui.show(page2);
             this.setScrollY(0);
-            this.pbl.appPage = 2;
         },
-        show_pageLog: function () {
-            $('#dataformBooks').hide();
-            $('#pageLog').show();
-            $('#page1').hide();
-            $('#page2').hide();
-            $('#pageAbout').hide();
-            $('#pageContact').hide();
-            this.pbl.appPage = 2;
-        },
-        show_pageAbout: function () {
-            $('#dataformBooks').hide();
-            $('#pageLog').hide();
-            $('#page1').hide();
-            $('#page2').hide();
-            $('#pageAbout').show();
-            $('#pageContact').hide();
-            this.pbl.appPage = 2;
-        },
-        show_pageContact: function () {
-            $('#dataformBooks').hide();
-            $('#pageLog').hide();
-            $('#page1').hide();
-            $('#page2').hide();
-            $('#pageAbout').hide();
-            $('#pageContact').show();
-            this.pbl.appPage = 2;
-        },
-        show_div: function (div = "record_show") {
+         show_div: function (div = "record_show") {
             var x = document.getElementById(div);
     if (x.style.display === "none") {
         x.style.display = "block";

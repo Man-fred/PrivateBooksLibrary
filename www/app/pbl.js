@@ -65,6 +65,7 @@ define(function (require) {
         //appSortUp: false,
         appPage: 1,
         select: '', // Vorauswahl über Menü
+        showDeleted: false, // gelöschte Daten anzeigen oder nicht
         appCheck: [],
         appResult: [],
         apiLibrarything : "",
