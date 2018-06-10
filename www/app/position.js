@@ -12,13 +12,13 @@
         linkLast : null,
         initialize: function (pbl) {
             position.startmove = document.getElementById('mySearchAZ');
-            position.moves = document.getElementById('message');
+            //position.moves = document.getElementById('message');
             position.startmove.addEventListener("touchstart", function (eve) {
                 var touchobj = eve.changedTouches[0]; // erster Finger
                 position.pointY = parseInt(touchobj.clientY);
                 position.startx = parseInt(touchobj.clientX); // X/Y-Koordinaten relativ zum Viewport
                 position.starty = position.pointY;
-                position.moves.innerHTML = "touch bei X: " + position.startx + "px, Y: " + position.starty + "px";
+                //position.moves.innerHTML = "touch bei X: " + position.startx + "px, Y: " + position.starty + "px";
                 eve.preventDefault();
             });
             position.startmove.addEventListener("mousedown", function (eve) {
@@ -26,7 +26,7 @@
                 position.pointY = parseInt(eve.clientY);
                 position.starty = position.pointY;
                 //position.moves.innerHTML = "mouse bei X: " + position.startx + "px, Y: " + position.starty + "px";
-                position.moves.innerHTML = "mouse bei Y: " + (position.starty - position.startmove.y) / position.startmove.offsetHeight + " %";
+                //position.moves.innerHTML = "mouse bei Y: " + (position.starty - position.startmove.y) / position.startmove.offsetHeight + " %";
                 eve.preventDefault();
             });
             position.startmove.addEventListener("touchmove", function (eve) {
@@ -51,20 +51,20 @@
                 var touchobj = eve.changedTouches[0]; // reference first touch point for this event
                 position.distx = parseInt(touchobj.clientX) - position.startx;
                 position.disty = parseInt(touchobj.clientY) - position.starty;
-                position.moves.innerHTML = "touch bei X: " + (position.startx + position.distx) + "px, Y: " + (position.starty + position.disty) + "px";
+                //position.moves.innerHTML = "touch bei X: " + (position.startx + position.distx) + "px, Y: " + (position.starty + position.disty) + "px";
                 eve.preventDefault();
             });
             position.startmove.addEventListener("mouseup", function (eve) {
                 position.pointY = parseInt(eve.clientY);
                 position.distx = parseInt(eve.clientX) - position.startx; // X/Y-Koordinaten relativ zum Viewport
                 position.disty = parseInt(eve.clientY) - position.starty;
-                position.moves.innerHTML = "mouse bei X: " + (position.startx + position.distx) + "px, Y: " + (position.starty + position.disty) + "px";
+                //position.moves.innerHTML = "mouse bei X: " + (position.startx + position.distx) + "px, Y: " + (position.starty + position.disty) + "px";
                 eve.preventDefault();
             });
         },
         set: function (pos, touch) {
             var newLink = position.link[Math.round(pos - 0.5)];
-            position.moves.innerHTML = "Y: " + pos + " / " + newLink;
+            //position.moves.innerHTML = "Y: " + pos + " / " + newLink;
             if (typeof newLink !== 'undefined' && position.linkLast !== newLink) {
                 if (touch) {
                     //navigator.vibrate(200);

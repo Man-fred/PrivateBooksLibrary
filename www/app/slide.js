@@ -2,7 +2,7 @@
 
     var slide = function () {
             var startmove = document.getElementById('mySearchAZ');
-            var moves = document.getElementById('message');
+            //var moves = document.getElementById('message');
             var startx = 0;
             var starty = 0;
             var distx = 0;

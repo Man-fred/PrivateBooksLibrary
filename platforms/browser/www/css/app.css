@@ -25,9 +25,16 @@ footer {
 .header {
   margin: 0;
   color: #333;
+  background-color: whitesmoke;
   text-align: center;
-  padding: 44px 0 0 0;
+  padding: 0;
   border-bottom: 1px solid #eee;
+  top: 44px;
+  left: 150px;
+  width: calc(100% -  200px);
+  height: 50px;
+  position: fixed !important;
+  z-index: 800;
 }
 .pure-flex-rw {
   display: flex;
@@ -94,14 +101,14 @@ footer {
 #appTitle {
   float: right;
   padding-top: 0.6em;
-  width: calc(100% -  176px);
+  width: calc(100% -  220px);
   white-space: nowrap;
   text-align: left;
 }
 @media only screen and (min-width: 568px) {
   #appTitle {
     text-align: center;
-    width: calc(100% -  282px);
+    width: calc(100% -  326px);
   }
 }
 .title-button {
@@ -138,18 +145,35 @@ div.container {
 #todoapp {
   width: 100%;
 }
+#page2 {
+  display: none;
+}
+#pageAGB,
+#pageDS,
+#pageAbout,
+#pageContact {
+  padding: 64px 20px 35px 20px;
+  display: none;
+}
 #singledata {
   /*    position: fixed; top: 6em; left: 0px; */
   width: 100%;
   /*max-width: 34em;*/
   float: left;
   margin: 0;
-  padding: 0 0 25px 0;
+  padding: 44px 0 25px 0;
+}
+#bc_search {
+  width: calc(100% -  150px);
+  float: left;
+}
+#appScan {
+  float: left;
 }
 #datalist {
   /*margin-left: 34em;
     border-left: 1px solid gray;*/
-  padding: 4px 0 25px 0;
+  padding: 94px 0 25px 0;
   overflow: auto;
 }
 #datalistScroll {
@@ -1131,7 +1155,7 @@ small screens.
 }
 .myTableAnchor {
   position: absolute;
-  top: -44px;
+  top: -94px;
 }
 .searchlist {
   text-align: center;
@@ -1195,3 +1219,50 @@ Hides the menu at `48em`, but modify this based on your app's needs.
   }
 }
 /*******************************************************/
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: #2980B9;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+  float: right;
+}
+.inactive {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: black;
+  background-color: #2980B9;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  right: 0px;
+  top: 44px;
+}
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown a:hover {
+  background-color: #ddd;
+}
+.show {
+  display: block;
+}

@@ -4,8 +4,8 @@
   "private": true,
   "dependencies": {
     "cord": "^1.0.0",
-    "cordova-android": "5.2.1",
-    "cordova-ios": "4.2.0",
+    "cordova-android": "^7.0.0",
+    "cordova-ios": "^4.5.4",
     "cordova-plugin-console": "~1.0.7",
     "cordova-plugin-file": "~4.3.3",
     "cordova-plugin-statusbar": "^2.4.1",
@@ -18,10 +18,10 @@
   },
   "cordova": {
     "platforms": [
-      "android",
       "ios",
       "windows",
-      "browser"
+      "browser",
+      "android"
     ],
     "plugins": {
       "cordova-plugin-whitelist": {},
@@ -33,6 +33,7 @@
       "cordova-plugin-statusbar": {},
       "cordova-plugin-vibration": {},
       "cordova-plugin-taptic-engine": {},
+      "cordova-sqlite-evcore-extbuild-free": {}
     }
   }
 }

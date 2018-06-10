@@ -37,6 +37,10 @@
                     name: "isbn",
                     title: "isbn"
                 },
+                asin: {
+                    name: "asin",
+                    title: "asin"
+                },
                 price: {
                     name: "price",
                     title: "price"

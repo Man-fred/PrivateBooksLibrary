@@ -65,11 +65,16 @@ header, footer {
     padding: 0;
     border-bottom: 1px solid #eee;
     top: @top-height;
-    left: @menu-left;
-    width: calc(~"100% - " @menu-left + @partner-right + @searchAZ600 );
+    left: 0;
+    width: calc(~"100% - " @searchAZ000);
     height: @header-height;
     position: fixed !important;
     z-index: 800;
+
+    @media @sm-gt {
+        left: @menu-left;
+        width: calc(~"100% - " @menu-left + @partner-right + @searchAZ600 );
+    }
 }
 
 .pure-flex-rw {

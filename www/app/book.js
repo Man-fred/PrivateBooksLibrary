@@ -7,7 +7,7 @@
         show: function (doc, seite = app.seite) {
             if (seite === "books") {
                 $('#img_books').attr("src", book.image(doc));
-                $('#book-favor').replaceWith('<div id="book-favor" onclick="pbl.book.set_favor(this, \'' + doc['_id'] + '\')">' + book.favor(doc['favor']) + '</div>');
+                $('#book-favor').replaceWith('<div id="book-favor" onclick="app.book.set_favor(this, \'' + doc['_id'] + '\')">' + book.favor(doc['favor']) + '</div>');
                 //doc['checkdate'] = new Date(parseInt(doc['checkdate'])).toISOString();//toLocaleDateString();
                 //alert(doc['name']);alert(doc.name);
             }
@@ -26,13 +26,17 @@
             });
         },
         set_favor: function (div, id) {
-            //var div = $this;
-            db.get(id).then(function (doc) {
+            app.pouch.db.get(id).then(function (docdb) {
                 // handle doc
-                if (doc) {
-                    doc.favor = doc.favor === "0" ? "1" : "0";
-                    db.put(doc).then(function (doc1) {
-                        div.innerHTML = bookFavor(doc['favor']);
+                if (docdb) {
+                    docdb.favor = docdb.favor === "0" ? "1" : "0";
+                    app.pouch.db.put(docdb).then(function (docput) {
+                        var i = app.pouch.appResult[app.seite].id[id];
+                        var doc = app.pouch.appResult[app.seite].rows[i].doc;
+                        doc.favor = doc.favor === "0" ? "1" : "0";
+                        div.innerHTML = book.favor(doc.favor);
+                        app.pouch.appResult[app.seite].rows[i].tr1 = app.datalist.one_book(doc, 1);
+                        document.getElementById(id).innerHTML = app.datalist.one_book_div(doc);
                     }).catch(function (err) {
                         console.log(err);
                     });
