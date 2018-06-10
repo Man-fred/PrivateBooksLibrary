@@ -222,10 +222,11 @@
                     console.log('allDocs '+err);
                 });
                 */
-                // Liste 
+                /*/ Liste 
                 for (var i = 0; i < localStorage.length; i++) {
                     app.log('localStorage: ' + localStorage.key(i) + ': ' + localStorage.getItem(localStorage.key(i)));
                 };
+                // Ende Liste */
                 // normale Verarbeitung
                 this.infoSync.innerHTML = 'connect get login';
                 pouch.db.get(pouch.dbIdPrivate + '_login').then(function (doc) {

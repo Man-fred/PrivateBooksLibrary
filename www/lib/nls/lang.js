@@ -1,12 +1,14 @@
 ﻿//Contents of nls/lang.js
 define({
     "root": {
-        "books": "books",
-        "state": "state",
-        "favorite": "favorite",
-        "title": "title",
-        "author": "author",
-        "authors": "authors"
+        "author": "Author",
+        "authors": "Authors",
+        "books": "Books",
+        "favorite": "Favorite",
+        "nr": "No",
+        "series": "Series",
+        "state": "State",
+        "title": "Title"
     },
     "de": true
 });

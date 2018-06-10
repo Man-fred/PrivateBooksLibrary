@@ -13,14 +13,14 @@
                 pointY = parseInt(touchobj.clientY);
                 startx = parseInt(touchobj.clientX); // X/Y-Koordinaten relativ zum Viewport
                 starty = pointY;
-                moves.innerHTML = "touch bei X: " + startx + "px, Y: " + starty + "px";
+                //moves.innerHTML = "touch bei X: " + startx + "px, Y: " + starty + "px";
                 eve.preventDefault();
             });
             startmove.addEventListener("mousedown", function (eve) {
                 startx = parseInt(eve.clientX); // X/Y-Koordinaten relativ zum Viewport
                 pointY = parseInt(eve.clientY);
                 starty = pointY;
-                moves.innerHTML = "mouse bei X: " + startx + "px, Y: " + starty + "px";
+                //moves.innerHTML = "mouse bei X: " + startx + "px, Y: " + starty + "px";
                 eve.preventDefault();
             });
             startmove.addEventListener("touchmove", function (eve) {
@@ -28,14 +28,14 @@
                 pointY = parseInt(eve.clientY);
                 distx = parseInt(touchobj.clientX) - startx;
                 disty = parseInt(touchobj.clientY) - starty;
-                moves.innerHTML = "touch bei X: " + (startx + distx) + "px, Y: " + (starty + disty) + "px";
+                //moves.innerHTML = "touch bei X: " + (startx + distx) + "px, Y: " + (starty + disty) + "px";
                 eve.preventDefault();
             });
             startmove.addEventListener("mousemove", function (eve) {
                 pointY = parseInt(eve.clientY);
                 distx = parseInt(eve.clientX) - startx; // X/Y-Koordinaten relativ zum Viewport
                 disty = parseInt(eve.clientY) - starty;
-                moves.innerHTML = "mouse bei X: " + startx + "px, Y: " + starty + "px";
+                //moves.innerHTML = "mouse bei X: " + startx + "px, Y: " + starty + "px";
                 eve.preventDefault();
             });
             startmove.addEventListener("touchend", function (eve) {
@@ -43,14 +43,14 @@
                 var touchobj = eve.changedTouches[0]; // reference first touch point for this event
                 distx = parseInt(touchobj.clientX) - startx;
                 disty = parseInt(touchobj.clientY) - starty;
-                moves.innerHTML = "touch bei X: " + (startx + distx) + "px, Y: " + (starty + disty) + "px";
+                //moves.innerHTML = "touch bei X: " + (startx + distx) + "px, Y: " + (starty + disty) + "px";
                 eve.preventDefault();
             });
             startmove.addEventListener("mouseup", function (eve) {
                 pointY = parseInt(eve.clientY);
                 distx = parseInt(eve.clientX) - startx; // X/Y-Koordinaten relativ zum Viewport
                 disty = parseInt(eve.clientY) - starty;
-                moves.innerHTML = "mouse bei X: " + (startx + distx) + "px, Y: " + (starty + disty) + "px";
+                //moves.innerHTML = "mouse bei X: " + (startx + distx) + "px, Y: " + (starty + disty) + "px";
                 eve.preventDefault();
             });
     };

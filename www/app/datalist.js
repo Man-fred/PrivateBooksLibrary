@@ -10,7 +10,25 @@
         fill: function (aktiveSeite, refresh = false) {
             this.dbReady--;
             if (this.dbReady <= 0) {
-                console.log("datalist.fill() "+datalist.pbl.seite);
+                console.log("datalist.fill() " + datalist.pbl.seite);
+                if (refresh) {
+                    delete datalist.pbl.myApp['state'].data;
+                }
+                if (!datalist.pbl.myApp['state'].data) {
+                    datalist.pbl.pouch.db.allDocs({
+                        startkey: datalist.pbl.pouch.dbIdPublic + '_' + 'state'
+                        , endkey: datalist.pbl.pouch.dbIdPublic + '_' + 'state' + 'a'
+                        , include_docs: true
+                        //,attachments: true
+                    }).then(function (result) {
+                        datalist.pbl.myApp['state'].data = [];
+                        $.each(result.rows, function () {
+                            datalist.pbl.myApp['state'].data[this.doc['name']] = this.doc['long'];
+                        });
+                    }).catch(function (err) {
+                        console.log(err);
+                    });
+                }
                 if (aktiveSeite !== datalist.pbl.seite) {
                     if (aktiveSeite !== "") {
                         $('#t_' + datalist.pbl.seite).hide();
@@ -59,7 +77,36 @@
                 case 'author': return (a.doc.author > b.doc.author ? up : (a.doc.author < b.doc.author ? -up : 0));
             }
         },
-
+        one_book: function (doc, state) {
+            var tablerow;
+            if (state === 0) {
+                tablerow = '<td status="';
+                if (doc['favor'] == 1)
+                    tablerow += 'favor ';
+                if (doc['state'] == 1)
+                    tablerow += 's1 ';
+                if (doc['state'] == 0)
+                    tablerow += 's0 ';
+                tablerow += '" onclick="app.data.show(\'' + doc['_id'].replace("'", "\\'") + '\')" ><div class="relative">';
+                return tablerow;
+            } else {
+                //tablerow += '<div class="books-img-tr" ';
+                tablerow = '<div id="' + doc['_id'] + '"><div  class="books-img"><img class="books-image" data-src="' + doc['_id'] + '" src="data: image/png; base64, R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="/></div>';
+                //tablerow += '</td><td onclick="show_data(\'' + doc['_id'] + '\')" >';
+                tablerow += '<div class="books-title">' + doc['name'] + '</div>';
+                tablerow += '<div class="books-favor" >' + datalist.pbl.book.favor(doc['favor']) + '</div>'; //onclick="set_book_favor(this, \'' + doc['_id'] + '\')"
+                tablerow += '<div class="books-author">' + doc['author'] + '</div>';
+                if (doc['releasedate'] > '1800')
+                    tablerow += '<div class="books-date">' + doc['releasedate'].substr(0, 10) + '</div>'; //
+                else
+                    tablerow += '<div class="books-date">&nbsp;</div>';
+                tablerow += '<div class="books-state">' + doc['ent'] + '&nbsp;' + doc['opt'] + '&nbsp;' + datalist.pbl.book.state(doc['state']) + '</div>';
+                tablerow += '<div class="books-isbn">' + doc['isbn'] + '</div>';
+                tablerow += '</div></div></td>';
+                tablerow += '</tr>';
+                return tablerow;
+            }
+        },
         show_all_docs_sorted: function () {
             var seite = datalist.pbl.seite;
             var myApp = datalist.pbl.myApp;
@@ -77,7 +124,7 @@
             var title = "";
             var count = 0, countAll = 0;
             //appResult[seite].rows.sort(sort_books);
-            if (myApp[seite].head) {
+            if (seite != 'search_books' && myApp[seite].head) {
                 if (appResult[seite].rows.length === 0) {
                     table = '<div id="datalistScroll">' + datalist.show_all_header(null);
                 } else {
@@ -90,6 +137,7 @@
             var input = document.getElementById("appSearch");
             var filter = input.value.toUpperCase();
             if (!appResult[seite].tr) {
+                appResult[seite].isbn = [];
                 for (var i = 0; i < appResult[seite].rows.length; i++) {
                     //var s = this.doc;
                     //console.log(s);
@@ -116,61 +164,54 @@
                                     });
                                 } catch (err) { console.log(err); }
                             }
-                            tablerow = '<td status="';
-                            if (appResult[seite].rows[i].doc['favor'] == 1)
-                                tablerow += 'favor ';
-                            if (appResult[seite].rows[i].doc['state'] == 1)
-                                tablerow += 's1 ';
-                            if (appResult[seite].rows[i].doc['state'] == 0)
-                                tablerow += 's0 ';
-                            tablerow += '" onclick="app.data.show(\'' + appResult[seite].rows[i].doc['_id'].replace("'", "\\'") + '\')" ><div class="relative">';
-                            appResult[seite].rows[i].tr0 = tablerow;
-                            //tablerow += '<div class="books-img-tr" ';
-                            tablerow = '<div id="' + appResult[seite].rows[i].doc['_id'] + '"><div  class="books-img"><img class="books-image" data-src="' + appResult[seite].rows[i].doc['_id'] + '" src="data: image/png; base64, R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="/></div>';
-                            //tablerow += '</td><td onclick="show_data(\'' + appResult[seite].rows[i].doc['_id'] + '\')" >';
-                            tablerow += '<div class="books-title">' + appResult[seite].rows[i].doc['name'] + '</div>';
-                            tablerow += '<div class="books-favor" >' + datalist.pbl.book.favor(appResult[seite].rows[i].doc['favor']) + '</div>'; //onclick="set_book_favor(this, \'' + appResult[seite].rows[i].doc['_id'] + '\')"
-                            tablerow += '<div class="books-author">' + appResult[seite].rows[i].doc['author'] + '</div>';
-                            if (appResult[seite].rows[i].doc['releasedate'] > '1800')
-                                tablerow += '<div class="books-date">' + appResult[seite].rows[i].doc['releasedate'].substr(0, 10) + '</div>'; //
-                            else
-                                tablerow += '<div class="books-date">&nbsp;</div>';
-                            tablerow += '<div class="books-state">' + appResult[seite].rows[i].doc['ent'] + '&nbsp;' + appResult[seite].rows[i].doc['opt'] + '&nbsp;' + datalist.pbl.book.state(appResult[seite].rows[i].doc['state']) + '</div>';
-                            tablerow += '<div class="books-isbn">' + appResult[seite].rows[i].doc['isbn'] + '</div>';
-                            tablerow += '</div></div></td>';
+                            appResult[seite].rows[i].tr0 = datalist.one_book(appResult[seite].rows[i].doc, 0);
+                            appResult[seite].rows[i].tr1 = datalist.one_book(appResult[seite].rows[i].doc, 1);
                         } else {
                             appResult[seite].rows[i].tr0 = '';
                             tablerow = '';
                             $.each(myApp[seite].fields, function () {
                                 if (!this.noList) {
                                     if (this.select) {
-                                        tablerow += '<td onclick="app.data.show(\'' + appResult[seite].rows[i].doc['_id'] + '\')" >' + myApp[this.select]["data"][appResult[seite].rows[i].doc[this.name]] + '</td>';
+                                        tablerow += '<td class="' + seite + '-' + this.name+'" onclick="app.data.show(\'' + appResult[seite].rows[i].doc['_id'] + '\')" >' + myApp[this.select]["data"][appResult[seite].rows[i].doc[this.name]] + '</td>';
                                     } else if (this.func) {
-                                        tablerow += '<td onclick="app.data.show(\'' + appResult[seite].rows[i].doc['_id'] + '\')" >' + appResult[seite].rows[i].doc[this.name] + '</td>';
+                                        tablerow += '<td class="' + seite + '-' + this.name +'" onclick="app.data.show(\'' + appResult[seite].rows[i].doc['_id'] + '\')" >' + appResult[seite].rows[i].doc[this.name] + '</td>';
                                         //	tablerow += '<td onclick="show_data(\'' + appResult[seite].rows[i].doc['_id'] + '\')" >' + myApp[this.func](appResult[seite].rows[i].doc[this.name]) + '</td>';
                                     } else if (this.type === "checkbox") {
-                                        tablerow += '<td onclick="app.data.show(\'' + appResult[seite].rows[i].doc['_id'] + '\')" ><input type="' + this.type + '"' + (appResult[seite].rows[i].doc[this.name] ? 'checked' : '') + ' disabled></td>';
+                                        tablerow += '<td class="' + seite + '-' + this.name +'" onclick="app.data.show(\'' + appResult[seite].rows[i].doc['_id'] + '\')" ><input type="' + this.type + '"' + (appResult[seite].rows[i].doc[this.name] ? 'checked' : '') + ' disabled></td>';
                                     } else {
-                                        tablerow += '<td onclick="app.data.show(\'' + appResult[seite].rows[i].doc['_id'] + '\')" >' + appResult[seite].rows[i].doc[this.name] + '</td>';
+                                        tablerow += '<td class="' + seite + '-' + this.name +'" onclick="app.data.show(\'' + appResult[seite].rows[i].doc['_id'] + '\')" >' + appResult[seite].rows[i].doc[this.name] + '</td>';
                                     }
                                 }
                             });
+                            tablerow += '</tr>';
+                            appResult[seite].rows[i].tr1 = tablerow;
                         }
-                        tablerow += '</tr>';
-                        appResult[seite].rows[i].tr1 = tablerow;
                         appResult[seite].tr = true;
                     }
                 
             }
             console.log('show_all sort ' + seite + ' ' + appResult[seite].rows.length);
-            if (seite === "books") {
+            if (seite === "books" || seite === "search_books") {
                 appResult[seite].rows.sort(datalist.sort_books);
             }
+            if (seite != "books" && seite != "authors") {
+                filter = '';
+            }
             var select = true;
+            if (seite === "books")
+                appResult[seite].isbn = [];
+            appResult[seite].id = [];
             for (var i = 0; i < appResult[seite].rows.length; i++) {
                 //15.04.2008 -> 14.4.1977 -> 978393600
                 //27:10:2011 -> 25:10:1980
                 //releasedate = new Date(parseInt(s['releasedate']));
+                if (seite === "books" && appResult[seite].rows[i].doc['isbn']) {
+                    appResult[seite].isbn[app.search.isbn9(appResult[seite].rows[i].doc['isbn'])] = i;
+                }
+                if (appResult[seite].rows[i].doc['_id']) {
+                    appResult[seite].id[appResult[seite].rows[i].doc['_id']] = i;
+                }
+
                 tablerow = "";
                 if (app.showDeleted || !appResult[seite].rows[i].doc.DBdeleted) {
                     if (seite === "books") {
@@ -208,10 +249,11 @@
                     }
                     if (select) {
                         if (filter === "" ||
-                            appResult[seite].rows[i].doc['name'].toUpperCase().indexOf(filter) > -1 ||
-                            appResult[seite].rows[i].doc['author'].toUpperCase().indexOf(filter) > -1 ||
-                            appResult[seite].rows[i].doc['isbn'].toUpperCase().indexOf(filter) > -1
+                            appResult[seite].rows[i].doc['name'].toUpperCase().normalize('NFC').indexOf(filter) > -1 ||
+                            seite == 'books' && appResult[seite].rows[i].doc['author'].toUpperCase().normalize('NFC').indexOf(filter) > -1 ||
+                            seite == 'books' && appResult[seite].rows[i].doc['isbn'].toUpperCase().normalize('NFC').indexOf(filter) > -1
                         ) {
+                            var test = appResult[seite].rows[i].doc['name'].toUpperCase();
                             display = "<tr>";
                             count++;
                         } else {
@@ -344,28 +386,44 @@
                 }
                 if (test) {
                     if (filter) {
-                        td = tr[i].getElementsByClassName("books-title")[0];
-                        if (td) {
-                            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                                tr[i].style.display = "";
-                            } else {
-                                td = tr[i].getElementsByClassName("books-author")[0];
-                                if (td) {
-                                    if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                                        tr[i].style.display = "";
-                                    } else {
-                                        td = tr[i].getElementsByClassName("books-isbn")[0];
-                                        if (td) {
-                                            if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                                                tr[i].style.display = "";
-                                            } else {
-                                                tr[i].style.display = "none";
-                                                count--;
+                        if (app.seite == "books") {
+                            td = tr[i].getElementsByClassName("books-title")[0];
+                            if (td) {
+                                //var test = td.innerHTML.toUpperCase().normalize('NFC');
+                                if (td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1) {
+                                    tr[i].style.display = "";
+                                } else {
+                                    td = tr[i].getElementsByClassName("books-author")[0];
+                                    if (td) {
+                                        if (td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1) {
+                                            tr[i].style.display = "";
+                                        } else {
+                                            td = tr[i].getElementsByClassName("books-isbn")[0];
+                                            if (td) {
+                                                if (td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1) {
+                                                    tr[i].style.display = "";
+                                                } else {
+                                                    tr[i].style.display = "none";
+                                                    count--;
+                                                }
                                             }
                                         }
                                     }
                                 }
                             }
+                        } else if (app.seite == "authors") {
+                            td = tr[i].getElementsByClassName("authors-name")[0];
+                            if (td) {
+                                //var test = td.innerHTML.toUpperCase().normalize('NFC');
+                                if (td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1) {
+                                    tr[i].style.display = "";
+                                } else {
+                                    tr[i].style.display = "none";
+                                    count--;
+                                }
+                            }
+                        } else {
+                            tr[i].style.display = "";
                         }
                     } else {
                         tr[i].style.display = "";

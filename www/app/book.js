@@ -4,6 +4,27 @@
         initialize: function (pbl) {
             book.pbl = pbl;
         },
+        show: function (doc, seite = app.seite) {
+            if (seite === "books") {
+                $('#img_books').attr("src", book.image(doc));
+                $('#book-favor').replaceWith('<div id="book-favor" onclick="pbl.book.set_favor(this, \'' + doc['_id'] + '\')">' + book.favor(doc['favor']) + '</div>');
+                //doc['checkdate'] = new Date(parseInt(doc['checkdate'])).toISOString();//toLocaleDateString();
+                //alert(doc['name']);alert(doc.name);
+            }
+            $.each(app.myApp[seite].header, function () {
+                $('#' + seite + '_' + this.name).val(doc[this.name]);
+            });
+            $.each(app.myApp[seite].fields, function () {
+                if (!this.noField) {
+                    if (this.select) {
+                        app.data.select(this.select, seite, this.name, this.field, this.visible, doc[this.name]);
+                    } else if (this.type === "checkbox")
+                        $('#' + seite + '_' + this.name).prop("checked", (doc[this.name] === true));//(doc[this.name]);
+                    else
+                        $('#' + seite + '_' + this.name).val(doc[this.name]);
+                }
+            });
+        },
         set_favor: function (div, id) {
             //var div = $this;
             db.get(id).then(function (doc) {
@@ -52,23 +73,27 @@
         // 1 36 0 6   owned/read kindle
 
         state: function (w) {
-            switch (w) {
-                case '0':
-                    return 'not owned';
-                case '1':
-                    return 'ordered';
-                case '2':
-                    return 'owned';
-                case '3':
-                    return 'S3';
-                case '4':
-                    return 'S4';
-                case '5':
-                    return 'S5';
-                case '6':
-                    return 'owned/read';
-                default:
-                    return 'S' + w;
+            if (!book.pbl.myApp['state'].data) {
+            } else {
+                return book.pbl.myApp['state'].data[w];
+                switch (w) {
+                    case '0':
+                        return 'not owned';
+                    case '1':
+                        return 'ordered';
+                    case '2':
+                        return 'owned';
+                    case '3':
+                        return 'S3';
+                    case '4':
+                        return 'S4';
+                    case '5':
+                        return 'S5';
+                    case '6':
+                        return 'owned/read';
+                    default:
+                        return 'S' + w;
+                }
             }
         },
 

@@ -25,11 +25,18 @@
                 result += '<button type="button" id="appScan" class="pure-button" onclick="app.search.scan()" title="Barcode scannen">&nbsp;</button> &nbsp;';
                 result += '<div id="bc_search" class="deleteicon">';
                 result += '<input id="bc_text" placeholder="ISBN, Titel oder Autor ..."/>'; //(<span id="bc_format"></span>)
-                result += '<span onclick="app.data.mySearch(\'~~\')"></span></div><a href="#" name="scansearch" id="scansearch">Suchen</a></div>';
+                result += '<span onclick="app.data.mySearch(\'~~\')"></span></div><a onclick="app.search.scan_search()" href="#" name="scansearch" id="scansearch">Suchen</a></div>';
                 //result += '<p><span id="result"></span></p>';
                 result += '<div id="book-image"><img  class="pure-img" id="img_' + aktiveSeite + '" height="200" src="blank.jpg"/></div>';
                 result += '<div id="book-favor">' + data.book.favor("0") + '</div><div class="clear"></div>';
-
+            } else if (aktiveSeite === "authors") {
+                result += '<div id="bc" class="pure-control-group">';
+                result += '<div id="as_search" class="deleteicon">';
+                result += '<input id="as_text" placeholder="Autor ..."/>'; 
+                result += '<span onclick="app.data.mySearch(\'~~\')"></span></div>';
+                result += '<a onclick="app.search.author_books()" href= "#"> Bücher</a>&nbsp;';
+                result += '<a onclick="app.search.author_search()" href= "#"> Autor</a>';
+                result += '</div>';
             }
             $.each(myApp[aktiveSeite].header, function () {
                 result += '<div class="pure-control-group"><label for="' + aktiveSeite + '_' + this.name + '">' + this.title + '</label>';
@@ -66,7 +73,6 @@
 
         },
         show: function (id, neueSeite = this.pbl.seite) {
-
             if (id === "") {
                 this.pbl.ui.show_page2(neueSeite);
                 this.clear();
@@ -79,30 +85,20 @@
                 /*this.pbl.pouch.db.get(id).then(function (doc) {
                     $('#pageContact').html(doc.html);
                 });*/
+            } else if (id.startsWith("search_books_")) {
+                this.pbl.ui.show_page2('books');
+                var doc = app.pouch.appResult.search_books.rows[app.pouch.appResult.search_books.id[id]].doc;
+                app.book.show(doc, 'books');
+                $('#addBtn').prop("disabled", !app.myApp[data.pbl.seite].btn.add || !doc._id.startsWith("search_"));
+                $('#updateBtn').prop("disabled", !app.myApp[data.pbl.seite].btn.update || doc._id.startsWith("search_"));
+                $('#deleteBtn').prop("disabled", true);
+                $('#clearBtn').prop("disabled", true);
             } else {
                 this.pbl.ui.show_page2(neueSeite);
                 this.pbl.pouch.db.get(id, { attachments: true }).then(function (doc) {
                     // handle doc
                     if (doc) {
-                        if (data.pbl.seite === "books") {
-                            $('#img_books').attr("src", data.pbl.book.image(doc));
-                            $('#book-favor').replaceWith('<div id="book-favor" onclick="pbl.book.set_favor(this, \'' + doc['_id'] + '\')">' + data.pbl.book.favor(doc['favor']) + '</div>');
-                            //doc['checkdate'] = new Date(parseInt(doc['checkdate'])).toISOString();//toLocaleDateString();
-
-                        }
-                        $.each(app.myApp[app.seite].header, function () {
-                            $('#' + seite + '_' + this.name).val(doc[this.name]);
-                        });
-                        $.each(app.myApp[app.seite].fields, function () {
-                            if (!this.noField) {
-                                if (this.select) {
-                                    data.select(this.select, app.seite, this.name, this.field, this.visible, doc[this.name]);
-                                } else if (this.type === "checkbox")
-                                    $('#' + app.seite + '_' + this.name).prop("checked", (doc[this.name] === true));//(doc[this.name]);
-                                else
-                                    $('#' + app.seite + '_' + this.name).val(doc[this.name]);
-                            }
-                        });
+                        app.book.show(doc);
                         $('#DBTimestamp').html(doc.DBTimestamp);
                         $('#DBstate').html(doc.DBstate);
                         $('#DBversion').html(doc.DBversion);
@@ -200,22 +196,24 @@
             });
             if (app.seite === "books" & $('#img_books').attr("src") !== "") {
                 var img = $('#img_books').attr("src");
-                // 'data:image/jpeg;base64, '
-                img.substr(24);
-                img = atob(app.image);
-                console.log(img);
-                myObj._attachments = {
-                    'thumbnail': {
-                        content_type: 'image/png',
-                        data: app.image
-                    }
-                };
+                if (img.startsWith('data:image/jpeg;base64, ')) {
+                    img.substr(24);
+                    img = atob(img.substr(24));
+                    console.log(img.length);
+                    myObj._attachments = {
+                        'thumbnail': {
+                            content_type: 'image/png',
+                            data: app.image
+                        }
+                    };
+                }
             }
             app.pouch.setSync(myObj, 'add');
-            if (app.seite === "books" & myObj.author !== "") {
+            if (app.seite === "books" & myObj.author) {
                 var myObjA = {};
-                app.pouch.setSync(myObjA, 'add', 'authors');
                 myObjA.name = myObj.author;
+                myObjA.nr = myObj.author_id;
+                app.pouch.setSync(myObjA, 'add', 'authors');
                 app.pouch.db.put(myObjA);
             }
             //var myDoc = array2json(myObj);
@@ -260,8 +258,8 @@
                     }
                     if (app.seite === "books") {
                         var myObj = {};
-                        app.pouch.setSync(myObj, 'add', 'authors');
                         myObj.name = doc.author;
+                        app.pouch.setSync(myObj, 'add', 'authors');
                         app.pouch.db.put(myObj);
                     }
                     app.pouch.db.put(doc).then(function (doc2) {

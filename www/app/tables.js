@@ -22,6 +22,17 @@
                     name: "publisher",
                     title: "publisher"
                 },
+                series: {
+                    name: "series",
+                    title: app.lang.series,
+                    select: "series",
+                    field: "name",
+                    visible: "name"
+                },
+                seriesnr: {
+                    name: "seriesnr",
+                    title: app.lang.nr
+                },
                 isbn: {
                     name: "isbn",
                     title: "isbn"
@@ -96,7 +107,28 @@
                 name: {
                     name: "name",
                     title: "name"
+                },
+                nr: {
+                    name: "nr",
+                    title: "ID"
                 }
+            },
+            data: []
+        },
+        series: {
+            name: "series",
+            title: "series",
+            menu: true,
+            action: "app.datalist.fill",
+            head: true,
+            tr: '',
+            btn: { add: true },
+            idName: true,
+            fields: {
+                name: {
+                    name: "name",
+                    title: "name"
+                },
             },
             data: []
         },

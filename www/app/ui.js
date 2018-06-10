@@ -76,7 +76,7 @@ define(function (require) {
             }
             if (neu == page1) {
                 ui.dataformBooks.style.display = "block";
-                if (this.pbl.seite === 'books') {
+                if (this.pbl.seite === 'books' || this.pbl.seite === 'authors') {
                     ui.appSearchAnchor.style.display = "block";
                 } else {
                     ui.appSearchAnchor.style.display = "none";
