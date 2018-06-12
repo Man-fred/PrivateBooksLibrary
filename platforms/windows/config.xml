@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget defaultlocale="de-DE" id="io.cordova.myapp387c96" version="0.4.2" windows-packageVersion="0.4.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
+<widget defaultlocale="de-DE" id="io.cordova.myapp387c96" version="0.4.4" windows-packageVersion="0.4.4.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
     <name>PrivateBooksLibrary</name>
     <description>Verwalten Sie Ihre private Büchersammlung und Ihre eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.</description>
     <author email="dev@bcss.de" href="http://pbl.bcss.de/dev">Manfred Bielemeier</author>
@@ -13,7 +13,7 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <vs:platformSpecificValues>
-        <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.4.2.0" />
+        <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.4.4.0" />
     </vs:platformSpecificValues>
     <config-file parent="/Package/Capabilities" target="package.appxmanifest">
         <DeviceCapability Name="webcam" />

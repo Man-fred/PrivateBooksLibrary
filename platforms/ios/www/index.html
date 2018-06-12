@@ -60,14 +60,14 @@
                 <a id="appLogin" href="#about">Login</a>
             </div>
         </div>
-        <div id="appAdd">
-            <button type="button" class="title-button" onclick="app.data.show('')" title="Neuer Eintrag">+</button>
+        <div class="dropdown">
+            <button id="appAdd" class="dropbtn title-button" onclick="app.data.show('')" title="Neuer Eintrag">&nbsp;</button>
         </div>
         <div id="appTitle">Bücher</div>
         <div id="appReturn" class="title-button"></div>
     </div>
     <div id="dataformBooks" class="header">
-        <div id="message">&nbsp;</div>
+        <div id="topMessage">&nbsp;</div>
         <div id="appSearchAnchor" class="deleteicon">
             <input type="text" id="appSearch" onkeyup="app.datalist.mySearch()" placeholder="Titel oder Autor ...">
             <span onclick="app.datalist.mySearch('~~')"></span>

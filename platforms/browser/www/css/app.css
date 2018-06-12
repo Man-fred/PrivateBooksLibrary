@@ -30,11 +30,17 @@ footer {
   padding: 0;
   border-bottom: 1px solid #eee;
   top: 44px;
-  left: 150px;
-  width: calc(100% -  200px);
+  left: 0;
+  width: calc(100% -  30px);
   height: 50px;
   position: fixed !important;
   z-index: 800;
+}
+@media only screen and (min-width: 568px) {
+  .header {
+    left: 150px;
+    width: calc(100% -  200px);
+  }
 }
 .pure-flex-rw {
   display: flex;
@@ -865,16 +871,33 @@ label[for='toggle-all'] {
     font-size: 32px;
   }
 }
-.books-author {
+.books-author100 {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   width: calc(100% -  57px);
 }
+.books-author {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: calc(50% -  28.5px);
+  float: left;
+}
+.books-series {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: calc(50% -  28.5px);
+  float: left;
+}
 .books-date {
   width: 120px;
   /*background-color: #D00000;*/
   float: left;
+}
+.books-memo {
+  width: calc(100% -  57px);
 }
 .books-image {
   width: auto;

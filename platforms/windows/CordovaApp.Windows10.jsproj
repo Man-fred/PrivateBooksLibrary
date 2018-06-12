@@ -307,7 +307,4 @@
     <PropertyGroup />
     <PropertyGroup />
     <PropertyGroup />
-    <ItemGroup>
-        <ProjectReference Include="..\..\plugins\cordova-sqlite-evcore-extbuild-free\src\windows\SQLite3-Win-RT\SQLite3\SQLite3.UWP\SQLite3.UWP.vcxproj" />
-    </ItemGroup>
 </Project>
