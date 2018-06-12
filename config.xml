@@ -1,5 +1,5 @@
-<?xml version='1.0' encoding='utf-8'?>
-<widget defaultlocale="de-DE" id="io.cordova.myapp387c96" version="0.4.5" windows-packageVersion="0.4.5.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
+<?xml version="1.0" encoding="utf-8"?>
+<widget defaultlocale="de-DE" id="io.cordova.myapp387c96" version="0.4.6" windows-packageVersion="0.4.6.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
     <name>PrivateBooksLibrary</name>
     <description>Verwalten Sie Ihre private Büchersammlung und Ihre eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.</description>
     <author email="dev@bcss.de" href="http://pbl.bcss.de/dev">Manfred Bielemeier</author>
@@ -90,14 +90,15 @@
         <splash height="1920" src="res/screens/windows/SplashScreenPhone.scale-240.png" width="1152" />
     </platform>
     <vs:platformSpecificValues>
-        <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.4.5.0" />
+        <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.4.6.0" />
     </vs:platformSpecificValues>
     <preference name="WindowsStoreDisplayName" value="Private Books Library" />
     <preference name="WindowsStoreIdentityName" value="35337ManfredBielemeierBCS.PrivateBooksLibrary" />
     <preference name="WindowsStorePublisherName" value="Manfred Bielemeier (BCSS Software &amp; Beratung GmbH)" />
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="StatusBarBackgroundColor" value="#1010FF" />
-    <config-file parent="/Package/Capabilities" target="package.appxmanifest">
+  <preference name="android-minSdkVersion" value="26" />
+  <config-file parent="/Package/Capabilities" target="package.appxmanifest">
         <DeviceCapability Name="webcam" />
     </config-file>
     <config-file parent="/Package/Capabilities" target="package.windows10.appxmanifest">
