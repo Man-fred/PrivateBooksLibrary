@@ -32,11 +32,10 @@
                     docdb.favor = docdb.favor === "0" ? "1" : "0";
                     app.pouch.db.put(docdb).then(function (docput) {
                         var i = app.pouch.appResult[app.seite].id[id];
-                        var doc = app.pouch.appResult[app.seite].rows[i].doc;
-                        doc.favor = doc.favor === "0" ? "1" : "0";
-                        div.innerHTML = book.favor(doc.favor);
-                        app.pouch.appResult[app.seite].rows[i].tr1 = app.datalist.one_book(doc, 1);
-                        document.getElementById(id).innerHTML = app.datalist.one_book_div(doc);
+                        app.pouch.appResult[app.seite].rows[i].doc = docdb;
+                        div.innerHTML = book.favor(docdb.favor);
+                        app.pouch.appResult[app.seite].rows[i].tr1 = app.datalist.one_book(docdb, 1);
+                        document.getElementById(id).innerHTML = app.datalist.one_book_div(docdb);
                     }).catch(function (err) {
                         console.log(err);
                     });

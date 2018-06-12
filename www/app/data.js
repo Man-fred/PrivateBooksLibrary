@@ -108,10 +108,10 @@
                         //$('#txtSearch').html(r._id);
                         $('#_id').html(doc._id);
                         $('#_rev').html(doc._rev);
-                        $('#addBtn').prop("disabled", !app.myApp[data.pbl.seite].btn.add);
+                        $('#addBtn').prop("disabled", true);
                         $('#updateBtn').prop("disabled", !app.myApp[data.pbl.seite].btn.update);
                         $('#deleteBtn').prop("disabled", !app.myApp[data.pbl.seite].btn.add);
-                        $('#clearBtn').prop("disabled", !app.myApp[data.pbl.seite].btn.add);
+                        $('#clearBtn').prop("disabled", true);
                     } else {
                         pbl.ClearTextBox();
                         $('#addBtn').prop("disabled", !app.myApp[data.pbl.seite].btn.add);
@@ -263,8 +263,17 @@
                         app.pouch.db.put(myObj);
                     }
                     app.pouch.db.put(doc).then(function (doc2) {
-                        console.log(doc2);
+                        //console.log(doc2);
 
+                        var i = app.pouch.appResult[app.seite].id[doc._id];
+                        app.pouch.appResult[app.seite].rows[i].doc = doc;
+                        if (app.seite === 'books') {
+                            app.pouch.appResult[app.seite].rows[i].tr1 = app.datalist.one_book(doc, 1);
+                            document.getElementById(doc._id).innerHTML = app.datalist.one_book_div(doc);
+                        } else {
+                            app.pouch.appResult[app.seite].rows[i].tr1 = app.datalist.one_row(doc, 1);
+                            document.getElementById(doc._id).innerHTML = app.pouch.appResult[app.seite].rows[i].tr1;
+                        }
                         $('#result').html('Record No. ' + _id + ' Updated Successfully');
                         //show_all(seite);
                     }).catch(function (err) {

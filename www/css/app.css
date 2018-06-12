@@ -871,16 +871,33 @@ label[for='toggle-all'] {
     font-size: 32px;
   }
 }
-.books-author {
+.books-author100 {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   width: calc(100% -  57px);
 }
+.books-author {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: calc(50% -  28.5px);
+  float: left;
+}
+.books-series {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: calc(50% -  28.5px);
+  float: left;
+}
 .books-date {
   width: 120px;
   /*background-color: #D00000;*/
   float: left;
+}
+.books-memo {
+  width: calc(100% -  57px);
 }
 .books-image {
   width: auto;

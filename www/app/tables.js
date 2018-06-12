@@ -132,7 +132,7 @@
                 name: {
                     name: "name",
                     title: "name"
-                },
+                }
             },
             data: []
         },

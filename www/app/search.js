@@ -111,7 +111,7 @@
                     console.log(erg);
                     //    erg.getElementsByTagName("title")[0].childNodes[0].nodeValue;
                     if (erg) { 
-                        if (erg.count == 1) {
+                        if (erg.count === 1) {
                             if (erg.Items[0].name)
                                 $("#books_name").val(erg.Items[0].name);
                             if (erg.Items[0].publisher)
@@ -187,11 +187,11 @@
                 }
             };
             var searchString;
-            if (index == 6) searchString = "https://pbl.bcss.de/api/request.php?isbn=" + encodeURI(w);
-            if (index == 5) searchString = "https://pbl.bcss.de/api/request.php?auRef=" + encodeURI(w);
-            if (index == 4) searchString = "https://pbl.bcss.de/api/request.php?per=" + encodeURI(w);
-            if (index == 3) searchString = "https://pbl.bcss.de/api/request.php?gndper=" + encodeURI(w);
-            if (index == 2) searchString = "https://pbl.bcss.de/api/request.php?gndidn=" + encodeURI(w);
+            if (index === 6) searchString = "https://pbl.bcss.de/api/request.php?isbn=" + encodeURI(w);
+            if (index === 5) searchString = "https://pbl.bcss.de/api/request.php?auRef=" + encodeURI(w);
+            if (index === 4) searchString = "https://pbl.bcss.de/api/request.php?per=" + encodeURI(w);
+            if (index === 3) searchString = "https://pbl.bcss.de/api/request.php?gndper=" + encodeURI(w);
+            if (index === 2) searchString = "https://pbl.bcss.de/api/request.php?gndidn=" + encodeURI(w);
             console.log(searchString);
             xhttp.open("GET", searchString, true);
             xhttp.send();

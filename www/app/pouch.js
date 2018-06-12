@@ -21,7 +21,7 @@
         infoSync: null,
         initialize: function (pbl) {
             this.pbl = pbl;
-            this.infoSync = document.getElementById('info-sync')
+            this.infoSync = document.getElementById('info-sync');
             this.infoSync.innerHTML = 'initialize';
         },
         set: function (doc) {
@@ -109,12 +109,12 @@
             */
         },
         onSyncChange: function (info) {
-            if (info.direction == "pull") {
+            if (info.direction === "pull") {
                 app.log('Last Sequence: ' + parseInt(info.change.last_seq));
-            };
+            }
             console.log(info);
             pouch.infoSync.setAttribute('data-sync-state', 'changed');
-            pouch.infoSync.innerHTML = 'server: change ' + (typeof info.change == 'undefined' ? 'undefined' : info.change.ok);
+            pouch.infoSync.innerHTML = 'server: change ' + (typeof info.change === 'undefined' ? 'undefined' : info.change.ok);
         },
         onSyncPaused: function (err) {
             pouch.infoSync.setAttribute('data-sync-state', 'paused');
@@ -188,7 +188,7 @@
             this.infoSync.innerHTML = 'connect 2';
             if (cordova.platformId === "ios") {
                 this.dbA.destroy().then(function (response) {
-                    app.log(response)
+                    app.log(response);
                 }).catch(function (err) {
                     app.log(err);
                 });

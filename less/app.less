@@ -924,17 +924,36 @@ label[for='toggle-all'] {
     }
 }
 
-.books-author {
+.books-author100 {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     width: calc(~"100% - " @books-img + @books-img-margin);
 }
 
+.books-author {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: calc(~"50% - " ( @books-img + @books-img-margin ) / 2);
+    float: left;
+}
+
+.books-series {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: calc(~"50% - " ( @books-img + @books-img-margin ) / 2);
+    float: left;
+}
+
 .books-date {
     width: 120px;
     /*background-color: #D00000;*/
     float: left;
+}
+.books-memo {
+    width: calc(~"100% - " @books-img + @books-img-margin);
 }
 
 .books-image {

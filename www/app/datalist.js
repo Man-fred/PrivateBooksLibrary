@@ -83,12 +83,14 @@
             tablerow += '<div class="books-title">' + doc['name'] + '</div>';
             tablerow += '<div class="books-favor" >' + datalist.pbl.book.favor(doc['favor']) + '</div>'; //onclick="set_book_favor(this, \'' + doc['_id'] + '\')"
             tablerow += '<div class="books-author">' + doc['author'] + '</div>';
+            tablerow += doc['series'] ? '<div class="books-series">' + doc['series'] + '&nbsp;' + doc['seriesnr'] + '</div>' : '<div class="books-series">&nbsp;</div>';
             if (doc['releasedate'] > '1800')
                 tablerow += '<div class="books-date">' + doc['releasedate'].substr(0, 10) + '</div>'; //
             else
                 tablerow += '<div class="books-date">&nbsp;</div>';
             tablerow += '<div class="books-state">' + doc['ent'] + '&nbsp;' + doc['opt'] + '&nbsp;' + datalist.pbl.book.state(doc['state']) + '</div>';
-            tablerow += '<div class="books-isbn">' + doc['isbn'] + '</div>';
+            tablerow += '<div class="books-isbn" style="display:none;">' + doc['isbn'] + '</div>';
+            tablerow += doc['memo'] ? '<div class="books-memo">' + doc['memo'] + '</div>' : '';
             return tablerow;
         },
         one_book: function (doc, state) {
@@ -105,9 +107,31 @@
                 return tablerow;
             } else {
                 //tablerow += '<div class="books-img-tr" ';
-                tablerow = '<div id="' + doc['_id'] + '">' + datalist.one_book_div(doc)+'</div></div></td></tr>';
+                tablerow = '<div id="' + doc['_id'] + '">' + datalist.one_book_div(doc) + '</div></div></td></tr>';
                 return tablerow;
             }
+        },
+        one_row: function (doc, state) {
+            var tablerow = '';
+            if (state === 1) {
+                $.each(app.myApp[app.seite].fields, function () {
+                    if (!this.noList) {
+                        if (this.select) {
+                            tablerow += '<td class="' + app.seite + '-' + this.name + '" onclick="app.data.show(\'' + doc['_id'] + '\')" >' + app.myApp[this.select]["data"][doc[this.name]] + '</td>';
+                        } else if (this.func) {
+                            tablerow += '<td class="' + app.seite + '-' + this.name + '" onclick="app.data.show(\'' + doc['_id'] + '\')" >' + doc[this.name] + '</td>';
+                            //	tablerow += '<td onclick="show_data(\'' + appResult[seite].rows[i].doc['_id'] + '\')" >' + myApp[this.func](appResult[seite].rows[i].doc[this.name]) + '</td>';
+                        } else if (this.type === "checkbox") {
+                            tablerow += '<td class="' + app.seite + '-' + this.name + '" onclick="app.data.show(\'' + doc['_id'] + '\')" ><input type="' + this.type + '"' + (doc[this.name] ? 'checked' : '') + ' disabled></td>';
+                        } else {
+                            tablerow += '<td class="' + app.seite + '-' + this.name + '" onclick="app.data.show(\'' + doc['_id'] + '\')" >' + doc[this.name] + '</td>';
+                        }
+                    }
+                });
+                tablerow += '</tr>';
+            }
+            return tablerow;
+
         },
         show_all_docs_sorted: function () {
             var seite = datalist.pbl.seite;
@@ -143,62 +167,46 @@
                 for (var i = 0; i < appResult[seite].rows.length; i++) {
                     //var s = this.doc;
                     //console.log(s);
-                        if (myApp[seite].tr === 'books') {
-                            /*
-                            if (appResult[seite].rows[i].doc['source'] !== '11') {
-                                appResult[seite].rows[i].doc['releasedate'] = (new Date(parseInt(appResult[seite].rows[i].doc['releasedate']) + (24 * 60 * 60 * 1000))).toISOString();
-                                appResult[seite].rows[i].doc['source'] = '11';
-                                app.pouch.db.put(appResult[seite].rows[i].doc).then(function () {
-                                }).catch(function (err) {
-                                    console.log(err);
-                                });
-                            }
-                            if (appResult[seite].rows[i].doc['source'] === '11') {
-                                try {
-                                    if (parseInt(appResult[seite].rows[i].doc['checkdate']) > 0) {
-                                        appResult[seite].rows[i].doc['checkedate'] = (new Date(parseInt(appResult[seite].rows[i].doc['checkdate']) + (24 * 60 * 60 * 1000))).toISOString();
-                                    }
-                                    appResult[seite].rows[i].doc['source'] = '12';
-                                    app.pouch.db.put(appResult[seite].rows[i].doc).then(function () {
-                                    }).catch(function (err) {
-                                        console.log(err);
-                                    });
-                                } catch (err) { console.log(err); }
-                            }
-                            if (isNaN(app.search.isbn9(appResult[seite].rows[i].doc['isbn']))) {
-                                appResult[seite].rows[i].doc['asin'] = appResult[seite].rows[i].doc['isbn'];
-                                appResult[seite].rows[i].doc['isbn'] = '';
-                                app.pouch.db.put(appResult[seite].rows[i].doc).then(function () {
-                                }).catch(function (err) {
-                                    console.log(err);
-                                });
-                            }
-                            */
-                            appResult[seite].rows[i].tr0 = datalist.one_book(appResult[seite].rows[i].doc, 0);
-                            appResult[seite].rows[i].tr1 = datalist.one_book(appResult[seite].rows[i].doc, 1);
-                        } else {
-                            appResult[seite].rows[i].tr0 = '';
-                            tablerow = '';
-                            $.each(myApp[seite].fields, function () {
-                                if (!this.noList) {
-                                    if (this.select) {
-                                        tablerow += '<td class="' + seite + '-' + this.name+'" onclick="app.data.show(\'' + appResult[seite].rows[i].doc['_id'] + '\')" >' + myApp[this.select]["data"][appResult[seite].rows[i].doc[this.name]] + '</td>';
-                                    } else if (this.func) {
-                                        tablerow += '<td class="' + seite + '-' + this.name +'" onclick="app.data.show(\'' + appResult[seite].rows[i].doc['_id'] + '\')" >' + appResult[seite].rows[i].doc[this.name] + '</td>';
-                                        //	tablerow += '<td onclick="show_data(\'' + appResult[seite].rows[i].doc['_id'] + '\')" >' + myApp[this.func](appResult[seite].rows[i].doc[this.name]) + '</td>';
-                                    } else if (this.type === "checkbox") {
-                                        tablerow += '<td class="' + seite + '-' + this.name +'" onclick="app.data.show(\'' + appResult[seite].rows[i].doc['_id'] + '\')" ><input type="' + this.type + '"' + (appResult[seite].rows[i].doc[this.name] ? 'checked' : '') + ' disabled></td>';
-                                    } else {
-                                        tablerow += '<td class="' + seite + '-' + this.name +'" onclick="app.data.show(\'' + appResult[seite].rows[i].doc['_id'] + '\')" >' + appResult[seite].rows[i].doc[this.name] + '</td>';
-                                    }
-                                }
+                    if (myApp[seite].tr === 'books') {
+                        /*
+                        if (appResult[seite].rows[i].doc['source'] !== '11') {
+                            appResult[seite].rows[i].doc['releasedate'] = (new Date(parseInt(appResult[seite].rows[i].doc['releasedate']) + (24 * 60 * 60 * 1000))).toISOString();
+                            appResult[seite].rows[i].doc['source'] = '11';
+                            app.pouch.db.put(appResult[seite].rows[i].doc).then(function () {
+                            }).catch(function (err) {
+                                console.log(err);
                             });
-                            tablerow += '</tr>';
-                            appResult[seite].rows[i].tr1 = tablerow;
                         }
-                        appResult[seite].tr = true;
+                        if (appResult[seite].rows[i].doc['source'] === '11') {
+                            try {
+                                if (parseInt(appResult[seite].rows[i].doc['checkdate']) > 0) {
+                                    appResult[seite].rows[i].doc['checkedate'] = (new Date(parseInt(appResult[seite].rows[i].doc['checkdate']) + (24 * 60 * 60 * 1000))).toISOString();
+                                }
+                                appResult[seite].rows[i].doc['source'] = '12';
+                                app.pouch.db.put(appResult[seite].rows[i].doc).then(function () {
+                                }).catch(function (err) {
+                                    console.log(err);
+                                });
+                            } catch (err) { console.log(err); }
+                        }
+                        if (isNaN(app.search.isbn9(appResult[seite].rows[i].doc['isbn']))) {
+                            appResult[seite].rows[i].doc['asin'] = appResult[seite].rows[i].doc['isbn'];
+                            appResult[seite].rows[i].doc['isbn'] = '';
+                            app.pouch.db.put(appResult[seite].rows[i].doc).then(function () {
+                            }).catch(function (err) {
+                                console.log(err);
+                            });
+                        }
+                        */
+                        appResult[seite].rows[i].tr0 = datalist.one_book(appResult[seite].rows[i].doc, 0);
+                        appResult[seite].rows[i].tr1 = datalist.one_book(appResult[seite].rows[i].doc, 1);
+                    } else {
+                        appResult[seite].rows[i].tr0 = '';
+                        appResult[seite].rows[i].tr1 = datalist.one_row(appResult[seite].rows[i].doc, 1);
                     }
-                
+                    appResult[seite].tr = true;
+                }
+
             }
             console.log('show_all sort ' + seite + ' ' + appResult[seite].rows.length);
             if (seite === "books" || seite === "search_books") {
@@ -233,7 +241,7 @@
                         }*/
                         if (datalist.appSort === 'name') {
                             title = appResult[seite].rows[i].doc['name'].substr(0, 1);
-                            if (mySortPos !== title && (mySortPos == '' || (title >= 'A' && title <= 'Z')) ) {
+                            if (mySortPos !== title && (mySortPos == '' || (title >= 'A' && title <= 'Z'))) {
                                 title >= 'A' ? mySortPos = title : mySortPos = '#';
                                 tablerow = '<div id="myTableSort' + mySortPos + '" class="myTableAnchor"></div>';
                                 //mySearchlist += '<div class="searchlist"><a class="searchlink" href="#myTableSort' + mySortPos + '">' + mySortPos + '</a></div>';
@@ -242,8 +250,8 @@
                             }
                         } else if (datalist.appSort === 'date') {
                             releaseyear = appResult[seite].rows[i].doc['releasedate'].substr(0, 4);
-                            if (mySortPos !== releaseyear && (mySortPos == '' || releaseyear >= 2000) ) {
-                                releaseyear >= 2000 ? mySortPos = releaseyear : mySortPos ='<2000';
+                            if (mySortPos !== releaseyear && (mySortPos == '' || releaseyear >= 2000)) {
+                                releaseyear >= 2000 ? mySortPos = releaseyear : mySortPos = '<2000';
                                 tablerow = '<div id="myTableSort' + mySortPos + '" class="myTableAnchor"></div>';
                                 mySearchlist += '<div class="searchlist">' + mySortPos + '</div>';
                                 app.position.link.push("#myTableSort" + mySortPos);
@@ -257,20 +265,24 @@
                     } else {
                         select = true;
                     }
+                    display = "<tr " + (seite == 'books' || seite == 'search_books' ? '' : 'id="' + appResult[seite].rows[i].doc['_id'] + '"');
                     if (select) {
                         if (filter === "" ||
                             appResult[seite].rows[i].doc['name'].toUpperCase().normalize('NFC').indexOf(filter) > -1 ||
-                            seite == 'books' && appResult[seite].rows[i].doc['author'].toUpperCase().normalize('NFC').indexOf(filter) > -1 ||
-                            seite == 'books' && appResult[seite].rows[i].doc['isbn'].toUpperCase().normalize('NFC').indexOf(filter) > -1
+                            seite == 'books' &&
+                            (appResult[seite].rows[i].doc['author'].toUpperCase().normalize('NFC').indexOf(filter) > -1 ||
+                                appResult[seite].rows[i].doc['isbn'].toUpperCase().normalize('NFC').indexOf(filter) > -1 ||
+                                appResult[seite].rows[i].doc['series'].toUpperCase().normalize('NFC').indexOf(filter) > -1 ||
+                                appResult[seite].rows[i].doc['memo'].toUpperCase().normalize('NFC').indexOf(filter) > -1)
                         ) {
                             var test = appResult[seite].rows[i].doc['name'].toUpperCase();
-                            display = "<tr>";
+                            display += ">";
                             count++;
                         } else {
-                            display = '<tr style="display: none;">';
+                            display += ' style="display: none;">';
                         }
                     } else {
-                        display = '<tr style="display: none;">';
+                        display += ' style="display: none;">';
                     }
                     if (app.showDeleted && seite !== "books") {
                         table += display + appResult[seite].rows[i].tr0 +
@@ -332,8 +344,10 @@
                     datalist.appSortUp = !datalist.appSortUp;
                 } else if (mySort) {
                     datalist.appSort = mySort;
+                    datalist.appSortUp = (mySort != "date");
                 } else if (!datalist.appSort) {
                     datalist.appSort = 'name';
+                    datalist.appSortUp = 1;
                 }
                 $("#sort_name").toggleClass("fa-sort-up", datalist.appSortUp && datalist.appSort === "name");
                 $("#sort_name").toggleClass("fa-sort-down", !datalist.appSortUp && datalist.appSort === "name");
@@ -378,66 +392,51 @@
             }
             table = document.getElementById("myTableList");
             tr = table.getElementsByTagName("tr");
-
+            var visible;
             // Loop through all table rows, and hide those who don't match the search query
             for (i = 0; i < tr.length; i++) {
                 count++;
                 countAll++;
-                test = true;
+                visible = false;
                 if (select) {
                     td = tr[i].cells[0].getAttribute("status");
-                    if (td.indexOf(select) > -1) {
-                        tr[i].style.display = "";
+                    visible = td && td.indexOf(select) > -1;
+                } else {
+                    visible = true;
+                }
+                if (visible && filter) {
+                    visible = false;
+                    if (app.seite === "books") {
+                        td = tr[i].getElementsByClassName("books-title")[0];
+                        visible = td && td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1;
+                        if (!visible) {
+                            td = tr[i].getElementsByClassName("books-author")[0];
+                            visible = td && td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1;
+                        }
+                        if (!visible) {
+                            td = tr[i].getElementsByClassName("books-isbn")[0];
+                            visible = td && td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1;
+                        }
+                        if (!visible) {
+                            td = tr[i].getElementsByClassName("books-series")[0];
+                            visible = td && td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1;
+                        }
+                        if (!visible) {
+                            td = tr[i].getElementsByClassName("books-memo")[0];
+                            visible = td && td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1;
+                        }
+                    } else if (app.seite === "authors") {
+                        td = tr[i].getElementsByClassName("authors-name")[0];
+                        visible = td && td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1;
                     } else {
-                        tr[i].style.display = "none";
-                        test = false;
-                        count--;
+                        visible = true;
                     }
                 }
-                if (test) {
-                    if (filter) {
-                        if (app.seite == "books") {
-                            td = tr[i].getElementsByClassName("books-title")[0];
-                            if (td) {
-                                //var test = td.innerHTML.toUpperCase().normalize('NFC');
-                                if (td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1) {
-                                    tr[i].style.display = "";
-                                } else {
-                                    td = tr[i].getElementsByClassName("books-author")[0];
-                                    if (td) {
-                                        if (td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1) {
-                                            tr[i].style.display = "";
-                                        } else {
-                                            td = tr[i].getElementsByClassName("books-isbn")[0];
-                                            if (td) {
-                                                if (td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1) {
-                                                    tr[i].style.display = "";
-                                                } else {
-                                                    tr[i].style.display = "none";
-                                                    count--;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        } else if (app.seite == "authors") {
-                            td = tr[i].getElementsByClassName("authors-name")[0];
-                            if (td) {
-                                //var test = td.innerHTML.toUpperCase().normalize('NFC');
-                                if (td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1) {
-                                    tr[i].style.display = "";
-                                } else {
-                                    tr[i].style.display = "none";
-                                    count--;
-                                }
-                            }
-                        } else {
-                            tr[i].style.display = "";
-                        }
-                    } else {
-                        tr[i].style.display = "";
-                    }
+                if (visible) {
+                    tr[i].style.display = '';
+                } else {
+                    tr[i].style.display = "none";
+                    count--;
                 }
             }
             datalist.countMessage(count, countAll);
