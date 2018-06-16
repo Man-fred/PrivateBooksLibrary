@@ -220,11 +220,12 @@
             //console.log(myObj);
             app.pouch.db.put(myObj).then(function (doc) {
                 //console.log(doc);
-
+                app.log("ok: "+doc.name);
                 data.clear();
                 //show_all(seite);
             }).catch(function (err) {
                 console.log(err);
+                app.log(err);
             });
 
         },

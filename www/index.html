@@ -387,6 +387,27 @@
         <div id="info-sync">no Server</div>
     </footer>
     <div id="loading"></div>
+    <div id="overlay">
+        <div id="overlay_content">
+            <div id="overlay1">
+                <h2>Overlay Text 1</h2>
+            </div>
+            <div id="overlay2">
+                <h2>Overlay Text 2</h2>
+            </div>
+            <div id="overlay3">
+                <h2>Jetzt gehts los</h2>
+            </div>
+            <label>
+                <input type="checkbox" id="initHide" checked="checked">
+                Diese Einführung beim nächsten Mal nicht mehr anzeigen
+            </label>
+            <div><button onclick="app.init.hide()">off</button></div>
+            <div><button onclick="app.init.show(1)">next</button></div>
+            <div><button onclick="app.init.show(-1)">prev</button></div>
+        </div>
+    </div>
+
     <!-- script>
         debugOutput = true;
         ConsoleLogHTML.connect(document.getElementById("info-log")); // Redirect log messages

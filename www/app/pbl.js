@@ -56,6 +56,7 @@ define(function (require) {
         //slide: require('./slide'),
         //pouch: null,
         menu: require('./menu'),
+        init: require('./init'),
         //data: null,
         dbReady : 7,
         //system : null,
@@ -76,6 +77,7 @@ define(function (require) {
         receivedElement: null,
         countBooks: 0,
         countLog: 0,
+        showInit: null,
 
         onDeviceReady: function () {
             var appTitle = 'Private Books Library';

@@ -5,7 +5,7 @@
             $('#scansearch').click(search.scan_search);
         },
         scan: function () {
-            pbl.log('scanning');
+            app.log('scanning');
 
             var scanner = cordova.plugins.barcodeScanner;
 
@@ -29,7 +29,7 @@
                  */
 
             }, function (error) {
-                pbl.log("Scanning failed: ", error);
+                app.log("Scanning failed: "+ error);
             });
         },
         isbn9: function (w) {
@@ -192,7 +192,7 @@
             if (index === 4) searchString = "https://pbl.bcss.de/api/request.php?per=" + encodeURI(w);
             if (index === 3) searchString = "https://pbl.bcss.de/api/request.php?gndper=" + encodeURI(w);
             if (index === 2) searchString = "https://pbl.bcss.de/api/request.php?gndidn=" + encodeURI(w);
-            pbl.log(searchString);
+            app.log(searchString);
             xhttp.open("GET", searchString, true);
             xhttp.send();
         }

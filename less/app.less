@@ -33,6 +33,9 @@
 @books-favor-sm: 32px;
 @page2-label: 8em;
 
+@color-bkg: lightgray;
+@color-border: darkgray;
+
 /* static footer */
 html, body {
     height: 100%;
@@ -97,7 +100,7 @@ main3 {
     /*max-width: 800px;*/
     line-height: 1.6em;
     width: calc(~"100% - " @partner-right);
-    padding: 0;
+    padding: @top-height 0;
 }
 
 #top {
@@ -208,7 +211,7 @@ div.container {
     /*max-width: 34em;*/
     float: left;
     margin: 0;
-    padding: @top-height 0 @footer-height 0;
+    padding: 0 /*@top-height*/ 0 @footer-height 0;
 }
 #bc_search {
     width: calc(~"100% - " 150px );
@@ -220,7 +223,7 @@ div.container {
 #datalist {
     /*margin-left: 34em;
     border-left: 1px solid gray;*/
-    padding: @top-height + @header-height 0 @footer-height 0;
+    padding: /*@top-height +*/ @header-height 0 @footer-height 0;
     overflow: auto;
 }
 #datalistScroll {
@@ -867,6 +870,7 @@ label[for='toggle-all'] {
 }
 
 #loading {
+    display: none;
     border-radius: 50%;
     width: @base-line-height;
     height: @base-line-height;
@@ -1363,4 +1367,27 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 
 .show {
     display: block;
+}
+
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+#overlay_content {
+    width: 80%;
+    height: 80%;
+    padding: 20px;
+    background-color: @color-bkg;
+    border-radius: 2em;
+    border: 5px solid @color-border;
 }

@@ -236,9 +236,11 @@
                         pouch.appTitle = doc.appTitle;
                         pouch.apiIsbndb = doc.apiIsbndb;
                         pouch.apiLibrarything = doc.apiLibrarything;
+                        pouch.pbl.showInit = doc.showInit;
                         $('#appTitle').html(pouch.appTitle);
                         console.log(pouch.dbIdPrivate);
                         console.log(pouch.dbIdPublic);
+                        app.init.show(0);
                         pouch.pbl.datalist.fill("books");
                         pouch.remoteLogin();
                     }
@@ -255,15 +257,24 @@
                         dbUser: pouch.dbUser,
                         dbPass: pouch.dbPass,
                         dbId: pouch.dbIdPublic,
+                        showInit: pouch.pbl.showInit,
                         title: pouch.dbIdPublic + '_login'
                     }).then(function (response) {
                         console.log(pouch.dbIdPrivate);
                         console.log(pouch.dbIdPublic);
-                        console.log(response);
+                        app.log("Erster Start");
+                        pouch.db.put({ _id: pouch.dbIdPrivate + '_state_0', name: '0', long: 'not owned' });
+                        pouch.db.put({ _id: pouch.dbIdPrivate + '_state_1', name: '1', long: 'ordered' });
+                        pouch.db.put({ _id: pouch.dbIdPrivate + '_state_2', name: '2', long: 'owned' });
+                        pouch.db.put({ _id: pouch.dbIdPrivate + '_state_6', name: '6', long: 'owned/read' });
+                        pouch.db.put({ _id: pouch.dbIdPrivate + '_state_9', name: '9', long: 'new' });
+                        pouch.db.put({ _id: pouch.dbIdPrivate + '_favorite_0', name: '0', long: 'Nein' });
+                        pouch.db.put({ _id: pouch.dbIdPrivate + '_favorite_1', name: '1', long: 'Ja' });
+                        app.init.show(0);
                         // handle response
                         pouch.remoteLogin();
                     }).catch(function (err) {
-                        console.log(err);
+                        app.log('Datenbank ohne Funktion: '+err);
                     });
                 });
             }

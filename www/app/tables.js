@@ -225,7 +225,13 @@
                     name: "appTitle",
                     title: "Titel"
                     , noList: 1
-                } /*,
+                },
+                init: {
+                    name: "init",
+                    title: "init",
+                    noList: 1
+                }
+                /*,
             appHorsename: {
                 name: "appHorsename",
                 title: "Thema"
