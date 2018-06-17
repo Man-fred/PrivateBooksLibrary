@@ -98,7 +98,7 @@
     <preference name="WindowsStorePublisherName" value="Manfred Bielemeier (BCSS Software &amp; Beratung GmbH)" />
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="StatusBarBackgroundColor" value="#1010FF" />
-    <preference name="android-minSdkVersion" value="14" />
+    <preference name="android-minSdkVersion" value="15" />
     <preference name="android-targetSDKVersion" value="26" />
     <config-file parent="/Package/Capabilities" target="package.appxmanifest">
         <DeviceCapability Name="webcam" />
