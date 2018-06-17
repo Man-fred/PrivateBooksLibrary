@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget defaultlocale="de-DE" id="io.cordova.myapp387c96" version="0.4.10" windows-packageVersion="0.4.10.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
+<widget defaultlocale="de-DE" id="io.cordova.myapp387c96" version="0.4.11" windows-packageVersion="0.4.11.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>PrivateBooksLibrary</name>
     <description>Verwalten Sie Ihre private Büchersammlung und Ihre eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.</description>
     <author email="dev@bcss.de" href="https://www.bcss.de/dev">Manfred Bielemeier</author>
@@ -90,7 +90,7 @@
         <splash height="1920" src="res/screens/windows/SplashScreenPhone.scale-240.png" width="1152" />
     </platform>
     <vs:platformSpecificValues>
-        <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.4.10.0" />
+        <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.4.11.0" />
     </vs:platformSpecificValues>
     <preference name="WindowsStoreDisplayName" value="Private Books Library" />
     <preference name="WindowsStoreIdentityName" value="35337ManfredBielemeierBCS.PrivateBooksLibrary" />
@@ -118,6 +118,11 @@
     <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
         <string>To scan barcodes</string>
     </edit-config>
+    <config-file target="AndroidManifest.xml" parent="/*" mode="merge">
+      <uses-permission android:name="android.permission.CAMERA" />
+      <uses-feature android:name="android.hardware.camera" />
+      <uses-feature android:name="android.hardware.camera.autofocus" />
+    </config-file>
     <plugin name="cordova-plugin-statusbar" spec="~2.4.1" />
     <plugin name="cordova-plugin-vibration" spec="~3.0.1" />
     <plugin name="cordova-plugin-taptic-engine" spec="~2.1.0" />
