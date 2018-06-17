@@ -1,11 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget defaultlocale="de-DE" id="io.cordova.myapp387c96" version="0.4.11" windows-packageVersion="0.4.11.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps" xmlns:android="http://schemas.android.com/apk/res/android">
+<widget defaultlocale="de-DE" id="io.cordova.myapp387c96" version="0.4.12" windows-packageVersion="0.4.12.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps" xmlns:android="http://schemas.android.com/apk/res/android">
     <name>PrivateBooksLibrary</name>
     <description>Verwalten Sie Ihre private Büchersammlung und Ihre eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.</description>
     <author email="dev@bcss.de" href="https://www.bcss.de/dev">Manfred Bielemeier</author>
     <vs:template-name>BlankJS</vs:template-name>
     <content src="index.html" />
     <access origin="https://pbl.bcss.de" />
+    <preference name="phonegap-version" value="cli-7.1.0" />
     <preference name="SplashScreen" value="screen" />
     <preference name="windows-target-version" value="10.0" />
     <allow-intent href="http://*/*" />
@@ -24,10 +25,10 @@
         <preference name="APP_SECRET" value="8c404359-b973-4764-b59b-e91f74d65692" />
     </platform>
     <platform name="android">
-        <icon density="ldpi" src="res/icons/android/icon-36-ldpi.png" />
-        <icon density="mdpi" src="res/icons/android/icon-48-mdpi.png" />
-        <icon density="hdpi" src="res/icons/android/icon-72-hdpi.png" />
-        <icon density="xhdpi" src="res/icons/android/icon-96-xhdpi.png" />
+        <icon density="ldpi" src="res/icons/android/icon-36.png" />
+        <icon density="mdpi" src="res/icons/android/icon-48.png" />
+        <icon density="hdpi" src="res/icons/android/icon-72.png" />
+        <icon density="xhdpi" src="res/icons/android/icon-96.png" />
     </platform>
     <platform name="ios">
         <icon height="180" src="res/icons/ios/icon-60-3x.png" width="180" />
@@ -90,7 +91,7 @@
         <splash height="1920" src="res/screens/windows/SplashScreenPhone.scale-240.png" width="1152" />
     </platform>
     <vs:platformSpecificValues>
-        <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.4.11.0" />
+        <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.4.12.0" />
     </vs:platformSpecificValues>
     <preference name="WindowsStoreDisplayName" value="Private Books Library" />
     <preference name="WindowsStoreIdentityName" value="35337ManfredBielemeierBCS.PrivateBooksLibrary" />
