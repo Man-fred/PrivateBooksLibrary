@@ -226,9 +226,10 @@
                     title: "Titel"
                     , noList: 1
                 },
-                init: {
-                    name: "init",
-                    title: "init",
+                showInit: {
+                    name: "showInit",
+                    title: "showInit",
+                    selectYN: 1,
                     noList: 1
                 }
                 /*,

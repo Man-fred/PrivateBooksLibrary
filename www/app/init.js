@@ -28,7 +28,7 @@
         hide: function () {
             this.overlay[0].style.display = "none";
             if (document.getElementById("initHide").checked == true) {
-                alert(app.seite);
+                //alert(app.seite);
                 app.pouch.db.get(app.pouch.dbIdPrivate + '_login').then(function (doc) {
                     if (doc !== null) {
                         doc.showInit = 1;

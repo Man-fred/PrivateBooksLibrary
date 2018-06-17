@@ -18,10 +18,13 @@
                 if (!this.noField) {
                     if (this.select) {
                         app.data.select(this.select, seite, this.name, this.field, this.visible, doc[this.name]);
-                    } else if (this.type === "checkbox")
+                    } else if (this.selectYN) {
+                        $('#' + seite + '_' + this.name + 'option[value=' + doc[this.name]+']').attr('selected', 'selected');
+                    } else if (this.type === "checkbox") {
                         $('#' + seite + '_' + this.name).prop("checked", (doc[this.name] === true));//(doc[this.name]);
-                    else
+                    } else {
                         $('#' + seite + '_' + this.name).val(doc[this.name]);
+                    }
                 }
             });
         },

@@ -12,14 +12,16 @@
             scanner.scan(function (result) {
                 //alert( JSON.stringify(result) );
                 if (!result.cancelled) {
+                    app.log("Scanning ok: " + result.text);
                     $("#bc_text").val(result.text);
                     //document.getElementById("bc_format").innerHTML = "Format " + result.format;
                     search.scan_search(result.format, result.text);
                 } else {
+                    app.log("Scanning cancelled: " + JSON.stringify(result));
                     $("#bc_text").val(result.text);
                     //document.getElementById("bc_format").innerHTML = "Nicht erkannt " + result.format;
                     //show_all('books', 'isbn', result.text);
-                    alert(JSON.stringify(result));
+                    //alert(JSON.stringify(result));
                 }
                 //document.getElementById("bc_cancelled").innerHTML = result.cancelled;
                 /*
@@ -195,6 +197,26 @@
             app.log(searchString);
             xhttp.open("GET", searchString, true);
             xhttp.send();
+        },
+        picture: function () {
+            navigator.camera.getPicture(onSuccess, onFail, {
+                quality: 50,
+                //destinationType: Camera.DestinationType.FILE_URI
+                destinationType: Camera.DestinationType.DATA_URL
+                //targetHeight: 100,
+                //targetWidth: 100
+            });
+
+            function onSuccess(imageURI) {
+                console.log('Camera: ok');
+                var image = document.getElementById('img_books');
+                image.src = "data:image/jpeg;base64," + imageURI;
+                navigator.camera.cleanup();
+            }
+
+            function onFail(message) {
+                console.log('Camera failed because: ' + message);
+            }
         }
     };
     return search;

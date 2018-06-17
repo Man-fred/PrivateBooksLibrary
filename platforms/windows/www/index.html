@@ -373,9 +373,11 @@
 
                 </div>
                 <div id="pageContact" style="display: none;">
-                    <h2>Contact</h2>
+                    <h2>Kontakt</h2>
                     <p>BCSS GmbH<br />Waldstraße 27a<br />22955 Hoisdorf<br />Deutschland</p>
                     <p>Manfred Bielemeier<br />https://pbl.bcss.de/contact</p>
+                    <h2>Version</h2>
+                    <p>V 0.4.7 Interner Test</p>
                 </div>
             </div>
         </div>
@@ -385,12 +387,32 @@
         <div id="info-sync">no Server</div>
     </footer>
     <div id="loading"></div>
+    <div id="overlay">
+        <div id="overlay_content">
+            <div id="overlay1">
+                <h2>Overlay Text 1</h2>
+            </div>
+            <div id="overlay2">
+                <h2>Overlay Text 2</h2>
+            </div>
+            <div id="overlay3">
+                <h2>Jetzt gehts los</h2>
+            </div>
+            <label>
+                <input type="checkbox" id="initHide" checked="checked">
+                Diese Einführung beim nächsten Mal nicht mehr anzeigen
+            </label>
+            <div><button onclick="app.init.hide()">off</button></div>
+            <div><button onclick="app.init.show(1)">next</button></div>
+            <div><button onclick="app.init.show(-1)">prev</button></div>
+        </div>
+    </div>
+
     <!-- script>
         debugOutput = true;
         ConsoleLogHTML.connect(document.getElementById("info-log")); // Redirect log messages
         // ConsoleLogHTML.disconnect(); // Stop redirecting -->
     <!-- /script -->
-    <script type="text/javascript" src="/www/WinJS/js/base.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="lib/pouchdb.js"></script> <!-- min.6.4.3 -->
     <script src="lib/pouchdb.cordova-sqlite.js"></script> <!-- 2.0.3 -->

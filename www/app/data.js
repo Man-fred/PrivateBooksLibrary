@@ -26,6 +26,7 @@
                 result += '<div id="bc_search" class="deleteicon">';
                 result += '<input id="bc_text" placeholder="ISBN, Titel oder Autor ..."/>'; //(<span id="bc_format"></span>)
                 result += '<span onclick="app.data.mySearch(\'~~\')"></span></div><a onclick="app.search.scan_search()" href="#" name="scansearch" id="scansearch">Suchen</a></div>';
+                result += '<a onclick="app.search.picture()" href="#" id="books-pic">Foto</a> ';
                 //result += '<p><span id="result"></span></p>';
                 result += '<div id="book-image"><img  class="pure-img" id="img_' + aktiveSeite + '" height="200" src="blank.jpg"/></div>';
                 result += '<div id="book-favor">' + data.book.favor("0") + '</div><div class="clear"></div>';
@@ -42,6 +43,9 @@
                 result += '<div class="pure-control-group"><label for="' + aktiveSeite + '_' + this.name + '">' + this.title + '</label>';
                 if (this.select) {
                     result += '<select type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" class="' + aktiveSeite + '"></select>';
+                } else if (this.selectYN) {
+                    result += '<select type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" class="' + aktiveSeite + '">';
+                    result += '<option></option><option value="0" >Nein</option><option value="1" >Ja</option></select> ';
                 } else if (this.type) {
                     result += '<input type="' + this.type + '" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" />';
                 } else {
@@ -57,6 +61,9 @@
                     result += '<div class="pure-control-group"><label for="' + aktiveSeite + '_' + this.name + '">' + this.title + '</label>';
                     if (this.select) {
                         result += '<select type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" class="' + aktiveSeite + '"></select>';
+                    } else if (this.selectYN) {
+                        result += '<select type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" class="' + aktiveSeite + '">';
+                        result += '<option></option><option value="0" >Nein</option><option value="1" >Ja</option></select> ';
                     } else if (this.type) {
                         result += '<input type="' + this.type + '" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" />';
                     } else {
@@ -131,10 +138,13 @@
                 if (!this.noField) {
                     if (this.select) {
                         data.select(this.select, app.seite, this.name, this.field, this.visible, '');
-                    } else if (this.type === "checkbox")
-                        $('#' + app.seite + '_' + this.name).prop("checked", false);//(doc[this.name]);
-                    else
+                    } else if (this.selectYN) {
+                        $('#' + app.seite + '_' + this.name + 'option[value=""]').attr('selected', 'selected');
+                    } else if (this.type === "checkbox") {
+                        $('#' + app.seite + '_' + this.name).prop("checked", false);
+                    } else {
                         $('#' + app.seite + '_' + this.name).val('');
+                    }
                 }
             });
             $('#txtSearch').val('');
