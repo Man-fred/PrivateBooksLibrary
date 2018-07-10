@@ -6,5 +6,7 @@
     "nr": "Nr",
     "series": "Serie",
     "state": "Status",
+    "lending": "Ausleihe",
+    "location": "Standort",
     "title": "Titel"
 });

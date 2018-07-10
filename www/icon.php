@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="icon.css">
     <title></title>
 </head>
-<body style="background-image: linear-gradient(to right, white 0%, black 50%)">
+<body style="background-image: linear-gradient(to right, white 0%, black 200%)">
 <?php
 error_reporting (E_ALL | E_STRICT);  
 ini_set ('display_errors', 'On');  
@@ -30,18 +30,19 @@ function icon($name, $dst_w, $dst_res = 1, $dst_h = 0, $dst_x=0 ,$dst_y=0 ){
 	$dst_x1 = ($dst_x - $dst_w) / 2;
 	$dst_y1 = ($dst_y - $dst_h) / 2;
 	
-	echo '<div>'.$dst_x.' x '.$dst_y.' <span>'.$name.'.png</span><br />';
 	$dst_image = imagecreatetruecolor($dst_x, $dst_y); //
-	imageresolution($dst_image, 72 * $dst_res);// 72 oder 96 richtig??
+	$res = imageresolution($dst_image, 72 * $dst_res);// 72 oder 96 richtig??
+	echo '<div>'.$dst_x.' x '.$dst_y.' '.$res[0].'/'.$res[0].'dpi <span>'.$name.'.png</span><br />';
+	/*
 	$back = imagecolorallocatealpha($dst_image, 0,0,0,127);
 	//imagefilledrectangle($dst_image, 0, 0, $dst_x-1, $dst_y-1, $back);
     imagefill($dst_image, 0, 0, $back);
     imagesavealpha($dst_image, TRUE); // it took me a good 10 minutes to figure this part out
-
 	if (imagecopyresampled ($dst_image ,$src_image ,$dst_x1 ,$dst_y1 ,$src_x ,$src_y ,$dst_w ,$dst_h ,$src_w ,$src_h )) {
 		imagepng($dst_image, $dst_type.$name.'.png');
 	}
-	print_r(imageresolution($dst_image)); 
+	*/
+	//print_r(imageresolution($dst_image)); 
 	echo '<img src="'.$dst_type.$name.'.png" /></div>';
 }
 

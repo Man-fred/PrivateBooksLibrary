@@ -228,6 +228,14 @@ module.exports = [
     "clobbers": [
       "cordova.plugins.barcodeScanner"
     ]
+  },
+  {
+    "id": "cordova-plugin-badge.Badge",
+    "file": "plugins/cordova-plugin-badge/www/badge.js",
+    "pluginId": "cordova-plugin-badge",
+    "clobbers": [
+      "cordova.plugins.notification.badge"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -240,7 +248,8 @@ module.exports.metadata =
   "cordova-plugin-statusbar": "2.4.2",
   "cordova-plugin-vibration": "3.1.0",
   "cordova-plugin-whitelist": "1.3.3",
-  "phonegap-plugin-barcodescanner": "8.0.0"
+  "phonegap-plugin-barcodescanner": "8.0.0",
+  "cordova-plugin-badge": "0.8.7"
 };
 // BOTTOM OF METADATA
 });

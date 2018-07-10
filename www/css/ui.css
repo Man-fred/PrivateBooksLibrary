@@ -4,7 +4,7 @@
 #mRefresh {
     background: url(../img/svg/solid/sync.svg); /*no-repeat*/
 }
-#appReturn {
+.appReturn {
     background: url(../img/svg/solid/arrow-alt-circle-left.svg);
 }
 #appScan {

@@ -8,6 +8,8 @@ define({
         "nr": "No",
         "series": "Series",
         "state": "State",
+        "lending": "Lending",
+        "location": "Location",
         "title": "Title"
     },
     "de": true

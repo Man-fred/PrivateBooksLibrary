@@ -3,35 +3,49 @@
     var data = {
         book: require('./book'),
         pbl: require('./pbl'),
+        init: true,
         initialize: function (myApp) {
-            data.myApp = myApp;
-            // Code for Clear text Box
-            $('#clearBtn').click(this.clear);
-            $("#addBtn").click(this.add);
-            $("#updateBtn").click(this.update);
-            $("#deleteBtn").click(this.delete);
-            $.each(myApp, function () {
-                //debugger;
-                data.form(myApp, this.name);
-            });
+            if (this.init) {
+                this.init = false;
+                data.myApp = myApp;
+                // Code for Clear text Box
+                $('#clearBtn').click(this.clear);
+                $("#addBtn").click(this.add);
+                $("#updateBtn").click(this.update);
+                $("#deleteBtn").click(this.delete);
+                $.each(myApp, function () {
+                    //debugger;
+                    data.form(myApp, this.name);
+                });
+                $('#appReturnbooks').click(function () {
+                    pbl.ui.show_page1(1);
+                });
+                $('#appReturnauthors').click(function () {
+                    pbl.ui.show_page1(1);
+                });
+            }
         },
         form: function (myApp, aktiveSeite) {
             //$('#'+aktiveSeite).show();
             var result = '<div id="t_' + aktiveSeite + '" name="t_' + aktiveSeite + '" class="t_seite">';
+            if (aktiveSeite !== "login") {
+                result += '<div class="left"><button onclick="app.ui.show_page1(1); return false;" class="appReturn app-button"></button></div>';
+            }
             //result += '<div class="pure-control-group"><label for="email">Email Address</label><input id="email" type="email" placeholder="Email Address"></div>';
-            //result += '<table>';
+            /*
+            */
             if (aktiveSeite === "books") {
                 result += '<div id="bc" class="pure-control-group">';
-                result += '<button type="button" id="appScan" class="pure-button" onclick="app.search.scan()" title="Barcode scannen">&nbsp;</button> &nbsp;';
+                result += '<button type="button" id="appScan" class="app-button" onclick="app.search.scan()" title="Barcode scannen">&nbsp;</button> &nbsp;';
                 result += '<div id="bc_search" class="deleteicon">';
                 result += '<input id="bc_text" placeholder="ISBN, Titel oder Autor ..."/>'; //(<span id="bc_format"></span>)
-                result += '<span onclick="app.data.mySearch(\'~~\')"></span></div><a onclick="app.search.scan_search()" href="#" name="scansearch" id="scansearch">Suchen</a></div>';
-                result += '<a onclick="app.search.picture()" href="#" id="books-pic">Foto</a> ';
+                result += '<span onclick="app.data.mySearch(\'~~\')"></span></div><button onclick="app.search.scan_search()" href="#" name="scansearch" id="scansearch" class="app-button">?</button>';
+                result += '<button onclick="app.search.picture()" href="#" id="books-pic" class="app-button">F</button> </div>';
                 //result += '<p><span id="result"></span></p>';
                 result += '<div id="book-image"><img  class="pure-img" id="img_' + aktiveSeite + '" height="200" src="blank.jpg"/></div>';
                 result += '<div id="book-favor">' + data.book.favor("0") + '</div><div class="clear"></div>';
             } else if (aktiveSeite === "authors") {
-                result += '<div id="bc" class="pure-control-group">';
+                result += '<div id="as" class="pure-control-group">';
                 result += '<div id="as_search" class="deleteicon">';
                 result += '<input id="as_text" placeholder="Autor ..."/>'; 
                 result += '<span onclick="app.data.mySearch(\'~~\')"></span></div>';
@@ -40,18 +54,22 @@
                 result += '</div>';
             }
             $.each(myApp[aktiveSeite].header, function () {
-                result += '<div class="pure-control-group"><label for="' + aktiveSeite + '_' + this.name + '">' + this.title + '</label>';
-                if (this.select) {
-                    result += '<select type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" class="' + aktiveSeite + '"></select>';
-                } else if (this.selectYN) {
-                    result += '<select type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" class="' + aktiveSeite + '">';
-                    result += '<option></option><option value="0" >Nein</option><option value="1" >Ja</option></select> ';
-                } else if (this.type) {
-                    result += '<input type="' + this.type + '" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" />';
+                if (!this.noField) {
+                    result += '<div class="pure-control-group"><label for="' + aktiveSeite + '_' + this.name + '">' + this.title + '</label>';
+                    if (this.select) {
+                        result += '<select type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" class="' + aktiveSeite + '"></select>';
+                    } else if (this.selectYN) {
+                        result += '<select type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" class="' + aktiveSeite + '">';
+                        result += '<option></option><option value="0" >Nein</option><option value="1" >Ja</option></select> ';
+                    } else if (this.type) {
+                        result += '<input type="' + this.type + '" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" />';
+                    } else {
+                        result += '<input type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" />';
+                    }
+                    result += '</div>';
                 } else {
-                    result += '<input type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" /></div>';
+                    result += '<div class="hidden"><input id="' + aktiveSeite + '_' + this.name + '" /></div>';
                 }
-                result += '</div>';
             });
             if (myApp[aktiveSeite].header) {
                 result += '<hr />';
@@ -70,11 +88,11 @@
                         result += '<input type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" />';
                     }
                     result += '</div>';
+                } else {
+                    result += '<div class="hidden"><input id="' + aktiveSeite + '_' + this.name + '" /></div>';
                 }
             });
-            if (aktiveSeite === "login") {
-                result += '<p>Font Awesome by Dave Gandy - <a href="https://fontawesome.com/">https://fontawesome.com/</a></p>';
-            }
+            
             result += '</div>';
             $('#formdata').append(result);
 
@@ -135,16 +153,14 @@
         clear: function () {
             $('#img_books').attr("src", "");
             $.each(app.myApp[app.seite].fields, function () {
-                if (!this.noField) {
-                    if (this.select) {
-                        data.select(this.select, app.seite, this.name, this.field, this.visible, '');
-                    } else if (this.selectYN) {
-                        $('#' + app.seite + '_' + this.name + 'option[value=""]').attr('selected', 'selected');
-                    } else if (this.type === "checkbox") {
-                        $('#' + app.seite + '_' + this.name).prop("checked", false);
-                    } else {
-                        $('#' + app.seite + '_' + this.name).val('');
-                    }
+                if (this.select) {
+                    data.select(this.select, app.seite, this.name, this.field, this.visible, '');
+                } else if (this.selectYN) {
+                    $('#' + app.seite + '_' + this.name + 'option[value=""]').attr('selected', 'selected');
+                } else if (this.type === "checkbox") {
+                    $('#' + app.seite + '_' + this.name).prop("checked", false);
+                } else {
+                    $('#' + app.seite + '_' + this.name).val('');
                 }
             });
             $('#txtSearch').val('');
@@ -261,6 +277,9 @@
                     });
                     app.pouch.setSync(doc, 'upd');
                     if (app.seite === "login") {
+                        if (doc['dbId'] === '') {
+                            doc['dbId'] = '0';
+                        }
                         app.pouch.set(doc);
                         app.pouch.remoteLogin();
                         app.appTitle = doc.appTitle;

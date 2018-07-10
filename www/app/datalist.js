@@ -40,6 +40,8 @@
                 } else if (refresh) {
                     datalist.pbl.ui.show_page1(0);
                     this.show_all(aktiveSeite);
+                } else {
+                    datalist.pbl.ui.show_page1(0);
                 }
             }
         },
@@ -69,12 +71,13 @@
             return table;
         },
         sort_books: function (a, b) {
-            var up = (datalist.appSortUp ? 1 : -1);
+            var up = datalist.appSortUp ? 1 : -1;
             switch (datalist.appSort) {
-                case 'id': return (a._id > b._id ? up : (a._id < b._id ? -1 : 0));
-                case 'name': return (a.doc.name > b.doc.name ? up : (a.doc.name < b.doc.name ? -up : 0));
-                case 'date': return (a.doc.releasedate > b.doc.releasedate ? up : (a.doc.releasedate < b.doc.releasedate ? -up : 0));
-                case 'author': return (a.doc.author > b.doc.author ? up : (a.doc.author < b.doc.author ? -up : 0));
+                case 'id': return a._id > b._id ? up : a._id < b._id ? -1 : 0;
+                case 'name': return a.doc.name > b.doc.name ? up : a.doc.name < b.doc.name ? -up : 0;
+                case 'date': return a.doc.releasedate > b.doc.releasedate ? up : a.doc.releasedate < b.doc.releasedate ? -up : 0;
+                case 'check': return a.doc.checkdate > b.doc.checkdate ? up : a.doc.checkdate < b.doc.checkdate ? -up : 0;
+                case 'author': return a.doc.author > b.doc.author ? up : a.doc.author < b.doc.author ? -up : 0;
             }
         },
         one_book_div(doc) {
@@ -97,12 +100,13 @@
             var tablerow;
             if (state === 0) {
                 tablerow = '<td status="';
-                if (doc['favor'] == 1)
+                if (doc['favor'] === 1)
                     tablerow += 'favor ';
-                if (doc['state'] == 1)
-                    tablerow += 's1 ';
-                if (doc['state'] == 0)
+                if (doc['state']) {
+                    tablerow += 's' + doc['state'] + ' ';
+                } else {
                     tablerow += 's0 ';
+                }
                 tablerow += '" onclick="app.data.show(\'' + doc['_id'].replace("'", "\\'") + '\')" ><div class="relative">';
                 return tablerow;
             } else {
@@ -136,7 +140,7 @@
         show_all_docs_sorted: function () {
             var seite = datalist.pbl.seite;
             var myApp = datalist.pbl.myApp;
-            var appResult = datalist.pbl.pouch.appResult;
+            var appResult = app.pouch.appResult;
 
             var table = "";
             var tablerow = "";
@@ -150,7 +154,7 @@
             var title = "";
             var count = 0, countAll = 0;
             //appResult[seite].rows.sort(sort_books);
-            if (seite != 'search_books' && myApp[seite].head) {
+            if (seite !== 'search_books' && myApp[seite].head) {
                 if (appResult[seite].rows.length === 0) {
                     table = '<div id="datalistScroll">' + datalist.show_all_header(null);
                 } else {
@@ -162,9 +166,10 @@
 
             var input = document.getElementById("appSearch");
             var filter = input.value.toUpperCase();
+            var i;
             if (!appResult[seite].tr) {
                 appResult[seite].isbn = [];
-                for (var i = 0; i < appResult[seite].rows.length; i++) {
+                for (i = 0; i < appResult[seite].rows.length; i++) {
                     //var s = this.doc;
                     //console.log(s);
                     if (myApp[seite].tr === 'books') {
@@ -212,14 +217,14 @@
             if (seite === "books" || seite === "search_books") {
                 appResult[seite].rows.sort(datalist.sort_books);
             }
-            if (seite != "books" && seite != "authors") {
+            if (seite !== "books" && seite !== "authors") {
                 filter = '';
             }
             var select = true;
             if (seite === "books")
                 appResult[seite].isbn = [];
             appResult[seite].id = [];
-            for (var i = 0; i < appResult[seite].rows.length; i++) {
+            for (i = 0; i < appResult[seite].rows.length; i++) {
                 //15.04.2008 -> 14.4.1977 -> 978393600
                 //27:10:2011 -> 25:10:1980
                 //releasedate = new Date(parseInt(s['releasedate']));
@@ -241,7 +246,7 @@
                         }*/
                         if (datalist.appSort === 'name') {
                             title = appResult[seite].rows[i].doc['name'].substr(0, 1);
-                            if (mySortPos !== title && (mySortPos == '' || (title >= 'A' && title <= 'Z'))) {
+                            if (mySortPos !== title && (mySortPos === '' || title >= 'A' && title <= 'Z')) {
                                 title >= 'A' ? mySortPos = title : mySortPos = '#';
                                 tablerow = '<div id="myTableSort' + mySortPos + '" class="myTableAnchor"></div>';
                                 //mySearchlist += '<div class="searchlist"><a class="searchlink" href="#myTableSort' + mySortPos + '">' + mySortPos + '</a></div>';
@@ -250,7 +255,7 @@
                             }
                         } else if (datalist.appSort === 'date') {
                             releaseyear = appResult[seite].rows[i].doc['releasedate'].substr(0, 4);
-                            if (mySortPos !== releaseyear && (mySortPos == '' || releaseyear >= 2000)) {
+                            if (mySortPos !== releaseyear && (mySortPos === '' || releaseyear >= 2000)) {
                                 releaseyear >= 2000 ? mySortPos = releaseyear : mySortPos = '<2000';
                                 tablerow = '<div id="myTableSort' + mySortPos + '" class="myTableAnchor"></div>';
                                 mySearchlist += '<div class="searchlist">' + mySortPos + '</div>';
@@ -260,16 +265,17 @@
                     }
                     var display;
                     countAll++;
-                    if (app.select !== '') {
-                        select = appResult[seite].rows[i].doc[app.select];
+                    if (app.select !== '' && app.seite === 'books') {
+                        var pos = appResult[seite].rows[i].tr0.indexOf(app.select);
+                        select = pos > -1 && pos < 40;
                     } else {
                         select = true;
                     }
-                    display = "<tr " + (seite == 'books' || seite == 'search_books' ? '' : 'id="' + appResult[seite].rows[i].doc['_id'] + '"');
+                    display = "<tr " + (seite === 'books' || seite === 'search_books' ? '' : 'id="' + appResult[seite].rows[i].doc['_id'] + '"');
                     if (select) {
                         if (filter === "" ||
                             appResult[seite].rows[i].doc['name'].toUpperCase().normalize('NFC').indexOf(filter) > -1 ||
-                            seite == 'books' &&
+                            seite === 'books' &&
                             (appResult[seite].rows[i].doc['author'].toUpperCase().normalize('NFC').indexOf(filter) > -1 ||
                                 appResult[seite].rows[i].doc['isbn'].toUpperCase().normalize('NFC').indexOf(filter) > -1 ||
                                 appResult[seite].rows[i].doc['series'].toUpperCase().normalize('NFC').indexOf(filter) > -1 ||
@@ -324,7 +330,7 @@
         show_all_docs: function (singleIsbn) {
             var seite = datalist.pbl.seite;
             var count = datalist.pbl.pouch.appResult[seite].rows.length;
-            console.log('show_all result ' + seite + ' ' + count);
+            //console.log('show_all result ' + seite + ' ' + count);
             //console.log(result.rows);
             if (datalist.pbl.pouch.appResult[seite].rows.length > 1 | seite !== 'books' | (datalist.pbl.pouch.appResult[seite].rows.length === 0 && !singleIsbn)) {
                 datalist.show_all_docs_sorted();
@@ -333,7 +339,7 @@
             } else {
                 datalist.pbl.ui.show_page2('books');
             }
-            console.log('show_all end ' + seite + ' ' + datalist.pbl.pouch.appResult[seite].rows.length);
+            //console.log('show_all end ' + seite + ' ' + datalist.pbl.pouch.appResult[seite].rows.length);
             datalist.pbl.ui.loading.style.display = "none";
 
         },
@@ -344,7 +350,7 @@
                     datalist.appSortUp = !datalist.appSortUp;
                 } else if (mySort) {
                     datalist.appSort = mySort;
-                    datalist.appSortUp = (mySort != "date");
+                    datalist.appSortUp = (mySort !== "date" && mySort !== "check");
                 } else if (!datalist.appSort) {
                     datalist.appSort = 'name';
                     datalist.appSortUp = 1;
@@ -361,8 +367,11 @@
                 $("#sort_author").toggleClass("fa-sort-up", datalist.appSortUp && datalist.appSort === "author");
                 $("#sort_author").toggleClass("fa-sort-down", !datalist.appSortUp && datalist.appSort === "author");
                 $("#sort_author").toggleClass("fa-sort", datalist.appSort !== "author");
+                $("#sort_check").toggleClass("fa-sort-up", datalist.appSortUp && datalist.appSort === "check");
+                $("#sort_check").toggleClass("fa-sort-down", !datalist.appSortUp && datalist.appSort === "check");
+                $("#sort_check").toggleClass("fa-sort", datalist.appSort !== "check");
             }
-            console.log('show_all ' + seite);
+            //console.log('show_all ' + seite);
             datalist.pbl.ui.loading.style.display = "block";
 
             datalist.pbl.pouch.getAll(seite, singleIsbn, datalist.show_all_docs);
@@ -372,7 +381,7 @@
         },
         mySearch: function (test = '', select = '') {
             // Declare variables
-            var input, filter, table, tr, td, i, test, count = 0, countAll = 0;
+            var input, filter, table, tr, td, i, count = 0, countAll = 0;
             if (test === "~~") {
                 $('#appSearch').val('').trigger('change').focus();
                 filter = "";
@@ -382,10 +391,10 @@
                 input = document.getElementById("appSearch");
                 filter = input.value.toUpperCase();
             }
-            if (select == 'all') {
+            if (select === 'all') {
                 select = '';
                 app.select = '';
-            } else if (select == '') {
+             } else if (select === '') {
                 select = app.select;
             } else {
                 app.select = select;

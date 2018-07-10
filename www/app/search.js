@@ -1,8 +1,12 @@
 ﻿define(function (require) {
 
     var search = {
+        init: true,
         initialize: function () {
-            $('#scansearch').click(search.scan_search);
+            if (this.init) {
+                this.init = false;
+                $('#scansearch').click(search.scan_search);
+            }
         },
         scan: function () {
             app.log('scanning');
@@ -126,6 +130,8 @@
                                 $("#books_author_id").val(erg.Items[0].author_id);
                             if (erg.Items[0].isbn)
                                 $("#books_isbn").val(erg.Items[0].isbn);
+                            if (erg.Items[0].asin)
+                                $("#books_asin").val(erg.Items[0].asin);
                             if (erg.Items[0].price)
                                 $("#books_price").val(erg.Items[0].price);
                             if (erg.Items[0].thumbnail) {
@@ -136,6 +142,8 @@
                                 $("#books_smallThumbnail").val(erg.Items[0].smallThumbnail);
                             if (erg.Items[0].url)
                                 $("#books_url").val(erg.Items[0].url);
+                            if (erg.Items[0].url_amzn)
+                                $("#books_url_amzn").val(erg.Items[0].url_amzn);
                             if (erg.Items[0].url)
                                 $("#books_link").attr("href", erg.Items[0].url);
                             //$("#img_books").attr("src", erg.Items[0].thumbnail);
@@ -160,7 +168,7 @@
                                 app.pouch.appResult['search_books'].rows[i] = [];
                                 app.pouch.appResult['search_books'].rows[i].doc = erg.Items[i];
                                 
-                                var j = (erg.Items[i]['isbn'] ? app.pouch.appResult['books'].isbn[app.search.isbn9(erg.Items[i]['isbn'])] : 0);
+                                var j = erg.Items[i]['isbn'] ? app.pouch.appResult['books'].isbn[app.search.isbn9(erg.Items[i]['isbn'])] : 0;
                                 //if (erg.Items[i]['isbn'] && appResult[seite].isbn[erg.Items[i]['isbn']]) {
                                 if (j > 0) {
                                     app.pouch.appResult['search_books'].rows[i].doc['favor'] = app.pouch.appResult['books'].rows[j].doc['favor'];

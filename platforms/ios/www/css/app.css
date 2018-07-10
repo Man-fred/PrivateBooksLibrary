@@ -32,7 +32,7 @@ footer {
   top: 44px;
   left: 0;
   width: calc(100% -  30px);
-  height: 50px;
+  height: 60px;
   position: fixed !important;
   z-index: 800;
 }
@@ -118,12 +118,25 @@ footer {
   }
 }
 .title-button {
-  float: right;
+  float: left;
   font-size: 200%;
   font-weight: bold;
   /*padding: 0 10px 0 10px;*/
   width: 36px;
   height: 36px;
+  display: block;
+  margin: 4px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.app-button {
+  float: left;
+  font-size: 200%;
+  font-weight: bold;
+  /*padding: 0 10px 0 10px;*/
+  width: 44px;
+  height: 44px;
   display: block;
   margin: 4px;
   text-align: center;
@@ -169,9 +182,19 @@ div.container {
   margin: 0;
   padding: 0 /*@top-height*/ 0 25px 0;
 }
-#bc_search {
-  width: calc(100% -  150px);
+#bc1,
+#as1 {
   float: left;
+}
+#bc_search {
+  width: calc(100% -  218px);
+  float: left;
+  padding: 8px 0 0 4px;
+}
+#as_search {
+  width: calc(100% -  130px);
+  float: left;
+  padding: 8px 0 0 4px;
 }
 #appScan {
   float: left;
@@ -179,7 +202,7 @@ div.container {
 #datalist {
   /*margin-left: 34em;
     border-left: 1px solid gray;*/
-  padding: 50px 0 25px 0;
+  padding: 60px 0 25px 0;
   overflow: auto;
 }
 #datalistScroll {
@@ -330,10 +353,10 @@ input[type="radio"] {
 .deleteicon span {
   position: absolute;
   display: block;
-  top: 10px;
-  right: calc(20px);
-  width: 16px;
-  height: 16px;
+  top: 16px;
+  right: 24px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
 .deleteicon input {
@@ -341,9 +364,13 @@ input[type="radio"] {
   width: calc(100% -  16px);
   box-sizing: border-box;
 }
+#appSearchAnchor {
+  padding: 8px 0;
+}
 #appSearch {
-  padding-right: 16px;
+  padding: 8px 16px 8px 4px;
   width: calc(100% -  16px);
+  height: 32px;
   box-sizing: border-box;
 }
 .form_short {
@@ -1025,6 +1052,9 @@ appears on the left side of the page.
   float: right;
   width: 88px;
 }
+.left {
+  float: left;
+}
 /*
 All anchors inside the menu should be styled like this.
 */
@@ -1179,7 +1209,7 @@ small screens.
 }
 .myTableAnchor {
   position: absolute;
-  top: -94px;
+  top: -104px;
 }
 .searchlist {
   text-align: center;
@@ -1311,6 +1341,23 @@ Hides the menu at `48em`, but modify this based on your app's needs.
   background-color: lightgray;
   border-radius: 2em;
   border: 5px solid darkgray;
+}
+.overlay {
+  height: calc(100% -  50px);
+}
+#overlay_content label {
+  width: 100%;
+}
+#overlay_content div.left {
+  float: left;
+}
+#overlay_content div.right {
+  float: right;
+  width: unset;
+}
+#overlay_content div.center {
+  margin: 0 auto;
+  width: 150px;
 }
 .cordova-camera-capture {
   top: -80%;

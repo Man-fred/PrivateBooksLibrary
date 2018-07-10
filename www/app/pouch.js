@@ -72,7 +72,7 @@
         sync: function () {
             pouch.infoSync.setAttribute('data-sync-state', 'syncing');
             pouch.db.replicate.from(pouch.dbRemote).on('complete', function (info) {
-                console.log(info.last_seq);
+                //console.log(info.last_seq);
                 app.log('Last Sequence: ' + parseInt(info.last_seq));
                 // then two-way, continuous, retriable sync
                 pouch.dbSync = pouch.db.sync(pouch.dbRemote, { live: true, retry: true })
@@ -120,7 +120,7 @@
             pouch.infoSync.setAttribute('data-sync-state', 'paused');
             pouch.infoSync.innerHTML = 'server: paused ' + (err ? err : '');
             pouch.db.info().then(function (result) {
-                console.log(result);
+                //console.log(result);
                 pouch.infoSync.innerHTML = 'server: paused ' + result.update_seq;
                 app.log('server: paused ' + result.update_seq);
             }).catch(function (err) {

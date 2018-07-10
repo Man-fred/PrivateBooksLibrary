@@ -19,6 +19,7 @@ define(function (require) {
         menu: document.getElementById('menu'),
         menuLink: document.getElementById('menuLink'),
         main3: document.getElementById('main3'),
+        select_s: document.getElementById('select_s'),
         layout: document.getElementById('layout'),
         loading: document.getElementById("loading"),
         dataformBooks: document.getElementById("dataformBooks"),
@@ -34,47 +35,57 @@ define(function (require) {
 
         scrollY: 0,
 
+        init: true,
         initialize: function (pbl) {
-            this.menuLink.addEventListener('click', this.toggleAll);
-            this.menu.addEventListener("click", this.toggleAll);
-            this.main3.addEventListener("click", this.toggleMain3);
-            this.pbl = pbl;
-            window.addEventListener('click', this.dropdownClose);
+            if (this.init) {
+                this.init = false;
+                this.menuLink.addEventListener('click', this.togglemenuLink);
+                this.menu.addEventListener("click", this.toggleAll);
+                this.main3.addEventListener("click", this.toggleMain3);
+                this.pbl = pbl;
+                window.addEventListener('click', this.dropdownClose);
+                this.select_s.addEventListener("change", this.selectFilter);
+            }
         },
 
         /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
         dropdown: function (id) {
             document.getElementById(id).classList.toggle("show");
-    if (id != 'myDropdown1' && document.getElementById('myDropdown1').classList.contains('show')) {
-        document.getElementById('myDropdown1').classList.remove('show')
-    }
-    if (id != 'myDropdown2' && document.getElementById('myDropdown2').classList.contains('show')) {
-        document.getElementById('myDropdown2').classList.remove('show')
-    } 
-},
+            if (id !== 'myDropdown1' && document.getElementById('myDropdown1').classList.contains('show')) {
+                document.getElementById('myDropdown1').classList.remove('show');
+            }
+            if (id !== 'myDropdown2' && document.getElementById('myDropdown2').classList.contains('show')) {
+                document.getElementById('myDropdown2').classList.remove('show');
+            } 
+        },
 
-// Close the dropdown if the user clicks outside of it
+        // Close the dropdown if the user clicks outside of it
         //window.onclick =
-        dropdownClose: function (event) {
-        if (!event.target.matches('.dropbtn')) {
+        dropdownClose: function (event, immer = false) {
+            if (!event.target.matches('.dropbtn') && (immer || !event.target.matches('.dropselect'))) {
 
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
                 }
             }
-        }
-    },
+        },
+        selectFilter: function (event) {
+            //onchange = "app.datalist.mySearch('', this.value)"
+            app.datalist.mySearch('', this.value);
+            ui.dropdownClose(event, true);
+        },
         show: function (neu) {
             if (neu !== ui.page) {
                 neu.style.display = "block";
                 ui.page.style.display = "none";
                 ui.page = neu;
             }
-            if (neu == page1) {
+            if (neu === page1) {
                 ui.dataformBooks.style.display = "block";
                 if (this.pbl.seite === 'books' || this.pbl.seite === 'authors') {
                     ui.appSearchAnchor.style.display = "block";
@@ -82,7 +93,7 @@ define(function (require) {
                     ui.appSearchAnchor.style.display = "none";
                 }
                 this.pbl.appPage = 1;
-            } else if (neu == page2) {
+            } else if (neu === page2) {
                 ui.dataformBooks.style.display = "none";
                 this.pbl.appPage = 2;
             } else {
@@ -109,12 +120,12 @@ define(function (require) {
         },
          show_div: function (div = "record_show") {
             var x = document.getElementById(div);
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-},
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        },
 
         setScrollY: function (y) {
             window.scrollTo(0, y);
@@ -154,6 +165,9 @@ define(function (require) {
             if (ui.menu.className.indexOf('active') !== -1) {
                 ui.toggleAll(e);
             }
+        },
+        togglemenuLink: function (e) {
+            toggleAll(e);
         },
         toggleAll: function (e) {
             var active = 'active';

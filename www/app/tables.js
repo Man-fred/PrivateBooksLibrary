@@ -51,14 +51,14 @@
                 },
                 state: {
                     name: "state",
-                    title: "state",
+                    title: app.lang.state,
                     select: "state",
                     field: "name",
                     visible: "long"
                 },
                 favor: {
                     name: "favor",
-                    title: "favor",
+                    title: app.lang.favorite,
                     select: "favorite",
                     field: "name",
                     visible: "long"
@@ -67,6 +67,22 @@
                 memo: {
                     name: "memo",
                     title: "Memo"
+                },
+                lending: {
+                    name: "lending",
+                    title: app.lang.lending,
+                    select: "lending",
+                    field: "name",
+                    visible: "long"
+                    //, noField: 1
+                },
+                location: {
+                    name: "location",
+                    title: app.lang.location,
+                    select: "location",
+                    field: "name",
+                    visible: "long"
+                    //, noField: 1
                 },
                 checkdate: {
                     name: "checkdate",
@@ -87,6 +103,11 @@
                 url: {
                     name: "url",
                     title: "url"
+                },
+                url_amzn: {
+                    name: "url_amzn",
+                    title: "url_amzn",
+                    noField: true
                 },
                 thumbnail: {
                     name: "thumbnail",
@@ -115,6 +136,14 @@
                 nr: {
                     name: "nr",
                     title: "ID"
+                },
+                memo: {
+                    name: "memo",
+                    title: "Memo"
+                },
+                wiki: {
+                    name: "wiki",
+                    title: "Wikipedia"
                 }
             },
             data: []
@@ -132,6 +161,14 @@
                 name: {
                     name: "name",
                     title: "name"
+                },
+                url: {
+                    name: "url",
+                    title: "url"
+                },
+                memo: {
+                    name: "memo",
+                    title: "Memo"
                 }
             },
             data: []
@@ -157,6 +194,56 @@
                 }
             }
             //, data: []
+        },
+        lending: {
+            name: "lending",
+            title: "lending",
+            menu: true,
+            action: "app.datalist.fill",
+            head: true,
+            tr: '',
+            btn: { add: true },
+            idName: true,
+            fields: {
+                name: {
+                    name: "name",
+                    title: "Nr"
+                },
+                long: {
+                    name: "long",
+                    title: "Name"
+                },
+                memo: {
+                    name: "memo",
+                    title: "Memo"
+                }
+            },
+            data: []
+        },
+        location: {
+            name: "location",
+            title: "location",
+            menu: true,
+            action: "app.datalist.fill",
+            head: true,
+            tr: '',
+            btn: { add: true },
+            idName: true,
+            fields: {
+                name: {
+                    name: "name",
+                    title: "Nr"
+                },
+                long: {
+                    name: "long",
+                    title: "Name"
+                },
+                memo: {
+                    name: "memo",
+                    title: "Memo"
+                }
+            },
+            data: []
         },
         favorite: {
             name: "favorite",

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget defaultlocale="de-DE" id="io.cordova.myapp387c96" version="0.4.13" windows-packageVersion="0.4.13.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
+<widget defaultlocale="de-DE" id="io.cordova.myapp387c96" version="0.5.0" windows-packageVersion="0.5.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
@@ -49,7 +49,7 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <vs:platformSpecificValues>
-        <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.4.13.0" />
+        <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.5.0.0" />
     </vs:platformSpecificValues>
     <config-file parent="/Package/Capabilities" target="package.appxmanifest">
         <DeviceCapability Name="webcam" />
@@ -67,21 +67,23 @@
     </edit-config>
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
-    <icon height="180" src="res/icons/ios/icon-60-3x.png" width="180" />
-    <icon height="60" src="res/icons/ios/icon-60.png" width="60" />
-    <icon height="120" src="res/icons/ios/icon-60-2x.png" width="120" />
-    <icon height="76" src="res/icons/ios/icon-76.png" width="76" />
-    <icon height="152" src="res/icons/ios/icon-76-2x.png" width="152" />
     <icon height="40" src="res/icons/ios/icon-40.png" width="40" />
     <icon height="80" src="res/icons/ios/icon-40-2x.png" width="80" />
-    <icon height="57" src="res/icons/ios/icon-57.png" width="57" />
-    <icon height="114" src="res/icons/ios/icon-57-2x.png" width="114" />
-    <icon height="72" src="res/icons/ios/icon-72.png" width="72" />
-    <icon height="144" src="res/icons/ios/icon-72-2x.png" width="144" />
-    <icon height="29" src="res/icons/ios/icon-small.png" width="29" />
-    <icon height="58" src="res/icons/ios/icon-small-2x.png" width="58" />
     <icon height="50" src="res/icons/ios/icon-50.png" width="50" />
     <icon height="100" src="res/icons/ios/icon-50-2x.png" width="100" />
+    <icon height="57" src="res/icons/ios/icon-57.png" width="57" />
+    <icon height="114" src="res/icons/ios/icon-57-2x.png" width="114" />
+    <icon height="60" src="res/icons/ios/icon-60.png" width="60" />
+    <icon height="120" src="res/icons/ios/icon-60-2x.png" width="120" />
+    <icon height="180" src="res/icons/ios/icon-60-3x.png" width="180" />
+    <icon height="72" src="res/icons/ios/icon-72.png" width="72" />
+    <icon height="144" src="res/icons/ios/icon-72-2x.png" width="144" />
+    <icon height="76" src="res/icons/ios/icon-76.png" width="76" />
+    <icon height="152" src="res/icons/ios/icon-76-2x.png" width="152" />
+    <icon height="167" src="res/icons/ios/icon-83.5-2x.png" width="167" />
+    <icon height="29" src="res/icons/ios/icon-small.png" width="29" />
+    <icon height="58" src="res/icons/ios/icon-small-2x.png" width="58" />
+    <icon height="87" src="res/icons/ios/icon-small-3x.png" width="87" />
     <icon height="1024" src="res/icons/ios/icon-1024.png" width="1024" />
     <splash src="res/screens/ios/Default@2x~universal~anyany.png" />
     <splash height="480" src="res/screens/ios/screen-iphone-portrait.png" width="320" />
@@ -115,9 +117,9 @@
     <preference name="WindowsStoreDisplayName" value="Private Books Library" />
     <preference name="WindowsStoreIdentityName" value="35337ManfredBielemeierBCS.PrivateBooksLibrary" />
     <preference name="WindowsStorePublisherName" value="Manfred Bielemeier (BCSS Software &amp; Beratung GmbH)" />
-    <preference name="StatusBarOverlaysWebView" value="true" />
-    <preference name="StatusBarBackgroundColor" value="#1010FF" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
     <preference name="android-minSdkVersion" value="15" />
     <preference name="android-targetSDKVersion" value="26" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="APP_SECRET" value="8c404359-b973-4764-b59b-e91f74d65692" />
 </widget>

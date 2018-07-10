@@ -23,10 +23,11 @@
 @content-margin: 8px;
 @content-padding: 10px;
 @top-height: 44px;
-@header-height: 50px;
+@header-height: 60px;
 @footer-height: 25px;
 @title-margin: 4px;
 @title-button: @top-height - 2 * @title-margin;
+@app-button: @title-button + 8px;
 @books-img: 52px;
 @books-img-margin: 5px;
 @books-favor: 24px;
@@ -35,7 +36,13 @@
 
 @color-bkg: lightgray;
 @color-border: darkgray;
-
+@header-color: #333;
+@header-bkg: whitesmoke;
+@top-color: #fff;
+@top-bkg: #1f8dd6;
+@dropdown-bkg: #3498DB;
+@dropdown-row-bkg: #f1f1f1;
+@footer-bkg: rgb(55,55,55);
 /* static footer */
 html, body {
     height: 100%;
@@ -62,8 +69,8 @@ header, footer {
 
 .header {
     margin: 0;
-    color: #333;
-    background-color: whitesmoke;
+    color: @header-color;
+    background-color: @header-bkg;
     text-align: center;
     padding: 0;
     border-bottom: 1px solid #eee;
@@ -108,10 +115,10 @@ main3 {
     position: fixed !important;
     z-index: 900; /* so the menu or its navicon stays above all content */
     width: 100%;
-    background: #1f8dd6;
+    background: @top-bkg;
     font-size: 110%;
     text-transform: uppercase;
-    color: #fff;
+    color: @top-color;
     margin: 0;
     height: @top-height;
     display: table-cell;
@@ -120,7 +127,7 @@ main3 {
 
 footer {
     z-index: 1000; /* so the menu or its navicon stays above all content */
-    background: rgb(55,55,55);
+    background: @footer-bkg;
     bottom: 0px;
     position: fixed !important;
     position: absolute;
@@ -160,12 +167,25 @@ footer {
 }
 
 .title-button {
-    float: right;
+    float: left;
     font-size: 200%;
     font-weight: bold;
     /*padding: 0 10px 0 10px;*/
     width: @title-button;
     height: @title-button;
+    display: block;
+    margin: @title-margin;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.app-button {
+    float: left;
+    font-size: 200%;
+    font-weight: bold;
+    /*padding: 0 10px 0 10px;*/
+    width: @app-button;
+    height: @app-button;
     display: block;
     margin: @title-margin;
     text-align: center;
@@ -213,9 +233,18 @@ div.container {
     margin: 0;
     padding: 0 /*@top-height*/ 0 @footer-height 0;
 }
-#bc_search {
-    width: calc(~"100% - " 150px );
+#bc1, #as1 {
     float: left;
+}
+#bc_search {
+    width: calc(~"100% - " 4 * @app-button + 8 * @title-margin + 10px);
+    float: left;
+    padding: 8px 0 0 4px;
+}
+#as_search {
+    width: calc(~"100% - " 2 * @app-button + 8 * @title-margin + 10px);
+    float: left;
+    padding: 8px 0 0 4px;
 }
 #appScan {
     float: left;
@@ -363,10 +392,10 @@ input[type="checkbox"], input[type="radio"] {
 .deleteicon span {
     position: absolute;
     display: block;
-    top: 10px;
-    right: calc( @content-margin + 12px );
-    width: 16px;
-    height: 16px;
+    top: 16px;
+    right: @content-margin + 16px;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
 }
 
@@ -375,9 +404,13 @@ input[type="checkbox"], input[type="radio"] {
     width: calc(~"100% - "  2 * @content-margin );
     box-sizing: border-box;
 }
+#appSearchAnchor {
+    padding: 8px 0;
+}
 #appSearch {
-    padding-right: 16px;
+    padding: 8px 16px 8px 4px;
     width: calc(~"100% - " 2 * @content-margin );
+    height: 32px;
     box-sizing: border-box;
 }
 
@@ -1085,8 +1118,11 @@ appears on the left side of the page.
     }
 }
 .right {
-    float:right;
+    float: right;
     width: 2 * @top-height;
+}
+.left {
+    float: left;
 }
 /*
 All anchors inside the menu should be styled like this.
@@ -1317,15 +1353,26 @@ Hides the menu at `48em`, but modify this based on your app's needs.
         }
     }
     /*******************************************************/
+.dropselect {
+}
+.droprow {
+    background-color: @dropdown-row-bkg !important;
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none !important;
+    cursor: pointer;
+    width: 100%;
+    text-transform: uppercase;
+}
 .dropbtn {
-    background-color: #3498DB;
+    background-color: @dropdown-bkg;
     color: white;
     padding: 16px;
     font-size: 16px;
     border: none;
     cursor: pointer;
 }
-
 .dropbtn:hover, .dropbtn:focus {
     background-color: #2980B9;
 }
@@ -1345,7 +1392,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
+    background-color: @dropdown-row-bkg;
     min-width: 160px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -1391,10 +1438,29 @@ Hides the menu at `48em`, but modify this based on your app's needs.
     border-radius: 2em;
     border: 5px solid @color-border;
 }
-.cordova-camera-capture{
-    top: -80%;
-    left: 20%;
+.overlay {
+    height: calc(~"100% - " 50px);
 }
-.cordova-camera-capture button {
-    left: -50%;
+#overlay_content label { 
+    width: 100%;
+
 }
+#overlay_content div.left {
+    float: left;
+}
+#overlay_content div.right {
+    float: right;
+    width: unset;
+}
+#overlay_content div.center {
+    margin: 0 auto;
+    width: 150px;
+}
+    .cordova-camera-capture {
+        top: -80%;
+        left: 20%;
+    }
+
+    .cordova-camera-capture button {
+        left: -50%;
+    }

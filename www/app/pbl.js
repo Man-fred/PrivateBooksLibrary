@@ -1,56 +1,53 @@
 define(function (require) {
     var pbl = {
+        once: true,
         initialize: function (lang) {
-            app = pbl;
-            app.lang = lang;
-            console.log('initialize');
-            document.addEventListener('deviceready', this.onDeviceReady, false);
-            window.addEventListener("resize", this.onWindowLoadResize);
+            if (this.once) {
+                this.once = false;
+                console.log('pbl.js:initialize');
+                app = pbl;
+                app.lang = lang;
+                console.log('initialize');
+                document.addEventListener('deviceready', this.onDeviceReady, false);
+                window.addEventListener("resize", this.onWindowLoadResize);
 
-            $('#appRefresh').click(this.refresh);
-            $('#appSettings').click(function () {
-                pbl.data.show(pbl.pouch.dbIdPrivate + '_login', 'login');
-            });
-            $('#appReturn').click(function () {
-                pbl.ui.show_page1(1);
-            });
-
-            require(['./tables'], function (tables) {
-                //tables.initialize();
-                pbl.myApp = tables;
-                require(['./data'], function (data) {
-                    data.initialize(pbl.myApp);
-                    pbl.data = data;
+                require(['./tables'], function (tables) {
+                    //tables.initialize();
+                    pbl.myApp = tables;
+                    require(['./data'], function (data) {
+                        data.initialize(pbl.myApp);
+                        pbl.data = data;
+                        pbl.onDeviceReady();
+                    });
+                    require(['./datalist'], function (datalist) {
+                        datalist.initialize(pbl);
+                        pbl.datalist = datalist;
+                        pbl.onDeviceReady();
+                    });
+                });
+                require(['./pouch'], function (pouch) {
+                    pouch.initialize(pbl);
+                    pbl.pouch = pouch;
+                    $('#appLogin').click(pbl.pouch.remoteLogin);
+                    //console.log('pouch');
                     pbl.onDeviceReady();
                 });
-                require(['./datalist'], function (datalist) {
-                    datalist.initialize(pbl);
-                    pbl.datalist = datalist;
+                require(['./ui'], function (ui) {
+                    ui.initialize(pbl);
+                    pbl.ui = ui;
                     pbl.onDeviceReady();
                 });
-            });
-            require(['./pouch'], function (pouch) {
-                pouch.initialize(pbl);
-                pbl.pouch = pouch;
-                $('#appLogin').click(pbl.pouch.remoteLogin);
-                //console.log('pouch');
-                pbl.onDeviceReady();
-            });
-            require(['./ui'], function (ui) {
-                ui.initialize(pbl);
-                pbl.ui = ui;
-                pbl.onDeviceReady();
-            });
-            require(['./book'], function (book) {
-                book.initialize(pbl);
-                pbl.book = book;
-                pbl.onDeviceReady();
-            });
-            require(['./search'], function (search) {
-                search.initialize();
-                pbl.search = search;
-                pbl.onDeviceReady();
-            });
+                require(['./book'], function (book) {
+                    book.initialize(pbl);
+                    pbl.book = book;
+                    pbl.onDeviceReady();
+                });
+                require(['./search'], function (search) {
+                    search.initialize();
+                    pbl.search = search;
+                    pbl.onDeviceReady();
+                });
+            }
         },
         ui: null,
         //slide: require('./slide'),
@@ -68,7 +65,7 @@ define(function (require) {
         select: '', // Vorauswahl über Menü
         showDeleted: false, // gelöschte Daten anzeigen oder nicht
         appCheck: [],
-        appResult: [],
+        //appResult: [],
         apiLibrarything : "",
         apiIsbndb : "",
         viewportWidth: null,
@@ -82,6 +79,12 @@ define(function (require) {
         onDeviceReady: function () {
             var appTitle = 'Private Books Library';
             $('#appTitle').html(appTitle);
+            $('#appRefresh').click(this.refresh);
+            $('#appSettings').click(function () {
+                pbl.data.show(pbl.pouch.dbIdPrivate + '_login', 'login');
+            });
+
+            //cordova.plugins.notification.badge.set(1);
             pbl.infoDev = document.getElementById('info-dev');
             pbl.listeningElement = pbl.infoDev.querySelector('.listening');
             pbl.receivedElement = pbl.infoDev.querySelector('.received');
@@ -139,54 +142,53 @@ define(function (require) {
              pbl.countLog++;
         },
 
-        main: function () {
-            /* nur jQuery Mobile
-             $(document).bind("mobileinit", function () {
-             // Make your jQuery Mobile framework configuration changes here!
-             $.support.cors = true;
-             $.mobile.allowCrossDomainPages = true;
-             });
+         main: function () {
+             /* nur jQuery Mobile
+              $(document).bind("mobileinit", function () {
+              // Make your jQuery Mobile framework configuration changes here!
+              $.support.cors = true;
+              $.mobile.allowCrossDomainPages = true;
+              });
+              */
+             /*
+             var oldLog = console.log;
+             console.log1 = function (message, a2, a3, a4) {
+                 $("#info-log").append('<li>' + message + '</li>');
+                 oldLog.apply(console, arguments);
+             };
+             
+             window.onerror = function (message, source, lineno, colno, error) {
+                 console.log(message + ' ' + source + ' (' + lineno + ', ' + colno + ') ' + error);
+             }
              */
-            /*
-            var oldLog = console.log;
-            console.log1 = function (message, a2, a3, a4) {
-                $("#info-log").append('<li>' + message + '</li>');
-                oldLog.apply(console, arguments);
-            };
-            
-            window.onerror = function (message, source, lineno, colno, error) {
-                console.log(message + ' ' + source + ' (' + lineno + ', ' + colno + ') ' + error);
-            }
-            */
 
-            function dbRenew(destroy = false, create = true) {
-                if (window.confirm('lokale Datenbank löschen?')) {
-                    db.destroy().then(function () {
-                        // database destroyed
-                        dbNew();
-                    }).catch(function (err) {
-                        // error occurred
-                    });
-                }
-            }
+             function dbRenew(destroy = false, create = true) {
+                 if (window.confirm('lokale Datenbank löschen?')) {
+                     db.destroy().then(function () {
+                         // database destroyed
+                         dbNew();
+                     }).catch(function (err) {
+                         // error occurred
+                     });
+                 }
+             }
 
-            function onDeviceReady() {
+             function onDeviceReady() {
 
-                // Code for Read Data from Indexed on for edit(Single Record)
-                $('#btnShow').click(function () {
-                    var id = $('#txtSearch').val();
-                    show_data(id);
-                });
+                 // Code for Read Data from Indexed on for edit(Single Record)
+                 $('#btnShow').click(function () {
+                     var id = $('#txtSearch').val();
+                     show_data(id);
+                 });
                  $('#btnShowAll').click(function () {
-                    show_all();
-                });
+                     show_all();
+                 });
 
 
 
-                $("#mypanel").trigger("updatelayout");
-            }
-
-        }
+                 $("#mypanel").trigger("updatelayout");
+             }
+         }
     };
     return pbl;
 });

@@ -39,6 +39,10 @@
                 <a id="appAgb" onclick="app.ui.show(app.ui.pageAGB)" href="#">Nutzungbedingungen</a>
                 <a id="appDS" onclick="app.ui.show(app.ui.pageDS)" href="#">Datenschutzerklärung</a>
                 <a id="appContact" onclick="app.ui.show(app.ui.pageContact)" href="#">Kontakt</a>
+                <a class="inactive" href="#">Sontiges</a>
+                <a id="appRefresh" href="#">Refresh</a>
+                <!-- <button type="button" class="pure-button" onclick="dbRenew()">DB Renew</button>&nbsp; -->
+                <a id="appLogin" href="#about">Login</a>
             </div>
         </div>
         <div class="dropdown">
@@ -49,22 +53,18 @@
                 <a onclick="app.datalist.show_all('books','name')" href="#">Name&nbsp;<i id="sort_name" class="fas fa-sort-up"></i></a>
                 <a onclick="app.datalist.show_all('books','date')" href="#">Datum&nbsp;<i id="sort_date" class="fas fa-sort"></i></a>
                 <a onclick="app.datalist.show_all('books','author')" href="#">Autor&nbsp;<i id="sort_author" class="fas fa-sort"></i></a>
+                <a onclick="app.datalist.show_all('books','check')" href="#">Check&nbsp;<i id="sort_check" class="fas fa-sort"></i></a>
                 <a class="inactive" href="#">Auswahl</a>
                 <a id="select_all" onclick="app.datalist.mySearch('', 'all')" href="#"><i id="filter_fav" class="fas fa-sort-down"></i>Alle anzeigen</a>
                 <button id="select_favor" type="button" class="pure-button" onclick="app.datalist.mySearch('', 'favor')">Favoriten&nbsp;<i id="filter_fav" class="fa-check"></i></button>&nbsp;
                 <button id="select_s1" type="button" class="pure-button" onclick="app.datalist.mySearch('', 's1')">bestellt&nbsp;<i id="filter_fav" class="fa-check"></i></button>&nbsp;
                 <a id="showDeleted" onclick="app.datalist.showDeleted()" href="#">Gelöschtes&nbsp;anzeigen</a>
-                <a class="inactive" href="#">Sontiges</a>
-                <a id="appRefresh" href="#">Refresh</a>
-                <!-- <button type="button" class="pure-button" onclick="dbRenew()">DB Renew</button>&nbsp; -->
-                <a id="appLogin" href="#about">Login</a>
             </div>
         </div>
         <div class="dropdown">
             <button id="appAdd" class="dropbtn title-button" onclick="app.data.show('')" title="Neuer Eintrag">&nbsp;</button>
         </div>
         <div id="appTitle">Bücher</div>
-        <div id="appReturn" class="title-button"></div>
     </div>
     <div id="dataformBooks" class="header">
         <div id="topMessage">&nbsp;</div>
@@ -141,10 +141,21 @@
                 </div>
                 <div id="pageAbout" style="display: none;">
                     <h2>Version</h2>
-                    <p>V 0.4.13 Interner Test</p>
-                    <p>Verwalten Sie Ihre private Büchersammlung und Ihre eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.</p>
+                    <p>V 0.5.0 Interner Test/Testflight</p>
+                    <h2>Hilfe</h2>
+                    <h3><a onclick="app.init.showAll()" href="#">Rundgang anzeigen</a></h3>
+                    <h3><a href="https://www.bcss.de/produkte/apps/pbl" target="_blank">Hilfe im Internet (öffnet neue Seite)</a></h3>
                     <h2>Benutzte Projekte</h2>
+                    <h3>Datenquellen</h3>
+                    <h4>Deutsche Nationalbibliothek</h4>
+                    <p></p>
+                    <h4>Amazon</h4>
+                    <p></p>
+                    <h3>Phonegap</h3>
+                    <h4><a href="https://github.com/katzer/cordova-plugin-badge" target="_blank">Cordova Badge Plugin</a></h4>
+                    <h3>Symbole</h3>
                     <h4>Font Awesome Free</h4>
+                    <p>Font Awesome by Dave Gandy - <a href="https://fontawesome.com/">https://fontawesome.com/</a></p>
                     <p>Font Awesome Free is free, open source, and GPL friendly. You can use it for commercial projects, open source projects, or really almost whatever you want.</p>
                     <h5>Icons — CC BY 4.0 License</h5>
                     <p>In the Font Awesome Free download, the CC BY 4.0 license applies to all icons packaged as .svg and .js files types.</p>
@@ -390,22 +401,27 @@
     <div id="loading"></div>
     <div id="overlay">
         <div id="overlay_content">
-            <div id="overlay1">
-                <h2>Overlay Text 1</h2>
+            <div id="overlay1" class="overlay">
+                <h2>Privat</h2>
+                <p>
+                    Verwalten Sie Ihre private Büchersammlung und Ihre eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern,
+                    es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.
+                </p>
             </div>
-            <div id="overlay2">
+            <div id="overlay2" class="overlay">
                 <h2>Overlay Text 2</h2>
             </div>
-            <div id="overlay3">
+            <div id="overlay3" class="overlay">
                 <h2>Jetzt gehts los</h2>
+                <p>Die Einführung können Sie jederzeit wieder anschauen über About -> Rundgang starten.</p>
+                <p>Hilfe und Beschreibung der App gibt es im <a href="https://www.bcss.de/produkte/apps/pbl" target="_blank">Internet</a>.</p>
             </div>
-            <label>
-                <input type="checkbox" id="initHide" checked="checked">
-                Diese Einführung beim nächsten Mal nicht mehr anzeigen
-            </label>
-            <div><button onclick="app.init.hide()">off</button></div>
-            <div><button onclick="app.init.show(1)">next</button></div>
-            <div><button onclick="app.init.show(-1)">prev</button></div>
+            <!--<label>
+    <input type="checkbox" id="initHide" hidden checked="checked"> Diese Einführung beim nächsten Mal nicht mehr anzeigen
+    </label>-->
+            <div class="left"><button onclick="app.init.show(-1)">prev</button></div>
+            <div class="right"><button onclick="app.init.show(1)">next</button></div>
+            <div class="center"><button onclick="app.init.hide()">Jetzt loslegen</button></div>
         </div>
     </div>
 

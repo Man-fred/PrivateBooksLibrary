@@ -15,16 +15,14 @@
                 $('#' + seite + '_' + this.name).val(doc[this.name]);
             });
             $.each(app.myApp[seite].fields, function () {
-                if (!this.noField) {
-                    if (this.select) {
-                        app.data.select(this.select, seite, this.name, this.field, this.visible, doc[this.name]);
-                    } else if (this.selectYN) {
-                        $('#' + seite + '_' + this.name + 'option[value=' + doc[this.name]+']').attr('selected', 'selected');
-                    } else if (this.type === "checkbox") {
-                        $('#' + seite + '_' + this.name).prop("checked", (doc[this.name] === true));//(doc[this.name]);
-                    } else {
-                        $('#' + seite + '_' + this.name).val(doc[this.name]);
-                    }
+                if (this.select) {
+                    app.data.select(this.select, seite, this.name, this.field, this.visible, doc[this.name]);
+                } else if (this.selectYN) {
+                    $('#' + seite + '_' + this.name + 'option[value=' + doc[this.name] + ']').attr('selected', 'selected');
+                } else if (this.type === "checkbox") {
+                    $('#' + seite + '_' + this.name).prop("checked", doc[this.name] === true);//(doc[this.name]);
+                } else {
+                    $('#' + seite + '_' + this.name).val(doc[this.name]);
                 }
             });
         },
@@ -79,27 +77,8 @@
         // 1 36 0 6   owned/read kindle
 
         state: function (w) {
-            if (!book.pbl.myApp['state'].data) {
-            } else {
+            if (book.pbl.myApp['state'].data) {
                 return book.pbl.myApp['state'].data[w];
-                switch (w) {
-                    case '0':
-                        return 'not owned';
-                    case '1':
-                        return 'ordered';
-                    case '2':
-                        return 'owned';
-                    case '3':
-                        return 'S3';
-                    case '4':
-                        return 'S4';
-                    case '5':
-                        return 'S5';
-                    case '6':
-                        return 'owned/read';
-                    default:
-                        return 'S' + w;
-                }
             }
         },
 
