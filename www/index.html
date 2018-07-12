@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1">
     <title>Private Books Library</title>
     <link rel="stylesheet" href="lib/pure/pure-min.css">
     <link rel="stylesheet" href="css/app.css">
@@ -14,20 +14,8 @@
     <![endif]-->
 </head>
 <body>
+    <div id="iosStatusbar"></div>
     <div id="top">
-        <!--div class="right pure-menu-horizontal">
-            <ul class="pure-menu-list">
-                <li id="mSettings" class="pure-menu-item pure-menu-has-children pure-menu-allow-hover title-button">
-                    <a href="#" class="pure-menu-link">X&nbsp;X</a>
-                    <ul class="p-ure-menu-children">
-                        <li class="pure-menu-item"><a id="appSettings" href="#" class="pure-menu-link">Settings</a></li>
-                        <li class="pure-menu-item"><a id="appSync" href="#" class="pure-menu-link">Sync</a></li>
-                        <li class="pure-menu-item"><input type="checkbox" id="showDeleted" name="showDeleted" value="showDeleted">D?</li>
-                    </ul>
-                </li>
-                <li id="appRefresh" class="pure-menu-item title-button"><a href="#" class="pure-menu-link">&nbsp;</a></li>
-            </ul>
-        <div -->
         <div class="dropdown">
             <button id="mSettings" onclick="app.ui.dropdown('myDropdown1')" class="dropbtn title-button">&nbsp;</button>
             <div id="myDropdown1" class="dropdown-content">
@@ -40,7 +28,6 @@
                 <a id="appDS" onclick="app.ui.show(app.ui.pageDS)" href="#">Datenschutzerklärung</a>
                 <a id="appContact" onclick="app.ui.show(app.ui.pageContact)" href="#">Kontakt</a>
                 <a class="inactive" href="#">Sontiges</a>
-                <a id="appRefresh" href="#">Refresh</a>
                 <!-- <button type="button" class="pure-button" onclick="dbRenew()">DB Renew</button>&nbsp; -->
                 <a id="appLogin" href="#about">Login</a>
             </div>
@@ -55,10 +42,7 @@
                 <a onclick="app.datalist.show_all('books','author')" href="#">Autor&nbsp;<i id="sort_author" class="fas fa-sort"></i></a>
                 <a onclick="app.datalist.show_all('books','check')" href="#">Check&nbsp;<i id="sort_check" class="fas fa-sort"></i></a>
                 <a class="inactive" href="#">Auswahl</a>
-                <!-- <a id="select_all" onclick="app.datalist.mySearch('', 'all')" href="#"><i id="filter_fav" class="fas fa-sort-down"></i>Alle anzeigen</a>
-                <button id="select_s1" type="button" class="pure-button" onclick="app.datalist.mySearch('', 's1')">bestellt&nbsp;<i id="filter_fav" class="fa-check"></i></button>&nbsp;
-                <button id="select_favor" type="button" class="pure-button" onclick="app.datalist.mySearch('', 'favor')">Favoriten&nbsp;<i id="filter_fav" class="fa-check"></i></button>&nbsp;-->
-                <select id="select_s" class="dropselect droprow" >
+                <select id="select_s" class="dropselect droprow">
                     <option value="all">Alle anzeigen</option>
                     <option value="favor">Favoriten</option>
                     <option value="s0">not owned</option>
@@ -69,6 +53,7 @@
                     <option value="e1">ausgeliehen</option>
                 </select>
                 <a id="showDeleted" onclick="app.datalist.showDeleted()" href="#">Gelöschtes&nbsp;anzeigen</a>
+                <a id="appRefresh" href="#">Refresh</a>
             </div>
         </div>
         <div class="dropdown">
@@ -100,17 +85,6 @@
         <div id="main3">
             <div class="content">
                 <div id="page1">
-                    <!-- div id="dataform">
-                        <div style="position:relative;">
-                            <div id="dataformBooks">
-                                <form class="pure-form">
-                                    <fieldset>
-                                        <button type="button" id="appScan" class="pure-button" onclick="app.search.scan()" title="Barcode scannen">&nbsp;</button>&nbsp;
-                                    </fieldset>
-                                </form>
-                            </div>
-                        </div>
-                    </div -->
                     <div id="datalist"></div>
                     <div id="mySearchAZ"></div>
                 </div>
@@ -151,7 +125,7 @@
                 </div>
                 <div id="pageAbout" style="display: none;">
                     <h2>Version</h2>
-                    <p>V 0.5.2 Interner Test/Testflight</p>
+                    <p>V 0.6.0 Interner Test/Testflight</p>
                     <h2>Hilfe</h2>
                     <h3><a onclick="app.init.showAll()" href="#">Rundgang anzeigen</a></h3>
                     <h3><a href="https://www.bcss.de/produkte/apps/pbl" target="_blank">Hilfe im Internet (öffnet neue Seite)</a></h3>

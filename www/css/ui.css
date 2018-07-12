@@ -10,6 +10,9 @@
 #appScan {
     background: url(../img/svg/solid/barcode.svg);
 }
+#scansearch {
+    background: url(../img/svg/solid/search.svg);
+}
 #appAdd {
     background: url(../img/svg/solid/plus-circle.svg);
 }

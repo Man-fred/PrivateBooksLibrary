@@ -39,12 +39,17 @@
             });
         },
         isbn9: function (w) {
-            if (w.length === 10) {
-                w = w.substr(0, 9);
-            } else if (w.length === 13) {
-                w = w.substr(3, 9);
+            if (w) {
+                w = w.toString();
+                if (w.length === 10) {
+                    w = w.substr(0, 9);
+                } else if (w.length === 13) {
+                    w = w.substr(3, 9);
+                }
+                return w;
+            } else {
+                return '';
             }
-            return w;
         },
         scan_search: function (type, w) {
             // ean / isbn anpassen
@@ -167,10 +172,9 @@
                             for (var i = 0; i < erg.count; i++) {
                                 app.pouch.appResult['search_books'].rows[i] = [];
                                 app.pouch.appResult['search_books'].rows[i].doc = erg.Items[i];
-                                
-                                var j = erg.Items[i]['isbn'] ? app.pouch.appResult['books'].isbn[app.search.isbn9(erg.Items[i]['isbn'])] : 0;
-                                //if (erg.Items[i]['isbn'] && appResult[seite].isbn[erg.Items[i]['isbn']]) {
-                                if (j > 0) {
+                                var test = app.search.isbn9(erg.Items[i]['isbn']);
+                                var j = erg.Items[i]['isbn'] ? app.pouch.appResult['books'].isbn[app.search.isbn9(erg.Items[i]['isbn']).toString()] : -1;
+                                if (j >= 0) {
                                     app.pouch.appResult['search_books'].rows[i].doc['favor'] = app.pouch.appResult['books'].rows[j].doc['favor'];
                                     app.pouch.appResult['search_books'].rows[i].doc['ent'] = app.pouch.appResult['books'].rows[j].doc['ent'];
                                     app.pouch.appResult['search_books'].rows[i].doc['opt'] = app.pouch.appResult['books'].rows[j].doc['opt'];

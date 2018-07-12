@@ -5,6 +5,9 @@
             book.pbl = pbl;
         },
         show: function (doc, seite = app.seite) {
+            if (seite === "search_books") {
+                seite = "books";
+            }
             if (seite === "books") {
                 $('#img_books').attr("src", book.image(doc));
                 $('#book-favor').replaceWith('<div id="book-favor" onclick="app.book.set_favor(this, \'' + doc['_id'] + '\')">' + book.favor(doc['favor']) + '</div>');
@@ -18,7 +21,7 @@
                 if (this.select) {
                     app.data.select(this.select, seite, this.name, this.field, this.visible, doc[this.name]);
                 } else if (this.selectYN) {
-                    $('#' + seite + '_' + this.name + 'option[value=' + doc[this.name] + ']').attr('selected', 'selected');
+                    $('#' + seite + '_' + this.name + ' option[value=' + doc[this.name] + ']').attr('selected', 'selected');
                 } else if (this.type === "checkbox") {
                     $('#' + seite + '_' + this.name).prop("checked", doc[this.name] === true);//(doc[this.name]);
                 } else {

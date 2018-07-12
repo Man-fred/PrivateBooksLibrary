@@ -10,6 +10,12 @@ define(function (require) {
                 console.log('initialize');
                 document.addEventListener('deviceready', this.onDeviceReady, false);
                 window.addEventListener("resize", this.onWindowLoadResize);
+                require(['./position'], function (position) {
+                    position.initialize(pbl);
+                    pbl.position = position;
+                    //console.log('pouch');
+                    //pbl.onDeviceReady();
+                });
 
                 require(['./tables'], function (tables) {
                     //tables.initialize();
@@ -77,31 +83,26 @@ define(function (require) {
         showInit: null,
 
         onDeviceReady: function () {
-            var appTitle = 'Private Books Library';
-            $('#appTitle').html(appTitle);
-            $('#appRefresh').click(this.refresh);
-            $('#appSettings').click(function () {
-                pbl.data.show(pbl.pouch.dbIdPrivate + '_login', 'login');
-            });
-
-            //cordova.plugins.notification.badge.set(1);
-            pbl.infoDev = document.getElementById('info-dev');
-            pbl.listeningElement = pbl.infoDev.querySelector('.listening');
-            pbl.receivedElement = pbl.infoDev.querySelector('.received');
-
-            pbl.listeningElement.setAttribute('style', 'display:none;');
-            pbl.receivedElement.setAttribute('style', 'display:block;');
-            require(['./position'], function (position) {
-                position.initialize(pbl);
-                pbl.position = position;
-                //console.log('pouch');
-                //pbl.onDeviceReady();
-            });
-
-            pbl.onWindowLoadResize();
             pbl.dbReady--;
             //console.log(pbl.dbReady);
             if (pbl.dbReady === 0) {
+                var appTitle = 'Private Books Library';
+                $('#appTitle').html(appTitle);
+                $('#appRefresh').click(this.refresh);
+                $('#appSettings').click(function () {
+                    pbl.data.show(pbl.pouch.dbIdPrivate + '_login', 'login');
+                });
+
+                //cordova.plugins.notification.badge.set(1);
+                pbl.infoDev = document.getElementById('info-dev');
+                pbl.listeningElement = pbl.infoDev.querySelector('.listening');
+                pbl.receivedElement = pbl.infoDev.querySelector('.received');
+
+                pbl.listeningElement.setAttribute('style', 'display:none;');
+                pbl.receivedElement.setAttribute('style', 'display:block;');
+
+                pbl.onWindowLoadResize();
+                // oberhalb neu, war vor pbl.dbReady--;
                 pbl.menu.main(pbl.myApp);
                 console.log('dbNew');
                 pbl.pouch.dbNew();

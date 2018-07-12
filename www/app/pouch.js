@@ -1,11 +1,11 @@
 ﻿define(function () { //  
 
     var pouch = {
-        cookie: require(['app/cookie'], function (cookie) { pouch.cookieGet(cookie);}),
+        cookie: require(['app/cookie'], function (cookie) { pouch.cookieGet(cookie); }),
         dbServer: null,
         dbPort: 6984,
         dbNameA: 'PBL001.db', // local name,
-        dbName:  'PBL001S.db', // local name without attachments,
+        dbName: 'PBL001S.db', // local name without attachments,
         dbUser: null,
         dbPass: null,
         dbIdPublic: null,        //couchdb,
@@ -263,76 +263,89 @@
                         console.log(pouch.dbIdPrivate);
                         console.log(pouch.dbIdPublic);
                         app.log("Erster Start");
-                        pouch.db.put({ _id: pouch.dbIdPrivate + '_state_0', name: '0', long: 'not owned' });
-                        pouch.db.put({ _id: pouch.dbIdPrivate + '_state_1', name: '1', long: 'ordered' });
-                        pouch.db.put({ _id: pouch.dbIdPrivate + '_state_2', name: '2', long: 'owned' });
-                        pouch.db.put({ _id: pouch.dbIdPrivate + '_state_6', name: '6', long: 'owned/read' });
-                        pouch.db.put({ _id: pouch.dbIdPrivate + '_state_9', name: '9', long: 'new' });
-                        pouch.db.put({ _id: pouch.dbIdPrivate + '_favorite_0', name: '0', long: 'Nein' });
-                        pouch.db.put({ _id: pouch.dbIdPrivate + '_favorite_1', name: '1', long: 'Ja' });
+                        pouch.initPutConstants(pouch.dbIdPrivate);
                         app.init.show(0);
                         // handle response
                         pouch.remoteLogin();
                     }).catch(function (err) {
-                        app.log('Datenbank ohne Funktion: '+err);
+                        app.log('Datenbank ohne Funktion: ' + err);
                     });
                 });
             }
-         },
-         cookieGet: function (cookie) {
-             pouch.dbIdPrivate = cookie('dbId');
-             if (pouch.dbIdPrivate === null) {
-                 pouch.dbIdPrivate = Math.random();
-                 cookie('dbId', pouch.dbIdPrivate, 3650);
-             }
-             pouch.dbLoad();
         },
-         getAll: function (seite, singleIsbn, cb) {
-             if (!pouch.appResult[seite]) {
-                 pouch.db.allDocs({
-                     startkey: pouch.dbIdPublic + '_' + seite
-                     , endkey: pouch.dbIdPublic + '_' + seite + 'a'
-                     , include_docs: true
-                     //,attachments: true
-                 })
-                     .then(function (result) {
-                         pouch.appResult[seite] = result;
-                         cb(singleIsbn);
-                     })
-                     .catch(function (err) {
-                         console.log(err);
-                         console.log('show_all end');
-                         app.ui.loading.style.display = "none";
-                     });
-             } else {
-                 cb(singleIsbn);
-             }
+        cookieGet: function (cookie) {
+            pouch.dbIdPrivate = cookie('dbId');
+            if (pouch.dbIdPrivate === null) {
+                pouch.dbIdPrivate = Math.random();
+                cookie('dbId', pouch.dbIdPrivate, 3650);
+            }
+            pouch.dbLoad();
+        },
+        getAll: function (seite, singleIsbn, cb) {
+            if (!pouch.appResult[seite]) {
+                pouch.db.allDocs({
+                    startkey: pouch.dbIdPublic + '_' + seite
+                    , endkey: pouch.dbIdPublic + '_' + seite + 'a'
+                    , include_docs: true
+                    //,attachments: true
+                })
+                    .then(function (result) {
+                        pouch.appResult[seite] = result;
+                        cb(singleIsbn);
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+                        console.log('show_all end');
+                        app.ui.loading.style.display = "none";
+                    });
+            } else {
+                cb(singleIsbn);
+            }
 
-         },
-         setSync: function (myObj, state, table = "") {
-             function S4() {
-                 return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-             }
-             myObj.DBTimestamp = Math.floor(Date.now() / 1000);
-             myObj.DBstate = state;
-             if (state === "del") {
-                 myObj.DBdeleted = true;
-             }
-             if (!myObj.DBversion) {
-                 myObj.DBversion = 1;
-             } else {
-                 myObj.DBversion += 1;
-             }
-             if (table === "")
-                 table = app.seite;
-             if (!myObj._id) {
-                 if (app.myApp[table].idName){ // === 'state' || table === 'favorite') {
-                     myObj._id = pouch.dbIdPublic + '_' + table + '_' + encodeURI(myObj.name);
-                 } else {
-                     myObj._id = pouch.dbIdPublic + '_' + table + '2' + (S4() + S4() + "-" + S4() + "-4" + S4().substr(0, 3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
-                 }
-             }
-         } /*,
+        },
+        setSync: function (myObj, state, table = "") {
+            function S4() {
+                return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+            }
+            myObj.DBTimestamp = Math.floor(Date.now() / 1000);
+            myObj.DBstate = state;
+            if (state === "del") {
+                myObj.DBdeleted = true;
+            }
+            if (!myObj.DBversion) {
+                myObj.DBversion = 1;
+            } else {
+                myObj.DBversion += 1;
+            }
+            if (table === "")
+                table = app.seite;
+            if (!myObj._id) {
+                if (app.myApp[table].idName) { // === 'state' || table === 'favorite') {
+                    myObj._id = pouch.dbIdPublic + '_' + table + '_' + encodeURI(myObj.name);
+                } else {
+                    myObj._id = pouch.dbIdPublic + '_' + table + '2' + (S4() + S4() + "-" + S4() + "-4" + S4().substr(0, 3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
+                }
+            }
+        },
+        initPutConstants: function (id) {
+            pouch.db.put({ _id: id + '_state_0', name: '0', long: 'not owned' });
+            pouch.db.put({ _id: id + '_state_1', name: '1', long: 'ordered' });
+            pouch.db.put({ _id: id + '_state_2', name: '2', long: 'owned' });
+            pouch.db.put({ _id: id + '_state_6', name: '6', long: 'owned/read' });
+            pouch.db.put({ _id: id + '_state_9', name: '9', long: 'new' });
+            pouch.db.put({ _id: id + '_favorite_0', name: '0', long: 'Nein' });
+            pouch.db.put({ _id: id + '_favorite_1', name: '1', long: 'Ja' });
+            // app-cache leeren
+            var keys = Object.keys(pouch.appResult);
+            //pouch.appResult.length = keys.length;
+            for (var i = 0; i < keys.length; i++) {
+                if (keys[i] !== 'login') {
+                    pouch.appResult[keys[i]] = null;
+                }
+
+            }
+        }
+         /*,
          backup: function () {
              var ws = fs.createWriteStream('output.txt');
 

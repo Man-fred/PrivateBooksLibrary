@@ -92,8 +92,10 @@
             else
                 tablerow += '<div class="books-date">&nbsp;</div>';
             tablerow += '<div class="books-state">' + doc['ent'] + '&nbsp;' + doc['opt'] + '&nbsp;' + datalist.pbl.book.state(doc['state']) + '</div>';
-            tablerow += '<div class="books-isbn" style="display:none;">' + doc['isbn'] + '</div>';
+            tablerow += '<div class="books-isbn"' + (app.seite=='search_books'?' style="display:none;"':'')+'>' + doc['isbn'] + '</div>';
             tablerow += doc['memo'] ? '<div class="books-memo">' + doc['memo'] + '</div>' : '';
+            //+ (24 * 60 * 60 * 1000)        1531320231
+            tablerow += '<div class="books-timestamp">' + doc['checkdate'] + '</div>';
             return tablerow;
         },
         one_book: function (doc, state) {
@@ -167,12 +169,21 @@
             var input = document.getElementById("appSearch");
             var filter = input.value.toUpperCase();
             var i;
+            var timestamp, time;
             if (!appResult[seite].tr) {
-                appResult[seite].isbn = [];
                 for (i = 0; i < appResult[seite].rows.length; i++) {
                     //var s = this.doc;
                     //console.log(s);
                     if (myApp[seite].tr === 'books') {
+                        timestamp = appResult[seite].rows[i].doc['checkdate'];
+                        if (appResult[seite].rows[i].doc['DBTimestamp']) {
+                            appResult[seite].rows[i].doc['checkdate'] = (new Date(appResult[seite].rows[i].doc['DBTimestamp'] * 1000)).toISOString();
+                        } else if (timestamp.length >= 13 && !isNaN(timestamp)) {
+                            //1472379876378.1
+                            timestamp = timestamp.substr(0, 13);
+                            time = new Date(Number(timestamp));
+                            appResult[seite].rows[i].doc['checkdate'] = time.toISOString();
+                        }
                         /*
                         if (appResult[seite].rows[i].doc['source'] !== '11') {
                             appResult[seite].rows[i].doc['releasedate'] = (new Date(parseInt(appResult[seite].rows[i].doc['releasedate']) + (24 * 60 * 60 * 1000))).toISOString();
@@ -229,7 +240,7 @@
                 //27:10:2011 -> 25:10:1980
                 //releasedate = new Date(parseInt(s['releasedate']));
                 if (seite === "books" && appResult[seite].rows[i].doc['isbn']) {
-                    appResult[seite].isbn[app.search.isbn9(appResult[seite].rows[i].doc['isbn'])] = i;
+                    appResult[seite].isbn[app.search.isbn9(appResult[seite].rows[i].doc['isbn']).toString()] = i;
                 }
                 if (appResult[seite].rows[i].doc['_id']) {
                     appResult[seite].id[appResult[seite].rows[i].doc['_id']] = i;
@@ -278,8 +289,8 @@
                             seite === 'books' &&
                             (appResult[seite].rows[i].doc['author'].toUpperCase().normalize('NFC').indexOf(filter) > -1 ||
                                 appResult[seite].rows[i].doc['isbn'].toUpperCase().normalize('NFC').indexOf(filter) > -1 ||
-                                appResult[seite].rows[i].doc['series'].toUpperCase().normalize('NFC').indexOf(filter) > -1 ||
-                                appResult[seite].rows[i].doc['memo'].toUpperCase().normalize('NFC').indexOf(filter) > -1)
+                                appResult[seite].rows[i].doc['series'] && appResult[seite].rows[i].doc['series'].toUpperCase().normalize('NFC').indexOf(filter) > -1 ||
+                                appResult[seite].rows[i].doc['memo'] && appResult[seite].rows[i].doc['memo'].toUpperCase().normalize('NFC').indexOf(filter) > -1)
                         ) {
                             var test = appResult[seite].rows[i].doc['name'].toUpperCase();
                             display += ">";
@@ -332,12 +343,13 @@
             var count = datalist.pbl.pouch.appResult[seite].rows.length;
             //console.log('show_all result ' + seite + ' ' + count);
             //console.log(result.rows);
-            if (datalist.pbl.pouch.appResult[seite].rows.length > 1 | seite !== 'books' | (datalist.pbl.pouch.appResult[seite].rows.length === 0 && !singleIsbn)) {
+            if (datalist.pbl.pouch.appResult[seite].rows.length >= 1 | seite !== 'books' | (datalist.pbl.pouch.appResult[seite].rows.length === 0 && !singleIsbn)) {
                 datalist.show_all_docs_sorted();
             } else if (datalist.pbl.pouch.appResult[seite].rows.length === 1) {
-                datalist.pbl.data.show_data(datalist.pbl.pouch.appResult[seite].rows[0]._id);
+                datalist.pbl.data.show(datalist.pbl.pouch.appResult[seite].rows[0].id);
             } else {
-                datalist.pbl.ui.show_page2('books');
+                //datalist.pbl.ui.show_page2('books');
+                app.ui.show_page2('');
             }
             //console.log('show_all end ' + seite + ' ' + datalist.pbl.pouch.appResult[seite].rows.length);
             datalist.pbl.ui.loading.style.display = "none";

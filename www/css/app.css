@@ -1,4 +1,5 @@
 /* mit Werbung @partner-right: 120px;*/
+/* http://paletton.com */
 /* static footer */
 html,
 body {
@@ -10,6 +11,14 @@ body {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+}
+#iosStatusbar {
+  top: -20px;
+  height: 20px;
+  width: 100%;
+  background-color: #6EB6E5;
+  position: fixed !important;
+  z-index: 901;
 }
 header,
 footer {
@@ -77,6 +86,17 @@ main3 {
   display: table-cell;
   vertical-align: middle;
 }
+@supports (-webkit-overflow-scrolling: touch) {
+  #top {
+    /* CSS specific to iOS devices */
+    /* Status bar height on iOS 10 */
+    padding-top: 20px;
+    /* Status bar height on iOS 11.0 */
+    padding-top: constant(safe-area-inset-top);
+    /* Status bar height on iOS 11+ */
+    padding-top: env(safe-area-inset-top);
+  }
+}
 footer {
   z-index: 1000;
   /* so the menu or its navicon stays above all content */
@@ -134,14 +154,16 @@ footer {
   float: left;
   font-size: 200%;
   font-weight: bold;
-  /*padding: 0 10px 0 10px;*/
+  padding: 0;
   width: 44px;
   height: 44px;
   display: block;
   margin: 4px;
+  border: 0;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
+  -webkit-appearance: none;
 }
 div.container {
   width: 100%;
@@ -187,7 +209,7 @@ div.container {
   float: left;
 }
 #bc_search {
-  width: calc(100% -  218px);
+  width: calc(100% -  174px);
   float: left;
   padding: 8px 0 0 4px;
 }
@@ -195,6 +217,10 @@ div.container {
   width: calc(100% -  130px);
   float: left;
   padding: 8px 0 0 4px;
+}
+#bc_text,
+#as_text {
+  margin: 0;
 }
 #appScan {
   float: left;

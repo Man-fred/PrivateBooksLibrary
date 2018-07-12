@@ -36,11 +36,12 @@
             */
             if (aktiveSeite === "books") {
                 result += '<div id="bc" class="pure-control-group">';
-                result += '<button type="button" id="appScan" class="app-button" onclick="app.search.scan()" title="Barcode scannen">&nbsp;</button> &nbsp;';
+                result += '<button type="button" id="appScan" class="app-button" onclick="app.search.scan()" title="Barcode scannen"></button> &nbsp;';
                 result += '<div id="bc_search" class="deleteicon">';
                 result += '<input id="bc_text" placeholder="ISBN, Titel oder Autor ..."/>'; //(<span id="bc_format"></span>)
-                result += '<span onclick="app.data.mySearch(\'~~\')"></span></div><button onclick="app.search.scan_search()" href="#" name="scansearch" id="scansearch" class="app-button">?</button>';
-                result += '<button onclick="app.search.picture()" href="#" id="books-pic" class="app-button">F</button> </div>';
+                result += '<span onclick="app.data.mySearch(\'~~\')"></span></div><button onclick="app.search.scan_search()" href="#" name="scansearch" id="scansearch" class="app-button"></button>';
+                //result += '<button onclick="app.search.picture()" href="#" id="books-pic" class="app-button">F</button> 
+                result += '</div >';
                 //result += '<p><span id="result"></span></p>';
                 result += '<div id="book-image"><img  class="pure-img" id="img_' + aktiveSeite + '" height="200" src="blank.jpg"/></div>';
                 result += '<div id="book-favor">' + data.book.favor("0") + '</div><div class="clear"></div>';
@@ -114,8 +115,8 @@
                 this.pbl.ui.show_page2('books');
                 var doc = app.pouch.appResult.search_books.rows[app.pouch.appResult.search_books.id[id]].doc;
                 app.book.show(doc, 'books');
-                $('#addBtn').prop("disabled", !app.myApp[data.pbl.seite].btn.add || !doc._id.startsWith("search_"));
-                $('#updateBtn').prop("disabled", !app.myApp[data.pbl.seite].btn.update || doc._id.startsWith("search_"));
+                $('#addBtn').prop("disabled", !doc._id.startsWith("search_"));
+                $('#updateBtn').prop("disabled", doc._id.startsWith("search_"));
                 $('#deleteBtn').prop("disabled", true);
                 $('#clearBtn').prop("disabled", true);
             } else {
@@ -257,12 +258,15 @@
         },
         // Code for Update record on IndexedDB
         update: function () {
-
+            var dbIdOld;
             var _id = $('#_id').html();
             app.pouch.db.get(_id).then(function (doc) {
                 //console.log(doc);
                 // handle doc
                 if (doc) {
+                    if (app.seite === "login") {
+                        dbIdOld = doc['dbId'];
+                    }
                     $.each(app.myApp[app.seite].header, function () {
                         if (this.type === "checkbox")
                             doc[this.name] = $('#' + app.seite + '_' + this.name).prop("checked");
@@ -293,6 +297,12 @@
                         app.pouch.db.put(myObj);
                     }
                     app.pouch.db.put(doc).then(function (doc2) {
+                        if (app.seite === "login") {
+                            if (dbIdOld !== doc['dbId']) {
+                                // eventuell unnötig, wenn init fehlt ist es aber schlimmer
+                                app.pouch.initPutConstants(doc['dbId']);
+                            }
+                        }
                         //console.log(doc2);
 
                         var i = app.pouch.appResult[app.seite].id[doc._id];

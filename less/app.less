@@ -22,6 +22,7 @@
 @searchAZ600: 50px;
 @content-margin: 8px;
 @content-padding: 10px;
+@top-padding: 20px;
 @top-height: 44px;
 @header-height: 60px;
 @footer-height: 25px;
@@ -34,12 +35,14 @@
 @books-favor-sm: 32px;
 @page2-label: 8em;
 
+/* http://paletton.com */
 @color-bkg: lightgray;
 @color-border: darkgray;
 @header-color: #333;
 @header-bkg: whitesmoke;
 @top-color: #fff;
 @top-bkg: #1f8dd6;
+@top-bkg-light: #6EB6E5;
 @dropdown-bkg: #3498DB;
 @dropdown-row-bkg: #f1f1f1;
 @footer-bkg: rgb(55,55,55);
@@ -55,7 +58,14 @@ body {
     flex-flow: column nowrap;
     justify-content: space-between
 }
-
+#iosStatusbar {
+    top: -20px;
+    height: 20px;
+    width: 100%;
+    background-color: @top-bkg-light;
+    position: fixed !important;
+    z-index: 901;
+}
 header, footer {
     /*color: white;*/
     /*background-color: black;*/
@@ -111,6 +121,15 @@ main3 {
 }
 
 #top {
+    @supports (-webkit-overflow-scrolling: touch) {
+        /* CSS specific to iOS devices */
+        /* Status bar height on iOS 10 */
+        padding-top: @top-padding;
+        /* Status bar height on iOS 11.0 */
+        padding-top: constant(safe-area-inset-top);
+        /* Status bar height on iOS 11+ */
+        padding-top: env(safe-area-inset-top);
+    }
     top: 0px;
     position: fixed !important;
     z-index: 900; /* so the menu or its navicon stays above all content */
@@ -183,14 +202,16 @@ footer {
     float: left;
     font-size: 200%;
     font-weight: bold;
-    /*padding: 0 10px 0 10px;*/
+    padding: 0;
     width: @app-button;
     height: @app-button;
     display: block;
     margin: @title-margin;
+    border: 0;
     text-align: center;
     vertical-align: middle;
     cursor: pointer;
+    -webkit-appearance: none;
 }
 
 div.container {
@@ -237,7 +258,7 @@ div.container {
     float: left;
 }
 #bc_search {
-    width: calc(~"100% - " 4 * @app-button + 8 * @title-margin + 10px);
+    width: calc(~"100% - " 3 * @app-button + 8 * @title-margin + 10px);
     float: left;
     padding: 8px 0 0 4px;
 }
@@ -245,6 +266,9 @@ div.container {
     width: calc(~"100% - " 2 * @app-button + 8 * @title-margin + 10px);
     float: left;
     padding: 8px 0 0 4px;
+}
+#bc_text, #as_text {
+    margin: 0;
 }
 #appScan {
     float: left;

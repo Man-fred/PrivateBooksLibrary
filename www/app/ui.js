@@ -167,7 +167,7 @@ define(function (require) {
             }
         },
         togglemenuLink: function (e) {
-            toggleAll(e);
+            ui.toggleAll(e);
         },
         toggleAll: function (e) {
             var active = 'active';
