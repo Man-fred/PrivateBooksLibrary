@@ -124,6 +124,8 @@
                     if (!this.noList) {
                         if (this.select) {
                             tablerow += '<td class="' + app.seite + '-' + this.name + '" onclick="app.data.show(\'' + doc['_id'] + '\')" >' + app.myApp[this.select]["data"][doc[this.name]] + '</td>';
+                        } else if (this.selectYN) {
+                            tablerow += '<td class="' + app.seite + '-' + this.name + '" onclick="app.data.show(\'' + doc['_id'] + '\')" >' + this.selectYN[doc[this.name]] + '</td>';
                         } else if (this.func) {
                             tablerow += '<td class="' + app.seite + '-' + this.name + '" onclick="app.data.show(\'' + doc['_id'] + '\')" >' + doc[this.name] + '</td>';
                             //	tablerow += '<td onclick="show_data(\'' + appResult[seite].rows[i].doc['_id'] + '\')" >' + myApp[this.func](appResult[seite].rows[i].doc[this.name]) + '</td>';
@@ -473,9 +475,9 @@
         countMessage: function (count, countAll) {
             var message = "";
             if (count < countAll) {
-                message = "Filter: " + count + " von " + countAll + " "+app.lang[app.seite];
+                message = "Filter: " + count + " von " + countAll + " " + app.lang._get(app.seite, countAll);
             } else {
-                message = count + " " + app.lang[app.seite];
+                message = count + " " + app.lang._get(app.seite, count);
             }
             if (app.countBooks > 0 && count > app.countBooks) {
                 $("#topMessage").html(count + " " + app.lang[app.seite]+" (" + (count - app.countBooks) + " neu");

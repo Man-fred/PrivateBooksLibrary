@@ -33,7 +33,7 @@
             app.pouch.db.get(id).then(function (docdb) {
                 // handle doc
                 if (docdb) {
-                    docdb.favor = docdb.favor === "0" ? "1" : "0";
+                    docdb.favor = (docdb.favor === '1' || docdb.favor === 1) ? "0" : "1";
                     app.pouch.db.put(docdb).then(function (docput) {
                         var i = app.pouch.appResult[app.seite].id[id];
                         app.pouch.appResult[app.seite].rows[i].doc = docdb;
@@ -86,13 +86,10 @@
         },
 
         favor: function (w) {
-            switch (w) {
-                case '0':
-                    return '&#9734;';
-                case '1':
-                    return '&#9733;';
-                default:
-                    return 'F' + w;
+            if (w === '1' || w === 1) {
+                return '&#9733;';
+            } else {
+                return '&#9734;';
             }
         },
 

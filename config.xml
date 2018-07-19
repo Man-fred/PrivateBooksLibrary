@@ -4,10 +4,10 @@
     <description>Verwalten Sie Ihre private Büchersammlung und Ihre eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.</description>
     <author email="dev@bcss.de" href="https://www.bcss.de/dev">Manfred Bielemeier</author>
     <vs:template-name>BlankJS</vs:template-name>
-  <vs:platformSpecificValues>
-    <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.6.0.0" />
-  </vs:platformSpecificValues>
-  <content src="index.html" />
+    <vs:platformSpecificValues>
+        <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.6.0.0" />
+    </vs:platformSpecificValues>
+    <content src="index.html" />
     <access origin="https://pbl.bcss.de" />
     <preference name="phonegap-version" value="cli-7.1.0" />
     <preference name="SplashScreen" value="screen" />
@@ -115,13 +115,13 @@
     </edit-config>
     <vs:toolsetVersion>6.3.1</vs:toolsetVersion>
     <engine name="browser" />
-  <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
-    <string>To scan barcodes</string>
-  </edit-config>
-  <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
-    <string>Use a photo as bookcover</string>
-  </edit-config>
-  <plugin name="cordova-plugin-taptic-engine" spec="~2.1.0" />
+    <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
+        <string>To scan barcodes</string>
+    </edit-config>
+    <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
+        <string>Use a photo as bookcover</string>
+    </edit-config>
+    <plugin name="cordova-plugin-taptic-engine" spec="~2.1.0" />
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
     <plugin name="cordova-plugin-console" spec="^1.1.0" />
     <plugin name="cordova-plugin-file" spec="^6.0.1" />
@@ -136,4 +136,5 @@
     <preference name="StatusBarBackgroundColor" value="#000000" />
     <engine name="windows" spec="4.4.2" />
     <engine name="android" spec="^7.0.0" />
+    <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
 </widget>

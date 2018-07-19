@@ -61,7 +61,7 @@
                         result += '<select type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" class="' + aktiveSeite + '"></select>';
                     } else if (this.selectYN) {
                         result += '<select type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" class="' + aktiveSeite + '">';
-                        result += '<option></option><option value="0" >Nein</option><option value="1" >Ja</option></select> ';
+                        result += '<option></option><option value="0" >' + this.selectYN[0] + '</option><option value="1" >' + this.selectYN[1] +'</option>' + '</select > ';
                     } else if (this.type) {
                         result += '<input type="' + this.type + '" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" />';
                     } else {
@@ -82,7 +82,7 @@
                         result += '<select type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" class="' + aktiveSeite + '"></select>';
                     } else if (this.selectYN) {
                         result += '<select type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" class="' + aktiveSeite + '">';
-                        result += '<option></option><option value="0" >Nein</option><option value="1" >Ja</option></select> ';
+                        result += '<option></option><option value="0" >' + this.selectYN[0] + '</option><option value="1" >' + this.selectYN[1] + '</option>' + '</select > ';
                     } else if (this.type) {
                         result += '<input type="' + this.type + '" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" />';
                     } else {
@@ -96,7 +96,9 @@
             
             result += '</div>';
             $('#formdata').append(result);
-
+            if (aktiveSeite == "login"){
+                document.getElementById("login_name").addEventListener("change", this.change_login_name);
+            }
         },
         show: function (id, neueSeite = this.pbl.seite) {
             if (id === "") {
@@ -286,8 +288,8 @@
                         }
                         app.pouch.set(doc);
                         app.pouch.remoteLogin();
-                        app.appTitle = doc.appTitle;
-                        $('#appTitle').html(doc.appTitle);
+                        //app.appTitle = doc.appTitle;
+                        //$('#appTitle').html(doc.appTitle);
                         //$('#m_horse').val(myApp.main.title);
                     }
                     if (app.seite === "books") {
@@ -344,6 +346,19 @@
             }).catch(function (err) {
                 console.log(err);
             });
+        },
+        change_login_name: function () {
+            if (this.value == "1") {
+                document.getElementById("login_dbServer").style.display = "";
+                document.getElementById("login_dbPort").style.display = "";
+                document.getElementById("login_dbUser").style.display = "";
+                document.getElementById("login_dbPass").style.display = "";
+            } else {
+                document.getElementById("login_dbServer").style.display = "none";
+                document.getElementById("login_dbPort").style.display = "none";
+                document.getElementById("login_dbUser").style.display = "none";
+                document.getElementById("login_dbPass").style.display = "none";
+            }
         }
     };
     return data;

@@ -1,0 +1,7 @@
+﻿Installation über npm:
+npm install handlebars -g
+
+Nach Änderungen in den HTML-Dateien auf Kommandozeile ausführen: 
+handlebars ./de -a -e html -f ../www/app/handlebars/de.js
+handlebars ./en -a -e html -f ../www/app/handlebars/en.js
+handlebars ./all -a -e html -f ../www/app/handlebars/all.js

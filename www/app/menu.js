@@ -26,7 +26,7 @@
             $.each(myApp, function () {
                 if (this.menu) {
                     //result += '<ons-list-item  onclick="' + this.action + '(\'' + this.name + '\')"  tappable>' + this.title + '</ons-list-item>';
-                    result += '<li class="pure-menu-item" onclick="' + this.action + '(\'' + this.name + '\')"><a class="pure-menu-link" href="#">' + app.ui.lang(this.title) + '</a></li>';
+                    result += '<li class="pure-menu-item" onclick="' + this.action + '(\'' + this.name + '\')"><a class="pure-menu-link" href="#">' + this.title + '</a></li>';
                 }
             });
             $("#sidelist").html(result);

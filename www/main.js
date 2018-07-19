@@ -10,12 +10,15 @@ requirejs.config({
     baseUrl: 'lib',
     paths: {
         app: '../app'
+    },
+    i18n: {
     }
+    //    ,locale: 'fr'
 });
 
 // Start loading the main app file. Put all of
 // your application logic in there.'pouchdb',
-requirejs(['jquery', 'pouchdb.authentication', 'pouchdb-replication-stream', 'app/pbl', "i18n!nls/lang"],
+requirejs(['jquery', 'pouchdb.authentication', 'pouchdb-replication-stream', 'app/pbl', "i18n!app/nls/lang"],
     function ($, authentication, replication, pbl, lang) {
     pbl.initialize(lang);
     //app = pbl;

@@ -3,7 +3,7 @@
         //CREATE TABLE ZZOSHO ( Z_PK INTEGER PRIMARY KEY, Z_ENT INTEGER, Z_OPT INTEGER, ZFAVOR INTEGER, ZSTATE INTEGER, ZCHECKDATE TIMESTAMP, ZREADDATE TIMESTAMP, ZRELEASEDATE TIMESTAMP, ZISBNCODE VARCHAR, ZAUTHOR VARCHAR, ZAUTHORKANA VARCHAR, ZCODE VARCHAR, ZMEMO VARCHAR, ZPRICE VARCHAR, ZPUBLISHER VARCHAR, ZTICDSSYNCID VARCHAR, ZTITLE VARCHAR, ZIMAGE BLOB )
         books: {
             name: "books",
-            title: "Bücher",
+            title: app.lang._get('books', 2),
             menu: true,
             action: "app.datalist.fill",
             head: false,
@@ -20,7 +20,7 @@
                 },
                 publisher: {
                     name: "publisher",
-                    title: "publisher"
+                    title: app.lang.publisher
                 },
                 series: {
                     name: "series",
@@ -35,7 +35,7 @@
                 },
                 isbn: {
                     name: "isbn",
-                    title: "isbn"
+                    title: app.lang.isbn
                 },
                 asin: {
                     name: "asin",
@@ -121,7 +121,7 @@
         },
         authors: {
             name: "authors",
-            title: "authors",
+            title: app.lang._get('authors', 2),
             menu: true,
             action: "app.datalist.fill",
             head: true,
@@ -150,7 +150,7 @@
         },
         series: {
             name: "series",
-            title: "series",
+            title: app.lang._get('series', 2),
             menu: true,
             action: "app.datalist.fill",
             head: true,
@@ -175,7 +175,7 @@
         },
         state: {
             name: "state",
-            title: "Status",
+            title: app.lang._get('state', 2),
             menu: true,
             action: "app.datalist.fill",
             head: true,
@@ -197,7 +197,7 @@
         },
         lending: {
             name: "lending",
-            title: "lending",
+            title: app.lang._get('lending', 2),
             menu: true,
             action: "app.datalist.fill",
             head: true,
@@ -222,7 +222,7 @@
         },
         location: {
             name: "location",
-            title: "location",
+            title: app.lang._get('location',2),
             menu: true,
             action: "app.datalist.fill",
             head: true,
@@ -248,7 +248,7 @@
         favorite: {
             name: "favorite",
             title: "Favorit",
-            menu: true,
+            //menu: true,
             action: "app.datalist.fill",
             head: true,
             tr: '',
@@ -278,7 +278,10 @@
             fields: {
                 name: {
                     name: "name",
-                    title: "Verbindung"
+                    title: "Verbindung",
+                    selectYN: ["local", "Server"],
+                    field: "name",
+                    visible: "name"
                 },
                 dbServer: {
                     name: "dbServer",
@@ -312,12 +315,14 @@
                     name: "appTitle",
                     title: "Titel"
                     , noList: 1
+                    , noField: true
                 },
                 showInit: {
                     name: "showInit",
                     title: "showInit",
-                    selectYN: 1,
-                    noList: 1
+                    selectYN: [app.lang.no, app.lang.yes],
+                    noList: 1,
+                    noField: true
                 }
                 /*,
             appHorsename: {

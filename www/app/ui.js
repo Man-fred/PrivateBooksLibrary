@@ -27,6 +27,7 @@ define(function (require) {
         pageLog: document.getElementById("pageLog"),
         page1: document.getElementById("page1"),
         page2: document.getElementById("page2"),
+        pageHelper: {},
         pageAbout: document.getElementById("pageAbout"),
         pageAGB: document.getElementById("pageAGB"),
         pageDS: document.getElementById("pageDS"),
@@ -81,6 +82,18 @@ define(function (require) {
         },
         show: function (neu) {
             if (neu !== ui.page) {
+                if (neu === ui.pageAbout) {
+                    ui.load(ui.pageAbout, 'all', 'about');
+                }
+                if (neu === ui.pageAGB) {
+                    ui.load(ui.pageAGB, 'all', 'agb');
+                }
+                if (neu === ui.pageDS) {
+                    ui.load(ui.pageDS, 'lc', 'ds');
+                }
+                if (neu === ui.pageContact) {
+                    ui.load(ui.pageContact, 'all', 'contact');
+                }
                 neu.style.display = "block";
                 ui.page.style.display = "none";
                 ui.page = neu;
@@ -177,7 +190,12 @@ define(function (require) {
             ui.toggleClass(ui.menu, active);
             ui.toggleClass(ui.menuLink, active);
         },
-
+        load: function (dom, locale, seite) {
+            if (!ui.pageHelper[seite]) {
+                ui.pageHelper[seite] = true;
+                dom.innerHTML = app.handlebars[seite]({ str: app.lang });
+            }
+        },
         isChrome: function () {
             var isChromium = window.chrome,
                 winNav = window.navigator,
@@ -200,10 +218,6 @@ define(function (require) {
                 return false;
             }
         },
-        lang: function (s) {
-            return (app.lang[s] ?  app.lang[s] : s);
-        }
-
     };
     return ui;
 });

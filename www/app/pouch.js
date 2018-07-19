@@ -233,7 +233,7 @@
                     if (doc !== null) {
                         //system = doc;
                         pouch.set(doc);
-                        pouch.appTitle = doc.appTitle;
+                        pouch.appTitle = "PBL";//doc.appTitle;
                         pouch.apiIsbndb = doc.apiIsbndb;
                         pouch.apiLibrarything = doc.apiLibrarything;
                         pouch.pbl.showInit = doc.showInit;
