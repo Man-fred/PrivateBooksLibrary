@@ -17,20 +17,14 @@
                     //debugger;
                     data.form(myApp, this.name);
                 });
-                $('#appReturnbooks').click(function () {
-                    pbl.ui.show_page1(1);
-                });
-                $('#appReturnauthors').click(function () {
-                    pbl.ui.show_page1(1);
-                });
             }
         },
         form: function (myApp, aktiveSeite) {
             //$('#'+aktiveSeite).show();
             var result = '<div id="t_' + aktiveSeite + '" name="t_' + aktiveSeite + '" class="t_seite">';
-            if (aktiveSeite !== "login") {
-                result += '<div class="left"><button onclick="app.ui.show_page1(1); return false;" class="appReturn app-button"></button></div>';
-            }
+            //if (aktiveSeite !== "login") {
+            //    result += '<div class="left"><button onclick="app.ui.show_page1(1); return false;" class="appReturn app-button"></button></div>';
+            //}
             //result += '<div class="pure-control-group"><label for="email">Email Address</label><input id="email" type="email" placeholder="Email Address"></div>';
             /*
             */
@@ -50,8 +44,6 @@
                 result += '<div id="as_search" class="deleteicon">';
                 result += '<input id="as_text" placeholder="Autor ..."/>'; 
                 result += '<span onclick="app.data.mySearch(\'~~\')"></span></div>';
-                result += '<a onclick="app.search.author_books()" href= "#"> Bücher</a>&nbsp;';
-                result += '<a onclick="app.search.author_search()" href= "#"> Autor</a>';
                 result += '</div>';
             }
             $.each(myApp[aktiveSeite].header, function () {
@@ -61,7 +53,9 @@
                         result += '<select type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" class="' + aktiveSeite + '"></select>';
                     } else if (this.selectYN) {
                         result += '<select type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" class="' + aktiveSeite + '">';
-                        result += '<option></option><option value="0" >' + this.selectYN[0] + '</option><option value="1" >' + this.selectYN[1] +'</option>' + '</select > ';
+                        if (this.selectYN[2])
+                            result += '<option></option>';
+                        result += '<option value="0" >' + this.selectYN[0] + '</option><option value="1" >' + this.selectYN[1] + '</option>' + '</select > ';
                     } else if (this.type) {
                         result += '<input type="' + this.type + '" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" />';
                     } else {
@@ -82,7 +76,9 @@
                         result += '<select type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" class="' + aktiveSeite + '"></select>';
                     } else if (this.selectYN) {
                         result += '<select type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" class="' + aktiveSeite + '">';
-                        result += '<option></option><option value="0" >' + this.selectYN[0] + '</option><option value="1" >' + this.selectYN[1] + '</option>' + '</select > ';
+                        if (this.selectYN[2])
+                            result += '<option></option>';
+                        result += '<option value="0" >' + this.selectYN[0] + '</option><option value="1" >' + this.selectYN[1] + '</option>' + '</select > ';
                     } else if (this.type) {
                         result += '<input type="' + this.type + '" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" />';
                     } else {
@@ -100,9 +96,9 @@
                 document.getElementById("login_name").addEventListener("change", this.change_login_name);
             }
         },
-        show: function (id, neueSeite = this.pbl.seite) {
+        show: function (id = '', neueSeite = this.pbl.seite) {
             if (id === "") {
-                this.pbl.ui.show_page2(neueSeite);
+                this.pbl.ui.show_page2(neueSeite, id);
                 this.clear();
                 $('#addBtn').prop("disabled", !this.myApp[this.pbl.seite].btn.add);
                 $('#updateBtn').prop("disabled", true);
@@ -114,7 +110,7 @@
                     $('#pageContact').html(doc.html);
                 });*/
             } else if (id.startsWith("search_books_")) {
-                this.pbl.ui.show_page2('books');
+                this.pbl.ui.show_page2('books', id);
                 var doc = app.pouch.appResult.search_books.rows[app.pouch.appResult.search_books.id[id]].doc;
                 app.book.show(doc, 'books');
                 $('#addBtn').prop("disabled", !doc._id.startsWith("search_"));
@@ -122,8 +118,9 @@
                 $('#deleteBtn').prop("disabled", true);
                 $('#clearBtn').prop("disabled", true);
             } else {
-                this.pbl.ui.show_page2(neueSeite);
-                this.pbl.pouch.db.get(id, { attachments: true }).then(function (doc) {
+                this.pbl.ui.show_page2(neueSeite, id);
+                //this.pbl.pouch.db.get(id, { attachments: true }).then(function (doc) {
+                this.pbl.pouch.db.get(id).then(function (doc) {
                     // handle doc
                     if (doc) {
                         app.book.show(doc);
@@ -159,7 +156,7 @@
                 if (this.select) {
                     data.select(this.select, app.seite, this.name, this.field, this.visible, '');
                 } else if (this.selectYN) {
-                    $('#' + app.seite + '_' + this.name + 'option[value=""]').attr('selected', 'selected');
+                    $('#' + app.seite + '_' + this.name + 'option[value="' + (this.selectYN[2]?'':'0')+'"]').attr('selected', 'selected');
                 } else if (this.type === "checkbox") {
                     $('#' + app.seite + '_' + this.name).prop("checked", false);
                 } else {
@@ -336,7 +333,7 @@
                         // handle doc
                         if (doc2) {
                             $('#result').html('Record No. ' + doc._id + ' Deleted Successfully');
-                            app.datalist.fill(app.seite, true);
+                            app.ui.datalist(app.seite, true);
                         }
                     }).catch(function (err) {
                         $('#result').html('Record No. ' + _id + ' Delete failed');

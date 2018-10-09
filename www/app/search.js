@@ -59,7 +59,7 @@
             if (app.datalist.mySearch(search.isbn9(w)) === 0) {
                 search.isbn(6, w);
             } else {
-                app.ui.show_page1();
+                app.ui.show_page1(0,'books');
             }
         },
         author_books: function (w) {
@@ -191,9 +191,7 @@
                                 app.pouch.appResult['search_books'].rows[i].tr0 = app.datalist.one_book(erg.Items[i], 0);
                                 app.pouch.appResult['search_books'].rows[i].tr1 = app.datalist.one_book(erg.Items[i], 1);
                             }
-                            app.ui.show_page1('books');
-                            app.seite = 'search_books';
-                            app.datalist.show_all('search_books');
+                            app.ui.show_page1(0, 'books', null, 'search_books');
                         } else {
                             // kein Treffer
                         }

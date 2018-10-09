@@ -70,7 +70,7 @@ footer {
 @media only screen and (min-width: 568px) {
   .header {
     left: 150px;
-    width: calc(100% -  200px);
+    width: calc(100% -  175px);
   }
 }
 .pure-flex-rw {
@@ -92,7 +92,7 @@ main3 {
   height: 100%;
   /*max-width: 800px;*/
   line-height: 1.6em;
-  width: calc(100% -  0px);
+  width: calc(100% -  4px);
 }
 @supports (-webkit-overflow-scrolling: touch) {
   .content {
@@ -123,10 +123,11 @@ main3 {
 #top {
   padding-top: 0px;
   top: 0px;
+  left: 44px;
   position: fixed !important;
   z-index: 900;
   /* so the menu or its navicon stays above all content */
-  width: 100%;
+  width: calc(100% -  44px);
   background: #0965A0;
   font-size: 110%;
   text-transform: uppercase;
@@ -145,6 +146,12 @@ main3 {
     /* Status bar height on iOS 11+ */
   }
 }
+@media only screen and (min-width: 568px) {
+  #top {
+    left: 150px;
+    width: calc(100% -  150px);
+  }
+}
 footer {
   z-index: 1000;
   /* so the menu or its navicon stays above all content */
@@ -153,7 +160,7 @@ footer {
   bottom: 0px;
   position: fixed !important;
   position: absolute;
-  height: 25px;
+  height: 44px;
   width: 100%;
 }
 #info-sync {
@@ -161,18 +168,34 @@ footer {
   width: 63%;
   display: block;
   padding: 2px 0 2px 3%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 #info-dev {
   float: left;
   width: 30%;
   display: block;
   padding: 2px 0 2px 3%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: #a4a4a4;
 }
-[data-sync-state=syncing] #info-sync {
+#info-dev[state=offline] {
+  background-color: #FFA6A9;
+}
+#info-dev[state=online] {
+  background-color: transparent;
+}
+#info-syn[state=syncing] c {
   background-color: #FA8B00;
 }
-[data-sync-state=error] #info-sync {
+#info-sync[state=error] {
   background-color: #F70006;
+}
+#info-sync[state=eLogin] {
+  background-color: #FFA6A9;
 }
 #record_show {
   width: 100%;
@@ -183,25 +206,20 @@ footer {
 #appTitle {
   float: right;
   padding-top: 0.6em;
-  width: calc(100% -  220px);
+  width: calc(100% -  168px);
   white-space: nowrap;
-  text-align: left;
-}
-@media only screen and (min-width: 568px) {
-  #appTitle {
-    text-align: center;
-    width: calc(100% -  326px);
-  }
+  text-align: center;
 }
 .title-button {
   float: left;
   font-size: 200%;
   font-weight: bold;
+  border: none;
   /*padding: 0 10px 0 10px;*/
   width: 36px;
   height: 36px;
   display: block;
-  margin: 4px;
+  margin: 4px 10px;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -214,7 +232,7 @@ footer {
   width: 44px;
   height: 44px;
   display: block;
-  margin: 4px;
+  margin: 10px;
   border: 0;
   text-align: center;
   vertical-align: middle;
@@ -249,7 +267,7 @@ div.container {
 #pageDS,
 #pageAbout,
 #pageContact {
-  padding: 64px 20px 35px 20px;
+  padding: 64px 20px 54px 20px;
   display: none;
 }
 #singledata {
@@ -258,19 +276,19 @@ div.container {
   /*max-width: 34em;*/
   float: left;
   margin: 0;
-  padding: 0 /*@top-height*/ 0 25px 0;
+  padding: 0 /*@top-height*/ 0 44px 0;
 }
 #bc1,
 #as1 {
   float: left;
 }
 #bc_search {
-  width: calc(100% -  174px);
+  width: calc(100% -  222px);
   float: left;
   padding: 8px 0 0 4px;
 }
 #as_search {
-  width: calc(100% -  130px);
+  width: calc(100% -  178px);
   float: left;
   padding: 8px 0 0 4px;
 }
@@ -282,7 +300,7 @@ div.container {
   float: left;
 }
 #datalist {
-  padding: 0 0 25px 0;
+  padding: 0 0 44px 0;
   padding-top: 60px;
   /*margin-left: 34em;
     border-left: 1px solid gray;*/
@@ -573,11 +591,11 @@ input[type="reset"]:active {
   text-overflow: ellipsis;
   font-weight: bold;
   float: left;
-  width: calc(100% -  81px);
+  width: calc(100% -  24px);
 }
 @media only screen and (min-width: 568px) {
   .books-title {
-    width: calc(100% -  89px);
+    width: calc(100% -  32px);
   }
 }
 .books-favor {
@@ -595,20 +613,20 @@ input[type="reset"]:active {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: calc(100% -  57px);
+  width: calc(100% -  0px);
 }
 .books-author {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: calc(50% -  28.5px);
+  width: calc(50% -  0px);
   float: left;
 }
 .books-series {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: calc(50% -  28.5px);
+  width: calc(50% -  0px);
   float: left;
 }
 .books-date {
@@ -616,7 +634,8 @@ input[type="reset"]:active {
   float: left;
 }
 .books-memo {
-  width: calc(100% -  57px);
+  width: calc(100% -  60px);
+  float: left;
 }
 .books-image {
   width: auto;
@@ -626,15 +645,21 @@ input[type="reset"]:active {
   margin: 0 auto;
 }
 .books-img {
-  width: 52px;
-  margin-right: 5px;
+  width: 0px;
+  margin-right: 0px;
   text-indent: -50%;
   overflow: hidden;
   float: left;
+  display: none;
 }
 .books-state {
   width: 120px;
   float: left;
+}
+.books-timestamp {
+  width: 60px;
+  float: right;
+  font-size: 66%;
 }
 #book-image {
   width: 8em;
@@ -679,9 +704,9 @@ This is the parent `<div>` that contains the menu and the content area.
   position: relative;
   left: 0;
   padding-left: 0;
-  padding-bottom: 25px;
+  padding-bottom: 44px;
   height: 100%;
-  width: calc(100% -  0px);
+  width: calc(100% -  1px);
 }
 @media only screen and (min-width: 568px) {
   #layout {
@@ -832,13 +857,13 @@ how it works:
 small screens.
 */
 .menu-link {
+  padding-top: 0px;
   position: fixed;
   display: block;
   /* show this only on small screens */
   top: 0;
   left: 0;
   background: #404040;
-  background: rgba(0, 0, 0, 0.7);
   font-size: 10px;
   /* change this value to increase/decrease button size */
   z-index: 1000;
@@ -846,6 +871,15 @@ small screens.
   width: 16px;
   height: 8px;
   padding: 18px 14px;
+}
+@supports (-webkit-overflow-scrolling: touch) {
+  .menu-link {
+    /* CSS specific to iOS devices */
+    /* Status bar height on iOS 10 */
+    padding-top: 20px;
+    /* Status bar height on iOS 11.0 */
+    /* Status bar height on iOS 11+ */
+  }
 }
 @media only screen and (min-width: 568px) {
   .menu-link {
@@ -878,6 +912,9 @@ small screens.
 .menu-link span:after {
   margin-top: 0.6em;
 }
+.menu-link a {
+  background: #404040;
+}
 .pure-menu-active > .pure-menu-link,
 .pure-menu-link:focus,
 .pure-menu-link:hover {
@@ -893,7 +930,7 @@ small screens.
   background: #e4e4e4;
   top: 44px;
   right: 0;
-  bottom: 25px;
+  bottom: 44px;
   z-index: 800;
   /* so the menu or its navicon stays above all content */
   position: fixed !important;
@@ -918,7 +955,7 @@ small screens.
 @media only screen and (min-width: 568px) {
   #mySearchAZ {
     right: 0px;
-    width: 50px;
+    width: 25px;
   }
 }
 .relative {
@@ -957,7 +994,7 @@ small screens.
 }
 @media only screen and (min-width: 568px) {
   #page1 {
-    width: calc(100% -  60px);
+    width: calc(100% -  35px);
   }
 }
 #page2 {
@@ -1024,7 +1061,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
   color: #404040;
   background-color: #6EAFDA;
 }
-.dropdown-content {
+.drop-content {
   display: none;
   position: absolute;
   background-color: #f6f6f6;
@@ -1033,22 +1070,35 @@ Hides the menu at `48em`, but modify this based on your app's needs.
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   right: 0px;
+}
+.drop-down {
   top: 44px;
 }
-.dropdown-content a {
+.drop-up {
+  bottom: 44px;
+}
+.drop-content a,
+.drop-content label {
   color: #404040;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  text-align: left;
+  width: 160px;
 }
 .dropdown a:hover,
+.dropdown label:hover,
 .dropdown select:hover {
   background-color: #e4e4e4;
 }
 .show {
   display: block;
 }
-#overlay {
+.hide {
+  display: none;
+}
+#overlay,
+#overlayRestore {
   position: fixed;
   display: none;
   width: 100%;

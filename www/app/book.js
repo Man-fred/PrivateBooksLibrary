@@ -9,6 +9,7 @@
                 seite = "books";
             }
             if (seite === "books") {
+                book.set_checkdate(doc);
                 $('#img_books').attr("src", book.image(doc));
                 $('#book-favor').replaceWith('<div id="book-favor" onclick="app.book.set_favor(this, \'' + doc['_id'] + '\')">' + book.favor(doc['favor']) + '</div>');
                 //doc['checkdate'] = new Date(parseInt(doc['checkdate'])).toISOString();//toLocaleDateString();
@@ -18,14 +19,16 @@
                 $('#' + seite + '_' + this.name).val(doc[this.name]);
             });
             $.each(app.myApp[seite].fields, function () {
-                if (this.select) {
-                    app.data.select(this.select, seite, this.name, this.field, this.visible, doc[this.name]);
-                } else if (this.selectYN) {
-                    $('#' + seite + '_' + this.name + ' option[value=' + doc[this.name] + ']').attr('selected', 'selected');
-                } else if (this.type === "checkbox") {
-                    $('#' + seite + '_' + this.name).prop("checked", doc[this.name] === true);//(doc[this.name]);
-                } else {
-                    $('#' + seite + '_' + this.name).val(doc[this.name]);
+                if (!this.noField) {
+                    if (this.select) {
+                        app.data.select(this.select, seite, this.name, this.field, this.visible, doc[this.name]);
+                    } else if (this.selectYN) {
+                        $('#' + seite + '_' + this.name + ' option[value=' + doc[this.name] + ']').attr('selected', 'selected');
+                    } else if (this.type === "checkbox") {
+                        $('#' + seite + '_' + this.name).prop("checked", doc[this.name] === true);//(doc[this.name]);
+                    } else {
+                        $('#' + seite + '_' + this.name).val(doc[this.name]);
+                    }
                 }
             });
         },
@@ -48,6 +51,17 @@
                 console.log(err);
             });
         },
+        set_checkdate: function (doc) {
+            var timestamp = doc['checkdate'];
+            if (doc['DBTimestamp']) {
+                doc['checkdate'] = (new Date(doc['DBTimestamp'] * 1000)).toISOString();
+            } else if (timestamp.length >= 13 && !isNaN(timestamp)) {
+                //1472379876378.1
+                timestamp = timestamp.substr(0, 13);
+                time = new Date(Number(timestamp));
+                doc['checkdate'] = time.toISOString();
+            }
+        },
         image: function (doc) {
             var appResult = book.pbl.pouch.appResult;
             if (!appResult["books"])
@@ -58,6 +72,22 @@
             if (appResult["books"].img[doc._id]) {
                 return appResult["books"].img[doc._id];
             } else {
+                if (app.pouch.dbA) {
+                    app.pouch.dbA.get(doc._id, { attachments: true }).then(function (docdb) {
+                        if (docdb['_attachments'] && docdb._attachments.thumbnail.data) {
+                            //console.log(doc);
+                            test = 'data:image/jpeg;base64, ' + docdb._attachments.thumbnail.data;
+                        } else if (docdb['thumbnail']) {
+                            test = docdb['thumbnail'];
+                        } else if (docdb["image"]) {
+                            test = 'data:image/jpeg;base64, ' + docdb.image;
+                        } else {
+                            return;
+                        }
+                        appResult["books"].img[docdb._id] = test;
+                        $('#img_books').attr("src", test);
+                    });
+                }
                 var test = "blank.jpg";
                 if (doc["image"]) {
                     test = 'data:image/jpeg;base64, ' + doc.image;

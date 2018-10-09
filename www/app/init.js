@@ -2,10 +2,15 @@
 
     var init = {
         overlay: null,
+        loaded: null,
         page: 1,
         show: function (dir = 0) {
             if (app.showInit < 1) {
                 if (dir === 0) {
+                    if (!init.loaded) {
+                        document.getElementById('overlay').innerHTML = app.handlebars['overlay']({ str: app.lang });
+                        init.loaded = true;
+                    }
 
                     this.overlay = [document.getElementById("overlay"),
                     document.getElementById("overlay1"),
@@ -33,6 +38,7 @@
             this.overlay[0].style.display = "none";
             //if (document.getElementById("initHide").checked === true) {
             //alert(app.seite);
+            /*
             app.pouch.db.get(app.pouch.dbIdPrivate + '_login').then(function (doc) {
                 if (doc !== null && doc.showInit < 1) {
                     doc.showInit = 1;
@@ -42,6 +48,7 @@
             }).catch(function (err) {
                 console.log('Konnte init nicht deaktivieren');
             });
+            */
             //}
         }
     };

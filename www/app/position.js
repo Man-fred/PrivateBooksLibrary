@@ -8,6 +8,7 @@
         rightswipeTriggered: false,
         startmove: null,
         moves: null,
+        movevert: false,
         startx: 0,
         starty: 0,
         distx: 0,
@@ -28,6 +29,7 @@
                 position.overlay.addEventListener("leftswipe", function (eve) { app.init.show(1); });
                 position.overlay.addEventListener("rightswipe", function (eve) { app.init.show(-1); });
                 //position.moves = document.getElementById('message');
+                position.startmove.addEventListener("mouseenter", function (eve) { position.mouseenter(eve, 1) });
                 position.startmove.addEventListener("touchstart", function (eve) { position.touchstart(eve, 1) });
                 position.startmove.addEventListener("touchmove", function (eve) { position.touchmove(eve, 1) });
                 position.startmove.addEventListener("touchend", function (eve) { position.touchend(eve, 1) });
@@ -44,9 +46,13 @@
                     position.pointY = parseInt(eve.clientY);
                     position.distx = parseInt(eve.clientX) - position.startx; // X/Y-Koordinaten relativ zum Viewport
                     position.disty = parseInt(eve.clientY) - position.starty;
-                    var link = Math.round(100 * position.link.length * (eve.clientY - position.startmove.offsetTop) / position.startmove.offsetHeight) / 100;
-                    position.set(link, false);
-                    eve.preventDefault();
+                    //console.log(position.distx + ' - ' + position.disty)
+                    if (position.movevert || (Math.abs(position.disty) > 10 && Math.abs(position.distx * 3) < Math.abs(position.disty) ) ) {
+                        position.movevert = true;
+                        var link = Math.round(100 * position.link.length * (eve.clientY - position.startmove.offsetTop) / position.startmove.offsetHeight) / 100;
+                        position.set(link, false);
+                        eve.preventDefault();
+                    }
                 });
                 position.startmove.addEventListener("mouseup", function (eve) {
                     position.pointY = parseInt(eve.clientY);
@@ -68,6 +74,13 @@
                 window.location = newLink;
                 position.linkLast = newLink;
             }
+        },
+        mouseenter: function (eve, obj) {
+            position.startx = parseInt(eve.clientX); // X/Y-Koordinaten relativ zum Viewport
+            position.starty = parseInt(eve.clientY);
+            position.movevert = false;
+            if (obj === 1)
+                eve.preventDefault();
         },
         touchstart: function (eve, obj) {
             var touchobj = eve.changedTouches[0]; // erster Finger

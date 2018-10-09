@@ -4,8 +4,9 @@
         cookie: require(['app/cookie'], function (cookie) { pouch.cookieGet(cookie); }),
         dbServer: null,
         dbPort: 6984,
-        dbNameA: 'PBL001.db', // local name,
-        dbName: 'PBL001S.db', // local name without attachments,
+        localdbA: 'PBL001.db', // local name,
+        localdb: 'PBL001S.db', // local name without attachments,
+        dbName: null,
         dbUser: null,
         dbPass: null,
         dbIdPublic: null,        //couchdb,
@@ -14,11 +15,12 @@
         db: null,
         dbA: null,               //attachments (old complete)
         dbRemote: null,          //couchdb,
+        dbRemoteA: null,          //couchdb attachments,
         dbSync: null,            //sync-handle, used to stop syncing,
+        dbSyncA: null,            //sync-handle, used to stop syncing,
         dbReady: 2,
         appResult: [],
 
-        infoSync: null,
         initialize: function (pbl) {
             this.pbl = pbl;
             this.infoSync = document.getElementById('info-sync');
@@ -31,51 +33,87 @@
             this.dbUser = doc.dbUser;
             this.dbPass = doc.dbPass;
             this.dbIdPublic = doc.dbId;
+            this.appTitle = "PBL";//doc.appTitle;
+            //pouch.apiIsbndb = doc.apiIsbndb;
+            //pouch.apiLibrarything = doc.apiLibrarything;
+            this.pbl.showInit = doc.showInit;
+            this.online = doc.online;
+            this.onlineCell = doc.onlineCell;
+            this.onlineBackground = doc.onlineBackground;
         },
         infoSet: function (info) {
             this.infoSync.innerHTML = info;
         },
         remoteLogin: function () {
             if (pouch.dbServer && pouch.dbPort) {
-                if (pouch.dbSync) {
-                    // sync active, stopping first before connecting to another server
-                    pouch.dbSync.cancel();
-                }
-                pouch.dbRemote = new PouchDB(pouch.dbServer + ':' + pouch.dbPort + '/' + pouch.dbName, { skip_setup: true });
-                pouch.dbRemote.login(pouch.dbUser, pouch.dbPass, function (err, response) {
-                    if (err) {
-                        console.log(err);
-                        if (err.name === 'unauthorized') {
-                            // name or password incorrect
-                            pouch.infoSync.innerHTML = 'unauthorized';//'server: name or password incorrect';
-                        } else {
-                            // cosmic rays, a meteor, etc.
-                            pouch.infoSync.innerHTML = err.name;
-                        }
-                    } else {
-                        pouch.infoSync.innerHTML = 'sync';
-                        pouch.sync();
-                        pouch.db.changes({
-                            since: 'now',
-                            live: true
-                        }).on('change', pouch.newDocs);
+                if (app.onlineState) {
+                    if (pouch.db.mySync) {
+                        // sync active, stopping first before connecting to another server
+                        pouch.db.mySync.cancel();
                     }
-                });
+                    pouch.dbRemote = new PouchDB(pouch.dbServer + ':' + pouch.dbPort + '/pbl-' + pouch.dbName, { skip_setup: true });
+                    pouch.dbRemote.login('pbl-' + pouch.dbUser, pouch.dbPass, function (err, response) {
+                        if (err) {
+                            console.log(err);
+                            //if (err.name === 'unauthorized' || err.name === 'authentication_error') {
+                            // name or password incorrect
+                            app.info.setSync(err.name, err.message, 'eLogin');//'server: name or password incorrect';
+                        } else {
+                            pouch.sync(pouch.db, pouch.dbRemote);
+                            pouch.db.changes({
+                                since: 'now',
+                                live: true
+                            }).on('change', pouch.newDocs);
+                        }
+                    });
+                    if (pouch.dbA.mySync) {
+                        // sync active, stopping first before connecting to another server
+                        pouch.dbA.mySync.cancel();
+                    }
+                    pouch.dbRemoteA = new PouchDB(pouch.dbServer + ':' + pouch.dbPort + '/pbi-' + pouch.dbName, { skip_setup: true });
+                    pouch.dbRemoteA.login('pbl-' + pouch.dbUser, pouch.dbPass, function (err, response) {
+                        if (err) {
+                            console.log(err);
+                            //if (err.name === 'unauthorized' || err.name === 'authentication_error') {
+                            // name or password incorrect
+                            app.info.setSync(err.name, err.message, 'eLogin');//'server: name or password incorrect';
+                        } else {
+                            pouch.sync(pouch.dbA, pouch.dbRemoteA);
+                            pouch.dbA.changes({
+                                since: 'now',
+                                live: true
+                            }).on('change', pouch.newDocs);
+                        }
+                    });
+                } else {
+                    app.info.setSync('Server: offline', 'Server-Verbindung gestoppt');
+                }
             } else {
-                pouch.infoSync.innerHTML = 'local';
+                app.info.setSync('local', 'Die Daten werden nicht synchronisiert', '');
+            }
+        },
+        remoteLogout: function () {
+            if (pouch.db.mySync) {
+                // sync active, stopping
+                pouch.db.mySync.cancel();
+                app.info.setSync('Server: offline', 'Server-Verbindung gestoppt');
+            }
+            if (pouch.dbA.mySync) {
+                // sync active, stopping
+                pouch.dbA.mySync.cancel();
             }
         },
         newDocs: function (changes) {
-            console.log(changes);
+            //console.log(changes);
         },
         // Initialise a sync with the remote server
-        sync: function () {
-            pouch.infoSync.setAttribute('data-sync-state', 'syncing');
-            pouch.db.replicate.from(pouch.dbRemote).on('complete', function (info) {
+        sync: function (localDb, remoteDb) {
+            app.info.setSync('sync', 'Synchronisierung beginnt', 'syncing');
+            localDb.replicate.from(remoteDb).on('complete', function (info) {
                 //console.log(info.last_seq);
                 app.log('Last Sequence: ' + parseInt(info.last_seq));
                 // then two-way, continuous, retriable sync
-                pouch.dbSync = pouch.db.sync(pouch.dbRemote, { live: true, retry: true })
+                localDb.mySync = localDb.sync(remoteDb, { live: true, retry: true })
                     .on('change', pouch.onSyncChange)
                     .on('paused', pouch.onSyncPaused)
                     .on('complete', pouch.onSyncComplete)
@@ -88,41 +126,19 @@
                 .on('active', pouch.onSyncActive)
                 .on('denied', pouch.onSyncDenied)
                 .on('error', pouch.onSyncError);
-            /*
-            pouch.dbSync = pouch.dbRemote.sync(pouch.db, {
-                live: true, retry: true
-            }).on('change', function (info) {
-                pouch.infoSync.innerHTML = 'server: change ' + info.change.ok;
-            }).on('paused', function (err) {
-                pouch.infoSync.innerHTML = 'server: paused ' + (err ? err : '');
-            }).on('active', function () {
-                pouch.infoSync.innerHTML = 'server: active ';
-            }).on('denied', function (err) {
-                pouch.infoSync.innerHTML = 'server: denied ' + err;
-            }).on('error', function (err) {
-                pouch.infoSync.setAttribute('data-sync-state', 'error');
-                pouch.infoSync.innerHTML = 'server: error ' + err;
-            }).on('complete', function (info) {
-                pouch.infoSync.setAttribute('data-sync-state', 'insync');
-                pouch.infoSync.innerHTML = 'server: complete ' + info.ok;
-            });
-            */
         },
         onSyncChange: function (info) {
             if (info.direction === "pull") {
                 app.log('Last Sequence: ' + parseInt(info.change.last_seq));
             }
             console.log(info);
-            pouch.infoSync.setAttribute('data-sync-state', 'changed');
-            pouch.infoSync.innerHTML = 'server: change ' + (typeof info.change === 'undefined' ? 'undefined' : info.change.ok);
+            app.info.setSync('Server: change ' + (typeof info.change === 'undefined' ? '' : info.change.ok), 'changed');
         },
         onSyncPaused: function (err) {
-            pouch.infoSync.setAttribute('data-sync-state', 'paused');
-            pouch.infoSync.innerHTML = 'server: paused ' + (err ? err : '');
+            app.info.setSync('Server: paused', (err ? err : ''), 'paused');
             pouch.db.info().then(function (result) {
-                //console.log(result);
-                pouch.infoSync.innerHTML = 'server: paused ' + result.update_seq;
-                app.log('server: paused ' + result.update_seq);
+                app.info.setSync('Server: paused', result.update_seq, 'paused');
+                app.log('Server: paused ' + result.update_seq);
             }).catch(function (err) {
                 console.log(err);
             });
@@ -130,27 +146,21 @@
 
         },
         onSyncActive: function () {
-            pouch.infoSync.setAttribute('data-sync-state', 'paused');
-            pouch.infoSync.innerHTML = 'server: active';
+            app.info.setSync('Server: active', 'active');
         },
         onSyncDenied: function (err) {
-            pouch.infoSync.setAttribute('data-sync-state', 'error');
-            pouch.infoSync.innerHTML = 'server: denied ' + (err ? err : '');
+            app.info.setSync('Server: denied', (err ? err : ''), 'error');
         },
         onSyncError: function (err) {
-            pouch.infoSync.setAttribute('data-sync-state', 'error');
-            pouch.infoSync.innerHTML = 'server: error ' + err;
+            app.info.setSync('Server: error ' + err, 'error');
         },
         onSyncComplete: function (info) {
-            console.log(info);
-            pouch.infoSync.setAttribute('data-sync-state', 'insync');
-            pouch.infoSync.innerHTML = 'server: complete ' + info.ok;
+            app.info.setSync('Server: complete', info.ok, 'insync');
         },
-        /*/ There was some form or error syncing
-        syncError: function () {
-            pouch.infoSync.setAttribute('data-sync-state', 'error');
+        dbOpen: function () {
+            pouch.db = new PouchDB(pouch.localdb, { revs_limit: 10, auto_compaction: true });
+            pouch.dbA = new PouchDB(pouch.localdbA, { revs_limit: 10, auto_compaction: true });
         },
-        */
         dbNew: function () {
             //Test for browser webSQL compatibility
             app.log('Database start in pouch.js');
@@ -182,10 +192,10 @@
                 app.log('Database: Pouchdb');
             }
             */
-            this.dbA = new PouchDB(this.dbNameA, { revs_limit: 10, auto_compaction: true });
-            this.db = new PouchDB(this.dbName, { revs_limit: 10, auto_compaction: true });
+            this.dbOpen();
 
             this.infoSync.innerHTML = 'connect 2';
+            /* Aufräumen alter Datenbanken in pre-Alpha, erledigt
             if (cordova.platformId === "ios") {
                 this.dbA.destroy().then(function (response) {
                     app.log(response);
@@ -194,6 +204,7 @@
                 });
             }
             this.infoSync.innerHTML = 'connect 3';
+            */
             pouch.dbLoad();
         },
         dbLoad: function () {
@@ -228,24 +239,24 @@
                 };
                 // Ende Liste */
                 // normale Verarbeitung
-                this.infoSync.innerHTML = 'connect get login';
+                app.info.setSync('connect get login');
                 pouch.db.get(pouch.dbIdPrivate + '_login').then(function (doc) {
                     if (doc !== null) {
+                        app.info.setSync('connect set login');
                         //system = doc;
                         pouch.set(doc);
-                        pouch.appTitle = "PBL";//doc.appTitle;
-                        pouch.apiIsbndb = doc.apiIsbndb;
-                        pouch.apiLibrarything = doc.apiLibrarything;
-                        pouch.pbl.showInit = doc.showInit;
+
                         $('#appTitle').html(pouch.appTitle);
                         console.log(pouch.dbIdPrivate);
                         console.log(pouch.dbIdPublic);
-                        app.init.show(0);
-                        pouch.pbl.datalist.fill("books");
+                        //app.init.show(0);
+                        app.ui.datalist("books");
+                        app.setOnlineState();
                         pouch.remoteLogin();
                     }
                 }).catch(function (err) {
                     // ersten Datensatz anlegen, falls nicht vorhanden    
+                    app.info.setSync('connect new login');
                     pouch.dbIdPublic = pouch.dbIdPrivate;
                     pouch.db.put({
                         _id: pouch.dbIdPrivate + '_login',
@@ -260,14 +271,17 @@
                         showInit: pouch.pbl.showInit,
                         title: pouch.dbIdPublic + '_login'
                     }).then(function (response) {
+                        app.info.setSync('connect new login saved');
                         console.log(pouch.dbIdPrivate);
                         console.log(pouch.dbIdPublic);
                         app.log("Erster Start");
                         pouch.initPutConstants(pouch.dbIdPrivate);
+                        app.ui.datalist("books");
                         app.init.show(0);
-                        // handle response
+                        app.setOnlineState();
                         pouch.remoteLogin();
                     }).catch(function (err) {
+                        app.info.setSync('connect no login', 'Datenbank ohne Funktion: ' + err, 'error');
                         app.log('Datenbank ohne Funktion: ' + err);
                     });
                 });
@@ -344,22 +358,140 @@
                 }
 
             }
+        },
+        backup: function () {
+            app.ui.loading.style.display = "block";
+            pouch.db.allDocs({
+                include_docs: true
+            }).then(function (result) {
+                pouch.dbA.allDocs({
+                    include_docs: true
+                    , attachments: true
+                }).then(function (result2) {
+                    app.ui.loading.style.display = "none";
+                    result.img = result2;
+                    var myJSON = JSON.stringify(result);
+                    var textToSaveAsBlob = new Blob([myJSON], { type: "text/json" });
+                    window.URL = window.URL || window.webkitURL;
+                    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+                    var fileNameToSaveAs = 'pbl.backup'; //document.getElementById("inputFileNameToSaveAs").value;
+
+                    var downloadLink = document.createElement("a");
+                    downloadLink.download = fileNameToSaveAs;
+                    downloadLink.innerHTML = "Download File";
+                    downloadLink.href = textToSaveAsURL;
+                    downloadLink.onclick = function (event) {
+                        document.body.removeChild(event.target);
+                    };
+                    downloadLink.onloadend = function (event) {
+                        window.URL.revokeObjectURL(textToSaveAsURL);
+                    };
+                    downloadLink.style.display = "none";
+                    document.body.appendChild(downloadLink);
+
+                    downloadLink.click();
+                });
+            }).catch(function (err) {
+                console.log(err);
+                app.ui.loading.style.display = "none";
+            });
+        },
+        restore: function () {
+            if (!pouch.overlayRestore) {
+                pouch.overlayRestore = document.getElementById('overlayRestore');
+                pouch.overlayRestore.innerHTML = app.handlebars['overlayRestore']({ str: app.lang });
+                document.getElementById("restoreStart").addEventListener("click", pouch.restoreStart);
+                document.getElementById("restoreSchliessen").addEventListener("click", pouch.restoreSchliessen);
+            }
+            if (!pouch.dbServer) {
+                document.getElementById("restoreLogoutDiv").style.display = "none";
+            }
+            pouch.overlayRestore.style.display = "flex";
+        },
+        restoreLoad: function () {
+            var restoreLogout = !pouch.dbServer || document.getElementById("restoreLogout").checked == true;
+            var restoreDelete = document.getElementById("restoreDelete").checked == true;
+
+            if (restoreDelete && restoreLogout) {
+                var fileToLoad = document.getElementById("fileToLoad").files[0];
+
+                var fileReader = new FileReader();
+                fileReader.onload = function (fileLoadedEvent) {
+                    var textFromFileLoaded = fileLoadedEvent.target.result;
+                    pouch.restoreResult = JSON.parse(textFromFileLoaded);
+                    document.getElementById('restoreErg').innerHTML = 'Alles löschen, ' + pouch.restoreResult.total_rows + " Zeilen aus Datensicherung und " + pouch.restoreResult.img.total_rows + " Bilder laden?";
+                    document.getElementById('restoreStart').style.display = "block";
+                };
+                fileReader.readAsText(fileToLoad, "UTF-8");
+            }
+        },
+        restoreStart: function () {
+            pouch.remoteLogout();
+            pouch.dbServer = "";
+            if (true) {
+                pouch.restoreCount = 2;
+                pouch.restoreRows = pouch.restoreResult.total_rows + pouch.restoreResult.img.total_rows;
+
+                pouch.db.destroy().then(function (response) {
+                    app.log(response);
+                    pouch.restoreRun();
+                }).catch(function (err) {
+                    app.log(err);
+                    pouch.restoreRun();
+                });
+                pouch.dbA.destroy().then(function (response) {
+                    app.log(response);
+                    pouch.restoreRun();
+                }).catch(function (err) {
+                    app.log(err);
+                    pouch.restoreRun();
+                });
+            }
+        },
+        restoreRun: function () {
+            pouch.restoreCount--;
+            if (pouch.restoreCount === 0) {
+                pouch.restoreNow();
+            }
+        },
+        restoreNow: function () {
+            var doc;
+            pouch.dbOpen();
+            for (var i = 0; i < pouch.restoreResult.total_rows; i++) {
+                doc = pouch.restoreResult.rows[i].doc;
+                //console.log(i);
+                pouch.db.put(doc, { force: true }).then(function (info) {
+                    if (pouch.restoreRows-- <= 0) {
+                        pouch.restoreFinish();
+                    }
+                }).catch(function (err) {
+                    console.log(err);
+                    //app.log('Datenbank ohne Funktion: ' + err);
+                });
+            }            
+            for (var i = 0; i < pouch.restoreResult.img.total_rows; i++) {
+                doc = pouch.restoreResult.img.rows[i].doc;
+                //console.log(i);
+                pouch.dbA.put(doc, { force: true }).then(function (info) {
+                    if (pouch.restoreRows-- <= 0) {
+                        pouch.restoreFinish();
+                    }
+                }).catch(function (err) {
+                    console.log(err);
+                    //app.log('Datenbank ohne Funktion: ' + err);
+                });
+            }            
+        },
+        restoreFinish: function () {
+            document.getElementById('restoreFinish').innerHTML = pouch.restoreResult.total_rows + " Zeilen aus Datensicherung und " + pouch.restoreResult.img.total_rows + " Bilder erfolgreich geladen.";
+            pouch.dbLoad();
+        },
+        restoreSchliessen: function () {
+            pouch.overlayRestore.style.display = "none";
+            if (pouch.restoreResult) {
+                delete pouch.restoreResult;
+            }
         }
-         /*,
-         backup: function () {
-             var ws = fs.createWriteStream('output.txt');
-
-             pouch.db.dump(ws).then(function (res) {
-                 // res should be {ok: true}
-             });
-         },
-         restore: function () {
-             var ws = fs.createReadStream('output.txt');
-
-             pouch.db.load(ws).then(function (res) {
-                 // res should be {ok: true}
-             });
-         } */
     };
     return pouch;
 });

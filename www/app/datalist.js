@@ -10,39 +10,34 @@
         fill: function (aktiveSeite, refresh = false) {
             this.dbReady--;
             if (this.dbReady <= 0) {
-                console.log("datalist.fill() " + datalist.pbl.seite);
-                if (refresh) {
-                    delete datalist.pbl.myApp['state'].data;
-                }
-                if (!datalist.pbl.myApp['state'].data) {
-                    datalist.pbl.pouch.db.allDocs({
-                        startkey: datalist.pbl.pouch.dbIdPublic + '_' + 'state'
-                        , endkey: datalist.pbl.pouch.dbIdPublic + '_' + 'state' + 'a'
-                        , include_docs: true
-                        //,attachments: true
-                    }).then(function (result) {
-                        datalist.pbl.myApp['state'].data = [];
-                        $.each(result.rows, function () {
-                            datalist.pbl.myApp['state'].data[this.doc['name']] = this.doc['long'];
-                        });
-                    }).catch(function (err) {
-                        console.log(err);
+                this.fillHelper('state', refresh);
+                datalist.show_all(datalist.pbl.seite);
+            }
+        },
+        fillAllHelper: function (refresh = false) {
+            datalist.fillHelper('state');
+            datalist.fillHelper('location');
+            datalist.fillHelper('lending');
+        },
+        fillHelper: function (helper, refresh) {
+            console.log("datalist.fill(" + helper + (refresh ? ", refresh" : "") +")");
+            if (refresh) {
+                delete datalist.pbl.myApp[helper].data;
+            }
+            if (!datalist.pbl.myApp[helper].data) {
+                datalist.pbl.pouch.db.allDocs({
+                    startkey: datalist.pbl.pouch.dbIdPublic + '_' + helper
+                    , endkey: datalist.pbl.pouch.dbIdPublic + '_' + helper + 'a'
+                    , include_docs: true
+                    //,attachments: true
+                }).then(function (result) {
+                    datalist.pbl.myApp[helper].data = [];
+                    $.each(result.rows, function () {
+                        datalist.pbl.myApp[helper].data[this.doc['name']] = this.doc['long'];
                     });
-                }
-                if (aktiveSeite !== datalist.pbl.seite) {
-                    if (aktiveSeite !== "") {
-                        $('#t_' + datalist.pbl.seite).hide();
-                        datalist.pbl.seite = aktiveSeite;
-                        //$('#t_' + seite).show();
-                    }
-                    datalist.pbl.ui.show_page1(0);
-                    this.show_all(aktiveSeite);
-                } else if (refresh) {
-                    datalist.pbl.ui.show_page1(0);
-                    this.show_all(aktiveSeite);
-                } else {
-                    datalist.pbl.ui.show_page1(0);
-                }
+                }).catch(function (err) {
+                    console.log(err);
+                });
             }
         },
         show_all_header: function (s) {
@@ -92,10 +87,10 @@
             else
                 tablerow += '<div class="books-date">&nbsp;</div>';
             tablerow += '<div class="books-state">' + doc['ent'] + '&nbsp;' + doc['opt'] + '&nbsp;' + datalist.pbl.book.state(doc['state']) + '</div>';
-            tablerow += '<div class="books-isbn"' + (app.seite=='search_books'?' style="display:none;"':'')+'>' + doc['isbn'] + '</div>';
+            tablerow += '<div class="books-isbn"' + (app.seite=='search_books'?'':' style="display:none;"')+'>' + doc['isbn'] + '&nbsp;'+doc['asin']+'</div>';
             tablerow += doc['memo'] ? '<div class="books-memo">' + doc['memo'] + '</div>' : '';
             //+ (24 * 60 * 60 * 1000)        1531320231
-            tablerow += '<div class="books-timestamp">' + doc['checkdate'] + '</div>';
+            tablerow += '<div class="books-timestamp">' + (doc['checkdate'] ? doc['checkdate'].substr(0, 10) : 'neu') + '</div>';
             return tablerow;
         },
         one_book: function (doc, state) {
@@ -177,6 +172,8 @@
                     //var s = this.doc;
                     //console.log(s);
                     if (myApp[seite].tr === 'books') {
+                        app.book.set_checkdate(appResult[seite].rows[i].doc);
+                        /*
                         timestamp = appResult[seite].rows[i].doc['checkdate'];
                         if (appResult[seite].rows[i].doc['DBTimestamp']) {
                             appResult[seite].rows[i].doc['checkdate'] = (new Date(appResult[seite].rows[i].doc['DBTimestamp'] * 1000)).toISOString();
@@ -186,6 +183,7 @@
                             time = new Date(Number(timestamp));
                             appResult[seite].rows[i].doc['checkdate'] = time.toISOString();
                         }
+                        */
                         /*
                         if (appResult[seite].rows[i].doc['source'] !== '11') {
                             appResult[seite].rows[i].doc['releasedate'] = (new Date(parseInt(appResult[seite].rows[i].doc['releasedate']) + (24 * 60 * 60 * 1000))).toISOString();
@@ -257,8 +255,10 @@
                             app.pouch.setSync(myObj, 'add', 'authors');
                             app.pouch.db.put(myObj);
                         }*/
-                        if (datalist.appSort === 'name') {
-                            title = appResult[seite].rows[i].doc['name'].substr(0, 1);
+                        if (datalist.appSort === 'name' || datalist.appSort === 'author') {
+                            title = datalist.appSort === 'name' ?
+                                appResult[seite].rows[i].doc['name'].substr(0, 1) :
+                                appResult[seite].rows[i].doc['author'].substr(0, 1);
                             if (mySortPos !== title && (mySortPos === '' || title >= 'A' && title <= 'Z')) {
                                 title >= 'A' ? mySortPos = title : mySortPos = '#';
                                 tablerow = '<div id="myTableSort' + mySortPos + '" class="myTableAnchor"></div>';
@@ -266,12 +266,14 @@
                                 mySearchlist += '<div class="searchlist">' + mySortPos + '</div>';
                                 app.position.link.push("#myTableSort" + mySortPos);
                             }
-                        } else if (datalist.appSort === 'date') {
-                            releaseyear = appResult[seite].rows[i].doc['releasedate'].substr(0, 4);
+                        } else if (datalist.appSort === 'date' || datalist.appSort === 'check') {
+                            releaseyear = datalist.appSort === 'date' ?
+                                appResult[seite].rows[i].doc['releasedate'].substr(0, 4) :
+                                appResult[seite].rows[i].doc['checkdate'].substr(0, 4);
                             if (mySortPos !== releaseyear && (mySortPos === '' || releaseyear >= 2000)) {
-                                releaseyear >= 2000 ? mySortPos = releaseyear : mySortPos = '<2000';
+                                releaseyear >= 2000 ? mySortPos = releaseyear : mySortPos = '19<00';
                                 tablerow = '<div id="myTableSort' + mySortPos + '" class="myTableAnchor"></div>';
-                                mySearchlist += '<div class="searchlist">' + mySortPos + '</div>';
+                                mySearchlist += '<div class="searchlist">' + mySortPos.substr(2) + '</div>';
                                 app.position.link.push("#myTableSort" + mySortPos);
                             }
                         }
@@ -372,9 +374,6 @@
                 $("#sort_name").toggleClass("fa-sort-up", datalist.appSortUp && datalist.appSort === "name");
                 $("#sort_name").toggleClass("fa-sort-down", !datalist.appSortUp && datalist.appSort === "name");
                 $("#sort_name").toggleClass("fa-sort", datalist.appSort !== "name");
-                $("#sort_id").toggleClass("fa-sort-up", datalist.appSortUp && datalist.appSort === "id");
-                $("#sort_id").toggleClass("fa-sort-down", !datalist.appSortUp && datalist.appSort === "id");
-                $("#sort_id").toggleClass("fa-sort", datalist.appSort !== "id");
                 $("#sort_date").toggleClass("fa-sort-up", datalist.appSortUp && datalist.appSort === "date");
                 $("#sort_date").toggleClass("fa-sort-down", !datalist.appSortUp && datalist.appSort === "date");
                 $("#sort_date").toggleClass("fa-sort", datalist.appSort !== "date");
@@ -384,6 +383,7 @@
                 $("#sort_check").toggleClass("fa-sort-up", datalist.appSortUp && datalist.appSort === "check");
                 $("#sort_check").toggleClass("fa-sort-down", !datalist.appSortUp && datalist.appSort === "check");
                 $("#sort_check").toggleClass("fa-sort", datalist.appSort !== "check");
+                datalist.fillAllHelper();
             }
             //console.log('show_all ' + seite);
             datalist.pbl.ui.loading.style.display = "block";

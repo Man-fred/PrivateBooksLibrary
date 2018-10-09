@@ -1,12 +1,10 @@
 define(function (require) {
     var pbl = {
-        network: {},
 
         once: true,
         initialize: function (lang) {
             if (this.once) {
                 this.once = false;
-                console.log('pbl.js:initialize');
                 app = pbl;
                 app.lang = lang;
                 lang._get = function (test, zahl = 1) {
@@ -18,9 +16,8 @@ define(function (require) {
                         return app.lang[test] === undefined ? test : app.lang[test];
                     }
                 };
-                console.log('Sprache: ' + lang._get('Sprache'));
-                console.log(navigator.languages, navigator.language, navigator.userLanguage);
                 app.log('Sprache: ' + lang._get('Sprache'));
+                console.log('pbl.js:initialize', navigator.languages, navigator.language, navigator.userLanguage, 'aktiv: ' + lang._get('Sprache'));
                 document.addEventListener('deviceready', this.onDeviceReady, false);
                 window.addEventListener("resize", this.onWindowLoadResize);
                 require(['app/handlebars/all', 'app/handlebars/'  + lang.Sprache], function (all) {
@@ -50,6 +47,8 @@ define(function (require) {
                     pouch.initialize(pbl);
                     pbl.pouch = pouch;
                     $('#appLogin').click(pbl.pouch.remoteLogin);
+                    $('#appBackup').click(pbl.pouch.backup);
+                    $('#appRestore').click(pbl.pouch.restore);
                     //console.log('pouch');
                     pbl.onDeviceReady();
                 });
@@ -68,6 +67,11 @@ define(function (require) {
                     pbl.search = search;
                     pbl.onDeviceReady();
                 });
+                require(['./info'], function (info) {
+                    info.initialize();
+                    pbl.info = info
+                    pbl.onDeviceReady();
+                });
             }
         },
         ui: null,
@@ -76,7 +80,7 @@ define(function (require) {
         menu: require('./menu'),
         init: require('./init'),
         //data: null,
-        dbReady : 7,
+        dbReady : 8,
         //system : null,
         seite: "",
         //appPage: 1,
@@ -91,46 +95,35 @@ define(function (require) {
         apiIsbndb : "",
         viewportXS: null,
         viewportXXS: null,
-        //infoDev: null,
         listeningElement: null,
         receivedElement: null,
         countBooks: 0,
         countLog: 0,
         showInit: null,
+        onlineState: false,           // abhängig von netzwerkerkennung (gsm / wifi) und config
+        backgroundState: false,       // app im Hintergrund?
 
         onDeviceReady: function () {
             pbl.dbReady--;
             //console.log(pbl.dbReady);
             if (pbl.dbReady === 0) {
-                //var appTitle = 'Private Books Library';
-                //$('#appTitle').html(appTitle);
-                $('#appRefresh').click(this.refresh);
+                //console.log(cordova.file);
+
                 $('#appSettings').click(function () {
                     pbl.data.show(pbl.pouch.dbIdPrivate + '_login', 'login');
                 });
+
                 document.addEventListener("pause", pbl.onPause, false);
                 document.addEventListener("resume", pbl.onResume, false);
                 document.addEventListener("offline", pbl.onOffline, false);
                 document.addEventListener("online", pbl.onOnline, false);
 
                 //cordova.plugins.notification.badge.set(1);
-                pbl.infoDev = document.getElementById('info-dev');
-                pbl.infoDev.innerHTML = "Ready";
-                pbl.checkConnection();
-
-                pbl.infoSync = document.getElementById('info-sync');
-                /*pbl.listeningElement = pbl.infoDev.querySelector('.listening');
-                pbl.receivedElement = pbl.infoDev.querySelector('.received');
-
-                pbl.listeningElement.setAttribute('style', 'display:none;');
-                pbl.receivedElement.setAttribute('style', 'display:block;');*/
 
                 pbl.onWindowLoadResize();
                 // oberhalb neu, war vor pbl.dbReady--;
                 pbl.menu.main(pbl.myApp);
-                console.log('dbNew');
                 pbl.pouch.dbNew();
-                pbl.datalist.fill("books");
                 //navigator.vibrate(200);
                 //console.log("vibration: "+(navigator.vibrate ? true : false) );
             }
@@ -159,39 +152,56 @@ define(function (require) {
         },
         onPause: function () {
             // im Hintergrund offline gehen??
+            app.backgroundState = true;
+            app.setOnlineState();
+            if (app.onlineState && !app.pouch.onlineBackground) {
+                app.pouch.remoteLogout();
+                app.log('App im Hintergrund, Sync pausiert');
+            }
         },
         onResume: function () {
             // im Vordergrund wieder synchronisieren, falls Server aktiv
+            app.backgroundState = false;
+            if (!app.onlineState || !app.pouch.db.sync) {
+                app.setOnlineState();
+                if (app.onlineState) {
+                    app.pouch.remoteLogin();
+                    app.log('App im Vordergrund, Sync gestartet');
+                }
+            }
         },
         onOnline: function () {
-            pbl.checkConnection();
+            app.setOnlineState();
+            if (app.onlineState && !app.pouch.db.sync) {
+                app.pouch.remoteLogin();
+                app.log('App online, Sync gestartet');
+            }
         },
         onOffline: function () {
-            pbl.checkConnection();
+            app.setOnlineState();
+            app.pouch.remoteLogout();
+            app.log('App offline, Sync pausiert');
         },
-        checkConnection: function () {
-            var networkState = navigator.connection.type;
-            if (pbl.network[Connection.NONE] === undefined) {
-                pbl.network[Connection.UNKNOWN] = 'Unknown';
-                pbl.network[Connection.ETHERNET] = 'Ethernet';
-                pbl.network[Connection.WIFI] = 'WiFi';
-                pbl.network[Connection.CELL_2G] = '2G Cell';
-                pbl.network[Connection.CELL_3G] = '3G Cell';
-                pbl.network[Connection.CELL_4G] = '4G Cell';
-                pbl.network[Connection.CELL] = 'Cell generic';
-                pbl.network[Connection.NONE] = 'No network';
+        setOnlineState: function () {
+            app.info.checkConnection();
+            if (app.backgroundState && !app.pouch.onlineBackground) {
+                app.onlineState = false;
             }
-
-            pbl.infoDev.innerHTML = 'Connection: ' + pbl.network[networkState];
+            switch (app.info.networkState) {
+                case Connection.UNKNOWN: 
+                case    Connection.ETHERNET: 
+                case    Connection.WIFI: app.onlineState = app.pouch.online;
+                    break;
+                case Connection.CELL_2G: app.onlineState = app.pouch.online && app.pouch.onlineCell;
+                case Connection.CELL_3G: app.onlineState = app.pouch.online && app.pouch.onlineCell;
+                case  Connection.CELL_4G: app.onlineState = app.pouch.online && app.pouch.onlineCell;
+                case Connection.CELL: app.onlineState = app.pouch.online && app.pouch.onlineCell;
+                    break;
+                default: app.onlineState = false;
+                    break;
+            }
+            console.log('N ',app.info.networkState, 'B ', app.backgroundState, 'ON ', app.pouch.online, 'OC ', app.pouch.onlineCell, 'OB ', app.pouch.onlineBackground, 'Status ', app.onlineState);
         },
-        refresh: function () {
-             // page1 active?
-             if (pbl.appPage === 1) {
-                 pbl.pouch.appResult[pbl.seite] = null;
-                 pbl.datalist.fill(pbl.seite, true);
-             }
-             //alert('refresh ' + seite);
-         },
          log: function (message, a2, a3, a4) {
              var ng = new Date().toLocaleString();
              $("#info-log").prepend('<li id="info-log' + pbl.countLog+'">' + ng + ': ' + message + '</li>');
@@ -247,6 +257,43 @@ define(function (require) {
 
                  $("#mypanel").trigger("updatelayout");
              }
+         },
+         writeFile: function (fileEntry, dataObj) {
+             // Create a FileWriter object for our FileEntry (log.txt).
+             fileEntry.createWriter(function (fileWriter) {
+
+                 fileWriter.onwriteend = function () {
+                     console.log("Successful file write...");
+                     readFile(fileEntry);
+                 };
+
+                 fileWriter.onerror = function (e) {
+                     console.log("Failed file write: " + e.toString());
+                 };
+
+                 // If data object is not passed in,
+                 // create a new Blob instead.
+                 if (!dataObj) {
+                     dataObj = new Blob(['some file data'], { type: 'text/plain' });
+                 }
+
+                 fileWriter.write(dataObj);
+             });
+         },
+         getSampleFile: function (dirEntry) {
+
+             var xhr = new XMLHttpRequest();
+             xhr.open('GET', 'http://cordova.apache.org/static/img/cordova_bot.png', true);
+             xhr.responseType = 'blob';
+
+             xhr.onload = function () {
+                 if (this.status == 200) {
+
+                     var blob = new Blob([this.response], { type: 'image/png' });
+                     saveFile(dirEntry, blob, "downloadedImage.png");
+                 }
+             };
+             xhr.send();
          }
     };
     return pbl;

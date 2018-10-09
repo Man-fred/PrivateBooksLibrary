@@ -1,12 +1,18 @@
 #mSettings {
-    background: url(../img/svg/solid/cog-white.svg) ;
+    background: url(../img/svg/solid/cog-white.svg) no-repeat;
 }
 #mRefresh {
-    background: url(../img/svg/solid/sync.svg); /*no-repeat*/
+    background: url(../img/svg/solid/angle-down-white.svg) no-repeat; /*no-repeat*/
 }
+    #mRefresh:disabled {
+        background: url(../img/svg/solid/angle-down-blue.svg) no-repeat; /*no-repeat*/
+    }
 .appReturn {
-    background: url(../img/svg/solid/arrow-alt-circle-left.svg);
+    background: url(../img/svg/solid/arrow-alt-circle-left-white.svg);
 }
+    .appReturn:disabled {
+        background: url(../img/svg/solid/arrow-alt-circle-left-blue.svg);
+    }
 #appScan {
     background: url(../img/svg/solid/barcode.svg);
 }
@@ -15,6 +21,9 @@
 }
 #appAdd {
     background: url(../img/svg/solid/plus-circle.svg);
+}
+.title-close {
+    background: url(../img/svg/solid/times-circle.svg);
 }
 .fas {
     display: inline-block;

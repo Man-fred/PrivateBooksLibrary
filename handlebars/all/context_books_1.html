@@ -1,0 +1,16 @@
+﻿<a class="inactive" href="#">Sortierung</a>
+<a onclick="app.datalist.show_all('books','name')" href="#">Name&nbsp;<i id="sort_name" class="fas fa-sort-up"></i></a>
+<a onclick="app.datalist.show_all('books','date')" href="#">Datum&nbsp;<i id="sort_date" class="fas fa-sort"></i></a>
+<a onclick="app.datalist.show_all('books','author')" href="#">Autor&nbsp;<i id="sort_author" class="fas fa-sort"></i></a>
+<a onclick="app.datalist.show_all('books','check')" href="#">Check&nbsp;<i id="sort_check" class="fas fa-sort"></i></a>
+<a class="inactive" href="#">Auswahl</a>
+<select id="select_s" class="dropselect droprow">
+    <option value="all">Alle anzeigen</option>
+    <option value="favor">Favoriten</option>
+    <option value="s0">not owned</option>
+    <option value="s1">ordered</option>
+    <option value="s2">owned</option>
+    <option value="s6">owned/read</option>
+    <option value="s9">new</option>
+    <option value="e1">ausgeliehen</option>
+</select>

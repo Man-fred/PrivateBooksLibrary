@@ -19,21 +19,24 @@
 @menu-left: 150px;
 @menu-right: 190px;
 @searchAZ000: 30px;
-@searchAZ600: 50px;
+@searchAZ600: 25px;
 @content-margin: 8px;
 @content-padding: 10px;
 @top-padding: 20px;
 @top-height: 44px;
 @header-height: 60px;
-@footer-height: 25px;
-@title-margin: 4px;
-@title-button: @top-height - 2 * @title-margin;
+@footer-height: 44px;
+@title-margin-top: 4px;
+@title-margin: 10px;
+@title-button: @top-height - 2 * @title-margin-top;
 @app-button: @title-button + 8px;
-@books-img: 52px;
-@books-img-margin: 5px;
+@books-img: 0px; // mit Anzeige: 52px;
+@books-img-margin: 0px; // mit Anzeige: 5px;
 @books-favor: 24px;
 @books-favor-sm: 32px;
+@books-timestamp: 60px;
 @page2-label: 8em;
+@drop_content_width: 160px;
 
 /* http://paletton.com */
 /* https://wiki.selfhtml.org/wiki/Grafik/Farbpaletten */
@@ -305,7 +308,7 @@ main3 {
     height: 100%;
     /*max-width: 800px;*/
     line-height: 1.6em;
-    width: calc(~"100% - " @partner-right);
+    width: calc(~"100% - " @partner-right + 4px );
 }
 #iosStatusbar {
     .save-top(-20px);
@@ -315,21 +318,27 @@ main3 {
     position: fixed !important;
     z-index: 960;
 }
-    #top {
-        .save-area();
-        top: 0px;
-        position: fixed !important;
-        z-index: 900; /* so the menu or its navicon stays above all content */
-        width: 100%;
-        background: @top-bkg;
-        font-size: 110%;
-        text-transform: uppercase;
-        color: @top-color;
-        margin: 0;
-        height: @top-height;
-        display: table-cell;
-        vertical-align: middle
+#top {
+    .save-area();
+    top: 0px;
+    left: @top-height;
+    position: fixed !important;
+    z-index: 900; /* so the menu or its navicon stays above all content */
+    width: calc(~"100% - " @partner-right + @top-height );
+    background: @top-bkg;
+    font-size: 110%;
+    text-transform: uppercase;
+    color: @top-color;
+    margin: 0;
+    height: @top-height;
+    display: table-cell;
+    vertical-align: middle;
+
+    @media @sm-gt {
+        left: @menu-left;
+        width: calc(~"100% - " @menu-left + @partner-right);
     }
+}
 
 footer {
     z-index: 1000; /* so the menu or its navicon stays above all content */
@@ -359,14 +368,24 @@ footer {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    background-color: @gray3;
+}
+#info-dev[state=offline] {
+    background-color: @color-secondary-1-1;
+}
+#info-dev[state=online] {
+    background-color: transparent;
 }
 
-    [data-sync-state=syncing] #info-sync {
-        background-color: @col_sync_syncing;
-    }
+#info-syn[state=syncing] c {
+    background-color: @col_sync_syncing;
+}
 
-[data-sync-state=error] #info-sync {
+#info-sync[state=error] {
     background-color: @col_sync_error;
+}
+#info-sync[state=eLogin] {
+    background-color: @color-secondary-1-1;
 }
 
     #record_show {
@@ -379,29 +398,25 @@ footer {
     #appTitle {
         float: right;
         padding-top: 0.6em;
-        width: calc(~"100% - " 5 * @top-height);
+        width: calc(~"100% - " 3 * ( @title-button + 2 * @title-margin) );
         white-space: nowrap;
-        text-align: left;
-
-        @media @sm-gt {
             text-align: center;
-            width: calc(~"100% - " @menu-left + 4 * @top-height);
-        }
     }
 
-    .title-button {
-        float: left;
-        font-size: 200%;
-        font-weight: bold;
-        /*padding: 0 10px 0 10px;*/
-        width: @title-button;
-        height: @title-button;
-        display: block;
-        margin: @title-margin;
-        text-align: center;
-        vertical-align: middle;
-        cursor: pointer;
-    }
+.title-button {
+    float: left;
+    font-size: 200%;
+    font-weight: bold;
+    border: none;
+    /*padding: 0 10px 0 10px;*/
+    width: @title-button;
+    height: @title-button;
+    display: block;
+    margin: @title-margin-top @title-margin;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
 
     .app-button {
         float: left;
@@ -832,9 +847,10 @@ input[type="reset"]:hover, input[type="reset"]:focus {
         float: left;
     }
 
-    .books-memo {
-        width: calc(~"100% - " @books-img + @books-img-margin);
-    }
+.books-memo {
+    width: calc(~"100% - " @books-img + @books-img-margin + @books-timestamp);
+    float: left;
+}
 
     .books-image {
         width: auto;
@@ -849,12 +865,18 @@ input[type="reset"]:hover, input[type="reset"]:focus {
         text-indent: -50%;
         overflow: hidden;
         float: left;
+        display: none;
     }
 
-    .books-state {
-        width: 120px;
-        float: left;
-    }
+.books-state {
+    width: 120px;
+    float: left;
+}
+.books-timestamp {
+    width: @books-timestamp;
+    float: right;
+    font-size: 66%;
+}
 
     #book-image {
         width: @page2-label;
@@ -902,7 +924,7 @@ This is the parent `<div>` that contains the menu and the content area.
         padding-left: 0;
         padding-bottom: @footer-height;
         height: 100%;
-        width: calc(~"100% - " @partner-right);
+        width: calc(~"100% - " @partner-right + 1px );
 
         @media @sm-gt {
             padding-left: @menu-left; /* left col width "#menu" */
@@ -1046,12 +1068,12 @@ how it works:
 small screens.
 */
 .menu-link {
+    .save-area();
     position: fixed;
     display: block; /* show this only on small screens */
     top: 0;
     left: 0;
     background: @color_menulink_bkg;
-    background: @input_hover_shadow7;
     font-size: 10px; /* change this value to increase/decrease button size */
     z-index: 1000;
     height: @top-height;
@@ -1094,6 +1116,9 @@ small screens.
     .menu-link span:after {
         margin-top: 0.6em;
     }
+.menu-link a {
+    background: @color_menulink_bkg;
+}
 
     .pure-menu-active > .pure-menu-link, .pure-menu-link:focus, .pure-menu-link:hover {
         background-color: transparent;
@@ -1246,34 +1271,44 @@ Hides the menu at `48em`, but modify this based on your app's needs.
     background-color: @dropdown_inactive_bkg;
 }
 
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: @dropdown-row-bkg;
-        min-width: 160px;
-        overflow: auto;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-        right: 0px;
-        top: @top-height;
-    }
+.drop-content {
+    display: none;
+    position: absolute;
+    background-color: @dropdown-row-bkg;
+    min-width: @drop_content_width;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0px;
+}
+.drop-down {
+    top: @top-height;
+}
+.drop-up {
+    bottom: @footer-height;
+}
 
-.dropdown-content a {
+.drop-content a, .drop-content label {
     color: @dropdown-row-col;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    text-align: left;
+    width: @drop_content_width;
 }
 
-.dropdown a:hover, .dropdown select:hover {
+.dropdown a:hover, .dropdown label:hover, .dropdown select:hover {
     background-color: @dropdown_a_hover_bkg;
 }
 
-    .show {
-        display: block;
-    }
+.show {
+    display: block;
+}
+.hide {
+    display: none;
+}
 
-    #overlay {
+    #overlay, #overlayRestore {
         position: fixed;
         display: none;
         width: 100%;
