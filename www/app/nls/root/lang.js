@@ -19,7 +19,7 @@
     "restoreH2": "Restore from Backup",
     "Rundgang_anzeigen": "Show tour",
     "title": "Title",
-    "version": "V 0.8.1",
+    "version": "V 0.8.2",
     "yes": "Yes",
 
     "root": true,

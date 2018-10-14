@@ -26,6 +26,8 @@
                     } else {
                         trace = trace[0];
                     }
+                    trace = trace.replace(/@.*(\.de|\/www)\//, "@");
+
                     htmlConsole.insert(method, message, trace);
                     if (htmlConsole.apply) {
                         // Do this for normal browsers

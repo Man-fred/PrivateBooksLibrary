@@ -332,17 +332,17 @@
                 online: {
                     name: "online",
                     title: "online",
-                    selectYN: [app.lang.no, app.lang.yes, false],
+                    selectYN: [app.lang.no, app.lang.yes, false]
                 },
                 onlineCell: {
                     name: "onlineCell",
                     title: "onlineCell",
-                    selectYN: [app.lang.no, app.lang.yes, false],
+                    selectYN: [app.lang.no, app.lang.yes, false]
                 },
                 onlineBackground: {
                     name: "onlineBackground",
                     title: "onlineBackground",
-                    selectYN: [app.lang.no, app.lang.yes, false],
+                    selectYN: [app.lang.no, app.lang.yes, false]
                 }
                 /*,
             appHorsename: {

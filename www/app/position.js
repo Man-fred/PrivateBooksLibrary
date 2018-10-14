@@ -23,16 +23,16 @@
                 position.rightswipe = new Event('rightswipe');
                 position.startmove = document.getElementById('mySearchAZ');
                 position.overlay = document.getElementById('overlay');
-                position.overlay.addEventListener("touchstart", function (eve) { position.touchstart(eve, 0) });
-                position.overlay.addEventListener("touchmove", function (eve) { position.touchmove(eve, 0) });
-                position.overlay.addEventListener("touchend", function (eve) { position.touchend(eve, 0) });
+                position.overlay.addEventListener("touchstart", function (eve) { position.touchstart(eve, 0); });
+                position.overlay.addEventListener("touchmove", function (eve) { position.touchmove(eve, 0); });
+                position.overlay.addEventListener("touchend", function (eve) { position.touchend(eve, 0); });
                 position.overlay.addEventListener("leftswipe", function (eve) { app.init.show(1); });
                 position.overlay.addEventListener("rightswipe", function (eve) { app.init.show(-1); });
                 //position.moves = document.getElementById('message');
-                position.startmove.addEventListener("mouseenter", function (eve) { position.mouseenter(eve, 1) });
-                position.startmove.addEventListener("touchstart", function (eve) { position.touchstart(eve, 1) });
-                position.startmove.addEventListener("touchmove", function (eve) { position.touchmove(eve, 1) });
-                position.startmove.addEventListener("touchend", function (eve) { position.touchend(eve, 1) });
+                position.startmove.addEventListener("mouseenter", function (eve) { position.mouseenter(eve, 1); });
+                position.startmove.addEventListener("touchstart", function (eve) { position.touchstart(eve, 1); });
+                position.startmove.addEventListener("touchmove", function (eve) { position.touchmove(eve, 1); });
+                position.startmove.addEventListener("touchend", function (eve) { position.touchend(eve, 1); });
 
                 position.startmove.addEventListener("mousedown", function (eve) {
                     position.startx = parseInt(eve.clientX); // X/Y-Koordinaten relativ zum Viewport

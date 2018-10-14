@@ -78,11 +78,13 @@
                             // name or password incorrect
                             app.info.setSync(err.name, err.message, 'eLogin');//'server: name or password incorrect';
                         } else {
+                            /*
                             pouch.sync(pouch.dbA, pouch.dbRemoteA);
                             pouch.dbA.changes({
                                 since: 'now',
                                 live: true
                             }).on('change', pouch.newDocs);
+                            */
                         }
                     });
                 } else {
@@ -159,7 +161,7 @@
         },
         dbOpen: function () {
             pouch.db = new PouchDB(pouch.localdb, { revs_limit: 10, auto_compaction: true });
-            pouch.dbA = new PouchDB(pouch.localdbA, { revs_limit: 10, auto_compaction: true });
+            pouch.dbA = new PouchDB(pouch.localdbA, { revs_limit: 1, auto_compaction: true });
         },
         dbNew: function () {
             //Test for browser webSQL compatibility
@@ -409,8 +411,8 @@
             pouch.overlayRestore.style.display = "flex";
         },
         restoreLoad: function () {
-            var restoreLogout = !pouch.dbServer || document.getElementById("restoreLogout").checked == true;
-            var restoreDelete = document.getElementById("restoreDelete").checked == true;
+            var restoreLogout = !pouch.dbServer || document.getElementById("restoreLogout").checked === true;
+            var restoreDelete = document.getElementById("restoreDelete").checked === true;
 
             if (restoreDelete && restoreLogout) {
                 var fileToLoad = document.getElementById("fileToLoad").files[0];
@@ -457,7 +459,8 @@
         restoreNow: function () {
             var doc;
             pouch.dbOpen();
-            for (var i = 0; i < pouch.restoreResult.total_rows; i++) {
+            var i=0;
+            for (i = 0; i < pouch.restoreResult.total_rows; i++) {
                 doc = pouch.restoreResult.rows[i].doc;
                 //console.log(i);
                 pouch.db.put(doc, { force: true }).then(function (info) {
@@ -469,7 +472,7 @@
                     //console.info('Datenbank ohne Funktion: ' + err);
                 });
             }            
-            for (var i = 0; i < pouch.restoreResult.img.total_rows; i++) {
+            for (i = 0; i < pouch.restoreResult.img.total_rows; i++) {
                 doc = pouch.restoreResult.img.rows[i].doc;
                 //console.log(i);
                 pouch.dbA.put(doc, { force: true }).then(function (info) {

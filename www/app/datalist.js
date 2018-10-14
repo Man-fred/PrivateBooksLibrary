@@ -87,7 +87,7 @@
             else
                 tablerow += '<div class="books-date">&nbsp;</div>';
             tablerow += '<div class="books-state">' + doc['ent'] + '&nbsp;' + doc['opt'] + '&nbsp;' + datalist.pbl.book.state(doc['state']) + '</div>';
-            tablerow += '<div class="books-isbn"' + (app.seite=='search_books'?'':' style="display:none;"')+'>' + doc['isbn'] + '&nbsp;'+doc['asin']+'</div>';
+            tablerow += '<div class="books-isbn"' + (app.seite==='search_books'?'':' style="display:none;"')+'>' + doc['isbn'] + '&nbsp;'+doc['asin']+'</div>';
             tablerow += doc['memo'] ? '<div class="books-memo">' + doc['memo'] + '</div>' : '';
             //+ (24 * 60 * 60 * 1000)        1531320231
             tablerow += '<div class="books-timestamp">' + (doc['checkdate'] ? doc['checkdate'].substr(0, 10) : 'neu') + '</div>';

@@ -244,6 +244,7 @@
 
 /* IOS-spezifisch */
 .save-top-padding(@add: 0px) {
+    padding-top: 20px + @add;
     @supports (-webkit-overflow-scrolling: touch) {
         /* CSS specific to iOS devices */
         /* Status bar height on iOS 10 */
@@ -253,11 +254,10 @@
         /* Status bar height on iOS 11+ */
         padding-top: calc( ~"env(safe-area-inset-top) + " @add);
     }
-
-    padding-top: @add;
 }
 
-.save-top(@add: 0) {
+.save-top(@add: 0px) {
+    top: 20px + @add;
     @supports (-webkit-overflow-scrolling: touch) {
         /* CSS specific to iOS devices */
         /* Status bar height on iOS 10 */
@@ -267,8 +267,6 @@
         /* Status bar height on iOS 11+ */
         top: calc( ~"env(safe-area-inset-top) + " @add);
     }
-
-    top: @add;
 }
 
 html, body {
@@ -281,7 +279,7 @@ body {
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
-    overflow: hidden;
+    //overflow: hidden;
 }
 
 header {
@@ -350,7 +348,7 @@ main3 {
     width: 100%;
     background-color: @top-bkg-light;
     position: fixed !important;
-    z-index: 960;
+    z-index: 1001;
 }
 
 #top {
@@ -1096,7 +1094,6 @@ how it works:
 small screens.
 */
 .menu-link {
-    .save-top();
     position: fixed;
     display: block; /* show this only on small screens */
     left: 0;
@@ -1104,6 +1101,7 @@ small screens.
     font-size: 10px; /* change this value to increase/decrease button size */
     z-index: 1000;
     padding: 18px 14px;
+    .save-top-padding(18px);
     width: 16px;
     height: 8px;
 

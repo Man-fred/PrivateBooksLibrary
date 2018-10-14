@@ -19,7 +19,8 @@ define(function (require) {
                 document.addEventListener('deviceready', this.onDeviceReady, false);
                 window.addEventListener("resize", this.onWindowLoadResize);
                 // Top/Bottom der Seite ist sonst scrollbar unter ios
-                Keyboard.shrinkView(true);
+                // hilft nicht
+                //Keyboard.shrinkView(true);
                 require(['app/handlebars/all', 'app/handlebars/'  + lang.Sprache], function (all) {
                     pbl.handlebars = all;
                 });
@@ -69,7 +70,7 @@ define(function (require) {
                 });
                 require(['./info'], function (info) {
                     info.initialize();
-                    pbl.info = info
+                    pbl.info = info;
                     pbl.onDeviceReady();
                 });
             }
@@ -204,15 +205,6 @@ define(function (require) {
             console.log('N ', app.info.networkState, 'B ', app.backgroundState, 'ON ', app.pouch.online, 'OC ', app.pouch.onlineCell, 'OB ', app.pouch.onlineBackground, 'Status ', app.onlineState);
             console.info(' N '+ app.info.networkState+ ' B '+ app.backgroundState+ ' ON '+ app.pouch.online+ ' OC '+ app.pouch.onlineCell+ ' OB '+ app.pouch.onlineBackground+ ' Status '+ app.onlineState);
         },
-        logxx: function (message, a2, a3, a4) {
-             var ng = new Date().toLocaleString();
-             $("#info-log").prepend('<li id="info-log' + pbl.countLog+'">' + ng + ': ' + message + '</li>');
-             if (pbl.countLog > 50) {
-                 $("#info-log" + (pbl.countLog-50)).remove();
-             }
-             pbl.countLog++;
-        },
-
          main: function () {
              /* nur jQuery Mobile
               $(document).bind("mobileinit", function () {
@@ -289,7 +281,7 @@ define(function (require) {
              xhr.responseType = 'blob';
 
              xhr.onload = function () {
-                 if (this.status == 200) {
+                 if (this.status === 200) {
 
                      var blob = new Blob([this.response], { type: 'image/png' });
                      saveFile(dirEntry, blob, "downloadedImage.png");

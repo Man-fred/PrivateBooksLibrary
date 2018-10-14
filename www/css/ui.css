@@ -1,45 +1,56 @@
 #mSettings {
     background: url(../img/svg/solid/cog-white.svg) no-repeat;
 }
+
 #mRefresh {
     background: url(../img/svg/solid/angle-down-white.svg) no-repeat; /*no-repeat*/
 }
+
     #mRefresh:disabled {
         background: url(../img/svg/solid/angle-down-blue.svg) no-repeat; /*no-repeat*/
     }
-.appReturn {
+
+#appReturn {
     background: url(../img/svg/solid/arrow-alt-circle-left-white.svg);
 }
-    .appReturn:disabled {
+    #appReturn:disabled {
         background: url(../img/svg/solid/arrow-alt-circle-left-blue.svg);
     }
+
 #appScan {
     background: url(../img/svg/solid/barcode.svg);
 }
+
 #scansearch {
     background: url(../img/svg/solid/search.svg);
 }
+
 #appAdd {
     background: url(../img/svg/solid/plus-circle.svg);
 }
+
 .title-close {
     background: url(../img/svg/solid/times-circle.svg);
 }
+
 .fas {
     display: inline-block;
     width: 10px;
     height: 15px;
 }
+
 .fa-sort {
     background: url(../img/svg/solid/sort.svg) no-repeat;
 }
+
 .fa-sort-up {
     background: url(../img/svg/solid/sort-up.svg) no-repeat;
 }
+
 .fa-sort-down {
     background: url(../img/svg/solid/sort-down.svg) no-repeat;
 }
-.deleteicon span {
-        background: url(../img/svg/solid/times-circle-gray.svg);
-}
 
+.deleteicon span {
+    background: url(../img/svg/solid/times-circle-gray.svg);
+}
