@@ -5,8 +5,6 @@ define(function (require) {
         initialize: function (lang) {
             if (this.once) {
                 this.once = false;
-                app = pbl;
-                app.lang = lang;
                 lang._get = function (test, zahl = 1) {
                     if (zahl > 1 && app.lang[test + "2"] !== undefined) {
                         return app.lang[test + "2"];
@@ -16,10 +14,12 @@ define(function (require) {
                         return app.lang[test] === undefined ? test : app.lang[test];
                     }
                 };
-                app.log('Sprache: ' + lang._get('Sprache'));
+                app.console.log('Sprache: ' + lang._get('Sprache'));
                 console.log('pbl.js:initialize', navigator.languages, navigator.language, navigator.userLanguage, 'aktiv: ' + lang._get('Sprache'));
                 document.addEventListener('deviceready', this.onDeviceReady, false);
                 window.addEventListener("resize", this.onWindowLoadResize);
+                // Top/Bottom der Seite ist sonst scrollbar unter ios
+                Keyboard.shrinkView(true);
                 require(['app/handlebars/all', 'app/handlebars/'  + lang.Sprache], function (all) {
                     pbl.handlebars = all;
                 });
@@ -99,6 +99,7 @@ define(function (require) {
         receivedElement: null,
         countBooks: 0,
         countLog: 0,
+        loglevel: 5,
         showInit: null,
         onlineState: false,           // abhängig von netzwerkerkennung (gsm / wifi) und config
         backgroundState: false,       // app im Hintergrund?
@@ -108,7 +109,7 @@ define(function (require) {
             //console.log(pbl.dbReady);
             if (pbl.dbReady === 0) {
                 //console.log(cordova.file);
-
+                //pbl.takeOverConsole(pbl.loglevel);
                 $('#appSettings').click(function () {
                     pbl.data.show(pbl.pouch.dbIdPrivate + '_login', 'login');
                 });
@@ -142,7 +143,7 @@ define(function (require) {
                 pbl.viewportXS = viewportTemp;
             }
             if (viewportTemp < 458 && pbl.viewportXXS >= 458) {
-                $('#appTitle').html("PBL");
+                $('#appTitle').html(""); //PBL
                 pbl.viewportXXS = viewportTemp;
             } else if (viewportTemp >= 458 && pbl.viewportXXS < 458) {
                 $('#appTitle').html("Private Books Library");
@@ -156,7 +157,7 @@ define(function (require) {
             app.setOnlineState();
             if (app.onlineState && !app.pouch.onlineBackground) {
                 app.pouch.remoteLogout();
-                app.log('App im Hintergrund, Sync pausiert');
+                console.info('App im Hintergrund, Sync pausiert');
             }
         },
         onResume: function () {
@@ -166,7 +167,7 @@ define(function (require) {
                 app.setOnlineState();
                 if (app.onlineState) {
                     app.pouch.remoteLogin();
-                    app.log('App im Vordergrund, Sync gestartet');
+                    console.info('App im Vordergrund, Sync gestartet');
                 }
             }
         },
@@ -174,13 +175,13 @@ define(function (require) {
             app.setOnlineState();
             if (app.onlineState && !app.pouch.db.sync) {
                 app.pouch.remoteLogin();
-                app.log('App online, Sync gestartet');
+                console.info('App online, Sync gestartet');
             }
         },
         onOffline: function () {
             app.setOnlineState();
             app.pouch.remoteLogout();
-            app.log('App offline, Sync pausiert');
+            console.info('App offline, Sync pausiert');
         },
         setOnlineState: function () {
             app.info.checkConnection();
@@ -192,17 +193,18 @@ define(function (require) {
                 case    Connection.ETHERNET: 
                 case    Connection.WIFI: app.onlineState = app.pouch.online;
                     break;
-                case Connection.CELL_2G: app.onlineState = app.pouch.online && app.pouch.onlineCell;
-                case Connection.CELL_3G: app.onlineState = app.pouch.online && app.pouch.onlineCell;
-                case  Connection.CELL_4G: app.onlineState = app.pouch.online && app.pouch.onlineCell;
+                case Connection.CELL_2G: app.onlineState = app.pouch.online && app.pouch.onlineCell; break;
+                case Connection.CELL_3G: app.onlineState = app.pouch.online && app.pouch.onlineCell; break;
+                case Connection.CELL_4G: app.onlineState = app.pouch.online && app.pouch.onlineCell; break;
                 case Connection.CELL: app.onlineState = app.pouch.online && app.pouch.onlineCell;
                     break;
                 default: app.onlineState = false;
                     break;
             }
-            console.log('N ',app.info.networkState, 'B ', app.backgroundState, 'ON ', app.pouch.online, 'OC ', app.pouch.onlineCell, 'OB ', app.pouch.onlineBackground, 'Status ', app.onlineState);
+            console.log('N ', app.info.networkState, 'B ', app.backgroundState, 'ON ', app.pouch.online, 'OC ', app.pouch.onlineCell, 'OB ', app.pouch.onlineBackground, 'Status ', app.onlineState);
+            console.info(' N '+ app.info.networkState+ ' B '+ app.backgroundState+ ' ON '+ app.pouch.online+ ' OC '+ app.pouch.onlineCell+ ' OB '+ app.pouch.onlineBackground+ ' Status '+ app.onlineState);
         },
-         log: function (message, a2, a3, a4) {
+        logxx: function (message, a2, a3, a4) {
              var ng = new Date().toLocaleString();
              $("#info-log").prepend('<li id="info-log' + pbl.countLog+'">' + ng + ': ' + message + '</li>');
              if (pbl.countLog > 50) {

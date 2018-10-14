@@ -20,7 +20,7 @@
             datalist.fillHelper('lending');
         },
         fillHelper: function (helper, refresh) {
-            console.log("datalist.fill(" + helper + (refresh ? ", refresh" : "") +")");
+            console.info("datalist.fill(" + helper + (refresh ? ", refresh" : "") +")");
             if (refresh) {
                 delete datalist.pbl.myApp[helper].data;
             }

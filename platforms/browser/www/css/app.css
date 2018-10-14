@@ -857,26 +857,24 @@ how it works:
 small screens.
 */
 .menu-link {
-  padding-top: 0px;
+  top: 0;
   position: fixed;
   display: block;
   /* show this only on small screens */
-  top: 0;
   left: 0;
   background: #404040;
   font-size: 10px;
   /* change this value to increase/decrease button size */
   z-index: 1000;
-  height: 44px;
+  padding: 18px 14px;
   width: 16px;
   height: 8px;
-  padding: 18px 14px;
 }
 @supports (-webkit-overflow-scrolling: touch) {
   .menu-link {
     /* CSS specific to iOS devices */
     /* Status bar height on iOS 10 */
-    padding-top: 20px;
+    top: 20px;
     /* Status bar height on iOS 11.0 */
     /* Status bar height on iOS 11+ */
   }

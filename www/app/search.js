@@ -9,19 +9,19 @@
             }
         },
         scan: function () {
-            app.log('scanning');
+            console.info('scanning');
 
             var scanner = cordova.plugins.barcodeScanner;
 
             scanner.scan(function (result) {
                 //alert( JSON.stringify(result) );
                 if (!result.cancelled) {
-                    app.log("Scanning ok: " + result.text);
+                    console.info("Scanning ok: " + result.text);
                     $("#bc_text").val(result.text);
                     //document.getElementById("bc_format").innerHTML = "Format " + result.format;
                     search.scan_search(result.format, result.text);
                 } else {
-                    app.log("Scanning cancelled: " + JSON.stringify(result));
+                    console.info("Scanning cancelled: " + JSON.stringify(result));
                     $("#bc_text").val(result.text);
                     //document.getElementById("bc_format").innerHTML = "Nicht erkannt " + result.format;
                     //show_all('books', 'isbn', result.text);
@@ -35,7 +35,7 @@
                  */
 
             }, function (error) {
-                app.log("Scanning failed: "+ error);
+                console.error("Scanning failed: "+ error);
             });
         },
         isbn9: function (w) {
@@ -204,7 +204,7 @@
             if (index === 4) searchString = "https://pbl.bcss.de/api/request.php?per=" + encodeURI(w);
             if (index === 3) searchString = "https://pbl.bcss.de/api/request.php?gndper=" + encodeURI(w);
             if (index === 2) searchString = "https://pbl.bcss.de/api/request.php?gndidn=" + encodeURI(w);
-            app.log(searchString);
+            console.info(searchString);
             xhttp.open("GET", searchString, true);
             xhttp.send();
         },

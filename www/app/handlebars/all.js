@@ -3,7 +3,9 @@ define(['handlebars.runtime'], function(Handlebars) {
 templates['about'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=container.lambda, alias2=container.escapeExpression;
 
-  return "<html>\r\n<body>\r\n        <h2>Version</h2>\r\n        <p>V 0.7.0 Interner Test/Testflight</p>\r\n        <h2>"
+  return "<html>\r\n<body>\r\n        <h2>Version</h2>\r\n        <p>"
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.str : depth0)) != null ? stack1.version : stack1), depth0))
+    + " Interner Test/Testflight</p>\r\n        <h2>"
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.str : depth0)) != null ? stack1.help : stack1), depth0))
     + "</h2>\r\n        <h3><a onclick=\"app.init.showAll()\" href=\"#\">"
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.str : depth0)) != null ? stack1.Rundgang_anzeigen : stack1), depth0))
@@ -27,9 +29,9 @@ templates['context_books_1'] = template({"compiler":[7,">= 4.0.0"],"main":functi
 templates['overlayRestore'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return "<div id=\"overlay_content\">\r\n    <div id=\"overlay4\" class=\"overlay\">\r\n        <div><button id=\"restoreSchliessen\" class=\"title-button title-close\">&nbsp;</button></div>\r\n        <h2>"
+  return "<div id=\"overlay_content\">\r\n    <div id=\"overlay4\" class=\"overlay\">\r\n        <div><button id=\"restoreSchliessen\" class=\"title-button right title-close\">&nbsp;</button></div>\r\n        <h2>"
     + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.str : depth0)) != null ? stack1.restoreH2 : stack1), depth0))
-    + "</h2>\r\n        <p id=\"restoreLogoutDiv\">\r\n            <input type=\"checkbox\" id=\"restoreLogout\" value=\"true\"> Vom Server ausloggen\r\n        </p>\r\n        <p>\r\n            <input type=\"checkbox\" id=\"restoreDelete\" value=\"true\"> Bestehende Daten löschen\r\n        </p>\r\n        <p>\r\n            Bitte Backup auswählen\r\n            <input type=\"file\" id=\"fileToLoad\" onchange=\"app.pouch.restoreLoad(this.files)\">\r\n        </p>\r\n        <p id=\"restoreErg\"></p>\r\n        <p><button id=\"restoreStart\" class=\"hide\">Jetzt Daten laden</button></p>\r\n    </div>\r\n</div>\r\n";
+    + "</h2>\r\n        <p id=\"restoreLogoutDiv\">\r\n            <input type=\"checkbox\" id=\"restoreLogout\" value=\"true\"> Vom Server ausloggen\r\n        </p>\r\n        <p>\r\n            <input type=\"checkbox\" id=\"restoreDelete\" value=\"true\"> Bestehende Daten löschen\r\n        </p>\r\n        <p>\r\n            Bitte Backup auswählen\r\n            <input type=\"file\" id=\"fileToLoad\" onchange=\"app.pouch.restoreLoad(this.files)\">\r\n        </p>\r\n        <p id=\"restoreErg\"></p>\r\n        <p><button id=\"restoreStart\" class=\"hide\">Jetzt Daten laden</button></p>\r\n        <p id=\"restoreFinish\"></p>\r\n    </div>\r\n</div>\r\n";
 },"useData":true});
 return templates;
 });

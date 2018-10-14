@@ -22,6 +22,7 @@
         form: function (myApp, aktiveSeite) {
             //$('#'+aktiveSeite).show();
             var result = '<div id="t_' + aktiveSeite + '" name="t_' + aktiveSeite + '" class="t_seite">';
+            var input;
             //if (aktiveSeite !== "login") {
             //    result += '<div class="left"><button onclick="app.ui.show_page1(1); return false;" class="appReturn app-button"></button></div>';
             //}
@@ -48,6 +49,7 @@
             }
             $.each(myApp[aktiveSeite].header, function () {
                 if (!this.noField) {
+                    input = this.input ? ' ' + this.input : '';
                     result += '<div class="pure-control-group"><label for="' + aktiveSeite + '_' + this.name + '">' + this.title + '</label>';
                     if (this.select) {
                         result += '<select type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" class="' + aktiveSeite + '"></select>';
@@ -57,9 +59,9 @@
                             result += '<option></option>';
                         result += '<option value="0" >' + this.selectYN[0] + '</option><option value="1" >' + this.selectYN[1] + '</option>' + '</select > ';
                     } else if (this.type) {
-                        result += '<input type="' + this.type + '" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" />';
+                        result += '<input'+input+' type="' + this.type + '" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" />';
                     } else {
-                        result += '<input type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" />';
+                        result += '<input' + input +' type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" />';
                     }
                     result += '</div>';
                 } else {
@@ -92,9 +94,9 @@
             
             result += '</div>';
             $('#formdata').append(result);
-            if (aktiveSeite == "login"){
+            /*if (aktiveSeite == "login"){
                 document.getElementById("login_name").addEventListener("change", this.change_login_name);
-            }
+            }*/
         },
         show: function (id = '', neueSeite = this.pbl.seite) {
             if (id === "") {
@@ -246,12 +248,12 @@
             //console.log(myObj);
             app.pouch.db.put(myObj).then(function (doc) {
                 //console.log(doc);
-                app.log("ok: "+doc.name);
+                console.info("ok: "+doc.name);
                 data.clear();
                 //show_all(seite);
             }).catch(function (err) {
                 console.log(err);
-                app.log(err);
+                console.info(err);
             });
 
         },
@@ -345,17 +347,17 @@
             });
         },
         change_login_name: function () {
-            if (this.value == "1") {
+            //if (this.value == "1") {
                 document.getElementById("login_dbServer").style.display = "";
                 document.getElementById("login_dbPort").style.display = "";
                 document.getElementById("login_dbUser").style.display = "";
                 document.getElementById("login_dbPass").style.display = "";
-            } else {
+            /*} else {
                 document.getElementById("login_dbServer").style.display = "none";
                 document.getElementById("login_dbPort").style.display = "none";
                 document.getElementById("login_dbUser").style.display = "none";
                 document.getElementById("login_dbPass").style.display = "none";
-            }
+            }*/
         }
     };
     return data;

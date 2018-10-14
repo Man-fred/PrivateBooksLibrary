@@ -293,6 +293,14 @@ module.exports = [
         "file": "plugins/cordova-plugin-network-information/src/windows/NetworkInfoProxy.js",
         "pluginId": "cordova-plugin-network-information",
         "runs": true
+    },
+    {
+        "id": "cordova-plugin-keyboard.keyboard",
+        "file": "plugins/cordova-plugin-keyboard/www/keyboard.js",
+        "pluginId": "cordova-plugin-keyboard",
+        "clobbers": [
+            "window.Keyboard"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -306,7 +314,8 @@ module.exports.metadata =
     "cordova-plugin-vibration": "3.1.0",
     "cordova-plugin-whitelist": "1.3.3",
     "phonegap-plugin-barcodescanner": "8.0.0",
-    "cordova-plugin-network-information": "2.0.1"
+    "cordova-plugin-network-information": "2.0.1",
+    "cordova-plugin-keyboard": "1.2.0"
 };
 // BOTTOM OF METADATA
 });

@@ -23,7 +23,7 @@
         <div class="dropdown">
             <button id="appAdd" class="dropbtn title-button" state="add" title="Neuer Eintrag">&nbsp;</button>
         </div>
-        <div id="appTitle">PBL</div>
+        <div id="appTitle"></div>
         <button id="appReturn" onclick="app.ui.getVerlauf(); return false;" disabled="disabled" class="appReturn title-button"></button>
     </div>
     <div id="dataformBooks" class="header">
@@ -87,7 +87,7 @@
                 </div>
                 <div id="pageLog" style="display: none;">
                     <!-- I will hold up to 50 log messages -->
-                    <ul id="info-log"></ul>
+                    <div id="info-log"></div>
                 </div>
                 <div id="pageAbout" style="display: none;"></div>
                 <div id="pageDS" style="display: none;"></div>
@@ -122,11 +122,6 @@
     <div id="loading"></div>
     <div id="overlay"></div>
     <div id="overlayRestore"></div>
-        <!-- script>
-        debugOutput = true;
-        ConsoleLogHTML.connect(document.getElementById("info-log")); // Redirect log messages
-        // ConsoleLogHTML.disconnect(); // Stop redirecting -->
-        <!-- /script -->
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="lib/pouchdb.js"></script> <!-- min.6.4.3 -->
         <script src="lib/pouchdb.cordova-sqlite.js"></script> <!-- 2.0.3 -->

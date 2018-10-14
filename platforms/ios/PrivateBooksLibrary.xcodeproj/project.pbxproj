@@ -33,6 +33,7 @@
 		4BE17F5F18C949CF9EFE2C96 /* CDVReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F5D0B8F60E74405A6B19DF2 /* CDVReachability.m */; };
 		94CB83566E91460794CAA0EF /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE0F53D9C83C41228DBA65CA /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		9B71B49C603E44F1AECEE650 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959C5A2BB4334B2EA283BB29 /* CoreTelephony.framework */; };
+		A1FA9EC5CCC94CEA8411E492 /* CDVKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE25F02253E49EC84B6D065 /* CDVKeyboard.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,8 @@
 		5542F821883A4C4CA999A56E /* CDVReachability.h */ = {isa = PBXFileReference; name = "CDVReachability.h"; path = "cordova-plugin-network-information/CDVReachability.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		EE0F53D9C83C41228DBA65CA /* SystemConfiguration.framework */ = {isa = PBXFileReference; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		959C5A2BB4334B2EA283BB29 /* CoreTelephony.framework */ = {isa = PBXFileReference; name = "CoreTelephony.framework"; path = "System/Library/Frameworks/CoreTelephony.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		5FE25F02253E49EC84B6D065 /* CDVKeyboard.m */ = {isa = PBXFileReference; name = "CDVKeyboard.m"; path = "cordova-plugin-keyboard/CDVKeyboard.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		ECDCDFEC42334D57B2C5DFE1 /* CDVKeyboard.h */ = {isa = PBXFileReference; name = "CDVKeyboard.h"; path = "cordova-plugin-keyboard/CDVKeyboard.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +239,8 @@
 				2F5D0B8F60E74405A6B19DF2 /* CDVReachability.m */,
 				2B53ED0DBB2F43478EF3CFBE /* CDVConnection.h */,
 				5542F821883A4C4CA999A56E /* CDVReachability.h */,
+				5FE25F02253E49EC84B6D065 /* CDVKeyboard.m */,
+				ECDCDFEC42334D57B2C5DFE1 /* CDVKeyboard.h */,
 			);
 			name = Plugins;
 			path = "PrivateBooksLibrary/Plugins";
@@ -361,6 +366,7 @@
 				7A80B2993FDC4181A5D32133 /* CDVBarcodeScanner.mm in Resources */,
 				4AF92CF5EACA4ECDAF1A72C3 /* CDVConnection.m in Sources */,
 				4BE17F5F18C949CF9EFE2C96 /* CDVReachability.m in Sources */,
+				A1FA9EC5CCC94CEA8411E492 /* CDVKeyboard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

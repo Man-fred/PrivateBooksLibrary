@@ -17,49 +17,14 @@
     <div id="iosStatusbar"></div>
     <div id="top">
         <div class="dropdown">
-            <button id="mSettings" onclick="app.ui.dropdown('myDropdown1')" class="dropbtn title-button">&nbsp;</button>
-            <div id="myDropdown1" class="dropdown-content">
-                <a id="appSync" class="inactive" href="#">Settings</a>
-                <a id="appSettings" href="#">Config</a>
-                <a id="appAbout" onclick="app.ui.show(app.ui.pageAbout)" href="#">About</a>
-                <a id="appLog" onclick="app.ui.show(app.ui.pageLog)" href="#">Log</a>
-                <a class="inactive" href="#">Rechtliches</a>
-                <a id="appAgb" onclick="app.ui.show(app.ui.pageAGB)" href="#">Nutzungbedingungen</a>
-                <a id="appDS" onclick="app.ui.show(app.ui.pageDS)" href="#">Datenschutzerklärung</a>
-                <a id="appContact" onclick="app.ui.show(app.ui.pageContact)" href="#">Kontakt</a>
-                <a class="inactive" href="#">Sontiges</a>
-                <!-- <button type="button" class="pure-button" onclick="dbRenew()">DB Renew</button>&nbsp; -->
-                <a id="appLogin" href="#about">Login</a>
-            </div>
+            <button id="mRefresh" state='myDropdown2' class="dropbtn title-button">&nbsp;</button>
+            <div id="myDropdown2" class="drop-down drop-content"></div>
         </div>
         <div class="dropdown">
-            <button id="mRefresh" onclick="app.ui.dropdown('myDropdown2')" class="dropbtn title-button">&nbsp;</button>
-            <div id="myDropdown2" class="dropdown-content">
-                <a class="inactive" href="#">Sortierung</a>
-                <a onclick="app.datalist.show_all('books','id')" href="#">ID&nbsp;<i id="sort_id" class="fas fa-sort"></i></a>
-                <a onclick="app.datalist.show_all('books','name')" href="#">Name&nbsp;<i id="sort_name" class="fas fa-sort-up"></i></a>
-                <a onclick="app.datalist.show_all('books','date')" href="#">Datum&nbsp;<i id="sort_date" class="fas fa-sort"></i></a>
-                <a onclick="app.datalist.show_all('books','author')" href="#">Autor&nbsp;<i id="sort_author" class="fas fa-sort"></i></a>
-                <a onclick="app.datalist.show_all('books','check')" href="#">Check&nbsp;<i id="sort_check" class="fas fa-sort"></i></a>
-                <a class="inactive" href="#">Auswahl</a>
-                <select id="select_s" class="dropselect droprow">
-                    <option value="all">Alle anzeigen</option>
-                    <option value="favor">Favoriten</option>
-                    <option value="s0">not owned</option>
-                    <option value="s1">ordered</option>
-                    <option value="s2">owned</option>
-                    <option value="s6">owned/read</option>
-                    <option value="s9">new</option>
-                    <option value="e1">ausgeliehen</option>
-                </select>
-                <a id="showDeleted" onclick="app.datalist.showDeleted()" href="#">Gelöschtes&nbsp;anzeigen</a>
-                <a id="appRefresh" href="#">Refresh</a>
-            </div>
+            <button id="appAdd" class="dropbtn title-button" state="add" title="Neuer Eintrag">&nbsp;</button>
         </div>
-        <div class="dropdown">
-            <button id="appAdd" class="dropbtn title-button" onclick="app.data.show('')" title="Neuer Eintrag">&nbsp;</button>
-        </div>
-        <div id="appTitle">Bücher</div>
+        <div id="appTitle"></div>
+        <button id="appReturn" onclick="app.ui.getVerlauf(); return false;" disabled="disabled" class="appReturn title-button"></button>
     </div>
     <div id="dataformBooks" class="header">
         <div id="topMessage">&nbsp;</div>
@@ -131,51 +96,45 @@
             </div>
         </div>
     </div>
-    <footer class="pure-flex-rw" id="footer">
-        <div id="info-dev" class="blink"><span class="event listening">Connecting to Device</span><span class="event received" style="display:none;">Device is Ready</span></div>
+    <footer>
+        <div class="dropdown">
+            <button id="mSettings" state='myDropdown1' class="dropbtn title-button">&nbsp;</button>
+            <div id="myDropdown1" class="drop-up drop-content">
+                <a id="appSync" class="inactive" href="#">Settings</a>
+                <a id="appSettings" href="#">Config</a>
+                <a id="appAbout" onclick="app.ui.show(app.ui.pageAbout)" href="#">About</a>
+                <a id="appLog" onclick="app.ui.show(app.ui.pageLog)" href="#">Log</a>
+                <a class="inactive" href="#">Rechtliches</a>
+                <a id="appAgb" onclick="app.ui.show(app.ui.pageAGB)" href="#">Nutzungbedingungen</a>
+                <a id="appDS" onclick="app.ui.show(app.ui.pageDS)" href="#">Datenschutzerklärung</a>
+                <a id="appContact" onclick="app.ui.show(app.ui.pageContact)" href="#">Kontakt</a>
+                <a class="inactive" href="#">Sontiges</a>
+                <!-- <button type="button" class="pure-button" onclick="dbRenew()">DB Renew</button>&nbsp; -->
+                <a id="appLogin" href="#">Login</a>
+                <a id="appBackup" href="#">Backup</a>
+                <a id="appRestore" href="#">Restore</a>
+            </div>
+        </div>
+        <div id="info-dev" class="blink">Connecting to Device</div>
         <div id="info-sync">no Server</div>
     </footer>
 
     <div id="loading"></div>
-    <div id="overlay">
-        <div id="overlay_content">
-            <div id="overlay1" class="overlay">
-                <h2>Privat</h2>
-                <p>
-                    Verwalten Sie Ihre private Büchersammlung und Ihre eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern,
-                    es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.
-                </p>
-            </div>
-            <div id="overlay2" class="overlay">
-                <h2>Overlay Text 2</h2>
-            </div>
-            <div id="overlay3" class="overlay">
-                <h2>Jetzt gehts los</h2>
-                <p>Die Einführung können Sie jederzeit wieder anschauen über About -> Rundgang starten.</p>
-                <p>Hilfe und Beschreibung der App gibt es im <a href="https://www.bcss.de/produkte/apps/pbl" target="_blank">Internet</a>.</p>
-            </div>
-            <!--<label>
-            <input type="checkbox" id="initHide" hidden checked="checked"> Diese Einführung beim nächsten Mal nicht mehr anzeigen
-            </label>-->
-            <div class="left"><button onclick="app.init.show(-1)">prev</button></div>
-            <div class="right"><button onclick="app.init.show(1)">next</button></div>
-            <div class="center"><button onclick="app.init.hide()">Jetzt loslegen</button></div>
-        </div>
-    </div>
-
-    <!-- script>
+    <div id="overlay"></div>
+    <div id="overlayRestore"></div>
+        <!-- script>
         debugOutput = true;
         ConsoleLogHTML.connect(document.getElementById("info-log")); // Redirect log messages
         // ConsoleLogHTML.disconnect(); // Stop redirecting -->
-    <!-- /script -->
-    <script type="text/javascript" src="/www/WinJS/js/base.js"></script>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="lib/pouchdb.js"></script> <!-- min.6.4.3 -->
-    <script src="lib/pouchdb.cordova-sqlite.js"></script> <!-- 2.0.3 -->
-    <script src="lib/handlebars.runtime.js"></script> <!-- v4.0.11 -->
-    <script data-main="main" src="lib/require.js"></script>
-    <!-- Matomo -->
-    <!-- script type="text/javascript">
+        <!-- /script -->
+        <script type="text/javascript" src="/www/WinJS/js/base.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="lib/pouchdb.js"></script> <!-- min.6.4.3 -->
+        <script src="lib/pouchdb.cordova-sqlite.js"></script> <!-- 2.0.3 -->
+        <script src="lib/handlebars.runtime.js"></script> <!-- v4.0.11 -->
+        <script data-main="main" src="lib/require.js"></script>
+        <!-- Matomo -->
+        <!-- script type="text/javascript">
         var _paq = _paq || [];
         /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
         _paq.push(['trackPageView']);
@@ -188,6 +147,6 @@
             g.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);
         })();
     </script -->
-    <!-- End Matomo Code -->
+        <!-- End Matomo Code -->
 </body>
 </html>

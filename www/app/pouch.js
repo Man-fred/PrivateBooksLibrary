@@ -111,7 +111,7 @@
             app.info.setSync('sync', 'Synchronisierung beginnt', 'syncing');
             localDb.replicate.from(remoteDb).on('complete', function (info) {
                 //console.log(info.last_seq);
-                app.log('Last Sequence: ' + parseInt(info.last_seq));
+                console.info('Last Sequence: ' + parseInt(info.last_seq));
                 // then two-way, continuous, retriable sync
                 localDb.mySync = localDb.sync(remoteDb, { live: true, retry: true })
                     .on('change', pouch.onSyncChange)
@@ -129,7 +129,7 @@
         },
         onSyncChange: function (info) {
             if (info.direction === "pull") {
-                app.log('Last Sequence: ' + parseInt(info.change.last_seq));
+                console.info('Last Sequence: ' + parseInt(info.change.last_seq));
             }
             console.log(info);
             app.info.setSync('Server: change ' + (typeof info.change === 'undefined' ? '' : info.change.ok), 'changed');
@@ -138,7 +138,7 @@
             app.info.setSync('Server: paused', (err ? err : ''), 'paused');
             pouch.db.info().then(function (result) {
                 app.info.setSync('Server: paused', result.update_seq, 'paused');
-                app.log('Server: paused ' + result.update_seq);
+                console.info('Server: paused ' + result.update_seq);
             }).catch(function (err) {
                 console.log(err);
             });
@@ -163,17 +163,17 @@
         },
         dbNew: function () {
             //Test for browser webSQL compatibility
-            app.log('Database start in pouch.js');
+            console.info('Database start in pouch.js');
             this.infoSync.innerHTML = 'connect local';
             if (typeof cordova !== "undefined") {
                 if (typeof cordova.platformId !== "undefined") {
-                    app.log('cordova.platformId: ' + cordova.platformId);
+                    console.info('cordova.platformId: ' + cordova.platformId);
                 }
                 if (typeof sqlitePlugin !== "undefined") {
-                    app.log('cordova.sqlitePlugin: ' + sqlitePlugin);
+                    console.info('cordova.sqlitePlugin: ' + sqlitePlugin);
                 }
                 if (typeof openDatabase !== "undefined") {
-                    app.log('cordova.openDatabase: ' + openDatabase);
+                    console.info('cordova.openDatabase: ' + openDatabase);
                 }
             }
             /*
@@ -181,15 +181,15 @@
                 && typeof sqlitePlugin !== 'undefined' && typeof openDatabase !== 'undefined') {
                 this.dbA = new PouchDB(this.dbNameA, { revs_limit: 1, auto_compaction: true, adapter: 'cordova-sqlite' });
                 this.db = new PouchDB(this.dbName, { revs_limit: 10, auto_compaction: true, adapter: 'cordova-sqlite' });
-                app.log('Database: Cordova');
+                console.info('Database: Cordova');
             } else if (!this.pbl.ui.isChrome() && window.openDatabase) {
                 this.dbA = new PouchDB(this.dbNameA, { revs_limit: 10, adapter: 'websql' });
                 this.db = new PouchDB(this.dbName, { revs_limit: 10, adapter: 'websql' });
-                app.log('Database: webSQL');
+                console.info('Database: webSQL');
             } else {
                 this.dbA = new PouchDB(this.dbNameA, { revs_limit: 1, auto_compaction: true, size: 500 });
                 this.db = new PouchDB(this.dbName, { revs_limit: 10, auto_compaction: true, size: 100 });
-                app.log('Database: Pouchdb');
+                console.info('Database: Pouchdb');
             }
             */
             this.dbOpen();
@@ -198,9 +198,9 @@
             /* Aufräumen alter Datenbanken in pre-Alpha, erledigt
             if (cordova.platformId === "ios") {
                 this.dbA.destroy().then(function (response) {
-                    app.log(response);
+                    console.info(response);
                 }).catch(function (err) {
-                    app.log(err);
+                    console.info(err);
                 });
             }
             this.infoSync.innerHTML = 'connect 3';
@@ -235,7 +235,7 @@
                 */
                 /*/ Liste 
                 for (var i = 0; i < localStorage.length; i++) {
-                    app.log('localStorage: ' + localStorage.key(i) + ': ' + localStorage.getItem(localStorage.key(i)));
+                    console.info('localStorage: ' + localStorage.key(i) + ': ' + localStorage.getItem(localStorage.key(i)));
                 };
                 // Ende Liste */
                 // normale Verarbeitung
@@ -274,7 +274,7 @@
                         app.info.setSync('connect new login saved');
                         console.log(pouch.dbIdPrivate);
                         console.log(pouch.dbIdPublic);
-                        app.log("Erster Start");
+                        console.info("Erster Start");
                         pouch.initPutConstants(pouch.dbIdPrivate);
                         app.ui.datalist("books");
                         app.init.show(0);
@@ -282,7 +282,7 @@
                         pouch.remoteLogin();
                     }).catch(function (err) {
                         app.info.setSync('connect no login', 'Datenbank ohne Funktion: ' + err, 'error');
-                        app.log('Datenbank ohne Funktion: ' + err);
+                        console.error('Datenbank ohne Funktion: ' + err);
                     });
                 });
             }
@@ -433,17 +433,17 @@
                 pouch.restoreRows = pouch.restoreResult.total_rows + pouch.restoreResult.img.total_rows;
 
                 pouch.db.destroy().then(function (response) {
-                    app.log(response);
+                    console.info(response);
                     pouch.restoreRun();
                 }).catch(function (err) {
-                    app.log(err);
+                    console.error(err);
                     pouch.restoreRun();
                 });
                 pouch.dbA.destroy().then(function (response) {
-                    app.log(response);
+                    console.info(response);
                     pouch.restoreRun();
                 }).catch(function (err) {
-                    app.log(err);
+                    console.info(err);
                     pouch.restoreRun();
                 });
             }
@@ -466,7 +466,7 @@
                     }
                 }).catch(function (err) {
                     console.log(err);
-                    //app.log('Datenbank ohne Funktion: ' + err);
+                    //console.info('Datenbank ohne Funktion: ' + err);
                 });
             }            
             for (var i = 0; i < pouch.restoreResult.img.total_rows; i++) {
@@ -478,7 +478,7 @@
                     }
                 }).catch(function (err) {
                     console.log(err);
-                    //app.log('Datenbank ohne Funktion: ' + err);
+                    //console.info('Datenbank ohne Funktion: ' + err);
                 });
             }            
         },

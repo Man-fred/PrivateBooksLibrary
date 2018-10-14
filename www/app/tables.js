@@ -285,11 +285,13 @@
                 },
                 dbServer: {
                     name: "dbServer",
-                    title: "Server"
+                    title: "Server",
+                    input: "autocorrect=\"off\" autocapitalize=\"off\""
                 },
                 dbPort: {
                     name: "dbPort",
                     title: "Port"
+                    , type: "tel"
                 },
                 /*dbName: {
                     name: "dbName",
@@ -299,16 +301,19 @@
                 dbUser: {
                     name: "dbUser",
                     title: "User"
+                    , input: "autocorrect=\"off\" autocapitalize=\"off\""
                     , noList: 1
                 },
                 dbPass: {
                     name: "dbPass",
                     title: "Pass"
+                    , input: "autocorrect=\"off\" autocapitalize=\"off\""
                     , noList: 1
                 },
                 dbId: {
                     name: "dbId",
                     title: "Prefix"
+                    , input: "autocorrect=\"off\" autocapitalize=\"off\""
                     , noList: 1
                 },
                 appTitle: {
