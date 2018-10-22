@@ -26,7 +26,7 @@
                     } else {
                         trace = trace[0];
                     }
-                    trace = trace.replace(/@.*(\.de|\/www)\//, "@");
+                    trace = trace.replace(/(at html|at console|@|file:).*(\.de|\/www)\//, "@");
 
                     htmlConsole.insert(method, message, trace);
                     if (htmlConsole.apply) {

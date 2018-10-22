@@ -43,11 +43,11 @@
                 },
                 price: {
                     name: "price",
-                    title: "price"
+                    title: app.lang.price
                 },
                 releasedate: {
                     name: "releasedate",
-                    title: "releasedate"
+                    title: app.lang.releasedate
                 },
                 state: {
                     name: "state",
@@ -86,7 +86,7 @@
                 },
                 checkdate: {
                     name: "checkdate",
-                    title: "checkdate"
+                    title: app.lang.checkdate
                 },
                 source: {
                     name: "source",
@@ -131,7 +131,7 @@
             fields: {
                 name: {
                     name: "name",
-                    title: "name"
+                    title: app.lang.author
                 },
                 nr: {
                     name: "nr",

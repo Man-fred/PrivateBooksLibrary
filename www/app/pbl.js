@@ -69,7 +69,6 @@ define(function (require) {
                     pbl.onDeviceReady();
                 });
                 require(['./info'], function (info) {
-                    info.initialize();
                     pbl.info = info;
                     pbl.onDeviceReady();
                 });
@@ -109,6 +108,11 @@ define(function (require) {
             pbl.dbReady--;
             //console.log(pbl.dbReady);
             if (pbl.dbReady === 0) {
+                app.ui.load(document.getElementById("footer"), 'footer');
+                app.info.initialize();
+                app.pouch.infoSync = document.getElementById('info-sync');
+                app.pouch.infoSync.innerHTML = 'initialize';
+
                 //console.log(cordova.file);
                 //pbl.takeOverConsole(pbl.loglevel);
                 $('#appSettings').click(function () {
@@ -119,6 +123,8 @@ define(function (require) {
                 document.addEventListener("resume", pbl.onResume, false);
                 document.addEventListener("offline", pbl.onOffline, false);
                 document.addEventListener("online", pbl.onOnline, false);
+                document.getElementById('appPrint').addEventListener("click", app.ui.print); 
+                document.getElementById("mSettings").addEventListener("click", app.ui.dropdown); 
 
                 //cordova.plugins.notification.badge.set(1);
 

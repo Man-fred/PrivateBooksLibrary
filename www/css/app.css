@@ -52,13 +52,13 @@ footer {
 }
 .header {
   padding: 0;
-  padding-top: 20px;
+  padding-top: 0px;
   margin: 0;
   color: hsl(0, 0%, 25%);
   background-color: hsl(0, 0%, 96.4%);
   text-align: center;
   border-bottom: 1px solid hsl(0, 0%, 96.4%);
-  top: 44px;
+  top: 52px;
   left: 0;
   width: calc(100% -  30px);
   height: 60px;
@@ -97,7 +97,7 @@ main3 {
 }
 .content {
   padding: 0;
-  padding-top: 64px;
+  padding-top: 52px;
   height: 100%;
   /*max-width: 800px;*/
   line-height: 1.6em;
@@ -107,16 +107,16 @@ main3 {
   .content {
     /* CSS specific to iOS devices */
     /* Status bar height on iOS 10 */
-    padding-top: 64px;
+    padding-top: 72px;
     /* Status bar height on iOS 11.0 */
-    padding-top: calc(constant(safe-area-inset-top) +  44px);
+    padding-top: calc(constant(safe-area-inset-top) +  52px);
     /* Status bar height on iOS 11+ */
-    padding-top: calc(env(safe-area-inset-top) +  44px);
+    padding-top: calc(env(safe-area-inset-top) +  52px);
   }
 }
 #iosStatusbar {
   top: 0px;
-  height: 20px;
+  height: 0px;
   width: 100%;
   background-color: #6EAFDA;
   position: fixed !important;
@@ -127,26 +127,27 @@ main3 {
     /* CSS specific to iOS devices */
     /* Status bar height on iOS 10 */
     top: 0px;
+    height: 20px;
     /* Status bar height on iOS 11.0 */
-    top: calc(constant(safe-area-inset-top) +  -20px);
+    top: calc(constant(safe-area-inset-top) -  20px);
     /* Status bar height on iOS 11+ */
-    top: calc(env(safe-area-inset-top) +  -20px);
+    top: calc(env(safe-area-inset-top) -  20px);
   }
 }
 #top {
-  padding-top: 20px;
+  padding-top: 0px;
   top: 0px;
-  left: 44px;
+  left: 52px;
   position: fixed !important;
   z-index: 900;
   /* so the menu or its navicon stays above all content */
-  width: calc(100% -  44px);
+  width: calc(100% -  52px);
   background: #0965A0;
   font-size: 110%;
   text-transform: uppercase;
   color: hsl(0, 0%, 96.4%);
   margin: 0;
-  height: 44px;
+  height: 52px;
   display: table-cell;
   vertical-align: middle;
 }
@@ -175,7 +176,7 @@ footer {
   bottom: 0px;
   position: fixed !important;
   position: absolute;
-  height: 44px;
+  height: 52px;
   width: 100%;
 }
 #info-sync {
@@ -221,7 +222,7 @@ footer {
 #appTitle {
   float: right;
   padding-top: 0.6em;
-  width: calc(100% -  168px);
+  width: calc(100% -  204px);
   white-space: nowrap;
   text-align: center;
 }
@@ -230,11 +231,10 @@ footer {
   font-size: 200%;
   font-weight: bold;
   border: none;
-  /*padding: 0 10px 0 10px;*/
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   display: block;
-  margin: 4px 10px;
+  margin: 2px 8px;
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
@@ -244,8 +244,8 @@ footer {
   font-size: 200%;
   font-weight: bold;
   padding: 0;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   display: block;
   margin: 10px;
   border: 0;
@@ -282,7 +282,7 @@ div.container {
 #pageDS,
 #pageAbout,
 #pageContact {
-  padding: 64px 20px 54px 20px;
+  padding: 52px 20px 62px 20px;
   display: none;
 }
 #singledata {
@@ -291,19 +291,19 @@ div.container {
   /*max-width: 34em;*/
   float: left;
   margin: 0;
-  padding: 0 /*@top-height*/ 0 44px 0;
+  padding: 0 /*@top-height*/ 0 52px 0;
 }
 #bc1,
 #as1 {
   float: left;
 }
 #bc_search {
-  width: calc(100% -  222px);
+  width: calc(100% -  148px);
   float: left;
   padding: 8px 0 0 4px;
 }
 #as_search {
-  width: calc(100% -  178px);
+  width: calc(100% -  186px);
   float: left;
   padding: 8px 0 0 4px;
 }
@@ -315,8 +315,8 @@ div.container {
   float: left;
 }
 #datalist {
-  padding: 0 0 44px 0;
-  padding-top: 80px;
+  padding: 0 0 52px 0;
+  padding-top: 60px;
   /*margin-left: 34em;
     border-left: 1px solid gray;*/
   overflow: auto;
@@ -565,6 +565,9 @@ input[type="reset"]:active {
   /* Firefox */
   background-image: -moz-linear-gradient(bottom, #fafafa 10%, #cccccc 100%);
 }
+#dbinfoBtn {
+  float: right;
+}
 #loading {
   display: none;
   border-radius: 50%;
@@ -713,7 +716,7 @@ This is the parent `<div>` that contains the menu and the content area.
   position: relative;
   left: 0;
   padding-left: 0;
-  padding-bottom: 44px;
+  padding-bottom: 52px;
   height: 100%;
   width: calc(100% -  1px);
 }
@@ -755,7 +758,7 @@ The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
 appears on the left side of the page.
 */
 #menu {
-  padding-top: 20px;
+  padding-top: 0px;
   margin-left: -150px;
   width: 150px;
   position: fixed;
@@ -786,7 +789,7 @@ appears on the left side of the page.
 }
 .right {
   float: right;
-  width: 88px;
+  width: 104px;
 }
 .left {
   float: left;
@@ -796,7 +799,8 @@ All anchors inside the menu should be styled like this.
 */
 #menu a {
   border: none;
-  padding: 0.6em 0 0.6em 0.6em;
+  padding: 16px 0 16px 16px;
+  height: 16px;
 }
 .pure-menu-link {
   color: hsl(0, 0%, 89.3%);
@@ -841,7 +845,7 @@ This styles the selected menu item `<li>`.
 This styles a link within a selected menu item `<li>`.
 */
 #menu .pure-menu-item {
-  height: 44px;
+  height: 52px;
 }
 .pure-menu-selected a {
   color: hsl(0, 0%, 96.4%);
@@ -855,7 +859,7 @@ This styles the menu heading.
   margin: 0;
 }
 .pure-menu-horizontal .pure-menu-children {
-  left: -146px;
+  left: -138px;
   width: 190px;
 }
 /* -- Dynamic Button For Responsive Menu -------------------------------------*/
@@ -876,20 +880,20 @@ small screens.
   font-size: 10px;
   /* change this value to increase/decrease button size */
   z-index: 1000;
-  padding: 18px 14px;
-  padding-top: 38px;
-  width: 16px;
-  height: 8px;
+  padding: 0px 16px 20px 16px;
+  padding-top: 22px;
+  width: 20px;
+  height: 10px;
 }
 @supports (-webkit-overflow-scrolling: touch) {
   .menu-link {
     /* CSS specific to iOS devices */
     /* Status bar height on iOS 10 */
-    padding-top: 38px;
+    padding-top: 42px;
     /* Status bar height on iOS 11.0 */
-    padding-top: calc(constant(safe-area-inset-top) +  18px);
+    padding-top: calc(constant(safe-area-inset-top) +  22px);
     /* Status bar height on iOS 11+ */
-    padding-top: calc(env(safe-area-inset-top) +  18px);
+    padding-top: calc(env(safe-area-inset-top) +  22px);
   }
 }
 @media only screen and (min-width: 568px) {
@@ -939,9 +943,9 @@ small screens.
 /************ rechte Sortierleiste ***********/
 #mySearchAZ {
   background: hsl(0, 0%, 89.3%);
-  top: 64px;
+  top: 52px;
   right: 0;
-  bottom: 44px;
+  bottom: 52px;
   z-index: 800;
   /* so the menu or its navicon stays above all content */
   position: fixed !important;
@@ -958,11 +962,11 @@ small screens.
   #mySearchAZ {
     /* CSS specific to iOS devices */
     /* Status bar height on iOS 10 */
-    top: 64px;
+    top: 72px;
     /* Status bar height on iOS 11.0 */
-    top: calc(constant(safe-area-inset-top) +  44px);
+    top: calc(constant(safe-area-inset-top) +  52px);
     /* Status bar height on iOS 11+ */
-    top: calc(env(safe-area-inset-top) +  44px);
+    top: calc(env(safe-area-inset-top) +  52px);
   }
 }
 @media only screen and (min-width: 568px) {
@@ -976,7 +980,7 @@ small screens.
 }
 .myTableAnchor {
   position: absolute;
-  top: -104px;
+  top: -112px;
 }
 .searchlist {
   text-align: center;
@@ -1082,10 +1086,10 @@ Hides the menu at `48em`, but modify this based on your app's needs.
   right: 0px;
 }
 .drop-down {
-  top: 44px;
+  top: 52px;
 }
 .drop-up {
-  bottom: 44px;
+  bottom: 52px;
 }
 .drop-content a,
 .drop-content label {

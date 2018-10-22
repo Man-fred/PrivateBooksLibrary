@@ -45,7 +45,7 @@
                 result += '<div id="as_search" class="deleteicon">';
                 result += '<input id="as_text" placeholder="Autor ..."/>'; 
                 result += '<span onclick="app.data.mySearch(\'~~\')"></span></div>';
-                result += '</div>';
+                result += '</div><div class="clear"></div>';
             }
             $.each(myApp[aktiveSeite].header, function () {
                 if (!this.noField) {

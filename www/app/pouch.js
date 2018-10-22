@@ -23,8 +23,8 @@
 
         initialize: function (pbl) {
             this.pbl = pbl;
-            this.infoSync = document.getElementById('info-sync');
-            this.infoSync.innerHTML = 'initialize';
+            //this.infoSync = document.getElementById('info-sync');
+            //this.infoSync.innerHTML = 'initialize';
         },
         set: function (doc) {
             this.dbServer = doc.dbServer;

@@ -15,7 +15,11 @@ templates['agb'] = template({"compiler":[7,">= 4.0.0"],"main":function(container
     return "<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\r\n    <title></title>\r\n</head>\r\n<body>\r\n    <h2>Allgemeine Geschäftsbedingungen für die Nutzung der Internetseiten und Mobiltelefon-Dienste von BCSS GmbH</h2>\r\n    <h3>Allgemeines</h3>\r\n    <p>Die BCSS GmbH (nachfolgend BCSS) stellt Software für mobile Endgeräte (nachfolgend App) zur Verfügung, die es dem Nutzer ermöglicht Bücherlisten anzulegen und zu verwalten.</p>\r\n    <h3>Registrierung</h3>\r\n</body>\r\n</html>";
 },"useData":true});
 templates['contact'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "<h2>Kontakt</h2>\r\n<p>\r\n    BCSS GmbH<br />\r\n    Waldstraße 27a<br />\r\n    22955 Hoisdorf<br />\r\n    Deutschland\r\n</p>\r\n<p>\r\n    Manfred Bielemeier<br />\r\n    <a href=\"https://www.bcss.de\" target=\"_blank\">www.bcss.de</a>\r\n</p>\r\n";
+    var stack1;
+
+  return "<h2>"
+    + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.str : depth0)) != null ? stack1.contact : stack1), depth0))
+    + "</h2>\r\n<p>\r\n    BCSS GmbH<br />\r\n    Waldstraße 27a<br />\r\n    22955 Hoisdorf<br />\r\n    Deutschland\r\n</p>\r\n<p>\r\n    Manfred Bielemeier<br />\r\n    E-Mail: <a href=\"mailto:dev@bcss.de?subject=Private%20Books%20Library\">dev@bcss.de</a><br />\r\n    <a href=\"https://www.bcss.de\" target=\"_blank\">www.bcss.de</a>\r\n</p>\r\n";
 },"useData":true});
 templates['context_1'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<a id=\"showDeleted\" onclick=\"app.datalist.showDeleted()\" href=\"#\">Gelöschtes&nbsp;anzeigen</a>\r\n<a id=\"appRefresh\" href=\"#\">Refresh</a>\r\n";
@@ -25,6 +29,13 @@ templates['context_authors_2'] = template({"compiler":[7,">= 4.0.0"],"main":func
 },"useData":true});
 templates['context_books_1'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "<a class=\"inactive\" href=\"#\">Sortierung</a>\r\n<a onclick=\"app.datalist.show_all('books','name')\" href=\"#\">Name&nbsp;<i id=\"sort_name\" class=\"fas fa-sort-up\"></i></a>\r\n<a onclick=\"app.datalist.show_all('books','date')\" href=\"#\">Datum&nbsp;<i id=\"sort_date\" class=\"fas fa-sort\"></i></a>\r\n<a onclick=\"app.datalist.show_all('books','author')\" href=\"#\">Autor&nbsp;<i id=\"sort_author\" class=\"fas fa-sort\"></i></a>\r\n<a onclick=\"app.datalist.show_all('books','check')\" href=\"#\">Check&nbsp;<i id=\"sort_check\" class=\"fas fa-sort\"></i></a>\r\n<a class=\"inactive\" href=\"#\">Auswahl</a>\r\n<select id=\"select_s\" class=\"dropselect droprow\">\r\n    <option value=\"all\">Alle anzeigen</option>\r\n    <option value=\"favor\">Favoriten</option>\r\n    <option value=\"s0\">not owned</option>\r\n    <option value=\"s1\">ordered</option>\r\n    <option value=\"s2\">owned</option>\r\n    <option value=\"s6\">owned/read</option>\r\n    <option value=\"s9\">new</option>\r\n    <option value=\"e1\">ausgeliehen</option>\r\n</select>\r\n";
+},"useData":true});
+templates['footer'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "\r\n<div class=\"dropdown\">\r\n    <button id=\"mSettings\" state='myDropdown1' class=\"dropbtn title-button\">&nbsp;</button>\r\n    <div id=\"myDropdown1\" class=\"drop-up drop-content\">\r\n        <a id=\"appSync\" class=\"inactive\" href=\"#\">Einstellungen</a>\r\n        <a id=\"appSettings\" href=\"#\">Parameter</a>\r\n        <a id=\"appAbout\" onclick=\"app.ui.show(app.ui.pageAbout)\" href=\"#\">Über PBL</a>\r\n        <a id=\"appLog\" onclick=\"app.ui.show(app.ui.pageLog)\" href=\"#\">Log</a>\r\n        <a class=\"inactive\" href=\"#\">Rechtliches</a>\r\n        <a id=\"appAgb\" onclick=\"app.ui.show(app.ui.pageAGB)\" href=\"#\">Nutzungbedingungen</a>\r\n        <a id=\"appDS\" onclick=\"app.ui.show(app.ui.pageDS)\" href=\"#\">Datenschutzerklärung</a>\r\n        <a id=\"appContact\" onclick=\"app.ui.show(app.ui.pageContact)\" href=\"#\">"
+    + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.str : depth0)) != null ? stack1.contact : stack1), depth0))
+    + "</a>\r\n        <a class=\"inactive\" href=\"#\">Sontiges</a>\r\n        <!-- <button type=\"button\" class=\"pure-button\" onclick=\"dbRenew()\">DB Renew</button>&nbsp; -->\r\n        <a id=\"appLogin\" href=\"#\">Login</a>\r\n        <a id=\"appBackup\" href=\"#\">Backup</a>\r\n        <a id=\"appRestore\" href=\"#\">Restore</a>\r\n    </div>\r\n</div>\r\n<div class=\"dropdown\">\r\n    <button id=\"appPrint\" class=\"dropbtn title-button\"></button>\r\n</div>\r\n<div id=\"info-dev\" class=\"blink\">Connecting to Device</div>\r\n<div id=\"info-sync\">no Server</div>\r\n";
 },"useData":true});
 templates['overlayRestore'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;

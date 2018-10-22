@@ -253,6 +253,15 @@ module.exports = [
     "clobbers": [
       "window.Keyboard"
     ]
+  },
+  {
+    "id": "cordova-plugin-printer.Printer",
+    "file": "plugins/cordova-plugin-printer/www/printer.js",
+    "pluginId": "cordova-plugin-printer",
+    "clobbers": [
+      "plugin.printer",
+      "cordova.plugins.printer"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -267,7 +276,8 @@ module.exports.metadata =
   "cordova-plugin-whitelist": "1.3.3",
   "phonegap-plugin-barcodescanner": "8.0.0",
   "cordova-plugin-network-information": "2.0.1",
-  "cordova-plugin-keyboard": "1.2.0"
+  "cordova-plugin-keyboard": "1.2.0",
+  "cordova-plugin-printer": "0.7.3"
 };
 // BOTTOM OF METADATA
 });

@@ -28,6 +28,9 @@
 #appAdd {
     background: url(../img/svg/solid/plus-circle.svg);
 }
+#appPrint {
+    background: url(../img/svg/solid/print-white.svg);
+}
 
 .title-close {
     background: url(../img/svg/solid/times-circle.svg);

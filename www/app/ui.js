@@ -27,6 +27,7 @@ define(function (require) {
         myDropdown2: document.getElementById("myDropdown2"),
         mRefresh: document.getElementById("mRefresh"),
         appReturn: document.getElementById("appReturn"),
+        appPrint: document.getElementById("appPrint"),
         pageLog: document.getElementById("pageLog"),
         page1: document.getElementById("page1"),
         page2: document.getElementById("page2"),
@@ -43,14 +44,22 @@ define(function (require) {
         initialize: function (pbl) {
             if (this.init) {
                 this.init = false;
+
                 this.menuLink.addEventListener('click', this.togglemenuLink);
                 this.menu.addEventListener("click", this.toggleAll);
                 this.main3.addEventListener("click", this.toggleMain3);
                 this.pbl = pbl;
                 window.addEventListener('click', this.dropdownClose);
                 this.mRefresh.addEventListener("click", this.dropdown); 
-                document.getElementById("mSettings").addEventListener("click", this.dropdown); 
                 document.getElementById("appAdd").addEventListener("click", this.dropdown); 
+                // windows + android
+                if (cordova.platformId === 'android' | cordova.platformId === 'windows') {
+                    var ok = document.addEventListener("backbutton", this.getVerlauf, false);
+                    this.appReturn.innerHTML = '';
+                } else {
+                    this.appReturn.addEventListener("click", this.getVerlauf, false);
+                }
+
                 //ui.setVerlauf(ui.page1, 'books', '', false);
             }
         },
@@ -270,6 +279,14 @@ define(function (require) {
             ui.toggleClass(ui.layout, active);
             ui.toggleClass(ui.menu, active);
             ui.toggleClass(ui.menuLink, active);
+        },
+        print: function () {
+            if (cordova.platformId === 'browser') {
+                window.print();
+            } else {
+                var page = document.getElementById('main3');
+                cordova.plugins.printer.print(page, 'Private Books Library');
+            }
         },
         load: function (dom, seite) {
             if (!ui.pageHelper[seite]) {
