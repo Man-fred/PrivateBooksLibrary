@@ -5,8 +5,11 @@
   "dependencies": {
     "cc.fovea.cordova.purchase": "^7.2.4",
     "cord": "^1.0.0",
+    "cordova-admob": "^4.1.16",
     "cordova-android": "^7.0.0",
+    "cordova-connectivity-monitor": "^1.2.2",
     "cordova-ios": "^4.5.4",
+    "cordova-libgoogleadmobads": "git+https://github.com/appfeel/google-iosadmobads.git",
     "cordova-plugin-camera": "^4.0.3",
     "cordova-plugin-console": "^1.1.0",
     "cordova-plugin-file": "^6.0.1",
@@ -42,7 +45,8 @@
       "cordova-plugin-printer": {},
       "cc.fovea.cordova.purchase": {
         "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAksjFrOzPzToUbrT5Hm577XiDIPtOOcTCaaKc3DPNxXSENH1HL3+pQTIwCxHdfQ9+o4HUoO1v3wlOiB1YMX9cNrEfxMtcXum9f8t9Lza/0WQHm2jflxaNq3ICFlbylJK9gBhM0uMj5M6BiUMSMzgzEdC+DhlPMvEj16fUscA8CwQoqmoWvn05s8IiKK65sB6+7KAn0qrUAYba7pnRNrYpHjKUoSgTr/BXpNgmpb+QiIZnepJMC0OyLfe46603AvKtDBiS5+6WsdM+mQ/xiX0TSBkIjmadIh2hghj7CvKwVvghBlt6PaJCq1V8CJl8u5EzxLzh8pQSnXarRns6gWYmFwIDAQAB"
-      }
+      },
+      "cordova-admob": {}
     }
   }
 }

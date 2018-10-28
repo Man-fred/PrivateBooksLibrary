@@ -39,6 +39,11 @@
 		ED079309FA124BB186397C08 /* SKProduct+LocalizedPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E02B62553694D24A15D73D8 /* SKProduct+LocalizedPrice.m */; };
 		6DDDE164D91E48309CF07FE4 /* FileUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1925E2EEDF9F4908B29CB43E /* FileUtility.m */; };
 		D3904F3CD9F3423C93095512 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB178FE02BC4C2585EEE9BE /* StoreKit.framework */; };
+		F154B8D0D2C44EB49C549B5D /* CDVAppFeelReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = EADB023323314ACE8B041FC0 /* CDVAppFeelReachability.m */; };
+		6D674AD4561D48019B990792 /* AppFeelReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AFFF58BD2B41FB912C496C /* AppFeelReachability.m */; };
+		9D1D596E16E94980A7736D11 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E172FEB296024E2D82CE8816 /* GoogleMobileAds.framework */; };
+		E89881A544A74FF18A677A24 /* CDVAdMobAds.m in Sources */ = {isa = PBXBuildFile; fileRef = 718A2FC8616843B2869F3A20 /* CDVAdMobAds.m */; };
+		C5DEC2FBC02D41FB9DB3798A /* CDVAdMobAdsAdListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E0C1666BF4F45C2879744DE /* CDVAdMobAdsAdListener.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +123,15 @@
 		EF61DF818D9446BD8D08D9BC /* SKProduct+LocalizedPrice.h */ = {isa = PBXFileReference; name = "SKProduct+LocalizedPrice.h"; path = "cc.fovea.cordova.purchase/SKProduct+LocalizedPrice.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		0E28B5CF0D8D4D7EBFA05922 /* FileUtility.h */ = {isa = PBXFileReference; name = "FileUtility.h"; path = "cc.fovea.cordova.purchase/FileUtility.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		2AB178FE02BC4C2585EEE9BE /* StoreKit.framework */ = {isa = PBXFileReference; name = "StoreKit.framework"; path = "System/Library/Frameworks/StoreKit.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		EADB023323314ACE8B041FC0 /* CDVAppFeelReachability.m */ = {isa = PBXFileReference; name = "CDVAppFeelReachability.m"; path = "cordova-connectivity-monitor/CDVAppFeelReachability.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		06AFFF58BD2B41FB912C496C /* AppFeelReachability.m */ = {isa = PBXFileReference; name = "AppFeelReachability.m"; path = "cordova-connectivity-monitor/AppFeelReachability.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		7BB006283C844382BC6CC207 /* CDVAppFeelReachability.h */ = {isa = PBXFileReference; name = "CDVAppFeelReachability.h"; path = "cordova-connectivity-monitor/CDVAppFeelReachability.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		D4C8C8F8F6B8448DA82357A9 /* AppFeelReachability.h */ = {isa = PBXFileReference; name = "AppFeelReachability.h"; path = "cordova-connectivity-monitor/AppFeelReachability.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		E172FEB296024E2D82CE8816 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; name = "GoogleMobileAds.framework"; path = "PrivateBooksLibrary/Plugins/cordova-libgoogleadmobads/GoogleMobileAds.framework"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		718A2FC8616843B2869F3A20 /* CDVAdMobAds.m */ = {isa = PBXFileReference; name = "CDVAdMobAds.m"; path = "cordova-admob/CDVAdMobAds.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		8E0C1666BF4F45C2879744DE /* CDVAdMobAdsAdListener.m */ = {isa = PBXFileReference; name = "CDVAdMobAdsAdListener.m"; path = "cordova-admob/CDVAdMobAdsAdListener.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		21574CE621A342C28B3F9988 /* CDVAdMobAds.h */ = {isa = PBXFileReference; name = "CDVAdMobAds.h"; path = "cordova-admob/CDVAdMobAds.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		7833813CFE254A43B2F2651E /* CDVAdMobAdsAdListener.h */ = {isa = PBXFileReference; name = "CDVAdMobAdsAdListener.h"; path = "cordova-admob/CDVAdMobAdsAdListener.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +145,7 @@
 				94CB83566E91460794CAA0EF /* SystemConfiguration.framework in Frameworks */,
 				9B71B49C603E44F1AECEE650 /* CoreTelephony.framework in Frameworks */,
 				D3904F3CD9F3423C93095512 /* StoreKit.framework in Frameworks */,
+				9D1D596E16E94980A7736D11 /* GoogleMobileAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +223,7 @@
 				EE0F53D9C83C41228DBA65CA /* SystemConfiguration.framework */,
 				959C5A2BB4334B2EA283BB29 /* CoreTelephony.framework */,
 				2AB178FE02BC4C2585EEE9BE /* StoreKit.framework */,
+				E172FEB296024E2D82CE8816 /* GoogleMobileAds.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -265,6 +281,14 @@
 				181B188AACBD4878B430FB81 /* InAppPurchase.h */,
 				EF61DF818D9446BD8D08D9BC /* SKProduct+LocalizedPrice.h */,
 				0E28B5CF0D8D4D7EBFA05922 /* FileUtility.h */,
+				EADB023323314ACE8B041FC0 /* CDVAppFeelReachability.m */,
+				06AFFF58BD2B41FB912C496C /* AppFeelReachability.m */,
+				7BB006283C844382BC6CC207 /* CDVAppFeelReachability.h */,
+				D4C8C8F8F6B8448DA82357A9 /* AppFeelReachability.h */,
+				718A2FC8616843B2869F3A20 /* CDVAdMobAds.m */,
+				8E0C1666BF4F45C2879744DE /* CDVAdMobAdsAdListener.m */,
+				21574CE621A342C28B3F9988 /* CDVAdMobAds.h */,
+				7833813CFE254A43B2F2651E /* CDVAdMobAdsAdListener.h */,
 			);
 			name = Plugins;
 			path = "PrivateBooksLibrary/Plugins";
@@ -395,6 +419,10 @@
 				24F3050259D74A379E5ACACF /* InAppPurchase.m in Sources */,
 				ED079309FA124BB186397C08 /* SKProduct+LocalizedPrice.m in Sources */,
 				6DDDE164D91E48309CF07FE4 /* FileUtility.m in Sources */,
+				F154B8D0D2C44EB49C549B5D /* CDVAppFeelReachability.m in Sources */,
+				6D674AD4561D48019B990792 /* AppFeelReachability.m in Sources */,
+				E89881A544A74FF18A677A24 /* CDVAdMobAds.m in Sources */,
+				C5DEC2FBC02D41FB9DB3798A /* CDVAdMobAdsAdListener.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +458,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				PRODUCT_NAME = "PrivateBooksLibrary";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"PrivateBooksLibrary/Plugins/cordova-libgoogleadmobads\"",
+				);
 			};
 			name = Debug;
 		};
@@ -452,6 +484,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				PRODUCT_NAME = "PrivateBooksLibrary";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"PrivateBooksLibrary/Plugins/cordova-libgoogleadmobads\"",
+				);
 			};
 			name = Release;
 		};
