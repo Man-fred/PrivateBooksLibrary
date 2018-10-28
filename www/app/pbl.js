@@ -79,6 +79,7 @@ define(function (require) {
         //pouch: null,
         menu: require('./menu'),
         init: require('./init'),
+        purchase: require('./purchase'),
         //data: null,
         dbReady : 8,
         //system : null,
@@ -132,6 +133,7 @@ define(function (require) {
                 // oberhalb neu, war vor pbl.dbReady--;
                 pbl.menu.main(pbl.myApp);
                 pbl.pouch.dbNew();
+                pbl.purchase.init();
                 //navigator.vibrate(200);
                 //console.log("vibration: "+(navigator.vibrate ? true : false) );
             }

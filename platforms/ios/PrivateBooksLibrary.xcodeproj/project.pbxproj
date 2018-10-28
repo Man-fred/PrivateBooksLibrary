@@ -35,6 +35,10 @@
 		9B71B49C603E44F1AECEE650 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 959C5A2BB4334B2EA283BB29 /* CoreTelephony.framework */; };
 		A1FA9EC5CCC94CEA8411E492 /* CDVKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE25F02253E49EC84B6D065 /* CDVKeyboard.m */; };
 		A239DF187379497AB4E804B3 /* APPPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A65550F23C44DBFB7000DF2 /* APPPrinter.m */; };
+		24F3050259D74A379E5ACACF /* InAppPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = 6413A42E78694B149C20B900 /* InAppPurchase.m */; };
+		ED079309FA124BB186397C08 /* SKProduct+LocalizedPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E02B62553694D24A15D73D8 /* SKProduct+LocalizedPrice.m */; };
+		6DDDE164D91E48309CF07FE4 /* FileUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1925E2EEDF9F4908B29CB43E /* FileUtility.m */; };
+		D3904F3CD9F3423C93095512 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB178FE02BC4C2585EEE9BE /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +111,13 @@
 		ECDCDFEC42334D57B2C5DFE1 /* CDVKeyboard.h */ = {isa = PBXFileReference; name = "CDVKeyboard.h"; path = "cordova-plugin-keyboard/CDVKeyboard.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		2A65550F23C44DBFB7000DF2 /* APPPrinter.m */ = {isa = PBXFileReference; name = "APPPrinter.m"; path = "cordova-plugin-printer/APPPrinter.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		6C67B02409514AA1836A7688 /* APPPrinter.h */ = {isa = PBXFileReference; name = "APPPrinter.h"; path = "cordova-plugin-printer/APPPrinter.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		6413A42E78694B149C20B900 /* InAppPurchase.m */ = {isa = PBXFileReference; name = "InAppPurchase.m"; path = "cc.fovea.cordova.purchase/InAppPurchase.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		8E02B62553694D24A15D73D8 /* SKProduct+LocalizedPrice.m */ = {isa = PBXFileReference; name = "SKProduct+LocalizedPrice.m"; path = "cc.fovea.cordova.purchase/SKProduct+LocalizedPrice.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		1925E2EEDF9F4908B29CB43E /* FileUtility.m */ = {isa = PBXFileReference; name = "FileUtility.m"; path = "cc.fovea.cordova.purchase/FileUtility.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		181B188AACBD4878B430FB81 /* InAppPurchase.h */ = {isa = PBXFileReference; name = "InAppPurchase.h"; path = "cc.fovea.cordova.purchase/InAppPurchase.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		EF61DF818D9446BD8D08D9BC /* SKProduct+LocalizedPrice.h */ = {isa = PBXFileReference; name = "SKProduct+LocalizedPrice.h"; path = "cc.fovea.cordova.purchase/SKProduct+LocalizedPrice.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		0E28B5CF0D8D4D7EBFA05922 /* FileUtility.h */ = {isa = PBXFileReference; name = "FileUtility.h"; path = "cc.fovea.cordova.purchase/FileUtility.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		2AB178FE02BC4C2585EEE9BE /* StoreKit.framework */ = {isa = PBXFileReference; name = "StoreKit.framework"; path = "System/Library/Frameworks/StoreKit.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +130,7 @@
 				5F133D138AA146FCA684E0AF /* CoreLocation.framework in Frameworks */,
 				94CB83566E91460794CAA0EF /* SystemConfiguration.framework in Frameworks */,
 				9B71B49C603E44F1AECEE650 /* CoreTelephony.framework in Frameworks */,
+				D3904F3CD9F3423C93095512 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +207,7 @@
 				89D19950B68C49708AF2F942 /* CoreLocation.framework */,
 				EE0F53D9C83C41228DBA65CA /* SystemConfiguration.framework */,
 				959C5A2BB4334B2EA283BB29 /* CoreTelephony.framework */,
+				2AB178FE02BC4C2585EEE9BE /* StoreKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -246,6 +259,12 @@
 				ECDCDFEC42334D57B2C5DFE1 /* CDVKeyboard.h */,
 				2A65550F23C44DBFB7000DF2 /* APPPrinter.m */,
 				6C67B02409514AA1836A7688 /* APPPrinter.h */,
+				6413A42E78694B149C20B900 /* InAppPurchase.m */,
+				8E02B62553694D24A15D73D8 /* SKProduct+LocalizedPrice.m */,
+				1925E2EEDF9F4908B29CB43E /* FileUtility.m */,
+				181B188AACBD4878B430FB81 /* InAppPurchase.h */,
+				EF61DF818D9446BD8D08D9BC /* SKProduct+LocalizedPrice.h */,
+				0E28B5CF0D8D4D7EBFA05922 /* FileUtility.h */,
 			);
 			name = Plugins;
 			path = "PrivateBooksLibrary/Plugins";
@@ -373,6 +392,9 @@
 				4BE17F5F18C949CF9EFE2C96 /* CDVReachability.m in Sources */,
 				A1FA9EC5CCC94CEA8411E492 /* CDVKeyboard.m in Sources */,
 				A239DF187379497AB4E804B3 /* APPPrinter.m in Sources */,
+				24F3050259D74A379E5ACACF /* InAppPurchase.m in Sources */,
+				ED079309FA124BB186397C08 /* SKProduct+LocalizedPrice.m in Sources */,
+				6DDDE164D91E48309CF07FE4 /* FileUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

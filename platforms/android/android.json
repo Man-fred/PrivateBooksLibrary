@@ -75,6 +75,10 @@
             {
               "xml": "<feature name=\"Printer\"><param name=\"android-package\" value=\"de.appplant.cordova.plugin.printer.Printer\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"InAppBillingPlugin\"><param name=\"android-package\" value=\"com.smartmobilesoftware.inappbilling.InAppBillingPlugin\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -88,6 +92,10 @@
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"com.android.vending.BILLING\" />",
               "count": 1
             }
           ],
@@ -140,6 +148,16 @@
             }
           ]
         }
+      },
+      "*/billing_key_param.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<string name=\"billing_key_param\">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAksjFrOzPzToUbrT5Hm577XiDIPtOOcTCaaKc3DPNxXSENH1HL3+pQTIwCxHdfQ9+o4HUoO1v3wlOiB1YMX9cNrEfxMtcXum9f8t9Lza/0WQHm2jflxaNq3ICFlbylJK9gBhM0uMj5M6BiUMSMzgzEdC+DhlPMvEj16fUscA8CwQoqmoWvn05s8IiKK65sB6+7KAn0qrUAYba7pnRNrYpHjKUoSgTr/BXpNgmpb+QiIZnepJMC0OyLfe46603AvKtDBiS5+6WsdM+mQ/xiX0TSBkIjmadIh2hghj7CvKwVvghBlt6PaJCq1V8CJl8u5EzxLzh8pQSnXarRns6gWYmFwIDAQAB</string>",
+              "count": 1
+            }
+          ]
+        }
       }
     }
   },
@@ -176,6 +194,10 @@
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     },
     "cordova-plugin-printer": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
+    },
+    "cc.fovea.cordova.purchase": {
+      "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAksjFrOzPzToUbrT5Hm577XiDIPtOOcTCaaKc3DPNxXSENH1HL3+pQTIwCxHdfQ9+o4HUoO1v3wlOiB1YMX9cNrEfxMtcXum9f8t9Lza/0WQHm2jflxaNq3ICFlbylJK9gBhM0uMj5M6BiUMSMzgzEdC+DhlPMvEj16fUscA8CwQoqmoWvn05s8IiKK65sB6+7KAn0qrUAYba7pnRNrYpHjKUoSgTr/BXpNgmpb+QiIZnepJMC0OyLfe46603AvKtDBiS5+6WsdM+mQ/xiX0TSBkIjmadIh2hghj7CvKwVvghBlt6PaJCq1V8CJl8u5EzxLzh8pQSnXarRns6gWYmFwIDAQAB",
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     }
   },
@@ -443,6 +465,14 @@
         "plugin.printer",
         "cordova.plugins.printer"
       ]
+    },
+    {
+      "id": "cc.fovea.cordova.purchase.InAppBillingPlugin",
+      "file": "plugins/cc.fovea.cordova.purchase/www/store-android.js",
+      "pluginId": "cc.fovea.cordova.purchase",
+      "clobbers": [
+        "store"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -456,6 +486,7 @@
     "phonegap-plugin-barcodescanner": "8.0.0",
     "cordova-plugin-network-information": "2.0.1",
     "cordova-plugin-keyboard": "1.2.0",
-    "cordova-plugin-printer": "0.7.3"
+    "cordova-plugin-printer": "0.7.3",
+    "cc.fovea.cordova.purchase": "7.2.4"
   }
 }

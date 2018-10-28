@@ -262,6 +262,14 @@ module.exports = [
       "plugin.printer",
       "cordova.plugins.printer"
     ]
+  },
+  {
+    "id": "cc.fovea.cordova.purchase.InAppBillingPlugin",
+    "file": "plugins/cc.fovea.cordova.purchase/www/store-android.js",
+    "pluginId": "cc.fovea.cordova.purchase",
+    "clobbers": [
+      "store"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -277,7 +285,8 @@ module.exports.metadata =
   "phonegap-plugin-barcodescanner": "8.0.0",
   "cordova-plugin-network-information": "2.0.1",
   "cordova-plugin-keyboard": "1.2.0",
-  "cordova-plugin-printer": "0.7.3"
+  "cordova-plugin-printer": "0.7.3",
+  "cc.fovea.cordova.purchase": "7.2.4"
 };
 // BOTTOM OF METADATA
 });

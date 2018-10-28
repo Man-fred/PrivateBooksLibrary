@@ -90,6 +90,9 @@
     },
     "cordova-plugin-printer": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cc.fovea.cordova.purchase": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },
   "dependent_plugins": {},
@@ -407,6 +410,7 @@
     "phonegap-plugin-barcodescanner": "8.0.0",
     "cordova-plugin-network-information": "2.0.1",
     "cordova-plugin-keyboard": "1.2.0",
-    "cordova-plugin-printer": "0.7.3"
+    "cordova-plugin-printer": "0.7.3",
+    "cc.fovea.cordova.purchase": "7.2.4"
   }
 }

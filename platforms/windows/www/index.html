@@ -68,12 +68,11 @@
                                     <button type="button" class="pure-button" name="updateBtn" id="updateBtn">Update</button>
                                     <button type="button" class="pure-button" name="deleteBtn" id="deleteBtn">Delete</button>
                                     <button type="button" class="pure-button" name="clearBtn" id="clearBtn">Clear</button>
-
+                                    <button type="button" class="pure-button"  id="dbinfoBtn" onclick="app.ui.show_div()">?</button>
                                 </div>
                             </fieldset>
                         </form>
                         <div id="record_info">
-                            <button type="button" class="pure-button" onclick="app.ui.show_div()">?</button>
                             <div id="record_show" style="display: none;">
                                 <div>DBTimestamp <span id="DBTimestamp"></span></div>
                                 <div>DBversion  <span id="DBversion"></span></div>
@@ -99,29 +98,8 @@
             </div>
         </div>
     </div>
-    <footer>
-        <div class="dropdown">
-            <button id="mSettings" state='myDropdown1' class="dropbtn title-button">&nbsp;</button>
-            <div id="myDropdown1" class="drop-up drop-content">
-                <a id="appSync" class="inactive" href="#">Settings</a>
-                <a id="appSettings" href="#">Config</a>
-                <a id="appAbout" onclick="app.ui.show(app.ui.pageAbout)" href="#">About</a>
-                <a id="appLog" onclick="app.ui.show(app.ui.pageLog)" href="#">Log</a>
-                <a class="inactive" href="#">Rechtliches</a>
-                <a id="appAgb" onclick="app.ui.show(app.ui.pageAGB)" href="#">Nutzungbedingungen</a>
-                <a id="appDS" onclick="app.ui.show(app.ui.pageDS)" href="#">Datenschutzerklärung</a>
-                <a id="appContact" onclick="app.ui.show(app.ui.pageContact)" href="#">Kontakt</a>
-                <a class="inactive" href="#">Sontiges</a>
-                <!-- <button type="button" class="pure-button" onclick="dbRenew()">DB Renew</button>&nbsp; -->
-                <a id="appLogin" href="#">Login</a>
-                <a id="appBackup" href="#">Backup</a>
-                <a id="appRestore" href="#">Restore</a>
-            </div>
-        </div>
-        <div id="info-dev" class="blink">Connecting to Device</div>
-        <div id="info-sync">no Server</div>
-    </footer>
-
+    <footer id="footer"></footer>
+    <div id="infoMessage"></div>
     <div id="loading"></div>
     <div id="overlay"></div>
     <div id="overlayRestore"></div>
