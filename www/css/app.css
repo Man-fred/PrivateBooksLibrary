@@ -179,6 +179,68 @@ footer {
   height: 52px;
   width: 100%;
 }
+#infoMessage {
+  z-index: 2000;
+  /* so the info stays above all content */
+  background: hsl(0, 0%, 46.4%);
+  color: hsl(0, 0%, 89.3%);
+  bottom: 0px;
+  position: fixed !important;
+  position: absolute;
+  width: 100%;
+  -webkit-animation: fadein 10s;
+  /* Safari 4.0 - 8.0 */
+  animation: fadein 10s;
+  display: none;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 16px;
+}
+@-webkit-keyframes fadein {
+  0% {
+    bottom: -52px;
+    height: 52px;
+    opacity: 0;
+  }
+  10% {
+    bottom: 0px;
+    height: 52px;
+    opacity: 1;
+  }
+  90% {
+    bottom: 0px;
+    height: 52px;
+    opacity: 1;
+  }
+  100% {
+    bottom: 52px;
+    height: 0px;
+    opacity: 0;
+  }
+}
+/* Standard syntax */
+@keyframes fadein {
+  0% {
+    bottom: -52px;
+    height: 52px;
+    opacity: 0;
+  }
+  10% {
+    bottom: 0px;
+    height: 52px;
+    opacity: 1;
+  }
+  90% {
+    bottom: 0px;
+    height: 52px;
+    opacity: 1;
+  }
+  100% {
+    bottom: 52px;
+    height: 0px;
+    opacity: 0;
+  }
+}
 #info-sync {
   float: left;
   width: 63%;
@@ -207,8 +269,15 @@ footer {
 #info-syn[state=syncing] c {
   background-color: #FA8B00;
 }
+#infoMessage[state=error],
 #info-sync[state=error] {
   background-color: #F70006;
+}
+#infoMessage[state=warning] {
+  background-color: #FA8B00;
+}
+#infoMessage[state=ok] {
+  background-color: #32D729;
 }
 #info-sync[state=eLogin] {
   background-color: #FFA6A9;

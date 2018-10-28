@@ -119,7 +119,7 @@
                     //document.getElementById("result").innerHTML = xhttp.responseText;
                     var erg = JSON.parse(xhttp.responseText);
 
-                    console.log(erg);
+                    //console.log(erg);
                     //    erg.getElementsByTagName("title")[0].childNodes[0].nodeValue;
                     if (erg) { 
                         if (erg.count === 1) {
@@ -164,6 +164,8 @@
                             $("#books_source").val(index);
                             ok = true;
                             app.ui.show_page2('books');
+                            app.ui.message("1 Treffer", "ok");
+
                         } else if (erg.count > 1) {
                             // Liste zeigen
                             app.pouch.appResult['search_books'] = [];
@@ -192,8 +194,10 @@
                                 app.pouch.appResult['search_books'].rows[i].tr1 = app.datalist.one_book(erg.Items[i], 1);
                             }
                             app.ui.show_page1(0, 'books', null, 'search_books');
+                            app.ui.message(erg.count+" Treffer", "ok");
                         } else {
                             // kein Treffer
+                            app.ui.message("kein Treffer", "warning");
                         }
                     }
                 }

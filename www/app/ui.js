@@ -17,6 +17,7 @@ define(function (require) {
 
     var ui = {
         dropdowns: document.getElementsByClassName("drop-content"),
+        infoMessage: document.getElementById('infoMessage'),
         menu: document.getElementById('menu'),
         menuLink: document.getElementById('menuLink'),
         main3: document.getElementById('main3'),
@@ -40,6 +41,7 @@ define(function (require) {
         verlauf: [],
         scrollY: 0,
 
+
         init: true,
         initialize: function (pbl) {
             if (this.init) {
@@ -48,6 +50,7 @@ define(function (require) {
                 this.menuLink.addEventListener('click', this.togglemenuLink);
                 this.menu.addEventListener("click", this.toggleAll);
                 this.main3.addEventListener("click", this.toggleMain3);
+                this.infoMessage.addEventListener("click", this.messageStop);
                 this.pbl = pbl;
                 window.addEventListener('click', this.dropdownClose);
                 this.mRefresh.addEventListener("click", this.dropdown); 
@@ -59,7 +62,7 @@ define(function (require) {
                 } else {
                     this.appReturn.addEventListener("click", this.getVerlauf, false);
                 }
-
+                // später für Einbandbilder: window.addEventListener('scroll', this.getScrollBooks);
                 //ui.setVerlauf(ui.page1, 'books', '', false);
             }
         },
@@ -246,6 +249,25 @@ define(function (require) {
                 this.scrollY = document.body.scrollTop;
             }
         },
+        /* für später, dazu muss aber das Anhängen der Bücher im DIV einzeln passieren
+           und die Position im DIV muss in einer Tabelle gespeichert sein.
+           Dann können die Einbandbilder im sichtbaren Bereich angezeigt werden.
+        getScrollBooks: function (e) {
+            if (1 === 1 && 1 === "books") {
+                this.last_known_scroll_position = window.scrollY;
+
+                if (!ticking) {
+
+                    window.requestAnimationFrame(function () {
+                        doSomething(last_known_scroll_position);
+                        ticking = false;
+                    });
+
+                    ticking = true;
+
+                }
+            }
+        }, */
         toggleClass: function (element, className) {
             var classes = element.className.split(/\s+/),
                 length = classes.length,
@@ -299,6 +321,15 @@ define(function (require) {
                 ui.pageHelper[part] = app.handlebars[part]({ str: app.lang });
             }
             dom.innerHTML = ui.pageHelper[part];
+        },
+        message: function (info, state) {
+            ui.infoMessage.innerHTML = '<p>'+info+'</p>';
+            ui.infoMessage.setAttribute('state', state);
+            ui.infoMessage.style.display = "table-cell";
+            setTimeout(ui.messageStop, 9900);
+        },
+        messageStop: function () {
+            ui.infoMessage.style.display = "none";
         },
         isChrome: function () {
             var isChromium = window.chrome,
