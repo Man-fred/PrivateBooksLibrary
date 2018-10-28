@@ -272,20 +272,11 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-connectivity-monitor.connectivity",
-    "file": "plugins/cordova-connectivity-monitor/www/connectivity.js",
-    "pluginId": "cordova-connectivity-monitor",
+    "id": "com.admob.plugin.admob",
+    "file": "plugins/com.admob.plugin/www/admob.js",
+    "pluginId": "com.admob.plugin",
     "clobbers": [
-      "window.connectivity"
-    ]
-  },
-  {
-    "id": "cordova-admob.AdMobAds",
-    "file": "plugins/cordova-admob/www/admob.js",
-    "pluginId": "cordova-admob",
-    "clobbers": [
-      "window.admob",
-      "window.tappx"
+      "window.admob"
     ]
   }
 ];
@@ -302,9 +293,7 @@ module.exports.metadata =
   "cordova-plugin-keyboard": "1.2.0",
   "cordova-plugin-printer": "0.7.3",
   "cc.fovea.cordova.purchase": "7.2.4",
-  "cordova-connectivity-monitor": "1.2.2",
-  "cordova-libgoogleadmobads": "7.13.1",
-  "cordova-admob": "4.1.16"
+  "com.admob.plugin": "5.5.0"
 };
 // BOTTOM OF METADATA
 });

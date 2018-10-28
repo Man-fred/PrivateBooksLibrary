@@ -81,11 +81,7 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"connectivity\"><param name=\"android-package\" value=\"com.appfeel.cordova.connectivity.Connectivity\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"AdMobAds\"><param name=\"android-package\" value=\"com.appfeel.cordova.admob.AdMobAds\" /></feature>",
+              "xml": "<feature name=\"admob\"><param name=\"android-package\" value=\"com.admob.cordova.plugin.AdmobAdPlugin\" /></feature>",
               "count": 1
             }
           ]
@@ -100,7 +96,7 @@
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-              "count": 3
+              "count": 2
             },
             {
               "xml": "<uses-permission android:name=\"com.android.vending.BILLING\" />",
@@ -108,7 +104,11 @@
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
-              "count": 2
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\" />",
+              "count": 1
             }
           ],
           "/manifest": [
@@ -140,6 +140,10 @@
             },
             {
               "xml": "<activity android:exported=\"false\" android:label=\"Printer\" android:name=\"de.appplant.cordova.plugin.printer.ui.SelectPrinterActivity\"></activity>",
+              "count": 1
+            },
+            {
+              "xml": "<meta-data android:name=\"com.google.android.gms.version\" android:value=\"@integer/google_play_services_version\" />",
               "count": 1
             },
             {
@@ -216,10 +220,7 @@
       "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAksjFrOzPzToUbrT5Hm577XiDIPtOOcTCaaKc3DPNxXSENH1HL3+pQTIwCxHdfQ9+o4HUoO1v3wlOiB1YMX9cNrEfxMtcXum9f8t9Lza/0WQHm2jflxaNq3ICFlbylJK9gBhM0uMj5M6BiUMSMzgzEdC+DhlPMvEj16fUscA8CwQoqmoWvn05s8IiKK65sB6+7KAn0qrUAYba7pnRNrYpHjKUoSgTr/BXpNgmpb+QiIZnepJMC0OyLfe46603AvKtDBiS5+6WsdM+mQ/xiX0TSBkIjmadIh2hghj7CvKwVvghBlt6PaJCq1V8CJl8u5EzxLzh8pQSnXarRns6gWYmFwIDAQAB",
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     },
-    "cordova-connectivity-monitor": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
-    },
-    "cordova-admob": {
+    "com.admob.plugin": {
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     }
   },
@@ -497,20 +498,11 @@
       ]
     },
     {
-      "id": "cordova-connectivity-monitor.connectivity",
-      "file": "plugins/cordova-connectivity-monitor/www/connectivity.js",
-      "pluginId": "cordova-connectivity-monitor",
+      "id": "com.admob.plugin.admob",
+      "file": "plugins/com.admob.plugin/www/admob.js",
+      "pluginId": "com.admob.plugin",
       "clobbers": [
-        "window.connectivity"
-      ]
-    },
-    {
-      "id": "cordova-admob.AdMobAds",
-      "file": "plugins/cordova-admob/www/admob.js",
-      "pluginId": "cordova-admob",
-      "clobbers": [
-        "window.admob",
-        "window.tappx"
+        "window.admob"
       ]
     }
   ],
@@ -527,7 +519,6 @@
     "cordova-plugin-keyboard": "1.2.0",
     "cordova-plugin-printer": "0.7.3",
     "cc.fovea.cordova.purchase": "7.2.4",
-    "cordova-connectivity-monitor": "1.2.2",
-    "cordova-admob": "4.1.16"
+    "com.admob.plugin": "5.5.0"
   }
 }

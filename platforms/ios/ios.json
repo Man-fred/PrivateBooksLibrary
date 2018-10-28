@@ -57,11 +57,7 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"connectivity\"><param name=\"ios-package\" value=\"CDVAppFeelReachability\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"AdMobAds\"><param name=\"ios-package\" value=\"CDVAdMobAds\" /></feature>",
+              "xml": "<feature name=\"admob\"><param name=\"ios-package\" value=\"AdmobAdPlugin\" /></feature>",
               "count": 1
             }
           ]
@@ -85,12 +81,7 @@
               "id": "config.xml"
             }
           ],
-          "NSAppTransportSecurity": [
-            {
-              "xml": "<dict><key>NSAllowsArbitraryLoads</key><true /></dict>",
-              "count": 1
-            }
-          ]
+          "NSAppTransportSecurity": []
         }
       },
       "package.appxmanifest": {
@@ -150,13 +141,7 @@
     "cc.fovea.cordova.purchase": {
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     },
-    "cordova-connectivity-monitor": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
-    },
-    "cordova-libgoogleadmobads": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
-    },
-    "cordova-admob": {
+    "com.admob.plugin": {
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     }
   },
@@ -434,20 +419,11 @@
       ]
     },
     {
-      "id": "cordova-connectivity-monitor.connectivity",
-      "file": "plugins/cordova-connectivity-monitor/www/connectivity.js",
-      "pluginId": "cordova-connectivity-monitor",
+      "id": "com.admob.plugin.admob",
+      "file": "plugins/com.admob.plugin/www/admob.js",
+      "pluginId": "com.admob.plugin",
       "clobbers": [
-        "window.connectivity"
-      ]
-    },
-    {
-      "id": "cordova-admob.AdMobAds",
-      "file": "plugins/cordova-admob/www/admob.js",
-      "pluginId": "cordova-admob",
-      "clobbers": [
-        "window.admob",
-        "window.tappx"
+        "window.admob"
       ]
     }
   ],
@@ -462,8 +438,6 @@
     "cordova-plugin-keyboard": "1.2.0",
     "cordova-plugin-printer": "0.7.3",
     "cc.fovea.cordova.purchase": "7.2.4",
-    "cordova-connectivity-monitor": "1.2.2",
-    "cordova-libgoogleadmobads": "7.13.1",
-    "cordova-admob": "4.1.16"
+    "com.admob.plugin": "5.5.0"
   }
 }
