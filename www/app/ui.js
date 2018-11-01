@@ -56,7 +56,7 @@ define(function (require) {
                 this.mRefresh.addEventListener("click", this.dropdown); 
                 document.getElementById("appAdd").addEventListener("click", this.dropdown); 
                 // windows + android
-                if (cordova.platformId === 'android' | cordova.platformId === 'windows') {
+                if (cordova.platformId === 'android' || cordova.platformId === 'windows') {
                     var ok = document.addEventListener("backbutton", this.getVerlauf, false);
                     this.appReturn.innerHTML = '';
                 } else {

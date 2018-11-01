@@ -23,6 +23,7 @@ define(function (require) {
                 //Keyboard.shrinkView(true);
                 require(['app/handlebars/all', 'app/handlebars/'  + lang.Sprache], function (all) {
                     pbl.handlebars = all;
+                    pbl.onDeviceReady();
                 });
 
                 require(['./position'], function (position) {
@@ -74,7 +75,7 @@ define(function (require) {
                 });
             }
         },
-        ui: null,
+        //ui: null,
         //slide: require('./slide'),
         //pouch: null,
         menu: require('./menu'),
@@ -82,7 +83,7 @@ define(function (require) {
         purchase: require('./purchase'),
         admobile: require('./admobile'),
         //data: null,
-        dbReady : 8,
+        dbReady : 9,
         //system : null,
         seite: "",
         //appPage: 1,
