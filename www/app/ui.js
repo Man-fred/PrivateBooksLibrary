@@ -34,6 +34,7 @@ define(function (require) {
         page2: document.getElementById("page2"),
         pageHelper: {},
         pageAbout: document.getElementById("pageAbout"),
+        pagePurchase: document.getElementById("pagePurchase"),
         pageAGB: document.getElementById("pageAGB"),
         pageDS: document.getElementById("pageDS"),
         pageContact: document.getElementById("pageContact"),
@@ -116,6 +117,9 @@ define(function (require) {
                 }
                 if (neu === ui.pageContact) {
                     ui.load(ui.pageContact, 'contact');
+                }
+                if (neu === ui.pagePurchase) {
+                    ui.load(ui.pagePurchase, 'purchase', app.purchase.setOnclick);
                 }
                 neu.style.display = "block";
                 ui.page.style.display = "none";
@@ -310,10 +314,13 @@ define(function (require) {
                 cordova.plugins.printer.print(page, 'Private Books Library');
             }
         },
-        load: function (dom, seite) {
+        load: function (dom, seite, cb = null) {
             if (!ui.pageHelper[seite]) {
                 ui.pageHelper[seite] = true;
                 dom.innerHTML = app.handlebars[seite]({ str: app.lang });
+                if (cb) {
+                    cb();
+                }
             }
         },
         loadpart: function (dom, part) {

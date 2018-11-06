@@ -2,19 +2,20 @@
 <div class="dropdown">
     <button id="mSettings" state='myDropdown1' class="dropbtn title-button">&nbsp;</button>
     <div id="myDropdown1" class="drop-up drop-content">
-        <a id="appSync" class="inactive" href="#">Einstellungen</a>
-        <a id="appSettings" href="#">Parameter</a>
-        <a id="appAbout" onclick="app.ui.show(app.ui.pageAbout)" href="#">Über PBL</a>
-        <a id="appLog" onclick="app.ui.show(app.ui.pageLog)" href="#">Log</a>
         <a class="inactive" href="#">Rechtliches</a>
         <a id="appAgb" onclick="app.ui.show(app.ui.pageAGB)" href="#">Nutzungbedingungen</a>
         <a id="appDS" onclick="app.ui.show(app.ui.pageDS)" href="#">Datenschutzerklärung</a>
         <a id="appContact" onclick="app.ui.show(app.ui.pageContact)" href="#">{{str.contact}}</a>
+        <a id="appAbout" onclick="app.ui.show(app.ui.pageAbout)" href="#">Über PBL</a>
+        <a id="appSync" class="inactive" href="#">Einstellungen</a>
+        <a id="appPurchase" onclick="app.ui.show(app.ui.pagePurchase)" href="#">In-App-Käufe</a>
+        <a id="appSettings" href="#">Konfiguration</a>
         <a class="inactive" href="#">Sontiges</a>
         <!-- <button type="button" class="pure-button" onclick="dbRenew()">DB Renew</button>&nbsp; -->
-        <a id="appLogin" href="#">Login</a>
+        <a id="appLog" onclick="app.ui.show(app.ui.pageLog)" href="#">Log</a>
         <a id="appBackup" href="#">Backup</a>
         <a id="appRestore" href="#">Restore</a>
+        <a id="appLogin" href="#">Login</a>
     </div>
 </div>
 <div class="dropdown">

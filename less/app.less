@@ -42,6 +42,7 @@
 @books-timestamp: 60px;
 @page2-label: 8em;
 @drop_content_width: 160px;
+@drop_content_height: 13 * 36px;
 
 @top-abzug: @partner-right + @top-height;
 @top-abzug-sm: @menu-left + @partner-right;
@@ -55,6 +56,7 @@
 @book-title-abzug: @books-img + @books-img-margin + @books-favor;
 @book-title-abzug-sm: @books-img + @books-img-margin + @books-favor-sm;
 @content-abzug: @partner-right + 4px;
+@footer-info-abzug: 2 * @title-button + 5 * @title-button-margin;
 @header-sm-abzug: @menu-left + @partner-right + @searchAZ600;
 @layout-abzug: @partner-right + 1px;
 @page1-abzug: @content-padding + @searchAZ000;
@@ -479,26 +481,26 @@ footer {
         }
     }
 
-    #info-sync {
-        float: left;
-        width: 63%;
-        display: block;
-        padding: 2px 0 2px 3%;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
+#info-sync {
+    float: left;
+    width: calc(~"100% - " @footer-info-abzug );
+    display: block;
+    padding: 2px 0 2px @title-button-margin;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 
-    #info-dev {
-        float: left;
-        width: 30%;
-        display: block;
-        padding: 2px 0 2px 3%;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        background-color: @gray3;
-    }
+#info-dev {
+    float: left;
+    width: calc(~"100% - " @footer-info-abzug );
+    display: block;
+    padding: 2px 0 2px @title-button-margin;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: @gray3;
+}
 
     #info-dev[state=offline] {
         background-color: @color-secondary-1-1;
@@ -604,7 +606,7 @@ footer {
         display: none;
     }
 
-    #pageAGB, #pageDS, #pageAbout, #pageContact {
+    .pageFix {
         //padding: @top-height + @top-padding 20px @footer-height + 10px 20px;
         padding: @top-height 20px @footer-height + 10px 20px;
         display: none;
@@ -1404,16 +1406,17 @@ Hides the menu at `48em`, but modify this based on your app's needs.
         background-color: @dropdown_inactive_bkg;
     }
 
-    .drop-content {
-        display: none;
-        position: absolute;
-        background-color: @dropdown-row-bkg;
-        min-width: @drop_content_width;
-        overflow: auto;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-        right: 0px;
-    }
+.drop-content {
+    display: none;
+    position: absolute;
+    background-color: @dropdown-row-bkg;
+    min-width: @drop_content_width;
+    height: @drop_content_height;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0px;
+}
 
     .drop-down {
         top: @top-height;

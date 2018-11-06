@@ -347,10 +347,7 @@ div.container {
 #page2 {
   display: none;
 }
-#pageAGB,
-#pageDS,
-#pageAbout,
-#pageContact {
+.pageFix {
   padding: 52px 20px 62px 20px;
   display: none;
 }
@@ -1149,6 +1146,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
   position: absolute;
   background-color: hsl(0, 0%, 96.4%);
   min-width: 160px;
+  height: 468px;
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;

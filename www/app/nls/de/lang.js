@@ -1,11 +1,14 @@
 ﻿define({
     "Sprache": "de",
+    "add": "Zufügen",
     "author": "Autor",
     "authors": "Autoren",
     "books2" : "Bücher",
     "books": "Buch",
     "checkdate": "Änderungsdatum",
+    "clear": "Leeren",
     "contact": "Kontakt",
+    "delete": "Löschen",
     "favorite": "Favorit",
     "isbn": "ISBN",
     "help": "Hilfe",
@@ -25,6 +28,7 @@
     "state": "Status",
     "state2": "Status",
     "title": "Titel",
+    "update": "Speichern",
     "yes": "Ja",
 
     "root": true,

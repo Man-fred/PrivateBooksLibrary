@@ -112,6 +112,7 @@ define(function (require) {
             //console.log(pbl.dbReady);
             if (pbl.dbReady === 0) {
                 app.ui.load(document.getElementById("footer"), 'footer');
+                app.ui.load(document.getElementById("action"), 'data_action');
                 app.info.initialize();
                 app.pouch.infoSync = document.getElementById('info-sync');
                 app.pouch.infoSync.innerHTML = 'initialize';

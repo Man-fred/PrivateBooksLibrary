@@ -248,11 +248,11 @@
             //console.log(myObj);
             app.pouch.db.put(myObj).then(function (doc) {
                 //console.log(doc);
-                console.info("ok: "+doc.name);
+                app.ui.message(app.lang.ok +": " + doc.name, 'ok');
                 data.clear();
                 //show_all(seite);
             }).catch(function (err) {
-                console.log(err);
+                app.ui.message(app.lang.error + ": " + doc.name, 'error');
                 console.info(err);
             });
 
@@ -315,10 +315,11 @@
                             app.pouch.appResult[app.seite].rows[i].tr1 = app.datalist.one_row(doc, 1);
                             document.getElementById(doc._id).innerHTML = app.pouch.appResult[app.seite].rows[i].tr1;
                         }
-                        $('#result').html('Record No. ' + _id + ' Updated Successfully');
+                        //$('#result').html('Record No. ' + _id + ' Updated Successfully');
+                        app.ui.message(app.lang.ok+": " + doc.name, 'ok');
                         //show_all(seite);
                     }).catch(function (err) {
-                        $('#result').html('Record No. ' + _id + ' Update failed');
+                        app.ui.message(app.lang.error+": " + err, 'error');
                     });
                 }
             });
@@ -334,11 +335,11 @@
                     app.pouch.db.put(doc).then(function (doc2) {
                         // handle doc
                         if (doc2) {
-                            $('#result').html('Record No. ' + doc._id + ' Deleted Successfully');
+                            app.ui.message(app.lang.ok + ": " + doc.name, 'ok');
                             app.ui.datalist(app.seite, true);
                         }
                     }).catch(function (err) {
-                        $('#result').html('Record No. ' + _id + ' Delete failed');
+                        app.ui.message(app.lang.error + ": " + doc.name, 'error');
                         console.log(err);
                     });
                 }
