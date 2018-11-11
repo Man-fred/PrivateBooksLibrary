@@ -12,6 +12,7 @@
                 this.original[this.methods[i]] = this.console[this.methods[i]];
             this.apply = this.original.log.apply;
             this.infoLog = document.getElementById('info-log');
+            // temporaer sperren: 
             this.takeOverConsole();
         },
         takeOverConsole: function () {

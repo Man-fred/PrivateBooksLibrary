@@ -25,8 +25,6 @@
                 info.network[Connection.CELL] = 'Cell generic';
                 info.network[Connection.NONE] = 'offline';
             }
-            this.setDev('Conn ' + info.network[info.networkState], (info.networkState === Connection.NONE ? 'offline' : 'online'));
-
         },
         setDev: function (inner, state = false) {
             this.infoDev.innerHTML = inner;

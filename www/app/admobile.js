@@ -29,7 +29,7 @@ define(function (require) {
             document.head.appendChild(newScript);
         },
         init: function () {
-            if (!app.purchase.inappid1) {
+            if (!app.purchase.product["inappid1"].owned) {
                 if (cordova.platformId === 'browser') {
                     // web-session -> AdSense
                     console.info('Google AdSense ist aktiv');
@@ -43,9 +43,20 @@ define(function (require) {
                     //Test-IDs
                     admob.initAdmob("ca-app-pub-3940256099942544/6300978111", "ca-app-pub-3940256099942544/1033173712");//admob id format ca-app-pub-xxxxxxxxxxxxxxxxxxx/xxxxxxxxxx
                     admobile.admobParam = new admob.Params();
+                    admobParam.isForChild = true;
                     //admobParam.isTesting = true;
-                    admob.showBanner(admob.BannerSize.BANNER, admob.Position.BOTTOM_CENTER, admobParam);
+                    admob.showBanner(admob.BannerSize.BANNER, admob.Position.BOTTOM_CENTER, admobile.admobParam);
                 }
+            } else {
+                console.info('Google AdSense/AdMob ist inaktiv');
+            }
+        },
+        disable: function () {
+            console.info('Google AdSense/AdMob ist inaktiv');
+            if (cordova.platformId === 'browser') {
+                admobile.script(null, '(adsbygoogle = []);');
+            } else {
+                admob.hideBanner();
             }
         }
     };

@@ -1,6 +1,6 @@
 ﻿<!doctype html>
 <html lang="de">
- <!-- manifest="horsediary.appcache" -->
+ <!-- manifest="pbl.appcache" -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -26,7 +26,7 @@
         </div>
         <div id="appTitle"></div>
         <div class="dropdown">
-            <button id="appReturn"  class="dropbtn title-button" disabled="disabled"></button>
+            <button id="appReturn" class="dropbtn title-button" disabled="disabled"></button>
         </div>
     </div>
     <div id="dataformBooks" class="header">
@@ -63,13 +63,7 @@
                             <fieldset>
                                 <div id="formdata"></div>
                                 <hr />
-                                <div id="action">
-                                    <button type="button" class="pure-button" name="addBtn" id="addBtn">Add</button>
-                                    <button type="button" class="pure-button" name="updateBtn" id="updateBtn">Update</button>
-                                    <button type="button" class="pure-button" name="deleteBtn" id="deleteBtn">Delete</button>
-                                    <button type="button" class="pure-button" name="clearBtn" id="clearBtn">Clear</button>
-                                    <button type="button" class="pure-button"  id="dbinfoBtn" onclick="app.ui.show_div()">?</button>
-                                </div>
+                                <div id="action"></div>
                             </fieldset>
                         </form>
                         <div id="record_info">
@@ -91,14 +85,35 @@
                     <!-- I will hold up to 50 log messages -->
                     <div id="info-log"></div>
                 </div>
-                <div id="pageAbout" style="display: none;"></div>
-                <div id="pageDS" style="display: none;"></div>
-                <div id="pageAGB" style="display: none;"></div>
-                <div id="pageContact" style="display: none;"></div>
+                <div id="pageAbout" class="pageFix"></div>
+                <div id="pageDS" class="pageFix" style="display: none;"></div>
+                <div id="pageAGB" class="pageFix" style="display: none;"></div>
+                <div id="pageContact" class="pageFix" style="display: none;"></div>
+                <div id="pagePurchase" class="pageFix" style="display: none;"></div>
             </div>
         </div>
     </div>
     <footer id="footer"></footer>
+    <div id="matomo">
+        <!-- Matomo -->
+        <script type="text/javascript">
+            var _paq = _paq || [];
+            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+            _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+            _paq.push(["setCookieDomain", "*.bcss.de"]);
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function () {
+                var u = "https://matomo.bcss.de/";
+                _paq.push(['setTrackerUrl', u + 'piwik.php']);
+                _paq.push(['setSiteId', '1']);
+                var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+                g.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);
+            })();
+        </script>
+        <noscript><p><img src="//matomo.bcss.de/piwik.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+        <!-- End Matomo Code -->
+    </div>
     <div id="infoMessage"></div>
     <div id="loading"></div>
     <div id="overlay"></div>
@@ -109,20 +124,5 @@
     <script src="lib/pouchdb.cordova-sqlite.js"></script> <!-- 2.0.3 -->
     <script src="lib/handlebars.runtime.js"></script> <!-- v4.0.11 -->
     <script data-main="main" src="lib/require.js"></script>
-    <!-- Matomo -->
-    <!-- script type="text/javascript">
-        var _paq = _paq || [];
-        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-        _paq.push(['trackPageView']);
-        _paq.push(['enableLinkTracking']);
-        (function () {
-            var u = "//matomo.bcss.de/";
-            _paq.push(['setTrackerUrl', u + 'piwik.php']);
-            _paq.push(['setSiteId', '2']);
-            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
-            g.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);
-        })();
-    </script -->
-    <!-- End Matomo Code -->
 </body>
 </html>

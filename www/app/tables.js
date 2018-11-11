@@ -160,11 +160,12 @@
             fields: {
                 name: {
                     name: "name",
-                    title: "name"
+                    title: app.lang.series
                 },
                 url: {
                     name: "url",
-                    title: "url"
+                    title: "Url",
+                    noField: true
                 },
                 memo: {
                     name: "memo",

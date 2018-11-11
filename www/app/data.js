@@ -9,15 +9,17 @@
                 this.init = false;
                 data.myApp = myApp;
                 // Code for Clear text Box
-                $('#clearBtn').click(this.clear);
-                $("#addBtn").click(this.add);
-                $("#updateBtn").click(this.update);
-                $("#deleteBtn").click(this.delete);
                 $.each(myApp, function () {
                     //debugger;
                     data.form(myApp, this.name);
                 });
             }
+        },
+        data_action: function () {
+            document.getElementById("clearBtn").addEventListener("click", data.clear);
+            document.getElementById("addBtn").addEventListener("click", data.add);
+            document.getElementById("updateBtn").addEventListener("click", data.update);
+            document.getElementById("deleteBtn").addEventListener("click", data.delete);
         },
         form: function (myApp, aktiveSeite) {
             //$('#'+aktiveSeite).show();
@@ -303,23 +305,26 @@
                                 // eventuell unnötig, wenn init fehlt ist es aber schlimmer
                                 app.pouch.initPutConstants(doc['dbId']);
                             }
-                        }
-                        //console.log(doc2);
-
-                        var i = app.pouch.appResult[app.seite].id[doc._id];
-                        app.pouch.appResult[app.seite].rows[i].doc = doc;
-                        if (app.seite === 'books') {
-                            app.pouch.appResult[app.seite].rows[i].tr1 = app.datalist.one_book(doc, 1);
-                            document.getElementById(doc._id).innerHTML = app.datalist.one_book_div(doc);
+                            app.pouch.online = doc.online;
+                            app.pouch.onlineCell = doc.onlineCell;
+                            app.pouch.onlineBackground = doc.onlineBackground;
+                            app.setOnlineState(true);
                         } else {
-                            app.pouch.appResult[app.seite].rows[i].tr1 = app.datalist.one_row(doc, 1);
-                            document.getElementById(doc._id).innerHTML = app.pouch.appResult[app.seite].rows[i].tr1;
+                            var i = app.pouch.appResult[app.seite].id[doc._id];
+                            app.pouch.appResult[app.seite].rows[i].doc = doc;
+                            if (app.seite === 'books') {
+                                app.pouch.appResult[app.seite].rows[i].tr1 = app.datalist.one_book(doc, 1);
+                                document.getElementById(doc._id).innerHTML = app.datalist.one_book_div(doc);
+                            } else {
+                                app.pouch.appResult[app.seite].rows[i].tr1 = app.datalist.one_row(doc, 1);
+                                document.getElementById(doc._id).innerHTML = app.pouch.appResult[app.seite].rows[i].tr1;
+                            }
+                            //$('#result').html('Record No. ' + _id + ' Updated Successfully');
                         }
-                        //$('#result').html('Record No. ' + _id + ' Updated Successfully');
-                        app.ui.message(app.lang.ok+": " + doc.name, 'ok');
+                        app.ui.message(app.lang._get(app.seite)+' '+app.lang._get('ok') + ": " + doc.name, 'ok');
                         //show_all(seite);
                     }).catch(function (err) {
-                        app.ui.message(app.lang.error+": " + err, 'error');
+                        app.ui.message(app.lang._get(app.seite) + ' ' +app.lang._get('error')+": " + err, 'error');
                     });
                 }
             });

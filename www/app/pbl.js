@@ -112,7 +112,7 @@ define(function (require) {
             //console.log(pbl.dbReady);
             if (pbl.dbReady === 0) {
                 app.ui.load(document.getElementById("footer"), 'footer');
-                app.ui.load(document.getElementById("action"), 'data_action');
+                app.ui.load(document.getElementById("action"), 'data_action', app.data.data_action);
                 app.info.initialize();
                 app.pouch.infoSync = document.getElementById('info-sync');
                 app.pouch.infoSync.innerHTML = 'initialize';
@@ -196,26 +196,41 @@ define(function (require) {
             app.pouch.remoteLogout();
             console.info('App offline, Sync pausiert');
         },
-        setOnlineState: function () {
+        setOnlineState: function (setState = false) {
+            if (app.pouch.online === undefined) app.pouch.online = 0;
+            if (app.pouch.onlineCell === undefined) app.pouch.onlineCell = 0;
+            if (app.pouch.onlineBackground === undefined) app.pouch.onlineBackground = 0;
             app.info.checkConnection();
             if (app.backgroundState && !app.pouch.onlineBackground) {
                 app.onlineState = false;
+            } else {
+                switch (app.info.networkState) {
+                    case Connection.UNKNOWN:
+                    case Connection.ETHERNET:
+                    case Connection.WIFI: app.onlineState = app.pouch.online;
+                        break;
+                    case Connection.CELL_2G: app.onlineState = app.pouch.online && app.pouch.onlineCell; break;
+                    case Connection.CELL_3G: app.onlineState = app.pouch.online && app.pouch.onlineCell; break;
+                    case Connection.CELL_4G: app.onlineState = app.pouch.online && app.pouch.onlineCell; break;
+                    case Connection.CELL: app.onlineState = app.pouch.online && app.pouch.onlineCell;
+                        break;
+                    default: app.onlineState = false;
+                        break;
+                }
             }
-            switch (app.info.networkState) {
-                case Connection.UNKNOWN: 
-                case    Connection.ETHERNET: 
-                case    Connection.WIFI: app.onlineState = app.pouch.online;
-                    break;
-                case Connection.CELL_2G: app.onlineState = app.pouch.online && app.pouch.onlineCell; break;
-                case Connection.CELL_3G: app.onlineState = app.pouch.online && app.pouch.onlineCell; break;
-                case Connection.CELL_4G: app.onlineState = app.pouch.online && app.pouch.onlineCell; break;
-                case Connection.CELL: app.onlineState = app.pouch.online && app.pouch.onlineCell;
-                    break;
-                default: app.onlineState = false;
-                    break;
+            console.info('N:'+ app.info.networkState+ ' B:'+ app.backgroundState+ ' ON:'+ app.pouch.online+ ' OC:'+ app.pouch.onlineCell+ ' OB:'+ app.pouch.onlineBackground+ ' Status '+ app.onlineState);
+            var temp = app.onlineState === '1' ? ', Online' : ', Offline';
+            app.info.setDev('Conn ' + app.info.network[app.info.networkState] + temp, app.info.networkState === Connection.NONE ? 'offline' : 'online');
+
+            if (setState) {
+                if (app.onlineState) {
+                    if (!app.pouch.db.sync) {
+                        app.pouch.remoteLogin();
+                    }
+                } else {
+                    app.pouch.remoteLogout();
+                }
             }
-            console.log('N ', app.info.networkState, 'B ', app.backgroundState, 'ON ', app.pouch.online, 'OC ', app.pouch.onlineCell, 'OB ', app.pouch.onlineBackground, 'Status ', app.onlineState);
-            console.info(' N '+ app.info.networkState+ ' B '+ app.backgroundState+ ' ON '+ app.pouch.online+ ' OC '+ app.pouch.onlineCell+ ' OB '+ app.pouch.onlineBackground+ ' Status '+ app.onlineState);
         },
          main: function () {
              /* nur jQuery Mobile
