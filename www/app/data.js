@@ -35,13 +35,14 @@
                 result += '<div id="bc" class="pure-control-group">';
                 result += '<button type="button" id="appScan" class="app-button" onclick="app.search.scan()" title="Barcode scannen"></button> &nbsp;';
                 result += '<div id="bc_search" class="deleteicon">';
-                result += '<input id="bc_text" placeholder="ISBN, Titel oder Autor ..."/>'; //(<span id="bc_format"></span>)
+                result += '<input id="bc_text" placeholder="ISBN, '+app.lang.titleOrAuthor+' ..."/>'; //(<span id="bc_format"></span>)
                 result += '<span onclick="app.data.mySearch(\'~~\')"></span></div><button onclick="app.search.scan_search()" href="#" name="scansearch" id="scansearch" class="app-button"></button>';
                 //result += '<button onclick="app.search.picture()" href="#" id="books-pic" class="app-button">F</button> 
                 result += '</div >';
                 //result += '<p><span id="result"></span></p>';
                 result += '<div id="book-image"><img  class="pure-img" id="img_' + aktiveSeite + '" height="200" src="blank.jpg"/></div>';
                 result += '<div id="book-favor">' + data.book.favor("0") + '</div><div class="clear"></div>';
+                result += '<div><a id="book-amzn" href="#">Amazon</a></div>';
             } else if (aktiveSeite === "authors") {
                 result += '<div id="as" class="pure-control-group">';
                 result += '<div id="as_search" class="deleteicon">';

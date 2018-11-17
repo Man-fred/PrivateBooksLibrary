@@ -5,6 +5,8 @@
 define(function (require) {
 
     var admobile = {
+        active: false,
+        initialized: false,
         // We must wait for the "deviceready" event to fire
         // before we can use the store object.
         script: function (src, text, onloadFunction = null, async = null) {
@@ -29,26 +31,37 @@ define(function (require) {
             document.head.appendChild(newScript);
         },
         init: function () {
-            if (!app.purchase.product["inappid1"].owned) {
-                if (cordova.platformId === 'browser') {
-                    // web-session -> AdSense
-                    console.info('Google AdSense ist aktiv');
-                    admobile.script('//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', null, null, true);
-                    admobile.script(null, '(adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-7342512438314786", enable_page_level_ads: true });');
-                } else {
-                    // app -> AdMob
-                    console.info('Google AdMob ist aktiv');
-                        //footer: "ca-app-pub-7342512438314786/3600783250",    // Required
-                    // Interstitial: ca-app-pub-7342512438314786/3180613879
-                    //Test-IDs
-                    admob.initAdmob("ca-app-pub-3940256099942544/6300978111", "ca-app-pub-3940256099942544/1033173712");//admob id format ca-app-pub-xxxxxxxxxxxxxxxxxxx/xxxxxxxxxx
-                    admobile.admobParam = new admob.Params();
-                    admobParam.isForChild = true;
-                    //admobParam.isTesting = true;
+            if (!app.purchase.product["inappid1"].owned && !admobile.active) {
+                if (!admobile.initialized) {
+                    if (cordova.platformId === 'browser') {
+                        // web-session -> AdSense
+                        console.info('Google AdSense ist aktiv');
+                        admobile.script('//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js', null, null, true);
+                        admobile.script(null, '(adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-7342512438314786", enable_page_level_ads: true });');
+                    } else {
+                        // app -> AdMob
+                        console.info('Google AdMob ist aktiv');
+                        admob.initAdmob("ca-app-pub-7342512438314786/3600783250", "ca-app-pub-7342512438314786/3180613879");//admob id format ca-app-pub-xxxxxxxxxxxxxxxxxxx/xxxxxxxxxx
+                        //Test-IDs
+                        //admob.initAdmob("ca-app-pub-3940256099942544/6300978111", "ca-app-pub-3940256099942544/1033173712");//admob id format ca-app-pub-xxxxxxxxxxxxxxxxxxx/xxxxxxxxxx
+                        admobile.admobParam = new admob.Params();
+                        admobile.admobParam.isForChild = true;
+                        //admobParam.isTesting = true;
+                    }
+                    admobile.initialized = true;
+                }
+                if (cordova.platformId !== 'browser') {
                     admob.showBanner(admob.BannerSize.BANNER, admob.Position.BOTTOM_CENTER, admobile.admobParam);
                 }
-            } else {
+                admobile.active = true;
+            } else if (app.purchase.product["inappid1"].owned && admobile.active) {
                 console.info('Google AdSense/AdMob ist inaktiv');
+                if (cordova.platformId === 'browser') {
+                    //?? admobile.script(null, '(adsbygoogle = []);');
+                } else {
+                    admob.hideBanner();
+                }
+                admobile.active = false;
             }
         },
         disable: function () {
@@ -58,6 +71,7 @@ define(function (require) {
             } else {
                 admob.hideBanner();
             }
+            admobile.active = false;
         }
     };
     return admobile;

@@ -23,10 +23,10 @@ define(function (require) {
 
             // Let's set a pretty high verbosity level, so that we see a lot of stuff
             // in the console (reassuring us that something is happening).
-            store.verbosity = store.WARNING;//INFO;//WARNING;
+            store.verbosity = store.DEBUG;//WARNING;//INFO;//WARNING;
 
             //Windows: call this before store.refresh
-            store.sandbox = true; //Don't call this in production
+            //store.sandbox = true; //Don't call this in production
 
             // We register a dummy product. It's ok, it shouldn't
             // prevent the store "ready" event from firing.
@@ -67,13 +67,18 @@ define(function (require) {
             store.when("inappid1").owned(function (iap) {
                 console.info("owned: ", iap);
                 purchase.product[iap.id] = iap;//.state;
-                app.admobile.disable();
+                //app.admobile.disable();
             }); 
             // When every goes as expected, it's time to celebrate!
             // The "ready" event should be welcomed with music and fireworks,
             // go ask your boss about it! (just in case)
             store.ready(function () {
                 purchase.ready = true;
+                require(['./admobile'], function (admobile) {
+                    app.admobile = admobile;
+                    admobile.init();
+                });
+
                 console.log("\\o/ STORE READY \\o/");
             });
 
@@ -104,11 +109,23 @@ define(function (require) {
                 switch (iap.state) {
                     case 'registered':
                     case 'valid':
-                        purchase.button[iap.id].innerHTML = iap.state + ': '+iap.title+' '+app.lang.for+' '+iap.price+' kostenpflichtig bestellen';
+                        purchase.button[iap.id].innerHTML = iap.title + ' ' + app.lang.for + ' ' + iap.price + ' ' + app.lang.storePurchase;
                         purchase.button[iap.id].disabled = false;
                         break;
                     case 'owned':
-                        purchase.button[iap.id].innerHTML = iap.title + ' '+app.lang.owned;
+                        purchase.button[iap.id].innerHTML = iap.title + ' ' + app.lang.owned;
+                        purchase.button[iap.id].disabled = true;
+                        break;
+                    case 'invalid':
+                        purchase.button[iap.id].innerHTML = app.lang.storeInvalid;
+                        purchase.button[iap.id].disabled = true;
+                        break;
+                    case 'requested':
+                        purchase.button[iap.id].innerHTML = app.lang.storeRequested;
+                        purchase.button[iap.id].disabled = true;
+                        break;
+                    case 'initiated':
+                        purchase.button[iap.id].innerHTML = app.lang.storeInitiated;
                         purchase.button[iap.id].disabled = true;
                         break;
                     default:

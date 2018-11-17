@@ -23,11 +23,15 @@
                     var message = Array.prototype.slice.apply(arguments).join(' ');
                     var trace = Error().stack.split("\n");
                     if (trace.length > 1) {
-                        trace = trace[1];
+                        if (trace[0] === "Error") {
+                            trace = trace[2];
+                        } else {
+                            trace = trace[1];
+                        }
                     } else {
                         trace = trace[0];
                     }
-                    trace = trace.replace(/(at html|at console|@|file:).*(\.de|\/www)\//, "@");
+                    trace = trace.replace(/(\(http|at html|at console|@|file:).*(\.de|\/www)\//, "@");
 
                     htmlConsole.insert(method, message, trace);
                     if (htmlConsole.apply) {

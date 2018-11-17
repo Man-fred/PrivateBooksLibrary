@@ -14,17 +14,12 @@ define(function (require) {
                         return app.lang[test] === undefined ? test : app.lang[test];
                     }
                 };
-                app.console.log('Sprache: ' + lang._get('Sprache'));
-                console.log('pbl.js:initialize', navigator.languages, navigator.language, navigator.userLanguage, 'aktiv: ' + lang._get('Sprache'));
+                console.log(navigator.languages, navigator.language, navigator.userLanguage, 'aktiv: ' + lang._get('Sprache'));
                 document.addEventListener('deviceready', this.onDeviceReady, false);
                 window.addEventListener("resize", this.onWindowLoadResize);
                 // Top/Bottom der Seite ist sonst scrollbar unter ios
                 // hilft nicht
                 //Keyboard.shrinkView(true);
-                require(['app/handlebars/all', 'app/handlebars/'  + lang.Sprache], function (all) {
-                    pbl.handlebars = all;
-                    pbl.onDeviceReady();
-                });
 
                 require(['./position'], function (position) {
                     position.initialize(pbl);
@@ -81,9 +76,8 @@ define(function (require) {
         menu: require('./menu'),
         init: require('./init'),
         purchase: require('./purchase'),
-        admobile: require('./admobile'),
         //data: null,
-        dbReady : 9,
+        dbReady : 8,
         //system : null,
         seite: "",
         //appPage: 1,
@@ -106,13 +100,11 @@ define(function (require) {
         showInit: null,
         onlineState: false,           // abhängig von netzwerkerkennung (gsm / wifi) und config
         backgroundState: false,       // app im Hintergrund?
-
         onDeviceReady: function () {
             pbl.dbReady--;
             //console.log(pbl.dbReady);
             if (pbl.dbReady === 0) {
-                app.ui.load(document.getElementById("footer"), 'footer');
-                app.ui.load(document.getElementById("action"), 'data_action', app.data.data_action);
+                //app.ui.load(document.getElementById("action"), 'data_action', app.data.data_action);
                 app.info.initialize();
                 app.pouch.infoSync = document.getElementById('info-sync');
                 app.pouch.infoSync.innerHTML = 'initialize';
@@ -120,7 +112,7 @@ define(function (require) {
                 //console.log(cordova.file);
                 //pbl.takeOverConsole(pbl.loglevel);
                 $('#appSettings').click(function () {
-                    pbl.data.show(pbl.pouch.dbIdPrivate + '_login', 'login');
+                    pbl.data.show('**_login'+pbl.pouch.dbIdPrivate, 'login');
                 });
 
                 document.addEventListener("pause", pbl.onPause, false);
@@ -137,7 +129,6 @@ define(function (require) {
                 pbl.menu.main(pbl.myApp);
                 pbl.pouch.dbNew();
                 pbl.purchase.init();
-                pbl.admobile.init();
                 //navigator.vibrate(200);
                 //console.log("vibration: "+(navigator.vibrate ? true : false) );
             }

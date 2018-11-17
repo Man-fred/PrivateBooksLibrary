@@ -12,6 +12,7 @@
                 book.set_checkdate(doc);
                 $('#img_books').attr("src", book.image(doc));
                 $('#book-favor').replaceWith('<div id="book-favor" onclick="app.book.set_favor(this, \'' + doc['_id'] + '\')">' + book.favor(doc['favor']) + '</div>');
+                $('#book-amzn').attr("href", 'https://www.amazon.de/dp/' + book.amzn(doc.asin, doc.isbn) + '/ref=nosim?tag=bielemeierde-21');
                 //doc['checkdate'] = new Date(parseInt(doc['checkdate'])).toISOString();//toLocaleDateString();
                 //alert(doc['name']);alert(doc.name);
             }
@@ -142,6 +143,50 @@
                     return 'O43';
                 default:
                     return 'O' + w;
+            }
+        },
+
+        /* 
+         * @author: Tomasz Sochacki, https://github.com/drogimex/isbn-validate
+         * Checksum for validate ISBN-10 and ISBN-13.
+         */
+        checksum: function(isbn) {
+            //isbn have to be number or string (composed only of digits or char "X"):
+            isbn = isbn.toString();
+
+            //Remove last digit (control digit):
+            //let number = isbn.slice(0, -1);
+            let number = isbn;
+            //Convert number to array (with only digits):
+            number = number.split('').map(Number);
+
+            //Save last digit (control digit):
+            const last = isbn.slice(-1);
+            const lastDigit = (last !== 'X') ? parseInt(last, 10) : 'X';
+
+            //Algorithm for checksum calculation (digit * position):
+            number = number.map((digit, index) => {
+                return digit * (index + 1);
+            });
+
+            //Calculate checksum from array:
+            const sum = number.reduce((a, b) => a + b, 0);
+
+            //Validate control digit:
+            const controlDigit = sum % 11;
+            return (controlDigit !== 10 ? controlDigit : 'X');
+        },
+        amzn: function (asin, isbn) {
+            if (asin.length > 8) {
+                return asin;
+            }
+            isbn = isbn.toString();
+            var n = myString.length;
+            if (n === 10) {
+                return isbn;
+            } else if (n === 13) {
+                let number = isbn.slice(3, -1);
+                return number + checksum(number);
             }
         }
     };

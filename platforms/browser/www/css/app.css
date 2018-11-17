@@ -188,9 +188,9 @@ footer {
   position: fixed !important;
   position: absolute;
   width: 100%;
-  -webkit-animation: fadein 10s;
+  -webkit-animation: fadein 5s;
   /* Safari 4.0 - 8.0 */
-  animation: fadein 10s;
+  animation: fadein 5s;
   display: none;
   vertical-align: middle;
   text-align: center;
@@ -243,18 +243,18 @@ footer {
 }
 #info-sync {
   float: left;
-  width: 63%;
+  width: calc(100% -  136px);
   display: block;
-  padding: 2px 0 2px 3%;
+  padding: 2px 0 2px 8px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 #info-dev {
   float: left;
-  width: 30%;
+  width: calc(100% -  136px);
   display: block;
-  padding: 2px 0 2px 3%;
+  padding: 2px 0 2px 8px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

@@ -47,12 +47,19 @@
         remoteLogin: function () {
             if (pouch.dbServer && pouch.dbPort) {
                 if (app.onlineState) {
+                    if (pouch.dbServer === 'https://pbl.bcss.de') {
+                        pouch.prefix = 'pbl-';
+                        pouch.prefixA = 'pbi-';
+                    } else {
+                        pouch.prefix = '';
+                        pouch.prefixA = '';
+                    }
                     if (pouch.db.mySync) {
                         // sync active, stopping first before connecting to another server
                         pouch.db.mySync.cancel();
                     }
-                    pouch.dbRemote = new PouchDB(pouch.dbServer + ':' + pouch.dbPort + '/pbl-' + pouch.dbName, { skip_setup: true });
-                    pouch.dbRemote.login('pbl-' + pouch.dbUser, pouch.dbPass, function (err, response) {
+                    pouch.dbRemote = new PouchDB(pouch.dbServer + ':' + pouch.dbPort + '/' + pouch.prefix + pouch.dbName, { skip_setup: true });
+                    pouch.dbRemote.login(pouch.prefix + pouch.dbUser, pouch.dbPass, function (err, response) {
                         if (err) {
                             console.log(err);
                             //if (err.name === 'unauthorized' || err.name === 'authentication_error') {
@@ -70,21 +77,21 @@
                         // sync active, stopping first before connecting to another server
                         pouch.dbA.mySync.cancel();
                     }
-                    pouch.dbRemoteA = new PouchDB(pouch.dbServer + ':' + pouch.dbPort + '/pbi-' + pouch.dbName, { skip_setup: true });
-                    pouch.dbRemoteA.login('pbl-' + pouch.dbUser, pouch.dbPass, function (err, response) {
+                    pouch.dbRemoteA = new PouchDB(pouch.dbServer + ':' + pouch.dbPort + '/' + pouch.prefixA + pouch.dbName, { skip_setup: true });
+                    pouch.dbRemoteA.login(pouch.prefix + pouch.dbUser, pouch.dbPass, function (err, response) {
                         if (err) {
                             console.log(err);
                             //if (err.name === 'unauthorized' || err.name === 'authentication_error') {
                             // name or password incorrect
                             app.info.setSync(err.name, err.message, 'eLogin');//'server: name or password incorrect';
                         } else {
-                            /*
+                            /**/
                             pouch.sync(pouch.dbA, pouch.dbRemoteA);
                             pouch.dbA.changes({
                                 since: 'now',
                                 live: true
                             }).on('change', pouch.newDocs);
-                            */
+                            
                         }
                     });
                 } else {
@@ -242,7 +249,7 @@
                 // Ende Liste */
                 // normale Verarbeitung
                 app.info.setSync('connect get login');
-                pouch.db.get(pouch.dbIdPrivate + '_login').then(function (doc) {
+                pouch.db.get('**_login' + pouch.dbIdPrivate).then(function (doc) {
                     if (doc !== null) {
                         app.info.setSync('connect set login');
                         //system = doc;
@@ -261,7 +268,7 @@
                     app.info.setSync('connect new login');
                     pouch.dbIdPublic = pouch.dbIdPrivate;
                     pouch.db.put({
-                        _id: pouch.dbIdPrivate + '_login',
+                        _id: '**_login' + pouch.dbIdPrivate,
                         name: 'Server',
                         type: 'db',
                         dbServer: pouch.dbServer,
@@ -271,7 +278,7 @@
                         dbPass: pouch.dbPass,
                         dbId: pouch.dbIdPublic,
                         showInit: pouch.pbl.showInit,
-                        title: pouch.dbIdPublic + '_login'
+                        title: '**_login' + pouch.dbIdPrivate
                     }).then(function (response) {
                         app.info.setSync('connect new login saved');
                         console.log(pouch.dbIdPrivate);
@@ -299,9 +306,11 @@
         },
         getAll: function (seite, singleIsbn, cb) {
             if (!pouch.appResult[seite]) {
+                var startkeystring = (seite === 'login' ? '**' : pouch.dbIdPublic) + '_' + seite;
+                                
                 pouch.db.allDocs({
-                    startkey: pouch.dbIdPublic + '_' + seite
-                    , endkey: pouch.dbIdPublic + '_' + seite + 'a'
+                    startkey: startkeystring
+                    , endkey: startkeystring + 'a'
                     , include_docs: true
                     //,attachments: true
                 })
@@ -430,25 +439,25 @@
         restoreStart: function () {
             pouch.remoteLogout();
             pouch.dbServer = "";
-            if (true) {
-                pouch.restoreCount = 2;
-                pouch.restoreRows = pouch.restoreResult.total_rows + pouch.restoreResult.img.total_rows;
 
-                pouch.db.destroy().then(function (response) {
-                    console.info(response);
-                    pouch.restoreRun();
-                }).catch(function (err) {
-                    console.error(err);
-                    pouch.restoreRun();
-                });
-                pouch.dbA.destroy().then(function (response) {
-                    console.info(response);
-                    pouch.restoreRun();
-                }).catch(function (err) {
-                    console.info(err);
-                    pouch.restoreRun();
-                });
-            }
+            pouch.restoreCount = 2;
+            pouch.restoreRows = pouch.restoreResult.total_rows + pouch.restoreResult.img.total_rows;
+
+            pouch.db.destroy().then(function (response) {
+                console.info(response);
+                pouch.restoreRun();
+            }).catch(function (err) {
+                console.error(err);
+                pouch.restoreRun();
+            });
+            pouch.dbA.destroy().then(function (response) {
+                console.info(response);
+                pouch.restoreRun();
+            }).catch(function (err) {
+                console.info(err);
+                pouch.restoreRun();
+            });
+
         },
         restoreRun: function () {
             pouch.restoreCount--;

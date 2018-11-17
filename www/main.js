@@ -13,8 +13,8 @@ requirejs.config({
     },
     i18n: {
     }
-    //    ,locale: 'fr'
 });
+        //locale: 'en-gb'
 
 // Start loading the main app file. Put all of
 // your application logic in there.'pouchdb',
@@ -23,7 +23,12 @@ requirejs(['jquery', 'pouchdb.authentication', 'pouchdb-replication-stream', 'ap
         app = pbl;
         app.lang = lang;
         app.console = htmlConsole;
+        require(['app/handlebars/all', 'app/handlebars/' + lang.Sprache], function (all) {
+            app.handlebars = all;
+            document.getElementById("body").innerHTML = app.handlebars['body']({ str: app.lang });
         htmlConsole.initialize();
         pbl.initialize(lang);
+            //app.onDeviceReady();
+        });
     }
 );

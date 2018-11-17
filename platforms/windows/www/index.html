@@ -1,5 +1,5 @@
 ﻿<!doctype html>
-<html lang="de">
+<html lang="en">
  <!-- manifest="pbl.appcache" -->
 <head>
     <meta charset="utf-8">
@@ -15,109 +15,7 @@
     <![endif]-->
 </head>
 <body>
-    <div id="iosStatusbar"></div>
-    <div id="top">
-        <div class="dropdown">
-            <button id="mRefresh" state='myDropdown2' class="dropbtn title-button">&nbsp;</button>
-            <div id="myDropdown2" class="drop-down drop-content"></div>
-        </div>
-        <div class="dropdown">
-            <button id="appAdd" class="dropbtn title-button" state="add" title="Neuer Eintrag">&nbsp;</button>
-        </div>
-        <div id="appTitle"></div>
-        <div class="dropdown">
-            <button id="appReturn" class="dropbtn title-button" disabled="disabled"></button>
-        </div>
-    </div>
-    <div id="dataformBooks" class="header">
-        <div id="topMessage">&nbsp;</div>
-        <div id="appSearchAnchor" class="deleteicon">
-            <input type="text" id="appSearch" onkeyup="app.datalist.mySearch()" placeholder="Titel oder Autor ...">
-            <span onclick="app.datalist.mySearch('~~')"></span>
-        </div>
-    </div>
-    <div id='layout'>
-        <!-- Menu toggle -->
-        <a href="#menu" id="menuLink" class="menu-link">
-            <!-- Hamburger icon -->
-            <span></span>
-        </a>
-        <div id="menu">
-            <div id="menuPos" class="pure-menu">
-                <a class="pure-menu-heading" href="#">Auswahl</a>
-
-                <ul id='sidelist' class="pure-menu-list"></ul>
-            </div>
-        </div>
-        <div id="partner"></div>
-        <div id="main3">
-            <div class="content">
-                <div id="page1">
-                    <div id="datalist"></div>
-                    <div id="mySearchAZ"></div>
-                </div>
-
-                <div id="page2">
-                    <div id="singledata">
-                        <form id="singleform" class="pure-form">
-                            <fieldset>
-                                <div id="formdata"></div>
-                                <hr />
-                                <div id="action"></div>
-                            </fieldset>
-                        </form>
-                        <div id="record_info">
-                            <div id="record_show" style="display: none;">
-                                <div>DBTimestamp <span id="DBTimestamp"></span></div>
-                                <div>DBversion  <span id="DBversion"></span></div>
-                                <div>DBdeleted <span id="DBdeleted"></span></div>
-                                <div>DBstate <span id="DBstate"></span></div>
-                                <div>DBok <span id="DBok"></span></div>
-                                <div>DBreason <span id="DBreason"></span></div>
-                                <div>_id <span id="_id"></span></div>
-                                <div>_rev <span id="_rev"></span></div>
-                                <div id="result"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="pageLog" style="display: none;">
-                    <!-- I will hold up to 50 log messages -->
-                    <div id="info-log"></div>
-                </div>
-                <div id="pageAbout" class="pageFix"></div>
-                <div id="pageDS" class="pageFix" style="display: none;"></div>
-                <div id="pageAGB" class="pageFix" style="display: none;"></div>
-                <div id="pageContact" class="pageFix" style="display: none;"></div>
-                <div id="pagePurchase" class="pageFix" style="display: none;"></div>
-            </div>
-        </div>
-    </div>
-    <footer id="footer"></footer>
-    <div id="matomo">
-        <!-- Matomo -->
-        <script type="text/javascript">
-            var _paq = _paq || [];
-            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-            _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-            _paq.push(["setCookieDomain", "*.bcss.de"]);
-            _paq.push(['trackPageView']);
-            _paq.push(['enableLinkTracking']);
-            (function () {
-                var u = "https://matomo.bcss.de/";
-                _paq.push(['setTrackerUrl', u + 'piwik.php']);
-                _paq.push(['setSiteId', '1']);
-                var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
-                g.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);
-            })();
-        </script>
-        <noscript><p><img src="//matomo.bcss.de/piwik.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
-        <!-- End Matomo Code -->
-    </div>
-    <div id="infoMessage"></div>
-    <div id="loading"></div>
-    <div id="overlay"></div>
-    <div id="overlayRestore"></div>
+    <div id="body"></div>
     <script type="text/javascript" src="/www/WinJS/js/base.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="lib/pouchdb.js"></script> <!-- min.6.4.3 -->

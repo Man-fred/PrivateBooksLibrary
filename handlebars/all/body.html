@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+    <div id="iosStatusbar"></div>
+    <div id="top">
+        <div class="dropdown">
+            <button id="mRefresh" state='myDropdown2' class="dropbtn title-button">&nbsp;</button>
+            <div id="myDropdown2" class="drop-down drop-content"></div>
+        </div>
+        <div class="dropdown">
+            <button id="appAdd" class="dropbtn title-button" state="add" title="{{str.newEntry}}">&nbsp;</button>
+        </div>
+        <div id="appTitle"></div>
+        <div class="dropdown">
+            <button id="appReturn" class="dropbtn title-button" disabled="disabled"></button>
+        </div>
+    </div>
+    <div id="dataformBooks" class="header">
+        <div id="topMessage">&nbsp;</div>
+        <div id="appSearchAnchor" class="deleteicon">
+            <input type="text" id="appSearch" onkeyup="app.datalist.mySearch()" placeholder="{{str.titleOrAuthor}} ...">
+            <span onclick="app.datalist.mySearch('~~')"></span>
+        </div>
+    </div>
+    <div id='layout'>
+        <!-- Menu toggle -->
+        <a href="#menu" id="menuLink" class="menu-link">
+            <!-- Hamburger icon -->
+            <span></span>
+        </a>
+        <div id="menu">
+            <div id="menuPos" class="pure-menu">
+                <a class="pure-menu-heading" href="#">{{str.selection}}</a>
+
+                <ul id='sidelist' class="pure-menu-list"></ul>
+            </div>
+        </div>
+        <div id="partner"></div>
+        <div id="main3">
+            <div class="content">
+                <div id="page1">
+                    <div id="datalist"></div>
+                    <div id="mySearchAZ"></div>
+                </div>
+
+                <div id="page2">
+                    <div id="singledata">
+                        <form id="singleform" class="pure-form">
+                            <fieldset>
+                                <div id="formdata"></div>
+                                <hr />
+                                <div id="action">
+                                    <button type="button" class="pure-button" name="addBtn" id="addBtn">{{str.add}}</button>
+                                    <button type="button" class="pure-button" name="updateBtn" id="updateBtn">{{str.update}}</button>
+                                    <button type="button" class="pure-button" name="deleteBtn" id="deleteBtn">{{str.delete}}</button>
+                                    <button type="button" class="pure-button" name="clearBtn" id="clearBtn">{{str.clear}}</button>
+                                    <button type="button" class="pure-button" id="dbinfoBtn" onclick="app.ui.show_div()">?</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <div id="record_info">
+                            <div id="record_show" style="display: none;">
+                                <div>DBTimestamp <span id="DBTimestamp"></span></div>
+                                <div>DBversion  <span id="DBversion"></span></div>
+                                <div>DBdeleted <span id="DBdeleted"></span></div>
+                                <div>DBstate <span id="DBstate"></span></div>
+                                <div>DBok <span id="DBok"></span></div>
+                                <div>DBreason <span id="DBreason"></span></div>
+                                <div>_id <span id="_id"></span></div>
+                                <div>_rev <span id="_rev"></span></div>
+                                <div id="result"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="pageLog" style="display: none;">
+                    <!-- I will hold up to 50 log messages -->
+                    <div id="info-log"></div>
+                </div>
+                <div id="pageAbout" class="pageFix"></div>
+                <div id="pageDS" class="pageFix" style="display: none;"></div>
+                <div id="pageAGB" class="pageFix" style="display: none;"></div>
+                <div id="pageContact" class="pageFix" style="display: none;"></div>
+                <div id="pagePurchase" class="pageFix" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+        <div class="dropdown">
+            <button id="mSettings" state='myDropdown1' class="dropbtn title-button">&nbsp;</button>
+            <div id="myDropdown1" class="drop-up drop-content">
+                <a class="inactive" href="#">{{str.legal}}</a>
+                <a id="appAgb" onclick="app.ui.show(app.ui.pageAGB)" href="#">{{str.termsOfUse}}</a>
+                <a id="appDS" onclick="app.ui.show(app.ui.pageDS)" href="#">{{str.privacyStatement}}</a>
+                <a id="appContact" onclick="app.ui.show(app.ui.pageContact)" href="#">{{str.contact}}</a>
+                <a id="appAbout" onclick="app.ui.show(app.ui.pageAbout)" href="#">{{str.about}} PBL</a>
+                <a id="appSync" class="inactive" href="#">{{str.settings}}</a>
+                <a id="appPurchase" onclick="app.ui.show(app.ui.pagePurchase)" href="#">{{str.inAppPurchases}}</a>
+                <a id="appSettings" href="#">{{str.configuration}}</a>
+                <a class="inactive" href="#">{{str.miscellaneous}}</a>
+                <!-- <button type="button" class="pure-button" onclick="dbRenew()">DB Renew</button>&nbsp; -->
+                <a id="appLog" onclick="app.ui.show(app.ui.pageLog)" href="#">Log</a>
+                <a id="appBackup" href="#">Backup</a>
+                <a id="appRestore" href="#">Restore</a>
+                <a id="appLogin" href="#">Login</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button id="appPrint" class="dropbtn title-button"></button>
+        </div>
+        <div id="info-dev" class="blink">Connecting to Device</div>
+        <div id="info-sync">no Server</div>
+    </footer>
+    <div id="infoMessage"></div>
+    <div id="loading"></div>
+    <div id="overlay"></div>
+    <div id="overlayRestore"></div>
+</body>
+</html>

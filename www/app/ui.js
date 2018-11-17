@@ -333,7 +333,7 @@ define(function (require) {
             ui.infoMessage.innerHTML = '<p>'+info+'</p>';
             ui.infoMessage.setAttribute('state', state);
             ui.infoMessage.style.display = "table-cell";
-            setTimeout(ui.messageStop, 9900);
+            setTimeout(ui.messageStop, 4900);
         },
         messageStop: function () {
             ui.infoMessage.style.display = "none";

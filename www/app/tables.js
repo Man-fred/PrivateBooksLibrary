@@ -270,8 +270,8 @@
         },
         login: {
             name: "login",
-            title: "Params",
-            //menu: true,
+            title: app.lang._get('device', 2),
+            menu: true,
             action: "app.ui.datalist",
             head: true,
             tr: '',
@@ -279,8 +279,8 @@
             fields: {
                 name: {
                     name: "name",
-                    title: "Verbindung",
-                    selectYN: ["local", "Server", false],
+                    title: app.lang.device,
+                    //selectYN: ["local", "Server", false],
                     field: "name",
                     visible: "name"
                 },
