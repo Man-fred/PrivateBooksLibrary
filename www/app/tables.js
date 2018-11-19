@@ -136,14 +136,17 @@
                 nr: {
                     name: "nr",
                     title: "ID"
+                    , noList: 1
                 },
                 memo: {
                     name: "memo",
                     title: "Memo"
+                    , noList: 1
                 },
                 wiki: {
                     name: "wiki",
                     title: "Wikipedia"
+                    , noList: 1
                 }
             },
             data: []
@@ -170,7 +173,8 @@
                 memo: {
                     name: "memo",
                     title: "Memo"
-                }
+                    , noList: 1
+}
             },
             data: []
         },
@@ -217,6 +221,7 @@
                 memo: {
                     name: "memo",
                     title: "Memo"
+                    , noList: 1
                 }
             },
             data: []
@@ -293,6 +298,7 @@
                     name: "dbPort",
                     title: "Port"
                     , type: "tel"
+                    , noList: 1
                 },
                 /*dbName: {
                     name: "dbName",
@@ -315,7 +321,6 @@
                     name: "dbId",
                     title: "Prefix"
                     , input: "autocorrect=\"off\" autocapitalize=\"off\""
-                    , noList: 1
                 },
                 appTitle: {
                     name: "appTitle",
@@ -339,11 +344,13 @@
                     name: "onlineCell",
                     title: "onlineCell",
                     selectYN: [app.lang.no, app.lang.yes, false]
+                    , noList: 1
                 },
                 onlineBackground: {
                     name: "onlineBackground",
                     title: "onlineBackground",
                     selectYN: [app.lang.no, app.lang.yes, false]
+                    , noList: 1
                 }
                 /*,
             appHorsename: {

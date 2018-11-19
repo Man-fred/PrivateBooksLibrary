@@ -31,7 +31,9 @@
                     } else {
                         trace = trace[0];
                     }
-                    trace = trace.replace(/(\(http|at html|at console|@|file:).*(\.de|\/www)\//, "@");
+                    // Windows UWP: at log (ms-appx-web://35337manfredbielemeierbcs.privatebookslibrary/www
+                    trace = trace.replace(/(\(http|at html|at console| \(ms-appx|@|file:).*(\.de|\/www)\//, "@");
+                    //trace = trace.replace(/(\(at )/, "");
 
                     htmlConsole.insert(method, message, trace);
                     if (htmlConsole.apply) {
@@ -68,8 +70,8 @@
         insert: function (method, message, trace) {
             var ng = new Date().toLocaleString();
             htmlConsole.infoLog.insertAdjacentHTML('afterbegin', '<div class="console" id="info-log' + htmlConsole.countLog + '"><div class="console-time">' + ng + ': </div><div class="console-'+method+'">' + message + '</div><div class="console-trace">'+trace+'</div></div>');
-            if (htmlConsole.countLog > 50) {
-                document.getElementById("info-log" + (htmlConsole.countLog - 50)).remove();
+            if (htmlConsole.countLog > 200) {
+                document.getElementById("info-log" + (htmlConsole.countLog - 200)).remove();
             }
             htmlConsole.countLog++;
         }

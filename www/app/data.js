@@ -13,6 +13,7 @@
                     //debugger;
                     data.form(myApp, this.name);
                 });
+                data.data_action();
             }
         },
         data_action: function () {
@@ -36,13 +37,13 @@
                 result += '<button type="button" id="appScan" class="app-button" onclick="app.search.scan()" title="Barcode scannen"></button> &nbsp;';
                 result += '<div id="bc_search" class="deleteicon">';
                 result += '<input id="bc_text" placeholder="ISBN, '+app.lang.titleOrAuthor+' ..."/>'; //(<span id="bc_format"></span>)
-                result += '<span onclick="app.data.mySearch(\'~~\')"></span></div><button onclick="app.search.scan_search()" href="#" name="scansearch" id="scansearch" class="app-button"></button>';
+                result += '<span onclick="app.data.mySearch(\'~~\')"></span></div><button onclick="app.search.scan_search()" name="scansearch" id="scansearch" class="app-button"></button>';
                 //result += '<button onclick="app.search.picture()" href="#" id="books-pic" class="app-button">F</button> 
                 result += '</div >';
                 //result += '<p><span id="result"></span></p>';
                 result += '<div id="book-image"><img  class="pure-img" id="img_' + aktiveSeite + '" height="200" src="blank.jpg"/></div>';
                 result += '<div id="book-favor">' + data.book.favor("0") + '</div><div class="clear"></div>';
-                result += '<div><a id="book-amzn" href="#">Amazon</a></div>';
+                result += '<div><a id="book-amzn" target="_blank" href="#">Amazon</a></div>';
             } else if (aktiveSeite === "authors") {
                 result += '<div id="as" class="pure-control-group">';
                 result += '<div id="as_search" class="deleteicon">';
@@ -247,15 +248,11 @@
                 app.pouch.setSync(myObjA, 'add', 'authors');
                 app.pouch.db.put(myObjA);
             }
-            //var myDoc = array2json(myObj);
-            //console.log(myObj);
             app.pouch.db.put(myObj).then(function (doc) {
-                //console.log(doc);
-                app.ui.message(app.lang.ok +": " + doc.name, 'ok');
-                data.clear();
-                //show_all(seite);
+                app.ui.message(app.lang._get(app.seite) + ' ' +app.lang.ok + ": " + myObj.name, 'ok');
+                //data.clear();
             }).catch(function (err) {
-                app.ui.message(app.lang.error + ": " + doc.name, 'error');
+                app.ui.message(app.lang._get(app.seite) + ' ' +app.lang.error + ": " + doc.name, 'error');
                 console.info(err);
             });
 

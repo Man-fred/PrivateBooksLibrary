@@ -23,7 +23,11 @@ define(function (require) {
 
             // Let's set a pretty high verbosity level, so that we see a lot of stuff
             // in the console (reassuring us that something is happening).
-            store.verbosity = store.DEBUG;//WARNING;//INFO;//WARNING;
+            if (cordova.platformId === 'windows') {
+                store.verbosity = store.WARNING;
+            } else {
+                store.verbosity = store.DEBUG;//WARNING;//INFO;//WARNING;
+            }
 
             //Windows: call this before store.refresh
             //store.sandbox = true; //Don't call this in production

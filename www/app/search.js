@@ -59,8 +59,11 @@
             if (app.datalist.mySearch(search.isbn9(w)) === 0) {
                 search.isbn(6, w);
             } else {
+                document.getElementById("appSearch").value = search.isbn9(w);
+                app.ui.message(w + " ist vorhanden", "ok");
                 app.ui.show_page1(0,'books');
             }
+            //return false;
         },
         author_books: function (w) {
             // ean / isbn anpassen
@@ -114,6 +117,9 @@
             var ok = false;
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status !== 200) {
+                    console.info(this.readyState + ' ' + this.status);
+                }
                 if (this.readyState === 4 && this.status === 200) {
                     // Typical action to be performed when the document is ready:
                     //document.getElementById("result").innerHTML = xhttp.responseText;
@@ -163,8 +169,8 @@
                             app.data.select(state.select, app.seite, state.name, state.field, state.visible, '9');
                             $("#books_source").val(index);
                             ok = true;
-                            app.ui.show_page2('books');
                             app.ui.message("1 Treffer", "ok");
+                            app.ui.show_page2('books');
 
                         } else if (erg.count > 1) {
                             // Liste zeigen
@@ -193,8 +199,8 @@
                                 app.pouch.appResult['search_books'].rows[i].tr0 = app.datalist.one_book(erg.Items[i], 0);
                                 app.pouch.appResult['search_books'].rows[i].tr1 = app.datalist.one_book(erg.Items[i], 1);
                             }
-                            app.ui.show_page1(0, 'books', null, 'search_books');
                             app.ui.message(erg.count+" Treffer", "ok");
+                            app.ui.show_page1(0, 'books', null, 'search_books');
                         } else {
                             // kein Treffer
                             app.ui.message("kein Treffer", "warning");

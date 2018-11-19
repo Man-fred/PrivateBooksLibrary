@@ -54,6 +54,9 @@
         },
         set_checkdate: function (doc) {
             var timestamp = doc['checkdate'];
+            if (!timestamp) {
+                timestamp = (new Date()).toISOString();
+            }
             if (doc['DBTimestamp']) {
                 doc['checkdate'] = (new Date(doc['DBTimestamp'] * 1000)).toISOString();
             } else if (timestamp.length >= 13 && !isNaN(timestamp)) {
@@ -176,17 +179,19 @@
             const controlDigit = sum % 11;
             return (controlDigit !== 10 ? controlDigit : 'X');
         },
-        amzn: function (asin, isbn) {
-            if (asin.length > 8) {
+        amzn: function (asin, isbn = "") {
+            if (asin) {
                 return asin;
             }
             isbn = isbn.toString();
-            var n = myString.length;
+            var n = isbn.length;
             if (n === 10) {
                 return isbn;
             } else if (n === 13) {
                 let number = isbn.slice(3, -1);
-                return number + checksum(number);
+                return number + book.checksum(number);
+            } else {
+                return '';
             }
         }
     };

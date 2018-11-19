@@ -26,8 +26,8 @@ requirejs(['jquery', 'pouchdb.authentication', 'pouchdb-replication-stream', 'ap
         require(['app/handlebars/all', 'app/handlebars/' + lang.Sprache], function (all) {
             app.handlebars = all;
             document.getElementById("body").innerHTML = app.handlebars['body']({ str: app.lang });
-        htmlConsole.initialize();
-        pbl.initialize(lang);
+            htmlConsole.initialize();
+            pbl.initialize(lang);
             //app.onDeviceReady();
         });
     }

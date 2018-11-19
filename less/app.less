@@ -42,7 +42,7 @@
 @books-timestamp: 60px;
 @page2-label: 8em;
 @drop_content_width: 160px;
-@drop_content_height: 13 * 36px;
+@drop_content_height-abzug: @top-height + @footer-height;
 
 @top-abzug: @partner-right + @top-height;
 @top-abzug-sm: @menu-left + @partner-right;
@@ -1410,8 +1410,7 @@ Hides the menu at `48em`, but modify this based on your app's needs.
     display: none;
     position: absolute;
     background-color: @dropdown-row-bkg;
-    min-width: @drop_content_width;
-    height: @drop_content_height;
+    min-width: @drop_content_width; 
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;

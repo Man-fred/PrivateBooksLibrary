@@ -39,6 +39,7 @@ define(function (require) {
         pageDS: document.getElementById("pageDS"),
         pageContact: document.getElementById("pageContact"),
         page: this.page1,
+        seite_ersatz: false,
         verlauf: [],
         scrollY: 0,
 
@@ -104,7 +105,12 @@ define(function (require) {
             ui.dropdownClose(event, true);
         },
         show: function (neu, seite = '', id = '', setzen = false, scrollY = 0, scrollYreturn = 0, refresh = false, seite_ersatz = false) {
-            this.getScrollY();
+            if (ui.page === ui.page1) {
+                this.getScrollY();
+                if (neu === ui.page1 && seite === 'books' && ui.seite_ersatz) {
+                    ui.seite_ersatz = false;
+                }
+            }
             if (neu !== ui.page) {
                 if (neu === ui.pageAbout) {
                     ui.load(ui.pageAbout, 'about');
@@ -143,9 +149,12 @@ define(function (require) {
                         app.seite = seite;
                         $('#t_' + seite).show();
                     }
-                    if (seite_ersatz) {
-                        app.seite = seite_ersatz;
-                    }
+                }
+                if (seite_ersatz) {
+                    app.seite = seite_ersatz;
+                    ui.seite_ersatz = seite_ersatz;
+                } else if (ui.seite_ersatz){
+                    app.seite = ui.seite_ersatz;
                 }
                 app.datalist.show_all(app.seite);//, refresh)
                 ui.dataformBooks.style.display = "block";

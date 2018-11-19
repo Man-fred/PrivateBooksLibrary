@@ -47,12 +47,12 @@
         remoteLogin: function () {
             if (pouch.dbServer && pouch.dbPort) {
                 if (app.onlineState) {
-                    if (pouch.dbServer === 'https://pbl.bcss.de') {
-                        pouch.prefix = 'pbl-';
-                        pouch.prefixA = 'pbi-';
+                    if (pouch.dbServer === 'pbl.bcss.de') {
+                        pouch.prefix = 'https://pbl-';
+                        pouch.prefixA = 'https://pbi-';
                     } else {
-                        pouch.prefix = '';
-                        pouch.prefixA = '';
+                        pouch.prefix = 'https://';
+                        pouch.prefixA = 'https://';
                     }
                     if (pouch.db.mySync) {
                         // sync active, stopping first before connecting to another server
@@ -269,7 +269,7 @@
                     pouch.dbIdPublic = pouch.dbIdPrivate;
                     pouch.db.put({
                         _id: '**_login' + pouch.dbIdPrivate,
-                        name: 'Server',
+                        name: 'local',
                         type: 'db',
                         dbServer: pouch.dbServer,
                         dbPort: pouch.dbPort,

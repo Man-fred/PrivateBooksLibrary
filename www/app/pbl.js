@@ -92,6 +92,7 @@ define(function (require) {
         apiIsbndb : "",
         viewportXS: null,
         viewportXXS: null,
+        viewportHeight: null,
         listeningElement: null,
         receivedElement: null,
         countBooks: 0,
@@ -153,7 +154,13 @@ define(function (require) {
                 $('#appTitle').html("Private Books Library");
                 pbl.viewportXXS = viewportTemp;
             }
-            //pbl.position.height();
+            var viewportHeight = $(window).height()
+            if (viewportHeight !== pbl.viewportHeight) {
+                viewportHeight = viewportHeight - 2 * $('#footer').height();
+                document.getElementById("myDropdown1").style.maxHeight = viewportHeight + 'px';
+                document.getElementById("myDropdown2").style.maxHeight = viewportHeight + 'px';
+                pbl.viewportHeight = viewportHeight;
+            }
         },
         onPause: function () {
             // im Hintergrund offline gehen??
