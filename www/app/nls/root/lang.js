@@ -1,4 +1,5 @@
 ﻿define({
+    "version": "V 0.9.5.0",
     "Sprache": "en",
     "about": "About",
     "add": "Add",
@@ -61,7 +62,6 @@
     "title": "Title",
     "titleOrAuthor": "Title or author",
     "update": "Update",
-    "version": "V 0.9.4.0",
     "yes": "Yes",
 
     "root": true,

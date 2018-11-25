@@ -25,7 +25,7 @@
     <AndroidEmulatorID>AndroidDevice;Gerät</AndroidEmulatorID>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
-    <DebuggerFlavor>AndroidEmulator</DebuggerFlavor>
+    <DebuggerFlavor>SimulateNexus6</DebuggerFlavor>
     <AndroidEmulatorID>AndroidDevice;Gerät</AndroidEmulatorID>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Windows-AnyCPU'">

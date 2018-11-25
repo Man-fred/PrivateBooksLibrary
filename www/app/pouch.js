@@ -48,18 +48,18 @@
             if (pouch.dbServer && pouch.dbPort) {
                 if (app.onlineState) {
                     if (pouch.dbServer === 'pbl.bcss.de') {
-                        pouch.prefix = 'https://pbl-';
-                        pouch.prefixA = 'https://pbi-';
+                        pouch.prefix = 'pbl-';
+                        pouch.prefixA = 'pbi-';
                     } else {
-                        pouch.prefix = 'https://';
-                        pouch.prefixA = 'https://';
+                        pouch.prefix = '';
+                        pouch.prefixA = '';
                     }
                     if (pouch.db.mySync) {
                         // sync active, stopping first before connecting to another server
                         pouch.db.mySync.cancel();
                     }
-                    pouch.dbRemote = new PouchDB(pouch.dbServer + ':' + pouch.dbPort + '/' + pouch.prefix + pouch.dbName, { skip_setup: true });
-                    pouch.dbRemote.login(pouch.prefix + pouch.dbUser, pouch.dbPass, function (err, response) {
+                    pouch.dbRemote = new PouchDB('https://'+pouch.dbServer + ':' + pouch.dbPort + '/' + pouch.prefix + pouch.dbName, { skip_setup: true });
+                    pouch.dbRemote.login(pouch.dbUser, pouch.dbPass, function (err, response) {
                         if (err) {
                             console.log(err);
                             //if (err.name === 'unauthorized' || err.name === 'authentication_error') {
@@ -77,8 +77,8 @@
                         // sync active, stopping first before connecting to another server
                         pouch.dbA.mySync.cancel();
                     }
-                    pouch.dbRemoteA = new PouchDB(pouch.dbServer + ':' + pouch.dbPort + '/' + pouch.prefixA + pouch.dbName, { skip_setup: true });
-                    pouch.dbRemoteA.login(pouch.prefix + pouch.dbUser, pouch.dbPass, function (err, response) {
+                    pouch.dbRemoteA = new PouchDB('https://'+pouch.dbServer + ':' + pouch.dbPort + '/' + pouch.prefixA + pouch.dbName, { skip_setup: true });
+                    pouch.dbRemoteA.login(pouch.dbUser, pouch.dbPass, function (err, response) {
                         if (err) {
                             console.log(err);
                             //if (err.name === 'unauthorized' || err.name === 'authentication_error') {
@@ -502,6 +502,16 @@
             pouch.overlayRestore.style.display = "none";
             if (pouch.restoreResult) {
                 delete pouch.restoreResult;
+            }
+        },
+        changePass: function (oldPass, newPass, repeatPass){
+            if (newPass === repeatPass) {
+                //curl -X GET http://localhost:5984/_users/org.couchdb.user:jan
+                /*curl -X PUT http://localhost:5984/_users/org.couchdb.user:jan \
+                -H "Accept: application/json" \
+                -H "Content-Type: application/json" \
+                -H "If-Match: 1-e0ebfb84005b920488fc7a8cc5470cc0" \
+                -d '{"name":"jan", "roles":[], "type":"user", "password":"orange"}' */
             }
         }
     };
