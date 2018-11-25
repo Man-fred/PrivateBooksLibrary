@@ -20,7 +20,11 @@ define(function (require) {
                 window.store = purchase;
                 return;
             }
-
+            if (cordova.platformId === 'ios') {
+                console.log('Store in IOS deactivated');
+                window.store = purchase;
+                return;
+            }
             // Let's set a pretty high verbosity level, so that we see a lot of stuff
             // in the console (reassuring us that something is happening).
             if (cordova.platformId === 'windows') {
