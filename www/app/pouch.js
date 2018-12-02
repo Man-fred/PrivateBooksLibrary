@@ -4,7 +4,7 @@
         cookie: require(['app/cookie'], function (cookie) { pouch.cookieGet(cookie); }),
         dbServer: null,
         dbPort: 6984,
-        localdbA: 'PBL001.db', // local name,
+        localdbA: 'PBL001B.db', // local name,
         localdb: 'PBL001S.db', // local name without attachments,
         dbName: null,
         dbUser: null,
@@ -49,7 +49,7 @@
                 if (app.onlineState) {
                     if (pouch.dbServer === 'pbl.bcss.de') {
                         pouch.prefix = 'pbl-';
-                        pouch.prefixA = 'pbi-';
+                        pouch.prefixA = 'pbb-';
                     } else {
                         pouch.prefix = '';
                         pouch.prefixA = '';
@@ -168,7 +168,17 @@
         },
         dbOpen: function () {
             pouch.db = new PouchDB(pouch.localdb, { revs_limit: 10, auto_compaction: true });
+            // * Aufräumen alter Datenbanken in Alpha, erledigt
+            if (cordova.platformId === "ios") {
+                pouch.dbA = new PouchDB('PBL001.db', { revs_limit: 1, auto_compaction: true });
+                pouch.dbA.destroy().then(function (response) {
+                    console.info(response);
+                }).catch(function (err) {
+                    console.info(err);
+                });
+            }
             pouch.dbA = new PouchDB(pouch.localdbA, { revs_limit: 1, auto_compaction: true });
+            // */
         },
         dbNew: function () {
             //Test for browser webSQL compatibility
@@ -202,18 +212,6 @@
             }
             */
             this.dbOpen();
-
-            this.infoSync.innerHTML = 'connect 2';
-            /* Aufräumen alter Datenbanken in pre-Alpha, erledigt
-            if (cordova.platformId === "ios") {
-                this.dbA.destroy().then(function (response) {
-                    console.info(response);
-                }).catch(function (err) {
-                    console.info(err);
-                });
-            }
-            this.infoSync.innerHTML = 'connect 3';
-            */
             pouch.dbLoad();
         },
         dbLoad: function () {
