@@ -5,6 +5,7 @@
 define(function (require) {
 
     var admobile = {
+        use: false,
         active: false,
         initialized: false,
         // We must wait for the "deviceready" event to fire
@@ -31,7 +32,8 @@ define(function (require) {
             document.head.appendChild(newScript);
         },
         init: function () {
-            if (app.purchase.product["inappid1"]) {
+            admobile.use = cordova.platformId !== 'ios';
+            if (admobile.use && app.purchase.product["inappid1"]) {
                 if (!app.purchase.product["inappid1"].owned && !admobile.active) {
                     if (!admobile.initialized) {
                         if (cordova.platformId === 'browser') {
