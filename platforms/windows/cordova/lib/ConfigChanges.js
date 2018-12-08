@@ -22,7 +22,7 @@ var CapsNeedUapPrefix = require(path.join(__dirname, 'AppxManifest')).CapsNeedUa
 var CAPS_SELECTOR = '/Package/Capabilities';
 var WINDOWS10_MANIFEST = 'package.windows10.appxmanifest';
 
-function PlatformMunger(platform, project_dir, platformJson, pluginInfoProvider) {
+function PlatformMunger (platform, project_dir, platformJson, pluginInfoProvider) {
     CommonMunger.apply(this, arguments);
 }
 
@@ -63,13 +63,13 @@ PlatformMunger.prototype.apply_file_munge = function (file, munge, remove) {
 };
 
 // Recursive function to clone an object
-function cloneObject(obj) {
+function cloneObject (obj) {
     if (obj === null || typeof obj !== 'object') {
         return obj;
     }
 
     var copy = obj.constructor();
-    Object.keys(obj).forEach(function(key) {
+    Object.keys(obj).forEach(function (key) {
         copy[key] = cloneObject(obj[key]);
     });
 
@@ -81,8 +81,8 @@ function cloneObject(obj) {
  * @param {Object} capability with xml field like <Capability Name="CapabilityName">
  * @return {String} name of capability
  */
-function getCapabilityName(capability) {
-    var reg = /Name="(\w+)"/i;
+function getCapabilityName (capability) {
+    var reg = /Name\s*=\s*"(.*?)"/;
     return capability.xml.match(reg)[1];
 }
 
@@ -91,10 +91,10 @@ function getCapabilityName(capability) {
  * @param {Object} an array of capabilities
  * @return {Object} an unique array of capabilities
  */
-function getUniqueCapabilities(capabilities) {
-    return capabilities.reduce(function(uniqueCaps, currCap) {
+function getUniqueCapabilities (capabilities) {
+    return capabilities.reduce(function (uniqueCaps, currCap) {
 
-        var isRepeated = uniqueCaps.some(function(cap) {
+        var isRepeated = uniqueCaps.some(function (cap) {
             return getCapabilityName(cap) === getCapabilityName(currCap);
         });
 
@@ -108,7 +108,7 @@ function getUniqueCapabilities(capabilities) {
  * @param {Object} secondCap second capability
  * @return {Number} either -1, 0 or 1
  */
-function compareCapabilities(firstCap, secondCap) {
+function compareCapabilities (firstCap, secondCap) {
     var firstCapName = getCapabilityName(firstCap);
     var secondCapName = getCapabilityName(secondCap);
 
@@ -123,7 +123,6 @@ function compareCapabilities(firstCap, secondCap) {
     return 0;
 }
 
-
 /**
  * Generates a new munge that contains <uap:Capability> elements created based on
  * corresponding <Capability> elements from base munge. If there are no such elements
@@ -133,29 +132,31 @@ function compareCapabilities(firstCap, secondCap) {
  * @param {Object} capabilities A list of capabilities
  * @return {Object} A list with 'uap'-prefixed capabilities
  */
-function generateUapCapabilities(capabilities) {
+function generateUapCapabilities (capabilities) {
 
-    function hasCapabilityChange(change) {
-        return /^\s*<Capability\s/.test(change.xml);
+    function hasCapabilityChange (change) {
+        return /^\s*<(\w+:)?(Device)?Capability\s/.test(change.xml);
     }
 
-    function createPrefixedCapabilityChange(change) {
+    function createPrefixedCapabilityChange (change) {
         if (CapsNeedUapPrefix.indexOf(getCapabilityName(change)) < 0) {
             return change;
         }
 
+        //  If capability is already prefixed, avoid adding another prefix
+        var replaceXML = change.xml.indexOf('uap:') > 0 ? change.xml : change.xml.replace(/Capability/, 'uap:Capability');
         return {
-            xml: change.xml.replace(/Capability/, 'uap:Capability'),
+            xml: replaceXML,
             count: change.count,
             before: change.before
         };
     }
 
     return capabilities
-     // For every xml change check if it adds a <Capability> element ...
-    .filter(hasCapabilityChange)
-    // ... and create a duplicate with 'uap:' prefix
-    .map(createPrefixedCapabilityChange);
+        // For every xml change check if it adds a <Capability> element ...
+        .filter(hasCapabilityChange)
+        // ... and create a duplicate with 'uap:' prefix
+        .map(createPrefixedCapabilityChange);
 
 }
 

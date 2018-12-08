@@ -264,19 +264,19 @@ module.exports = [
     ]
   },
   {
-    "id": "cc.fovea.cordova.purchase.InAppPurchase",
-    "file": "plugins/cc.fovea.cordova.purchase/www/store-ios.js",
-    "pluginId": "cc.fovea.cordova.purchase",
-    "clobbers": [
-      "store"
-    ]
-  },
-  {
     "id": "com.admob.plugin.admob",
     "file": "plugins/com.admob.plugin/www/admob.js",
     "pluginId": "com.admob.plugin",
     "clobbers": [
       "window.admob"
+    ]
+  },
+  {
+    "id": "cc.fovea.cordova.purchase.InAppPurchase",
+    "file": "plugins/cc.fovea.cordova.purchase/www/store-ios.js",
+    "pluginId": "cc.fovea.cordova.purchase",
+    "clobbers": [
+      "store"
     ]
   }
 ];
@@ -292,8 +292,8 @@ module.exports.metadata =
   "cordova-plugin-network-information": "2.0.1",
   "cordova-plugin-keyboard": "1.2.0",
   "cordova-plugin-printer": "0.7.3",
-  "cc.fovea.cordova.purchase": "7.2.4",
-  "com.admob.plugin": "5.5.0"
+  "com.admob.plugin": "5.5.0",
+  "cc.fovea.cordova.purchase": "7.3.0-beta.0"
 };
 // BOTTOM OF METADATA
 });

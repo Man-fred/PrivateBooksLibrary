@@ -324,8 +324,8 @@ module.exports.metadata =
     "cordova-plugin-network-information": "2.0.1",
     "cordova-plugin-keyboard": "1.2.0",
     "cordova-plugin-printer": "0.7.3",
-    "cc.fovea.cordova.purchase": "7.2.4",
-    "com.admob.plugin": "5.5.0"
+    "com.admob.plugin": "5.5.0",
+    "cc.fovea.cordova.purchase": "7.3.0-beta.0"
 }
 // BOTTOM OF METADATA
 });

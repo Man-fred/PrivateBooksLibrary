@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-    <Identity Name="35337ManfredBielemeierBCS.PrivateBooksLibrary" Publisher="CN=$username$" Version="0.9.4.0" />
-    <mp:PhoneIdentity PhoneProductId="42b4a7c0-e7fc-11e7-a9cd-b70fd555f9ac" PhonePublisherId="db093ed5-53b1-45f7-af72-751e8f36ab80" />
+    <Identity Name="35337ManfredBielemeierBCS.PrivateBooksLibrary" Publisher="CN=$username$" Version="0.9.7.0" />
+    <mp:PhoneIdentity PhoneProductId="cf7aaca0-f650-11e8-bf48-ef31867faf52" PhonePublisherId="db093ed5-53b1-45f7-af72-751e8f36ab80" />
     <Properties>
         <DisplayName>Private Books Library</DisplayName>
         <PublisherDisplayName>Manfred Bielemeier (BCSS Software &amp; Beratung GmbH)</PublisherDisplayName>
         <Logo>images\StoreLogo.png</Logo>
-        <Description>Verwalten Sie Ihre private Büchersammlung und eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.</Description>
+        <Description>A sample Apache Cordova application that responds to the deviceready event.</Description>
     </Properties>
     <Prerequisites>
         <OSMinVersion>6.3.1</OSMinVersion>
@@ -17,7 +17,7 @@
     </Resources>
     <Applications>
         <Application Id="io.cordova.myapp387c96" StartPage="www/index.html">
-            <m3:VisualElements BackgroundColor="transparent" Description="Verwalten Sie Ihre private Büchersammlung und eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren." DisplayName="PrivateBooksLibrary" ForegroundText="light" Square150x150Logo="images\Square150x150Logo.png" Square44x44Logo="images\Square44x44Logo.png">
+            <m3:VisualElements BackgroundColor="transparent" Description="A sample Apache Cordova application that responds to the deviceready event." DisplayName="PrivateBooksLibrary" ForegroundText="light" Square150x150Logo="images\Square150x150Logo.png" Square44x44Logo="images\Square44x44Logo.png">
                 <m3:DefaultTile Square71x71Logo="images\Square71x71Logo.png" Wide310x150Logo="images\Wide310x150Logo.png">
                     <m3:ShowNameOnTiles>
                         <m3:ShowOn Tile="square150x150Logo" />

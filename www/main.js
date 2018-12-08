@@ -18,7 +18,7 @@ requirejs.config({
 
 // Start loading the main app file. Put all of
 // your application logic in there.'pouchdb',
-requirejs(['jquery', 'pouchdb.authentication', 'pouchdb-replication-stream', 'app/pbl', 'app/htmlConsole', "i18n!app/nls/lang"],
+requirejs(['jquery/jquery-3.3.1', 'pouchdb.authentication', 'pouchdb-replication-stream', 'app/pbl', 'app/htmlConsole', "i18n!app/nls/lang"],
     function ($, authentication, replication, pbl, htmlConsole, lang) {
         app = pbl;
         app.lang = lang;

@@ -5,6 +5,7 @@ define(function (require) {
 
     var purchase = {
         ready: false,
+        error: false,
         visible: false,
         product: [],
         button: [],
@@ -13,94 +14,106 @@ define(function (require) {
         // before we can use the store object.
 
         init: function () {
-            purchase.product["inappid1"] = {};
+            /*purchase.product["inappid1"] = {};
+            purchase.product["inappid1"].id = "inappid1";
             purchase.product["inappid1"].owned = true;
+            purchase.product["inappid1"].state = 'owned';*/
             if (!window.store) {
                 console.log('Store not available');
                 window.store = purchase;
                 return;
             }
-            if (cordova.platformId === 'ios') {
-                console.log('Store in IOS deactivated');
-                window.store = purchase;
-                return;
-            }
-            // Let's set a pretty high verbosity level, so that we see a lot of stuff
-            // in the console (reassuring us that something is happening).
-            if (cordova.platformId === 'windows') {
-                store.verbosity = store.WARNING;
-            } else {
+            if (cordova.platformId === 'ios' || cordova.platformId === 'android' || cordova.platformId === 'windows') {
                 store.verbosity = store.DEBUG;//WARNING;//INFO;//WARNING;
-            }
+                console.log('Store testing');
+                store.register([
+                    {
+                        id: "inappid1",
+                        //alias: "werbefrei",
+                        type: store.NON_CONSUMABLE    // Windows: Durable
+                    },
+                    {
+                        id: "inappabo1",
+                        type: store.PAID_SUBSCRIPTION // Windows: Subscription
+                    }]);
+            } else {
+                // Let's set a pretty high verbosity level, so that we see a lot of stuff
+                // in the console (reassuring us that something is happening).
+                if (cordova.platformId === 'windows') {
+                    store.verbosity = store.WARNING;
+                } else {
+                    store.verbosity = store.DEBUG;//WARNING;//INFO;//WARNING;
+                }
 
-            //Windows: call this before store.refresh
-            //store.sandbox = true; //Don't call this in production
+                //Windows: call this before store.refresh
+                //store.sandbox = true; //Don't call this in production
 
-            // We register a dummy product. It's ok, it shouldn't
-            // prevent the store "ready" event from firing.
-            store.register({
-                id: "inappid1",
-                alias: "werbefrei",
-                type: store.NON_CONSUMABLE
-            });
-            store.register({
-                id: "inappabo1",
-                alias: "sync1year",
-                type: store.PAID_SUBSCRIPTION
-            });
-            // android test
-            if (store.sandbox) {
                 store.register({
-                    id: "android.test.purchased",
-                    alias: "test_purchase",
+                    id: "inappid1",
+                    alias: "werbefrei",
                     type: store.NON_CONSUMABLE
                 });
                 store.register({
-                    id: "android.test.canceled",
-                    alias: "test_canceled",
+                    id: "inappabo1",
+                    alias: "sync1year",
                     type: store.PAID_SUBSCRIPTION
                 });
+                // android test
+                if (store.sandbox) {
+                    store.register({
+                        id: "android.test.purchased",
+                        alias: "test_purchase",
+                        type: store.NON_CONSUMABLE
+                    });
+                    store.register({
+                        id: "android.test.canceled",
+                        alias: "test_canceled",
+                        type: store.PAID_SUBSCRIPTION
+                    });
+                }
             }
+            store.when("inappid1").owned(function (iap) {
+                console.info("owned: ", iap.id);
+                purchase.product[iap.id] = iap;//.state;
+                //app.admobile.disable();
+            });
+            store.when("inappabo1").owned(function (iap) {
+                console.info("owned: ", iap.id);
+                purchase.product[iap.id] = iap;//.state;
+                //app.admobile.disable();
+            });
             store.when("product").approved(function (iap) {
                 purchase.product[iap.id] = iap;//.state;
                 iap.finish();
             });
-                // The play button can only be accessed when the user
-                // owns the full version.
             store.when("product").updated(function (iap) {
                 //console.info("updated: ", iap);
                 purchase.product[iap.id] = iap;//.state;
                 purchase.setPageState(iap);
             });
-            store.when("inappid1").owned(function (iap) {
-                console.info("owned: ", iap);
-                purchase.product[iap.id] = iap;//.state;
-                //app.admobile.disable();
-            }); 
-            // When every goes as expected, it's time to celebrate!
-            // The "ready" event should be welcomed with music and fireworks,
-            // go ask your boss about it! (just in case)
+            // When every goes as expected
             store.ready(function () {
                 purchase.ready = true;
                 require(['./admobile'], function (admobile) {
                     app.admobile = admobile;
                     admobile.init();
                 });
-
                 console.log("\\o/ STORE READY \\o/");
             });
 
             // Errors communicating with the iTunes server happen quite often,
             // so it's highly recommended you implement some feedback to the user.
             store.error(function (e) {
-                console.error("storekit ERROR " + e.code + ": " + e.message);
-                app.ui.message('Subscription Purchase Error','error',
-                    'We could not reach the Apple iTunes ordering server. ' +
-                    'Please ensure you are connected to the Internet and try ' +
-                    'again.'
-                );
+                if (!purchase.error) {
+                    purchase.error = true;
+                    console.error("store ERROR " + e.code + ": " + e.message);
+                    /*app.ui.message('Subscription Purchase Error', 'error',
+                        'We could not reach the Apple iTunes ordering server. ' +
+                        'Please ensure you are connected to the Internet and try ' +
+                        'again.'
+                    );*/
+                }
             });
-
             // After we've done our setup, we tell the store to do
             // it's first refresh. Nothing will happen if we do not call store.refresh()
             store.refresh();

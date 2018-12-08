@@ -22,10 +22,15 @@ var events = require('cordova-common').events;
 var JsprojManager = require('./lib/JsprojManager');
 var PluginManager = require('cordova-common').PluginManager;
 var CordovaLogger = require('cordova-common').CordovaLogger;
+var PlatformMunger = require('./lib/ConfigChanges.js').PlatformMunger;
+var PlatformJson = require('cordova-common').PlatformJson;
+var PluginInfo = require('./lib/PluginInfo').PluginInfo;
+var ConfigParser = require('./lib/ConfigParser');
+var PluginInfoProvider = require('cordova-common').PluginInfoProvider;
 
 var PLATFORM = 'windows';
 
-function setupEvents(externalEventEmitter) {
+function setupEvents (externalEventEmitter) {
     if (externalEventEmitter) {
         // This will make the platform internal events visible outside
         events.forwardEventsTo(externalEventEmitter);
@@ -48,7 +53,7 @@ function setupEvents(externalEventEmitter) {
  *
  * * platform: String that defines a platform name.
  */
-function Api(platform, platformRootDir, eventEmitter) {
+function Api (platform, platformRootDir, eventEmitter) {
     this.platform = PLATFORM;
     this.root = path.resolve(__dirname, '..');
 
@@ -86,14 +91,23 @@ function Api(platform, platformRootDir, eventEmitter) {
  * @return {Promise<PlatformApi>} Promise either fulfilled with PlatformApi
  *   instance or rejected with CordovaError.
  */
-Api.createPlatform = function (destinationDir, projectConfig, options, eventEmitter) {
-    setupEvents(eventEmitter);
-    return require('../../bin/lib/create')
-    .create(destinationDir, projectConfig, options)
-    .then(function () {
-        var PlatformApi = require(path.resolve(destinationDir, 'cordova/Api'));
-        return new PlatformApi(PLATFORM, destinationDir, eventEmitter);
-    });
+Api.createPlatform = function (destinationDir, projectConfig, options, events) {
+    setupEvents(events);
+    var result;
+
+    try {
+        result = require('../../bin/lib/create')
+            .create(destinationDir, projectConfig, options)
+            .then(function () {
+                var PlatformApi = require(path.resolve(destinationDir, 'cordova/Api'));
+                return new PlatformApi(PLATFORM, destinationDir, events);
+            });
+    } catch (e) {
+        events.emit('error', 'createPlatform is not callable from the windows project API.');
+        throw (e);
+    }
+
+    return result;
 };
 
 /**
@@ -106,19 +120,24 @@ Api.createPlatform = function (destinationDir, projectConfig, options, eventEmit
  *   should override the default one from platform.
  * @param  {Boolean}  [options.link=false]  Flag that indicates that platform's sources
  *   will be linked to installed platform instead of copying.
- * @param {EventEmitter} [eventEmitter] The emitter that will be used for logging
+ * @param {EventEmitter} [events] The emitter that will be used for logging
  *
  * @return {Promise<PlatformApi>} Promise either fulfilled with PlatformApi
  *   instance or rejected with CordovaError.
  */
-Api.updatePlatform = function (destinationDir, options, eventEmitter) {
-    setupEvents(eventEmitter);
-    return require('../../bin/lib/update')
-    .update(destinationDir, options)
-    .then(function () {
-        var PlatformApi = require(path.resolve(destinationDir, 'cordova/Api'));
-        return new PlatformApi(PLATFORM, destinationDir, eventEmitter);
-    });
+Api.updatePlatform = function (destinationDir, options, events) {
+    setupEvents(events);
+    try {
+        return require('../../bin/lib/update')
+            .update(destinationDir, options)
+            .then(function () {
+                var PlatformApi = require(path.resolve(destinationDir, 'cordova/Api'));
+                return new PlatformApi(PLATFORM, destinationDir, events);
+            });
+    } catch (e) {
+        events.emit('error', 'updatePlatform is not callable from the windows project API.');
+        throw (e);
+    }
 };
 
 /**
@@ -154,6 +173,8 @@ Api.prototype.getPlatformInfo = function () {
  *   CordovaError instance.
  */
 Api.prototype.prepare = function (cordovaProject, prepareOptions) {
+    var configPath = cordovaProject.projectConfig.path;
+    cordovaProject.projectConfig = new ConfigParser(configPath);
     return require('./lib/prepare').prepare.call(this, cordovaProject, prepareOptions);
 };
 
@@ -179,6 +200,11 @@ Api.prototype.prepare = function (cordovaProject, prepareOptions) {
  */
 Api.prototype.addPlugin = function (plugin, installOptions) {
 
+    var self = this;
+
+    // We need to use custom PluginInfo to trigger windows-specific processing
+    // of changes in .appxmanifest files. See PluginInfo.js for details
+    var pluginInfo = new PluginInfo(plugin.dir);
     var jsProject = JsprojManager.getProject(this.root);
     installOptions = installOptions || {};
     installOptions.variables = installOptions.variables || {};
@@ -187,8 +213,16 @@ Api.prototype.addPlugin = function (plugin, installOptions) {
         installOptions.variables.PACKAGE_NAME = jsProject.getPackageName();
     }
 
-    return PluginManager.get(this.platform, this.locations, jsProject)
-        .addPlugin(plugin, installOptions)
+    var platformJson = PlatformJson.load(this.root, this.platform);
+    var pluginManager = PluginManager.get(this.platform, this.locations, jsProject);
+    pluginManager.munger = new PlatformMunger(this.platform, this.locations.root, platformJson, new PluginInfoProvider());
+    return pluginManager
+        .addPlugin(pluginInfo, installOptions)
+        .then(function () {
+            // CB-11657 Add BOM to www files here because files added by plugin
+            // probably don't have it. Prepare would add BOM but it might not be called
+            return require('./lib/prepare').addBOMSignature(self.locations.www);
+        })
         // CB-11022 return non-falsy value to indicate
         // that there is no need to run prepare after
         .thenResolve(true);
@@ -208,9 +242,24 @@ Api.prototype.addPlugin = function (plugin, installOptions) {
  *   CordovaError instance.
  */
 Api.prototype.removePlugin = function (plugin, uninstallOptions) {
+    var self = this;
+
+    // We need to use custom PluginInfo to trigger windows-specific processing
+    // of changes in .appxmanifest files. See PluginInfo.js for details
+    var pluginInfo = new PluginInfo(plugin.dir);
     var jsProject = JsprojManager.getProject(this.root);
-    return PluginManager.get(this.platform, this.locations, jsProject)
-        .removePlugin(plugin, uninstallOptions)
+    var platformJson = PlatformJson.load(this.root, this.platform);
+    var pluginManager = PluginManager.get(this.platform, this.locations, jsProject);
+    //  CB-11933 We override this field by windows specific one because windows has special logic
+    //  for appxmanifest's capabilities removal (see also https://issues.apache.org/jira/browse/CB-11066)
+    pluginManager.munger = new PlatformMunger(this.platform, this.locations.root, platformJson, new PluginInfoProvider());
+    return pluginManager
+        .removePlugin(pluginInfo, uninstallOptions)
+        .then(function () {
+            // CB-11657 Add BOM to cordova_plugins, since it is was
+            // regenerated after plugin uninstallation and does not have BOM
+            return require('./lib/prepare').addBOMToFile(path.resolve(self.locations.www, 'cordova_plugins.js'));
+        })
         // CB-11022 return non-falsy value to indicate
         // that there is no need to run prepare after
         .thenResolve(true);
@@ -261,13 +310,13 @@ Api.prototype.removePlugin = function (plugin, uninstallOptions) {
  *   there could be multiple items in output array, e.g. when multiple
  *   arhcitectures is specified.
  */
-Api.prototype.build = function(buildOptions) {
+Api.prototype.build = function (buildOptions) {
     // TODO: Should we run check_reqs first? Android does this, but Windows appears doesn't.
     return require('./lib/build').run.call(this, buildOptions)
-    .then(function (result) {
-        // Wrap result into array according to PlatformApi spec
-        return [result];
-    });
+        .then(function (result) {
+            // Wrap result into array according to PlatformApi spec
+            return [result];
+        });
 };
 
 /**
@@ -282,7 +331,7 @@ Api.prototype.build = function(buildOptions) {
  * @return {Promise} A promise either fulfilled if package was built and ran
  *   successfully, or rejected with CordovaError.
  */
-Api.prototype.run = function(runOptions) {
+Api.prototype.run = function (runOptions) {
     // TODO: Should we run check_reqs first? Android does this, but Windows appears doesn't.
     return require('./lib/run').run.call(this, runOptions);
 };
@@ -293,12 +342,12 @@ Api.prototype.run = function(runOptions) {
  * @return  {Promise}  Return a promise either fulfilled, or rejected with
  *   CordovaError.
  */
-Api.prototype.clean = function(cleanOpts) {
+Api.prototype.clean = function (cleanOpts) {
     var self = this;
     return require('./lib/build').clean.call(this, cleanOpts)
-    .then(function () {
-        return require('./lib/prepare').clean.call(self, cleanOpts);
-    });
+        .then(function () {
+            return require('./lib/prepare').clean.call(self, cleanOpts);
+        });
 };
 
 /**
@@ -309,7 +358,7 @@ Api.prototype.clean = function(cleanOpts) {
  * @return  {Promise<Requirement[]>}  Promise, resolved with set of Requirement
  *   objects for current platform.
  */
-Api.prototype.requirements = function() {
+Api.prototype.requirements = function () {
     return require('./lib/check_reqs').check_all();
 };
 

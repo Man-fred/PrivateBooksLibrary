@@ -1,19 +1,23 @@
 ﻿define(function (require) {
 
     var htmlConsole = {
+        active: true,
+        loglevel: 0,
         countLog: 0,
         methods: ['log', 'error', 'warn', 'info', 'debug' ],
         original: [],
         initialize: function (level = 5) {
-            this.loglevel = level;
-            this.console = window.console;
-            if (!this.console) return;
-            for (var i = 0; i < 5; i++)
-                this.original[this.methods[i]] = this.console[this.methods[i]];
-            this.apply = this.original.log.apply;
-            this.infoLog = document.getElementById('info-log');
-            // temporaer sperren: 
-            this.takeOverConsole();
+            if (this.active) {
+                this.loglevel = level;
+                this.console = window.console;
+                if (!this.console) return;
+                for (var i = 0; i < 5; i++)
+                    this.original[this.methods[i]] = this.console[this.methods[i]];
+                this.apply = this.original.log.apply;
+                this.infoLog = document.getElementById('info-log');
+                // temporaer sperren: 
+                this.takeOverConsole();
+            }
         },
         takeOverConsole: function () {
             function intercept(method) {
