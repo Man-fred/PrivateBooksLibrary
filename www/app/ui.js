@@ -25,7 +25,7 @@ define(function (require) {
         loading: document.getElementById("loading"),
         dataformBooks: document.getElementById("dataformBooks"),
         action: document.getElementById("action"),
-        actionPassword: document.getElementById("appPassword"),
+        //actionPassword: document.getElementById("appPassword"),
         appSearchAnchor: document.getElementById("appSearchAnchor"),
         myDropdown2: document.getElementById("myDropdown2"),
         mRefresh: document.getElementById("mRefresh"),
@@ -181,7 +181,7 @@ define(function (require) {
                 }
                 ui.dataformBooks.style.display = "none";
                 ui.action.style.display = "block";
-                ui.actionPassword.style.display = seite === "login" ? "" : "none";
+                //ui.actionPassword.style.display = seite === "login" ? "" : "none";
                 
                 this.pbl.appPage = 2;
             } else {
@@ -326,6 +326,17 @@ define(function (require) {
             ui.toggleClass(ui.layout, active);
             ui.toggleClass(ui.menu, active);
             ui.toggleClass(ui.menuLink, active);
+        },
+        togglePassword: function (elem) {
+            var x = document.getElementById(elem);
+            var button = document.getElementById(elem + '_p');
+            if (x.type === "password") {
+                x.type = "text";
+                button.setAttribute('state', 'eye-slash');
+            } else {
+                x.type = "password";
+                button.setAttribute('state', 'eye');
+            }
         },
         print: function () {
             if (cordova.platformId === 'browser') {

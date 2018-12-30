@@ -52,9 +52,21 @@ footer {
 }
 #action {
   text-align: left;
+  width: 100%;
+}
+@media only screen and (min-width: 568px) {
+  #action {
+    left: 150px;
+    width: calc(100% -  150px);
+  }
 }
 #action .pure-button {
-  margin: 10px;
+  margin: 10px 1% 0 1%;
+  width: 21%;
+  overflow: hidden;
+  text-align: center;
+  font-size: 80%;
+  height: 40px;
 }
 .header {
   padding: 0;
@@ -1417,4 +1429,7 @@ meter[value="4"]::-moz-meter-bar {
 meter[value="5"]::-webkit-meter-optimum-value,
 meter[value="5"]::-moz-meter-bar {
   background: green;
+}
+body {
+  -ms-overflow-style: scrollbar;
 }
