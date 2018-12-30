@@ -18,7 +18,7 @@
         dbRemoteA: null,          //couchdb attachments,
         dbSync: null,            //sync-handle, used to stop syncing,
         dbSyncA: null,            //sync-handle, used to stop syncing,
-        dbReady: 2,
+        dbReady: 3,
         appResult: [],
 
         initialize: function (pbl) {
@@ -45,11 +45,11 @@
             this.infoSync.innerHTML = info;
         },
         remoteLogin: function () {
-            if (pouch.dbServer && pouch.dbPort) {
+            if (app.purchase.inappabo1 && pouch.dbServer && pouch.dbPort) {
                 if (app.onlineState) {
                     if (pouch.dbServer === 'pbl.bcss.de') {
                         pouch.prefix = 'pbl-';
-                        pouch.prefixA = 'pbb-';
+                        pouch.prefixA = 'pbi-';
                     } else {
                         pouch.prefix = '';
                         pouch.prefixA = '';
@@ -110,6 +110,13 @@
             if (pouch.dbA.mySync) {
                 // sync active, stopping
                 pouch.dbA.mySync.cancel();
+            }
+        },
+        setRemoteState: function () {
+            if (app.purchase.inappabo1) {
+                pouch.remoteLogin();
+            } else {
+                pouch.remoteLogout();
             }
         },
         newDocs: function (changes) {
@@ -250,6 +257,25 @@
                 pouch.db.get('**_login' + pouch.dbIdPrivate).then(function (doc) {
                     if (doc !== null) {
                         app.info.setSync('connect set login');
+                        if (app.purchase.online && store.products[0]) {
+                            var changed = 0;
+
+                            var purchase = JSON.stringify(store.products);
+                            if (doc.purchase !== purchase) {
+                                doc.purchase = purchase;
+                                pouch.db.put(doc).then(function (doc2) {
+                                    // handle doc
+                                    if (doc2) {
+                                        app.ui.message(app.lang.ok + ": " + doc.name, 'ok');
+                                    }
+                                }).catch(function (err) {
+                                    app.ui.message(app.lang.error + ": " + doc.name, 'error');
+                                    console.log(err);
+                                });
+                            }
+                        } else if (app.purchase.cache && doc.purchase) {
+                            app.purchase.register(JSON.parse(doc.purchase), true);
+                        }
                         //system = doc;
                         pouch.set(doc);
 
@@ -293,6 +319,31 @@
                     });
                 });
             }
+        },
+        passwordChange: function (newpass) {
+            pouch.db.get('**_login' + pouch.dbIdPrivate).then(function (doc) {
+                if (doc !== null) {
+                    if (doc.dbPass !== newpass) {
+                        doc.dbPass = newpass;
+                        pouch.db.put(doc).then(function (doc2) {
+                            // handle doc
+                            if (doc2) {
+                                app.ui.message(app.lang.ok + ": " + doc.name, 'ok');
+                            }
+                        }).catch(function (err) {
+                            app.ui.message(app.lang.error + ": " + doc.name, 'error');
+                            console.log(err);
+                        });
+                    }
+                    pouch.set(doc);
+
+                    //app.setOnlineState();
+                    pouch.remoteLogin();
+                }
+            }).catch(function (err) {
+                app.info.setSync('connect no login', 'Datenbank ohne Funktion: ' + err, 'error');
+                console.error('Datenbank ohne Funktion: ' + err);
+            });
         },
         cookieGet: function (cookie) {
             pouch.dbIdPrivate = cookie('dbId');
@@ -368,6 +419,8 @@
 
             }
         },
+        // funktioniert nicht unter Windows, Edge, Android !!
+        // testen: https://cordova.apache.org/blog/2017/10/18/from-filetransfer-to-xhr2.html
         backup: function () {
             app.ui.loading.style.display = "block";
             pouch.db.allDocs({
@@ -381,29 +434,55 @@
                     result.img = result2;
                     var myJSON = JSON.stringify(result);
                     var textToSaveAsBlob = new Blob([myJSON], { type: "text/json" });
-                    window.URL = window.URL || window.webkitURL;
-                    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
-                    var fileNameToSaveAs = 'pbl.backup'; //document.getElementById("inputFileNameToSaveAs").value;
+                    if (navigator.msSaveOrOpenBlob) {
+                        navigator.msSaveOrOpenBlob(textToSaveAsURL, "pbl.backup");
+                    } else {
 
-                    var downloadLink = document.createElement("a");
-                    downloadLink.download = fileNameToSaveAs;
-                    downloadLink.innerHTML = "Download File";
-                    downloadLink.href = textToSaveAsURL;
-                    downloadLink.onclick = function (event) {
-                        document.body.removeChild(event.target);
-                    };
-                    downloadLink.onloadend = function (event) {
-                        window.URL.revokeObjectURL(textToSaveAsURL);
-                    };
-                    downloadLink.style.display = "none";
-                    document.body.appendChild(downloadLink);
+                        window.URL = window.URL || window.webkitURL;
+                        var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+                        var fileNameToSaveAs = 'pbl.backup'; //document.getElementById("inputFileNameToSaveAs").value;
 
-                    downloadLink.click();
+                        var downloadLink = document.createElement("a");
+                        downloadLink.download = fileNameToSaveAs;
+                        downloadLink.innerHTML = "Download File";
+                        downloadLink.href = textToSaveAsURL;
+                        downloadLink.onclick = function (event) {
+                            document.body.removeChild(event.target);
+                        };
+                        downloadLink.onloadend = function (event) {
+                            window.URL.revokeObjectURL(textToSaveAsURL);
+                        };
+                        downloadLink.style.display = "none";
+                        document.body.appendChild(downloadLink);
+
+                        downloadLink.click();
+                    }
                 });
             }).catch(function (err) {
                 console.log(err);
                 app.ui.loading.style.display = "none";
             });
+        },
+        updateLogin: function () {
+            pouch.db.get('**_login' + pouch.dbIdPrivate).then(function (doc) {
+                if (doc !== null) {
+                    if (app.purchase.online && store.products[0]) {
+                        var purchase = JSON.stringify(store.products);
+                        if (doc.purchase !== purchase) {
+                            doc.purchase = purchase;
+                            pouch.db.put(doc).then(function (doc2) {
+                            }).catch(function (err) {
+                                app.ui.message(app.lang.error + ": " + doc.name, 'error');
+                                console.error(err);
+                            });
+                        }
+                    }
+                }
+            }).catch(function (err) {
+                app.ui.message(app.lang.error + ": " + doc.name, 'error');
+                console.error(err);
+            });
+
         },
         restore: function () {
             if (!pouch.overlayRestore) {

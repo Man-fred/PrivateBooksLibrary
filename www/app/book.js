@@ -13,7 +13,8 @@
                 $('#img_books').attr("src", book.image(doc));
                 $('#book-favor').replaceWith('<div id="book-favor" onclick="app.book.set_favor(this, \'' + doc['_id'] + '\')">' + book.favor(doc['favor']) + '</div>');
                 $('#book-amzn').attr("href", 'https://www.amazon.de/dp/' + book.amzn(doc.asin, doc.isbn) + '/ref=nosim?tag=bielemeierde-21');
-                //doc['checkdate'] = new Date(parseInt(doc['checkdate'])).toISOString();//toLocaleDateString();
+                $('#book-thalia').attr("href", 'https://www.thalia.de/suche?sq=' + doc.name );
+                //doc['checkdate'] = new Date(parseInt(doc['checkdate'])).toISOString();//toLocaleDateString()book.ean(doc.isbn);utf8=%E2%9C%93&filterPATHROOT=&
                 //alert(doc['name']);alert(doc.name);
             }
             $.each(app.myApp[seite].header, function () {
@@ -179,6 +180,60 @@
             const controlDigit = sum % 11;
             return (controlDigit !== 10 ? controlDigit : 'X');
         },
+        checksum13: function (eanCode) {
+            // Check if only digits
+            var ValidChars = "0123456789";
+            for (i = 0; i < eanCode.length; i++) {
+                digit = eanCode.charAt(i);
+                if (ValidChars.indexOf(digit) == -1) {
+                    return '';
+                }
+            }
+
+            // Add five 0 if the code has only 8 digits
+            if (eanCode.length === 8) {
+                eanCode = "00000" + eanCode;
+            }
+            // Check for 13 digits otherwise
+            else if (eanCode.length !== 13) {
+                return '';
+            }
+
+            // Get the check number
+            var originalCheck = eanCode.substring(eanCode.length - 1);
+            eanCode = eanCode.substring(0, eanCode.length - 1);
+
+            // Add even numbers together
+            var even = Number(eanCode.charAt(1)) +
+                Number(eanCode.charAt(3)) +
+                Number(eanCode.charAt(5)) +
+                Number(eanCode.charAt(7)) +
+                Number(eanCode.charAt(9)) +
+                Number(eanCode.charAt(11));
+            // Multiply this result by 3
+            even *= 3;
+
+            // Add odd numbers together
+            var odd = Number(eanCode.charAt(0)) +
+                Number(eanCode.charAt(2)) +
+                Number(eanCode.charAt(4)) +
+                Number(eanCode.charAt(6)) +
+                Number(eanCode.charAt(8)) +
+                Number(eanCode.charAt(10));
+
+            // Add two totals together
+            var total = even + odd;
+
+            // Calculate the checksum
+            // Divide total by 10 and store the remainder
+            var checksum = total % 10;
+            // If result is not 0 then take away 10
+            if (checksum !== 0) {
+                checksum = 10 - checksum;
+            }
+
+            return checksum;
+        },
         amzn: function (asin, isbn = "") {
             if (asin) {
                 return asin;
@@ -190,6 +245,18 @@
             } else if (n === 13) {
                 let number = isbn.slice(3, -1);
                 return number + book.checksum(number);
+            } else {
+                return '';
+            }
+        },
+        ean: function (isbn) {
+            isbn = isbn.toString();
+            var n = isbn.length;
+            if (n === 13) {
+                return isbn;
+            } else if (n === 10) {
+                let number = '978'+isbn.slice(0, 9);
+                return number + book.checksum13(number+'0');
             } else {
                 return '';
             }

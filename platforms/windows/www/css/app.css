@@ -751,6 +751,25 @@ input[type="reset"]:active {
   width: 32px;
   float: right;
   font-size: 40px;
+  padding: 10px 20px;
+}
+#book-buy {
+  width: 192px;
+  float: left;
+  font-size: 11px;
+  vertical-align: top;
+  border: 0;
+  padding: 5px;
+}
+#book-buy img {
+  width: 32px;
+  height: 32px;
+  float: left;
+  padding: 5px;
+}
+#book-buy a {
+  display: block;
+  text-decoration: none;
 }
 /* https://codepen.io/SitePoint/pen/hewAv 
    schönes Scrollverhalten bei horizontalem Menü und sticky header*/
@@ -1338,4 +1357,52 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 }
 .gray-7 {
   background-color: #ffffff;
+}
+meter {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0 auto 1em;
+  height: 0.5em;
+  /* Applicable only to Firefox */
+  background: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 90%;
+  float: right;
+}
+@media only screen and (min-width: 568px) {
+  meter {
+    width: calc(100% -  12em);
+  }
+}
+meter::-webkit-meter-bar {
+  background: none;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+/* Webkit based browsers */
+meter[value="1"]::-webkit-meter-optimum-value {
+  background: red;
+}
+meter[value="2"]::-webkit-meter-optimum-value {
+  background: yellow;
+}
+meter[value="3"]::-webkit-meter-optimum-value {
+  background: orange;
+}
+meter[value="4"]::-webkit-meter-optimum-value {
+  background: green;
+}
+/* Gecko based browsers */
+meter[value="1"]::-moz-meter-bar {
+  background: red;
+}
+meter[value="2"]::-moz-meter-bar {
+  background: yellow;
+}
+meter[value="3"]::-moz-meter-bar {
+  background: orange;
+}
+meter[value="4"]::-moz-meter-bar {
+  background: green;
 }

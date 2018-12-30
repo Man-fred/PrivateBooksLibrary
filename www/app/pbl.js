@@ -1,6 +1,6 @@
 define(function (require) {
     var pbl = {
-
+        currentApp: "pbl_v1",
         once: true,
         initialize: function (lang) {
             if (this.once) {
@@ -47,7 +47,10 @@ define(function (require) {
                     $('#appBackup').click(pbl.pouch.backup);
                     $('#appRestore').click(pbl.pouch.restore);
                     //console.log('pouch');
-                    pbl.onDeviceReady();
+                    require(['./purchase'], function (purchase) {
+                        pbl.purchase = purchase;
+                        pbl.onDeviceReady();
+                    });
                 });
                 require(['./ui'], function (ui) {
                     ui.initialize(pbl);
@@ -75,7 +78,7 @@ define(function (require) {
         //pouch: null,
         menu: require('./menu'),
         init: require('./init'),
-        purchase: require('./purchase'),
+        password: require('./password'),
         //data: null,
         dbReady : 8,
         //system : null,

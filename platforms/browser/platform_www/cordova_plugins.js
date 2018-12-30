@@ -1,11 +1,27 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "file": "plugins/cordova-plugin-taptic-engine/www/TapticEngine.js",
-        "id": "cordova-plugin-taptic-engine.TapticEngine",
-        "pluginId": "cordova-plugin-taptic-engine",
+        "file": "plugins/cc.fovea.cordova.purchase/www/store-browser.js",
+        "id": "cc.fovea.cordova.purchase.InAppPurchase",
+        "pluginId": "cc.fovea.cordova.purchase",
         "clobbers": [
-            "TapticEngine"
+            "store"
+        ]
+    },
+    {
+      "id": "cc.fovea.cordova.purchase.InAppPurchaseProxy",
+      "file": "plugins/cc.fovea.cordova.purchase/src/browser/InAppPurchaseProxy.js",
+      "pluginId": "cc.fovea.cordova.purchase",
+      "merges": [
+        ""
+      ]
+    },
+    {
+        "file": "plugins/com.admob.plugin/www/admob.js",
+        "id": "com.admob.plugin.admob",
+        "pluginId": "com.admob.plugin",
+        "clobbers": [
+            "window.admob"
         ]
     },
     {
@@ -36,6 +52,20 @@ module.exports = [
         "file": "plugins/cordova-plugin-camera/src/browser/CameraProxy.js",
         "id": "cordova-plugin-camera.CameraProxy",
         "pluginId": "cordova-plugin-camera",
+        "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-device/www/device.js",
+        "id": "cordova-plugin-device.device",
+        "pluginId": "cordova-plugin-device",
+        "clobbers": [
+            "device"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-device/src/browser/DeviceProxy.js",
+        "id": "cordova-plugin-device.DeviceProxy",
+        "pluginId": "cordova-plugin-device",
         "runs": true
     },
     {
@@ -218,6 +248,46 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/cordova-plugin-keyboard/www/keyboard.js",
+        "id": "cordova-plugin-keyboard.keyboard",
+        "pluginId": "cordova-plugin-keyboard",
+        "clobbers": [
+            "window.Keyboard"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-network-information/www/network.js",
+        "id": "cordova-plugin-network-information.network",
+        "pluginId": "cordova-plugin-network-information",
+        "clobbers": [
+            "navigator.connection",
+            "navigator.network.connection"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-network-information/www/Connection.js",
+        "id": "cordova-plugin-network-information.Connection",
+        "pluginId": "cordova-plugin-network-information",
+        "clobbers": [
+            "Connection"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-network-information/src/browser/network.js",
+        "id": "cordova-plugin-network-information.NetworkInfoProxy",
+        "pluginId": "cordova-plugin-network-information",
+        "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-printer/www/printer.js",
+        "id": "cordova-plugin-printer.Printer",
+        "pluginId": "cordova-plugin-printer",
+        "clobbers": [
+            "plugin.printer",
+            "cordova.plugins.printer"
+        ]
+    },
+    {
         "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
         "id": "cordova-plugin-statusbar.statusbar",
         "pluginId": "cordova-plugin-statusbar",
@@ -230,6 +300,14 @@ module.exports = [
         "id": "cordova-plugin-statusbar.StatusBarProxy",
         "pluginId": "cordova-plugin-statusbar",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-taptic-engine/www/TapticEngine.js",
+        "id": "cordova-plugin-taptic-engine.TapticEngine",
+        "pluginId": "cordova-plugin-taptic-engine",
+        "clobbers": [
+            "TapticEngine"
+        ]
     },
     {
         "file": "plugins/cordova-plugin-vibration/src/browser/Vibration.js",
@@ -260,72 +338,26 @@ module.exports = [
         "id": "phonegap-plugin-barcodescanner.BarcodeScannerProxy",
         "pluginId": "phonegap-plugin-barcodescanner",
         "runs": true
-    },
-    {
-        "file": "plugins/cordova-plugin-network-information/www/network.js",
-        "id": "cordova-plugin-network-information.network",
-        "pluginId": "cordova-plugin-network-information",
-        "clobbers": [
-            "navigator.connection",
-            "navigator.network.connection"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-network-information/www/Connection.js",
-        "id": "cordova-plugin-network-information.Connection",
-        "pluginId": "cordova-plugin-network-information",
-        "clobbers": [
-            "Connection"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-network-information/src/browser/network.js",
-        "id": "cordova-plugin-network-information.NetworkInfoProxy",
-        "pluginId": "cordova-plugin-network-information",
-        "runs": true
-    },
-    {
-        "file": "plugins/cordova-plugin-keyboard/www/keyboard.js",
-        "id": "cordova-plugin-keyboard.keyboard",
-        "pluginId": "cordova-plugin-keyboard",
-        "clobbers": [
-            "window.Keyboard"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-printer/www/printer.js",
-        "id": "cordova-plugin-printer.Printer",
-        "pluginId": "cordova-plugin-printer",
-        "clobbers": [
-            "plugin.printer",
-            "cordova.plugins.printer"
-        ]
-    },
-    {
-        "file": "plugins/com.admob.plugin/www/admob.js",
-        "id": "com.admob.plugin.admob",
-        "pluginId": "com.admob.plugin",
-        "clobbers": [
-            "window.admob"
-        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-taptic-engine": "2.1.0",
+    "cc.fovea.cordova.purchase": "7.3.0-beta.0",
+    "com.admob.plugin": "5.5.0",
+    "cordova-libgoogleadmobads": "7.13.1",
     "cordova-plugin-camera": "4.0.3",
     "cordova-plugin-console": "1.1.0",
+    "cordova-plugin-device": "2.0.2",
     "cordova-plugin-file": "6.0.1",
+    "cordova-plugin-keyboard": "1.2.0",
+    "cordova-plugin-network-information": "2.0.1",
+    "cordova-plugin-printer": "0.7.3",
     "cordova-plugin-statusbar": "2.4.2",
+    "cordova-plugin-taptic-engine": "2.1.0",
     "cordova-plugin-vibration": "3.1.0",
     "cordova-plugin-whitelist": "1.3.3",
-    "phonegap-plugin-barcodescanner": "8.0.0",
-    "cordova-plugin-network-information": "2.0.1",
-    "cordova-plugin-keyboard": "1.2.0",
-    "cordova-plugin-printer": "0.7.3",
-    "com.admob.plugin": "5.5.0",
-    "cc.fovea.cordova.purchase": "7.3.0-beta.0"
+    "phonegap-plugin-barcodescanner": "8.0.0"
 }
 // BOTTOM OF METADATA
 });

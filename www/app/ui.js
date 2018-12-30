@@ -24,6 +24,8 @@ define(function (require) {
         layout: document.getElementById('layout'),
         loading: document.getElementById("loading"),
         dataformBooks: document.getElementById("dataformBooks"),
+        action: document.getElementById("action"),
+        actionPassword: document.getElementById("appPassword"),
         appSearchAnchor: document.getElementById("appSearchAnchor"),
         myDropdown2: document.getElementById("myDropdown2"),
         mRefresh: document.getElementById("mRefresh"),
@@ -34,6 +36,7 @@ define(function (require) {
         page2: document.getElementById("page2"),
         pageHelper: {},
         pageAbout: document.getElementById("pageAbout"),
+        pagePassword: document.getElementById("pagePassword"),
         pagePurchase: document.getElementById("pagePurchase"),
         pageAGB: document.getElementById("pageAGB"),
         pageDS: document.getElementById("pageDS"),
@@ -124,6 +127,9 @@ define(function (require) {
                 if (neu === ui.pageContact) {
                     ui.load(ui.pageContact, 'contact');
                 }
+                if (neu === ui.pagePassword) {
+                    ui.load(ui.pagePassword, 'password', app.password.setOnclick);
+                }
                 if (neu === ui.pagePurchase) {
                     ui.load(ui.pagePurchase, 'purchase', app.purchase.setOnclick);
                 }
@@ -158,6 +164,7 @@ define(function (require) {
                 }
                 app.datalist.show_all(app.seite);//, refresh)
                 ui.dataformBooks.style.display = "block";
+                ui.action.style.display = "none";
                 if (this.pbl.seite === 'books' || this.pbl.seite === 'authors') {
                     ui.appSearchAnchor.style.display = "block";
                 } else {
@@ -173,9 +180,14 @@ define(function (require) {
                     $('#t_' + seite).show();
                 }
                 ui.dataformBooks.style.display = "none";
+                ui.action.style.display = "block";
+                ui.actionPassword.style.display = seite === "login" ? "" : "none";
+                
                 this.pbl.appPage = 2;
             } else {
                 ui.dataformBooks.style.display = "none";
+                ui.action.style.display = "none";
+                ui.action.style.display = "none";
                 this.pbl.appPage = 3;
             }
             ui.setVerlauf(neu, seite, id, scrollYreturn);

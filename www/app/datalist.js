@@ -15,12 +15,12 @@
             }
         },
         fillAllHelper: function (refresh = false) {
-            datalist.fillHelper('state');
-            datalist.fillHelper('location');
-            datalist.fillHelper('lending');
+            datalist.fillHelper('state', refresh);
+            datalist.fillHelper('location', refresh);
+            datalist.fillHelper('lending', refresh);
+            console.info("datalist.fill(state, location, lending" + (refresh ? " mit refresh" : "") +")");
         },
         fillHelper: function (helper, refresh) {
-            console.info("datalist.fill(" + helper + (refresh ? ", refresh" : "") +")");
             if (refresh) {
                 delete datalist.pbl.myApp[helper].data;
             }
@@ -33,7 +33,9 @@
                 }).then(function (result) {
                     datalist.pbl.myApp[helper].data = [];
                     $.each(result.rows, function () {
-                        datalist.pbl.myApp[helper].data[this.doc['name']] = this.doc['long'];
+                        if (!this.doc['DBdeleted']) {
+                            datalist.pbl.myApp[helper].data[this.doc['name']] = this.doc['long'];
+                        }
                     });
                 }).catch(function (err) {
                     console.log(err);
@@ -414,52 +416,54 @@
                 app.select = select;
             }
             table = document.getElementById("myTableList");
-            tr = table.getElementsByTagName("tr");
-            var visible;
-            // Loop through all table rows, and hide those who don't match the search query
-            for (i = 0; i < tr.length; i++) {
-                count++;
-                countAll++;
-                visible = false;
-                if (select) {
-                    td = tr[i].cells[0].getAttribute("status");
-                    visible = td && td.indexOf(select) > -1;
-                } else {
-                    visible = true;
-                }
-                if (visible && filter) {
+            if (table) {
+                tr = table.getElementsByTagName("tr");
+                var visible;
+                // Loop through all table rows, and hide those who don't match the search query
+                for (i = 0; i < tr.length; i++) {
+                    count++;
+                    countAll++;
                     visible = false;
-                    if (app.seite === "books") {
-                        td = tr[i].getElementsByClassName("books-title")[0];
-                        visible = td && td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1;
-                        if (!visible) {
-                            td = tr[i].getElementsByClassName("books-author")[0];
-                            visible = td && td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1;
-                        }
-                        if (!visible) {
-                            td = tr[i].getElementsByClassName("books-isbn")[0];
-                            visible = td && td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1;
-                        }
-                        if (!visible) {
-                            td = tr[i].getElementsByClassName("books-series")[0];
-                            visible = td && td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1;
-                        }
-                        if (!visible) {
-                            td = tr[i].getElementsByClassName("books-memo")[0];
-                            visible = td && td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1;
-                        }
-                    } else if (app.seite === "authors") {
-                        td = tr[i].getElementsByClassName("authors-name")[0];
-                        visible = td && td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1;
+                    if (select) {
+                        td = tr[i].cells[0].getAttribute("status");
+                        visible = td && td.indexOf(select) > -1;
                     } else {
                         visible = true;
                     }
-                }
-                if (visible) {
-                    tr[i].style.display = '';
-                } else {
-                    tr[i].style.display = "none";
-                    count--;
+                    if (visible && filter) {
+                        visible = false;
+                        if (app.seite === "books") {
+                            td = tr[i].getElementsByClassName("books-title")[0];
+                            visible = td && td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1;
+                            if (!visible) {
+                                td = tr[i].getElementsByClassName("books-author")[0];
+                                visible = td && td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1;
+                            }
+                            if (!visible) {
+                                td = tr[i].getElementsByClassName("books-isbn")[0];
+                                visible = td && td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1;
+                            }
+                            if (!visible) {
+                                td = tr[i].getElementsByClassName("books-series")[0];
+                                visible = td && td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1;
+                            }
+                            if (!visible) {
+                                td = tr[i].getElementsByClassName("books-memo")[0];
+                                visible = td && td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1;
+                            }
+                        } else if (app.seite === "authors") {
+                            td = tr[i].getElementsByClassName("authors-name")[0];
+                            visible = td && td.innerHTML.toUpperCase().normalize('NFC').indexOf(filter) > -1;
+                        } else {
+                            visible = true;
+                        }
+                    }
+                    if (visible) {
+                        tr[i].style.display = '';
+                    } else {
+                        tr[i].style.display = "none";
+                        count--;
+                    }
                 }
             }
             datalist.countMessage(count, countAll);

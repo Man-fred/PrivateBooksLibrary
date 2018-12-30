@@ -42,8 +42,10 @@
                 result += '</div >';
                 //result += '<p><span id="result"></span></p>';
                 result += '<div id="book-image"><img  class="pure-img" id="img_' + aktiveSeite + '" height="200" src="blank.jpg"/></div>';
-                result += '<div id="book-favor">' + data.book.favor("0") + '</div><div class="clear"></div>';
-                result += '<div><a id="book-amzn" target="_blank" href="#">Amazon</a></div>';
+                result += '<div id="book-favor">' + data.book.favor("0") + '</div>';
+                result += '<div id="book-buy"><a id="book-amzn" target="_blank" href="#"><img src="res/icons/a-icon.png" alt="Suchen bei Amazon">Suchen bei Amazon</a>';
+                result += '<br /><a id="book-thalia" target="_blank" href="#"><img src="res/icons/t-icon.png" alt="Suchen bei Thalia">Suchen bei Thalia</a></div>';
+                result += '<div class="clear"></div>';
             } else if (aktiveSeite === "authors") {
                 result += '<div id="as" class="pure-control-group">';
                 result += '<div id="as_search" class="deleteicon">';
@@ -85,6 +87,8 @@
                         if (this.selectYN[2])
                             result += '<option></option>';
                         result += '<option value="0" >' + this.selectYN[0] + '</option><option value="1" >' + this.selectYN[1] + '</option>' + '</select > ';
+                    } else if (this.type === "button") {
+                        result += '<button type="button" class="pure-button" id="'+this.name+'" onclick="'+this.onclick+'" href="#" >'+ this.title +'</button>';
                     } else if (this.type) {
                         result += '<input type="' + this.type + '" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" />';
                     } else {
@@ -92,7 +96,7 @@
                     }
                     result += '</div>';
                 } else {
-                    result += '<div class="hidden"><input id="' + aktiveSeite + '_' + this.name + '" /></div>';
+                    result += '<div class="hidden" id=""><input id="' + aktiveSeite + '_' + this.name + '" /></div>';
                 }
             });
             
@@ -189,7 +193,9 @@
                 $("#" + id + '_' + name).empty();
                 $("#" + id + '_' + name).append($('<option></option>'));
                 $.each(app.myApp[table].data, function (k, v) {
-                    $("#" + id + '_' + name).append('<option ' + (parseInt(selected) === k ? 'selected="selected"' : '') + ' value="' + k + '">' + v + '</option>');
+                    if (v !== undefined) {
+                        $("#" + id + '_' + name).append('<option ' + (parseInt(selected) === k ? 'selected="selected"' : '') + ' value="' + k + '">' + v + '</option>');
+                    }
                 });
             } else {
                 app.pouch.db.allDocs({
@@ -202,8 +208,10 @@
                     app.myApp[table].data = [];
                     $("#" + id + '_' + name).append($('<option></option>'));
                     $.each(result.rows, function () {
-                        $("#" + id + '_' + name).append('<option ' + (selected === this.doc[field] ? 'selected="selected"' : '') + ' value="' + this.doc[field] + '">' + this.doc[visible] + '</option>');
-                        app.myApp[table].data[this.doc[field]] = this.doc[visible];
+                        if (!this.doc[DBdeleted]) {
+                            $("#" + id + '_' + name).append('<option ' + (selected === this.doc[field] ? 'selected="selected"' : '') + ' value="' + this.doc[field] + '">' + this.doc[visible] + '</option>');
+                            app.myApp[table].data[this.doc[field]] = this.doc[visible];
+                        }
                     });
                 }).catch(function (err) {
                     console.log(err);

@@ -26,6 +26,13 @@
             <span onclick="app.datalist.mySearch('~~')"></span>
         </div>
     </div>
+    <div id="action" class="header" style="display: none;">
+        <button type="button" class="pure-button" name="addBtn" id="addBtn">{{str.add}}</button>
+        <button type="button" class="pure-button" name="updateBtn" id="updateBtn">{{str.update}}</button>
+        <button type="button" class="pure-button" name="deleteBtn" id="deleteBtn">{{str.delete}}</button>
+        <button type="button" class="pure-button" name="clearBtn" id="clearBtn">{{str.clear}}</button>
+        <button type="button" class="pure-button" id="appPassword" style="display: none;" onclick="app.ui.show(app.ui.pagePassword)">{{str.passwordChange}}</button>
+    </div>
     <div id='layout'>
         <!-- Menu toggle -->
         <a href="#menu" id="menuLink" class="menu-link">
@@ -51,15 +58,10 @@
                     <div id="singledata">
                         <form id="singleform" class="pure-form" action="javascript:void(0);">
                             <fieldset>
+                                <hr />
                                 <div id="formdata"></div>
                                 <hr />
-                                <div id="action">
-                                    <button type="button" class="pure-button" name="addBtn" id="addBtn">{{str.add}}</button>
-                                    <button type="button" class="pure-button" name="updateBtn" id="updateBtn">{{str.update}}</button>
-                                    <button type="button" class="pure-button" name="deleteBtn" id="deleteBtn">{{str.delete}}</button>
-                                    <button type="button" class="pure-button" name="clearBtn" id="clearBtn">{{str.clear}}</button>
-                                    <button type="button" class="pure-button" id="dbinfoBtn" onclick="app.ui.show_div()">?</button>
-                                </div>
+                                <button type="button" class="pure-button" id="dbinfoBtn" onclick="app.ui.show_div()">{{str.dbInfo}}</button>
                             </fieldset>
                         </form>
                         <div id="record_info">
@@ -85,6 +87,7 @@
                 <div id="pageDS" class="pageFix" style="display: none;"></div>
                 <div id="pageAGB" class="pageFix" style="display: none;"></div>
                 <div id="pageContact" class="pageFix" style="display: none;"></div>
+                <div id="pagePassword" class="pageFix" style="display: none;"></div>
                 <div id="pagePurchase" class="pageFix" style="display: none;"></div>
             </div>
         </div>
