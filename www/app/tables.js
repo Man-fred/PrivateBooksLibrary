@@ -281,16 +281,6 @@
             head: true,
             tr: '',
             btn: { add: false, update: true },
-            header: {
-                dbPassChange: {
-                    name: "appPassword",
-                    title: app.lang.passwordChange
-                    , onclick: "app.ui.show(app.ui.pagePassword)"
-                    , noList: 1
-                    , type: "button"
-                    //, noField: 1
-                }
-            },
             fields: {
                 name: {
                     name: "name",

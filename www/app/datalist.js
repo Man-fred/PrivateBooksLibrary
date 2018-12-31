@@ -45,14 +45,12 @@
         show_all_header: function (s) {
             var table = '<table>';
             $.each(app.myApp[app.seite].header, function () {
-                if (!this.noList) {
-                    table += '<tr>';
-                    table += '<th>' + this.title + '</th><td>';
-                    if (s) {
-                        table += app.myApp[this.select]["data"][s[this.name]];
-                    }
-                    table += '</td></tr>';
+                table += '<tr>';
+                table += '<th>' + this.title + '</th><td>';
+                if (s) {
+                    table += app.myApp[this.select]["data"][s[this.name]];
                 }
+                table += '</td></tr>';
             });
             table += '</table>';
             table += '<table id="myTableList"><thead>';

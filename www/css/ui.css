@@ -35,16 +35,6 @@
 .title-close {
     background: url(../img/svg/solid/times-circle.svg);
 }
-button[state="eye"] {
-    background: url(../img/svg/solid/eye.svg) no-repeat;
-    height: 30px;
-    width: 30px;
-}
-button[state="eye-slash"] {
-    background: url(../img/svg/solid/eye-slash.svg) no-repeat;
-    height: 30px;
-    width: 30px;
-}
 
 .fas {
     display: inline-block;

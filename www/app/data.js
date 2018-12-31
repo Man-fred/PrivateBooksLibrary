@@ -56,10 +56,7 @@
             $.each(myApp[aktiveSeite].header, function () {
                 if (!this.noField) {
                     input = this.input ? ' ' + this.input : '';
-                    result += '<div class="pure-control-group">'
-                    if (this.type !== "button") {
-                        result += '< label for="' + aktiveSeite + '_' + this.name + '" > ' + this.title + '</label > ';
-                    }
+                    result += '<div class="pure-control-group"><label for="' + aktiveSeite + '_' + this.name + '">' + this.title + '</label>';
                     if (this.select) {
                         result += '<select type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" class="' + aktiveSeite + '"></select>';
                     } else if (this.selectYN) {
@@ -67,8 +64,6 @@
                         if (this.selectYN[2])
                             result += '<option></option>';
                         result += '<option value="0" >' + this.selectYN[0] + '</option><option value="1" >' + this.selectYN[1] + '</option>' + '</select > ';
-                    } else if (this.type === "button") {
-                        result += '<button type="button" class="pure-button" id="' + this.name + '" onclick="' + this.onclick + '" href="#" >' + this.title + '</button>';
                     } else if (this.type) {
                         result += '<input'+input+' type="' + this.type + '" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" />';
                     } else {
@@ -84,13 +79,7 @@
             }
             $.each(myApp[aktiveSeite].fields, function () {
                 if (!this.noField) {
-                    result += '<div class="pure-control-group">';
-                    if (this.type === "password") {
-                        result += '<label for="' + aktiveSeite + '_' + this.name + '">' + this.title +
-                            ' <button type="button" id="' + aktiveSeite + '_' + this.name + '_p" state="eye" onclick="app.ui.togglePassword(\'' + aktiveSeite + '_' + this.name + '\')">x</button></label>';
-                    } else {
-                        result += '<label for="' + aktiveSeite + '_' + this.name + '">' + this.title + '</label>';
-                    }
+                    result += '<div class="pure-control-group"><label for="' + aktiveSeite + '_' + this.name + '">' + this.title + '</label>';
                     if (this.select) {
                         result += '<select type="text" name="' + aktiveSeite + '_' + this.name + '" id="' + aktiveSeite + '_' + this.name + '" class="' + aktiveSeite + '"></select>';
                     } else if (this.selectYN) {

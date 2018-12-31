@@ -15,8 +15,6 @@ define(function (require) {
                     }
                 };
                 console.log(navigator.languages, navigator.language, navigator.userLanguage, 'aktiv: ' + lang._get('Sprache'));
-                console.log('userAgent', window.navigator.userAgent);
-
                 document.addEventListener('deviceready', this.onDeviceReady, false);
                 window.addEventListener("resize", this.onWindowLoadResize);
                 // Top/Bottom der Seite ist sonst scrollbar unter ios
