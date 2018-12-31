@@ -123,7 +123,11 @@
                 if (this.readyState === 4 && this.status === 200) {
                     // Typical action to be performed when the document is ready:
                     //document.getElementById("result").innerHTML = xhttp.responseText;
-                    var erg = JSON.parse(xhttp.responseText);
+                    try {
+                        var erg = JSON.parse(xhttp.responseText);
+                    } catch (e) {
+                        app.ui.message("keine Antwort", "error");
+                    }
 
                     //console.log(erg);
                     //    erg.getElementsByTagName("title")[0].childNodes[0].nodeValue;

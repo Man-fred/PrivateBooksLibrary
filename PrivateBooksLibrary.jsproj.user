@@ -14,7 +14,7 @@
     <AppxShowAllApps>False</AppxShowAllApps>
     <AppxPackageIsForStore>True</AppxPackageIsForStore>
     <AppxBuildConfigurationSelection>x86|x64|arm</AppxBuildConfigurationSelection>
-    <PackageOptionalProjectsInIdeBuilds>False</PackageOptionalProjectsInIdeBuilds>
+    <PackageOptionalProjectsInIdeBuilds>True</PackageOptionalProjectsInIdeBuilds>
     <ReferenceCachePath>C:\Users\Manfred\AppData\Local\Temp\PrivateBooksLibrary_refcache</ReferenceCachePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Windows-ARM'">

@@ -58,10 +58,10 @@
 @content-abzug: @partner-right + 4px;
 @footer-info-abzug: 2 * @title-button + 5 * @title-button-margin;
 @header-sm-abzug: @menu-left + @partner-right + @searchAZ600;
+@header-sm-abzug-action: @menu-left + @partner-right;
 @layout-abzug: @partner-right + 1px;
 @page1-abzug: @content-padding + @searchAZ000;
 @page1-abzug-sm: @content-padding + @searchAZ600;
-
 // Spinner
 @base-line-height: 24px;
 @white: rgb(50,50,50);
@@ -326,9 +326,20 @@
     }
 #action {
     text-align: left;
+    width: 100%;
+
+    @media @sm-gt {
+        left: @menu-left;
+        width: calc(~"100% - " @header-sm-abzug-action );
+    }
 }
 #action .pure-button {
-    margin: 10px;
+    margin: 10px 1% 0 1%;
+    width: 21%;
+    overflow: hidden;
+    text-align: center;
+    font-size: 80%;
+    height: 40px;
 }
     .header {
         padding: 0;
@@ -1727,4 +1738,8 @@ meter[value="4"]::-moz-meter-bar {
 meter[value="5"]::-webkit-meter-optimum-value,
 meter[value="5"]::-moz-meter-bar {
     background: green;
+}
+
+body {
+    -ms-overflow-style: scrollbar;
 }
