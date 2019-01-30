@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Package IgnorableNamespaces="uap mp" xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10">
-    <Identity Name="35337ManfredBielemeierBCS.PrivateBooksLibrary" Publisher="CN=AA5C0D05-3922-4B44-B0B1-F3D608226E35" Version="0.9.9.0" />
+    <Identity Name="35337ManfredBielemeierBCS.PrivateBooksLibrary" Publisher="CN=AA5C0D05-3922-4B44-B0B1-F3D608226E35" Version="0.9.15.0" />
     <mp:PhoneIdentity PhoneProductId="cf7aaca0-f650-11e8-bf48-ef31867faf52" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
     <Properties>
         <DisplayName>Private Books Library</DisplayName>

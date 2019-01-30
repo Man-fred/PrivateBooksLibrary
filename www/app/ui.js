@@ -338,11 +338,30 @@ define(function (require) {
                 button.setAttribute('state', 'eye');
             }
         },
+        onPrintTaskRequested: function (printEvent) {
+            var printTask = printEvent.request.createPrintTask("Print Sample", function (args) {
+                const deferral = args.getDeferral();
+                MSApp.getHtmlPrintDocumentSourceAsync(document).then(htmlPrintDocumentSource => {
+                    args.setSource(htmlPrintDocumentSource);
+                    deferral.complete();
+                }, error => {
+                    console.error("Error: " + error.message + " " + error.stack);
+                    deferral.complete();
+                });
+            });
+        },
         print: function () {
             if (cordova.platformId === 'browser') {
+                var page = document.documentElement;
                 window.print();
             } else {
-                var page = document.getElementById('main3');
+                /*/ Get document source to print
+                var printManager = Windows.Graphics.Printing.PrintManager.getForCurrentView();
+                printManager.onprinttaskrequested = ui.onPrintTaskRequested;
+                Windows.Graphics.Printing.PrintManager.showPrintUIAsync();//.done();
+                */
+                var page = document.documentElement;
+
                 cordova.plugins.printer.print(page, 'Private Books Library');
             }
         },
