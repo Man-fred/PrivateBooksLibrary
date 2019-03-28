@@ -351,8 +351,7 @@ define(function (require) {
             });
         },
         print: function () {
-            if (cordova.platformId === 'browser') {
-                var page = document.documentElement;
+            if (cordova.platformId === 'broxwser') {
                 window.print();
             } else {
                 /*/ Get document source to print

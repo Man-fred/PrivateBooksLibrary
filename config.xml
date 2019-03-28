@@ -1,147 +1,147 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<widget defaultlocale="DE" id="io.cordova.myapp387c96" version="0.9.16" windows-packageVersion="0.9.16.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
-  <name>PrivateBooksLibrary</name>
-  <description>Verwalten Sie Ihre private Büchersammlung und eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.</description>
-  <author email="dev@bcss.de" href="https://www.bcss.de/dev">Manfred Bielemeier</author>
-  <vs:template-name>BlankJS</vs:template-name>
-  <vs:platformSpecificValues>
-    <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.9.16.0" />
-  </vs:platformSpecificValues>
-  <content src="index.html" />
-  <access origin="https://pbl.bcss.de" />
-  <preference name="phonegap-version" value="cli-7.1.0" />
-  <preference name="SplashScreen" value="screen" />
-  <preference name="windows-target-version" value="10.0" />
-  <allow-intent href="http://*/*" />
-  <allow-intent href="https://*/*" />
-  <allow-intent href="tel:*" />
-  <allow-intent href="sms:*" />
-  <allow-intent href="mailto:*" />
-  <allow-intent href="geo:*" />
-  <platform name="android">
-    <allow-intent href="market:*" />
-    <preference name="APP_SECRET" value="d57aceb2-586f-4825-b90e-7060f3903561" />
-  </platform>
-  <platform name="ios">
-    <allow-intent href="itms:*" />
-    <allow-intent href="itms-apps:*" />
-    <preference name="APP_SECRET" value="8c404359-b973-4764-b59b-e91f74d65692" />
-  </platform>
-  <platform name="android">
-    <icon density="ldpi" src="res/icons/android/icon-36.png" />
-    <icon density="mdpi" src="res/icons/android/icon-48.png" />
-    <icon density="hdpi" src="res/icons/android/icon-72.png" />
-    <icon density="xhdpi" src="res/icons/android/icon-96.png" />
-  </platform>
-  <platform name="ios">
-    <icon height="40" src="res/icons/ios/icon-40.png" width="40" />
-    <icon height="80" src="res/icons/ios/icon-40-2x.png" width="80" />
-    <icon height="50" src="res/icons/ios/icon-50.png" width="50" />
-    <icon height="100" src="res/icons/ios/icon-50-2x.png" width="100" />
-    <icon height="57" src="res/icons/ios/icon-57.png" width="57" />
-    <icon height="114" src="res/icons/ios/icon-57-2x.png" width="114" />
-    <icon height="60" src="res/icons/ios/icon-60.png" width="60" />
-    <icon height="120" src="res/icons/ios/icon-60-2x.png" width="120" />
-    <icon height="180" src="res/icons/ios/icon-60-3x.png" width="180" />
-    <icon height="72" src="res/icons/ios/icon-72.png" width="72" />
-    <icon height="144" src="res/icons/ios/icon-72-2x.png" width="144" />
-    <icon height="76" src="res/icons/ios/icon-76.png" width="76" />
-    <icon height="152" src="res/icons/ios/icon-76-2x.png" width="152" />
-    <icon height="167" src="res/icons/ios/icon-83.5-2x.png" width="167" />
-    <icon height="29" src="res/icons/ios/icon-small.png" width="29" />
-    <icon height="58" src="res/icons/ios/icon-small-2x.png" width="58" />
-    <icon height="87" src="res/icons/ios/icon-small-3x.png" width="87" />
-    <icon height="1024" src="res/icons/ios/icon-1024.png" width="1024" />
-  </platform>
-  <platform name="windows">
-    <icon height="150" src="res/icons/windows/Square150x150Logo.scale-100.png" width="150" />
-    <icon height="360" src="res/icons/windows/Square150x150Logo.scale-240.png" width="360" />
-    <icon height="30" src="res/icons/windows/Square30x30Logo.scale-100.png" width="30" />
-    <icon height="310" src="res/icons/windows/Square310x310Logo.scale-100.png" width="310" />
-    <icon height="44" src="res/icons/windows/Square44x44Logo.scale-100.png" width="44" />
-    <icon height="106" src="res/icons/windows/Square44x44Logo.scale-240.png" width="106" />
-    <icon height="70" src="res/icons/windows/Square70x70Logo.scale-100.png" width="70" />
-    <icon height="71" src="res/icons/windows/Square71x71Logo.scale-100.png" width="71" />
-    <icon height="170" src="res/icons/windows/Square71x71Logo.scale-240.png" width="170" />
-    <icon height="50" src="res/icons/windows/StoreLogo.scale-100.png" width="50" />
-    <icon height="120" src="res/icons/windows/StoreLogo.scale-240.png" width="120" />
-    <icon height="150" src="res/icons/windows/Wide310x150Logo.scale-100.png" width="310" />
-    <icon height="360" src="res/icons/windows/Wide310x150Logo.scale-240.png" width="744" />
-  </platform>
-  <platform name="android">
-    <splash density="land-hdpi" src="res/screens/android/screen-hdpi-landscape.png" />
-    <splash density="land-ldpi" src="res/screens/android/screen-ldpi-landscape.png" />
-    <splash density="land-mdpi" src="res/screens/android/screen-mdpi-landscape.png" />
-    <splash density="land-xhdpi" src="res/screens/android/screen-xhdpi-landscape.png" />
-    <splash density="port-hdpi" src="res/screens/android/screen-hdpi-portrait.png" />
-    <splash density="port-ldpi" src="res/screens/android/screen-ldpi-portrait.png" />
-    <splash density="port-mdpi" src="res/screens/android/screen-mdpi-portrait.png" />
-    <splash density="port-xhdpi" src="res/screens/android/screen-xhdpi-portrait.png" />
-  </platform>
-  <platform name="ios">
-    <splash src="res/screens/ios/Default@2x~universal~anyany.png" />
-    <splash height="480" src="res/screens/ios/screen-iphone-portrait.png" width="320" />
-    <splash height="960" src="res/screens/ios/screen-iphone-portrait-2x.png" width="640" />
-    <splash height="1024" src="res/screens/ios/screen-ipad-portrait.png" width="768" />
-    <splash height="2048" src="res/screens/ios/screen-ipad-portrait-2x.png" width="1536" />
-    <splash height="768" src="res/screens/ios/screen-ipad-landscape.png" width="1024" />
-    <splash height="1536" src="res/screens/ios/screen-ipad-landscape-2x.png" width="2048" />
-    <splash height="1136" src="res/screens/ios/screen-iphone-568h-2x.png" width="640" />
-    <splash height="1334" src="res/screens/ios/screen-iphone-portrait-667h.png" width="750" />
-    <splash height="2208" src="res/screens/ios/screen-iphone-portrait-736h.png" width="1242" />
-    <splash height="1242" src="res/screens/ios/screen-iphone-landscape-736h.png" width="2208" />
-  </platform>
-  <platform name="windows">
-    <splash height="300" src="res/screens/windows/SplashScreen.scale-100.png" width="620" />
-    <splash height="1920" src="res/screens/windows/SplashScreen.scale-240.png" width="1152" />
-    <splash height="1920" src="res/screens/windows/SplashScreenPhone.scale-240.png" width="1152" />
-  </platform>
-  <preference name="WindowsStoreDisplayName" value="Private Books Library" />
-  <preference name="WindowsStoreIdentityName" value="35337ManfredBielemeierBCS.PrivateBooksLibrary" />
-  <preference name="WindowsStorePublisherName" value="Manfred Bielemeier (BCSS Software &amp; Beratung GmbH)" />
-  <preference name="StatusBarOverlaysWebView" value="true" />
-  <preference name="StatusBarBackgroundColor" value="#1010FF" />
-  <preference name="android-minSdkVersion" value="15" />
-  <preference name="android-targetSDKVersion" value="26" />
-  <config-file parent="/Package/Capabilities" target="package.appxmanifest">
-    <DeviceCapability Name="webcam" />
-  </config-file>
-  <config-file parent="/Package/Capabilities" target="package.windows10.appxmanifest">
-    <DeviceCapability Name="microphone" />
-    <DeviceCapability Name="webcam" />
-  </config-file>
-  <edit-config file="*-Info.plist" mode="merge" target="ITSAppUsesNonExemptEncryption">
-    <false />
-  </edit-config>
-  <vs:toolsetVersion>6.3.1</vs:toolsetVersion>
-  <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
-    <string>To scan barcodes</string>
-  </edit-config>
-  <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
-    <string>Use a photo as bookcover</string>
-  </edit-config>
-  <plugin name="cordova-plugin-taptic-engine" spec="~2.1.0" />
-  <plugin name="cordova-plugin-camera" spec="^4.0.3" />
-  <plugin name="cordova-plugin-console" spec="^1.1.0" />
-  <plugin name="cordova-plugin-file" spec="^6.0.1" />
-  <plugin name="cordova-plugin-vibration" spec="^3.1.0" />
-  <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
-  <plugin name="phonegap-plugin-barcodescanner" spec="^8.0.0">
-    <variable name="CAMERA_USAGE_DESCRIPTION" value="To scan barcodes" />
-    <variable name="ANDROID_SUPPORT_V4_VERSION" value="27.+" />
-  </plugin>
-  <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
-  <preference name="StatusBarOverlaysWebView" value="true" />
-  <preference name="StatusBarBackgroundColor" value="#000000" />
-  <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
-  <plugin name="cordova-plugin-keyboard" spec="^1.2.0" />
-  <plugin name="cordova-plugin-printer" spec="^0.7.3" />
-  <plugin name="com.admob.plugin" spec="^5.5.0" />
-  <plugin name="cc.fovea.cordova.purchase" spec="7.3.0-beta.0">
-    <variable name="BILLING_KEY" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAksjFrOzPzToUbrT5Hm577XiDIPtOOcTCaaKc3DPNxXSENH1HL3+pQTIwCxHdfQ9+o4HUoO1v3wlOiB1YMX9cNrEfxMtcXum9f8t9Lza/0WQHm2jflxaNq3ICFlbylJK9gBhM0uMj5M6BiUMSMzgzEdC+DhlPMvEj16fUscA8CwQoqmoWvn05s8IiKK65sB6+7KAn0qrUAYba7pnRNrYpHjKUoSgTr/BXpNgmpb+QiIZnepJMC0OyLfe46603AvKtDBiS5+6WsdM+mQ/xiX0TSBkIjmadIh2hghj7CvKwVvghBlt6PaJCq1V8CJl8u5EzxLzh8pQSnXarRns6gWYmFwIDAQAB" />
-  </plugin>
-  <engine name="windows" spec="^6.0.1" />
-  <engine name="browser" spec="5.0.4" />
-  <plugin name="cordova-libgoogleadmobads" spec="~7.13.1" />
-  <plugin name="cordova-plugin-device" spec="~2.0.2" />
+<?xml version='1.0' encoding='utf-8'?>
+<widget defaultlocale="DE" id="io.cordova.myapp387c96" version="0.9.18" windows-packageVersion="0.9.18.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
+    <name>PrivateBooksLibrary</name>
+    <description>Verwalten Sie Ihre private Büchersammlung und eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.</description>
+    <author email="dev@bcss.de" href="https://www.bcss.de/dev">Manfred Bielemeier</author>
+    <vs:template-name>BlankJS</vs:template-name>
+    <vs:platformSpecificValues>
+        <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.9.18.0" />
+    </vs:platformSpecificValues>
+    <content src="index.html" />
+    <access origin="https://pbl.bcss.de" />
+    <preference name="phonegap-version" value="cli-7.1.0" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="windows-target-version" value="10.0" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <preference name="APP_SECRET" value="d57aceb2-586f-4825-b90e-7060f3903561" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <preference name="APP_SECRET" value="8c404359-b973-4764-b59b-e91f74d65692" />
+    </platform>
+    <platform name="android">
+        <icon density="ldpi" src="res/icons/android/icon-36.png" />
+        <icon density="mdpi" src="res/icons/android/icon-48.png" />
+        <icon density="hdpi" src="res/icons/android/icon-72.png" />
+        <icon density="xhdpi" src="res/icons/android/icon-96.png" />
+    </platform>
+    <platform name="ios">
+        <icon height="40" src="res/icons/ios/icon-40.png" width="40" />
+        <icon height="80" src="res/icons/ios/icon-40-2x.png" width="80" />
+        <icon height="50" src="res/icons/ios/icon-50.png" width="50" />
+        <icon height="100" src="res/icons/ios/icon-50-2x.png" width="100" />
+        <icon height="57" src="res/icons/ios/icon-57.png" width="57" />
+        <icon height="114" src="res/icons/ios/icon-57-2x.png" width="114" />
+        <icon height="60" src="res/icons/ios/icon-60.png" width="60" />
+        <icon height="120" src="res/icons/ios/icon-60-2x.png" width="120" />
+        <icon height="180" src="res/icons/ios/icon-60-3x.png" width="180" />
+        <icon height="72" src="res/icons/ios/icon-72.png" width="72" />
+        <icon height="144" src="res/icons/ios/icon-72-2x.png" width="144" />
+        <icon height="76" src="res/icons/ios/icon-76.png" width="76" />
+        <icon height="152" src="res/icons/ios/icon-76-2x.png" width="152" />
+        <icon height="167" src="res/icons/ios/icon-83.5-2x.png" width="167" />
+        <icon height="29" src="res/icons/ios/icon-small.png" width="29" />
+        <icon height="58" src="res/icons/ios/icon-small-2x.png" width="58" />
+        <icon height="87" src="res/icons/ios/icon-small-3x.png" width="87" />
+        <icon height="1024" src="res/icons/ios/icon-1024.png" width="1024" />
+    </platform>
+    <platform name="windows">
+        <icon height="150" src="res/icons/windows/Square150x150Logo.scale-100.png" width="150" />
+        <icon height="360" src="res/icons/windows/Square150x150Logo.scale-240.png" width="360" />
+        <icon height="30" src="res/icons/windows/Square30x30Logo.scale-100.png" width="30" />
+        <icon height="310" src="res/icons/windows/Square310x310Logo.scale-100.png" width="310" />
+        <icon height="44" src="res/icons/windows/Square44x44Logo.scale-100.png" width="44" />
+        <icon height="106" src="res/icons/windows/Square44x44Logo.scale-240.png" width="106" />
+        <icon height="70" src="res/icons/windows/Square70x70Logo.scale-100.png" width="70" />
+        <icon height="71" src="res/icons/windows/Square71x71Logo.scale-100.png" width="71" />
+        <icon height="170" src="res/icons/windows/Square71x71Logo.scale-240.png" width="170" />
+        <icon height="50" src="res/icons/windows/StoreLogo.scale-100.png" width="50" />
+        <icon height="120" src="res/icons/windows/StoreLogo.scale-240.png" width="120" />
+        <icon height="150" src="res/icons/windows/Wide310x150Logo.scale-100.png" width="310" />
+        <icon height="360" src="res/icons/windows/Wide310x150Logo.scale-240.png" width="744" />
+    </platform>
+    <platform name="android">
+        <splash density="land-hdpi" src="res/screens/android/screen-hdpi-landscape.png" />
+        <splash density="land-ldpi" src="res/screens/android/screen-ldpi-landscape.png" />
+        <splash density="land-mdpi" src="res/screens/android/screen-mdpi-landscape.png" />
+        <splash density="land-xhdpi" src="res/screens/android/screen-xhdpi-landscape.png" />
+        <splash density="port-hdpi" src="res/screens/android/screen-hdpi-portrait.png" />
+        <splash density="port-ldpi" src="res/screens/android/screen-ldpi-portrait.png" />
+        <splash density="port-mdpi" src="res/screens/android/screen-mdpi-portrait.png" />
+        <splash density="port-xhdpi" src="res/screens/android/screen-xhdpi-portrait.png" />
+    </platform>
+    <platform name="ios">
+        <splash src="res/screens/ios/Default@2x~universal~anyany.png" />
+        <splash height="480" src="res/screens/ios/screen-iphone-portrait.png" width="320" />
+        <splash height="960" src="res/screens/ios/screen-iphone-portrait-2x.png" width="640" />
+        <splash height="1024" src="res/screens/ios/screen-ipad-portrait.png" width="768" />
+        <splash height="2048" src="res/screens/ios/screen-ipad-portrait-2x.png" width="1536" />
+        <splash height="768" src="res/screens/ios/screen-ipad-landscape.png" width="1024" />
+        <splash height="1536" src="res/screens/ios/screen-ipad-landscape-2x.png" width="2048" />
+        <splash height="1136" src="res/screens/ios/screen-iphone-568h-2x.png" width="640" />
+        <splash height="1334" src="res/screens/ios/screen-iphone-portrait-667h.png" width="750" />
+        <splash height="2208" src="res/screens/ios/screen-iphone-portrait-736h.png" width="1242" />
+        <splash height="1242" src="res/screens/ios/screen-iphone-landscape-736h.png" width="2208" />
+    </platform>
+    <platform name="windows">
+        <splash height="300" src="res/screens/windows/SplashScreen.scale-100.png" width="620" />
+        <splash height="1920" src="res/screens/windows/SplashScreen.scale-240.png" width="1152" />
+        <splash height="1920" src="res/screens/windows/SplashScreenPhone.scale-240.png" width="1152" />
+    </platform>
+    <preference name="WindowsStoreDisplayName" value="Private Books Library" />
+    <preference name="WindowsStoreIdentityName" value="35337ManfredBielemeierBCS.PrivateBooksLibrary" />
+    <preference name="WindowsStorePublisherName" value="Manfred Bielemeier (BCSS Software &amp; Beratung GmbH)" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#1010FF" />
+    <preference name="android-minSdkVersion" value="15" />
+    <preference name="android-targetSDKVersion" value="26" />
+    <config-file parent="/Package/Capabilities" target="package.appxmanifest">
+        <DeviceCapability Name="webcam" />
+    </config-file>
+    <config-file parent="/Package/Capabilities" target="package.windows10.appxmanifest">
+        <DeviceCapability Name="microphone" />
+        <DeviceCapability Name="webcam" />
+    </config-file>
+    <edit-config file="*-Info.plist" mode="merge" target="ITSAppUsesNonExemptEncryption">
+        <false />
+    </edit-config>
+    <vs:toolsetVersion>6.3.1</vs:toolsetVersion>
+    <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
+        <string>To scan barcodes</string>
+    </edit-config>
+    <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
+        <string>Use a photo as bookcover</string>
+    </edit-config>
+    <plugin name="cordova-plugin-taptic-engine" spec="~2.1.0" />
+    <plugin name="cordova-plugin-camera" spec="^4.0.3" />
+    <plugin name="cordova-plugin-console" spec="^1.1.0" />
+    <plugin name="cordova-plugin-file" spec="^6.0.1" />
+    <plugin name="cordova-plugin-vibration" spec="^3.1.0" />
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
+    <plugin name="phonegap-plugin-barcodescanner" spec="^8.0.0">
+        <variable name="CAMERA_USAGE_DESCRIPTION" value="To scan barcodes" />
+        <variable name="ANDROID_SUPPORT_V4_VERSION" value="27.+" />
+    </plugin>
+    <plugin name="cordova-plugin-statusbar" spec="^2.4.2" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
+    <plugin name="cordova-plugin-keyboard" spec="^1.2.0" />
+    <plugin name="cordova-plugin-printer" spec="^0.7.3" />
+    <plugin name="com.admob.plugin" spec="^5.5.0" />
+    <plugin name="cc.fovea.cordova.purchase" spec="7.3.0-beta.0">
+        <variable name="BILLING_KEY" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAksjFrOzPzToUbrT5Hm577XiDIPtOOcTCaaKc3DPNxXSENH1HL3+pQTIwCxHdfQ9+o4HUoO1v3wlOiB1YMX9cNrEfxMtcXum9f8t9Lza/0WQHm2jflxaNq3ICFlbylJK9gBhM0uMj5M6BiUMSMzgzEdC+DhlPMvEj16fUscA8CwQoqmoWvn05s8IiKK65sB6+7KAn0qrUAYba7pnRNrYpHjKUoSgTr/BXpNgmpb+QiIZnepJMC0OyLfe46603AvKtDBiS5+6WsdM+mQ/xiX0TSBkIjmadIh2hghj7CvKwVvghBlt6PaJCq1V8CJl8u5EzxLzh8pQSnXarRns6gWYmFwIDAQAB" />
+    </plugin>
+    <plugin name="cordova-libgoogleadmobads" spec="~7.13.1" />
+    <plugin name="cordova-plugin-device" spec="~2.0.2" />
+    <engine name="windows" spec="^6.0.1" />
+    <engine name="browser" spec="5.0.4" />
 </widget>
