@@ -36,20 +36,6 @@
 		A1FA9EC5CCC94CEA8411E492 /* CDVKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FE25F02253E49EC84B6D065 /* CDVKeyboard.m */; };
 		A239DF187379497AB4E804B3 /* APPPrinter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A65550F23C44DBFB7000DF2 /* APPPrinter.m */; };
 		D3904F3CD9F3423C93095512 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AB178FE02BC4C2585EEE9BE /* StoreKit.framework */; };
-		534AF7D5335A4E378F300C95 /* AdmobAdPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 743F7A405FA74E55B328CC24 /* AdmobAdPlugin.m */; };
-		14D97B2325B2451A8C2C115D /* AdmobAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 386D511A19174644B874C943 /* AdmobAPI.framework */; };
-		1EE6DFB87FD64CBC968EAA19 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A36AAE9B8E744E28DE2B2E3 /* EventKit.framework */; };
-		25833D634CFA4A8CBA1D000E /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1715DCC0687D429B83347C6C /* EventKitUI.framework */; };
-		7133D6869C964133879942CF /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8436DA4585B4440E892AC407 /* AdSupport.framework */; };
-		83E1291F87BF4FDA8741AB46 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A350E9A8377D44B390DE155B /* MessageUI.framework */; };
-		B18EC540384849229C69A71A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 231A12325548431CA4FC0C2B /* AVFoundation.framework */; };
-		6B85665977D945CCA97769D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B01DD6D800654DE68FBA4A8D /* Foundation.framework */; };
-		8A487911601B4C27B44FD723 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9B0B31382ED4D0E85A847F6 /* UIKit.framework */; };
-		9ACDDAE5137E48898012915D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6BC8650310947F3A099E75E /* AudioToolbox.framework */; };
-		959FB19B8BAC4F20A117EBA1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57B0F1A785CE494686A7937E /* MediaPlayer.framework */; };
-		16AF027C131A4B238DBD4F07 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C8700B0082B417F82C17297 /* GLKit.framework */; };
-		1221732B33EA4E74BE9CF953 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 878D4D03E3F843A8A471EDB4 /* SafariServices.framework */; };
-		ADC662AC7D584381B43C9BD1 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CD8ED834FD0483CB6B80658 /* CoreMotion.framework */; };
 		03F0723165B245829CF8B040 /* InAppPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1694289DC43B488BAB81421D /* InAppPurchase.m */; };
 		7045D7824D3B45379B61FAA2 /* SKProduct+LocalizedPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = A151E7D0CB204DD786ECC243 /* SKProduct+LocalizedPrice.m */; };
 		E57E48A37F19440880ECBE99 /* FileUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0E49F39589AF40D7ACF4366F /* FileUtility.m */; };
@@ -126,21 +112,6 @@
 		2A65550F23C44DBFB7000DF2 /* APPPrinter.m */ = {isa = PBXFileReference; name = "APPPrinter.m"; path = "cordova-plugin-printer/APPPrinter.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		6C67B02409514AA1836A7688 /* APPPrinter.h */ = {isa = PBXFileReference; name = "APPPrinter.h"; path = "cordova-plugin-printer/APPPrinter.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		2AB178FE02BC4C2585EEE9BE /* StoreKit.framework */ = {isa = PBXFileReference; name = "StoreKit.framework"; path = "System/Library/Frameworks/StoreKit.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		743F7A405FA74E55B328CC24 /* AdmobAdPlugin.m */ = {isa = PBXFileReference; name = "AdmobAdPlugin.m"; path = "com.admob.plugin/AdmobAdPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		5862067EA995477CACC77FB7 /* AdmobAdPlugin.h */ = {isa = PBXFileReference; name = "AdmobAdPlugin.h"; path = "com.admob.plugin/AdmobAdPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		386D511A19174644B874C943 /* AdmobAPI.framework */ = {isa = PBXFileReference; name = "AdmobAPI.framework"; path = "PrivateBooksLibrary/Plugins/com.admob.plugin/AdmobAPI.framework"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		9A36AAE9B8E744E28DE2B2E3 /* EventKit.framework */ = {isa = PBXFileReference; name = "EventKit.framework"; path = "System/Library/Frameworks/EventKit.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		1715DCC0687D429B83347C6C /* EventKitUI.framework */ = {isa = PBXFileReference; name = "EventKitUI.framework"; path = "System/Library/Frameworks/EventKitUI.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		8436DA4585B4440E892AC407 /* AdSupport.framework */ = {isa = PBXFileReference; name = "AdSupport.framework"; path = "System/Library/Frameworks/AdSupport.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		A350E9A8377D44B390DE155B /* MessageUI.framework */ = {isa = PBXFileReference; name = "MessageUI.framework"; path = "System/Library/Frameworks/MessageUI.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		231A12325548431CA4FC0C2B /* AVFoundation.framework */ = {isa = PBXFileReference; name = "AVFoundation.framework"; path = "System/Library/Frameworks/AVFoundation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		B01DD6D800654DE68FBA4A8D /* Foundation.framework */ = {isa = PBXFileReference; name = "Foundation.framework"; path = "System/Library/Frameworks/Foundation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		F9B0B31382ED4D0E85A847F6 /* UIKit.framework */ = {isa = PBXFileReference; name = "UIKit.framework"; path = "System/Library/Frameworks/UIKit.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		C6BC8650310947F3A099E75E /* AudioToolbox.framework */ = {isa = PBXFileReference; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		57B0F1A785CE494686A7937E /* MediaPlayer.framework */ = {isa = PBXFileReference; name = "MediaPlayer.framework"; path = "System/Library/Frameworks/MediaPlayer.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		5C8700B0082B417F82C17297 /* GLKit.framework */ = {isa = PBXFileReference; name = "GLKit.framework"; path = "System/Library/Frameworks/GLKit.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		878D4D03E3F843A8A471EDB4 /* SafariServices.framework */ = {isa = PBXFileReference; name = "SafariServices.framework"; path = "System/Library/Frameworks/SafariServices.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
-		0CD8ED834FD0483CB6B80658 /* CoreMotion.framework */ = {isa = PBXFileReference; name = "CoreMotion.framework"; path = "System/Library/Frameworks/CoreMotion.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		1694289DC43B488BAB81421D /* InAppPurchase.m */ = {isa = PBXFileReference; name = "InAppPurchase.m"; path = "cc.fovea.cordova.purchase/InAppPurchase.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		A151E7D0CB204DD786ECC243 /* SKProduct+LocalizedPrice.m */ = {isa = PBXFileReference; name = "SKProduct+LocalizedPrice.m"; path = "cc.fovea.cordova.purchase/SKProduct+LocalizedPrice.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		0E49F39589AF40D7ACF4366F /* FileUtility.m */ = {isa = PBXFileReference; name = "FileUtility.m"; path = "cc.fovea.cordova.purchase/FileUtility.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
@@ -160,19 +131,6 @@
 				94CB83566E91460794CAA0EF /* SystemConfiguration.framework in Frameworks */,
 				9B71B49C603E44F1AECEE650 /* CoreTelephony.framework in Frameworks */,
 				D3904F3CD9F3423C93095512 /* StoreKit.framework in Frameworks */,
-				14D97B2325B2451A8C2C115D /* AdmobAPI.framework in Frameworks */,
-				1EE6DFB87FD64CBC968EAA19 /* EventKit.framework in Frameworks */,
-				25833D634CFA4A8CBA1D000E /* EventKitUI.framework in Frameworks */,
-				7133D6869C964133879942CF /* AdSupport.framework in Frameworks */,
-				83E1291F87BF4FDA8741AB46 /* MessageUI.framework in Frameworks */,
-				B18EC540384849229C69A71A /* AVFoundation.framework in Frameworks */,
-				6B85665977D945CCA97769D5 /* Foundation.framework in Frameworks */,
-				8A487911601B4C27B44FD723 /* UIKit.framework in Frameworks */,
-				9ACDDAE5137E48898012915D /* AudioToolbox.framework in Frameworks */,
-				959FB19B8BAC4F20A117EBA1 /* MediaPlayer.framework in Frameworks */,
-				16AF027C131A4B238DBD4F07 /* GLKit.framework in Frameworks */,
-				1221732B33EA4E74BE9CF953 /* SafariServices.framework in Frameworks */,
-				ADC662AC7D584381B43C9BD1 /* CoreMotion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,19 +208,6 @@
 				EE0F53D9C83C41228DBA65CA /* SystemConfiguration.framework */,
 				959C5A2BB4334B2EA283BB29 /* CoreTelephony.framework */,
 				2AB178FE02BC4C2585EEE9BE /* StoreKit.framework */,
-				386D511A19174644B874C943 /* AdmobAPI.framework */,
-				9A36AAE9B8E744E28DE2B2E3 /* EventKit.framework */,
-				1715DCC0687D429B83347C6C /* EventKitUI.framework */,
-				8436DA4585B4440E892AC407 /* AdSupport.framework */,
-				A350E9A8377D44B390DE155B /* MessageUI.framework */,
-				231A12325548431CA4FC0C2B /* AVFoundation.framework */,
-				B01DD6D800654DE68FBA4A8D /* Foundation.framework */,
-				F9B0B31382ED4D0E85A847F6 /* UIKit.framework */,
-				C6BC8650310947F3A099E75E /* AudioToolbox.framework */,
-				57B0F1A785CE494686A7937E /* MediaPlayer.framework */,
-				5C8700B0082B417F82C17297 /* GLKit.framework */,
-				878D4D03E3F843A8A471EDB4 /* SafariServices.framework */,
-				0CD8ED834FD0483CB6B80658 /* CoreMotion.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -314,8 +259,6 @@
 				ECDCDFEC42334D57B2C5DFE1 /* CDVKeyboard.h */,
 				2A65550F23C44DBFB7000DF2 /* APPPrinter.m */,
 				6C67B02409514AA1836A7688 /* APPPrinter.h */,
-				743F7A405FA74E55B328CC24 /* AdmobAdPlugin.m */,
-				5862067EA995477CACC77FB7 /* AdmobAdPlugin.h */,
 				1694289DC43B488BAB81421D /* InAppPurchase.m */,
 				A151E7D0CB204DD786ECC243 /* SKProduct+LocalizedPrice.m */,
 				0E49F39589AF40D7ACF4366F /* FileUtility.m */,
@@ -449,7 +392,6 @@
 				4BE17F5F18C949CF9EFE2C96 /* CDVReachability.m in Sources */,
 				A1FA9EC5CCC94CEA8411E492 /* CDVKeyboard.m in Sources */,
 				A239DF187379497AB4E804B3 /* APPPrinter.m in Sources */,
-				534AF7D5335A4E378F300C95 /* AdmobAdPlugin.m in Sources */,
 				03F0723165B245829CF8B040 /* InAppPurchase.m in Sources */,
 				7045D7824D3B45379B61FAA2 /* SKProduct+LocalizedPrice.m in Sources */,
 				E57E48A37F19440880ECBE99 /* FileUtility.m in Sources */,

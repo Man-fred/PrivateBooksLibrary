@@ -17,14 +17,6 @@ module.exports = [
     ]
   },
   {
-    "id": "com.admob.plugin.admob",
-    "file": "plugins/com.admob.plugin/www/admob.js",
-    "pluginId": "com.admob.plugin",
-    "clobbers": [
-      "window.admob"
-    ]
-  },
-  {
     "id": "cordova-plugin-camera.Camera",
     "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
     "pluginId": "cordova-plugin-camera",
@@ -290,6 +282,22 @@ module.exports = [
     ]
   },
   {
+    "id": "cordova-plugin-purchase.InAppPurchase",
+    "file": "plugins/cordova-plugin-purchase/www/store-windows.js",
+    "pluginId": "cordova-plugin-purchase",
+    "clobbers": [
+      "store"
+    ]
+  },
+  {
+    "id": "cordova-plugin-purchase.InAppPurchaseProxy",
+    "file": "plugins/cordova-plugin-purchase/src/windows/InAppPurchaseProxy.js",
+    "pluginId": "cordova-plugin-purchase",
+    "merges": [
+      ""
+    ]
+  },
+  {
     "id": "cordova-plugin-statusbar.statusbar",
     "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
     "pluginId": "cordova-plugin-statusbar",
@@ -346,8 +354,6 @@ module.exports.metadata =
 // TOP OF METADATA
 {
   "cc.fovea.cordova.purchase": "7.3.0-beta.0",
-  "com.admob.plugin": "5.5.0",
-  "cordova-libgoogleadmobads": "7.13.1",
   "cordova-plugin-camera": "4.0.3",
   "cordova-plugin-device": "2.0.2",
   "cordova-plugin-file": "6.0.1",

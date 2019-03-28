@@ -136,11 +136,9 @@
     <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
     <plugin name="cordova-plugin-keyboard" spec="^1.2.0" />
     <plugin name="cordova-plugin-printer" spec="^0.7.3" />
-    <plugin name="com.admob.plugin" spec="^5.5.0" />
     <plugin name="cc.fovea.cordova.purchase" spec="7.3.0-beta.0">
         <variable name="BILLING_KEY" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAksjFrOzPzToUbrT5Hm577XiDIPtOOcTCaaKc3DPNxXSENH1HL3+pQTIwCxHdfQ9+o4HUoO1v3wlOiB1YMX9cNrEfxMtcXum9f8t9Lza/0WQHm2jflxaNq3ICFlbylJK9gBhM0uMj5M6BiUMSMzgzEdC+DhlPMvEj16fUscA8CwQoqmoWvn05s8IiKK65sB6+7KAn0qrUAYba7pnRNrYpHjKUoSgTr/BXpNgmpb+QiIZnepJMC0OyLfe46603AvKtDBiS5+6WsdM+mQ/xiX0TSBkIjmadIh2hghj7CvKwVvghBlt6PaJCq1V8CJl8u5EzxLzh8pQSnXarRns6gWYmFwIDAQAB" />
     </plugin>
-    <plugin name="cordova-libgoogleadmobads" spec="~7.13.1" />
     <plugin name="cordova-plugin-device" spec="~2.0.2" />
     <engine name="windows" spec="^6.0.1" />
     <engine name="browser" spec="5.0.4" />

@@ -56,7 +56,7 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 37
+              "count": 38
             }
           ]
         }
@@ -66,11 +66,11 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"microphone\" />",
-              "count": 37
+              "count": 38
             },
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 37
+              "count": 38
             }
           ]
         }
@@ -79,12 +79,6 @@
   },
   "installed_plugins": {
     "cc.fovea.cordova.purchase": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
-    },
-    "com.admob.plugin": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
-    },
-    "cordova-libgoogleadmobads": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
     "cordova-plugin-camera": {
@@ -140,14 +134,6 @@
       "pluginId": "cc.fovea.cordova.purchase",
       "merges": [
         ""
-      ]
-    },
-    {
-      "file": "plugins/com.admob.plugin/www/admob.js",
-      "id": "com.admob.plugin.admob",
-      "pluginId": "com.admob.plugin",
-      "clobbers": [
-        "window.admob"
       ]
     },
     {
@@ -468,8 +454,6 @@
   ],
   "plugin_metadata": {
     "cc.fovea.cordova.purchase": "7.3.0-beta.0",
-    "com.admob.plugin": "5.5.0",
-    "cordova-libgoogleadmobads": "7.13.1",
     "cordova-plugin-camera": "4.0.3",
     "cordova-plugin-console": "1.1.0",
     "cordova-plugin-device": "2.0.2",

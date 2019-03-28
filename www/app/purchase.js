@@ -138,11 +138,12 @@ define(function (require) {
             // When every goes as expected
             store.ready(function () {
                 purchase.ready = true;
+                /*
                 require(['./admobile'], function (admobile) {
                     app.admobile = admobile;
                     admobile.init();
                 });
-
+                */
                 var info = '';
                 for (var i = 0; i < store.products.length; ++i) {
                     info += store.products[i].id+" ";

@@ -50,6 +50,24 @@ footer {
 .clear {
   clear: both;
 }
+#action {
+  text-align: left;
+  width: 100%;
+}
+@media only screen and (min-width: 568px) {
+  #action {
+    left: 150px;
+    width: calc(100% -  150px);
+  }
+}
+#action .pure-button {
+  margin: 10px 1% 0 1%;
+  width: 21%;
+  overflow: hidden;
+  text-align: center;
+  font-size: 80%;
+  height: 40px;
+}
 .header {
   padding: 0;
   padding-top: 0px;
@@ -357,7 +375,19 @@ div.container {
   /*max-width: 34em;*/
   float: left;
   margin: 0;
-  padding: 0 /*@top-height*/ 0 52px 0;
+  padding: 0 0 52px 0;
+  padding-top: 60px;
+}
+@supports (-webkit-overflow-scrolling: touch) {
+  #singledata {
+    /* CSS specific to iOS devices */
+    /* Status bar height on iOS 10 */
+    padding-top: 80px;
+    /* Status bar height on iOS 11.0 */
+    padding-top: calc(constant(safe-area-inset-top) +  60px);
+    /* Status bar height on iOS 11+ */
+    padding-top: calc(env(safe-area-inset-top) +  60px);
+  }
 }
 #bc1,
 #as1 {
@@ -463,7 +493,8 @@ label {
   display: inline-block;
   text-align: right;
 }
-div > label:first-child {
+div > label:first-child,
+section > label:first-child {
   width: 8em;
   text-align: left;
   padding-top: 0.3em;
@@ -751,6 +782,25 @@ input[type="reset"]:active {
   width: 32px;
   float: right;
   font-size: 40px;
+  padding: 10px 20px;
+}
+#book-buy {
+  width: 192px;
+  float: left;
+  font-size: 11px;
+  vertical-align: top;
+  border: 0;
+  padding: 5px;
+}
+#book-buy img {
+  width: 32px;
+  height: 32px;
+  float: left;
+  padding: 5px;
+}
+#book-buy a {
+  display: block;
+  text-decoration: none;
 }
 /* https://codepen.io/SitePoint/pen/hewAv 
    schönes Scrollverhalten bei horizontalem Menü und sticky header*/
@@ -1338,4 +1388,60 @@ Hides the menu at `48em`, but modify this based on your app's needs.
 }
 .gray-7 {
   background-color: #ffffff;
+}
+.password-strength {
+  width: 33%;
+  padding-left: 8.3em;
+}
+meter {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0 auto 1em;
+  height: 0.5em;
+  /* Applicable only to Firefox */
+  background: none;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+meter::-webkit-meter-bar {
+  background: none;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+/* Webkit based browsers */
+/* Gecko based browsers */
+meter[value="1"]::-webkit-meter-optimum-value,
+meter[value="1"]::-moz-meter-bar {
+  background: red;
+}
+meter[value="2"]::-webkit-meter-optimum-value,
+meter[value="2"]::-moz-meter-bar {
+  background: #ff4000;
+}
+meter[value="3"]::-webkit-meter-optimum-value,
+meter[value="3"]::-moz-meter-bar {
+  background: #ffb600;
+}
+meter[value="4"]::-webkit-meter-optimum-value,
+meter[value="4"]::-moz-meter-bar {
+  background: yellow;
+}
+meter[value="5"]::-webkit-meter-optimum-value,
+meter[value="5"]::-moz-meter-bar {
+  background: green;
+}
+body {
+  -ms-overflow-style: scrollbar;
+}
+@media print {
+  #action,
+  #footer,
+  .dropdown,
+  .menuPos,
+  .menulink,
+  .menu,
+  .pure-menu-heading,
+  .pure-menu-item {
+    display: none;
+  }
 }
