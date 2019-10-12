@@ -1,5 +1,5 @@
 ﻿define({
-    "version": "V 0.10.00.0",
+    "version": "V 0.10.01.0",
     "Sprache": "en",
     "about": "About",
     "add": "Add",
