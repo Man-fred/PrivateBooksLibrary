@@ -5,10 +5,10 @@
   "dependencies": {
     "cc.fovea.cordova.purchase": "7.3.0-beta.0",
     "cord": "^1.0.0",
-    "cordova-android": "^7.1.4",
-    "cordova-browser": "5.0.4",
+    "cordova-android": "^8.1.0",
+    "cordova-browser": "^6.0.0",
     "cordova-connectivity-monitor": "^1.2.2",
-    "cordova-ios": "^4.5.5",
+    "cordova-ios": "^5.0.1",
     "cordova-plugin-camera": "^4.0.3",
     "cordova-plugin-console": "^1.1.0",
     "cordova-plugin-device": "^2.0.2",
@@ -21,11 +21,13 @@
     "cordova-plugin-taptic-engine": "^2.1.0",
     "cordova-plugin-vibration": "^3.1.0",
     "cordova-plugin-whitelist": "^1.3.3",
-    "cordova-windows": "^6.0.1",
+    "cordova-windows": "^7.0.0",
     "phonegap-plugin-barcodescanner": "^8.0.1"
   },
   "cordova": {
     "platforms": [
+      "android",
+      "ios",
       "windows",
       "browser"
     ],
@@ -46,7 +48,9 @@
       "cordova-plugin-printer": {},
       "cc.fovea.cordova.purchase": {
         "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAksjFrOzPzToUbrT5Hm577XiDIPtOOcTCaaKc3DPNxXSENH1HL3+pQTIwCxHdfQ9+o4HUoO1v3wlOiB1YMX9cNrEfxMtcXum9f8t9Lza/0WQHm2jflxaNq3ICFlbylJK9gBhM0uMj5M6BiUMSMzgzEdC+DhlPMvEj16fUscA8CwQoqmoWvn05s8IiKK65sB6+7KAn0qrUAYba7pnRNrYpHjKUoSgTr/BXpNgmpb+QiIZnepJMC0OyLfe46603AvKtDBiS5+6WsdM+mQ/xiX0TSBkIjmadIh2hghj7CvKwVvghBlt6PaJCq1V8CJl8u5EzxLzh8pQSnXarRns6gWYmFwIDAQAB"
-      }
+      },
+      "cordova-plugin-device": {}
     }
-  }
+  },
+  "devDependencies": {}
 }

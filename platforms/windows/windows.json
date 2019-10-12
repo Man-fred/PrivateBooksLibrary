@@ -38,7 +38,8 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 5
+              "count": 1,
+              "id": "config.xml"
             }
           ]
         }
@@ -48,7 +49,8 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 5
+              "count": 1,
+              "id": "config.xml"
             }
           ]
         }
@@ -58,11 +60,13 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 8
+              "count": 5,
+              "id": "config.xml"
             },
             {
               "xml": "<DeviceCapability Name=\"microphone\" />",
-              "count": 3
+              "count": 1,
+              "id": "config.xml"
             }
           ]
         }
@@ -89,9 +93,6 @@
       "PACKAGE_NAME": "Private Books Library"
     },
     "cordova-plugin-printer": {
-      "PACKAGE_NAME": "Private Books Library"
-    },
-    "cordova-plugin-purchase": {
       "PACKAGE_NAME": "Private Books Library"
     },
     "cordova-plugin-statusbar": {
@@ -394,22 +395,6 @@
       ]
     },
     {
-      "id": "cordova-plugin-purchase.InAppPurchase",
-      "file": "plugins/cordova-plugin-purchase/www/store-windows.js",
-      "pluginId": "cordova-plugin-purchase",
-      "clobbers": [
-        "store"
-      ]
-    },
-    {
-      "id": "cordova-plugin-purchase.InAppPurchaseProxy",
-      "file": "plugins/cordova-plugin-purchase/src/windows/InAppPurchaseProxy.js",
-      "pluginId": "cordova-plugin-purchase",
-      "merges": [
-        ""
-      ]
-    },
-    {
       "id": "cordova-plugin-statusbar.statusbar",
       "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
       "pluginId": "cordova-plugin-statusbar",
@@ -470,7 +455,6 @@
     "cordova-plugin-keyboard": "1.2.0",
     "cordova-plugin-network-information": "2.0.1",
     "cordova-plugin-printer": "0.7.3",
-    "cordova-plugin-purchase": "7.2.4",
     "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-taptic-engine": "2.1.0",
     "cordova-plugin-vibration": "3.1.0",

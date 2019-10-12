@@ -9,8 +9,8 @@ module.exports = [
         ]
     },
     {
-        "id": "cc.fovea.cordova.purchase.InAppPurchaseProxy",
         "file": "plugins/cc.fovea.cordova.purchase/src/browser/InAppPurchaseProxy.js",
+        "id": "cc.fovea.cordova.purchase.InAppPurchaseProxy",
         "pluginId": "cc.fovea.cordova.purchase",
         "merges": [
             ""

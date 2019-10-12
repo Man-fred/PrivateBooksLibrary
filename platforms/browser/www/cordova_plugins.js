@@ -9,8 +9,8 @@ module.exports = [
         ]
     },
     {
-        "id": "cc.fovea.cordova.purchase.InAppPurchaseProxy",
         "file": "plugins/cc.fovea.cordova.purchase/src/browser/InAppPurchaseProxy.js",
+        "id": "cc.fovea.cordova.purchase.InAppPurchaseProxy",
         "pluginId": "cc.fovea.cordova.purchase",
         "merges": [
             ""
@@ -336,7 +336,6 @@ module.exports.metadata =
 // TOP OF METADATA
 {
     "cc.fovea.cordova.purchase": "7.3.0-beta.0",
-    "cordova-libgoogleadmobads": "7.13.1",
     "cordova-plugin-camera": "4.0.3",
     "cordova-plugin-console": "1.1.0",
     "cordova-plugin-device": "2.0.2",
