@@ -1,4 +1,4 @@
-﻿/* mit Werbung @partner-right: 120px;*/
+/* mit Werbung @partner-right: 120px;*/
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -1445,3 +1445,4 @@ body {
     display: none;
   }
 }
+/*# sourceMappingURL=app.css.map */

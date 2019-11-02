@@ -293,6 +293,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-taptic-engine": "2.1.0",
     "cordova-plugin-vibration": "3.1.0",
     "cordova-plugin-whitelist": "1.3.3",
-    "phonegap-plugin-barcodescanner": "8.0.0"
+    "phonegap-plugin-barcodescanner": "8.1.0"
   };
 });

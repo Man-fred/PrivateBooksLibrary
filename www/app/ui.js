@@ -67,7 +67,7 @@ define(function (require) {
                 } else {
                     this.appReturn.addEventListener("click", this.getVerlauf, false);
                 }
-                // später für Einbandbilder: window.addEventListener('scroll', this.getScrollBooks);
+                // spÃ¤ter fÃ¼r Einbandbilder: window.addEventListener('scroll', this.getScrollBooks);
                 //ui.setVerlauf(ui.page1, 'books', '', false);
             }
         },
@@ -274,9 +274,9 @@ define(function (require) {
                 this.scrollY = document.body.scrollTop;
             }
         },
-        /* für später, dazu muss aber das Anhängen der Bücher im DIV einzeln passieren
+        /* fï¿½r spï¿½ter, dazu muss aber das Anhï¿½ngen der Bï¿½cher im DIV einzeln passieren
            und die Position im DIV muss in einer Tabelle gespeichert sein.
-           Dann können die Einbandbilder im sichtbaren Bereich angezeigt werden.
+           Dann kï¿½nnen die Einbandbilder im sichtbaren Bereich angezeigt werden.
         getScrollBooks: function (e) {
             if (1 === 1 && 1 === "books") {
                 this.last_known_scroll_position = window.scrollY;

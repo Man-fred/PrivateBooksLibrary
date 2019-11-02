@@ -1,7 +1,9 @@
 ﻿define(function () { //  
 
     var pouch = {
-        cookie: require(['app/cookie'], function (cookie) { pouch.cookieGet(cookie); }),
+        cookie: require(['app/cookie'], function (cookie) {
+            pouch.cookieGet(cookie);
+        }),
         dbServer: null,
         dbPort: 6984,
         localdbA: 'PBL001B.db', // local name,
@@ -9,15 +11,15 @@
         dbName: null,
         dbUser: null,
         dbPass: null,
-        dbIdPublic: null,        //couchdb,
-        dbIdPrivate: null,       //pouchdb,
+        dbIdPublic: null, //couchdb,
+        dbIdPrivate: null, //pouchdb,
 
         db: null,
-        dbA: null,               //attachments (old complete)
-        dbRemote: null,          //couchdb,
-        dbRemoteA: null,          //couchdb attachments,
-        dbSync: null,            //sync-handle, used to stop syncing,
-        dbSyncA: null,            //sync-handle, used to stop syncing,
+        dbA: null, //attachments (old complete)
+        dbRemote: null, //couchdb,
+        dbRemoteA: null, //couchdb attachments,
+        dbSync: null, //sync-handle, used to stop syncing,
+        dbSyncA: null, //sync-handle, used to stop syncing,
         dbReady: 3,
         appResult: [],
 
@@ -58,7 +60,7 @@
                         // sync active, stopping first before connecting to another server
                         pouch.db.mySync.cancel();
                     }
-                    pouch.dbRemote = new PouchDB('https://'+pouch.dbServer + ':' + pouch.dbPort + '/' + pouch.prefix + pouch.dbName, { skip_setup: true });
+                    pouch.dbRemote = new PouchDB('https://' + pouch.dbServer + ':' + pouch.dbPort + '/' + pouch.prefix + pouch.dbName, {skip_setup: true});
                     pouch.dbRemote.login(pouch.dbUser, pouch.dbPass, function (err, response) {
                         if (err) {
                             console.log(err);
@@ -77,7 +79,7 @@
                         // sync active, stopping first before connecting to another server
                         pouch.dbA.mySync.cancel();
                     }
-                    pouch.dbRemoteA = new PouchDB('https://'+pouch.dbServer + ':' + pouch.dbPort + '/' + pouch.prefixA + pouch.dbName, { skip_setup: true });
+                    pouch.dbRemoteA = new PouchDB('https://' + pouch.dbServer + ':' + pouch.dbPort + '/' + pouch.prefixA + pouch.dbName, {skip_setup: true});
                     pouch.dbRemoteA.login(pouch.dbUser, pouch.dbPass, function (err, response) {
                         if (err) {
                             console.log(err);
@@ -91,7 +93,7 @@
                                 since: 'now',
                                 live: true
                             }).on('change', pouch.newDocs);
-                            
+
                         }
                     });
                 } else {
@@ -129,19 +131,19 @@
                 //console.log(info.last_seq);
                 console.info('Last Sequence: ' + parseInt(info.last_seq));
                 // then two-way, continuous, retriable sync
-                localDb.mySync = localDb.sync(remoteDb, { live: true, retry: true })
-                    .on('change', pouch.onSyncChange)
+                localDb.mySync = localDb.sync(remoteDb, {live: true, retry: true})
+                        .on('change', pouch.onSyncChange)
+                        .on('paused', pouch.onSyncPaused)
+                        .on('complete', pouch.onSyncComplete)
+                        .on('active', pouch.onSyncActive)
+                        .on('denied', pouch.onSyncDenied)
+                        .on('error', pouch.onSyncError);
+            }).on('change', pouch.onSyncChange)
                     .on('paused', pouch.onSyncPaused)
                     .on('complete', pouch.onSyncComplete)
                     .on('active', pouch.onSyncActive)
                     .on('denied', pouch.onSyncDenied)
                     .on('error', pouch.onSyncError);
-            }).on('change', pouch.onSyncChange)
-                .on('paused', pouch.onSyncPaused)
-                .on('complete', pouch.onSyncComplete)
-                .on('active', pouch.onSyncActive)
-                .on('denied', pouch.onSyncDenied)
-                .on('error', pouch.onSyncError);
         },
         onSyncChange: function (info) {
             if (info.direction === "pull") {
@@ -174,17 +176,17 @@
             app.info.setSync('Server: complete', info.ok, 'insync');
         },
         dbOpen: function () {
-            pouch.db = new PouchDB(pouch.localdb, { revs_limit: 10, auto_compaction: true });
+            pouch.db = new PouchDB(pouch.localdb, {revs_limit: 10, auto_compaction: true});
             // * Aufräumen alter Datenbanken in Alpha, erledigt
             if (cordova.platformId === "ios") {
-                pouch.dbA = new PouchDB('PBL001.db', { revs_limit: 1, auto_compaction: true });
+                pouch.dbA = new PouchDB('PBL001.db', {revs_limit: 1, auto_compaction: true});
                 pouch.dbA.destroy().then(function (response) {
                     console.info(response);
                 }).catch(function (err) {
                     console.info(err);
                 });
             }
-            pouch.dbA = new PouchDB(pouch.localdbA, { revs_limit: 1, auto_compaction: true });
+            pouch.dbA = new PouchDB(pouch.localdbA, {revs_limit: 1, auto_compaction: true});
             // */
         },
         dbNew: function () {
@@ -203,21 +205,21 @@
                 }
             }
             /*
-            if ((typeof cordova !== "undefined" && cordova.platformId !== 'browser' )
-                && typeof sqlitePlugin !== 'undefined' && typeof openDatabase !== 'undefined') {
-                this.dbA = new PouchDB(this.dbNameA, { revs_limit: 1, auto_compaction: true, adapter: 'cordova-sqlite' });
-                this.db = new PouchDB(this.dbName, { revs_limit: 10, auto_compaction: true, adapter: 'cordova-sqlite' });
-                console.info('Database: Cordova');
-            } else if (!this.pbl.ui.isChrome() && window.openDatabase) {
-                this.dbA = new PouchDB(this.dbNameA, { revs_limit: 10, adapter: 'websql' });
-                this.db = new PouchDB(this.dbName, { revs_limit: 10, adapter: 'websql' });
-                console.info('Database: webSQL');
-            } else {
-                this.dbA = new PouchDB(this.dbNameA, { revs_limit: 1, auto_compaction: true, size: 500 });
-                this.db = new PouchDB(this.dbName, { revs_limit: 10, auto_compaction: true, size: 100 });
-                console.info('Database: Pouchdb');
-            }
-            */
+             if ((typeof cordova !== "undefined" && cordova.platformId !== 'browser' )
+             && typeof sqlitePlugin !== 'undefined' && typeof openDatabase !== 'undefined') {
+             this.dbA = new PouchDB(this.dbNameA, { revs_limit: 1, auto_compaction: true, adapter: 'cordova-sqlite' });
+             this.db = new PouchDB(this.dbName, { revs_limit: 10, auto_compaction: true, adapter: 'cordova-sqlite' });
+             console.info('Database: Cordova');
+             } else if (!this.pbl.ui.isChrome() && window.openDatabase) {
+             this.dbA = new PouchDB(this.dbNameA, { revs_limit: 10, adapter: 'websql' });
+             this.db = new PouchDB(this.dbName, { revs_limit: 10, adapter: 'websql' });
+             console.info('Database: webSQL');
+             } else {
+             this.dbA = new PouchDB(this.dbNameA, { revs_limit: 1, auto_compaction: true, size: 500 });
+             this.db = new PouchDB(this.dbName, { revs_limit: 10, auto_compaction: true, size: 100 });
+             console.info('Database: Pouchdb');
+             }
+             */
             this.dbOpen();
             pouch.dbLoad();
         },
@@ -226,32 +228,32 @@
             if (pouch.dbReady === 0) {
                 //einmalige Kopie von "mit Attachments" zu "nur Metadaten"
                 /*
-                pouch.dbA.allDocs({
-                    include_docs: true
-                    //,attachments: true
-                })
-                .then(function (result) {
-                    for (var i = 0; i < result.rows.length; i++) {
-                        // _rev ist ungültig
-                        delete result.rows[i].doc._rev;
-                        if (result.rows[i].doc._attachments){
-                            delete result.rows[i].doc._attachments;
-                        }
-                        pouch.db.put(result.rows[i].doc)
-                            .catch(function (err) {
-                                console.log('put '+err);
-                        });
-                    }
-                })
-                .catch(function (err) {
-                    console.log('allDocs '+err);
-                });
-                */
+                 pouch.dbA.allDocs({
+                 include_docs: true
+                 //,attachments: true
+                 })
+                 .then(function (result) {
+                 for (var i = 0; i < result.rows.length; i++) {
+                 // _rev ist ungültig
+                 delete result.rows[i].doc._rev;
+                 if (result.rows[i].doc._attachments){
+                 delete result.rows[i].doc._attachments;
+                 }
+                 pouch.db.put(result.rows[i].doc)
+                 .catch(function (err) {
+                 console.log('put '+err);
+                 });
+                 }
+                 })
+                 .catch(function (err) {
+                 console.log('allDocs '+err);
+                 });
+                 */
                 /*/ Liste 
-                for (var i = 0; i < localStorage.length; i++) {
-                    console.info('localStorage: ' + localStorage.key(i) + ': ' + localStorage.getItem(localStorage.key(i)));
-                };
-                // Ende Liste */
+                 for (var i = 0; i < localStorage.length; i++) {
+                 console.info('localStorage: ' + localStorage.key(i) + ': ' + localStorage.getItem(localStorage.key(i)));
+                 };
+                 // Ende Liste */
                 // normale Verarbeitung
                 app.info.setSync('connect get login');
                 pouch.db.get('**_login' + pouch.dbIdPrivate).then(function (doc) {
@@ -356,22 +358,22 @@
         getAll: function (seite, singleIsbn, cb) {
             if (!pouch.appResult[seite]) {
                 var startkeystring = (seite === 'login' ? '**' : pouch.dbIdPublic) + '_' + seite;
-                                
+
                 pouch.db.allDocs({
                     startkey: startkeystring
                     , endkey: startkeystring + 'a'
                     , include_docs: true
-                    //,attachments: true
+                            //,attachments: true
                 })
-                    .then(function (result) {
-                        pouch.appResult[seite] = result;
-                        cb(singleIsbn);
-                    })
-                    .catch(function (err) {
-                        console.log(err);
-                        console.log('show_all end');
-                        app.ui.loading.style.display = "none";
-                    });
+                        .then(function (result) {
+                            pouch.appResult[seite] = result;
+                            cb(singleIsbn);
+                        })
+                        .catch(function (err) {
+                            console.log(err);
+                            console.log('show_all end');
+                            app.ui.loading.style.display = "none";
+                        });
             } else {
                 cb(singleIsbn);
             }
@@ -399,16 +401,16 @@
                 } else {
                     myObj._id = pouch.dbIdPublic + '_' + table + '2' + (S4() + S4() + "-" + S4() + "-4" + S4().substr(0, 3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
                 }
-            }
+        }
         },
         initPutConstants: function (id) {
-            pouch.db.put({ _id: id + '_state_0', name: '0', long: 'not owned' });
-            pouch.db.put({ _id: id + '_state_1', name: '1', long: 'ordered' });
-            pouch.db.put({ _id: id + '_state_2', name: '2', long: 'owned' });
-            pouch.db.put({ _id: id + '_state_6', name: '6', long: 'owned/read' });
-            pouch.db.put({ _id: id + '_state_9', name: '9', long: 'new' });
-            pouch.db.put({ _id: id + '_favorite_0', name: '0', long: 'Nein' });
-            pouch.db.put({ _id: id + '_favorite_1', name: '1', long: 'Ja' });
+            pouch.db.put({_id: id + '_state_0', name: '0', long: 'not owned'});
+            pouch.db.put({_id: id + '_state_1', name: '1', long: 'ordered'});
+            pouch.db.put({_id: id + '_state_2', name: '2', long: 'owned'});
+            pouch.db.put({_id: id + '_state_6', name: '6', long: 'owned/read'});
+            pouch.db.put({_id: id + '_state_9', name: '9', long: 'new'});
+            pouch.db.put({_id: id + '_favorite_0', name: '0', long: 'Nein'});
+            pouch.db.put({_id: id + '_favorite_1', name: '1', long: 'Ja'});
             // app-cache leeren
             var keys = Object.keys(pouch.appResult);
             //pouch.appResult.length = keys.length;
@@ -433,7 +435,7 @@
                     app.ui.loading.style.display = "none";
                     result.img = result2;
                     var myJSON = JSON.stringify(result);
-                    var textToSaveAsBlob = new Blob([myJSON], { type: "text/json" });
+                    var textToSaveAsBlob = new Blob([myJSON], {type: "text/json"});
                     if (navigator.msSaveOrOpenBlob) {
                         navigator.msSaveOrOpenBlob(textToSaveAsURL, "pbl.backup");
                     } else {
@@ -487,7 +489,7 @@
         restore: function () {
             if (!pouch.overlayRestore) {
                 pouch.overlayRestore = document.getElementById('overlayRestore');
-                pouch.overlayRestore.innerHTML = app.handlebars['overlayRestore']({ str: app.lang });
+                pouch.overlayRestore.innerHTML = app.handlebars['overlayRestore']({str: app.lang});
                 document.getElementById("restoreStart").addEventListener("click", pouch.restoreStart);
                 document.getElementById("restoreSchliessen").addEventListener("click", pouch.restoreSchliessen);
             }
@@ -545,11 +547,11 @@
         restoreNow: function () {
             var doc;
             pouch.dbOpen();
-            var i=0;
+            var i = 0;
             for (i = 0; i < pouch.restoreResult.total_rows; i++) {
                 doc = pouch.restoreResult.rows[i].doc;
                 //console.log(i);
-                pouch.db.put(doc, { force: true }).then(function (info) {
+                pouch.db.put(doc, {force: true}).then(function (info) {
                     if (pouch.restoreRows-- <= 0) {
                         pouch.restoreFinish();
                     }
@@ -557,11 +559,11 @@
                     console.log(err);
                     //console.info('Datenbank ohne Funktion: ' + err);
                 });
-            }            
+            }
             for (i = 0; i < pouch.restoreResult.img.total_rows; i++) {
                 doc = pouch.restoreResult.img.rows[i].doc;
                 //console.log(i);
-                pouch.dbA.put(doc, { force: true }).then(function (info) {
+                pouch.dbA.put(doc, {force: true}).then(function (info) {
                     if (pouch.restoreRows-- <= 0) {
                         pouch.restoreFinish();
                     }
@@ -569,7 +571,7 @@
                     console.log(err);
                     //console.info('Datenbank ohne Funktion: ' + err);
                 });
-            }            
+            }
         },
         restoreFinish: function () {
             document.getElementById('restoreFinish').innerHTML = pouch.restoreResult.total_rows + " Zeilen aus Datensicherung und " + pouch.restoreResult.img.total_rows + " Bilder erfolgreich geladen.";
@@ -581,14 +583,14 @@
                 delete pouch.restoreResult;
             }
         },
-        changePass: function (oldPass, newPass, repeatPass){
+        changePass: function (oldPass, newPass, repeatPass) {
             if (newPass === repeatPass) {
                 //curl -X GET http://localhost:5984/_users/org.couchdb.user:jan
                 /*curl -X PUT http://localhost:5984/_users/org.couchdb.user:jan \
-                -H "Accept: application/json" \
-                -H "Content-Type: application/json" \
-                -H "If-Match: 1-e0ebfb84005b920488fc7a8cc5470cc0" \
-                -d '{"name":"jan", "roles":[], "type":"user", "password":"orange"}' */
+                 -H "Accept: application/json" \
+                 -H "Content-Type: application/json" \
+                 -H "If-Match: 1-e0ebfb84005b920488fc7a8cc5470cc0" \
+                 -d '{"name":"jan", "roles":[], "type":"user", "password":"orange"}' */
             }
         }
     };

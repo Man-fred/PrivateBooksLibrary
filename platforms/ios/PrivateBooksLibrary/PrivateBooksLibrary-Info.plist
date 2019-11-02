@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.10.00</string>
+	<string>0.10.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>0.10.00</string>
+	<string>0.10.2</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSMainNibFile</key>
@@ -55,9 +55,9 @@
 	<string>CDVLaunchScreen</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
-	<key>NSCameraUsageDescription</key>
-	<string>To scan barcodes</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Use a photo as bookcover</string>
+	<string>We use photos and camera as bookcover and to scan barcodes from books</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We use photos and camera as bookcover and to scan barcodes from books</string>
 </dict>
 </plist>

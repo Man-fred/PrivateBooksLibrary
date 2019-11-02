@@ -1,5 +1,5 @@
 (function() {
-"use strict";
+
 
 // Store all pending callbacks, prevents promises to be called multiple times.
 var callbacks = {};
@@ -90,10 +90,7 @@ store.order = function(pid, additionalData) {
     ///
 };
 
-///
-/// As usual, you can unregister the callbacks by using [`store.off()`](#off).
-///
-
+//
 // Remove pending callbacks registered with `order`
 store.order.unregister = function(cb) {
     for (var i in callbacks) {

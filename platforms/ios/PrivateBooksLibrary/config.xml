@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget defaultlocale="DE" id="io.cordova.myapp387c96" version="0.10.00" windows-packageVersion="0.10.00.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
+<widget defaultlocale="DE" id="io.cordova.myapp387c96" version="0.10.2" windows-packageVersion="0.10.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
@@ -57,10 +57,10 @@
     </feature>
     <name>PrivateBooksLibrary</name>
     <description>Verwalten Sie Ihre private Büchersammlung und eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.</description>
-    <author email="dev@bcss.de" href="https://www.bcss.de/dev">Manfred Bielemeier</author>
+    <author email="dev@bcss.de" href="https://www.bcss.de/dev">Manfred Bielemeier (BCSS Software &amp; Beratung GmbH)</author>
     <vs:template-name>BlankJS</vs:template-name>
     <vs:platformSpecificValues>
-        <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.10.00.0" />
+        <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.10.2.0" />
     </vs:platformSpecificValues>
     <content src="index.html" />
     <access origin="https://pbl.bcss.de" />
@@ -77,16 +77,7 @@
         <DeviceCapability Name="microphone" />
         <DeviceCapability Name="webcam" />
     </config-file>
-    <edit-config file="*-Info.plist" mode="merge" target="ITSAppUsesNonExemptEncryption">
-        <false />
-    </edit-config>
     <vs:toolsetVersion>6.3.1</vs:toolsetVersion>
-    <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
-        <string>To scan barcodes</string>
-    </edit-config>
-    <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
-        <string>Use a photo as bookcover</string>
-    </edit-config>
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
     <icon height="40" src="res/icons/ios/icon-40.png" width="40" />
@@ -118,6 +109,15 @@
     <splash height="1334" src="res/screens/ios/screen-iphone-portrait-667h.png" width="750" />
     <splash height="2208" src="res/screens/ios/screen-iphone-portrait-736h.png" width="1242" />
     <splash height="1242" src="res/screens/ios/screen-iphone-landscape-736h.png" width="2208" />
+    <edit-config file="*-Info.plist" mode="merge" target="ITSAppUsesNonExemptEncryption">
+        <false />
+    </edit-config>
+    <edit-config file="*-Info.plist" mode="merge" overwrite="true" target="NSPhotoLibraryUsageDescription">
+        <string>We use photos and camera as bookcover and to scan barcodes from books</string>
+    </edit-config>
+    <edit-config file="*-Info.plist" mode="merge" overwrite="true" target="NSCameraUsageDescription">
+        <string>We use photos and camera as bookcover and to scan barcodes from books</string>
+    </edit-config>
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="BackupWebStorage" value="cloud" />
     <preference name="DisallowOverscroll" value="false" />
@@ -133,9 +133,10 @@
     <preference name="PaginationMode" value="unpaginated" />
     <preference name="CameraUsesGeolocation" value="false" />
     <preference name="StatusBarStyle" value="lightcontent" />
-    <preference name="phonegap-version" value="cli-7.1.0" />
+    <preference name="phonegap-version" value="cli-9.0.0" />
     <preference name="SplashScreen" value="screen" />
     <preference name="windows-target-version" value="10.0" />
+    <preference name="windows-identity-name" value="35337ManfredBielemeierBCS.PrivateBooksLibrary" />
     <preference name="WindowsStoreDisplayName" value="Private Books Library" />
     <preference name="WindowsStoreIdentityName" value="35337ManfredBielemeierBCS.PrivateBooksLibrary" />
     <preference name="WindowsStorePublisherName" value="Manfred Bielemeier (BCSS Software &amp; Beratung GmbH)" />

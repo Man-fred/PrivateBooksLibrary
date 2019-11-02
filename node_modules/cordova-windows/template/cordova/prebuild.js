@@ -50,9 +50,7 @@ module.exports = function patch (platform) {
     // 1. Find start page path in appxmanifest
     var AppxManifest = require('./lib/AppxManifest');
     var appxmanifest = AppxManifest.get(path.join(__dirname, '..', appxmanifestMap[platform]));
-
-    // @todo Use 'url.URL' constructor instead
-    var startPage = url.parse(appxmanifest.getApplication().getStartPage()); // eslint-disable-line 
+    var startPage = url.parse(appxmanifest.getApplication().getStartPage());
 
     if (startPage.protocol && startPage.protocol.indexOf('http') === 0) {
         console.warn('Warning: Can\'t modify external content.src. You should update your server-side pages to reference WinJS directly in HTML.');

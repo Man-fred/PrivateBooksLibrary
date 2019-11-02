@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Package IgnorableNamespaces="uap mp" xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10">
-    <Identity Name="35337ManfredBielemeierBCS.PrivateBooksLibrary" Publisher="CN=$username$" Version="0.10.00.0" />
-    <mp:PhoneIdentity PhoneProductId="4ad43380-ecb4-11e9-a145-a7aacdf94628" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+    <Identity Name="35337ManfredBielemeierBCS.PrivateBooksLibrary" Publisher="CN=$username$" Version="0.10.2.0" />
+    <mp:PhoneIdentity PhoneProductId="ec1fabc0-fd8f-11e9-9b71-877cae4061fd" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
     <Properties>
         <DisplayName>Private Books Library</DisplayName>
         <PublisherDisplayName>Manfred Bielemeier (BCSS Software &amp; Beratung GmbH)</PublisherDisplayName>

@@ -305,11 +305,9 @@ store.sandbox = false;
 // #include "refresh.js"
 
 ///
-/// ## <a name="refresh"></a>*store.manageSubscriptions()*
+/// ## <a name="manageSubscriptions"></a>*store.manageSubscriptions()*
 ///
-/// (iOS only)
-///
-/// Opens the Manage Subscription page in iTunes.
+/// Opens the Manage Subscription page (AppStore, Play, Microsoft, ...).
 ///
 /// ##### example usage
 ///
@@ -323,6 +321,7 @@ store.sandbox = false;
 /// # Random Tips
 ///
 /// - Sometimes during development, the queue of pending transactions fills up on your devices. Before doing anything else you can set `store.autoFinishTransactions` to `true` to clean up the queue. Beware: **this is not meant for production**.
+/// - The plugin will auto refresh the status of user's purchases every 24h. You can change this interval by setting `store.autoRefreshIntervalMillis` to another interval (before calling `store.init()`). (this isn't implemented on iOS since [it isn't necessary](https://github.com/j3k0/cordova-plugin-purchase/issues/777#issuecomment-481633968)). Set to `0` to disable auto-refreshing.
 ///
 /// # internal APIs
 /// USE AT YOUR OWN RISKS

@@ -37,9 +37,9 @@
 		11DD40C4BFC94AB396275DF7 /* TapticEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = A94AB9BACAB14A0F8C1C0D1E /* TapticEngine.m */; };
 		4B082735DFA14544BD050D8E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDDF1921C1A4B618D9E77EF /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		797043DE8D614F02B128631B /* CDVVibration.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C06C4A370A2476D884F75AF /* CDVVibration.m */; };
-		451B6C385DE6475398FE6111 /* CDVBarcodeScanner.mm in Resources */ = {isa = PBXBuildFile; fileRef = 40DA126F1DF6416DA9EB7790 /* CDVBarcodeScanner.mm */; };
-		90A2B1F6E1A24A10B1422242 /* scannerOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11BECE89F01041FD8699610E /* scannerOverlay.xib */; };
-		DE76F4B1969C4E53817B6755 /* CDVBarcodeScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B37597A07FD841CA942D0C1E /* CDVBarcodeScanner.bundle */; };
+		5A852045DF584C98BAD2CF7B /* CDVBarcodeScanner.mm in Resources */ = {isa = PBXBuildFile; fileRef = 744549D9046C4C14B2F248AF /* CDVBarcodeScanner.mm */; };
+		3EAE271114654A45A01FD898 /* scannerOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF1A8681041442F7A87AA649 /* scannerOverlay.xib */; };
+		03402D608B97495A996E27C7 /* CDVBarcodeScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 935B87EFF97C40108E99E01A /* CDVBarcodeScanner.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,9 +129,9 @@
 		BBDDF1921C1A4B618D9E77EF /* AudioToolbox.framework */ = {isa = PBXFileReference; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		6C06C4A370A2476D884F75AF /* CDVVibration.m */ = {isa = PBXFileReference; name = "CDVVibration.m"; path = "cordova-plugin-vibration/CDVVibration.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		D64ED417194C400F9ADABA34 /* CDVVibration.h */ = {isa = PBXFileReference; name = "CDVVibration.h"; path = "cordova-plugin-vibration/CDVVibration.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		40DA126F1DF6416DA9EB7790 /* CDVBarcodeScanner.mm */ = {isa = PBXFileReference; name = "CDVBarcodeScanner.mm"; path = "phonegap-plugin-barcodescanner/CDVBarcodeScanner.mm"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		11BECE89F01041FD8699610E /* scannerOverlay.xib */ = {isa = PBXFileReference; name = "scannerOverlay.xib"; path = "scannerOverlay.xib"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = file.xib; explicitFileType = undefined; includeInIndex = 0; };
-		B37597A07FD841CA942D0C1E /* CDVBarcodeScanner.bundle */ = {isa = PBXFileReference; name = "CDVBarcodeScanner.bundle"; path = "CDVBarcodeScanner.bundle"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.plug-in; explicitFileType = undefined; includeInIndex = 0; };
+		744549D9046C4C14B2F248AF /* CDVBarcodeScanner.mm */ = {isa = PBXFileReference; name = "CDVBarcodeScanner.mm"; path = "phonegap-plugin-barcodescanner/CDVBarcodeScanner.mm"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		CF1A8681041442F7A87AA649 /* scannerOverlay.xib */ = {isa = PBXFileReference; name = "scannerOverlay.xib"; path = "scannerOverlay.xib"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = file.xib; explicitFileType = undefined; includeInIndex = 0; };
+		935B87EFF97C40108E99E01A /* CDVBarcodeScanner.bundle */ = {isa = PBXFileReference; name = "CDVBarcodeScanner.bundle"; path = "CDVBarcodeScanner.bundle"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.plug-in; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,8 +209,8 @@
 				3047A50E1AB8057F00498E2A /* config */,
 				8D1107310486CEB800E47090 /* PrivateBooksLibrary-Info.plist */,
 				6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */,
-				11BECE89F01041FD8699610E /* scannerOverlay.xib */,
-				B37597A07FD841CA942D0C1E /* CDVBarcodeScanner.bundle */,
+				CF1A8681041442F7A87AA649 /* scannerOverlay.xib */,
+				935B87EFF97C40108E99E01A /* CDVBarcodeScanner.bundle */,
 			);
 			name = Resources;
 			path = "PrivateBooksLibrary/Resources";
@@ -287,7 +287,7 @@
 				4187863D29A444559E6D2EEA /* TapticEngine.h */,
 				6C06C4A370A2476D884F75AF /* CDVVibration.m */,
 				D64ED417194C400F9ADABA34 /* CDVVibration.h */,
-				40DA126F1DF6416DA9EB7790 /* CDVBarcodeScanner.mm */,
+				744549D9046C4C14B2F248AF /* CDVBarcodeScanner.mm */,
 			);
 			name = Plugins;
 			path = "PrivateBooksLibrary/Plugins";
@@ -381,8 +381,8 @@
 				302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */,
 				0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */,
 				6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */,
-				90A2B1F6E1A24A10B1422242 /* scannerOverlay.xib in Resources */,
-				DE76F4B1969C4E53817B6755 /* CDVBarcodeScanner.bundle in Resources */,
+				3EAE271114654A45A01FD898 /* scannerOverlay.xib in Resources */,
+				03402D608B97495A996E27C7 /* CDVBarcodeScanner.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +431,7 @@
 				FC1E597AA9F84131BCFE72A2 /* CDVStatusBar.m in Sources */,
 				11DD40C4BFC94AB396275DF7 /* TapticEngine.m in Sources */,
 				797043DE8D614F02B128631B /* CDVVibration.m in Sources */,
-				451B6C385DE6475398FE6111 /* CDVBarcodeScanner.mm in Resources */,
+				5A852045DF584C98BAD2CF7B /* CDVBarcodeScanner.mm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
