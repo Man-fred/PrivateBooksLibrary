@@ -1,11 +1,9 @@
 ﻿# .gitignore
 [Pp]lugins/
-[Pp]latforms/
 /AppPackages/
 /api/
 /bin/
 /bld/
-platforms/
 /merges/
 /simulation/
 build.json

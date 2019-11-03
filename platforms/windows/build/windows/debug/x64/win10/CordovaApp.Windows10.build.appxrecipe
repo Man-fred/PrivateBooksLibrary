@@ -1,0 +1,1660 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>MANFRED-ACER</Machine>
+    <WindowsUser>Manfred</WindowsUser>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetOsVersion>10.0</TargetOsVersion>
+    <TargetOsDescription>Windows 10.0</TargetOsDescription>
+    <SolutionConfiguration>debug|x64</SolutionConfiguration>
+    <PackageArchitecture>x64</PackageArchitecture>
+    <PackageIdentityName>ec1fabc0-fd8f-11e9-9b71-877cae4061fd</PackageIdentityName>
+    <PackageIdentityPublisher>CN=Apache Cordova Team</PackageIdentityPublisher>
+    <IntermediateOutputPath>C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\build\windows\bld\</IntermediateOutputPath>
+    <RemoteDeploymentType></RemoteDeploymentType>
+    <PackageRegistrationPath></PackageRegistrationPath>
+    <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
+    <DeployOptionalPackages>false</DeployOptionalPackages>
+    <WindowsSdkPath></WindowsSdkPath>
+    <LayoutDir>C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\build\windows\debug\x64\win10\AppX</LayoutDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\build\windows\debug\x64\win10\Core\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\plugins\phonegap-plugin-barcodescanner\x64\ZXing.winmd">
+      <PackagePath>ZXing.winmd</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\images\SplashScreen.scale-100.png">
+      <PackagePath>images\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\images\Square150x150Logo.scale-100.png">
+      <PackagePath>images\Square150x150Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\images\Square30x30Logo.scale-100.png">
+      <PackagePath>images\Square30x30Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\images\Square310x310Logo.scale-100.png">
+      <PackagePath>images\Square310x310Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\images\Square44x44Logo.scale-100.png">
+      <PackagePath>images\Square44x44Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\images\Square70x70Logo.scale-100.png">
+      <PackagePath>images\Square70x70Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\images\Square71x71Logo.scale-100.png">
+      <PackagePath>images\Square71x71Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\images\StoreLogo.scale-100.png">
+      <PackagePath>images\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\images\Wide310x150Logo.scale-100.png">
+      <PackagePath>images\Wide310x150Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\icons\icon-60-2x.png">
+      <PackagePath>www\img\icons\icon-60-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\icons\icon-72-2x.png">
+      <PackagePath>www\img\icons\icon-72-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\icons\icon-76-2x.png">
+      <PackagePath>www\img\icons\icon-76-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-114-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-114-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-120-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-120-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-144-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-144-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-152-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-152-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-16-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-16-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-24-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-24-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-32-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-32-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-48-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-48-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-57-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-57-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-64-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-64-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-72-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-72-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\vorlage.png">
+      <PackagePath>www\img\vorlage.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\a-icon.png">
+      <PackagePath>www\res\icons\a-icon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\android\icon-36.png">
+      <PackagePath>www\res\icons\android\icon-36.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\android\icon-48.png">
+      <PackagePath>www\res\icons\android\icon-48.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\android\icon-72.png">
+      <PackagePath>www\res\icons\android\icon-72.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\android\icon-96.png">
+      <PackagePath>www\res\icons\android\icon-96.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-1024.png">
+      <PackagePath>www\res\icons\ios\icon-1024.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-167.png">
+      <PackagePath>www\res\icons\ios\icon-167.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-2x.png">
+      <PackagePath>www\res\icons\ios\icon-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-40-2x.png">
+      <PackagePath>www\res\icons\ios\icon-40-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-40.png">
+      <PackagePath>www\res\icons\ios\icon-40.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-50-2x.png">
+      <PackagePath>www\res\icons\ios\icon-50-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-50.png">
+      <PackagePath>www\res\icons\ios\icon-50.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-57-2x.png">
+      <PackagePath>www\res\icons\ios\icon-57-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-57.png">
+      <PackagePath>www\res\icons\ios\icon-57.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-60-2x.png">
+      <PackagePath>www\res\icons\ios\icon-60-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-60-3x.png">
+      <PackagePath>www\res\icons\ios\icon-60-3x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-60.png">
+      <PackagePath>www\res\icons\ios\icon-60.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-72-2x.png">
+      <PackagePath>www\res\icons\ios\icon-72-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-72.png">
+      <PackagePath>www\res\icons\ios\icon-72.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-76-2x.png">
+      <PackagePath>www\res\icons\ios\icon-76-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-76.png">
+      <PackagePath>www\res\icons\ios\icon-76.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-83.5-2x.png">
+      <PackagePath>www\res\icons\ios\icon-83.5-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-small-2x.png">
+      <PackagePath>www\res\icons\ios\icon-small-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-small-3x.png">
+      <PackagePath>www\res\icons\ios\icon-small-3x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-small.png">
+      <PackagePath>www\res\icons\ios\icon-small.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon.png">
+      <PackagePath>www\res\icons\ios\icon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\store-icon1024.png">
+      <PackagePath>www\res\icons\ios\store-icon1024.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\t-icon.png">
+      <PackagePath>www\res\icons\t-icon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\t16-icon.png">
+      <PackagePath>www\res\icons\t16-icon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Square150x150Logo.scale-100.png">
+      <PackagePath>www\res\icons\windows\Square150x150Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Square150x150Logo.scale-240.png">
+      <PackagePath>www\res\icons\windows\Square150x150Logo.scale-240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Square30x30Logo.scale-100.png">
+      <PackagePath>www\res\icons\windows\Square30x30Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Square310x310Logo.scale-100.png">
+      <PackagePath>www\res\icons\windows\Square310x310Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Square44x44Logo.scale-100.png">
+      <PackagePath>www\res\icons\windows\Square44x44Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Square44x44Logo.scale-240.png">
+      <PackagePath>www\res\icons\windows\Square44x44Logo.scale-240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Square70x70Logo.scale-100.png">
+      <PackagePath>www\res\icons\windows\Square70x70Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Square71x71Logo.scale-100.png">
+      <PackagePath>www\res\icons\windows\Square71x71Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Square71x71Logo.scale-240.png">
+      <PackagePath>www\res\icons\windows\Square71x71Logo.scale-240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\StoreLogo.scale-100.png">
+      <PackagePath>www\res\icons\windows\StoreLogo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\StoreLogo.scale-240.png">
+      <PackagePath>www\res\icons\windows\StoreLogo.scale-240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Wide310x150Logo.scale-100.png">
+      <PackagePath>www\res\icons\windows\Wide310x150Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Wide310x150Logo.scale-240.png">
+      <PackagePath>www\res\icons\windows\Wide310x150Logo.scale-240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\android\screen-hdpi-landscape.png">
+      <PackagePath>www\res\screens\android\screen-hdpi-landscape.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\android\screen-hdpi-portrait.png">
+      <PackagePath>www\res\screens\android\screen-hdpi-portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\android\screen-ldpi-landscape.png">
+      <PackagePath>www\res\screens\android\screen-ldpi-landscape.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\android\screen-ldpi-portrait.png">
+      <PackagePath>www\res\screens\android\screen-ldpi-portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\android\screen-mdpi-landscape.png">
+      <PackagePath>www\res\screens\android\screen-mdpi-landscape.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\android\screen-mdpi-portrait.png">
+      <PackagePath>www\res\screens\android\screen-mdpi-portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\android\screen-xhdpi-landscape.png">
+      <PackagePath>www\res\screens\android\screen-xhdpi-landscape.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\android\screen-xhdpi-portrait.png">
+      <PackagePath>www\res\screens\android\screen-xhdpi-portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\Default%402x~universal~anyany.png">
+      <PackagePath>www\res\screens\ios\Default%402x~universal~anyany.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-ipad-landscape-2x.png">
+      <PackagePath>www\res\screens\ios\screen-ipad-landscape-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-ipad-landscape.png">
+      <PackagePath>www\res\screens\ios\screen-ipad-landscape.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-ipad-portrait-2x.png">
+      <PackagePath>www\res\screens\ios\screen-ipad-portrait-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-ipad-portrait.png">
+      <PackagePath>www\res\screens\ios\screen-ipad-portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-iphone-568h-2x.png">
+      <PackagePath>www\res\screens\ios\screen-iphone-568h-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-iphone-landscape-736h.png">
+      <PackagePath>www\res\screens\ios\screen-iphone-landscape-736h.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-iphone-portrait-2x.png">
+      <PackagePath>www\res\screens\ios\screen-iphone-portrait-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-iphone-portrait-667h.png">
+      <PackagePath>www\res\screens\ios\screen-iphone-portrait-667h.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-iphone-portrait-736h.png">
+      <PackagePath>www\res\screens\ios\screen-iphone-portrait-736h.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-iphone-portrait.png">
+      <PackagePath>www\res\screens\ios\screen-iphone-portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\store-icon1024.png">
+      <PackagePath>www\res\screens\ios\store-icon1024.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\windows\SplashScreen.scale-100.png">
+      <PackagePath>www\res\screens\windows\SplashScreen.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\windows\SplashScreen.scale-240.png">
+      <PackagePath>www\res\screens\windows\SplashScreen.scale-240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\screens\windows\SplashScreenPhone.scale-240.png">
+      <PackagePath>www\res\screens\windows\SplashScreenPhone.scale-240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\vorlage.png">
+      <PackagePath>www\res\vorlage.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\vorlage220.png">
+      <PackagePath>www\res\vorlage220.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\in-app-purchase.xml">
+      <PackagePath>www\in-app-purchase.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\native\windows\Package.StoreAssociation.xml">
+      <PackagePath>www\res\native\windows\Package.StoreAssociation.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\config.xml">
+      <PackagePath>config.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\api\auRef.php">
+      <PackagePath>www\api\auRef.php</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\api\datenschutz.php">
+      <PackagePath>www\api\datenschutz.php</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\api\isbndb.php">
+      <PackagePath>www\api\isbndb.php</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\admobile.js">
+      <PackagePath>www\app\admobile.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\book.js">
+      <PackagePath>www\app\book.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\cookie.js">
+      <PackagePath>www\app\cookie.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\data.js">
+      <PackagePath>www\app\data.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\datalist.js">
+      <PackagePath>www\app\datalist.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\handlebars\all.js">
+      <PackagePath>www\app\handlebars\all.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\handlebars\de-de.js">
+      <PackagePath>www\app\handlebars\de-de.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\handlebars\de.js">
+      <PackagePath>www\app\handlebars\de.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\handlebars\en.js">
+      <PackagePath>www\app\handlebars\en.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\htmlConsole.js">
+      <PackagePath>www\app\htmlConsole.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\info.js">
+      <PackagePath>www\app\info.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\init.js">
+      <PackagePath>www\app\init.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\menu.js">
+      <PackagePath>www\app\menu.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\nls\de\lang.js">
+      <PackagePath>www\app\nls\de\lang.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\nls\fr\lang.js">
+      <PackagePath>www\app\nls\fr\lang.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\nls\lang.js">
+      <PackagePath>www\app\nls\lang.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\nls\root\lang.js">
+      <PackagePath>www\app\nls\root\lang.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\password.js">
+      <PackagePath>www\app\password.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\pbl.js">
+      <PackagePath>www\app\pbl.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\position.js">
+      <PackagePath>www\app\position.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\pouch.js">
+      <PackagePath>www\app\pouch.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\purchase.js">
+      <PackagePath>www\app\purchase.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\search.js">
+      <PackagePath>www\app\search.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\slide.js">
+      <PackagePath>www\app\slide.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\tables.js">
+      <PackagePath>www\app\tables.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\app\ui.js">
+      <PackagePath>www\app\ui.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\cordova-js-src\confighelper.js">
+      <PackagePath>www\cordova-js-src\confighelper.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\cordova-js-src\exec.js">
+      <PackagePath>www\cordova-js-src\exec.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\cordova-js-src\platform.js">
+      <PackagePath>www\cordova-js-src\platform.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\cordova-js-src\splashscreen.js">
+      <PackagePath>www\cordova-js-src\splashscreen.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\cordova.js">
+      <PackagePath>www\cordova.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\cordova_plugins.js">
+      <PackagePath>www\cordova_plugins.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\apac\apac.js">
+      <PackagePath>www\lib\apac\apac.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\js\bootstrap.bundle.js">
+      <PackagePath>www\lib\bootstrap\js\bootstrap.bundle.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\js\bootstrap.bundle.min.js">
+      <PackagePath>www\lib\bootstrap\js\bootstrap.bundle.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\js\bootstrap.js">
+      <PackagePath>www\lib\bootstrap\js\bootstrap.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\js\bootstrap.min.js">
+      <PackagePath>www\lib\bootstrap\js\bootstrap.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\aes-min.js">
+      <PackagePath>www\lib\crypto\components\aes-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\aes.js">
+      <PackagePath>www\lib\crypto\components\aes.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\cipher-core-min.js">
+      <PackagePath>www\lib\crypto\components\cipher-core-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\cipher-core.js">
+      <PackagePath>www\lib\crypto\components\cipher-core.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\core-min.js">
+      <PackagePath>www\lib\crypto\components\core-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\core.js">
+      <PackagePath>www\lib\crypto\components\core.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\enc-base64-min.js">
+      <PackagePath>www\lib\crypto\components\enc-base64-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\enc-base64.js">
+      <PackagePath>www\lib\crypto\components\enc-base64.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\enc-utf16-min.js">
+      <PackagePath>www\lib\crypto\components\enc-utf16-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\enc-utf16.js">
+      <PackagePath>www\lib\crypto\components\enc-utf16.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\evpkdf-min.js">
+      <PackagePath>www\lib\crypto\components\evpkdf-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\evpkdf.js">
+      <PackagePath>www\lib\crypto\components\evpkdf.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\format-hex-min.js">
+      <PackagePath>www\lib\crypto\components\format-hex-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\format-hex.js">
+      <PackagePath>www\lib\crypto\components\format-hex.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\hmac-min.js">
+      <PackagePath>www\lib\crypto\components\hmac-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\hmac.js">
+      <PackagePath>www\lib\crypto\components\hmac.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\lib-typedarrays-min.js">
+      <PackagePath>www\lib\crypto\components\lib-typedarrays-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\lib-typedarrays.js">
+      <PackagePath>www\lib\crypto\components\lib-typedarrays.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\md5-min.js">
+      <PackagePath>www\lib\crypto\components\md5-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\md5.js">
+      <PackagePath>www\lib\crypto\components\md5.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-cfb-min.js">
+      <PackagePath>www\lib\crypto\components\mode-cfb-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-cfb.js">
+      <PackagePath>www\lib\crypto\components\mode-cfb.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-ctr-gladman-min.js">
+      <PackagePath>www\lib\crypto\components\mode-ctr-gladman-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-ctr-gladman.js">
+      <PackagePath>www\lib\crypto\components\mode-ctr-gladman.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-ctr-min.js">
+      <PackagePath>www\lib\crypto\components\mode-ctr-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-ctr.js">
+      <PackagePath>www\lib\crypto\components\mode-ctr.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-ecb-min.js">
+      <PackagePath>www\lib\crypto\components\mode-ecb-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-ecb.js">
+      <PackagePath>www\lib\crypto\components\mode-ecb.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-ofb-min.js">
+      <PackagePath>www\lib\crypto\components\mode-ofb-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-ofb.js">
+      <PackagePath>www\lib\crypto\components\mode-ofb.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-ansix923-min.js">
+      <PackagePath>www\lib\crypto\components\pad-ansix923-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-ansix923.js">
+      <PackagePath>www\lib\crypto\components\pad-ansix923.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-iso10126-min.js">
+      <PackagePath>www\lib\crypto\components\pad-iso10126-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-iso10126.js">
+      <PackagePath>www\lib\crypto\components\pad-iso10126.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-iso97971-min.js">
+      <PackagePath>www\lib\crypto\components\pad-iso97971-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-iso97971.js">
+      <PackagePath>www\lib\crypto\components\pad-iso97971.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-nopadding-min.js">
+      <PackagePath>www\lib\crypto\components\pad-nopadding-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-nopadding.js">
+      <PackagePath>www\lib\crypto\components\pad-nopadding.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-zeropadding-min.js">
+      <PackagePath>www\lib\crypto\components\pad-zeropadding-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-zeropadding.js">
+      <PackagePath>www\lib\crypto\components\pad-zeropadding.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pbkdf2-min.js">
+      <PackagePath>www\lib\crypto\components\pbkdf2-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pbkdf2.js">
+      <PackagePath>www\lib\crypto\components\pbkdf2.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\rabbit-legacy-min.js">
+      <PackagePath>www\lib\crypto\components\rabbit-legacy-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\rabbit-legacy.js">
+      <PackagePath>www\lib\crypto\components\rabbit-legacy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\rabbit-min.js">
+      <PackagePath>www\lib\crypto\components\rabbit-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\rabbit.js">
+      <PackagePath>www\lib\crypto\components\rabbit.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\rc4-min.js">
+      <PackagePath>www\lib\crypto\components\rc4-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\rc4.js">
+      <PackagePath>www\lib\crypto\components\rc4.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\ripemd160-min.js">
+      <PackagePath>www\lib\crypto\components\ripemd160-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\ripemd160.js">
+      <PackagePath>www\lib\crypto\components\ripemd160.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha1-min.js">
+      <PackagePath>www\lib\crypto\components\sha1-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha1.js">
+      <PackagePath>www\lib\crypto\components\sha1.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha224-min.js">
+      <PackagePath>www\lib\crypto\components\sha224-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha224.js">
+      <PackagePath>www\lib\crypto\components\sha224.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha256-min.js">
+      <PackagePath>www\lib\crypto\components\sha256-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha256.js">
+      <PackagePath>www\lib\crypto\components\sha256.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha3-min.js">
+      <PackagePath>www\lib\crypto\components\sha3-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha3.js">
+      <PackagePath>www\lib\crypto\components\sha3.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha384-min.js">
+      <PackagePath>www\lib\crypto\components\sha384-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha384.js">
+      <PackagePath>www\lib\crypto\components\sha384.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha512-min.js">
+      <PackagePath>www\lib\crypto\components\sha512-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha512.js">
+      <PackagePath>www\lib\crypto\components\sha512.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\tripledes-min.js">
+      <PackagePath>www\lib\crypto\components\tripledes-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\tripledes.js">
+      <PackagePath>www\lib\crypto\components\tripledes.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\x64-core-min.js">
+      <PackagePath>www\lib\crypto\components\x64-core-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\x64-core.js">
+      <PackagePath>www\lib\crypto\components\x64-core.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\core.js">
+      <PackagePath>www\lib\crypto\core.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\core.min.js">
+      <PackagePath>www\lib\crypto\core.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\enc-base64.min.js">
+      <PackagePath>www\lib\crypto\enc-base64.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\hmac.min.js">
+      <PackagePath>www\lib\crypto\hmac.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\aes.js">
+      <PackagePath>www\lib\crypto\rollups\aes.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\hmac-md5.js">
+      <PackagePath>www\lib\crypto\rollups\hmac-md5.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\hmac-ripemd160.js">
+      <PackagePath>www\lib\crypto\rollups\hmac-ripemd160.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\hmac-sha1.js">
+      <PackagePath>www\lib\crypto\rollups\hmac-sha1.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\hmac-sha224.js">
+      <PackagePath>www\lib\crypto\rollups\hmac-sha224.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\hmac-sha256.js">
+      <PackagePath>www\lib\crypto\rollups\hmac-sha256.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\hmac-sha3.js">
+      <PackagePath>www\lib\crypto\rollups\hmac-sha3.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\hmac-sha384.js">
+      <PackagePath>www\lib\crypto\rollups\hmac-sha384.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\hmac-sha512.js">
+      <PackagePath>www\lib\crypto\rollups\hmac-sha512.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\md5.js">
+      <PackagePath>www\lib\crypto\rollups\md5.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\pbkdf2.js">
+      <PackagePath>www\lib\crypto\rollups\pbkdf2.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\rabbit-legacy.js">
+      <PackagePath>www\lib\crypto\rollups\rabbit-legacy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\rabbit.js">
+      <PackagePath>www\lib\crypto\rollups\rabbit.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\rc4.js">
+      <PackagePath>www\lib\crypto\rollups\rc4.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\ripemd160.js">
+      <PackagePath>www\lib\crypto\rollups\ripemd160.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\sha1.js">
+      <PackagePath>www\lib\crypto\rollups\sha1.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\sha224.js">
+      <PackagePath>www\lib\crypto\rollups\sha224.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\sha256.js">
+      <PackagePath>www\lib\crypto\rollups\sha256.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\sha3.js">
+      <PackagePath>www\lib\crypto\rollups\sha3.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\sha384.js">
+      <PackagePath>www\lib\crypto\rollups\sha384.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\sha512.js">
+      <PackagePath>www\lib\crypto\rollups\sha512.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\tripledes.js">
+      <PackagePath>www\lib\crypto\rollups\tripledes.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\crypto\sha256.min.js">
+      <PackagePath>www\lib\crypto\sha256.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\handlebars.runtime.js">
+      <PackagePath>www\lib\handlebars.runtime.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\i18n.js">
+      <PackagePath>www\lib\i18n.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\jquery.js">
+      <PackagePath>www\lib\jquery.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\jquery\jquery-3.3.1.js">
+      <PackagePath>www\lib\jquery\jquery-3.3.1.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\jquery\jquery-3.3.1.min.js">
+      <PackagePath>www\lib\jquery\jquery-3.3.1.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\log\console-log-html.js">
+      <PackagePath>www\lib\log\console-log-html.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\log\console-log-html.min.js">
+      <PackagePath>www\lib\log\console-log-html.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\popper.js">
+      <PackagePath>www\lib\popper.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pouchdb-6.3.4.js">
+      <PackagePath>www\lib\pouchdb-6.3.4.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pouchdb-replication-stream.js">
+      <PackagePath>www\lib\pouchdb-replication-stream.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pouchdb.authentication.js">
+      <PackagePath>www\lib\pouchdb.authentication.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pouchdb.cordova-sqlite-2.0.2.js">
+      <PackagePath>www\lib\pouchdb.cordova-sqlite-2.0.2.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pouchdb.cordova-sqlite.js">
+      <PackagePath>www\lib\pouchdb.cordova-sqlite.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pouchdb.find.js">
+      <PackagePath>www\lib\pouchdb.find.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pouchdb.find.min.js">
+      <PackagePath>www\lib\pouchdb.find.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pouchdb.js">
+      <PackagePath>www\lib\pouchdb.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pouchdb.load.min.js">
+      <PackagePath>www\lib\pouchdb.load.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\require.js">
+      <PackagePath>www\lib\require.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\socket.io.js">
+      <PackagePath>www\lib\socket.io.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\touchSwipe\jquery.touchSwipe.js">
+      <PackagePath>www\lib\touchSwipe\jquery.touchSwipe.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\touchSwipe\jquery.touchSwipe.min.js">
+      <PackagePath>www\lib\touchSwipe\jquery.touchSwipe.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\xml2json\xml2json.js">
+      <PackagePath>www\lib\xml2json\xml2json.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\zxcvbn.js">
+      <PackagePath>www\lib\zxcvbn.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\main.js">
+      <PackagePath>www\main.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cc.fovea.cordova.purchase\src\windows\InAppPurchaseProxy.js">
+      <PackagePath>www\plugins\cc.fovea.cordova.purchase\src\windows\InAppPurchaseProxy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cc.fovea.cordova.purchase\www\store-windows.js">
+      <PackagePath>www\plugins\cc.fovea.cordova.purchase\www\store-windows.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-camera\src\windows\CameraProxy.js">
+      <PackagePath>www\plugins\cordova-plugin-camera\src\windows\CameraProxy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-camera\www\Camera.js">
+      <PackagePath>www\plugins\cordova-plugin-camera\www\Camera.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-camera\www\CameraConstants.js">
+      <PackagePath>www\plugins\cordova-plugin-camera\www\CameraConstants.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-camera\www\CameraPopoverHandle.js">
+      <PackagePath>www\plugins\cordova-plugin-camera\www\CameraPopoverHandle.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-camera\www\CameraPopoverOptions.js">
+      <PackagePath>www\plugins\cordova-plugin-camera\www\CameraPopoverOptions.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-device\src\windows\DeviceProxy.js">
+      <PackagePath>www\plugins\cordova-plugin-device\src\windows\DeviceProxy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-device\www\device.js">
+      <PackagePath>www\plugins\cordova-plugin-device\www\device.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\src\windows\FileProxy.js">
+      <PackagePath>www\plugins\cordova-plugin-file\src\windows\FileProxy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\browser\isChrome.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\browser\isChrome.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\DirectoryEntry.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\DirectoryEntry.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\DirectoryReader.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\DirectoryReader.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\Entry.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\Entry.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\File.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\File.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\FileEntry.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\FileEntry.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\FileError.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\FileError.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\FileReader.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\FileReader.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\FileSystem.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\FileSystem.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\fileSystemPaths.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\fileSystemPaths.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\fileSystems.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\fileSystems.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\FileUploadOptions.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\FileUploadOptions.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\FileUploadResult.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\FileUploadResult.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\FileWriter.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\FileWriter.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\Flags.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\Flags.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\LocalFileSystem.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\LocalFileSystem.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\Metadata.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\Metadata.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\ProgressEvent.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\ProgressEvent.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\requestFileSystem.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\requestFileSystem.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-file\www\resolveLocalFileSystemURI.js">
+      <PackagePath>www\plugins\cordova-plugin-file\www\resolveLocalFileSystemURI.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-keyboard\www\keyboard.js">
+      <PackagePath>www\plugins\cordova-plugin-keyboard\www\keyboard.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-network-information\src\windows\NetworkInfoProxy.js">
+      <PackagePath>www\plugins\cordova-plugin-network-information\src\windows\NetworkInfoProxy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-network-information\www\Connection.js">
+      <PackagePath>www\plugins\cordova-plugin-network-information\www\Connection.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-network-information\www\network.js">
+      <PackagePath>www\plugins\cordova-plugin-network-information\www\network.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-printer\src\windows\PrinterProxy.js">
+      <PackagePath>www\plugins\cordova-plugin-printer\src\windows\PrinterProxy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-printer\www\printer.js">
+      <PackagePath>www\plugins\cordova-plugin-printer\www\printer.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-purchase\src\windows\InAppPurchaseProxy.js">
+      <PackagePath>www\plugins\cordova-plugin-purchase\src\windows\InAppPurchaseProxy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-purchase\www\store-windows.js">
+      <PackagePath>www\plugins\cordova-plugin-purchase\www\store-windows.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-statusbar\src\windows\StatusBarProxy.js">
+      <PackagePath>www\plugins\cordova-plugin-statusbar\src\windows\StatusBarProxy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-statusbar\www\statusbar.js">
+      <PackagePath>www\plugins\cordova-plugin-statusbar\www\statusbar.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-taptic-engine\www\TapticEngine.js">
+      <PackagePath>www\plugins\cordova-plugin-taptic-engine\www\TapticEngine.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-vibration\src\windows\VibrationProxy.js">
+      <PackagePath>www\plugins\cordova-plugin-vibration\src\windows\VibrationProxy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-vibration\www\vibration.js">
+      <PackagePath>www\plugins\cordova-plugin-vibration\www\vibration.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\phonegap-plugin-barcodescanner\src\windows\BarcodeScannerProxy.js">
+      <PackagePath>www\plugins\phonegap-plugin-barcodescanner\src\windows\BarcodeScannerProxy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\plugins\phonegap-plugin-barcodescanner\www\barcodescanner.js">
+      <PackagePath>www\plugins\phonegap-plugin-barcodescanner\www\barcodescanner.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\scripts\platformOverrides.js">
+      <PackagePath>www\scripts\platformOverrides.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\scripts\winstore-jscompat.js">
+      <PackagePath>www\scripts\winstore-jscompat.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\WinJS\js\base.js">
+      <PackagePath>www\WinJS\js\base.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\blank.jpg">
+      <PackagePath>www\blank.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\vorlage.jpg">
+      <PackagePath>www\img\vorlage.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\icons\a-icon.jpg">
+      <PackagePath>www\res\icons\a-icon.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\colors.html">
+      <PackagePath>www\colors.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\index.html">
+      <PackagePath>www\index.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\zxcvbn.js.html">
+      <PackagePath>www\lib\zxcvbn.js.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\palette.html">
+      <PackagePath>www\palette.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\css\app.css">
+      <PackagePath>www\css\app.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\css\app.min.css">
+      <PackagePath>www\css\app.min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\css\plugin-barcodeScanner.css">
+      <PackagePath>www\css\plugin-barcodeScanner.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\css\splashscreen.css">
+      <PackagePath>www\css\splashscreen.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\css\styles.css">
+      <PackagePath>www\css\styles.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\css\ui.css">
+      <PackagePath>www\css\ui.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap-grid.css">
+      <PackagePath>www\lib\bootstrap\css\bootstrap-grid.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap-grid.min.css">
+      <PackagePath>www\lib\bootstrap\css\bootstrap-grid.min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap-reboot.css">
+      <PackagePath>www\lib\bootstrap\css\bootstrap-reboot.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap-reboot.min.css">
+      <PackagePath>www\lib\bootstrap\css\bootstrap-reboot.min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap.css">
+      <PackagePath>www\lib\bootstrap\css\bootstrap.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap.min.css">
+      <PackagePath>www\lib\bootstrap\css\bootstrap.min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\base-context-min.css">
+      <PackagePath>www\lib\pure\base-context-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\base-context.css">
+      <PackagePath>www\lib\pure\base-context.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\base-min.css">
+      <PackagePath>www\lib\pure\base-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\base.css">
+      <PackagePath>www\lib\pure\base.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\buttons-core-min.css">
+      <PackagePath>www\lib\pure\buttons-core-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\buttons-core.css">
+      <PackagePath>www\lib\pure\buttons-core.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\buttons-min.css">
+      <PackagePath>www\lib\pure\buttons-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\buttons.css">
+      <PackagePath>www\lib\pure\buttons.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\forms-min.css">
+      <PackagePath>www\lib\pure\forms-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\forms-nr-min.css">
+      <PackagePath>www\lib\pure\forms-nr-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\forms-nr.css">
+      <PackagePath>www\lib\pure\forms-nr.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\forms.css">
+      <PackagePath>www\lib\pure\forms.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids-core-min.css">
+      <PackagePath>www\lib\pure\grids-core-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids-core.css">
+      <PackagePath>www\lib\pure\grids-core.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids-min.css">
+      <PackagePath>www\lib\pure\grids-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids-responsive-min.css">
+      <PackagePath>www\lib\pure\grids-responsive-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids-responsive-old-ie-min.css">
+      <PackagePath>www\lib\pure\grids-responsive-old-ie-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids-responsive-old-ie.css">
+      <PackagePath>www\lib\pure\grids-responsive-old-ie.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids-responsive.css">
+      <PackagePath>www\lib\pure\grids-responsive.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids-units-min.css">
+      <PackagePath>www\lib\pure\grids-units-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids-units.css">
+      <PackagePath>www\lib\pure\grids-units.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids.css">
+      <PackagePath>www\lib\pure\grids.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-core-min.css">
+      <PackagePath>www\lib\pure\menus-core-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-core.css">
+      <PackagePath>www\lib\pure\menus-core.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-dropdown-min.css">
+      <PackagePath>www\lib\pure\menus-dropdown-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-dropdown.css">
+      <PackagePath>www\lib\pure\menus-dropdown.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-horizontal-min.css">
+      <PackagePath>www\lib\pure\menus-horizontal-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-horizontal.css">
+      <PackagePath>www\lib\pure\menus-horizontal.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-min.css">
+      <PackagePath>www\lib\pure\menus-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-scrollable-min.css">
+      <PackagePath>www\lib\pure\menus-scrollable-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-scrollable.css">
+      <PackagePath>www\lib\pure\menus-scrollable.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-skin-min.css">
+      <PackagePath>www\lib\pure\menus-skin-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-skin.css">
+      <PackagePath>www\lib\pure\menus-skin.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus.css">
+      <PackagePath>www\lib\pure\menus.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\pure-min.css">
+      <PackagePath>www\lib\pure\pure-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\pure-nr-min.css">
+      <PackagePath>www\lib\pure\pure-nr-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\pure-nr.css">
+      <PackagePath>www\lib\pure\pure-nr.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\pure.css">
+      <PackagePath>www\lib\pure\pure.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\tables-min.css">
+      <PackagePath>www\lib\pure\tables-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\tables.css">
+      <PackagePath>www\lib\pure\tables.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\css\app.css.map">
+      <PackagePath>www\css\app.css.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap-grid.css.map">
+      <PackagePath>www\lib\bootstrap\css\bootstrap-grid.css.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap-grid.min.css.map">
+      <PackagePath>www\lib\bootstrap\css\bootstrap-grid.min.css.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap-reboot.css.map">
+      <PackagePath>www\lib\bootstrap\css\bootstrap-reboot.css.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap-reboot.min.css.map">
+      <PackagePath>www\lib\bootstrap\css\bootstrap-reboot.min.css.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap.css.map">
+      <PackagePath>www\lib\bootstrap\css\bootstrap.css.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap.min.css.map">
+      <PackagePath>www\lib\bootstrap\css\bootstrap.min.css.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\js\bootstrap.bundle.js.map">
+      <PackagePath>www\lib\bootstrap\js\bootstrap.bundle.js.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\js\bootstrap.bundle.min.js.map">
+      <PackagePath>www\lib\bootstrap\js\bootstrap.bundle.min.js.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\js\bootstrap.js.map">
+      <PackagePath>www\lib\bootstrap\js\bootstrap.js.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\js\bootstrap.min.js.map">
+      <PackagePath>www\lib\bootstrap\js\bootstrap.min.js.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\zxcvbn.js.map">
+      <PackagePath>www\lib\zxcvbn.js.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\readme.txt">
+      <PackagePath>www\img\readme.txt</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\angle-down-blue.svg">
+      <PackagePath>www\img\svg\solid\angle-down-blue.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\angle-down-white.svg">
+      <PackagePath>www\img\svg\solid\angle-down-white.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\arrow-alt-circle-left-blue.svg">
+      <PackagePath>www\img\svg\solid\arrow-alt-circle-left-blue.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\arrow-alt-circle-left-white.svg">
+      <PackagePath>www\img\svg\solid\arrow-alt-circle-left-white.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\barcode.svg">
+      <PackagePath>www\img\svg\solid\barcode.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\bars.svg">
+      <PackagePath>www\img\svg\solid\bars.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\cog-white.svg">
+      <PackagePath>www\img\svg\solid\cog-white.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\cog.svg">
+      <PackagePath>www\img\svg\solid\cog.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\eye-slash.svg">
+      <PackagePath>www\img\svg\solid\eye-slash.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\eye.svg">
+      <PackagePath>www\img\svg\solid\eye.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\plus-circle.svg">
+      <PackagePath>www\img\svg\solid\plus-circle.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\print-white.svg">
+      <PackagePath>www\img\svg\solid\print-white.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\search.svg">
+      <PackagePath>www\img\svg\solid\search.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\sort-down.svg">
+      <PackagePath>www\img\svg\solid\sort-down.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\sort-up.svg">
+      <PackagePath>www\img\svg\solid\sort-up.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\sort.svg">
+      <PackagePath>www\img\svg\solid\sort.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\sync.svg">
+      <PackagePath>www\img\svg\solid\sync.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\times-circle-gray.svg">
+      <PackagePath>www\img\svg\solid\times-circle-gray.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\times-circle.svg">
+      <PackagePath>www\img\svg\solid\times-circle.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\log\LICENSE">
+      <PackagePath>www\lib\log\LICENSE</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\touchSwipe\LICENSE">
+      <PackagePath>www\lib\touchSwipe\LICENSE</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\log\MIGRATING.md">
+      <PackagePath>www\lib\log\MIGRATING.md</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\log\README.md">
+      <PackagePath>www\lib\log\README.md</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\HISTORY.md">
+      <PackagePath>www\lib\pure\HISTORY.md</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\LICENSE.md">
+      <PackagePath>www\lib\pure\LICENSE.md</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\README.md">
+      <PackagePath>www\lib\pure\README.md</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\touchSwipe\README.md">
+      <PackagePath>www\lib\touchSwipe\README.md</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\log\package.json">
+      <PackagePath>www\lib\log\package.json</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\lib\pure\bower.json">
+      <PackagePath>www\lib\pure\bower.json</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\manifest.json">
+      <PackagePath>www\manifest.json</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\native\android\ant.properties">
+      <PackagePath>www\res\native\android\ant.properties</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\www\res\pbl.ico">
+      <PackagePath>www\res\pbl.ico</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.17763.0\Windows.winmd">
+      <PackagePath>WinMetadata\Windows.winmd</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\Microsoft.CSharp\4.0.1\lib\netcore50\Microsoft.CSharp.dll">
+      <PackagePath>Microsoft.CSharp.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\Microsoft.NETCore.Portable.Compatibility\1.0.2\lib\netcore50\System.ComponentModel.DataAnnotations.dll">
+      <PackagePath>System.ComponentModel.DataAnnotations.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\Microsoft.NETCore.Portable.Compatibility\1.0.2\lib\netcore50\System.Core.dll">
+      <PackagePath>System.Core.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\Microsoft.NETCore.Portable.Compatibility\1.0.2\lib\netcore50\System.Net.dll">
+      <PackagePath>System.Net.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\Microsoft.NETCore.Portable.Compatibility\1.0.2\lib\netcore50\System.Numerics.dll">
+      <PackagePath>System.Numerics.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\Microsoft.NETCore.Portable.Compatibility\1.0.2\lib\netcore50\System.Runtime.Serialization.dll">
+      <PackagePath>System.Runtime.Serialization.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\Microsoft.NETCore.Portable.Compatibility\1.0.2\lib\netcore50\System.ServiceModel.Web.dll">
+      <PackagePath>System.ServiceModel.Web.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\Microsoft.NETCore.Portable.Compatibility\1.0.2\lib\netcore50\System.ServiceModel.dll">
+      <PackagePath>System.ServiceModel.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\Microsoft.NETCore.Portable.Compatibility\1.0.2\lib\netcore50\System.Windows.dll">
+      <PackagePath>System.Windows.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\Microsoft.NETCore.Portable.Compatibility\1.0.2\lib\netcore50\System.Xml.Linq.dll">
+      <PackagePath>System.Xml.Linq.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\Microsoft.NETCore.Portable.Compatibility\1.0.2\lib\netcore50\System.Xml.Serialization.dll">
+      <PackagePath>System.Xml.Serialization.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\Microsoft.NETCore.Portable.Compatibility\1.0.2\lib\netcore50\System.Xml.dll">
+      <PackagePath>System.Xml.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\Microsoft.NETCore.Portable.Compatibility\1.0.2\lib\netcore50\System.dll">
+      <PackagePath>System.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\Microsoft.VisualBasic\10.0.1\lib\netcore50\Microsoft.VisualBasic.dll">
+      <PackagePath>Microsoft.VisualBasic.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.any.System.Collections\4.0.11\lib\netcore50\System.Collections.dll">
+      <PackagePath>System.Collections.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.any.System.Diagnostics.Tools\4.0.1\lib\netcore50\System.Diagnostics.Tools.dll">
+      <PackagePath>System.Diagnostics.Tools.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.any.System.Diagnostics.Tracing\4.1.0\lib\netcore50\System.Diagnostics.Tracing.dll">
+      <PackagePath>System.Diagnostics.Tracing.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.any.System.Globalization\4.0.11\lib\netcore50\System.Globalization.dll">
+      <PackagePath>System.Globalization.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.any.System.Globalization.Calendars\4.0.1\lib\netcore50\System.Globalization.Calendars.dll">
+      <PackagePath>System.Globalization.Calendars.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.any.System.IO\4.1.0\lib\netcore50\System.IO.dll">
+      <PackagePath>System.IO.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.any.System.Reflection\4.1.0\lib\netcore50\System.Reflection.dll">
+      <PackagePath>System.Reflection.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.any.System.Reflection.Extensions\4.0.1\lib\netcore50\System.Reflection.Extensions.dll">
+      <PackagePath>System.Reflection.Extensions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.any.System.Reflection.Primitives\4.0.1\lib\netcore50\System.Reflection.Primitives.dll">
+      <PackagePath>System.Reflection.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.any.System.Resources.ResourceManager\4.0.1\lib\netcore50\System.Resources.ResourceManager.dll">
+      <PackagePath>System.Resources.ResourceManager.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.any.System.Runtime\4.1.0\lib\netcore50\System.Runtime.dll">
+      <PackagePath>System.Runtime.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.any.System.Runtime.Handles\4.0.1\lib\netstandard1.3\System.Runtime.Handles.dll">
+      <PackagePath>System.Runtime.Handles.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.any.System.Runtime.InteropServices\4.1.0\lib\netcore50\System.Runtime.InteropServices.dll">
+      <PackagePath>System.Runtime.InteropServices.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.any.System.Text.Encoding\4.0.11\lib\netcore50\System.Text.Encoding.dll">
+      <PackagePath>System.Text.Encoding.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.any.System.Text.Encoding.Extensions\4.0.11\lib\netcore50\System.Text.Encoding.Extensions.dll">
+      <PackagePath>System.Text.Encoding.Extensions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.any.System.Threading.Tasks\4.0.11\lib\netcore50\System.Threading.Tasks.dll">
+      <PackagePath>System.Threading.Tasks.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.any.System.Threading.Timer\4.0.1\lib\netcore50\System.Threading.Timer.dll">
+      <PackagePath>System.Threading.Timer.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.win.Microsoft.Win32.Primitives\4.0.1\runtimes\win\lib\netstandard1.3\Microsoft.Win32.Primitives.dll">
+      <PackagePath>Microsoft.Win32.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.win.System.Diagnostics.Debug\4.0.11\runtimes\win\lib\netcore50\System.Diagnostics.Debug.dll">
+      <PackagePath>System.Diagnostics.Debug.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.win.System.IO.FileSystem\4.0.1\runtimes\win\lib\netcore50\System.IO.FileSystem.dll">
+      <PackagePath>System.IO.FileSystem.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.win.System.Net.Primitives\4.0.11\runtimes\win\lib\netcore50\System.Net.Primitives.dll">
+      <PackagePath>System.Net.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.win.System.Net.Sockets\4.1.0\runtimes\win\lib\netcore50\System.Net.Sockets.dll">
+      <PackagePath>System.Net.Sockets.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.win.System.Runtime.Extensions\4.1.0\runtimes\win\lib\netcore50\System.Runtime.Extensions.dll">
+      <PackagePath>System.Runtime.Extensions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.win7-x64.Microsoft.NETCore.Jit\1.0.3\runtimes\win7-x64\native\clrjit.dll">
+      <PackagePath>clrjit.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.win7-x64.runtime.native.System.IO.Compression\4.0.1\runtimes\win7-x64\native\clrcompression.dll">
+      <PackagePath>clrcompression.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\runtime.win7.System.Private.Uri\4.0.4\runtimes\win\lib\netstandard1.0\System.Private.Uri.dll">
+      <PackagePath>System.Private.Uri.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.AppContext\4.1.0\lib\netcore50\System.AppContext.dll">
+      <PackagePath>System.AppContext.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Buffers\4.0.0\lib\netstandard1.1\System.Buffers.dll">
+      <PackagePath>System.Buffers.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Collections.Concurrent\4.0.12\lib\netcore50\System.Collections.Concurrent.dll">
+      <PackagePath>System.Collections.Concurrent.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Collections.Immutable\1.2.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll">
+      <PackagePath>System.Collections.Immutable.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Collections.NonGeneric\4.0.1\lib\netstandard1.3\System.Collections.NonGeneric.dll">
+      <PackagePath>System.Collections.NonGeneric.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Collections.Specialized\4.0.1\lib\netstandard1.3\System.Collections.Specialized.dll">
+      <PackagePath>System.Collections.Specialized.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.ComponentModel\4.0.1\lib\netcore50\System.ComponentModel.dll">
+      <PackagePath>System.ComponentModel.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.ComponentModel.Annotations\4.1.0\lib\netcore50\System.ComponentModel.Annotations.dll">
+      <PackagePath>System.ComponentModel.Annotations.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.ComponentModel.EventBasedAsync\4.0.11\lib\netcore50\System.ComponentModel.EventBasedAsync.dll">
+      <PackagePath>System.ComponentModel.EventBasedAsync.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Data.Common\4.1.0\lib\netstandard1.2\System.Data.Common.dll">
+      <PackagePath>System.Data.Common.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Diagnostics.Contracts\4.0.1\lib\netcore50\System.Diagnostics.Contracts.dll">
+      <PackagePath>System.Diagnostics.Contracts.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Diagnostics.DiagnosticSource\4.0.0\lib\netstandard1.3\System.Diagnostics.DiagnosticSource.dll">
+      <PackagePath>System.Diagnostics.DiagnosticSource.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Diagnostics.StackTrace\4.0.2\lib\netstandard1.3\System.Diagnostics.StackTrace.dll">
+      <PackagePath>System.Diagnostics.StackTrace.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Dynamic.Runtime\4.0.11\lib\netcore50\System.Dynamic.Runtime.dll">
+      <PackagePath>System.Dynamic.Runtime.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Globalization.Extensions\4.0.1\runtimes\win\lib\netstandard1.3\System.Globalization.Extensions.dll">
+      <PackagePath>System.Globalization.Extensions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.IO.Compression\4.1.1\runtimes\win\lib\netstandard1.3\System.IO.Compression.dll">
+      <PackagePath>System.IO.Compression.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.IO.Compression.ZipFile\4.0.1\lib\netstandard1.3\System.IO.Compression.ZipFile.dll">
+      <PackagePath>System.IO.Compression.ZipFile.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.IO.FileSystem.Primitives\4.0.1\lib\netstandard1.3\System.IO.FileSystem.Primitives.dll">
+      <PackagePath>System.IO.FileSystem.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.IO.IsolatedStorage\4.0.1\lib\netcore50\System.IO.IsolatedStorage.dll">
+      <PackagePath>System.IO.IsolatedStorage.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.IO.UnmanagedMemoryStream\4.0.1\lib\netstandard1.3\System.IO.UnmanagedMemoryStream.dll">
+      <PackagePath>System.IO.UnmanagedMemoryStream.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Linq\4.1.0\lib\netcore50\System.Linq.dll">
+      <PackagePath>System.Linq.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Linq.Expressions\4.1.0\lib\netcore50\System.Linq.Expressions.dll">
+      <PackagePath>System.Linq.Expressions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Linq.Parallel\4.0.1\lib\netcore50\System.Linq.Parallel.dll">
+      <PackagePath>System.Linq.Parallel.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Linq.Queryable\4.0.1\lib\netcore50\System.Linq.Queryable.dll">
+      <PackagePath>System.Linq.Queryable.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Net.Http\4.1.1\runtimes\win\lib\netcore50\System.Net.Http.dll">
+      <PackagePath>System.Net.Http.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Net.Http.Rtc\4.0.1\runtimes\win\lib\netcore50\System.Net.Http.Rtc.dll">
+      <PackagePath>System.Net.Http.Rtc.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Net.NameResolution\4.0.0\runtimes\win\lib\netcore50\System.Net.NameResolution.dll">
+      <PackagePath>System.Net.NameResolution.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Net.NetworkInformation\4.1.0\runtimes\win\lib\netcore50\System.Net.NetworkInformation.dll">
+      <PackagePath>System.Net.NetworkInformation.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Net.Requests\4.0.11\runtimes\win\lib\netstandard1.3\System.Net.Requests.dll">
+      <PackagePath>System.Net.Requests.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Net.WebHeaderCollection\4.0.1\lib\netstandard1.3\System.Net.WebHeaderCollection.dll">
+      <PackagePath>System.Net.WebHeaderCollection.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Net.WebSockets\4.0.0\lib\netstandard1.3\System.Net.WebSockets.dll">
+      <PackagePath>System.Net.WebSockets.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Net.WebSockets.Client\4.0.0\runtimes\win\lib\netcore50\System.Net.WebSockets.Client.dll">
+      <PackagePath>System.Net.WebSockets.Client.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Numerics.Vectors\4.1.1\lib\portable-net45+win8+wp8+wpa81\System.Numerics.Vectors.dll">
+      <PackagePath>System.Numerics.Vectors.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Numerics.Vectors.WindowsRuntime\4.0.1\lib\uap10.0\System.Numerics.Vectors.WindowsRuntime.dll">
+      <PackagePath>System.Numerics.Vectors.WindowsRuntime.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.ObjectModel\4.0.12\lib\netcore50\System.ObjectModel.dll">
+      <PackagePath>System.ObjectModel.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Private.DataContractSerialization\4.1.2\lib\netstandard1.3\System.Private.DataContractSerialization.dll">
+      <PackagePath>System.Private.DataContractSerialization.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Private.ServiceModel\4.1.3\runtimes\win7\lib\netcore50\System.Private.ServiceModel.dll">
+      <PackagePath>System.Private.ServiceModel.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Reflection.Context\4.0.1\lib\netcore50\System.Reflection.Context.dll">
+      <PackagePath>System.Reflection.Context.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Reflection.DispatchProxy\4.0.1\lib\netstandard1.3\System.Reflection.DispatchProxy.dll">
+      <PackagePath>System.Reflection.DispatchProxy.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Reflection.Emit\4.0.1\lib\netcore50\System.Reflection.Emit.dll">
+      <PackagePath>System.Reflection.Emit.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Reflection.Emit.ILGeneration\4.0.1\lib\netcore50\System.Reflection.Emit.ILGeneration.dll">
+      <PackagePath>System.Reflection.Emit.ILGeneration.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Reflection.Emit.Lightweight\4.0.1\lib\netcore50\System.Reflection.Emit.Lightweight.dll">
+      <PackagePath>System.Reflection.Emit.Lightweight.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Reflection.Metadata\1.3.0\lib\portable-net45+win8\System.Reflection.Metadata.dll">
+      <PackagePath>System.Reflection.Metadata.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Reflection.TypeExtensions\4.1.0\lib\netcore50\System.Reflection.TypeExtensions.dll">
+      <PackagePath>System.Reflection.TypeExtensions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Runtime.InteropServices.WindowsRuntime\4.0.1\lib\netcore50\System.Runtime.InteropServices.WindowsRuntime.dll">
+      <PackagePath>System.Runtime.InteropServices.WindowsRuntime.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Runtime.Numerics\4.0.1\lib\netcore50\System.Runtime.Numerics.dll">
+      <PackagePath>System.Runtime.Numerics.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Runtime.Serialization.Json\4.0.3\lib\netcore50\System.Runtime.Serialization.Json.dll">
+      <PackagePath>System.Runtime.Serialization.Json.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Runtime.Serialization.Primitives\4.1.1\lib\netcore50\System.Runtime.Serialization.Primitives.dll">
+      <PackagePath>System.Runtime.Serialization.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Runtime.Serialization.Xml\4.1.2\lib\netcore50\System.Runtime.Serialization.Xml.dll">
+      <PackagePath>System.Runtime.Serialization.Xml.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Runtime.WindowsRuntime\4.0.11\runtimes\win8\lib\netstandard1.3\System.Runtime.WindowsRuntime.dll">
+      <PackagePath>System.Runtime.WindowsRuntime.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Runtime.WindowsRuntime.UI.Xaml\4.0.1\runtimes\win8\lib\netstandard1.3\System.Runtime.WindowsRuntime.UI.Xaml.dll">
+      <PackagePath>System.Runtime.WindowsRuntime.UI.Xaml.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Security.Claims\4.0.1\lib\netstandard1.3\System.Security.Claims.dll">
+      <PackagePath>System.Security.Claims.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Security.Cryptography.Algorithms\4.2.0\runtimes\win\lib\netcore50\System.Security.Cryptography.Algorithms.dll">
+      <PackagePath>System.Security.Cryptography.Algorithms.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Security.Cryptography.Cng\4.2.0\runtimes\win\lib\netstandard1.4\System.Security.Cryptography.Cng.dll">
+      <PackagePath>System.Security.Cryptography.Cng.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Security.Cryptography.Encoding\4.0.0\runtimes\win\lib\netstandard1.3\System.Security.Cryptography.Encoding.dll">
+      <PackagePath>System.Security.Cryptography.Encoding.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Security.Cryptography.Primitives\4.0.0\lib\netstandard1.3\System.Security.Cryptography.Primitives.dll">
+      <PackagePath>System.Security.Cryptography.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Security.Cryptography.X509Certificates\4.1.0\runtimes\win\lib\netcore50\System.Security.Cryptography.X509Certificates.dll">
+      <PackagePath>System.Security.Cryptography.X509Certificates.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Security.Principal\4.0.1\lib\netcore50\System.Security.Principal.dll">
+      <PackagePath>System.Security.Principal.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.ServiceModel.Duplex\4.0.4\lib\netcore50\System.ServiceModel.Duplex.dll">
+      <PackagePath>System.ServiceModel.Duplex.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.ServiceModel.Http\4.1.3\lib\netcore50\System.ServiceModel.Http.dll">
+      <PackagePath>System.ServiceModel.Http.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.ServiceModel.NetTcp\4.1.3\lib\netcore50\System.ServiceModel.NetTcp.dll">
+      <PackagePath>System.ServiceModel.NetTcp.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.ServiceModel.Primitives\4.1.3\lib\netcore50\System.ServiceModel.Primitives.dll">
+      <PackagePath>System.ServiceModel.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.ServiceModel.Security\4.0.4\lib\netcore50\System.ServiceModel.Security.dll">
+      <PackagePath>System.ServiceModel.Security.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Text.Encoding.CodePages\4.0.1\runtimes\win\lib\netstandard1.3\System.Text.Encoding.CodePages.dll">
+      <PackagePath>System.Text.Encoding.CodePages.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Text.RegularExpressions\4.1.0\lib\netcore50\System.Text.RegularExpressions.dll">
+      <PackagePath>System.Text.RegularExpressions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Threading\4.0.11\lib\netcore50\System.Threading.dll">
+      <PackagePath>System.Threading.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Threading.Overlapped\4.0.1\runtimes\win\lib\netcore50\System.Threading.Overlapped.dll">
+      <PackagePath>System.Threading.Overlapped.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Threading.Tasks.Dataflow\4.6.0\lib\netstandard1.1\System.Threading.Tasks.Dataflow.dll">
+      <PackagePath>System.Threading.Tasks.Dataflow.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Threading.Tasks.Extensions\4.0.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll">
+      <PackagePath>System.Threading.Tasks.Extensions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Threading.Tasks.Parallel\4.0.1\lib\netcore50\System.Threading.Tasks.Parallel.dll">
+      <PackagePath>System.Threading.Tasks.Parallel.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Xml.ReaderWriter\4.0.11\lib\netcore50\System.Xml.ReaderWriter.dll">
+      <PackagePath>System.Xml.ReaderWriter.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Xml.XDocument\4.0.11\lib\netcore50\System.Xml.XDocument.dll">
+      <PackagePath>System.Xml.XDocument.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Xml.XmlDocument\4.0.1\lib\netstandard1.3\System.Xml.XmlDocument.dll">
+      <PackagePath>System.Xml.XmlDocument.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\NuGetPackages\System.Xml.XmlSerializer\4.0.11\lib\netcore50\System.Xml.XmlSerializer.dll">
+      <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\build\windows\debug\x64\win10\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\build\windows\debug\x64\win10\Core\UWPShim.exe">
+      <PackagePath>UWPShim.exe</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.CoreRuntime\1.1\">
+      <Name>Microsoft.NET.CoreRuntime.1.1</Name>
+      <Version>1.1.27004.0</Version>
+      <Architecture>ARM</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.CoreRuntime.1.1, MinVersion = 1.1.27004.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.CoreRuntime\1.1\.\AppX\ARM\Microsoft.NET.CoreRuntime.1.1.appx</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.CoreRuntime\1.1\">
+      <Name>Microsoft.NET.CoreRuntime.1.1</Name>
+      <Version>1.1.27004.0</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.CoreRuntime.1.1, MinVersion = 1.1.27004.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.CoreRuntime\1.1\.\AppX\x64\Microsoft.NET.CoreRuntime.1.1.appx</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.CoreRuntime\1.1\">
+      <Name>Microsoft.NET.CoreRuntime.1.1</Name>
+      <Version>1.1.27004.0</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.CoreRuntime.1.1, MinVersion = 1.1.27004.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.CoreRuntime\1.1\.\AppX\x86\Microsoft.NET.CoreRuntime.1.1.appx</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00.Debug</Name>
+      <Version>14.0.27023.1</Version>
+      <Architecture>ARM</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.27023.1, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM\Microsoft.VCLibs.ARM.Debug.14.00.appx</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00.Debug</Name>
+      <Version>14.0.27023.1</Version>
+      <Architecture>ARM64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.27023.1, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM64\Microsoft.VCLibs.ARM64.Debug.14.00.appx</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00.Debug</Name>
+      <Version>14.0.27023.1</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.27023.1, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x64\Microsoft.VCLibs.x64.Debug.14.00.appx</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00.Debug</Name>
+      <Version>14.0.27023.1</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.27023.1, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x86\Microsoft.VCLibs.x86.Debug.14.00.appx</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
+  </ItemGroup>
+</Project>
