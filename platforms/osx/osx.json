@@ -1,0 +1,39 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {
+      "package.appxmanifest": {
+        "parents": {
+          "/Package/Capabilities": [
+            {
+              "xml": "<DeviceCapability Name=\"webcam\" />",
+              "count": 1,
+              "id": "config.xml"
+            }
+          ]
+        }
+      },
+      "package.windows10.appxmanifest": {
+        "parents": {
+          "/Package/Capabilities": [
+            {
+              "xml": "<DeviceCapability Name=\"microphone\" />",
+              "count": 1,
+              "id": "config.xml"
+            },
+            {
+              "xml": "<DeviceCapability Name=\"webcam\" />",
+              "count": 1,
+              "id": "config.xml"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "installed_plugins": {},
+  "dependent_plugins": {}
+}
