@@ -1,0 +1,134 @@
+{
+  "cordova-plugin-compat": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-compat"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-appcenter-shared": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-appcenter-shared@0.1.3"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-taptic-engine": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-taptic-engine"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-camera": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-camera@4.0.3"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-console": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-console"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-file": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-file@6.0.1"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-statusbar": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-statusbar@^2.4.2"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-vibration": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-vibration"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-whitelist": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-whitelist@1.3.3"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-network-information": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-network-information"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-keyboard": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-keyboard"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-printer": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-printer"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-device": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-device"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-purchase": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-purchase@^7.2.4"
+    },
+    "is_top_level": true,
+    "variables": {
+      "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAksjFrOzPzToUbrT5Hm577XiDIPtOOcTCaaKc3DPNxXSENH1HL3+pQTIwCxHdfQ9+o4HUoO1v3wlOiB1YMX9cNrEfxMtcXum9f8t9Lza/0WQHm2jflxaNq3ICFlbylJK9gBhM0uMj5M6BiUMSMzgzEdC+DhlPMvEj16fUscA8CwQoqmoWvn05s8IiKK65sB6+7KAn0qrUAYba7pnRNrYpHjKUoSgTr/BXpNgmpb+QiIZnepJMC0OyLfe46603AvKtDBiS5+6WsdM+mQ/xiX0TSBkIjmadIh2hghj7CvKwVvghBlt6PaJCq1V8CJl8u5EzxLzh8pQSnXarRns6gWYmFwIDAQAB"
+    }
+  },
+  "cc.fovea.cordova.purchase": {
+    "source": {
+      "type": "registry",
+      "id": "cc.fovea.cordova.purchase@7.3.0-beta.0"
+    },
+    "is_top_level": true,
+    "variables": {
+      "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAksjFrOzPzToUbrT5Hm577XiDIPtOOcTCaaKc3DPNxXSENH1HL3+pQTIwCxHdfQ9+o4HUoO1v3wlOiB1YMX9cNrEfxMtcXum9f8t9Lza/0WQHm2jflxaNq3ICFlbylJK9gBhM0uMj5M6BiUMSMzgzEdC+DhlPMvEj16fUscA8CwQoqmoWvn05s8IiKK65sB6+7KAn0qrUAYba7pnRNrYpHjKUoSgTr/BXpNgmpb+QiIZnepJMC0OyLfe46603AvKtDBiS5+6WsdM+mQ/xiX0TSBkIjmadIh2hghj7CvKwVvghBlt6PaJCq1V8CJl8u5EzxLzh8pQSnXarRns6gWYmFwIDAQAB"
+    }
+  },
+  "phonegap-plugin-barcodescanner": {
+    "source": {
+      "type": "registry",
+      "id": "phonegap-plugin-barcodescanner@8.1.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  }
+}

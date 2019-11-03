@@ -1,5 +1,4 @@
 ﻿# .gitignore
-[Pp]lugins/
 /AppPackages/
 /api/
 /bin/
