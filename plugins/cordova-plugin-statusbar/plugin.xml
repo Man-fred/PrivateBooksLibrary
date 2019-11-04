@@ -69,6 +69,22 @@
         <source-file src="src/ios/CDVStatusBar.m" />
 
     </platform>
+    <!-- osx -->
+    <platform name="osx">
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="StatusBar">
+                <param name="osx-package" value="CDVStatusBar" />
+                <param name="onload" value="true" />
+            </feature>
+            <preference name="StatusBarOverlaysWebView" value="true" />
+            <preference name="StatusBarStyle" value="lightcontent" />
+        </config-file>
+
+        <header-file src="src/osx/CDVStatusBar.h" />
+        <source-file src="src/osx/CDVStatusBar.m" />
+
+    </platform>
 
     <!-- wp7 -->
     <platform name="wp7">

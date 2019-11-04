@@ -71,6 +71,21 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 	    <framework src="SystemConfiguration.framework" weak="true" />
 	    <framework src="CoreTelephony.framework" />
     </platform>
+    <!-- osx -->
+    <platform name="osx">
+        <config-file target="config.xml" parent="/*">
+            <feature name="NetworkStatus">
+                <param name="osx-package" value="CDVConnection" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/osx/CDVConnection.h" />
+        <source-file src="src/osx/CDVConnection.m" />
+        <header-file src="src/osx/CDVReachability.h" />
+	    <source-file src="src/osx/CDVReachability.m" />
+	    <framework src="SystemConfiguration.framework" weak="true" />
+	    <framework src="CoreTelephony.framework" />
+    </platform>
 
     <!-- windows -->
     <platform name="windows">
