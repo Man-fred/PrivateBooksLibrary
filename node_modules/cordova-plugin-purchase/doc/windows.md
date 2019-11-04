@@ -9,8 +9,8 @@ Doing this will route purchases through the simulator which will allow the user 
 store.sandbox = true; //Don't call this in production
 ```
 
-####Sample simulator xml file.
-Put this inside the `www` folder in your cordova app or in `merges\windows` for only windows platform.
+#### Sample simulator xml file.
+Create a UTF-16 encoded file called `in-app-purchase.xml` with the following content inside the `www` folder in your cordova app or in `merges\windows` for only windows platform.
 ```
 <?xml version="1.0" encoding="utf-16" ?>
 <CurrentApp>
@@ -66,6 +66,8 @@ Put this inside the `www` folder in your cordova app or in `merges\windows` for 
 </CurrentApp>
 ```
 
+More details about the XML structure can be found [here](https://docs.microsoft.com/windows/uwp/monetize/in-app-purchases-and-trials-using-the-windows-applicationmodel-store-namespace).
+
 ## Building source on Windows
 
 I could not get the `make build` script working on windows but to build the `store-*.js` files use the following commands
@@ -81,11 +83,9 @@ node_modules\.bin\uglifyjs www\store-android.js -b -o www\store-android.js
 
 ## Using the plugin with Visual Studio tools for Cordova
 
-After adding the plugin to the config.xml in Visual Studio. If you receive an error about a missing `BILLING_KEY` parameter.
-Add the following into your config.xml
+Add the following into your config.xml.
 
 ```
-<vs:plugin name="cc.fovea.cordova.purchase" version="4.0.0" src="https://github.com/j3k0/cordova-plugin-purchase.git">
-  <param name="BILLING_KEY" value="YOUR GOOGLE BILLING KEY HERE TO TARGET ANDROID" />
+<vs:plugin name="cordova-plugin-purchase" src="https://github.com/j3k0/cordova-plugin-purchase.git">
 </vs:plugin>
 ``` 

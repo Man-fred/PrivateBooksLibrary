@@ -1,5 +1,5 @@
 (function() {
-'use strict';
+
 
 /// ## <a name="refresh"></a>*store.refresh()*
 ///
@@ -18,6 +18,10 @@
 /// applications settings. This way, if delivery of a purchase failed or
 /// if a user wants to restore purchases he made from another device, he'll
 /// have a way to do just that.
+///
+/// _NOTE:_ It is a required by the Apple AppStore that a "Refresh Purchases"
+///         button be visible in the UI.
+///
 ///
 /// ##### example usage
 ///

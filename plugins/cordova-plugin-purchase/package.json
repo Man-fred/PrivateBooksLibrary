@@ -1,28 +1,28 @@
 {
-  "_from": "cordova-plugin-purchase@^7.2.4",
-  "_id": "cordova-plugin-purchase@7.2.8",
+  "_from": "cordova-plugin-purchase",
+  "_id": "cordova-plugin-purchase@9.0.0",
   "_inBundle": false,
-  "_integrity": "sha512-Yy11+rCEAc/ijz7VWnT4ZsUHr4k4EbfwZAgrP8VyfqVbZJTVR4e4Sj+aIKBaOX65WEweJ4+h8o/aB5RGEdgZpg==",
+  "_integrity": "sha512-9DjgwFlgQUblSD5wVPCo07kwfq8Tm2OJHXySlDKuZZWsyX36huNlQR8nbqsgu29STz3tfsk0d94YVoHdph4jeA==",
   "_location": "/cordova-plugin-purchase",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "tag",
     "registry": true,
-    "raw": "cordova-plugin-purchase@^7.2.4",
+    "raw": "cordova-plugin-purchase",
     "name": "cordova-plugin-purchase",
     "escapedName": "cordova-plugin-purchase",
-    "rawSpec": "^7.2.4",
+    "rawSpec": "",
     "saveSpec": null,
-    "fetchSpec": "^7.2.4"
+    "fetchSpec": "latest"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-purchase/-/cordova-plugin-purchase-7.2.8.tgz",
-  "_shasum": "5d3177406c8fc3be45eefccbfcdce311da1e2ae8",
-  "_spec": "cordova-plugin-purchase@^7.2.4",
-  "_where": "C:\\Users\\Manfred\\Documents\\PhoneGap\\PrivateBooksLibrary",
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-purchase/-/cordova-plugin-purchase-9.0.0.tgz",
+  "_shasum": "e47f411a294462bfbecd6559a508cf5ab7a81735",
+  "_spec": "cordova-plugin-purchase",
+  "_where": "/Users/manfredbielemeier/github/PrivateBooksLibrary",
   "author": {
     "name": "Jean-Christophe Hoelt",
     "email": "hoelt@fovea.cc"
@@ -40,16 +40,20 @@
     ]
   },
   "deprecated": false,
-  "description": "Cordova Purchase plugin for iOS and Android (AppStore and PlayStore)",
+  "description": "Cordova Purchase plugin for iOS, Android, Windows (AppStore, Play, UWP)",
   "devDependencies": {
-    "cordova": "^6.3.1",
-    "coveralls": "^2.11.14",
-    "eslint": "^3.8.1",
+    "acorn": "^6.1.1",
+    "babel-eslint": "^10.0.1",
+    "coveralls": "^3.0.3",
+    "eslint": "^5.15.0",
+    "eslint-config-defaults": "^9.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-react": "^7.12.4",
     "istanbul": "^0.4.5",
-    "jshint": "^2.9.4",
-    "mocha": "^3.1.2",
+    "jshint": "^2.10.1",
+    "mocha": "^6.0.2",
     "preprocessor": "^1.4.0",
-    "uglify-js": "^2.7.4"
+    "uglify-js": "^3.4.9"
   },
   "homepage": "https://github.com/j3k0/cordova-plugin-purchase",
   "keywords": [
@@ -77,5 +81,5 @@
     "test": "make test-js"
   },
   "types": "./src/js/index.d.ts",
-  "version": "7.2.8"
+  "version": "9.0.0"
 }

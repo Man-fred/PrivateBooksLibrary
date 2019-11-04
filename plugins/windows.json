@@ -28,9 +28,6 @@
     "cordova-plugin-printer": {
       "PACKAGE_NAME": "Private Books Library"
     },
-    "cordova-plugin-purchase": {
-      "PACKAGE_NAME": "Private Books Library"
-    },
     "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "Private Books Library"
     },
@@ -44,6 +41,9 @@
       "PACKAGE_NAME": "Private Books Library"
     },
     "phonegap-plugin-barcodescanner": {
+      "PACKAGE_NAME": "Private Books Library"
+    },
+    "cordova-plugin-purchase": {
       "PACKAGE_NAME": "Private Books Library"
     }
   },

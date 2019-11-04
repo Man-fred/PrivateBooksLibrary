@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-device" version="0.2.3">
+    <name>Device</name>
+    <description>Cordova Device Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,device</keywords>
+    <repo>https://github/ascsi/cordova-plugin.git</repo>
+    <js-module src="www/device.js" name="device">
+        <clobbers target="myDevice" />
+    </js-module>
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="MyDevice">
+                <param name="android-package" value="dk.socialite.cordova.device.Device"/>
+            </feature>
+        </config-file>
+        <source-file src="java/Device.java" target-dir="src/dk/socialite/cordova/device" />
+    </platform>
+</plugin>

@@ -1,0 +1,26 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cc.fovea.cordova.purchase": {},
+    "cordova-plugin-camera": {},
+    "cordova-plugin-console": {},
+    "cordova-plugin-device": {},
+    "cordova-plugin-file": {},
+    "cordova-plugin-keyboard": {},
+    "cordova-plugin-network-information": {},
+    "cordova-plugin-printer": {},
+    "cordova-plugin-statusbar": {},
+    "cordova-plugin-taptic-engine": {},
+    "cordova-plugin-vibration": {},
+    "cordova-plugin-whitelist": {},
+    "phonegap-plugin-barcodescanner": {},
+    "cordova-plugin-purchase": {}
+  },
+  "dependent_plugins": {}
+}

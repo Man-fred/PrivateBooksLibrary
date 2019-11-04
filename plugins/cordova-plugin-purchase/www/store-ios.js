@@ -327,7 +327,7 @@ store.verbosity = 0;
 store.sandbox = false;
 
 (function(){
-'use strict';
+
 
 ///
 /// ## Constants
@@ -401,10 +401,13 @@ var ERROR_CODES_BASE = 6777000;
 /*///*/     store.INVALID_PAYLOAD   = 6778001;
 /*///*/     store.CONNECTION_FAILED = 6778002;
 /*///*/     store.PURCHASE_EXPIRED  = 6778003;
+/*///*/     store.PURCHASE_CONSUMED = 6778004;
+/*///*/     store.INTERNAL_ERROR    = 6778005;
+/*///*/     store.NEED_MORE_DATA    = 6778006;
 
 })();
 (function() {
-'use strict';
+
 
 function defer(thisArg, cb, delay) {
     setTimeout(function() {
@@ -439,6 +442,10 @@ store.Product = function(options) {
     if (type !== store.CONSUMABLE && type !== store.NON_CONSUMABLE && type !== store.PAID_SUBSCRIPTION && type !== store.FREE_SUBSCRIPTION && type !== store.NON_RENEWING_SUBSCRIPTION)
         throw new TypeError("Invalid product type");
 
+    ///  - `product.group` - Name of the group your subscription product is a member of (default to `"default"`). If you don't set anything, all subscription will be members of the same group.
+    var defaultGroup = this.type === store.PAID_SUBSCRIPTION ? "default" : "";
+    this.group = options.group || defaultGroup;
+
     ///  - `product.state` - Current state the product is in (see [life-cycle](#life-cycle) below). Should be one of the defined [product states](#product-states)
     this.state = options.state || "";
 
@@ -448,7 +455,7 @@ store.Product = function(options) {
     ///  - `product.description` - Localized longer description
     this.description = options.description || options.localizedDescription || null;
 
-    ///  - `product.priceMicros` - Localized price, in micro-units (divide by 1000000 to get numeric price)
+    ///  - `product.priceMicros` - Price in micro-units (divide by 1000000 to get numeric price)
     this.priceMicros = options.priceMicros || null;
 
     ///  - `product.price` - Localized price, with currency symbol
@@ -459,6 +466,26 @@ store.Product = function(options) {
 
     ///  - `product.countryCode` - Country code. Available only on iOS
     this.countryCode = options.countryCode || null;
+
+
+    ///  - `product.introPrice` - Localized introductory price, with currency symbol
+    this.introPrice = options.introPrice || null;
+
+    ///  - `product.introPriceMicros` - Introductory price in micro-units (divide by 1000000 to get numeric price)
+    this.introPriceMicros = options.introPriceMicros || null;
+
+    ///  - `product.introPriceNumberOfPeriods` - number of periods the introductory price is available
+    this.introPriceNumberOfPeriods = options.introPriceNumberOfPeriods || null;
+
+    ///  - `product.introPriceSubscriptionPeriod` - Period for the introductory price ("Day", "Week", "Month" or "Year")
+    this.introPriceSubscriptionPeriod = options.introPriceSubscriptionPeriod || null;
+
+    ///  - `product.introPricePaymentMode` - Payment mode for the introductory price ("PayAsYouGo", "UpFront", or "FreeTrial")
+    this.introPricePaymentMode = options.introPricePaymentMode || null;
+
+    ///  - `product.ineligibleForIntroPrice` - True when a trial or introductory price has been applied to a subscription. Only available after receipt validation. Available only on iOS
+    this.ineligibleForIntroPrice = options.ineligibleForIntroPrice || null;
+
 
     //  - `product.localizedTitle` - Localized name or short description ready for display
     // this.localizedTitle = options.localizedTitle || options.title || null;
@@ -473,6 +500,7 @@ store.Product = function(options) {
     this.loaded = options.loaded;
 
     ///  - `product.valid` - Product has been loaded and is a valid product
+    ///    - when product definitions can't be loaded from the store, you should display instead a warning like: "You cannot make purchases at this stage. Try again in a moment. Make sure you didn't enable In-App-Purchases restrictions on your phone."
     this.valid  = options.valid;
 
     ///  - `product.canPurchase` - Product is in a state where it can be purchased
@@ -492,6 +520,13 @@ store.Product = function(options) {
 
     ///  - `product.transaction` - Latest transaction data for this product (see [transactions](#transactions)).
     this.transaction = null;
+
+    ///  - `product.expiryDate` - Latest known expiry date for a subscription (a javascript Date)
+    ///  - `product.lastRenewalDate` - Latest date a subscription was renewed (a javascript Date)
+    ///  - `product.billingPeriod` - Duration of the billing period for a subscription, in the units specified by the `billingPeriodUnit` property (windows and android)
+    ///  - `product.billingPeriodUnit` - Units of the billing period for a subscription. Possible values: Minute, Hour, Day, Week, Month, Year. (windows and android)
+    ///  - `product.trialPeriod` - Duration of the trial period for the subscription, in the units specified by the `trialPeriodUnit` property (windows only)
+    ///  - `product.trialPeriodUnit` - Units of the trial period for a subscription (windows only)
 
     this.stateChanged();
 };
@@ -558,32 +593,61 @@ store.Product.prototype.verify = function() {
 
     var tryValidation = function() {
 
+        function getData(data, key) {
+            if (!data)
+                return null;
+            return data.data && data.data[key] || data[key];
+        }
+
         // No need to verify a which status isn't approved
         // It means it already has been
         if (that.state !== store.APPROVED)
             return;
 
         store._validator(that, function(success, data) {
-            store.log.debug("verify -> " + JSON.stringify(success));
             if (!data) data = {};
+            store.log.debug("verify -> " + JSON.stringify({
+                success: success,
+                data: data
+            }));
+            var dataTransaction = getData(data, 'transaction');
+            if (dataTransaction) {
+                that.transaction = Object.assign(that.transaction || {}, dataTransaction);
+                extractTransactionFields(that);
+                that.trigger("updated");
+            }
             if (success) {
                 if (that.expired)
                     that.set("expired", false);
-                if (data.transaction)
-                    that.transaction = Object.assign(that.transaction || {},
-                                                     data.transaction);
                 store.log.debug("verify -> success: " + JSON.stringify(data));
                 store.utils.callExternal('verify.success', successCb, that, data);
                 store.utils.callExternal('verify.done', doneCb, that);
                 that.trigger("verified");
+
+                // Process the list of products that are ineligible
+                // for introductory prices.
+                if (data && data.ineligible_for_intro_price &&
+                         data.ineligible_for_intro_price.forEach) {
+                    data.ineligible_for_intro_price.forEach(function(pid) {
+                        var p = store.get(pid);
+                        if (p)
+                            p.set('ineligibleForIntroPrice', true);
+                    });
+                }
             }
             else {
                 store.log.debug("verify -> error: " + JSON.stringify(data));
-                var msg = (data && data.error && data.error.message ? data.error.message : '');
+                var msg = data && data.error && data.error.message ? data.error.message : '';
                 var err = new store.Error({
                     code: store.ERR_VERIFICATION_FAILED,
                     message: "Transaction verification failed: " + msg
                 });
+                if (getData(data, "latest_receipt")) {
+                    // when the server is making use of the latest_receipt,
+                    // there is no need to retry
+                    store.log.debug("verify -> server did use the latest_receipt, no retries");
+                    nRetry = 999999;
+                }
                 if (data.code === store.PURCHASE_EXPIRED) {
                     err = new store.Error({
                         code: store.ERR_PAYMENT_EXPIRED,
@@ -613,7 +677,7 @@ store.Product.prototype.verify = function() {
                     delay(this, tryValidation, 1000 * nRetry * nRetry);
                 }
                 else {
-                    store.log.debug("validation failed 5 times, stop retrying, trigger an error");
+                    store.log.debug("validation failed, no retrying, trigger an error");
                     store.error(err);
                     store.utils.callExternal('verify.error', errorCb, err);
                     store.utils.callExternal('verify.done', doneCb, that);
@@ -664,6 +728,27 @@ store.Product.prototype.verify = function() {
     ///
 
     return ret;
+
+    function extractTransactionFields(that) {
+        var t = that.transaction;
+        // using legacy transactions (platform specific)
+        if (t.type === 'ios-appstore' && t.expires_date_ms) {
+            that.lastRenewalDate = new Date(parseInt(t.purchase_date_ms));
+            that.expiryDate = new Date(parseInt(t.expires_date_ms));
+        }
+        else if (t.type === 'android-playstore' && t.expiryTimeMillis > 0) {
+            that.lastRenewalDate = new Date(parseInt(t.startTimeMillis));
+            that.expiryDate = new Date(parseInt(t.expiryTimeMillis));
+        }
+        // using unified transaction fields
+        if (t.expiryDate)
+            that.expiryDate = new Date(t.expiryDate);
+        if (t.lastRenewalDate)
+            that.lastRenewalDate = new Date(t.lastRenewalDate);
+        if (t.renewalIntent)
+            that.renewalIntent = t.renewalIntent;
+        return t;
+    }
 };
 
 ///
@@ -714,7 +799,7 @@ store.Product.prototype.verify = function() {
 
 })();
 (function(){
-'use strict';
+
 
 ///
 /// ## <a name="errors"></a>*store.Error* object
@@ -803,7 +888,7 @@ store.error.unregister = function(cb) {
 })();
 
 (function() {
-"use strict";
+
 
 /// ## <a name="register"></a>*store.register(product)*
 /// Add (or register) a product into the store.
@@ -904,7 +989,7 @@ function hasKeyword(string) {
 
 })();
 (function() {
-"use strict";
+
 
 /// ## <a name="get"></a>*store.get(id)*
 /// Retrieve a [product](#product) from its `id` or `alias`.
@@ -922,7 +1007,7 @@ store.get = function(id) {
 
 })();
 (function(){
-'use strict';
+
 
 /// ## <a name="when"></a>*store.when(query)*
 ///
@@ -1094,7 +1179,7 @@ store.when.unregister = function(cb) {
 
 })();
 (function(){
-"use strict";
+
 
 /// ## <a name="once"></a>*store.once(query)*
 ///
@@ -1122,7 +1207,7 @@ store.once.unregister = store.when.unregister;
 
 })();
 (function() {
-"use strict";
+
 
 // Store all pending callbacks, prevents promises to be called multiple times.
 var callbacks = {};
@@ -1143,8 +1228,10 @@ var callbackId = 0;
 ///
 /// The `additionalData` argument can be either:
 ///  - null
-///  - object with attribute `oldPurchasedSkus`, a string array with the old subscription to upgrade/downgrade on Android. See: [android developer](https://developer.android.com/google/play/billing/billing_reference.html#upgrade-getBuyIntentToReplaceSkus) for more info
-///  - object with attribute `developerPayload`, string representing the developer payload as described in [billing best practices](https://developer.android.com/google/play/billing/billing_best_practices.html)
+///  - object with attributes:
+///    - `oldSku`, a string with the old subscription to upgrade/downgrade on Android.
+///      **Note**: if another subscription product is already owned that is member of
+///      the same group, `oldSku` will be set automatically for you (see `product.group`).
 ///
 /// See the ["Purchasing section"](#purchasing) to learn more about
 /// the purchase process.
@@ -1163,8 +1250,23 @@ store.order = function(pid, additionalData) {
             });
         }
     }
+
+    var a; // short name for additionalData
     if (additionalData) {
-        p.additionalData = additionalData;
+        a = p.additionalData = Object.assign({}, additionalData);
+    }
+    else {
+        a = p.additionalData = {};
+    }
+
+    // Associate the active user with the purchase
+    if (!a.applicationUsername) {
+        a.applicationUsername = store._evaluateApplicationUsername(p);
+    }
+
+    // Let the platform extend additional data
+    if (store.extendAdditionalData) {
+        store.extendAdditionalData(p);
     }
 
     var localCallbackId = callbackId++;
@@ -1213,10 +1315,7 @@ store.order = function(pid, additionalData) {
     ///
 };
 
-///
-/// As usual, you can unregister the callbacks by using [`store.off()`](#off).
-///
-
+//
 // Remove pending callbacks registered with `order`
 store.order.unregister = function(cb) {
     for (var i in callbacks) {
@@ -1229,7 +1328,7 @@ store.order.unregister = function(cb) {
 
 })();
 (function() {
-"use strict";
+
 
 var isReady = false;
 
@@ -1288,7 +1387,7 @@ store.ready.reset = function() {
 
 })();
 (function() {
-"use strict";
+
 
 /// ## <a name="off"></a>*store.off(callback)*
 /// Unregister a callback. Works for callbacks registered with `ready`, `when`, `once` and `error`.
@@ -1325,7 +1424,7 @@ store.off = function(callback) {
 
 })();
 (function() {
-'use strict';
+
 
 /// ## <a name="validator"></a> *store.validator*
 /// Set this attribute to either:
@@ -1364,6 +1463,80 @@ store.off = function(callback) {
 /// Validation error codes are [documented here](#validation-error-codes).
 store.validator = null;
 
+var validationRequests = [];
+var timeout = null;
+
+function runValidation() {
+  store.log.debug('runValidation()');
+
+  timeout = null;
+  var requests = validationRequests;
+  validationRequests = [];
+
+  // Merge validation requests by products.
+  var byProduct = {};
+  requests.forEach(function(request) {
+    var productId = request.product.id;
+    if (byProduct[productId]) {
+      byProduct[productId].callbacks.push(request.callback);
+      // assume the most up to date value for product will come last
+      byProduct[productId].product = request.product;
+    }
+    else {
+      byProduct[productId] = {
+        product: request.product,
+        callbacks: [request.callback]
+      };
+    }
+  });
+
+  // Run one validation request for each product.
+  Object.keys(byProduct).forEach(function(productId) {
+      var request = byProduct[productId];
+      var product = request.product;
+
+      // Ensure applicationUsername is sent with validation requests
+      if (!product.additionalData) {
+          product.additionalData = {};
+      }
+      if (!product.additionalData.applicationUsername) {
+          product.additionalData.applicationUsername =
+              store._evaluateApplicationUsername(product);
+      }
+      if (!product.additionalData.applicationUsername) {
+          delete product.additionalData.applicationUsername;
+      }
+
+      // Post
+      store.utils.ajax({
+          url: store.validator,
+          method: 'POST',
+          data: product,
+          success: function(data) {
+              store.log.debug("validator success, response: " + JSON.stringify(data));
+              request.callbacks.forEach(function(callback) {
+                  callback(data && data.ok, data.data);
+              });
+          },
+          error: function(status, message, data) {
+              var fullMessage = "Error " + status + ": " + message;
+              store.log.debug("validator failed, response: " + JSON.stringify(fullMessage));
+              store.log.debug("body => " + JSON.stringify(data));
+              request.callbacks.forEach(function(callback) {
+                  callback(false, fullMessage);
+              });
+          }
+      });
+  });
+}
+
+function scheduleValidation() {
+  store.log.debug('scheduleValidation()');
+  if (timeout)
+    clearTimeout(timeout);
+  timeout = setTimeout(runValidation, 500);
+}
+
 //
 // ## store._validator
 //
@@ -1386,21 +1559,11 @@ store._validator = function(product, callback, isPrepared) {
     }
 
     if (typeof store.validator === 'string') {
-        store.utils.ajax({
-            url: store.validator,
-            method: 'POST',
-            data: product,
-            success: function(data) {
-                store.log.debug("validator success, response: " + JSON.stringify(data));
-                callback(data && data.ok, data.data);
-            },
-            error: function(status, message, data) {
-                var fullMessage = "Error " + status + ": " + message;
-                store.log.debug("validator failed, response: " + JSON.stringify(fullMessage));
-                store.log.debug("body => " + JSON.stringify(data));
-                callback(false, fullMessage);
-            }
+        validationRequests.push({
+            product: product,
+            callback: callback
         });
+        scheduleValidation();
     }
     else {
         store.validator(product, callback);
@@ -1426,7 +1589,7 @@ store._validator = function(product, callback, isPrepared) {
 
 })();
 (function() {
-'use strict';
+
 
 /// ## <a name="refresh"></a>*store.refresh()*
 ///
@@ -1445,6 +1608,10 @@ store._validator = function(product, callback, isPrepared) {
 /// applications settings. This way, if delivery of a purchase failed or
 /// if a user wants to restore purchases he made from another device, he'll
 /// have a way to do just that.
+///
+/// _NOTE:_ It is a required by the Apple AppStore that a "Refresh Purchases"
+///         button be visible in the UI.
+///
 ///
 /// ##### example usage
 ///
@@ -1504,11 +1671,9 @@ store.refresh = function() {
 })();
 
 ///
-/// ## <a name="refresh"></a>*store.manageSubscriptions()*
+/// ## <a name="manageSubscriptions"></a>*store.manageSubscriptions()*
 ///
-/// (iOS only)
-///
-/// Opens the Manage Subscription page in iTunes.
+/// Opens the Manage Subscription page (AppStore, Play, Microsoft, ...).
 ///
 /// ##### example usage
 ///
@@ -1518,7 +1683,7 @@ store.refresh = function() {
 ///
 
 (function(){
-"use strict";
+
 
 var logLevel = {};
 logLevel[store.ERROR] = "ERROR";
@@ -1527,7 +1692,7 @@ logLevel[store.INFO] = "INFO";
 logLevel[store.DEBUG] = "DEBUG";
 
 function log(level, o) {
-    var maxLevel = (store.verbosity === true ? 1 : store.verbosity);
+    var maxLevel = store.verbosity === true ? 1 : store.verbosity;
     if (level > maxLevel)
         return;
 
@@ -1561,16 +1726,107 @@ store.log = {
 };
 
 })();
+(function() {
+
+///
+/// ## `store.developerPayload`
+///
+/// An optional developer-specified string to attach to new orders, to
+/// provide supplemental information if required.
+///
+/// When it's a string, it contains the direct value to use. Example:
+/// ```js
+/// store.developerPayload = "some-value";
+/// ```
+///
+/// When it's a function, the payload will be the returned value. The
+/// function takes a product as argument and returns a string.
+///
+/// Example:
+/// ```js
+/// store.developerPayload = function(product) {
+///   return getInternalId(product.id);
+/// };
+/// ```
+
+store.developerPayload = "";
+
+///
+/// ## `store.applicationUsername`
+///
+/// An optional string that is uniquely associated with the
+/// user's account in your app.
+///
+/// This value can be used for payment risk evaluation, or to link
+/// a purchase with a user on a backend server.
+///
+/// When it's a string, it contains the direct value to use. Example:
+/// ```js
+/// store.applicationUsername = "user_id_1234567";
+/// ```
+///
+/// When it's a function, the `applicationUsername` will be the returned value.
+///
+/// Example:
+/// ```js
+/// store.applicationUsername = function() {
+///   return state.get(["session", "user_id"]);
+/// };
+/// ```
+///
+store.applicationUsername = "";
+
+///
+/// ## `store.developerName`
+///
+/// An optional string of developer profile name. This value can be
+/// used for payment risk evaluation.
+///
+/// _Do not use the user account ID for this field._
+///
+/// Example:
+/// ```js
+/// store.developerName = "billing.fovea.cc";
+/// ```
+///
+store.developerName = "";
+
+// For internal use.
+store._evaluateDeveloperPayload = stringOrFunction('developerPayload');
+store._evaluateApplicationUsername = stringOrFunction('applicationUsername');
+
+function stringOrFunction(key) {
+    return function (product) {
+        if (typeof store[key] === 'function')
+            return store[key](product);
+        return store[key] || "";
+    };
+}
+
+})();
+
+///
+/// #### <a name="getGroup"></a>`store.getGroup(groupId)` ##
+///
+/// Return all products member of a given subscription group.
+///
+store.getGroup = function(groupId) {
+    if (!groupId) return [];
+    return store.products.filter(function(product) {
+        return product.group === groupId;
+    });
+};
 
 /// # Random Tips
 ///
 /// - Sometimes during development, the queue of pending transactions fills up on your devices. Before doing anything else you can set `store.autoFinishTransactions` to `true` to clean up the queue. Beware: **this is not meant for production**.
+/// - The plugin will auto refresh the status of user's purchases every 24h. You can change this interval by setting `store.autoRefreshIntervalMillis` to another interval (before calling `store.init()`). (this isn't implemented on iOS since [it isn't necessary](https://github.com/j3k0/cordova-plugin-purchase/issues/777#issuecomment-481633968)). Set to `0` to disable auto-refreshing.
 ///
 /// # internal APIs
 /// USE AT YOUR OWN RISKS
 
 (function() {
-"use strict";
+
 
 /// ## *store.products* array ##
 /// Array of all registered products
@@ -1618,7 +1874,7 @@ store.products.reset = function() {
 
 })();
 (function() {
-"use strict";
+
 
 store.Product.prototype.set = function(key, value) {
     if (typeof key === 'string') {
@@ -1642,6 +1898,10 @@ store.Product.prototype.stateChanged = function() {
     // complex conditions.
 
     this.canPurchase = this.state === store.VALID;
+    store.getGroup(this.group).forEach(function(otherProduct) {
+        if (otherProduct.state === store.INITIATED)
+            this.canPurchase = false;
+    }.bind(this));
     this.loaded      = this.state && this.state !== store.REGISTERED;
     this.owned       = this.owned || this.state === store.OWNED;
     this.downloading = this.downloading || this.state === store.DOWNLOADING;
@@ -1651,6 +1911,8 @@ store.Product.prototype.stateChanged = function() {
     this.valid       = this.state !== store.INVALID;
     if (!this.state || this.state === store.REGISTERED)
         delete this.valid;
+
+    store.log.debug("state: " + this.id + " -> " + this.state);
 
     if (this.state)
         this.trigger(this.state);
@@ -1672,7 +1934,7 @@ store.Product.prototype.trigger = function(action, args) {
 
 })();
 (function(){
-'use strict';
+
 
 ///
 /// ## *store._queries* object
@@ -1736,7 +1998,7 @@ store._queries = {
                 this.byQuery[fullQuery].push({cb:cb, once:once});
             else
                 this.byQuery[fullQuery] = [{cb:cb, once:once}];
-            store.log.debug("queries ++ '" + fullQuery + "'");
+            // store.log.debug("queries ++ '" + fullQuery + "'");
         },
 
         unregister: function(cb) {
@@ -1757,7 +2019,7 @@ store._queries = {
     triggerAction: function(action, args) {
 
         var cbs = store._queries.callbacks.byQuery[action];
-        store.log.debug("queries !! '" + action + "'");
+        // store.log.debug("queries !! '" + action + "'");
         if (cbs) {
             ///  - Call the callbacks
             for (var j = 0; j < cbs.length; ++j) {
@@ -1813,7 +2075,7 @@ store._queries = {
         var i;
         for (i = 0; i < queries.length; ++i) {
             var q = queries[i];
-            store.log.debug("store.queries !! '" + q + "'");
+            // store.log.debug("store.queries !! '" + q + "'");
             var cbs = store._queries.callbacks.byQuery[q];
             if (cbs) {
                 ///  - Call the callbacks
@@ -1856,7 +2118,7 @@ function deferThrow(err) {
 
 })();
 (function() {
-"use strict";
+
 
 /// ## <a name="trigger"></a>*store.trigger(product, action, args)*
 ///
@@ -1900,7 +2162,7 @@ store.trigger = function(product, action, args) {
 
 })();
 (function(){
-'use strict';
+
 
 ///
 /// ## *store.error.callbacks* array
@@ -1950,7 +2212,7 @@ function deferThrow(err) {
 
 })();
 (function(){
-"use strict";
+
 
 /// ## store.utils
 store.utils = {
@@ -2048,11 +2310,35 @@ store.utils = {
         return {
             done: function(cb) { doneCb = cb; return this; }
         };
-    }
+    },
+
+    ///
+    /// ### store.utils.uuidv4()
+    /// Returns an UUID v4. Uses `window.crypto` internally to generate random values.
+    ///
+    uuidv4: function () {
+        return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, function (c) {
+            return (c ^ (window.crypto || window.msCrypto).getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16);
+        });
+    },
+
+    ///
+    /// ### store.utils.md5(str)
+    /// Returns the MD5 hash-value of the passed string.
+    ///
+    /* eslint-disable */ /* jshint ignore:start */
+    // Based on the work of Jeff Mott, who did a pure JS implementation of the MD5 algorithm that was published by Ronald L. Rivest in 1991.
+    // Code was imported from https://github.com/pvorb/node-md5
+    md5: function md5(r) {
+        function n(o){if(t[o])return t[o].exports;var e=t[o]={i:o,l:!1,exports:{}};return r[o].call(e.exports,e,e.exports,n),e.l=!0,e.exports}var t={};return n.m=r,n.c=t,n.i=function(r){return r},n.d=function(r,t,o){n.o(r,t)||Object.defineProperty(r,t,{configurable:!1,enumerable:!0,get:o})},n.n=function(r){var t=r&&r.__esModule?function(){return r.default}:function(){return r};return n.d(t,"a",t),t},n.o=function(r,n){return Object.prototype.hasOwnProperty.call(r,n)},n.p="",n(n.s=4)
+    }([function(r,n){var t={utf8:{stringToBytes:function(r){return t.bin.stringToBytes(unescape(encodeURIComponent(r)))},bytesToString:function(r){return decodeURIComponent(escape(t.bin.bytesToString(r)))}},bin:{stringToBytes:function(r){for(var n=[],t=0;t<r.length;t++)n.push(255&r.charCodeAt(t));return n},bytesToString:function(r){for(var n=[],t=0;t<r.length;t++)n.push(String.fromCharCode(r[t]));return n.join("")}}};r.exports=t},function(r,n,t){!function(){var n=t(2),o=t(0).utf8,e=t(3),u=t(0).bin,i=function(r,t){r.constructor==String?r=t&&"binary"===t.encoding?u.stringToBytes(r):o.stringToBytes(r):e(r)?r=Array.prototype.slice.call(r,0):Array.isArray(r)||(r=r.toString());for(var f=n.bytesToWords(r),s=8*r.length,c=1732584193,a=-271733879,l=-1732584194,g=271733878,h=0;h<f.length;h++)f[h]=16711935&(f[h]<<8|f[h]>>>24)|4278255360&(f[h]<<24|f[h]>>>8);f[s>>>5]|=128<<s%32,f[14+(s+64>>>9<<4)]=s;for(var p=i._ff,y=i._gg,v=i._hh,d=i._ii,h=0;h<f.length;h+=16){var b=c,T=a,x=l,B=g;c=p(c,a,l,g,f[h+0],7,-680876936),g=p(g,c,a,l,f[h+1],12,-389564586),l=p(l,g,c,a,f[h+2],17,606105819),a=p(a,l,g,c,f[h+3],22,-1044525330),c=p(c,a,l,g,f[h+4],7,-176418897),g=p(g,c,a,l,f[h+5],12,1200080426),l=p(l,g,c,a,f[h+6],17,-1473231341),a=p(a,l,g,c,f[h+7],22,-45705983),c=p(c,a,l,g,f[h+8],7,1770035416),g=p(g,c,a,l,f[h+9],12,-1958414417),l=p(l,g,c,a,f[h+10],17,-42063),a=p(a,l,g,c,f[h+11],22,-1990404162),c=p(c,a,l,g,f[h+12],7,1804603682),g=p(g,c,a,l,f[h+13],12,-40341101),l=p(l,g,c,a,f[h+14],17,-1502002290),a=p(a,l,g,c,f[h+15],22,1236535329),c=y(c,a,l,g,f[h+1],5,-165796510),g=y(g,c,a,l,f[h+6],9,-1069501632),l=y(l,g,c,a,f[h+11],14,643717713),a=y(a,l,g,c,f[h+0],20,-373897302),c=y(c,a,l,g,f[h+5],5,-701558691),g=y(g,c,a,l,f[h+10],9,38016083),l=y(l,g,c,a,f[h+15],14,-660478335),a=y(a,l,g,c,f[h+4],20,-405537848),c=y(c,a,l,g,f[h+9],5,568446438),g=y(g,c,a,l,f[h+14],9,-1019803690),l=y(l,g,c,a,f[h+3],14,-187363961),a=y(a,l,g,c,f[h+8],20,1163531501),c=y(c,a,l,g,f[h+13],5,-1444681467),g=y(g,c,a,l,f[h+2],9,-51403784),l=y(l,g,c,a,f[h+7],14,1735328473),a=y(a,l,g,c,f[h+12],20,-1926607734),c=v(c,a,l,g,f[h+5],4,-378558),g=v(g,c,a,l,f[h+8],11,-2022574463),l=v(l,g,c,a,f[h+11],16,1839030562),a=v(a,l,g,c,f[h+14],23,-35309556),c=v(c,a,l,g,f[h+1],4,-1530992060),g=v(g,c,a,l,f[h+4],11,1272893353),l=v(l,g,c,a,f[h+7],16,-155497632),a=v(a,l,g,c,f[h+10],23,-1094730640),c=v(c,a,l,g,f[h+13],4,681279174),g=v(g,c,a,l,f[h+0],11,-358537222),l=v(l,g,c,a,f[h+3],16,-722521979),a=v(a,l,g,c,f[h+6],23,76029189),c=v(c,a,l,g,f[h+9],4,-640364487),g=v(g,c,a,l,f[h+12],11,-421815835),l=v(l,g,c,a,f[h+15],16,530742520),a=v(a,l,g,c,f[h+2],23,-995338651),c=d(c,a,l,g,f[h+0],6,-198630844),g=d(g,c,a,l,f[h+7],10,1126891415),l=d(l,g,c,a,f[h+14],15,-1416354905),a=d(a,l,g,c,f[h+5],21,-57434055),c=d(c,a,l,g,f[h+12],6,1700485571),g=d(g,c,a,l,f[h+3],10,-1894986606),l=d(l,g,c,a,f[h+10],15,-1051523),a=d(a,l,g,c,f[h+1],21,-2054922799),c=d(c,a,l,g,f[h+8],6,1873313359),g=d(g,c,a,l,f[h+15],10,-30611744),l=d(l,g,c,a,f[h+6],15,-1560198380),a=d(a,l,g,c,f[h+13],21,1309151649),c=d(c,a,l,g,f[h+4],6,-145523070),g=d(g,c,a,l,f[h+11],10,-1120210379),l=d(l,g,c,a,f[h+2],15,718787259),a=d(a,l,g,c,f[h+9],21,-343485551),c=c+b>>>0,a=a+T>>>0,l=l+x>>>0,g=g+B>>>0}return n.endian([c,a,l,g])};i._ff=function(r,n,t,o,e,u,i){var f=r+(n&t|~n&o)+(e>>>0)+i;return(f<<u|f>>>32-u)+n},i._gg=function(r,n,t,o,e,u,i){var f=r+(n&o|t&~o)+(e>>>0)+i;return(f<<u|f>>>32-u)+n},i._hh=function(r,n,t,o,e,u,i){var f=r+(n^t^o)+(e>>>0)+i;return(f<<u|f>>>32-u)+n},i._ii=function(r,n,t,o,e,u,i){var f=r+(t^(n|~o))+(e>>>0)+i;return(f<<u|f>>>32-u)+n},i._blocksize=16,i._digestsize=16,r.exports=function(r,t){if(void 0===r||null===r)throw new Error("Illegal argument "+r);var o=n.wordsToBytes(i(r,t));return t&&t.asBytes?o:t&&t.asString?u.bytesToString(o):n.bytesToHex(o)}}()},function(r,n){!function(){var n="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",t={rotl:function(r,n){return r<<n|r>>>32-n},rotr:function(r,n){return r<<32-n|r>>>n},endian:function(r){if(r.constructor==Number)return 16711935&t.rotl(r,8)|4278255360&t.rotl(r,24);for(var n=0;n<r.length;n++)r[n]=t.endian(r[n]);return r},randomBytes:function(r){for(var n=[];r>0;r--)n.push(Math.floor(256*Math.random()));return n},bytesToWords:function(r){for(var n=[],t=0,o=0;t<r.length;t++,o+=8)n[o>>>5]|=r[t]<<24-o%32;return n},wordsToBytes:function(r){for(var n=[],t=0;t<32*r.length;t+=8)n.push(r[t>>>5]>>>24-t%32&255);return n},bytesToHex:function(r){for(var n=[],t=0;t<r.length;t++)n.push((r[t]>>>4).toString(16)),n.push((15&r[t]).toString(16));return n.join("")},hexToBytes:function(r){for(var n=[],t=0;t<r.length;t+=2)n.push(parseInt(r.substr(t,2),16));return n},bytesToBase64:function(r){for(var t=[],o=0;o<r.length;o+=3)for(var e=r[o]<<16|r[o+1]<<8|r[o+2],u=0;u<4;u++)8*o+6*u<=8*r.length?t.push(n.charAt(e>>>6*(3-u)&63)):t.push("=");return t.join("")},base64ToBytes:function(r){r=r.replace(/[^A-Z0-9+\/]/gi,"");for(var t=[],o=0,e=0;o<r.length;e=++o%4)0!=e&&t.push((n.indexOf(r.charAt(o-1))&Math.pow(2,-2*e+8)-1)<<2*e|n.indexOf(r.charAt(o))>>>6-2*e);return t}};r.exports=t}()},function(r,n){function t(r){return!!r.constructor&&"function"==typeof r.constructor.isBuffer&&r.constructor.isBuffer(r)}function o(r){return"function"==typeof r.readFloatLE&&"function"==typeof r.slice&&t(r.slice(0,0))}r.exports=function(r){return null!=r&&(t(r)||o(r)||!!r._isBuffer)}},function(r,n,t){r.exports=t(1)}]),
+    /* eslint-enable */ /* jshint ignore:end */
+
 };
 
 })();
-/**
+
+/*
  * A plugin to enable iOS In-App Purchases.
  *
  * Copyright (c) Matt Kane 2011
@@ -2063,7 +2349,11 @@ store.utils = {
 /*eslint camelcase:0 */
 /*global cordova, window */
 (function(){
-"use strict";
+
+
+var noop = function () {};
+
+var log = noop;
 
 var exec = function (methodName, options, success, error) {
     cordova.exec(success, error, "InAppPurchase", methodName, options);
@@ -2085,20 +2375,18 @@ var protectCall = function (callback, context) {
 var InAppPurchase = function () {
     this.options = {};
 
-    this.receiptForTransaction = {};
     this.receiptForProduct = {};
     this.transactionForProduct = {};
-    if (window.localStorage && window.localStorage.sk_receiptForTransaction)
-        this.receiptForTransaction = JSON.parse(window.localStorage.sk_receiptForTransaction);
     if (window.localStorage && window.localStorage.sk_receiptForProduct)
         this.receiptForProduct = JSON.parse(window.localStorage.sk_receiptForProduct);
     if (window.localStorage && window.localStorage.sk_transactionForProduct)
         this.transactionForProduct = JSON.parse(window.localStorage.sk_transactionForProduct);
+
+    // Remove support for receipt.forTransaction(...)
+    // `appStoreReceipt` is now the only supported receipt format on iOS (drops support for iOS <= 6)
+    if (window.localStorage.sk_receiptForTransaction)
+        delete window.localStorage.sk_receiptForTransaction;
 };
-
-var noop = function () {};
-
-var log = noop;
 
 // Error codes
 // (keep synchronized with InAppPurchase.m)
@@ -2150,6 +2438,10 @@ InAppPurchase.prototype.init = function (options, success, error) {
         exec('autoFinish', [], noop, noop);
     }
 
+    if (options.disableHostedContent) {
+        exec('disableHostedContent', [], noop, noop);
+    }
+
     var that = this;
     var setupOk = function () {
         log('setup ok');
@@ -2172,20 +2464,20 @@ InAppPurchase.prototype.init = function (options, success, error) {
     exec('setup', [], setupOk, setupFailed);
 };
 
-/**
+/*
  * Makes an in-app purchase.
  *
  * @param {String} productId The product identifier. e.g. "com.example.MyApp.myproduct"
- * @param {int} quantity
+ * @param {int} quantity Quantity of product to purchase
  */
 InAppPurchase.prototype.purchase = function (productId, quantity) {
-	quantity = (quantity | 0) || 1;
+	quantity = quantity | 0 || 1;
     var options = this.options;
 
     // Many people forget to load information about their products from apple's servers before allowing
     // users to purchase them... leading them to spam us with useless issues and comments.
     // Let's chase them down!
-    if ((!InAppPurchase._productIds) || (InAppPurchase._productIds.indexOf(productId) < 0)) {
+    if (!InAppPurchase._productIds || InAppPurchase._productIds.indexOf(productId) < 0) {
         var msg = 'Purchasing ' + productId + ' failed.  Ensure the product was loaded first with storekit.load(...)!';
         log(msg);
         if (typeof options.error === 'function') {
@@ -2210,14 +2502,14 @@ InAppPurchase.prototype.purchase = function (productId, quantity) {
     exec('purchase', [productId, quantity], purchaseOk, purchaseFailed);
 };
 
-/**
+/*
  * Checks if device/user is allowed to make in-app purchases
  */
 InAppPurchase.prototype.canMakePayments = function(success, error){
     return exec("canMakePayments", [], success, error);
 };
 
-/**
+/*
  * Asks the payment queue to restore previously completed purchases.
  * The restored transactions are passed to the onRestored callback, so make sure you define a handler for that first.
  *
@@ -2291,7 +2583,7 @@ InAppPurchase.prototype.cancel = function() {
     return exec('cancel', [], ok, failed);
 };
 
-/**
+/*
  * Retrieves localized product data, including price (as localized
  * string), name, description of multiple products.
  *
@@ -2357,7 +2649,7 @@ InAppPurchase.prototype.load = function (productIds, success, error) {
     }
 };
 
-/**
+/*
  * Finish an unfinished transaction.
  *
  * @param {String} transactionId
@@ -2386,7 +2678,7 @@ InAppPurchase.prototype.processPendingUpdates = function() {
 //
 // Note that it may eventually be called before initialization... unfortunately.
 // In this case, we'll just keep pending updates in a list for later processing.
-InAppPurchase.prototype.updatedTransactionCallback = function (state, errorCode, errorText, transactionIdentifier, productId, transactionReceipt) {
+InAppPurchase.prototype.updatedTransactionCallback = function (state, errorCode, errorText, transactionIdentifier, productId, transactionReceipt, originalTransactionIdentifier) {
 
     if (!initialized) {
         var args = Array.prototype.slice.call(arguments);
@@ -2401,10 +2693,8 @@ InAppPurchase.prototype.updatedTransactionCallback = function (state, errorCode,
 
     if (transactionReceipt) {
         this.receiptForProduct[productId] = transactionReceipt;
-        this.receiptForTransaction[transactionIdentifier] = transactionReceipt;
         if (window.localStorage) {
             window.localStorage.sk_receiptForProduct = JSON.stringify(this.receiptForProduct);
-            window.localStorage.sk_receiptForTransaction = JSON.stringify(this.receiptForTransaction);
         }
     }
 	switch(state) {
@@ -2412,7 +2702,7 @@ InAppPurchase.prototype.updatedTransactionCallback = function (state, errorCode,
             protectCall(this.options.purchasing, 'options.purchasing', productId);
             return;
 		case "PaymentTransactionStatePurchased":
-            protectCall(this.options.purchase, 'options.purchase', transactionIdentifier, productId);
+            protectCall(this.options.purchase, 'options.purchase', transactionIdentifier, productId, originalTransactionIdentifier);
 			return;
 		case "PaymentTransactionStateFailed":
             protectCall(this.options.error, 'options.error', errorCode, errorText, {
@@ -2528,9 +2818,6 @@ InAppPurchase.prototype.loadReceipts = function (callback) {
     function callCallback() {
         protectCall(callback, 'loadReceipts.callback', {
             appStoreReceipt: that.appStoreReceipt,
-            forTransaction: function (transactionId) {
-                return that.receiptForTransaction[transactionId] || null;
-            },
             forProduct:     function (productId) {
                 return that.receiptForProduct[productId] || null;
             }
@@ -2569,7 +2856,7 @@ InAppPurchase.prototype.loadAppStoreReceipt = function() {
  * in the queue.
  */
 InAppPurchase.prototype.runQueue = function () {
-	if(!this.eventQueue.length || (!this.onPurchased && !this.onFailed && !this.onRestored)) {
+	if(!this.eventQueue.length || !this.onPurchased && !this.onFailed && !this.onRestored) {
 		return;
 	}
 	var args;
@@ -2609,7 +2896,7 @@ window.storekit = new InAppPurchase();
 })();
 /*global storekit */
 (function() {
-"use strict";
+
 
 //! ## Reacting to product state changes
 //!
@@ -2669,7 +2956,7 @@ store.when("finished", function(product) {
 
 function storekitFinish(product) {
     if (product.type === store.CONSUMABLE || product.type === store.NON_RENEWING_SUBSCRIPTION) {
-        var transactionId = (product.transaction && product.transaction.id) || storekit.transactionForProduct[product.id];
+        var transactionId = product.transaction && product.transaction.id || storekit.transactionForProduct[product.id];
         if (transactionId) {
             storekit.finish(transactionId);
             // TH 08/03/2016: Remove the finished transaction from product.transactions.
@@ -2770,6 +3057,7 @@ function storekitInit() {
     storekit.init({
         debug:    store.verbosity >= store.DEBUG ? true : false,
         autoFinish: store.autoFinishTransactions,
+        disableHostedContent: store.disableHostedContent,
         error:    storekitError,
         purchase: storekitPurchased,
         purchasing: storekitPurchasing,
@@ -2834,13 +3122,19 @@ function storekitLoaded(validProducts, invalidProductIds) {
         p = store.products.byId[validProducts[i].id];
         store.log.debug("ios -> product " + p.id + " is valid (" + p.alias + ")");
         store.log.debug("ios -> owned? " + p.owned);
+        var v = validProducts[i];
         p.set({
-            title: validProducts[i].title,
-            price: validProducts[i].price,
-            priceMicros: validProducts[i].priceMicros,
-            description: validProducts[i].description,
-            currency: validProducts[i].currency,
-            countryCode: validProducts[i].countryCode,
+            title: v.title,
+            description: v.description,
+            price: v.price,
+            priceMicros: v.priceMicros,
+            currency: v.currency,
+            countryCode: v.countryCode,
+            introPrice: v.introPrice,
+            introPriceMicros: v.introPriceMicros,
+            introPriceNumberOfPeriods: v.introPriceNumberOfPeriods,
+            introPriceSubscriptionPeriod: v.introPriceSubscriptionPeriod,
+            introPricePaymentMode: v.introPricePaymentMode,
             state: store.VALID
         });
         p.trigger("loaded");
@@ -2901,9 +3195,11 @@ function storekitRefreshReceipts(callback) {
     });
 }
 
-store.when("expired", function() {
-    storekitRefreshReceipts();
-});
+// The better default is now for validation services to use the
+// `latest_receipt_info` field.
+// store.when("expired", function() {
+//     storekitRefreshReceipts();
+// });
 
 //! ### <a name="storekitPurchasing"></a> *storekitPurchasing()*
 //!
@@ -2931,7 +3227,7 @@ function storekitPurchasing(productId) {
 //! It will set the product state to `APPROVED` and associates the product
 //! with the order's transaction identifier.
 //!
-function storekitPurchased(transactionId, productId) {
+function storekitPurchased(transactionId, productId, originalTransactionId) {
     store.ready(function() {
         var product = store.get(productId);
         if (!product) {
@@ -2955,6 +3251,9 @@ function storekitPurchased(transactionId, productId) {
             type: 'ios-appstore',
             id:   transactionId
         };
+        if(originalTransactionId){
+            product.transaction.original_transaction_id = originalTransactionId;
+        }
         if (!product.transactions)
             product.transactions = [];
         product.transactions.push(transactionId);
@@ -3127,9 +3426,7 @@ store._prepareForValidation = function(product, callback) {
                 };
             }
             product.transaction.appStoreReceipt = r.appStoreReceipt;
-            if (product.transaction.id)
-                product.transaction.transactionReceipt = r.forTransaction(product.transaction.id);
-            if (!product.transaction.appStoreReceipt && !product.transaction.transactionReceipt) {
+            if (!product.transaction.appStoreReceipt) {
                 nRetry ++;
                 if (nRetry < 2) {
                     setTimeout(loadReceipts, 500);

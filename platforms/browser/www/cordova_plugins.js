@@ -347,7 +347,8 @@ module.exports.metadata =
     "cordova-plugin-taptic-engine": "2.1.0",
     "cordova-plugin-vibration": "3.1.0",
     "cordova-plugin-whitelist": "1.3.3",
-    "phonegap-plugin-barcodescanner": "8.1.0"
+    "phonegap-plugin-barcodescanner": "8.1.0",
+    "cordova-plugin-purchase": "9.0.0"
 }
 // BOTTOM OF METADATA
 });

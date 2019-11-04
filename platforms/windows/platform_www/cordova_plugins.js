@@ -282,22 +282,6 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-plugin-purchase.InAppPurchase",
-    "file": "plugins/cordova-plugin-purchase/www/store-windows.js",
-    "pluginId": "cordova-plugin-purchase",
-    "clobbers": [
-      "store"
-    ]
-  },
-  {
-    "id": "cordova-plugin-purchase.InAppPurchaseProxy",
-    "file": "plugins/cordova-plugin-purchase/src/windows/InAppPurchaseProxy.js",
-    "pluginId": "cordova-plugin-purchase",
-    "merges": [
-      ""
-    ]
-  },
-  {
     "id": "cordova-plugin-statusbar.statusbar",
     "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
     "pluginId": "cordova-plugin-statusbar",
@@ -348,6 +332,22 @@ module.exports = [
     "merges": [
       ""
     ]
+  },
+  {
+    "id": "cordova-plugin-purchase.InAppPurchase",
+    "file": "plugins/cordova-plugin-purchase/www/store-windows.js",
+    "pluginId": "cordova-plugin-purchase",
+    "clobbers": [
+      "store"
+    ]
+  },
+  {
+    "id": "cordova-plugin-purchase.InAppPurchaseProxy",
+    "file": "plugins/cordova-plugin-purchase/src/windows/InAppPurchaseProxy.js",
+    "pluginId": "cordova-plugin-purchase",
+    "merges": [
+      ""
+    ]
   }
 ];
 module.exports.metadata = 
@@ -360,12 +360,12 @@ module.exports.metadata =
   "cordova-plugin-keyboard": "1.2.0",
   "cordova-plugin-network-information": "2.0.1",
   "cordova-plugin-printer": "0.7.3",
-  "cordova-plugin-purchase": "7.2.8",
   "cordova-plugin-statusbar": "2.4.2",
   "cordova-plugin-taptic-engine": "2.1.0",
   "cordova-plugin-vibration": "3.1.0",
   "cordova-plugin-whitelist": "1.3.3",
-  "phonegap-plugin-barcodescanner": "8.1.0"
+  "phonegap-plugin-barcodescanner": "8.1.0",
+  "cordova-plugin-purchase": "9.0.0"
 };
 // BOTTOM OF METADATA
 });
