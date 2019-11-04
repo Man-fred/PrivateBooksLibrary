@@ -7,9 +7,6 @@
     "files": {}
   },
   "installed_plugins": {
-    "cc.fovea.cordova.purchase": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
-    },
     "cordova-plugin-camera": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },

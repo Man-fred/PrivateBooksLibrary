@@ -18,13 +18,6 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <config-file parent="/Package/Capabilities" target="package.appxmanifest">
-        <DeviceCapability Name="webcam" />
-    </config-file>
-    <config-file parent="/Package/Capabilities" target="package.windows10.appxmanifest">
-        <DeviceCapability Name="microphone" />
-        <DeviceCapability Name="webcam" />
-    </config-file>
     <vs:toolsetVersion>6.3.1</vs:toolsetVersion>
     <icon height="150" src="res/icons/windows/Square150x150Logo.scale-100.png" width="150" />
     <icon height="360" src="res/icons/windows/Square150x150Logo.scale-240.png" width="360" />
@@ -42,15 +35,20 @@
     <splash height="300" src="res/screens/windows/SplashScreen.scale-100.png" width="620" />
     <splash height="1920" src="res/screens/windows/SplashScreen.scale-240.png" width="1152" />
     <splash height="1920" src="res/screens/windows/SplashScreenPhone.scale-240.png" width="1152" />
+    <config-file parent="/Package/Capabilities" target="package.appxmanifest">
+        <DeviceCapability Name="webcam" />
+    </config-file>
+    <config-file parent="/Package/Capabilities" target="package.windows10.appxmanifest">
+        <DeviceCapability Name="microphone" />
+        <DeviceCapability Name="webcam" />
+    </config-file>
     <preference name="phonegap-version" value="cli-9.0.0" />
     <preference name="SplashScreen" value="screen" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
     <preference name="windows-target-version" value="10.0" />
     <preference name="windows-identity-name" value="35337ManfredBielemeierBCS.PrivateBooksLibrary" />
     <preference name="WindowsStoreDisplayName" value="Private Books Library" />
     <preference name="WindowsStoreIdentityName" value="35337ManfredBielemeierBCS.PrivateBooksLibrary" />
     <preference name="WindowsStorePublisherName" value="Manfred Bielemeier (BCSS Software &amp; Beratung GmbH)" />
-    <preference name="StatusBarBackgroundColor" value="#000000" />
-    <preference name="android-minSdkVersion" value="15" />
-    <preference name="android-targetSDKVersion" value="26" />
-    <preference name="StatusBarOverlaysWebView" value="true" />
 </widget>

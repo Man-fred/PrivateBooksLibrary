@@ -1,22 +1,6 @@
 ﻿cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
   {
-    "id": "cc.fovea.cordova.purchase.InAppPurchase",
-    "file": "plugins/cc.fovea.cordova.purchase/www/store-windows.js",
-    "pluginId": "cc.fovea.cordova.purchase",
-    "clobbers": [
-      "store"
-    ]
-  },
-  {
-    "id": "cc.fovea.cordova.purchase.InAppPurchaseProxy",
-    "file": "plugins/cc.fovea.cordova.purchase/src/windows/InAppPurchaseProxy.js",
-    "pluginId": "cc.fovea.cordova.purchase",
-    "merges": [
-      ""
-    ]
-  },
-  {
     "id": "cordova-plugin-camera.Camera",
     "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
     "pluginId": "cordova-plugin-camera",
@@ -353,7 +337,6 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-  "cc.fovea.cordova.purchase": "7.3.0-beta.0",
   "cordova-plugin-camera": "4.0.3",
   "cordova-plugin-device": "2.0.2",
   "cordova-plugin-file": "6.0.1",

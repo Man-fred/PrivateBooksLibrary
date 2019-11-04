@@ -7,7 +7,6 @@
     "files": {}
   },
   "installed_plugins": {
-    "cc.fovea.cordova.purchase": {},
     "cordova-plugin-camera": {},
     "cordova-plugin-console": {},
     "cordova-plugin-device": {},

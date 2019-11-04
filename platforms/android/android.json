@@ -14,29 +14,12 @@
       },
       "package.appxmanifest": {
         "parents": {
-          "/Package/Capabilities": [
-            {
-              "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 1,
-              "id": "config.xml"
-            }
-          ]
+          "/Package/Capabilities": []
         }
       },
       "package.windows10.appxmanifest": {
         "parents": {
-          "/Package/Capabilities": [
-            {
-              "xml": "<DeviceCapability Name=\"microphone\" />",
-              "count": 1,
-              "id": "config.xml"
-            },
-            {
-              "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 1,
-              "id": "config.xml"
-            }
-          ]
+          "/Package/Capabilities": []
         }
       },
       "AndroidManifest.xml": {
@@ -44,7 +27,7 @@
           "/*": [
             {
               "xml": "<uses-permission android:name=\"com.android.vending.BILLING\" />",
-              "count": 2
+              "count": 1
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
@@ -97,21 +80,12 @@
       },
       "*/billing_key_param.xml": {
         "parents": {
-          "/*": [
-            {
-              "xml": "<string name=\"billing_key_param\">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAksjFrOzPzToUbrT5Hm577XiDIPtOOcTCaaKc3DPNxXSENH1HL3+pQTIwCxHdfQ9+o4HUoO1v3wlOiB1YMX9cNrEfxMtcXum9f8t9Lza/0WQHm2jflxaNq3ICFlbylJK9gBhM0uMj5M6BiUMSMzgzEdC+DhlPMvEj16fUscA8CwQoqmoWvn05s8IiKK65sB6+7KAn0qrUAYba7pnRNrYpHjKUoSgTr/BXpNgmpb+QiIZnepJMC0OyLfe46603AvKtDBiS5+6WsdM+mQ/xiX0TSBkIjmadIh2hghj7CvKwVvghBlt6PaJCq1V8CJl8u5EzxLzh8pQSnXarRns6gWYmFwIDAQAB</string>",
-              "count": 1
-            }
-          ]
+          "/*": []
         }
       },
       "res/xml/config.xml": {
         "parents": {
           "/*": [
-            {
-              "xml": "<feature name=\"InAppBillingPlugin\"><param name=\"android-package\" value=\"com.smartmobilesoftware.inappbilling.InAppBillingPlugin\" /></feature>",
-              "count": 1
-            },
             {
               "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
               "count": 1
@@ -168,10 +142,6 @@
     }
   },
   "installed_plugins": {
-    "cc.fovea.cordova.purchase": {
-      "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAksjFrOzPzToUbrT5Hm577XiDIPtOOcTCaaKc3DPNxXSENH1HL3+pQTIwCxHdfQ9+o4HUoO1v3wlOiB1YMX9cNrEfxMtcXum9f8t9Lza/0WQHm2jflxaNq3ICFlbylJK9gBhM0uMj5M6BiUMSMzgzEdC+DhlPMvEj16fUscA8CwQoqmoWvn05s8IiKK65sB6+7KAn0qrUAYba7pnRNrYpHjKUoSgTr/BXpNgmpb+QiIZnepJMC0OyLfe46603AvKtDBiS5+6WsdM+mQ/xiX0TSBkIjmadIh2hghj7CvKwVvghBlt6PaJCq1V8CJl8u5EzxLzh8pQSnXarRns6gWYmFwIDAQAB",
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
-    },
     "cordova-plugin-camera": {
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     },
@@ -215,14 +185,6 @@
   },
   "dependent_plugins": {},
   "modules": [
-    {
-      "id": "cc.fovea.cordova.purchase.InAppBillingPlugin",
-      "file": "plugins/cc.fovea.cordova.purchase/www/store-android.js",
-      "pluginId": "cc.fovea.cordova.purchase",
-      "clobbers": [
-        "store"
-      ]
-    },
     {
       "id": "cordova-plugin-camera.Camera",
       "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
@@ -504,7 +466,6 @@
     }
   ],
   "plugin_metadata": {
-    "cc.fovea.cordova.purchase": "7.3.0-beta.0",
     "cordova-plugin-camera": "4.0.3",
     "cordova-plugin-console": "1.1.0",
     "cordova-plugin-device": "2.0.2",
