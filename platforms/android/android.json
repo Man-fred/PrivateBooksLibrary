@@ -26,15 +26,15 @@
         "parents": {
           "/*": [
             {
-              "xml": "<uses-permission android:name=\"com.android.vending.BILLING\" />",
-              "count": 1
-            },
-            {
               "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
               "count": 2
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"com.android.vending.BILLING\" />",
               "count": 1
             }
           ],

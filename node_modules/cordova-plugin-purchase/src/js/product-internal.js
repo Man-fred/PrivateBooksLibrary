@@ -1,8 +1,15 @@
 (function() {
 
+var dateFields = ['expiryDate', 'purchaseDate', 'lastRenewalDate', 'renewalIntentChangeDate'];
 
 store.Product.prototype.set = function(key, value) {
     if (typeof key === 'string') {
+        if (dateFields.indexOf(key) >= 0 && !(value instanceof Date)) {
+            value = new Date(value);
+        }
+        if (key === 'isExpired' && value === true && this.owned) {
+            this.set('state', store.VALID);
+        }
         this[key] = value;
         if (key === 'state')
             this.stateChanged();
@@ -13,6 +20,35 @@ store.Product.prototype.set = function(key, value) {
             value = options[key];
             this.set(key, value);
         }
+    }
+};
+
+var attributesStack = {};
+
+store.Product.prototype.push = function(key, value) {
+    // save attributes
+    var stack = attributesStack[this.id];
+    if (!stack) {
+        stack = attributesStack[this.id] = [];
+    }
+    stack.push(JSON.stringify(this));
+    // update attributes
+    this.set(key, value);
+};
+
+store.Product.prototype.pop = function() {
+    // restore attributes
+    var stack = attributesStack[this.id];
+    if (!stack) {
+        return;
+    }
+    var json = stack.pop();
+    if (!json) {
+        return;
+    }
+    var attributes = JSON.parse(json);
+    for (var key in attributes) {
+        this.set(key, attributes[key]);
     }
 };
 

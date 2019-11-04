@@ -34,7 +34,7 @@ It lets you handle in-app purchases on many platforms with a single codebase.
 | non consumables | ✅ | ✅ | ✅ | ✅ | ✅ |
 | subscriptions | ✅ | ✅ | ✅ | ✅ | ✅ |
 | restore purchases | ✅ | ✅ | ✅ | ✅ | ✅ |
-| receipt validations | ✅ | ✅ |  | ✅ | ✅ |
+| [receipt validations](https://billing.fovea.cc) | ✅ | ✅ |  | ✅ | ✅ |
 | downloadable content | ✅ |   |   |   | ✅ |
 | introductory prices | ✅ | ✅ |   | ✅ | ✅ |
 
@@ -130,12 +130,16 @@ For the code itself, the [API Documentation](doc/api.md) is a definitely a recom
    - Learn how to set up and manage In-App Purchases with AppStore Connect.
 
 ### Extensions
-   
+
 Have a very simple need? Maybe this will help.
 
  - [Simple Non-Renewing Subscriptions](https://github.com/j3k0/cordova-non-renewing-subscription)
    - The easiest way to integrate purchase into an app that only needs a non-renewing subscription.
-   
+
+### Subscriptions
+
+For proper subscription support, you need a receipt validation server. You can
+implement your own or use [Fovea's receipt validation service](https://billing.fovea.cc).
 
 # Contribute
 
@@ -144,12 +148,12 @@ Have a very simple need? Maybe this will help.
 ### Contributors:
 
  * ![](https://avatars1.githubusercontent.com/u/191881?s=64&v=4) [Jean-Christophe Hoelt](https://github.com/j3k0), Author
- * ![](https://avatars3.githubusercontent.com/u/1674289?s=64&v=4) [Josef Fröhle](https://github.com/Dexus), Support 
+ * ![](https://avatars3.githubusercontent.com/u/1674289?s=64&v=4) [Josef Fröhle](https://github.com/Dexus), Support
  * Guillaume Charhon, (now defunct) v1 for android
  * Matt Kane, initial iOS code
  * Mohammad Naghavi, original unification attempt
  * Dave Alden [@dpa99c](https://github.com/dpa99c) (Apple-hosted IAPs for iOS)
- 
+
 ## Sponsors
 
  * <a href="https://fovea.cc"><img alt="Logo Fovea" src="https://fovea.cc/blog/wp-content/uploads/2017/09/fovea-logo-flat-128.png" height="50" /></a><br/>For sponsoring most of JC's work on the plugin.

@@ -114,7 +114,7 @@
   "cordova-plugin-purchase": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-purchase@^9.0.0"
+      "id": "https://github.com/Man-fred/cordova-plugin-purchase.git"
     },
     "is_top_level": true,
     "variables": {}
