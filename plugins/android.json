@@ -10,9 +10,6 @@
     "cordova-plugin-camera": {
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     },
-    "cordova-plugin-console": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
-    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     },

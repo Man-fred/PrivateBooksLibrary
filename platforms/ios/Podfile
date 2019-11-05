@@ -2,7 +2,7 @@
 
 platform :ios, '9.0'
 
-target 'C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\ios\PrivateBooksLibrary' do
-	project 'C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\ios\PrivateBooksLibrary.xcodeproj'
+target 'PrivateBooksLibrary' do
+	project 'PrivateBooksLibrary.xcodeproj'
 
 end

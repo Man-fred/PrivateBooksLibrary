@@ -320,7 +320,6 @@ module.exports.metadata =
 // TOP OF METADATA
 {
     "cordova-plugin-camera": "4.0.3",
-    "cordova-plugin-console": "1.1.0",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-file": "6.0.1",
     "cordova-plugin-keyboard": "1.2.0",

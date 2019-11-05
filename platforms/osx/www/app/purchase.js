@@ -1,4 +1,4 @@
-﻿/*
+/*
     https://github.com/j3k0/cordova-plugin-purchase
 */
 define(function (require) {
@@ -15,7 +15,7 @@ define(function (require) {
         // before we can use the store object.
 
         init: function () {
-            if (!window.store) {
+            if (true || !window.store) {
                 console.warning('Store not available');
                 window.store = purchase;
                 return;

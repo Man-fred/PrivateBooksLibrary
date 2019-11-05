@@ -136,7 +136,7 @@ define(function (require) {
                 pbl.pouch.dbNew();
                 pbl.purchase.init();
                 //navigator.vibrate(200);
-                //console.log("vibration: "+(navigator.vibrate ? true : false) );
+                console.log("vibration: "+(navigator.vibrate ? true : false) );
             }
         },
         onWindowLoadResize: function () {

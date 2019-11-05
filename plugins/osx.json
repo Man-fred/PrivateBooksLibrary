@@ -8,7 +8,6 @@
   },
   "installed_plugins": {
     "cordova-plugin-camera": {},
-    "cordova-plugin-console": {},
     "cordova-plugin-device": {},
     "cordova-plugin-file": {},
     "cordova-plugin-keyboard": {},
