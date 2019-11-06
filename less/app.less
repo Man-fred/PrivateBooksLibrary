@@ -6,6 +6,7 @@
 @tablet: ~"only screen and (min-width: 530px) and (max-width: 949px)";
 @desktop: ~"only screen and (min-width: 950px) and (max-width: 1128px)";
 @desktop-xl: ~"only screen and (min-width: 1129px)";
+@portrait: ~"only screen and (orientation: portrait) and (display-mode: fullscreen)";
 //pure CSS
 @xs: ~"only screen and (max-width: 567px)"; // 35.5 em 568px .pure-u-sm-*
 @sm: ~"only screen and (min-width: 568px) and (max-width: 767px)"; // 35.5 em 568px .pure-u-sm-*
@@ -255,46 +256,48 @@
 /* IOS-spezifisch */
     .save-top-padding(@add: 0px) {
         padding-top: @add;
-        @supports (-webkit-overflow-scrolling: touch) {
-            /* CSS specific to iOS devices */
-            /* Status bar height on iOS 10 */
-            padding-top: @top-padding-ios + @add;
-            /* Status bar height on iOS 11.0 */
-            padding-top: calc( ~"constant(safe-area-inset-top) + " @add );
-            /* Status bar height on iOS 11+ */
-            padding-top: calc( ~"env(safe-area-inset-top) + " @add);
+        @media @portrait {
+            @supports (-webkit-overflow-scrolling: touch) {
+                /* CSS specific to iOS devices */
+                /* Status bar height on iOS 10 */
+                padding-top: @top-padding-ios + @add;
+                /* Status bar height on iOS 11.0 */
+                padding-top: calc( ~"constant(safe-area-inset-top) + " @add );
+                /* Status bar height on iOS 11+ */
+                /* padding-top: calc( ~"env(safe-area-inset-top) + " @add); */
+            }
         }
+        padding-top: calc( ~"env(safe-area-inset-top) + " @add);
     }
 
     .save-top(@add: 0px) {
         top: @add;
-        @supports
-
-        (-webkit-overflow-scrolling: touch) {
-            /* CSS specific to iOS devices */
-            /* Status bar height on iOS 10 */
-            top: @top-padding-ios + @add;
-            /* Status bar height on iOS 11.0 */
-            top: calc( ~"constant(safe-area-inset-top) + " @add );
-            /* Status bar height on iOS 11+ */
-            top: calc( ~"env(safe-area-inset-top) + " @add);
+        @media @portrait {
+            @supports (-webkit-overflow-scrolling: touch) {
+                /* CSS specific to iOS devices */
+                /* Status bar height on iOS 10 */
+                top: @top-padding-ios + @add;
+                /* Status bar height on iOS 11.0 */
+                top: calc( ~"constant(safe-area-inset-top) + " @add );
+                /* Status bar height on iOS 11+ */
+            }
         }
+        top: calc( ~"env(safe-area-inset-top) + " @add);
     }
 .save-top-ios() {
     top: 0px;
     height: 0px;
-    @supports
-
-    (-webkit-overflow-scrolling: touch) {
-        /* CSS specific to iOS devices */
-        /* Status bar height on iOS 10 */
-        top: 0px;
-        height: @top-padding-ios;
-        /* Status bar height on iOS 11.0 */
-        top: calc( ~"constant(safe-area-inset-top) - " @top-padding-ios );
-        /* Status bar height on iOS 11+ */
-        top: calc( ~"env(safe-area-inset-top) - " @top-padding-ios);
+    @media @portrait {
+        @supports (-webkit-overflow-scrolling: touch) {
+            /* CSS specific to iOS devices */
+            /* Status bar height on iOS 10 */
+            height: @top-padding-ios;
+            /* Status bar height on iOS 11.0 */
+            height: calc( ~"constant(safe-area-inset-top) - " @top-padding-ios );
+            /* Status bar height on iOS 11+ */
+        }
     }
+    height: calc( ~"env(safe-area-inset-top) - " @top-padding-ios);
 }
 
     html, body {
@@ -343,7 +346,6 @@
 }
     .header {
         padding: 0;
-        .save-top-padding();
         margin: 0;
         color: @header-color;
         background-color: @header-bkg;
@@ -359,6 +361,9 @@
         @media @sm-gt {
             left: @menu-left;
             width: calc(~"100% - " @header-sm-abzug );
+        }
+        @media @portrait {
+            .save-top-padding();
         }
     }
 
@@ -379,15 +384,19 @@
 
     .content {
         padding: 0;
-        .save-top-padding(@top-height);
         height: 100%;
         /*max-width: 800px;*/
         line-height: 1.6em;
         width: calc(~"100% - " @content-abzug );
+        @media @portrait {
+            .save-top-padding(@top-height);
+        }
     }
 
     #iosStatusbar {
-        .save-top-ios();
+        @media @portrait {
+            .save-top-ios();
+        }
         width: 100%;
         background-color: @top-bkg-light;
         position: fixed !important;
@@ -395,7 +404,9 @@
     }
 
     #top {
-        .save-top-padding();
+        @media @portrait {
+            .save-top-padding();
+        }
         top: 0px;
         left: @top-height;
         position: fixed !important;
@@ -1133,7 +1144,9 @@ The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
 appears on the left side of the page.
 */
     #menu {
-        .save-top-padding();
+        @media @portrait {
+            .save-top-padding();
+        }
         margin-left: -@menu-left;
         width: @menu-left;
         position: fixed;
@@ -1247,8 +1260,10 @@ small screens.
         background: @color_menulink_bkg;
         font-size: 10px; /* change this value to increase/decrease button size */
         z-index: 1000;
-        padding: 0px 16px 20px 16px;
-        .save-top-padding(22px);
+        padding: (@top-height - 10px) / 2 16px (@top-height - 10px) / 2 16px;
+        @media @portrait {
+            .save-top-padding(22px);
+        }
         width: 20px;
         height: 10px;
 

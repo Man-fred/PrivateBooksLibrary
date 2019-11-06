@@ -70,7 +70,6 @@ footer {
 }
 .header {
   padding: 0;
-  padding-top: 0px;
   margin: 0;
   color: hsl(0, 0%, 25%);
   background-color: hsl(0, 0%, 96.4%);
@@ -83,21 +82,29 @@ footer {
   position: fixed !important;
   z-index: 800;
 }
-@supports (-webkit-overflow-scrolling: touch) {
-  .header {
-    /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 */
-    padding-top: 20px;
-    /* Status bar height on iOS 11.0 */
-    padding-top: calc(constant(safe-area-inset-top) +  0px);
-    /* Status bar height on iOS 11+ */
-    padding-top: calc(env(safe-area-inset-top) +  0px);
-  }
-}
 @media only screen and (min-width: 568px) {
   .header {
     left: 150px;
     width: calc(100% -  175px);
+  }
+}
+@media only screen and (orientation: portrait) and (display-mode: fullscreen) {
+  .header {
+    padding-top: 0px;
+    padding-top: calc(env(safe-area-inset-top) +  0px);
+  }
+}
+@media only screen and (orientation: portrait) and (display-mode: fullscreen) and only screen and (orientation: portrait) and (display-mode: fullscreen) {
+  @supports (-webkit-overflow-scrolling: touch) {
+    .header {
+      /* CSS specific to iOS devices */
+      /* Status bar height on iOS 10 */
+      padding-top: 20px;
+      /* Status bar height on iOS 11.0 */
+      padding-top: calc(constant(safe-area-inset-top) +  0px);
+      /* Status bar height on iOS 11+ */
+      /* padding-top: calc( ~"env(safe-area-inset-top) + " @add); */
+    }
   }
 }
 .pure-flex-rw {
@@ -115,45 +122,56 @@ main3 {
 }
 .content {
   padding: 0;
-  padding-top: 52px;
   height: 100%;
   /*max-width: 800px;*/
   line-height: 1.6em;
   width: calc(100% -  4px);
 }
-@supports (-webkit-overflow-scrolling: touch) {
+@media only screen and (orientation: portrait) and (display-mode: fullscreen) {
   .content {
-    /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 */
-    padding-top: 72px;
-    /* Status bar height on iOS 11.0 */
-    padding-top: calc(constant(safe-area-inset-top) +  52px);
-    /* Status bar height on iOS 11+ */
+    padding-top: 52px;
     padding-top: calc(env(safe-area-inset-top) +  52px);
   }
 }
+@media only screen and (orientation: portrait) and (display-mode: fullscreen) and only screen and (orientation: portrait) and (display-mode: fullscreen) {
+  @supports (-webkit-overflow-scrolling: touch) {
+    .content {
+      /* CSS specific to iOS devices */
+      /* Status bar height on iOS 10 */
+      padding-top: 72px;
+      /* Status bar height on iOS 11.0 */
+      padding-top: calc(constant(safe-area-inset-top) +  52px);
+      /* Status bar height on iOS 11+ */
+      /* padding-top: calc( ~"env(safe-area-inset-top) + " @add); */
+    }
+  }
+}
 #iosStatusbar {
-  top: 0px;
-  height: 0px;
   width: 100%;
   background-color: #6EAFDA;
   position: fixed !important;
   z-index: 1001;
 }
-@supports (-webkit-overflow-scrolling: touch) {
+@media only screen and (orientation: portrait) and (display-mode: fullscreen) {
   #iosStatusbar {
-    /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 */
     top: 0px;
-    height: 20px;
-    /* Status bar height on iOS 11.0 */
-    top: calc(constant(safe-area-inset-top) -  20px);
-    /* Status bar height on iOS 11+ */
-    top: calc(env(safe-area-inset-top) -  20px);
+    height: 0px;
+    height: calc(env(safe-area-inset-top) -  20px);
+  }
+}
+@media only screen and (orientation: portrait) and (display-mode: fullscreen) and only screen and (orientation: portrait) and (display-mode: fullscreen) {
+  @supports (-webkit-overflow-scrolling: touch) {
+    #iosStatusbar {
+      /* CSS specific to iOS devices */
+      /* Status bar height on iOS 10 */
+      height: 20px;
+      /* Status bar height on iOS 11.0 */
+      height: calc(constant(safe-area-inset-top) -  20px);
+      /* Status bar height on iOS 11+ */
+    }
   }
 }
 #top {
-  padding-top: 0px;
   top: 0px;
   left: 52px;
   position: fixed !important;
@@ -169,15 +187,23 @@ main3 {
   display: table-cell;
   vertical-align: middle;
 }
-@supports (-webkit-overflow-scrolling: touch) {
+@media only screen and (orientation: portrait) and (display-mode: fullscreen) {
   #top {
-    /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 */
-    padding-top: 20px;
-    /* Status bar height on iOS 11.0 */
-    padding-top: calc(constant(safe-area-inset-top) +  0px);
-    /* Status bar height on iOS 11+ */
+    padding-top: 0px;
     padding-top: calc(env(safe-area-inset-top) +  0px);
+  }
+}
+@media only screen and (orientation: portrait) and (display-mode: fullscreen) and only screen and (orientation: portrait) and (display-mode: fullscreen) {
+  @supports (-webkit-overflow-scrolling: touch) {
+    #top {
+      /* CSS specific to iOS devices */
+      /* Status bar height on iOS 10 */
+      padding-top: 20px;
+      /* Status bar height on iOS 11.0 */
+      padding-top: calc(constant(safe-area-inset-top) +  0px);
+      /* Status bar height on iOS 11+ */
+      /* padding-top: calc( ~"env(safe-area-inset-top) + " @add); */
+    }
   }
 }
 @media only screen and (min-width: 568px) {
@@ -377,16 +403,19 @@ div.container {
   margin: 0;
   padding: 0 0 52px 0;
   padding-top: 60px;
+  padding-top: calc(env(safe-area-inset-top) +  60px);
 }
-@supports (-webkit-overflow-scrolling: touch) {
-  #singledata {
-    /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 */
-    padding-top: 80px;
-    /* Status bar height on iOS 11.0 */
-    padding-top: calc(constant(safe-area-inset-top) +  60px);
-    /* Status bar height on iOS 11+ */
-    padding-top: calc(env(safe-area-inset-top) +  60px);
+@media only screen and (orientation: portrait) and (display-mode: fullscreen) {
+  @supports (-webkit-overflow-scrolling: touch) {
+    #singledata {
+      /* CSS specific to iOS devices */
+      /* Status bar height on iOS 10 */
+      padding-top: 80px;
+      /* Status bar height on iOS 11.0 */
+      padding-top: calc(constant(safe-area-inset-top) +  60px);
+      /* Status bar height on iOS 11+ */
+      /* padding-top: calc( ~"env(safe-area-inset-top) + " @add); */
+    }
   }
 }
 #bc1,
@@ -413,19 +442,22 @@ div.container {
 #datalist {
   padding: 0 0 52px 0;
   padding-top: 60px;
+  padding-top: calc(env(safe-area-inset-top) +  60px);
   /*margin-left: 34em;
     border-left: 1px solid gray;*/
   overflow: auto;
 }
-@supports (-webkit-overflow-scrolling: touch) {
-  #datalist {
-    /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 */
-    padding-top: 80px;
-    /* Status bar height on iOS 11.0 */
-    padding-top: calc(constant(safe-area-inset-top) +  60px);
-    /* Status bar height on iOS 11+ */
-    padding-top: calc(env(safe-area-inset-top) +  60px);
+@media only screen and (orientation: portrait) and (display-mode: fullscreen) {
+  @supports (-webkit-overflow-scrolling: touch) {
+    #datalist {
+      /* CSS specific to iOS devices */
+      /* Status bar height on iOS 10 */
+      padding-top: 80px;
+      /* Status bar height on iOS 11.0 */
+      padding-top: calc(constant(safe-area-inset-top) +  60px);
+      /* Status bar height on iOS 11+ */
+      /* padding-top: calc( ~"env(safe-area-inset-top) + " @add); */
+    }
   }
 }
 #datalistScroll {
@@ -874,7 +906,6 @@ The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
 appears on the left side of the page.
 */
 #menu {
-  padding-top: 0px;
   margin-left: -150px;
   width: 150px;
   position: fixed;
@@ -887,15 +918,23 @@ appears on the left side of the page.
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
-@supports (-webkit-overflow-scrolling: touch) {
+@media only screen and (orientation: portrait) and (display-mode: fullscreen) {
   #menu {
-    /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 */
-    padding-top: 20px;
-    /* Status bar height on iOS 11.0 */
-    padding-top: calc(constant(safe-area-inset-top) +  0px);
-    /* Status bar height on iOS 11+ */
+    padding-top: 0px;
     padding-top: calc(env(safe-area-inset-top) +  0px);
+  }
+}
+@media only screen and (orientation: portrait) and (display-mode: fullscreen) and only screen and (orientation: portrait) and (display-mode: fullscreen) {
+  @supports (-webkit-overflow-scrolling: touch) {
+    #menu {
+      /* CSS specific to iOS devices */
+      /* Status bar height on iOS 10 */
+      padding-top: 20px;
+      /* Status bar height on iOS 11.0 */
+      padding-top: calc(constant(safe-area-inset-top) +  0px);
+      /* Status bar height on iOS 11+ */
+      /* padding-top: calc( ~"env(safe-area-inset-top) + " @add); */
+    }
   }
 }
 @media only screen and (min-width: 568px) {
@@ -996,20 +1035,27 @@ small screens.
   font-size: 10px;
   /* change this value to increase/decrease button size */
   z-index: 1000;
-  padding: 0px 16px 20px 16px;
-  padding-top: 22px;
+  padding: 21px 16px 21px 16px;
   width: 20px;
   height: 10px;
 }
-@supports (-webkit-overflow-scrolling: touch) {
+@media only screen and (orientation: portrait) and (display-mode: fullscreen) {
   .menu-link {
-    /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 */
-    padding-top: 42px;
-    /* Status bar height on iOS 11.0 */
-    padding-top: calc(constant(safe-area-inset-top) +  22px);
-    /* Status bar height on iOS 11+ */
+    padding-top: 22px;
     padding-top: calc(env(safe-area-inset-top) +  22px);
+  }
+}
+@media only screen and (orientation: portrait) and (display-mode: fullscreen) and only screen and (orientation: portrait) and (display-mode: fullscreen) {
+  @supports (-webkit-overflow-scrolling: touch) {
+    .menu-link {
+      /* CSS specific to iOS devices */
+      /* Status bar height on iOS 10 */
+      padding-top: 42px;
+      /* Status bar height on iOS 11.0 */
+      padding-top: calc(constant(safe-area-inset-top) +  22px);
+      /* Status bar height on iOS 11+ */
+      /* padding-top: calc( ~"env(safe-area-inset-top) + " @add); */
+    }
   }
 }
 @media only screen and (min-width: 568px) {
@@ -1060,6 +1106,7 @@ small screens.
 #mySearchAZ {
   background: hsl(0, 0%, 89.3%);
   top: 52px;
+  top: calc(env(safe-area-inset-top) +  52px);
   right: 0;
   bottom: 52px;
   z-index: 800;
@@ -1074,15 +1121,16 @@ small screens.
   -moz-flex-direction: column;
   -webkit-flex-direction: column;
 }
-@supports (-webkit-overflow-scrolling: touch) {
-  #mySearchAZ {
-    /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 */
-    top: 72px;
-    /* Status bar height on iOS 11.0 */
-    top: calc(constant(safe-area-inset-top) +  52px);
-    /* Status bar height on iOS 11+ */
-    top: calc(env(safe-area-inset-top) +  52px);
+@media only screen and (orientation: portrait) and (display-mode: fullscreen) {
+  @supports (-webkit-overflow-scrolling: touch) {
+    #mySearchAZ {
+      /* CSS specific to iOS devices */
+      /* Status bar height on iOS 10 */
+      top: 72px;
+      /* Status bar height on iOS 11.0 */
+      top: calc(constant(safe-area-inset-top) +  52px);
+      /* Status bar height on iOS 11+ */
+    }
   }
 }
 @media only screen and (min-width: 568px) {
