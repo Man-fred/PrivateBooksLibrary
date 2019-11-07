@@ -37,9 +37,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>We use photos and camera as bookcover and to scan barcodes from books</string>
 	<key>NSMainNibFile</key>
-	<string></string>
+	<string/>
 	<key>NSMainNibFile~ipad</key>
-	<string></string>
+	<string/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We use photos and camera as bookcover and to scan barcodes from books</string>
 	<key>UILaunchStoryboardName</key>

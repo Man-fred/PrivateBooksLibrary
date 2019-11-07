@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		04031C0F554045B38ADF702D /* CDVJpegHeaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3B1FAF33A94DB78F8C8E02 /* CDVJpegHeaderWriter.m */; };
@@ -340,6 +339,7 @@
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = TQ793YC26Q;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -481,6 +481,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.bcss.pbl.debug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				CODE_SIGN_STYLE = Automatic;
 			};
 			name = Debug;
 		};
@@ -551,6 +552,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.cordova.myapp387c96;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
+				CODE_SIGN_STYLE = Automatic;
 			};
 			name = Debug;
 		};
@@ -592,6 +594,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.cordova.myapp387c96;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
+				CODE_SIGN_STYLE = Automatic;
 			};
 			name = Release;
 		};
