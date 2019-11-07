@@ -182,22 +182,31 @@ define(function (require) {
             // beta: front back motion
             var frontToBack = event.beta;
             
-            var portraitUp = (event.beta > 0 && event.beta < 180);
-            var landscapeleft = (event.gamma > -90 && event.gamma < 90);
+            pbl.orientationPortrait = $(window).width() < $(window).height();
+            pbl.info.setDev(window.orientation);
+           if (pbl.orientation != window.orientation) {
+               pbl.orientation = window.orientation;
+               //ios iPhone 11
+               document.documentElement.style.setProperty('--safe-bottom', "env(safe-area-inset-bottom)");
+               switch (window.orientation) {
+                    case 90 :
+                        document.documentElement.style.setProperty('--safe-left', "env(safe-area-inset-top)");
+                        document.documentElement.style.setProperty('--safe-top',   "0px");
+                        document.documentElement.style.setProperty('--safe-right',  "0px");
+                         break;
+                   case -90 :
+                       document.documentElement.style.setProperty('--safe-right', "env(safe-area-inset-top)");
+                       document.documentElement.style.setProperty('--safe-top',  "0px");
+                       document.documentElement.style.setProperty('--safe-left',  "0px");
+                       break;
+               case 0 :
+                   document.documentElement.style.setProperty('--safe-top', "env(safe-area-inset-left)");
+                   document.documentElement.style.setProperty('--safe-left',  "0px");
+                   document.documentElement.style.setProperty('--safe-right',  "0px");
+                   break;
 
-            if (portraitUp != pbl.orientationUp) {
-                pbl.orientationUp = portraitUp;
-                if (portraitUp) {
-                    document.documentElement.style.setProperty('--safe-top', "env(safe-area-inset-left)");
-                    document.documentElement.style.setProperty('--safe-left', "env(safe-area-inset-bottom)");
-                    pbl.ui.message("P-Up", "ok");
-                } else {
-                    document.documentElement.style.setProperty('--safe-top', "env(safe-area-inset-right)");
-                    document.documentElement.style.setProperty('--safe-left', "env(safe-area-inset-top)");
-                    pbl.ui.message("P-Down", "ok");
-                }
-            }
-            
+               }
+           }
         },
         onPause: function () {
             // im Hintergrund offline gehen??

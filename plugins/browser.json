@@ -10,9 +10,6 @@
     "cordova-plugin-camera": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
-    "cordova-plugin-console": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
-    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
@@ -26,9 +23,6 @@
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
     "cordova-plugin-printer": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
-    },
-    "cordova-plugin-statusbar": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
     "cordova-plugin-taptic-engine": {

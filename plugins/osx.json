@@ -8,13 +8,11 @@
   },
   "installed_plugins": {
     "cordova-plugin-camera": {},
-    "cordova-plugin-console": {},
     "cordova-plugin-device": {},
     "cordova-plugin-file": {},
     "cordova-plugin-keyboard": {},
     "cordova-plugin-network-information": {},
     "cordova-plugin-printer": {},
-    "cordova-plugin-statusbar": {},
     "cordova-plugin-taptic-engine": {},
     "cordova-plugin-vibration": {},
     "cordova-plugin-whitelist": {},

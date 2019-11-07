@@ -38,8 +38,8 @@
     <feature name="Printer">
         <param name="ios-package" value="APPPrinter" />
     </feature>
-    <feature name="StatusBar">
-        <param name="ios-package" value="CDVStatusBar" />
+    <feature name="InAppPurchase">
+        <param name="ios-package" value="InAppPurchase" />
         <param name="onload" value="true" />
     </feature>
     <feature name="TapticEngine">
@@ -50,10 +50,6 @@
     </feature>
     <feature name="BarcodeScanner">
         <param name="ios-package" value="CDVBarcodeScanner" />
-    </feature>
-    <feature name="InAppPurchase">
-        <param name="ios-package" value="InAppPurchase" />
-        <param name="onload" value="true" />
     </feature>
     <name>PrivateBooksLibrary</name>
     <description>Verwalten Sie Ihre private Büchersammlung und eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.</description>
@@ -125,7 +121,6 @@
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
     <preference name="CameraUsesGeolocation" value="false" />
-    <preference name="StatusBarStyle" value="lightcontent" />
     <preference name="phonegap-version" value="cli-9.0.0" />
     <preference name="SplashScreen" value="screen" />
     <preference name="StatusBarOverlaysWebView" value="true" />

@@ -264,20 +264,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-        "id": "cordova-plugin-statusbar.statusbar",
-        "pluginId": "cordova-plugin-statusbar",
-        "clobbers": [
-            "window.StatusBar"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-statusbar/src/browser/StatusBarProxy.js",
-        "id": "cordova-plugin-statusbar.StatusBarProxy",
-        "pluginId": "cordova-plugin-statusbar",
-        "runs": true
-    },
-    {
         "file": "plugins/cordova-plugin-taptic-engine/www/TapticEngine.js",
         "id": "cordova-plugin-taptic-engine.TapticEngine",
         "pluginId": "cordova-plugin-taptic-engine",
@@ -320,13 +306,11 @@ module.exports.metadata =
 // TOP OF METADATA
 {
     "cordova-plugin-camera": "4.0.3",
-    "cordova-plugin-console": "1.1.0",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-file": "6.0.1",
     "cordova-plugin-keyboard": "1.2.0",
     "cordova-plugin-network-information": "2.0.1",
     "cordova-plugin-printer": "0.7.3",
-    "cordova-plugin-statusbar": "2.4.2",
     "cordova-plugin-taptic-engine": "2.1.0",
     "cordova-plugin-vibration": "3.1.0",
     "cordova-plugin-whitelist": "1.3.3",

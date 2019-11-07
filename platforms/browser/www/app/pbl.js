@@ -182,22 +182,38 @@ define(function (require) {
             // beta: front back motion
             var frontToBack = event.beta;
             
-            var portraitUp = (event.beta > 0 && event.beta < 180);
-            var landscapeleft = (event.gamma > -90 && event.gamma < 90);
-
-            if (portraitUp != pbl.orientationUp) {
-                pbl.orientationUp = portraitUp;
-                if (portraitUp) {
-                    document.documentElement.style.setProperty('--safe-top', "env(safe-area-inset-left)");
-                    document.documentElement.style.setProperty('--safe-left', "env(safe-area-inset-bottom)");
-                    pbl.ui.message("P-Up", "ok");
-                } else {
-                    document.documentElement.style.setProperty('--safe-top', "env(safe-area-inset-right)");
-                    document.documentElement.style.setProperty('--safe-left', "env(safe-area-inset-top)");
-                    pbl.ui.message("P-Down", "ok");
-                }
-            }
-            
+             var orientationUp = (event.beta > 0 && event.beta < 180);
+             var orientationleft = (event.gamma > -90 && event.gamma < 90);
+            pbl.orientationPortrait = $(window).width() < $(window).height();
+            pbl.info.setDev(pbl.orientationPortrait+" "+event.beta+" "+event.gamma);
+            if (pbl.orientationPortrait) {
+                 if (orientationUp != pbl.orientationUp) {
+                     pbl.orientationUp = orientationUp;
+                     if (orientationUp) {
+                         document.documentElement.style.setProperty('--safe-top', "env(safe-area-inset-left)");
+                         document.documentElement.style.setProperty('--safe-left', "env(safe-area-inset-bottom)");
+                         pbl.ui.message("P-Up", "ok");
+                     } else {
+                         document.documentElement.style.setProperty('--safe-top', "env(safe-area-inset-right)");
+                         document.documentElement.style.setProperty('--safe-left', "env(safe-area-inset-top)");
+                         pbl.ui.message("P-Down", "ok");
+                     }
+                 }
+             } else {
+             // Landscape
+                 if (orientationleft != pbl.orientationLeft) {
+                     pbl.orientationLeft = orientationleft;
+                     if (orientationleft) {
+                         document.documentElement.style.setProperty('--safe-top', "env(safe-area-inset-left)");
+                         document.documentElement.style.setProperty('--safe-left', "env(safe-area-inset-bottom)");
+                         pbl.ui.message("L-Up", "ok");
+                     } else {
+                         document.documentElement.style.setProperty('--safe-top', "env(safe-area-inset-right)");
+                         document.documentElement.style.setProperty('--safe-left', "env(safe-area-inset-top)");
+                         pbl.ui.message("L-Down", "ok");
+                     }
+                 }
+             }
         },
         onPause: function () {
             // im Hintergrund offline gehen??

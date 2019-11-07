@@ -25,9 +25,6 @@
     "cordova-plugin-printer": {
       "PACKAGE_NAME": "Private Books Library"
     },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "Private Books Library"
-    },
     "cordova-plugin-taptic-engine": {
       "PACKAGE_NAME": "Private Books Library"
     },

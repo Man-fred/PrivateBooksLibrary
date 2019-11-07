@@ -16,7 +16,7 @@ define(function (require) {
 
         init: function () {
             if (!window.store) {
-                console.warning('Store not available');
+                console.warn('Store not available');
                 window.store = purchase;
                 return;
             }
