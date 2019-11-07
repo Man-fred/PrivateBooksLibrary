@@ -19,6 +19,11 @@ define(function (require) {
 
                 document.addEventListener('deviceready', this.onDeviceReady, false);
                 window.addEventListener("resize", this.onWindowLoadResize);
+                pbl.orientationUp = true;
+                pbl.orientationLeft = true;
+                if (window.DeviceOrientationEvent) {
+                    window.addEventListener("deviceorientation", this.onWindowOrientation);
+                }
                 // Top/Bottom der Seite ist sonst scrollbar unter ios
                 // hilft nicht
                 //Keyboard.shrinkView(true);
@@ -98,6 +103,7 @@ define(function (require) {
         viewportXS: null,
         viewportXXS: null,
         viewportHeight: null,
+        orientation: null,
         listeningElement: null,
         receivedElement: null,
         countBooks: 0,
@@ -142,6 +148,7 @@ define(function (require) {
         onWindowLoadResize: function () {
             // @xs < 568
             // @xxs < 458
+            pbl.orientation = window.orientation;
             var viewportTemp = $(window).width();
             if (viewportTemp < 568 && pbl.viewportXS >= 568) {
                 //$("#partner").html('');
@@ -166,6 +173,31 @@ define(function (require) {
                 document.getElementById("myDropdown2").style.maxHeight = viewportHeight + 'px';
                 pbl.viewportHeight = viewportHeight;
             }
+        },
+        onWindowOrientation: function(event) {
+            // alpha: rotation around z-axis
+            var rotateDegrees = event.alpha;
+            // gamma: left to right
+            var leftToRight = event.gamma;
+            // beta: front back motion
+            var frontToBack = event.beta;
+            
+            var portraitUp = (event.beta > 0 && event.beta < 180);
+            var landscapeleft = (event.gamma > -90 && event.gamma < 90);
+
+            if (portraitUp != pbl.orientationUp) {
+                pbl.orientationUp = portraitUp;
+                if (portraitUp) {
+                    document.documentElement.style.setProperty('--safe-top', "env(safe-area-inset-left)");
+                    document.documentElement.style.setProperty('--safe-left', "env(safe-area-inset-bottom)");
+                    pbl.ui.message("P-Up", "ok");
+                } else {
+                    document.documentElement.style.setProperty('--safe-top', "env(safe-area-inset-right)");
+                    document.documentElement.style.setProperty('--safe-left', "env(safe-area-inset-top)");
+                    pbl.ui.message("P-Down", "ok");
+                }
+            }
+            
         },
         onPause: function () {
             // im Hintergrund offline gehen??

@@ -6,7 +6,9 @@
 @tablet: ~"only screen and (min-width: 530px) and (max-width: 949px)";
 @desktop: ~"only screen and (min-width: 950px) and (max-width: 1128px)";
 @desktop-xl: ~"only screen and (min-width: 1129px)";
-@portrait: ~"only screen and (orientation: portrait) and (display-mode: fullscreen)";
+@portrait: ~"only screen and (orientation: portrait)"; 
+//  and (display-mode: fullscreen)
+@landscape: ~"only screen and (orientation: landscape)";
 //pure CSS
 @xs: ~"only screen and (max-width: 567px)"; // 35.5 em 568px .pure-u-sm-*
 @sm: ~"only screen and (min-width: 568px) and (max-width: 767px)"; // 35.5 em 568px .pure-u-sm-*
@@ -253,6 +255,13 @@
 @col_sync_warning: @yellow4;
 @col_sync_ok: @green3;
 
+// defaut für Landscape
+:root {
+    --safe-left: env(safe-area-inset-left);
+    --safe-top: env(safe-area-inset-top);
+    --safe-right: env(safe-area-inset-right);
+    --safe-bottom: env(safe-area-inset-bottom);
+}
 /* IOS-spezifisch */
     .save-top-padding(@add: 0px) {
         padding-top: @add;
@@ -267,7 +276,7 @@
                 /* padding-top: calc( ~"env(safe-area-inset-top) + " @add); */
             }
         }
-        padding-top: calc( ~"env(safe-area-inset-top) + " @add);
+        padding-top: calc( ~"--safe-top + " @add );
     }
 
     .save-top(@add: 0px) {
@@ -281,8 +290,20 @@
                 top: calc( ~"constant(safe-area-inset-top) + " @add );
                 /* Status bar height on iOS 11+ */
             }
+            top: calc( ~"--safe-top + " @add );
         }
-        top: calc( ~"env(safe-area-inset-top) + " @add);
+        @media @landscape {
+            @supports (-webkit-overflow-scrolling: touch) {
+                /* CSS specific to iOS devices */
+                /* Status bar height on iOS 10 */
+                top: @top-padding-ios + @add;
+                /* Status bar height on iOS 11.0 */
+                top: calc( ~"constant(safe-area-inset-top) + " @add );
+                /* Status bar height on iOS 11+ */
+            }
+            top: calc( ~"--safe-top + 40px + " @add );
+        }
+        /* top: calc( ~"env(safe-area-inset-top) + " @add); */
     }
 .save-top-ios() {
     top: 0px;
@@ -293,11 +314,22 @@
             /* Status bar height on iOS 10 */
             height: @top-padding-ios;
             /* Status bar height on iOS 11.0 */
-            height: calc( ~"constant(safe-area-inset-top) - " @top-padding-ios );
+            height: constant(safe-area-inset-left);
             /* Status bar height on iOS 11+ */
         }
+        height: var(--safe-top);
     }
-    height: calc( ~"env(safe-area-inset-top) - " @top-padding-ios);
+    @media @landscape {
+        @supports (-webkit-overflow-scrolling: touch) {
+            /* CSS specific to iOS devices */
+            /* Status bar height on iOS 10 */
+            height: @top-padding-ios;
+            /* Status bar height on iOS 11.0 */
+            height: constant(safe-area-inset-top);
+            /* Status bar height on iOS 11+ */
+        }
+        height: var(--safe-top);
+    }
 }
 
     html, body {
@@ -394,9 +426,7 @@
     }
 
     #iosStatusbar {
-        @media @portrait {
-            .save-top-ios();
-        }
+        .save-top-ios();
         width: 100%;
         background-color: @top-bkg-light;
         position: fixed !important;
