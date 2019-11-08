@@ -18,6 +18,21 @@
 @xl: ~"only screen and (min-width: 1280px)"; // 80em 1280px .pure-u-xl-*
 
 /* mit Werbung @partner-right: 120px;*/
+// defaut für Landscape
+:root {
+    --safe-top: 0px;
+    --safe-left: 0px;
+    --safe-right: 0px;
+    --safe-bottom: 0px;
+    --safe-top: env(safe-area-inset-top);
+    --safe-left: env(safe-area-inset-left);
+    --safe-right: env(safe-area-inset-right);
+    --safe-bottom: env(safe-area-inset-bottom);
+    --safe-top: env(safe-area-inset-top);
+    --safe-left: env(safe-area-inset-left);
+    --safe-right: env(safe-area-inset-right);
+    --safe-bottom: env(safe-area-inset-bottom);
+}
 
 @button: 48px;
 @partner-right: 0px;
@@ -59,7 +74,8 @@
 @book-title-abzug: @books-img + @books-img-margin + @books-favor;
 @book-title-abzug-sm: @books-img + @books-img-margin + @books-favor-sm;
 @content-abzug: @partner-right + 4px;
-@footer-info-abzug: 2 * @title-button + 5 * @title-button-margin;
+@footer-padding-left: 10px;
+@footer-info-abzug: 2 * @title-button + 5 * @title-button-margin + @footer-padding-left;
 @header-sm-abzug: @menu-left + @partner-right + @searchAZ600;
 @header-sm-abzug-action: @menu-left + @partner-right;
 @layout-abzug: @partner-right + 1px;
@@ -255,17 +271,10 @@
 @col_sync_warning: @yellow4;
 @col_sync_ok: @green3;
 
-// defaut für Landscape
-:root {
-    --safe-left: env(safe-area-inset-left);
-    --safe-top: env(safe-area-inset-top);
-    --safe-right: env(safe-area-inset-right);
-    --safe-bottom: env(safe-area-inset-bottom);
-}
 /* IOS-spezifisch */
-    .save-top-padding(@add: 0px) {
+    .safe-padding-top(@add: 0px) {
         padding-top: @add;
-        @media @portrait {
+        padding-top: calc(var(--safe-top) + @add);
             @supports (-webkit-overflow-scrolling: touch) {
                 /* CSS specific to iOS devices */
                 /* Status bar height on iOS 10 */
@@ -273,61 +282,47 @@
                 /* Status bar height on iOS 11.0 */
                 padding-top: calc( ~"constant(safe-area-inset-top) + " @add );
                 /* Status bar height on iOS 11+ */
-                /* padding-top: calc( ~"env(safe-area-inset-top) + " @add); */
-            }
+                padding-top: calc(var(--safe-top) + @add);
         }
-        padding-top: calc( ~"--safe-top + " @add );
+    }
+    .safe-padding-left(@add: 0px) {
+        padding-left: @add;
+        padding-left: calc(var(--safe-left) + @add);
+            @supports (-webkit-overflow-scrolling: touch) {
+                /* CSS specific to iOS devices */
+                /* Status bar height on iOS 10 */
+                padding-left: @top-padding-ios + @add;
+                /* Status bar height on iOS 11.0 */
+                padding-left: calc( ~"constant(safe-area-inset-left) + " @add );
+                /* Status bar height on iOS 11+ */
+                padding-left: calc(var(--safe-left) + @add);
+        }
     }
 
-    .save-top(@add: 0px) {
+    .safe-top(@add: 0px) {
         top: @add;
-        @media @portrait {
-            @supports (-webkit-overflow-scrolling: touch) {
+        top: calc(var(--safe-top) + @add);
+        @supports (-webkit-overflow-scrolling: touch) {
                 /* CSS specific to iOS devices */
                 /* Status bar height on iOS 10 */
                 top: @top-padding-ios + @add;
                 /* Status bar height on iOS 11.0 */
                 top: calc( ~"constant(safe-area-inset-top) + " @add );
                 /* Status bar height on iOS 11+ */
-            }
-            top: calc( ~"--safe-top + " @add );
+                top: calc(var(--safe-top) + @add);
         }
-        @media @landscape {
-            @supports (-webkit-overflow-scrolling: touch) {
-                /* CSS specific to iOS devices */
-                /* Status bar height on iOS 10 */
-                top: @top-padding-ios + @add;
-                /* Status bar height on iOS 11.0 */
-                top: calc( ~"constant(safe-area-inset-top) + " @add );
-                /* Status bar height on iOS 11+ */
-            }
-            top: calc( ~"--safe-top + 40px + " @add );
-        }
-        /* top: calc( ~"env(safe-area-inset-top) + " @add); */
     }
-.save-top-ios() {
+.safe-height() {
     top: 0px;
     height: 0px;
-    @media @portrait {
-        @supports (-webkit-overflow-scrolling: touch) {
-            /* CSS specific to iOS devices */
-            /* Status bar height on iOS 10 */
-            height: @top-padding-ios;
-            /* Status bar height on iOS 11.0 */
-            height: constant(safe-area-inset-left);
-            /* Status bar height on iOS 11+ */
-        }
-        height: var(--safe-top);
-    }
-    @media @landscape {
-        @supports (-webkit-overflow-scrolling: touch) {
-            /* CSS specific to iOS devices */
-            /* Status bar height on iOS 10 */
-            height: @top-padding-ios;
-            /* Status bar height on iOS 11.0 */
-            height: constant(safe-area-inset-top);
-            /* Status bar height on iOS 11+ */
-        }
+    height: var(--safe-top);
+    @supports (-webkit-overflow-scrolling: touch) {
+        /* CSS specific to iOS devices */
+        /* Status bar height on iOS 10 */
+        height: @top-padding-ios;
+        /* Status bar height on iOS 11.0 */
+        height: constant(safe-area-inset-left);
+        /* Status bar height on iOS 11+ */
         height: var(--safe-top);
     }
 }
@@ -361,11 +356,11 @@
     }
 #action {
     text-align: left;
-    width: 100%;
+    width: calc(100% - var(--safe-left));
 
     @media @sm-gt {
-        left: @menu-left;
-        width: calc(~"100% - " @header-sm-abzug-action );
+        left: calc(@menu-left + var(--safe-left));
+        width: calc(~"100% - var(--safe-left) - " @header-sm-abzug-action );
     }
 }
 #action .pure-button {
@@ -384,19 +379,17 @@
         text-align: center;
         border-bottom: 1px solid @col_header_border_bottom;
         top: @top-height;
-        left: 0;
-        width: calc(~"100% - " @searchAZ000);
+        left: var(--safe-left);
+        width: calc(~"100% - var(--safe-left) - " @searchAZ000);
         height: @header-height;
         position: fixed !important;
         z-index: 800;
 
         @media @sm-gt {
-            left: @menu-left;
-            width: calc(~"100% - " @header-sm-abzug );
+            left: calc(@menu-left + var(--safe-left));
+            width: calc(~"100% - var(--safe-left) - " @header-sm-abzug );
         }
-        @media @portrait {
-            .save-top-padding();
-        }
+        .safe-padding-top();
     }
 
     .pure-flex-rw {
@@ -420,13 +413,12 @@
         /*max-width: 800px;*/
         line-height: 1.6em;
         width: calc(~"100% - " @content-abzug );
-        @media @portrait {
-            .save-top-padding(@top-height);
-        }
+        top: @top-height;
     }
 
     #iosStatusbar {
-        .save-top-ios();
+        top: 0px;
+        .safe-height();
         width: 100%;
         background-color: @top-bkg-light;
         position: fixed !important;
@@ -434,14 +426,12 @@
     }
 
     #top {
-        @media @portrait {
-            .save-top-padding();
-        }
+        .safe-padding-top();
         top: 0px;
         left: @top-height;
         position: fixed !important;
         z-index: 900; /* so the menu or its navicon stays above all content */
-        width: calc(~"100% - " @top-abzug );
+        width: calc(~"100%  - " @top-abzug );
         background: @top-bkg;
         font-size: 110%;
         text-transform: uppercase;
@@ -452,8 +442,8 @@
         vertical-align: middle;
 
         @media @sm-gt {
-            left: @menu-left;
-            width: calc(~"100% - " @top-abzug-sm );
+            left: calc(~"var(--safe-left) + " @menu-left);
+            width: calc(~"100% - var(--safe-left) - " @top-abzug-sm );
         }
     }
 
@@ -461,11 +451,13 @@ footer {
     z-index: 1000; /* so the menu or its navicon stays above all content */
     background: @footer-bkg;
     color: @footer-col;
-    bottom: 0px;
+    bottom: 0;
     position: fixed !important;
     position: absolute;
-    height: @footer-height;
+    height: calc(~"var(--safe-bottom) + " @footer-height );
+    /* width: calc(100% - var(--safe-left)); */
     width: 100%;
+    /* padding: 0 10px 0 10px; */
 }
 #infoMessage p {
 
@@ -542,7 +534,7 @@ footer {
     float: left;
     width: calc(~"100% - " @footer-info-abzug );
     display: block;
-    padding: 2px 0 2px @title-button-margin;
+    padding: 2px 0 2px @title-button-margin + @footer-padding-left;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -552,7 +544,7 @@ footer {
     float: left;
     width: calc(~"100% - " @footer-info-abzug );
     display: block;
-    padding: 2px 0 2px @title-button-margin;
+    padding: 2px 0 2px @title-button-margin + @footer-padding-left;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -567,7 +559,7 @@ footer {
         background-color: transparent;
     }
 
-    #info-syn[state=syncing] c {
+    #info-sync[state=syncing] {
         background-color: @col_sync_syncing;
     }
 
@@ -675,8 +667,8 @@ footer {
     /*max-width: 34em;*/
     float: left;
     margin: 0;
-    padding: 0 0 @footer-height 0;
-    .save-top-padding( /*@top-height +*/ @header-height);
+    padding: 0 0 var(--safe-bottom) 0;
+    .safe-padding-top(@header-height);
 }
 
     #bc1, #as1 {
@@ -705,7 +697,7 @@ footer {
 
     #datalist {
         padding: 0 0 @footer-height 0;
-        .save-top-padding( /*@top-height +*/ @header-height);
+        .safe-padding-top(@header-height);
         /*margin-left: 34em;
     border-left: 1px solid gray;*/
         overflow: auto;
@@ -1131,14 +1123,14 @@ This is the parent `<div>` that contains the menu and the content area.
     #layout {
         position: relative;
         left: 0;
-        padding-left: 0;
+        .safe-padding-left();
         padding-bottom: @footer-height;
         height: 100%;
-        width: calc(~"100% - " @layout-abzug );
+        width: calc(~"100% - var(--safe-left) - " @layout-abzug );
 
         @media @sm-gt {
-            padding-left: @menu-left; /* left col width "#menu" */
-            width: calc(~"100% - " @top-abzug-sm);
+            .safe-padding-left(@menu-left); /* left col width "#menu" */
+            width: calc(~"100% - var(--safe-left) - " @top-abzug-sm);
         }
     }
     /* Only apply this when the window is small. Otherwise, the following case results in extra padding on the left:
@@ -1155,7 +1147,7 @@ This is the parent `<div>` that contains the menu and the content area.
 
     #layout.active #menu {
         left: @menu-left;
-        width: @menu-left;
+        /* width: @menu-left; */
     }
 
     #layout.active .menu-link {
@@ -1175,14 +1167,14 @@ appears on the left side of the page.
 */
     #menu {
         @media @portrait {
-            .save-top-padding();
+            .safe-padding-top();
         }
-        margin-left: -@menu-left;
-        width: @menu-left;
+        margin-left: -@menu-left ;
+        width: calc(@menu-left + var(--safe-left));
         position: fixed;
         top: 0;
         left: 0;
-        bottom: 0;
+        bottom: calc(~"var(--safe-bottom) + " @footer-height );
         z-index: 950; /* so the menu or its navicon stays above all content */
         background: @color_menu_bkg;
         overflow-y: auto;
@@ -1256,6 +1248,7 @@ This styles a link within a selected menu item `<li>`.
 */
     #menu .pure-menu-item {
         height: @top-height;
+        padding-left: var(--safe-left);
     }
 
     .pure-menu-selected a {
@@ -1292,7 +1285,7 @@ small screens.
         z-index: 1000;
         padding: (@top-height - 10px) / 2 16px (@top-height - 10px) / 2 16px;
         @media @portrait {
-            .save-top-padding(22px);
+            .safe-padding-top(22px);
         }
         width: 20px;
         height: 10px;
@@ -1347,7 +1340,7 @@ small screens.
     /************ rechte Sortierleiste ***********/
     #mySearchAZ {
         background: @col_az_bkg;
-        .save-top(@top-height);
+        .safe-top(@top-height);
         right: 0;
         bottom: @footer-height;
         z-index: 800; /* so the menu or its navicon stays above all content */
