@@ -186,7 +186,7 @@ define(function (require) {
              var orientationleft = (event.gamma > -90 && event.gamma < 90);
             pbl.orientationPortrait = $(window).width() < $(window).height();
             pbl.info.setDev(window.orientation);
-           if (false) {//pbl.orientation != window.orientation) {
+           if (pbl.orientation != window.orientation) {
                pbl.orientation = window.orientation;
                //ios iPhone 11
                document.documentElement.style.setProperty('--safe-bottom', "env(safe-area-inset-bottom)");
