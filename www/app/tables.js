@@ -16,7 +16,10 @@
                 },
                 author: {
                     name: "author",
-                    title: app.lang.author
+                    title: app.lang.author,
+                    select: "authors",
+                    field: "name",
+                    visible: "name"
                 },
                 publisher: {
                     name: "publisher",

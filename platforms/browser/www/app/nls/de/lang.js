@@ -56,6 +56,7 @@
     "selAll": "Alle anzeigen",
     "series": "Serie",
     "series2": "Serien",
+    "seriesSearch": "Suche nach Serie",
     "settings": "Einstellungen",
     "showDeleted": "Gelöschtes anzeigen",
     "state": "Status",

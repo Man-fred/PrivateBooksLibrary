@@ -20,7 +20,7 @@
     <platform name="android">
         <allow-intent href="market:*" />
         <preference name="APP_SECRET" value="d57aceb2-586f-4825-b90e-7060f3903561" />
-        <preference name="android-minSdkVersion" value="15" />
+        <preference name="android-minSdkVersion" value="19" />
         <preference name="android-targetSDKVersion" value="26" />
     </platform>
     <platform name="osx">

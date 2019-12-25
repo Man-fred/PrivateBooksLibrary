@@ -25,6 +25,9 @@
     "cordova-plugin-printer": {
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     },
+    "cordova-plugin-purchase": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
+    },
     "cordova-plugin-taptic-engine": {
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     },
@@ -36,9 +39,6 @@
     },
     "phonegap-plugin-barcodescanner": {
       "ANDROID_SUPPORT_V4_VERSION": "27.+",
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
-    },
-    "cordova-plugin-purchase": {
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     }
   },

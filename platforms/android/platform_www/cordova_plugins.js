@@ -248,11 +248,11 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-statusbar.statusbar",
-      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-      "pluginId": "cordova-plugin-statusbar",
+      "id": "cordova-plugin-purchase.InAppBillingPlugin",
+      "file": "plugins/cordova-plugin-purchase/www/store-android.js",
+      "pluginId": "cordova-plugin-purchase",
       "clobbers": [
-        "window.StatusBar"
+        "store"
       ]
     },
     {
@@ -270,29 +270,19 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "cordova.plugins.barcodeScanner"
       ]
-    },
-    {
-      "id": "cordova-plugin-purchase.InAppBillingPlugin",
-      "file": "plugins/cordova-plugin-purchase/www/store-android.js",
-      "pluginId": "cordova-plugin-purchase",
-      "clobbers": [
-        "store"
-      ]
     }
   ];
   module.exports.metadata = {
     "cordova-plugin-camera": "4.0.3",
-    "cordova-plugin-console": "1.1.0",
-    "cordova-plugin-device": "2.0.2",
+    "cordova-plugin-device": "2.0.3",
     "cordova-plugin-file": "6.0.1",
     "cordova-plugin-keyboard": "1.2.0",
     "cordova-plugin-network-information": "2.0.1",
     "cordova-plugin-printer": "0.7.3",
-    "cordova-plugin-statusbar": "2.4.2",
+    "cordova-plugin-purchase": "9.0.0",
     "cordova-plugin-taptic-engine": "2.1.0",
     "cordova-plugin-vibration": "3.1.0",
     "cordova-plugin-whitelist": "1.3.3",
-    "phonegap-plugin-barcodescanner": "8.1.0",
-    "cordova-plugin-purchase": "9.0.0"
+    "phonegap-plugin-barcodescanner": "8.1.0"
   };
 });

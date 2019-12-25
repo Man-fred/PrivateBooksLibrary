@@ -19,8 +19,6 @@ define(function (require) {
 
                 document.addEventListener('deviceready', this.onDeviceReady, false);
                 window.addEventListener("resize", this.onWindowLoadResize);
-                pbl.orientationUp = true;
-                pbl.orientationLeft = true;
                 if (window.DeviceOrientationEvent) {
                     window.addEventListener("deviceorientation", this.onWindowOrientation);
                 }
@@ -148,7 +146,6 @@ define(function (require) {
         onWindowLoadResize: function () {
             // @xs < 568
             // @xxs < 458
-            pbl.orientation = window.orientation;
             var viewportTemp = $(window).width();
             if (viewportTemp < 568 && pbl.viewportXS >= 568) {
                 //$("#partner").html('');
@@ -182,38 +179,38 @@ define(function (require) {
             // beta: front back motion
             var frontToBack = event.beta;
             
-             var orientationUp = (event.beta > 0 && event.beta < 180);
-             var orientationleft = (event.gamma > -90 && event.gamma < 90);
-            pbl.orientationPortrait = $(window).width() < $(window).height();
-            pbl.info.setDev(pbl.orientationPortrait+" "+event.beta+" "+event.gamma);
-            if (pbl.orientationPortrait) {
-                 if (orientationUp != pbl.orientationUp) {
-                     pbl.orientationUp = orientationUp;
-                     if (orientationUp) {
-                         document.documentElement.style.setProperty('--safe-top', "env(safe-area-inset-left)");
-                         document.documentElement.style.setProperty('--safe-left', "env(safe-area-inset-bottom)");
-                         pbl.ui.message("P-Up", "ok");
-                     } else {
-                         document.documentElement.style.setProperty('--safe-top', "env(safe-area-inset-right)");
-                         document.documentElement.style.setProperty('--safe-left', "env(safe-area-inset-top)");
-                         pbl.ui.message("P-Down", "ok");
-                     }
-                 }
-             } else {
-             // Landscape
-                 if (orientationleft != pbl.orientationLeft) {
-                     pbl.orientationLeft = orientationleft;
-                     if (orientationleft) {
-                         document.documentElement.style.setProperty('--safe-top', "env(safe-area-inset-left)");
-                         document.documentElement.style.setProperty('--safe-left', "env(safe-area-inset-bottom)");
-                         pbl.ui.message("L-Up", "ok");
-                     } else {
-                         document.documentElement.style.setProperty('--safe-top', "env(safe-area-inset-right)");
-                         document.documentElement.style.setProperty('--safe-left', "env(safe-area-inset-top)");
-                         pbl.ui.message("L-Down", "ok");
-                     }
-                 }
-             }
+             //var orientationUp = (event.beta > 0 && event.beta < 180);
+             //var orientationleft = (event.gamma > -90 && event.gamma < 90);
+            //pbl.orientationPortrait = $(window).width() < $(window).height();
+           if (pbl.orientation !== window.orientation) {
+               pbl.orientation = window.orientation;
+               //ios iPhone 11
+               document.documentElement.style.setProperty('--safe-bottom', "env(safe-area-inset-bottom)");
+               switch (window.orientation) {
+                    case 90 :
+                        document.documentElement.style.setProperty('--safe-left', "env(safe-area-inset-top)");
+                        document.documentElement.style.setProperty('--safe-top',   "0px");
+                        document.documentElement.style.setProperty('--safe-right',  "0px");
+                         break;
+                   case -90 :
+                       document.documentElement.style.setProperty('--safe-right', "env(safe-area-inset-top)");
+                       document.documentElement.style.setProperty('--safe-top',  "0px");
+                       document.documentElement.style.setProperty('--safe-left',  "0px");
+                       break;
+               case 0 :
+                   document.documentElement.style.setProperty('--safe-top', "env(safe-area-inset-left)");
+                   document.documentElement.style.setProperty('--safe-left',  "0px");
+                   document.documentElement.style.setProperty('--safe-right',  "0px");
+                   break;
+
+               }
+               pbl.info.setDev("Orientierung: "+pbl.orientation
+                        +","+document.documentElement.style.getPropertyValue('--safe-left')
+                        +"-"+document.documentElement.style.getPropertyValue('--safe-top')
+                        +"-"+document.documentElement.style.getPropertyValue('--safe-right')
+                        +"-"+document.documentElement.style.getPropertyValue('--safe-bottom'));
+
+            }
         },
         onPause: function () {
             // im Hintergrund offline gehen??

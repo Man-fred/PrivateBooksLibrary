@@ -9,3 +9,5 @@ build.json
 config.xml
 *.php
 
+/node_modules/
+/nbproject/private/

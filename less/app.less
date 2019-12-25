@@ -24,6 +24,7 @@
     --safe-left: 0px;
     --safe-right: 0px;
     --safe-bottom: 0px;
+    /*
     --safe-top: env(safe-area-inset-top);
     --safe-left: env(safe-area-inset-left);
     --safe-right: env(safe-area-inset-right);
@@ -32,6 +33,7 @@
     --safe-left: env(safe-area-inset-left);
     --safe-right: env(safe-area-inset-right);
     --safe-bottom: env(safe-area-inset-bottom);
+    */
 }
 
 @button: 48px;
@@ -277,9 +279,9 @@
         padding-top: calc(var(--safe-top) + @add);
             @supports (-webkit-overflow-scrolling: touch) {
                 /* CSS specific to iOS devices */
-                /* Status bar height on iOS 10 */
+                /* Status bar height on iOS 10 
                 padding-top: @top-padding-ios + @add;
-                /* Status bar height on iOS 11.0 */
+                /* Status bar height on iOS 11.0 
                 padding-top: calc( ~"constant(safe-area-inset-top) + " @add );
                 /* Status bar height on iOS 11+ */
                 padding-top: calc(var(--safe-top) + @add);
@@ -290,9 +292,9 @@
         padding-left: calc(var(--safe-left) + @add);
             @supports (-webkit-overflow-scrolling: touch) {
                 /* CSS specific to iOS devices */
-                /* Status bar height on iOS 10 */
+                /* Status bar height on iOS 10 /
                 padding-left: @top-padding-ios + @add;
-                /* Status bar height on iOS 11.0 */
+                /* Status bar height on iOS 11.0 /
                 padding-left: calc( ~"constant(safe-area-inset-left) + " @add );
                 /* Status bar height on iOS 11+ */
                 padding-left: calc(var(--safe-left) + @add);
@@ -304,9 +306,9 @@
         top: calc(var(--safe-top) + @add);
         @supports (-webkit-overflow-scrolling: touch) {
                 /* CSS specific to iOS devices */
-                /* Status bar height on iOS 10 */
+                /* Status bar height on iOS 10 /
                 top: @top-padding-ios + @add;
-                /* Status bar height on iOS 11.0 */
+                /* Status bar height on iOS 11.0 /
                 top: calc( ~"constant(safe-area-inset-top) + " @add );
                 /* Status bar height on iOS 11+ */
                 top: calc(var(--safe-top) + @add);
@@ -318,9 +320,9 @@
     height: var(--safe-top);
     @supports (-webkit-overflow-scrolling: touch) {
         /* CSS specific to iOS devices */
-        /* Status bar height on iOS 10 */
+        /* Status bar height on iOS 10 /
         height: @top-padding-ios;
-        /* Status bar height on iOS 11.0 */
+        /* Status bar height on iOS 11.0 /
         height: constant(safe-area-inset-left);
         /* Status bar height on iOS 11+ */
         height: var(--safe-top);
@@ -668,7 +670,7 @@ footer {
     float: left;
     margin: 0;
     padding: 0 0 var(--safe-bottom) 0;
-    .safe-padding-top(@header-height);
+    .safe-padding-top(@header-height + @top-height);
 }
 
     #bc1, #as1 {
@@ -697,7 +699,7 @@ footer {
 
     #datalist {
         padding: 0 0 @footer-height 0;
-        .safe-padding-top(@header-height);
+        .safe-padding-top(@header-height + @top-height);
         /*margin-left: 34em;
     border-left: 1px solid gray;*/
         overflow: auto;

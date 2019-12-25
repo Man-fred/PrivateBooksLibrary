@@ -1,1 +1,0 @@
-C:\Users\Manfred\Documents\PhoneGap\PrivateBooksLibrary\platforms\windows\CordovaApp.Windows10.jsproj;x64
