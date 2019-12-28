@@ -1,3 +1,5 @@
+/* global app, Camera */
+
 ﻿define(function (require) {
 
     var search = {

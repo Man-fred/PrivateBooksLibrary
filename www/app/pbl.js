@@ -1,3 +1,5 @@
+/* global app, Connection */
+
 define(function (require) {
     var pbl = {
         currentApp: "pbl_v1",
@@ -163,7 +165,7 @@ define(function (require) {
                 $('#appTitle').html("Private Books Library");
                 pbl.viewportXXS = viewportTemp;
             }
-            var viewportHeight = $(window).height()
+            var viewportHeight = $(window).height();
             if (viewportHeight !== pbl.viewportHeight) {
                 viewportHeight = viewportHeight - 2 * $('#footer').height();
                 document.getElementById("myDropdown1").style.maxHeight = viewportHeight + 'px';
@@ -302,7 +304,7 @@ define(function (require) {
 
              function dbRenew(destroy = false, create = true) {
                  if (window.confirm('lokale Datenbank löschen?')) {
-                     db.destroy().then(function () {
+                     app.pouch.db.destroy().then(function () {
                          // database destroyed
                          dbNew();
                      }).catch(function (err) {
