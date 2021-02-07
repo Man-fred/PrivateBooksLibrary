@@ -7,28 +7,39 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-console": {
-      "PACKAGE_NAME": "PrivateBooksLibrary"
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "Private Books Library"
     },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "PrivateBooksLibrary"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "PrivateBooksLibrary"
-    },
-    "phonegap-plugin-barcodescanner": {
-      "PACKAGE_NAME": "PrivateBooksLibrary"
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "Private Books Library"
     },
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "PrivateBooksLibrary"
+      "PACKAGE_NAME": "Private Books Library"
     },
-    "cordova-plugin-sqlite-2": {
-      "PACKAGE_NAME": "PrivateBooksLibrary"
+    "cordova-plugin-keyboard": {
+      "PACKAGE_NAME": "Private Books Library"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "Private Books Library"
+    },
+    "cordova-plugin-printer": {
+      "PACKAGE_NAME": "Private Books Library"
+    },
+    "cordova-plugin-taptic-engine": {
+      "PACKAGE_NAME": "Private Books Library"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "Private Books Library"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "Private Books Library"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "PACKAGE_NAME": "Private Books Library"
+    },
+    "cordova-plugin-purchase": {
+      "PACKAGE_NAME": "Private Books Library"
     }
   },
-  "dependent_plugins": {
-    "cordova-plugin-compat": {
-      "PACKAGE_NAME": "PrivateBooksLibrary"
-    }
-  }
+  "dependent_plugins": {}
 }

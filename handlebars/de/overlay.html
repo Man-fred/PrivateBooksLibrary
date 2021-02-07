@@ -1,0 +1,32 @@
+﻿<div id="overlay_content">
+    <div id="overlay1" class="overlay">
+        <h2>Privat</h2>
+        <p>
+            Verwalten Sie Ihre private Büchersammlung und Ihre eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern,
+            es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.
+        </p>
+        <ul>
+            <li>Über „+“ fügen Sie neue Bücher direkt ein oder suchen im Internet.</li>
+            <li>Über „v“ sortieren oder filtern Sie die Liste.</li>
+            <li>In der Zeile über der Liste geben Sie ein Suchwort ein und sehen nur noch die passenden Bücher.</li>
+        </ul>
+        <p></p>
+
+    </div>
+    <div id="overlay2" class="overlay">
+        <h2>Bücher scannen</h2>
+        <p>Doppelte Bücher vermeiden: Nach Scan des ISBN-Barcodes oder Eingabe der ISBN sehen Sie bei bestehender Internetverbindung 
+        das Buch und als Status „neu“, wenn das Buch bisher nicht in der Liste ist. Über „Add“ können Sie das neue Buch aufnehmen in die Liste, aber vorher nicht vergessen, den Status in „gekauft“ zu ändern.</p>
+    </div>
+    <div id="overlay3" class="overlay">
+        <h2>Jetzt gehts los</h2>
+        <p>Die Einführung können Sie jederzeit wieder anschauen über About -> Rundgang starten.</p>
+        <p>Hilfe und Beschreibung der App gibt es im <a href="https://www.bcss.de/produkte/apps/pbl" target="_blank">Internet</a>.</p>
+    </div>
+    <!--<label>
+    <input type="checkbox" id="initHide" hidden checked="checked"> Diese Einführung beim nächsten Mal nicht mehr anzeigen
+    </label>-->
+    <div class="left"><button onclick="app.init.show(-1)">prev</button></div>
+    <div class="right"><button onclick="app.init.show(1)">next</button></div>
+    <div class="center"><button onclick="app.init.hide()">Jetzt loslegen</button></div>
+</div>

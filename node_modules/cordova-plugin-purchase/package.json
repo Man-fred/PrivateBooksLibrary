@@ -1,0 +1,82 @@
+{
+  "_from": "git+https://github.com/Man-fred/cordova-plugin-purchase.git",
+  "_id": "cordova-plugin-purchase@9.0.0",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cordova-plugin-purchase",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/Man-fred/cordova-plugin-purchase.git",
+    "rawSpec": "https://github.com/Man-fred/cordova-plugin-purchase.git",
+    "saveSpec": "git+https://github.com/Man-fred/cordova-plugin-purchase.git",
+    "fetchSpec": "https://github.com/Man-fred/cordova-plugin-purchase.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/Man-fred/cordova-plugin-purchase.git#f77ef2494804a7bfffa917bbc0270565cb675011",
+  "_spec": "https://github.com/Man-fred/cordova-plugin-purchase.git",
+  "_where": "C:\\Users\\Manfred\\Documents\\PhoneGap\\PrivateBooksLibrary",
+  "author": {
+    "name": "Jean-Christophe Hoelt",
+    "email": "hoelt@fovea.cc"
+  },
+  "bugs": {
+    "url": "https://github.com/j3k0/cordova-plugin-purchase/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-purchase",
+    "platforms": [
+      "android",
+      "ios",
+      "wp8"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova Purchase plugin for iOS, Android, Windows (AppStore, Play, UWP)",
+  "devDependencies": {
+    "acorn": "^6.3.0",
+    "babel-eslint": "^10.0.3",
+    "coveralls": "^3.0.6",
+    "eslint": "^5.16.0",
+    "eslint-config-defaults": "^9.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-react": "^7.14.3",
+    "istanbul": "^0.4.5",
+    "jshint": "^2.10.2",
+    "mocha": "^6.2.0",
+    "preprocessor": "^1.4.0",
+    "uglify-js": "^3.6.0"
+  },
+  "homepage": "https://github.com/j3k0/cordova-plugin-purchase",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-windows",
+    "cordova",
+    "phonegap",
+    "purchase",
+    "storekit",
+    "ios",
+    "android",
+    "play",
+    "appstore"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-purchase",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j3k0/cordova-plugin-purchase.git"
+  },
+  "scripts": {
+    "coverage": "make test-js-coverage",
+    "test": "make test-js"
+  },
+  "types": "./src/js/index.d.ts",
+  "version": "9.0.0"
+}

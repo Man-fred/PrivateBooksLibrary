@@ -1,0 +1,19 @@
+﻿<div id="overlay_content">
+    <div id="overlay4" class="overlay">
+        <div><button id="restoreSchliessen" class="title-button right title-close">&nbsp;</button></div>
+        <h2>{{str.restoreH2}}</h2>
+        <p id="restoreLogoutDiv">
+            <input type="checkbox" id="restoreLogout" value="true"> Vom Server ausloggen
+        </p>
+        <p>
+            <input type="checkbox" id="restoreDelete" value="true"> Bestehende Daten löschen
+        </p>
+        <p>
+            Bitte Backup auswählen
+            <input type="file" id="fileToLoad" onchange="app.pouch.restoreLoad(this.files)">
+        </p>
+        <p id="restoreErg"></p>
+        <p><button id="restoreStart" class="hide">Jetzt Daten laden</button></p>
+        <p id="restoreFinish"></p>
+    </div>
+</div>

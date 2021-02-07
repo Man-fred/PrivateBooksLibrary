@@ -1,32 +1,32 @@
 {
-  "cordova-plugin-whitelist": {
+  "cordova-plugin-compat": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-whitelist@~1.2.0"
+      "id": "cordova-plugin-compat"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-appcenter-shared": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-appcenter-shared@0.1.3"
+    },
+    "is_top_level": false,
+    "variables": {}
+  },
+  "cordova-plugin-taptic-engine": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-taptic-engine"
     },
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-console": {
+  "cordova-plugin-camera": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-console@~1.0.1"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-statusbar": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-statusbar@~1.0.1"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "phonegap-plugin-barcodescanner": {
-    "source": {
-      "type": "registry",
-      "id": "phonegap-plugin-barcodescanner@7.0.0"
+      "id": "cordova-plugin-camera@4.0.3"
     },
     "is_top_level": true,
     "variables": {}
@@ -34,23 +34,71 @@
   "cordova-plugin-file": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-file"
+      "id": "cordova-plugin-file@6.0.1"
     },
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-compat": {
+  "cordova-plugin-vibration": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-compat@^1.0.0"
+      "id": "cordova-plugin-vibration"
     },
-    "is_top_level": false,
+    "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-sqlite-2": {
+  "cordova-plugin-whitelist": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-sqlite-2"
+      "id": "cordova-plugin-whitelist@1.3.3"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-network-information": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-network-information"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-keyboard": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-keyboard"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-printer": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-printer"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-device": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "phonegap-plugin-barcodescanner": {
+    "source": {
+      "type": "registry",
+      "id": "phonegap-plugin-barcodescanner@8.1.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-purchase": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/Man-fred/cordova-plugin-purchase.git"
     },
     "is_top_level": true,
     "variables": {}

@@ -7,23 +7,39 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-console": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
     },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
-    },
-    "phonegap-plugin-barcodescanner": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
     },
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
     },
-    "cordova-plugin-sqlite-2": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
+    "cordova-plugin-keyboard": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
+    },
+    "cordova-plugin-printer": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
+    },
+    "cordova-plugin-purchase": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
+    },
+    "cordova-plugin-taptic-engine": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
     }
   },
   "dependent_plugins": {}

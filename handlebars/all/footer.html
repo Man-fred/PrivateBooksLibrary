@@ -1,0 +1,45 @@
+﻿
+<div class="dropdown">
+    <button id="mSettings" state='myDropdown1' class="dropbtn title-button">&nbsp;</button>
+    <div id="myDropdown1" class="drop-up drop-content">
+        <a class="inactive" href="#">Rechtliches</a>
+        <a id="appAgb" onclick="app.ui.show(app.ui.pageAGB)" href="#">Nutzungbedingungen</a>
+        <a id="appDS" onclick="app.ui.show(app.ui.pageDS)" href="#">Datenschutzerklärung</a>
+        <a id="appContact" onclick="app.ui.show(app.ui.pageContact)" href="#">{{str.contact}}</a>
+        <a id="appAbout" onclick="app.ui.show(app.ui.pageAbout)" href="#">Über PBL</a>
+        <a id="appSync" class="inactive" href="#">Einstellungen</a>
+        <a id="appPurchase" onclick="app.ui.show(app.ui.pagePurchase)" href="#">In-App-Käufe</a>
+        <a id="appSettings" href="#">Konfiguration</a>
+        <a class="inactive" href="#">Sontiges</a>
+        <!-- <button type="button" class="pure-button" onclick="dbRenew()">DB Renew</button>&nbsp; -->
+        <a id="appLog" onclick="app.ui.show(app.ui.pageLog)" href="#">Log</a>
+        <a id="appBackup" href="#">Backup</a>
+        <a id="appRestore" href="#">Restore</a>
+        <a id="appLogin" href="#">Login</a>
+    </div>
+</div>
+<div class="dropdown">
+    <button id="appPrint" class="dropbtn title-button"></button>
+</div>
+<div id="info-dev" class="blink">Connecting to Device</div>
+<div id="info-sync">no Server</div>
+<!--div id="matomo">
+    < !-- Matomo -- >
+<script type="text/javascript">
+    var _paq = _paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+    _paq.push(["setCookieDomain", "*.bcss.de"]);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function () {
+        var u = "https://matomo.bcss.de/";
+        _paq.push(['setTrackerUrl', u + 'piwik.php']);
+        _paq.push(['setSiteId', '1']);
+        var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+        g.type = 'text/javascript'; g.async = true; g.defer = true; g.src = u + 'piwik.js'; s.parentNode.insertBefore(g, s);
+    })();
+</script>
+<noscript><p><img src="//matomo.bcss.de/piwik.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+< !-- End Matomo Code -- >
+<div -->

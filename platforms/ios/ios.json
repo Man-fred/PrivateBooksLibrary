@@ -5,27 +5,47 @@
   },
   "config_munge": {
     "files": {
+      "*-Info.plist": {
+        "parents": {
+          "ITSAppUsesNonExemptEncryption": [
+            {
+              "xml": "<false />",
+              "count": 1,
+              "mode": "merge",
+              "id": "config.xml"
+            }
+          ],
+          "NSPhotoLibraryUsageDescription": [
+            {
+              "xml": "<string>We use photos and camera as bookcover and to scan barcodes from books</string>",
+              "count": 1,
+              "mode": "merge",
+              "id": "config.xml"
+            }
+          ],
+          "NSCameraUsageDescription": [
+            {
+              "xml": "<string>We use photos and camera as bookcover and to scan barcodes from books</string>",
+              "count": 1,
+              "mode": "merge",
+              "id": "config.xml"
+            }
+          ]
+        }
+      },
       "config.xml": {
         "parents": {
           "/*": [
             {
-              "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
+              "xml": "<feature name=\"Camera\"><param name=\"ios-package\" value=\"CDVCamera\" /></feature>",
               "count": 1
             },
             {
-              "xml": "<feature name=\"StatusBar\"><param name=\"ios-package\" value=\"CDVStatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "xml": "<preference name=\"CameraUsesGeolocation\" value=\"false\" />",
               "count": 1
             },
             {
-              "xml": "<preference name=\"StatusBarOverlaysWebView\" value=\"true\" />",
-              "count": 1
-            },
-            {
-              "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"BarcodeScanner\"><param name=\"ios-package\" value=\"CDVBarcodeScanner\" /></feature>",
+              "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
               "count": 1
             },
             {
@@ -33,17 +53,31 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"SQLitePlugin\"><param name=\"ios-package\" value=\"SQLitePlugin\" /></feature>",
+              "xml": "<feature name=\"Keyboard\"><param name=\"ios-package\" onload=\"true\" value=\"CDVKeyboard\" /></feature>",
               "count": 1
-            }
-          ]
-        }
-      },
-      "*-Info.plist": {
-        "parents": {
-          "NSCameraUsageDescription": [
+            },
             {
-              "xml": "<string> </string>",
+              "xml": "<feature name=\"NetworkStatus\"><param name=\"ios-package\" value=\"CDVConnection\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Printer\"><param name=\"ios-package\" value=\"APPPrinter\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"InAppPurchase\"><param name=\"ios-package\" value=\"InAppPurchase\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"TapticEngine\"><param name=\"ios-package\" value=\"TapticEngine\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"Vibration\"><param name=\"ios-package\" value=\"CDVVibration\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"BarcodeScanner\"><param name=\"ios-package\" value=\"CDVBarcodeScanner\" /></feature>",
               "count": 1
             }
           ]
@@ -52,61 +86,80 @@
     }
   },
   "installed_plugins": {
-    "cordova-plugin-console": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
-    },
-    "phonegap-plugin-barcodescanner": {
-      "CAMERA_USAGE_DESCRIPTION": " ",
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
-    },
-    "cordova-plugin-compat": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
-    "cordova-plugin-sqlite-2": {
-      "PACKAGE_NAME": "de.bcss.phonegap.PrivateBooksLibrary"
+    "cordova-plugin-keyboard": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-printer": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-purchase": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-taptic-engine": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     }
   },
   "dependent_plugins": {},
   "modules": [
     {
-      "id": "cordova-plugin-console.console",
-      "file": "plugins/cordova-plugin-console/www/console-via-logger.js",
-      "pluginId": "cordova-plugin-console",
+      "id": "cordova-plugin-camera.Camera",
+      "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
+      "pluginId": "cordova-plugin-camera",
       "clobbers": [
-        "console"
+        "Camera"
       ]
     },
     {
-      "id": "cordova-plugin-console.logger",
-      "file": "plugins/cordova-plugin-console/www/logger.js",
-      "pluginId": "cordova-plugin-console",
+      "id": "cordova-plugin-camera.CameraPopoverOptions",
+      "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
+      "pluginId": "cordova-plugin-camera",
       "clobbers": [
-        "cordova.logger"
+        "CameraPopoverOptions"
       ]
     },
     {
-      "id": "cordova-plugin-statusbar.statusbar",
-      "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-      "pluginId": "cordova-plugin-statusbar",
+      "id": "cordova-plugin-camera.camera",
+      "file": "plugins/cordova-plugin-camera/www/Camera.js",
+      "pluginId": "cordova-plugin-camera",
       "clobbers": [
-        "window.StatusBar"
+        "navigator.camera"
       ]
     },
     {
-      "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
-      "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
-      "pluginId": "phonegap-plugin-barcodescanner",
+      "id": "cordova-plugin-camera.CameraPopoverHandle",
+      "file": "plugins/cordova-plugin-camera/www/ios/CameraPopoverHandle.js",
+      "pluginId": "cordova-plugin-camera",
       "clobbers": [
-        "cordova.plugins.barcodeScanner"
+        "CameraPopoverHandle"
+      ]
+    },
+    {
+      "id": "cordova-plugin-device.device",
+      "file": "plugins/cordova-plugin-device/www/device.js",
+      "pluginId": "cordova-plugin-device",
+      "clobbers": [
+        "device"
       ]
     },
     {
@@ -283,21 +336,83 @@
       "runs": true
     },
     {
-      "id": "cordova-plugin-sqlite-2.sqlitePlugin",
-      "file": "plugins/cordova-plugin-sqlite-2/dist/sqlite-plugin.js",
-      "pluginId": "cordova-plugin-sqlite-2",
+      "id": "cordova-plugin-keyboard.keyboard",
+      "file": "plugins/cordova-plugin-keyboard/www/keyboard.js",
+      "pluginId": "cordova-plugin-keyboard",
       "clobbers": [
-        "sqlitePlugin"
+        "window.Keyboard"
+      ]
+    },
+    {
+      "id": "cordova-plugin-network-information.network",
+      "file": "plugins/cordova-plugin-network-information/www/network.js",
+      "pluginId": "cordova-plugin-network-information",
+      "clobbers": [
+        "navigator.connection",
+        "navigator.network.connection"
+      ]
+    },
+    {
+      "id": "cordova-plugin-network-information.Connection",
+      "file": "plugins/cordova-plugin-network-information/www/Connection.js",
+      "pluginId": "cordova-plugin-network-information",
+      "clobbers": [
+        "Connection"
+      ]
+    },
+    {
+      "id": "cordova-plugin-printer.Printer",
+      "file": "plugins/cordova-plugin-printer/www/printer.js",
+      "pluginId": "cordova-plugin-printer",
+      "clobbers": [
+        "plugin.printer",
+        "cordova.plugins.printer"
+      ]
+    },
+    {
+      "id": "cordova-plugin-purchase.InAppPurchase",
+      "file": "plugins/cordova-plugin-purchase/www/store-ios.js",
+      "pluginId": "cordova-plugin-purchase",
+      "clobbers": [
+        "store"
+      ]
+    },
+    {
+      "id": "cordova-plugin-taptic-engine.TapticEngine",
+      "file": "plugins/cordova-plugin-taptic-engine/www/TapticEngine.js",
+      "pluginId": "cordova-plugin-taptic-engine",
+      "clobbers": [
+        "TapticEngine"
+      ]
+    },
+    {
+      "id": "cordova-plugin-vibration.notification",
+      "file": "plugins/cordova-plugin-vibration/www/vibration.js",
+      "pluginId": "cordova-plugin-vibration",
+      "merges": [
+        "navigator"
+      ]
+    },
+    {
+      "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+      "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+      "pluginId": "phonegap-plugin-barcodescanner",
+      "clobbers": [
+        "cordova.plugins.barcodeScanner"
       ]
     }
   ],
   "plugin_metadata": {
-    "cordova-plugin-console": "1.0.7",
-    "cordova-plugin-statusbar": "1.0.1",
-    "cordova-plugin-whitelist": "1.2.2",
-    "phonegap-plugin-barcodescanner": "7.0.0",
-    "cordova-plugin-compat": "1.2.0",
-    "cordova-plugin-file": "4.3.3",
-    "cordova-plugin-sqlite-2": "1.0.4"
+    "cordova-plugin-camera": "4.0.3",
+    "cordova-plugin-device": "2.0.3",
+    "cordova-plugin-file": "6.0.1",
+    "cordova-plugin-keyboard": "1.2.0",
+    "cordova-plugin-network-information": "2.0.1",
+    "cordova-plugin-printer": "0.7.3",
+    "cordova-plugin-purchase": "9.0.0",
+    "cordova-plugin-taptic-engine": "2.1.0",
+    "cordova-plugin-vibration": "3.1.0",
+    "cordova-plugin-whitelist": "1.3.3",
+    "phonegap-plugin-barcodescanner": "8.1.0"
   }
 }

@@ -1,25 +1,47 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-        "id": "cordova-plugin-statusbar.statusbar",
-        "pluginId": "cordova-plugin-statusbar",
+        "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
+        "id": "cordova-plugin-camera.Camera",
+        "pluginId": "cordova-plugin-camera",
         "clobbers": [
-            "window.StatusBar"
+            "Camera"
         ]
     },
     {
-        "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
-        "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
-        "pluginId": "phonegap-plugin-barcodescanner",
+        "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
+        "id": "cordova-plugin-camera.CameraPopoverOptions",
+        "pluginId": "cordova-plugin-camera",
         "clobbers": [
-            "cordova.plugins.barcodeScanner"
+            "CameraPopoverOptions"
         ]
     },
     {
-        "file": "plugins/phonegap-plugin-barcodescanner/src/browser/BarcodeScannerProxy.js",
-        "id": "phonegap-plugin-barcodescanner.BarcodeScannerProxy",
-        "pluginId": "phonegap-plugin-barcodescanner",
+        "file": "plugins/cordova-plugin-camera/www/Camera.js",
+        "id": "cordova-plugin-camera.camera",
+        "pluginId": "cordova-plugin-camera",
+        "clobbers": [
+            "navigator.camera"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-camera/src/browser/CameraProxy.js",
+        "id": "cordova-plugin-camera.CameraProxy",
+        "pluginId": "cordova-plugin-camera",
+        "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-device/www/device.js",
+        "id": "cordova-plugin-device.device",
+        "pluginId": "cordova-plugin-device",
+        "clobbers": [
+            "device"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-device/src/browser/DeviceProxy.js",
+        "id": "cordova-plugin-device.DeviceProxy",
+        "pluginId": "cordova-plugin-device",
         "runs": true
     },
     {
@@ -202,24 +224,98 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-plugin-sqlite-2/dist/sqlite-plugin.js",
-        "id": "cordova-plugin-sqlite-2.sqlitePlugin",
-        "pluginId": "cordova-plugin-sqlite-2",
+        "file": "plugins/cordova-plugin-keyboard/www/keyboard.js",
+        "id": "cordova-plugin-keyboard.keyboard",
+        "pluginId": "cordova-plugin-keyboard",
         "clobbers": [
-            "sqlitePlugin"
+            "window.Keyboard"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-network-information/www/network.js",
+        "id": "cordova-plugin-network-information.network",
+        "pluginId": "cordova-plugin-network-information",
+        "clobbers": [
+            "navigator.connection",
+            "navigator.network.connection"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-network-information/www/Connection.js",
+        "id": "cordova-plugin-network-information.Connection",
+        "pluginId": "cordova-plugin-network-information",
+        "clobbers": [
+            "Connection"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-network-information/src/browser/network.js",
+        "id": "cordova-plugin-network-information.NetworkInfoProxy",
+        "pluginId": "cordova-plugin-network-information",
+        "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-printer/www/printer.js",
+        "id": "cordova-plugin-printer.Printer",
+        "pluginId": "cordova-plugin-printer",
+        "clobbers": [
+            "plugin.printer",
+            "cordova.plugins.printer"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-taptic-engine/www/TapticEngine.js",
+        "id": "cordova-plugin-taptic-engine.TapticEngine",
+        "pluginId": "cordova-plugin-taptic-engine",
+        "clobbers": [
+            "TapticEngine"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-vibration/src/browser/Vibration.js",
+        "id": "cordova-plugin-vibration.Vibration",
+        "pluginId": "cordova-plugin-vibration",
+        "merges": [
+            "navigator"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-vibration/www/vibration.js",
+        "id": "cordova-plugin-vibration.notification",
+        "pluginId": "cordova-plugin-vibration",
+        "merges": [
+            "navigator"
+        ]
+    },
+    {
+        "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+        "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+        "pluginId": "phonegap-plugin-barcodescanner",
+        "clobbers": [
+            "cordova.plugins.barcodeScanner"
+        ]
+    },
+    {
+        "file": "plugins/phonegap-plugin-barcodescanner/src/browser/BarcodeScannerProxy.js",
+        "id": "phonegap-plugin-barcodescanner.BarcodeScannerProxy",
+        "pluginId": "phonegap-plugin-barcodescanner",
+        "runs": true
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-console": "1.0.7",
-    "cordova-plugin-statusbar": "1.0.1",
-    "cordova-plugin-whitelist": "1.2.2",
-    "phonegap-plugin-barcodescanner": "7.0.0",
-    "cordova-plugin-compat": "1.2.0",
-    "cordova-plugin-file": "4.3.3",
-    "cordova-plugin-sqlite-2": "1.0.4"
+    "cordova-plugin-camera": "4.0.3",
+    "cordova-plugin-device": "2.0.2",
+    "cordova-plugin-file": "6.0.1",
+    "cordova-plugin-keyboard": "1.2.0",
+    "cordova-plugin-network-information": "2.0.1",
+    "cordova-plugin-printer": "0.7.3",
+    "cordova-plugin-taptic-engine": "2.1.0",
+    "cordova-plugin-vibration": "3.1.0",
+    "cordova-plugin-whitelist": "1.3.3",
+    "phonegap-plugin-barcodescanner": "8.1.0",
+    "cordova-plugin-purchase": "9.0.0"
 }
 // BOTTOM OF METADATA
 });
