@@ -1,3 +1,5 @@
+﻿/* global app, store */
+
 ﻿/*
     https://github.com/j3k0/cordova-plugin-purchase
 */
@@ -43,7 +45,7 @@ define(function (require) {
                         {
                             id: "inappabo1",
                             alias: "sync1year",
-                            type: store.PAID_SUBSCRIPTION, // Windows: Subscription
+                            type: store.PAID_SUBSCRIPTION // Windows: Subscription
                         }
                     ]);
                 }

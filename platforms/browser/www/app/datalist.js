@@ -1,3 +1,5 @@
+/* global app */
+
 ﻿define(function (require) {
 
     var datalist = {

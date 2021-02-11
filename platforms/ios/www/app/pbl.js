@@ -1,3 +1,5 @@
+/* global app, Connection */
+
 define(function (require) {
     var pbl = {
         currentApp: "pbl_v1",
@@ -19,8 +21,6 @@ define(function (require) {
 
                 document.addEventListener('deviceready', this.onDeviceReady, false);
                 window.addEventListener("resize", this.onWindowLoadResize);
-                pbl.orientationUp = true;
-                pbl.orientationLeft = true;
                 if (window.DeviceOrientationEvent) {
                     window.addEventListener("deviceorientation", this.onWindowOrientation);
                 }
@@ -39,11 +39,13 @@ define(function (require) {
                     require(['./data'], function (data) {
                         data.initialize(pbl.myApp);
                         pbl.data = data;
+                        pbl.source += '~data';
                         pbl.onDeviceReady();
                     });
                     require(['./datalist'], function (datalist) {
                         datalist.initialize(pbl);
                         pbl.datalist = datalist;
+                        pbl.source += '~datalist';
                         pbl.onDeviceReady();
                     });
                 });
@@ -56,26 +58,31 @@ define(function (require) {
                     //console.log('pouch');
                     require(['./purchase'], function (purchase) {
                         pbl.purchase = purchase;
+                        pbl.source += '~purchase';
                         pbl.onDeviceReady();
                     });
                 });
                 require(['./ui'], function (ui) {
                     ui.initialize(pbl);
                     pbl.ui = ui;
+                    pbl.source += '~ui';
                     pbl.onDeviceReady();
                 });
                 require(['./book'], function (book) {
                     book.initialize(pbl);
                     pbl.book = book;
+                    pbl.source += '~book';
                     pbl.onDeviceReady();
                 });
                 require(['./search'], function (search) {
                     search.initialize();
                     pbl.search = search;
+                    pbl.source += '~search';
                     pbl.onDeviceReady();
                 });
                 require(['./info'], function (info) {
                     pbl.info = info;
+                    pbl.source += '~info';
                     pbl.onDeviceReady();
                 });
             }
@@ -148,7 +155,6 @@ define(function (require) {
         onWindowLoadResize: function () {
             // @xs < 568
             // @xxs < 458
-            pbl.orientation = window.orientation;
             var viewportTemp = $(window).width();
             if (viewportTemp < 568 && pbl.viewportXS >= 568) {
                 //$("#partner").html('');
@@ -166,7 +172,7 @@ define(function (require) {
                 $('#appTitle').html("Private Books Library");
                 pbl.viewportXXS = viewportTemp;
             }
-            var viewportHeight = $(window).height()
+            var viewportHeight = $(window).height();
             if (viewportHeight !== pbl.viewportHeight) {
                 viewportHeight = viewportHeight - 2 * $('#footer').height();
                 document.getElementById("myDropdown1").style.maxHeight = viewportHeight + 'px';
@@ -182,9 +188,10 @@ define(function (require) {
             // beta: front back motion
             var frontToBack = event.beta;
             
-            pbl.orientationPortrait = $(window).width() < $(window).height();
-            pbl.info.setDev(window.orientation);
-           if (pbl.orientation != window.orientation) {
+             //var orientationUp = (event.beta > 0 && event.beta < 180);
+             //var orientationleft = (event.gamma > -90 && event.gamma < 90);
+            //pbl.orientationPortrait = $(window).width() < $(window).height();
+           if (pbl.orientation !== window.orientation) {
                pbl.orientation = window.orientation;
                //ios iPhone 11
                document.documentElement.style.setProperty('--safe-bottom', "env(safe-area-inset-bottom)");
@@ -206,7 +213,13 @@ define(function (require) {
                    break;
 
                }
-           }
+               pbl.info.setDev("Orientierung: "+pbl.orientation
+                        +","+document.documentElement.style.getPropertyValue('--safe-left')
+                        +"-"+document.documentElement.style.getPropertyValue('--safe-top')
+                        +"-"+document.documentElement.style.getPropertyValue('--safe-right')
+                        +"-"+document.documentElement.style.getPropertyValue('--safe-bottom'));
+
+            }
         },
         onPause: function () {
             // im Hintergrund offline gehen??
@@ -298,7 +311,7 @@ define(function (require) {
 
              function dbRenew(destroy = false, create = true) {
                  if (window.confirm('lokale Datenbank löschen?')) {
-                     db.destroy().then(function () {
+                     app.pouch.db.destroy().then(function () {
                          // database destroyed
                          dbNew();
                      }).catch(function (err) {

@@ -1,3 +1,5 @@
+﻿/* global app, admob */
+
 ﻿/*
     ( https://github.com/appfeel/phonegap-admob )
     https://github.com/admob-google/admob-phonegap

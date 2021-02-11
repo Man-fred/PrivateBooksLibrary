@@ -1,3 +1,5 @@
+﻿/* global app */
+
 ﻿/*
     https://github.com/j3k0/cordova-plugin-purchase
 */
@@ -45,7 +47,7 @@ define(function (require) {
                                 // neues Passwort speichern 
                                 app.pouch.passwordChange(password.new1password);
                                 // und Seite schließen
-                                pbl.data.show('**_login' + pbl.pouch.dbIdPrivate, 'login');
+                                app.data.show('**_login' + app.pouch.dbIdPrivate, 'login');
                             }
                             //alert(this.response);
                         }
@@ -72,7 +74,7 @@ define(function (require) {
             });
         },
         new2input: function () {
-            password.new2password = password.new2pass.value
+            password.new2password = password.new2pass.value;
             if (password.new1password === password.new2password) {
                 password.meter2.value = 5;
             } else {

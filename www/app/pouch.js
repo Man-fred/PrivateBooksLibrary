@@ -22,7 +22,7 @@
         dbRemoteA: null, //couchdb attachments,
         dbSync: null, //sync-handle, used to stop syncing,
         dbSyncA: null, //sync-handle, used to stop syncing,
-        dbReady: 3,
+        dbReady: 2, //3,
         appResult: [],
 
         initialize: function (pbl) {
@@ -188,8 +188,8 @@
                     console.info(err);
                 });
             }
-            pouch.dbA = new PouchDB(pouch.localdbA, {revs_limit: 1, auto_compaction: true});
             // */
+            pouch.dbA = new PouchDB(pouch.localdbA, {revs_limit: 1, auto_compaction: true});
         },
         dbNew: function () {
             //Test for browser webSQL compatibility

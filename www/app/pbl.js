@@ -39,11 +39,13 @@ define(function (require) {
                     require(['./data'], function (data) {
                         data.initialize(pbl.myApp);
                         pbl.data = data;
+                        pbl.source += '~data';
                         pbl.onDeviceReady();
                     });
                     require(['./datalist'], function (datalist) {
                         datalist.initialize(pbl);
                         pbl.datalist = datalist;
+                        pbl.source += '~datalist';
                         pbl.onDeviceReady();
                     });
                 });
@@ -56,26 +58,31 @@ define(function (require) {
                     //console.log('pouch');
                     require(['./purchase'], function (purchase) {
                         pbl.purchase = purchase;
+                        pbl.source += '~purchase';
                         pbl.onDeviceReady();
                     });
                 });
                 require(['./ui'], function (ui) {
                     ui.initialize(pbl);
                     pbl.ui = ui;
+                    pbl.source += '~ui';
                     pbl.onDeviceReady();
                 });
                 require(['./book'], function (book) {
                     book.initialize(pbl);
                     pbl.book = book;
+                    pbl.source += '~book';
                     pbl.onDeviceReady();
                 });
                 require(['./search'], function (search) {
                     search.initialize();
                     pbl.search = search;
+                    pbl.source += '~search';
                     pbl.onDeviceReady();
                 });
                 require(['./info'], function (info) {
                     pbl.info = info;
+                    pbl.source += '~info';
                     pbl.onDeviceReady();
                 });
             }

@@ -19,9 +19,6 @@
     "cordova-plugin-keyboard": {
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     },
-    "cordova-plugin-network-information": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
-    },
     "cordova-plugin-printer": {
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     },
@@ -39,6 +36,9 @@
     },
     "phonegap-plugin-barcodescanner": {
       "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "io.cordova.myapp387c96"
+    },
+    "cordova-plugin-network-information": {
       "PACKAGE_NAME": "io.cordova.myapp387c96"
     }
   },

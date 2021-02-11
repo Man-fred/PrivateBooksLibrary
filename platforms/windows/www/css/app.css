@@ -4,10 +4,16 @@
   --safe-left: 0px;
   --safe-right: 0px;
   --safe-bottom: 0px;
-  --safe-top: env(safe-area-inset-top);
-  --safe-left: env(safe-area-inset-left);
-  --safe-right: env(safe-area-inset-right);
-  --safe-bottom: env(safe-area-inset-bottom);
+  /*
+    --safe-top: env(safe-area-inset-top);
+    --safe-left: env(safe-area-inset-left);
+    --safe-right: env(safe-area-inset-right);
+    --safe-bottom: env(safe-area-inset-bottom);
+    --safe-top: env(safe-area-inset-top);
+    --safe-left: env(safe-area-inset-left);
+    --safe-right: env(safe-area-inset-right);
+    --safe-bottom: env(safe-area-inset-bottom);
+    */
 }
 @keyframes spin {
   0% {
@@ -103,11 +109,11 @@ footer {
 @supports (-webkit-overflow-scrolling: touch) {
   .header {
     /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 */
-    padding-top: 20px;
-    /* Status bar height on iOS 11.0 */
-    padding-top: calc(constant(safe-area-inset-top) +  0px);
-    /* Status bar height on iOS 11+ */
+    /* Status bar height on iOS 10 
+                padding-top: @top-padding-ios + @add;
+                /* Status bar height on iOS 11.0 
+                padding-top: calc( ~"constant(safe-area-inset-top) + " @add );
+                /* Status bar height on iOS 11+ */
     padding-top: calc(var(--safe-top) + 0px);
   }
 }
@@ -144,11 +150,11 @@ main3 {
 @supports (-webkit-overflow-scrolling: touch) {
   #iosStatusbar {
     /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 */
-    height: 20px;
-    /* Status bar height on iOS 11.0 */
-    height: constant(safe-area-inset-left);
-    /* Status bar height on iOS 11+ */
+    /* Status bar height on iOS 10 /
+        height: @top-padding-ios;
+        /* Status bar height on iOS 11.0 /
+        height: constant(safe-area-inset-left);
+        /* Status bar height on iOS 11+ */
     height: var(--safe-top);
   }
 }
@@ -173,11 +179,11 @@ main3 {
 @supports (-webkit-overflow-scrolling: touch) {
   #top {
     /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 */
-    padding-top: 20px;
-    /* Status bar height on iOS 11.0 */
-    padding-top: calc(constant(safe-area-inset-top) +  0px);
-    /* Status bar height on iOS 11+ */
+    /* Status bar height on iOS 10 
+                padding-top: @top-padding-ios + @add;
+                /* Status bar height on iOS 11.0 
+                padding-top: calc( ~"constant(safe-area-inset-top) + " @add );
+                /* Status bar height on iOS 11+ */
     padding-top: calc(var(--safe-top) + 0px);
   }
 }
@@ -379,18 +385,18 @@ div.container {
   float: left;
   margin: 0;
   padding: 0 0 var(--safe-bottom) 0;
-  padding-top: 60px;
-  padding-top: calc(var(--safe-top) + 60px);
+  padding-top: 112px;
+  padding-top: calc(var(--safe-top) + 112px);
 }
 @supports (-webkit-overflow-scrolling: touch) {
   #singledata {
     /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 */
-    padding-top: 80px;
-    /* Status bar height on iOS 11.0 */
-    padding-top: calc(constant(safe-area-inset-top) +  60px);
-    /* Status bar height on iOS 11+ */
-    padding-top: calc(var(--safe-top) + 60px);
+    /* Status bar height on iOS 10 
+                padding-top: @top-padding-ios + @add;
+                /* Status bar height on iOS 11.0 
+                padding-top: calc( ~"constant(safe-area-inset-top) + " @add );
+                /* Status bar height on iOS 11+ */
+    padding-top: calc(var(--safe-top) + 112px);
   }
 }
 #bc1,
@@ -416,8 +422,8 @@ div.container {
 }
 #datalist {
   padding: 0 0 52px 0;
-  padding-top: 60px;
-  padding-top: calc(var(--safe-top) + 60px);
+  padding-top: 112px;
+  padding-top: calc(var(--safe-top) + 112px);
   /*margin-left: 34em;
     border-left: 1px solid gray;*/
   overflow: auto;
@@ -425,12 +431,12 @@ div.container {
 @supports (-webkit-overflow-scrolling: touch) {
   #datalist {
     /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 */
-    padding-top: 80px;
-    /* Status bar height on iOS 11.0 */
-    padding-top: calc(constant(safe-area-inset-top) +  60px);
-    /* Status bar height on iOS 11+ */
-    padding-top: calc(var(--safe-top) + 60px);
+    /* Status bar height on iOS 10 
+                padding-top: @top-padding-ios + @add;
+                /* Status bar height on iOS 11.0 
+                padding-top: calc( ~"constant(safe-area-inset-top) + " @add );
+                /* Status bar height on iOS 11+ */
+    padding-top: calc(var(--safe-top) + 112px);
   }
 }
 #datalistScroll {
@@ -845,11 +851,11 @@ This is the parent `<div>` that contains the menu and the content area.
 @supports (-webkit-overflow-scrolling: touch) {
   #layout {
     /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 */
-    padding-left: 20px;
-    /* Status bar height on iOS 11.0 */
-    padding-left: calc(constant(safe-area-inset-left) +  0px);
-    /* Status bar height on iOS 11+ */
+    /* Status bar height on iOS 10 /
+                padding-left: @top-padding-ios + @add;
+                /* Status bar height on iOS 11.0 /
+                padding-left: calc( ~"constant(safe-area-inset-left) + " @add );
+                /* Status bar height on iOS 11+ */
     padding-left: calc(var(--safe-left) + 0px);
   }
 }
@@ -863,11 +869,11 @@ This is the parent `<div>` that contains the menu and the content area.
   @supports (-webkit-overflow-scrolling: touch) {
     #layout {
       /* CSS specific to iOS devices */
-      /* Status bar height on iOS 10 */
-      padding-left: 170px;
-      /* Status bar height on iOS 11.0 */
-      padding-left: calc(constant(safe-area-inset-left) +  150px);
-      /* Status bar height on iOS 11+ */
+      /* Status bar height on iOS 10 /
+                padding-left: @top-padding-ios + @add;
+                /* Status bar height on iOS 11.0 /
+                padding-left: calc( ~"constant(safe-area-inset-left) + " @add );
+                /* Status bar height on iOS 11+ */
       padding-left: calc(var(--safe-left) + 150px);
     }
   }
@@ -923,11 +929,11 @@ appears on the left side of the page.
   @supports (-webkit-overflow-scrolling: touch) {
     #menu {
       /* CSS specific to iOS devices */
-      /* Status bar height on iOS 10 */
-      padding-top: 20px;
-      /* Status bar height on iOS 11.0 */
-      padding-top: calc(constant(safe-area-inset-top) +  0px);
-      /* Status bar height on iOS 11+ */
+      /* Status bar height on iOS 10 
+                padding-top: @top-padding-ios + @add;
+                /* Status bar height on iOS 11.0 
+                padding-top: calc( ~"constant(safe-area-inset-top) + " @add );
+                /* Status bar height on iOS 11+ */
       padding-top: calc(var(--safe-top) + 0px);
     }
   }
@@ -1043,11 +1049,11 @@ small screens.
   @supports (-webkit-overflow-scrolling: touch) {
     .menu-link {
       /* CSS specific to iOS devices */
-      /* Status bar height on iOS 10 */
-      padding-top: 42px;
-      /* Status bar height on iOS 11.0 */
-      padding-top: calc(constant(safe-area-inset-top) +  22px);
-      /* Status bar height on iOS 11+ */
+      /* Status bar height on iOS 10 
+                padding-top: @top-padding-ios + @add;
+                /* Status bar height on iOS 11.0 
+                padding-top: calc( ~"constant(safe-area-inset-top) + " @add );
+                /* Status bar height on iOS 11+ */
       padding-top: calc(var(--safe-top) + 22px);
     }
   }
@@ -1118,11 +1124,11 @@ small screens.
 @supports (-webkit-overflow-scrolling: touch) {
   #mySearchAZ {
     /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 */
-    top: 72px;
-    /* Status bar height on iOS 11.0 */
-    top: calc(constant(safe-area-inset-top) +  52px);
-    /* Status bar height on iOS 11+ */
+    /* Status bar height on iOS 10 /
+                top: @top-padding-ios + @add;
+                /* Status bar height on iOS 11.0 /
+                top: calc( ~"constant(safe-area-inset-top) + " @add );
+                /* Status bar height on iOS 11+ */
     top: calc(var(--safe-top) + 52px);
   }
 }

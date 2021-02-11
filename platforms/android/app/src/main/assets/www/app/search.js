@@ -1,3 +1,5 @@
+/* global app, Camera */
+
 ﻿define(function (require) {
 
     var search = {
@@ -64,6 +66,15 @@
                 app.ui.show_page1(0,'books');
             }
             //return false;
+        },
+        series_books: function (w) {
+            // ean / isbn anpassen
+            if (!w) {
+                w = $('#series_name').val();
+            }
+            if (w) {
+                search.isbn(6, w);
+            }
         },
         author_books: function (w) {
             // ean / isbn anpassen

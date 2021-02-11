@@ -1,3 +1,5 @@
+﻿/* global app, Connection */
+
 ﻿define(function (require) {
 
     var info = {

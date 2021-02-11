@@ -1,3 +1,5 @@
+/* global app */
+
 ﻿define(function () { //  
 
     var pouch = {
@@ -20,7 +22,7 @@
         dbRemoteA: null, //couchdb attachments,
         dbSync: null, //sync-handle, used to stop syncing,
         dbSyncA: null, //sync-handle, used to stop syncing,
-        dbReady: 3,
+        dbReady: 2, //3,
         appResult: [],
 
         initialize: function (pbl) {
@@ -177,7 +179,7 @@
         },
         dbOpen: function () {
             pouch.db = new PouchDB(pouch.localdb, {revs_limit: 10, auto_compaction: true});
-            // * Aufräumen alter Datenbanken in Alpha, erledigt
+            /* Aufräumen alter Datenbanken in Alpha, erledigt
             if (cordova.platformId === "ios") {
                 pouch.dbA = new PouchDB('PBL001.db', {revs_limit: 1, auto_compaction: true});
                 pouch.dbA.destroy().then(function (response) {
@@ -186,8 +188,8 @@
                     console.info(err);
                 });
             }
-            pouch.dbA = new PouchDB(pouch.localdbA, {revs_limit: 1, auto_compaction: true});
             // */
+            pouch.dbA = new PouchDB(pouch.localdbA, {revs_limit: 1, auto_compaction: true});
         },
         dbNew: function () {
             //Test for browser webSQL compatibility
@@ -481,7 +483,7 @@
                     }
                 }
             }).catch(function (err) {
-                app.ui.message(app.lang.error + ": " + doc.name, 'error');
+                app.ui.message(app.lang.error + ": " + err, 'error');
                 console.error(err);
             });
 

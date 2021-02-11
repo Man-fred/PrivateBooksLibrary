@@ -1,4 +1,6 @@
-﻿define(function (require) {
+﻿/* global app, Connection */
+
+define(function (require) {
     var pbl = {
         currentApp: "pbl_v1",
         once: true,
@@ -37,11 +39,13 @@
                     require(['./data'], function (data) {
                         data.initialize(pbl.myApp);
                         pbl.data = data;
+                        pbl.source += '~data';
                         pbl.onDeviceReady();
                     });
                     require(['./datalist'], function (datalist) {
                         datalist.initialize(pbl);
                         pbl.datalist = datalist;
+                        pbl.source += '~datalist';
                         pbl.onDeviceReady();
                     });
                 });
@@ -54,26 +58,31 @@
                     //console.log('pouch');
                     require(['./purchase'], function (purchase) {
                         pbl.purchase = purchase;
+                        pbl.source += '~purchase';
                         pbl.onDeviceReady();
                     });
                 });
                 require(['./ui'], function (ui) {
                     ui.initialize(pbl);
                     pbl.ui = ui;
+                    pbl.source += '~ui';
                     pbl.onDeviceReady();
                 });
                 require(['./book'], function (book) {
                     book.initialize(pbl);
                     pbl.book = book;
+                    pbl.source += '~book';
                     pbl.onDeviceReady();
                 });
                 require(['./search'], function (search) {
                     search.initialize();
                     pbl.search = search;
+                    pbl.source += '~search';
                     pbl.onDeviceReady();
                 });
                 require(['./info'], function (info) {
                     pbl.info = info;
+                    pbl.source += '~info';
                     pbl.onDeviceReady();
                 });
             }
@@ -163,7 +172,7 @@
                 $('#appTitle').html("Private Books Library");
                 pbl.viewportXXS = viewportTemp;
             }
-            var viewportHeight = $(window).height()
+            var viewportHeight = $(window).height();
             if (viewportHeight !== pbl.viewportHeight) {
                 viewportHeight = viewportHeight - 2 * $('#footer').height();
                 document.getElementById("myDropdown1").style.maxHeight = viewportHeight + 'px';
@@ -302,7 +311,7 @@
 
              function dbRenew(destroy = false, create = true) {
                  if (window.confirm('lokale Datenbank löschen?')) {
-                     db.destroy().then(function () {
+                     app.pouch.db.destroy().then(function () {
                          // database destroyed
                          dbNew();
                      }).catch(function (err) {

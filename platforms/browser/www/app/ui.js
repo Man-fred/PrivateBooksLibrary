@@ -1,3 +1,5 @@
+/* global app, MSApp */
+
 //https://purecss.io/layouts/side-menu/#
 /*
 menuLink.onclick = function (e) {
@@ -41,7 +43,7 @@ define(function (require) {
         pageAGB: document.getElementById("pageAGB"),
         pageDS: document.getElementById("pageDS"),
         pageContact: document.getElementById("pageContact"),
-        page: this.page1,
+        page: document.getElementById("page1"),
         seite_ersatz: false,
         verlauf: [],
         scrollY: 0,
@@ -262,9 +264,9 @@ define(function (require) {
             window.scrollTo(0, y);
         },
         getScrollY: function () {
-            if (self.pageYOffset) // all except Explorer
+            if (window.pageYOffset) // all except Explorer
             {
-                this.scrollY = self.pageYOffset;
+                this.scrollY = window.pageYOffset;
             } else if (document.documentElement && document.documentElement.scrollTop)
             // Explorer 6 Strict
             {

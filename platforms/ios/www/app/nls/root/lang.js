@@ -57,6 +57,7 @@
     "selAll": "Show all",
     "series": "Series",
     "series2": "Series",
+    "seriesSearch": "Search series",
     "settings": "Settings",
     "showDeleted": "Show deleted",
     "state": "State",

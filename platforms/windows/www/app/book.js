@@ -1,3 +1,5 @@
+﻿/* global app */
+
 ﻿define(function (require) {
 
     var book = {
@@ -184,8 +186,8 @@
             // Check if only digits
             var ValidChars = "0123456789";
             for (i = 0; i < eanCode.length; i++) {
-                digit = eanCode.charAt(i);
-                if (ValidChars.indexOf(digit) == -1) {
+                var digit = eanCode.charAt(i);
+                if (ValidChars.indexOf(digit) === -1) {
                     return '';
                 }
             }

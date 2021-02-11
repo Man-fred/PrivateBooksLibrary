@@ -1,7 +1,7 @@
 ﻿{
-        "manifest_version": 1002,
+        "manifest_version": 1003,
         "name": "PrivateBooksLibrary",
-        "version": "0.10.2",
+        "version": "0.10.3",
         "short_name": "PBL",
         "icons": [{
             "src": "img/icons/icon-60-2x.png",

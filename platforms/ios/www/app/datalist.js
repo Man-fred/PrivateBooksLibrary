@@ -1,3 +1,5 @@
+/* global app */
+
 ﻿define(function (require) {
 
     var datalist = {
@@ -300,7 +302,7 @@
                                 appResult[seite].rows[i].doc['series'] && appResult[seite].rows[i].doc['series'].toUpperCase().normalize('NFC').indexOf(filter) > -1 ||
                                 appResult[seite].rows[i].doc['memo'] && appResult[seite].rows[i].doc['memo'].toUpperCase().normalize('NFC').indexOf(filter) > -1)
                         ) {
-                            var test = appResult[seite].rows[i].doc['name'].toUpperCase();
+                            //var test = appResult[seite].rows[i].doc['name'].toUpperCase();
                             display += ">";
                             count++;
                         } else {

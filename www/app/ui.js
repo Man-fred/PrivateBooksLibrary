@@ -43,7 +43,7 @@ define(function (require) {
         pageAGB: document.getElementById("pageAGB"),
         pageDS: document.getElementById("pageDS"),
         pageContact: document.getElementById("pageContact"),
-        page: ui.page1,
+        page: document.getElementById("page1"),
         seite_ersatz: false,
         verlauf: [],
         scrollY: 0,

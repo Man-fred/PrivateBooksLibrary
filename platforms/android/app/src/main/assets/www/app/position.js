@@ -1,3 +1,5 @@
+/* global app, TapticEngine */
+
 ﻿define(function (require) {
 
     var position = {
