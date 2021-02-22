@@ -7,6 +7,7 @@
     "cordova-android": "^8.1.0",
     "cordova-browser": "^6.0.0",
     "cordova-connectivity-monitor": "^1.2.2",
+    "cordova-ios": "^5.1.1",
     "cordova-osx": "^5.0.0",
     "cordova-plugin": "1.0.0",
     "cordova-plugin-camera": "^4.0.3",
@@ -46,7 +47,6 @@
     }
   },
   "devDependencies": {
-    "cordova-ios": "^6.2.0",
     "cordova-windows": "^7.0.1"
   }
 }

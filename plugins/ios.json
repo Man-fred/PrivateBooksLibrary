@@ -8,37 +8,37 @@
   },
   "installed_plugins": {
     "cordova-plugin-camera": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "cordova-plugin-keyboard": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
-    },
-    "cordova-plugin-printer": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
-    },
-    "cordova-plugin-purchase": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
-    },
-    "cordova-plugin-taptic-engine": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
-    },
-    "cordova-plugin-vibration": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
-    },
-    "phonegap-plugin-barcodescanner": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "cordova-plugin-network-information": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-printer": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-purchase": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-taptic-engine": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     }
   },
   "dependent_plugins": {}
