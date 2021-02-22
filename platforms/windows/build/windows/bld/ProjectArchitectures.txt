@@ -1,0 +1,1 @@
+C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\CordovaApp.Windows10.jsproj;x64

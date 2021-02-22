@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget defaultlocale="DE" id="io.cordova.myapp387c96" version="0.10.2" windows-packageVersion="0.10.2.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <allow-navigation href="cdvfile:*" />
+    <feature name="Printer">
+        <param name="android-package" value="de.appplant.cordova.plugin.printer.Printer" />
+    </feature>
+    <feature name="InAppBillingPlugin">
+        <param name="android-package" value="cc.fovea.PurchasePlugin" />
+    </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="BarcodeScanner">
+        <param name="android-package" value="com.phonegap.plugins.barcodescanner.BarcodeScanner" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+    <feature name="Keyboard">
+        <param name="android-package" onload="true" value="org.apache.cordova.labs.keyboard.Keyboard" />
+    </feature>
+    <name>PrivateBooksLibrary</name>
+    <description>Verwalten Sie Ihre private Büchersammlung und eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.</description>
+    <author email="dev@bcss.de" href="https://www.bcss.de/dev">Manfred Bielemeier (BCSS Software &amp; Beratung GmbH)</author>
+    <vs:template-name>BlankJS</vs:template-name>
+    <vs:platformSpecificValues>
+        <vs:platformSpecificWidget id="ananan" platformName="windows" version="0.10.2.0" />
+    </vs:platformSpecificValues>
+    <content src="index.html" />
+    <access origin="https://pbl.bcss.de" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <vs:toolsetVersion>6.3.1</vs:toolsetVersion>
+    <allow-intent href="market:*" />
+    <icon density="ldpi" src="res/icons/android/icon-36.png" />
+    <icon density="mdpi" src="res/icons/android/icon-48.png" />
+    <icon density="hdpi" src="res/icons/android/icon-72.png" />
+    <icon density="xhdpi" src="res/icons/android/icon-96.png" />
+    <splash density="land-hdpi" src="res/screens/android/screen-hdpi-landscape.png" />
+    <splash density="land-ldpi" src="res/screens/android/screen-ldpi-landscape.png" />
+    <splash density="land-mdpi" src="res/screens/android/screen-mdpi-landscape.png" />
+    <splash density="land-xhdpi" src="res/screens/android/screen-xhdpi-landscape.png" />
+    <splash density="port-hdpi" src="res/screens/android/screen-hdpi-portrait.png" />
+    <splash density="port-ldpi" src="res/screens/android/screen-ldpi-portrait.png" />
+    <splash density="port-mdpi" src="res/screens/android/screen-mdpi-portrait.png" />
+    <splash density="port-xhdpi" src="res/screens/android/screen-xhdpi-portrait.png" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="phonegap-version" value="cli-9.0.0" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="APP_SECRET" value="d57aceb2-586f-4825-b90e-7060f3903561" />
+    <preference name="android-minSdkVersion" value="19" />
+    <preference name="android-targetSDKVersion" value="26" />
+</widget>

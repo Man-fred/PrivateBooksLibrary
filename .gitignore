@@ -1,7 +1,5 @@
 # .gitignore
 /www/api/config.php
-/[Pp]latforms/
-/[Pp]lugins/
 /AppPackages/
 /api/
 /bin/
@@ -10,6 +8,5 @@
 /simulation/
 build.json
 *.php
-
 /node_modules/
 /nbproject/private/
