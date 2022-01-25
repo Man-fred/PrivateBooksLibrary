@@ -102,5 +102,21 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-push-notifications": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-push-notifications"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-add-swift-support": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-add-swift-support@2.0.2"
+    },
+    "is_top_level": false,
+    "variables": {}
   }
 }

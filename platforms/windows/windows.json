@@ -10,7 +10,7 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 6
+              "count": 8
             }
           ]
         }
@@ -20,7 +20,7 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 6
+              "count": 8
             }
           ]
         }
@@ -30,17 +30,34 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 12
+              "count": 16
             },
             {
               "xml": "<DeviceCapability Name=\"microphone\" />",
-              "count": 6
+              "count": 8
             }
           ]
         }
       }
     }
   },
-  "installed_plugins": {},
-  "dependent_plugins": {}
+  "installed_plugins": {
+    "cordova-plugin-push-notifications": {
+      "PACKAGE_NAME": "Private Books Library"
+    }
+  },
+  "dependent_plugins": {},
+  "modules": [
+    {
+      "id": "cordova-plugin-push-notifications.PushNotification",
+      "file": "plugins/cordova-plugin-push-notifications/www/PushNotification.js",
+      "pluginId": "cordova-plugin-push-notifications",
+      "clobbers": [
+        "pushNotification"
+      ]
+    }
+  ],
+  "plugin_metadata": {
+    "cordova-plugin-push-notifications": "1.0.1"
+  }
 }

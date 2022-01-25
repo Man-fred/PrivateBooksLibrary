@@ -13,11 +13,12 @@
     "cordova-plugin-keyboard": {},
     "cordova-plugin-network-information": {},
     "cordova-plugin-printer": {},
+    "cordova-plugin-purchase": {},
     "cordova-plugin-taptic-engine": {},
     "cordova-plugin-vibration": {},
     "cordova-plugin-whitelist": {},
     "phonegap-plugin-barcodescanner": {},
-    "cordova-plugin-purchase": {}
+    "cordova-plugin-push-notifications": {}
   },
   "dependent_plugins": {}
 }

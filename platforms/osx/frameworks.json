@@ -1,5 +1,7 @@
 {
-    "Quartz.framework": 2,
-    "AppKit.framework": 2,
+    "Quartz.framework": 1,
+    "AppKit.framework": 1,
+    "SystemConfiguration.framework": 1,
+    "CoreTelephony.framework": 1,
     "StoreKit.framework": 1
 }

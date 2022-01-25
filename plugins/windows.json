@@ -39,6 +39,9 @@
     },
     "cordova-plugin-purchase": {
       "PACKAGE_NAME": "Private Books Library"
+    },
+    "cordova-plugin-push-notifications": {
+      "PACKAGE_NAME": "Private Books Library"
     }
   },
   "dependent_plugins": {}

@@ -40,6 +40,7 @@
 		038E0C4F3CEA4525A52C6385 /* CDVBarcodeScanner.mm in Resources */ = {isa = PBXBuildFile; fileRef = 7812AB1A7193438DAB57CE68 /* CDVBarcodeScanner.mm */; };
 		14450C6D23DF496B8526070C /* scannerOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46218B07226B4F149B274D4E /* scannerOverlay.xib */; };
 		250D4C63519148B9872D91C7 /* CDVBarcodeScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 74D170DF583343158CF78F12 /* CDVBarcodeScanner.bundle */; };
+		1FA0A81315684654AD750860 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36DBFAE5963424CA47CBBA8 /* PushNotification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,8 @@
 		7812AB1A7193438DAB57CE68 /* CDVBarcodeScanner.mm */ = {isa = PBXFileReference; name = "CDVBarcodeScanner.mm"; path = "phonegap-plugin-barcodescanner/CDVBarcodeScanner.mm"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		46218B07226B4F149B274D4E /* scannerOverlay.xib */ = {isa = PBXFileReference; name = "scannerOverlay.xib"; path = "scannerOverlay.xib"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = file.xib; explicitFileType = undefined; includeInIndex = 0; };
 		74D170DF583343158CF78F12 /* CDVBarcodeScanner.bundle */ = {isa = PBXFileReference; name = "CDVBarcodeScanner.bundle"; path = "CDVBarcodeScanner.bundle"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.plug-in; explicitFileType = undefined; includeInIndex = 0; };
+		E36DBFAE5963424CA47CBBA8 /* PushNotification.swift */ = {isa = PBXFileReference; name = "PushNotification.swift"; path = "cordova-plugin-push-notifications/PushNotification.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		A6ED26AEC587413F883102B3 /* PushNotification-Bridging-Header.h */ = {isa = PBXFileReference; name = "PushNotification-Bridging-Header.h"; path = "cordova-plugin-push-notifications/PushNotification-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +291,8 @@
 				E900C4CDA2E340FF86E40E94 /* CDVVibration.m */,
 				C3AE064CF3A840FAACBF31C8 /* CDVVibration.h */,
 				7812AB1A7193438DAB57CE68 /* CDVBarcodeScanner.mm */,
+				E36DBFAE5963424CA47CBBA8 /* PushNotification.swift */,
+				A6ED26AEC587413F883102B3 /* PushNotification-Bridging-Header.h */,
 			);
 			name = Plugins;
 			path = "PrivateBooksLibrary/Plugins";
@@ -432,6 +437,7 @@
 				1F5A1BACBE034AE89CA68F8C /* TapticEngine.m in Sources */,
 				0941300DF9A842298B481209 /* CDVVibration.m in Sources */,
 				038E0C4F3CEA4525A52C6385 /* CDVBarcodeScanner.mm in Resources */,
+				1FA0A81315684654AD750860 /* PushNotification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,10 +471,14 @@
 				INFOPLIST_FILE = "PrivateBooksLibrary/PrivateBooksLibrary-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.cordova.myapp387c96;
+				PRODUCT_BUNDLE_IDENTIFIER = de.bcss.pbl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				CODE_SIGN_STYLE = Automatic;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/Bridging-Header.h";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				SWIFT_VERSION = 4.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -489,10 +499,13 @@
 				INFOPLIST_FILE = "PrivateBooksLibrary/PrivateBooksLibrary-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.cordova.myapp387c96;
+				PRODUCT_BUNDLE_IDENTIFIER = de.bcss.pbl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				CODE_SIGN_STYLE = Automatic;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/Bridging-Header.h";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -535,8 +548,12 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				WK_WEB_VIEW_ONLY = 0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.cordova.myapp387c96;
+				PRODUCT_BUNDLE_IDENTIFIER = de.bcss.pbl;
 				CODE_SIGN_STYLE = Automatic;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/Bridging-Header.h";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				SWIFT_VERSION = 4.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -577,8 +594,11 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				WK_WEB_VIEW_ONLY = 0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.cordova.myapp387c96;
+				PRODUCT_BUNDLE_IDENTIFIER = de.bcss.pbl;
 				CODE_SIGN_STYLE = Automatic;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/$(PROJECT_NAME)/Bridging-Header.h";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
