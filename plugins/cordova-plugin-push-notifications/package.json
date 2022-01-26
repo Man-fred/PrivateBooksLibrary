@@ -1,0 +1,55 @@
+{
+  "_from": "cordova-plugin-push-notifications",
+  "_id": "cordova-plugin-push-notifications@1.1.4",
+  "_inBundle": false,
+  "_integrity": "sha512-/hm98Z5jNrF3F/qC1ISTDOMSJD8MQifC0zImxR1JgTwe740LijKvEdUlXmvB18oCMv/sqvPeln8vrOoElYpcGg==",
+  "_location": "/cordova-plugin-push-notifications",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-push-notifications",
+    "name": "cordova-plugin-push-notifications",
+    "escapedName": "cordova-plugin-push-notifications",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-push-notifications/-/cordova-plugin-push-notifications-1.1.4.tgz",
+  "_shasum": "e080f090e8e8586244f6ded0f35072fdcf92886d",
+  "_spec": "cordova-plugin-push-notifications",
+  "_where": "C:\\Users\\manfred\\Documents\\GitHub\\PrivateBooksLibrary",
+  "author": {
+    "name": "maxim.kolmogorov@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/Maxim-Kolmogorov/cordova-plugin-push-notifications/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-push-notifications",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "Push Notification for iOS (Swift) and Android (Kotlin)",
+  "homepage": "https://github.com/Maxim-Kolmogorov/cordova-plugin-push-notifications#readme",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "license": "ISC",
+  "name": "cordova-plugin-push-notifications",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maxim-Kolmogorov/cordova-plugin-push-notifications.git"
+  },
+  "version": "1.1.4"
+}

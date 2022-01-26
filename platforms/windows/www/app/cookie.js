@@ -2,29 +2,36 @@
 define(function (require) {
 
     var cookie = function (name, value, days) {
-    var w = (typeof global !== "undefined" ? global : this);
+        //var w = (typeof global !== "undefined" ? global : this);
+        // if value is a false boolean, we'll treat that as a delete
+        if (value === false) {
+            days = -1;
+        }
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toGMTString();
+        }
         // if value is undefined, get the cookie value
         if (value === undefined) {
+            console.log(document.cookie);
             var cookiestring = "; " + document.cookie;
             var cookies = cookiestring.split("; " + name + "=");
             if (cookies.length === 2) {
-                return cookies.pop().split(";").shift();
+                value = cookies.pop().split(";").shift();
+            } else {
+                value = null;
             }
-            return null;
         }
-        else {
-            // if value is a false boolean, we'll treat that as a delete
-            if (value === false) {
-                days = -1;
-            }
-            var expires = "";
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                expires = "; expires=" + date.toGMTString();
-            }
+        // set or refresh
+        if (value ) {
+            console.log(name + "=" + value + expires + "; path=/");
             document.cookie = name + "=" + value + expires + "; path=/";
         }
+        console.log(document.cookie);
+        console.log(value);
+        return value;
     };
     // commonjs
 /*

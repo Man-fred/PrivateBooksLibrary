@@ -39,6 +39,9 @@
     },
     "phonegap-plugin-barcodescanner": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-push-notifications": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },
   "dependent_plugins": {}

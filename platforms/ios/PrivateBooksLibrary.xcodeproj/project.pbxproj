@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		0207DA581B56EA530066E2B4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0207DA571B56EA530066E2B4 /* Images.xcassets */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
@@ -40,6 +41,7 @@
 		038E0C4F3CEA4525A52C6385 /* CDVBarcodeScanner.mm in Resources */ = {isa = PBXBuildFile; fileRef = 7812AB1A7193438DAB57CE68 /* CDVBarcodeScanner.mm */; };
 		14450C6D23DF496B8526070C /* scannerOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46218B07226B4F149B274D4E /* scannerOverlay.xib */; };
 		250D4C63519148B9872D91C7 /* CDVBarcodeScanner.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 74D170DF583343158CF78F12 /* CDVBarcodeScanner.bundle */; };
+		73B9748108D54A60B6EC463F /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = A971F26C4256430DB46F2171 /* PushNotification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +134,8 @@
 		7812AB1A7193438DAB57CE68 /* CDVBarcodeScanner.mm */ = {isa = PBXFileReference; name = "CDVBarcodeScanner.mm"; path = "phonegap-plugin-barcodescanner/CDVBarcodeScanner.mm"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		46218B07226B4F149B274D4E /* scannerOverlay.xib */ = {isa = PBXFileReference; name = "scannerOverlay.xib"; path = "scannerOverlay.xib"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = file.xib; explicitFileType = undefined; includeInIndex = 0; };
 		74D170DF583343158CF78F12 /* CDVBarcodeScanner.bundle */ = {isa = PBXFileReference; name = "CDVBarcodeScanner.bundle"; path = "CDVBarcodeScanner.bundle"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.plug-in; explicitFileType = undefined; includeInIndex = 0; };
+		A971F26C4256430DB46F2171 /* PushNotification.swift */ = {isa = PBXFileReference; name = "PushNotification.swift"; path = "cordova-plugin-push-notifications/PushNotification.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		8C91EADC4FF846A2A5AA6E23 /* PushNotification-Bridging-Header.h */ = {isa = PBXFileReference; name = "PushNotification-Bridging-Header.h"; path = "cordova-plugin-push-notifications/PushNotification-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +292,8 @@
 				E900C4CDA2E340FF86E40E94 /* CDVVibration.m */,
 				C3AE064CF3A840FAACBF31C8 /* CDVVibration.h */,
 				7812AB1A7193438DAB57CE68 /* CDVBarcodeScanner.mm */,
+				A971F26C4256430DB46F2171 /* PushNotification.swift */,
+				8C91EADC4FF846A2A5AA6E23 /* PushNotification-Bridging-Header.h */,
 			);
 			name = Plugins;
 			path = "PrivateBooksLibrary/Plugins";
@@ -432,6 +438,7 @@
 				1F5A1BACBE034AE89CA68F8C /* TapticEngine.m in Sources */,
 				0941300DF9A842298B481209 /* CDVVibration.m in Sources */,
 				038E0C4F3CEA4525A52C6385 /* CDVBarcodeScanner.mm in Resources */,
+				73B9748108D54A60B6EC463F /* PushNotification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,7 +472,7 @@
 				INFOPLIST_FILE = "PrivateBooksLibrary/PrivateBooksLibrary-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.cordova.myapp387c96;
+				PRODUCT_BUNDLE_IDENTIFIER = de.bcss.pbl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				CODE_SIGN_STYLE = Automatic;
@@ -489,7 +496,7 @@
 				INFOPLIST_FILE = "PrivateBooksLibrary/PrivateBooksLibrary-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = io.cordova.myapp387c96;
+				PRODUCT_BUNDLE_IDENTIFIER = de.bcss.pbl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				CODE_SIGN_STYLE = Automatic;
@@ -535,7 +542,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				WK_WEB_VIEW_ONLY = 0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.cordova.myapp387c96;
+				PRODUCT_BUNDLE_IDENTIFIER = de.bcss.pbl;
 				CODE_SIGN_STYLE = Automatic;
 			};
 			name = Debug;
@@ -577,7 +584,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
 				WK_WEB_VIEW_ONLY = 0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.cordova.myapp387c96;
+				PRODUCT_BUNDLE_IDENTIFIER = de.bcss.pbl;
 				CODE_SIGN_STYLE = Automatic;
 			};
 			name = Release;

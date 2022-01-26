@@ -8,39 +8,46 @@
   },
   "installed_plugins": {
     "cordova-plugin-camera": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
+      "PACKAGE_NAME": "de.bcss.pbl"
     },
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
+      "PACKAGE_NAME": "de.bcss.pbl"
     },
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
+      "PACKAGE_NAME": "de.bcss.pbl"
     },
     "cordova-plugin-keyboard": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
+      "PACKAGE_NAME": "de.bcss.pbl"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "de.bcss.pbl"
     },
     "cordova-plugin-printer": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
+      "PACKAGE_NAME": "de.bcss.pbl"
     },
     "cordova-plugin-purchase": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
+      "PACKAGE_NAME": "de.bcss.pbl"
+    },
+    "cordova-plugin-push-notifications": {
+      "PACKAGE_NAME": "de.bcss.pbl"
     },
     "cordova-plugin-taptic-engine": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
+      "PACKAGE_NAME": "de.bcss.pbl"
     },
     "cordova-plugin-vibration": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
+      "PACKAGE_NAME": "de.bcss.pbl"
     },
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
+      "PACKAGE_NAME": "de.bcss.pbl"
     },
     "phonegap-plugin-barcodescanner": {
       "ANDROID_SUPPORT_V4_VERSION": "27.+",
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
-    },
-    "cordova-plugin-network-information": {
-      "PACKAGE_NAME": "io.cordova.myapp387c96"
+      "PACKAGE_NAME": "de.bcss.pbl"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-add-swift-support": {
+      "PACKAGE_NAME": "de.bcss.pbl"
+    }
+  }
 }

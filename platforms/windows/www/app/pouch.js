@@ -24,6 +24,7 @@
         dbSyncA: null, //sync-handle, used to stop syncing,
         dbReady: 2, //3,
         appResult: [],
+        syncSeq: 0,
 
         initialize: function (pbl) {
             this.pbl = pbl;
@@ -158,7 +159,10 @@
             app.info.setSync('Server: paused', (err ? err : ''), 'paused');
             pouch.db.info().then(function (result) {
                 app.info.setSync('Server: paused', result.update_seq, 'paused');
-                console.info('Server: paused ' + result.update_seq);
+                if (this.syncSeq != result.update_seq) {
+                    this.syncSeq = result.update_seq
+                    console.info('Server: paused ' + this.syncSeq);
+                }
             }).catch(function (err) {
                 console.log(err);
             });
@@ -350,10 +354,10 @@
             });
         },
         cookieGet: function (cookie) {
-            pouch.dbIdPrivate = cookie('dbId');
+            pouch.dbIdPrivate = cookie('dbId', undefined, 365);
             if (pouch.dbIdPrivate === null) {
                 pouch.dbIdPrivate = Math.random();
-                cookie('dbId', pouch.dbIdPrivate, 3650);
+                cookie('dbId', pouch.dbIdPrivate, 365);
             }
             pouch.dbLoad();
         },

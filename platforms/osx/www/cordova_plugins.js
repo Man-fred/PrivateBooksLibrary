@@ -276,6 +276,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "file": "plugins/cordova-plugin-purchase/www/cordova-osx-polyfill.js",
       "pluginId": "cordova-plugin-purchase",
       "runs": true
+    },
+    {
+      "id": "cordova-plugin-push-notifications.PushNotification",
+      "file": "plugins/cordova-plugin-push-notifications/www/PushNotification.js",
+      "pluginId": "cordova-plugin-push-notifications",
+      "clobbers": [
+        "pushNotification"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -289,6 +297,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-vibration": "3.1.0",
     "cordova-plugin-whitelist": "1.3.3",
     "phonegap-plugin-barcodescanner": "8.1.0",
-    "cordova-plugin-purchase": "9.0.0"
+    "cordova-plugin-purchase": "9.0.0",
+    "cordova-plugin-push-notifications": "1.0.1"
   };
 });
