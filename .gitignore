@@ -10,3 +10,4 @@ build.json
 *.php
 /node_modules/
 /nbproject/private/
+/plugins/

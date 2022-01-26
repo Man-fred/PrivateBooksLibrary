@@ -10,7 +10,7 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 6
+              "count": 2
             }
           ]
         }
@@ -20,7 +20,7 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 6
+              "count": 2
             }
           ]
         }
@@ -30,11 +30,11 @@
           "/Package/Capabilities": [
             {
               "xml": "<DeviceCapability Name=\"webcam\" />",
-              "count": 12
+              "count": 4
             },
             {
               "xml": "<DeviceCapability Name=\"microphone\" />",
-              "count": 6
+              "count": 2
             }
           ]
         }
