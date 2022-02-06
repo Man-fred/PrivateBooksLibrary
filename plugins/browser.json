@@ -19,9 +19,6 @@
     "cordova-plugin-keyboard": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
-    "cordova-plugin-network-information": {
-      "PACKAGE_NAME": "io.cordova.hellocordova"
-    },
     "cordova-plugin-printer": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
@@ -41,6 +38,9 @@
       "PACKAGE_NAME": "io.cordova.hellocordova"
     },
     "cordova-plugin-push-notifications": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-network-information": {
       "PACKAGE_NAME": "io.cordova.hellocordova"
     }
   },

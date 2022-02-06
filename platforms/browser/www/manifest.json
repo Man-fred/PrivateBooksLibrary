@@ -1,35 +1,12 @@
 {
-        "manifest_version": 1007,
-        "name": "PrivateBooksLibrary",
-        "version": "1.0.7",
-        "short_name": "PBL",
-        "icons": [{
-            "src": "img/icons/icon-60-2x.png",
-            "sizes": "120x120",
-            "type": "image/png"
-            }, {
-            "src": "img/icons/icon-72-2x.png",
-            "sizes": "144x144",
-            "type": "image/png"
-            }, {
-            "src": "img/icons/icon-76-2x.png",
-            "sizes": "152x152",
-            "type": "image/png"
-            }, {
-            "src": "img/icons/icon-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-            }, {
-            "src": "img/icons/icon-256x256.png",
-            "sizes": "256x256",
-            "type": "image/png"
-            }, {
-            "src": "img/icons/icon-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-            }],
-        "start_url": "/index.html",
-        "display": "standalone",
-        "background_color": "#2196F3",
-        "theme_color": "#2196F3"
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "PrivateBooksLibrary",
+  "short_name": "PrivateBooksLibrary",
+  "version": "de.bcss.pbl",
+  "description": "Verwalten Sie Ihre private Büchersammlung und eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.",
+  "author": "Manfred Bielemeier (BCSS Software & Beratung GmbH)",
+  "icons": [],
+  "start_url": "index.html",
+  "theme_color": "#000000"
 }

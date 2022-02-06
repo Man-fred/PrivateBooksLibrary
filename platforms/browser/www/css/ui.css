@@ -18,6 +18,10 @@
     }
 
 #appScan {
+    background: url(../img/svg/solid/install.svg);
+}
+
+#appScan {
     background: url(../img/svg/solid/barcode.svg);
 }
 

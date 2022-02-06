@@ -47,7 +47,7 @@ define(function (require) {
         seite_ersatz: false,
         verlauf: [],
         scrollY: 0,
-
+        installPrompt: document.getElementById("appInstall"),
 
         init: true,
         initialize: function (pbl) {
@@ -102,6 +102,9 @@ define(function (require) {
                     }
                 }
             }
+        },
+        showInstallPromotion: function(){
+            ui.installPrompt.innerHTML = '';
         },
         selectFilter: function (event) {
             //onchange = "app.datalist.mySearch('', this.value)"

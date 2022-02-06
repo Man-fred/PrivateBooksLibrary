@@ -24,6 +24,8 @@ define(function (require) {
                 if (window.DeviceOrientationEvent) {
                     window.addEventListener("deviceorientation", this.onWindowOrientation);
                 }
+                window.addEventListener('beforeinstallprompt', this.onBeforeinstallprompt);
+                
                 // Top/Bottom der Seite ist sonst scrollbar unter ios
                 // hilft nicht
                 //Keyboard.shrinkView(true);
@@ -111,6 +113,7 @@ define(function (require) {
         viewportXXS: null,
         viewportHeight: null,
         orientation: null,
+        installPrompt: null,
         listeningElement: null,
         receivedElement: null,
         countBooks: 0,
@@ -289,7 +292,19 @@ define(function (require) {
                 }
             }
         },
-         main: function () {
+
+        onBeforeinstallprompt : function(e){
+          // Prevent the mini-infobar from appearing on mobile
+          e.preventDefault();
+          // Stash the event so it can be triggered later.
+          installPrompt = e;
+          // Update UI notify the user they can install the PWA
+          showInstallPromotion();
+          // Optionally, send analytics event that PWA install promo was shown.
+          console.log(`'beforeinstallprompt' event was fired.`);
+        },
+        
+        main: function () {
              /* nur jQuery Mobile
               $(document).bind("mobileinit", function () {
               // Make your jQuery Mobile framework configuration changes here!

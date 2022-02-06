@@ -14,7 +14,22 @@ requirejs.config({
     i18n: {
     }
 });
-        //locale: 'en-gb'
+//locale: 'en-gb'
+// Registering Service Worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').then(reg => {
+	  reg.onupdatefound = () => {
+		const installingWorker = reg.installing;
+		installingWorker.onstatechange = () => {
+		  if (installingWorker.state === 'installed' &&
+			  navigator.serviceWorker.controller) {
+			// Preferably, display a message asking the user to reload...
+			location.reload();
+		  }
+		};
+	  };
+  });
+}
 
 // Start loading the main app file. Put all of
 // your application logic in there.'pouchdb',

@@ -15,22 +15,24 @@ define(function (require) {
         }
         // if value is undefined, get the cookie value
         if (value === undefined) {
-            console.log(document.cookie);
-            var cookiestring = "; " + document.cookie;
-            var cookies = cookiestring.split("; " + name + "=");
-            if (cookies.length === 2) {
-                value = cookies.pop().split(";").shift();
-            } else {
-                value = null;
+            value = window.localStorage.getItem(name);
+            if (value === null){
+	            console.log("Cookie: "+document.cookie +" ~ Storage: "+value);
+                var cookiestring = "; " + document.cookie;
+                var cookies = cookiestring.split("; " + name + "=");
+                if (cookies.length === 2) {
+                    value = cookies.pop().split(";").shift();
+                } else {
+                    value = null;
+                }
             }
         }
         // set or refresh
         if (value ) {
             console.log(name + "=" + value + expires + "; path=/");
-            document.cookie = name + "=" + value + expires + "; path=/";
+            window.localStorage.setItem(name, value);
         }
-        console.log(document.cookie);
-        console.log(value);
+        console.log("Cookie: "+document.cookie+" ~ Value: "+value);
         return value;
     };
     // commonjs

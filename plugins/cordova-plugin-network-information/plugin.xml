@@ -21,18 +21,17 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 xmlns:android="http://schemas.android.com/apk/res/android"
            id="cordova-plugin-network-information"
-      version="2.0.1">
+      version="3.0.0">
 
     <name>Network Information</name>
     <description>Cordova Network Information Plugin</description>
     <license>Apache 2.0</license>
     <keywords>cordova,network,information</keywords>
-    <repo>https://git-wip-us.apache.org/repos/asf/cordova-plugin-network-information.git</repo>
-    <issue>https://issues.apache.org/jira/browse/CB/component/12320640</issue>
+    <repo>https://github.com/apache/cordova-plugin-network-information</repo>
+    <issue>https://github.com/apache/cordova-plugin-network-information/issues</issue>
 
     <js-module src="www/network.js" name="network">
         <clobbers target="navigator.connection" />
-        <clobbers target="navigator.network.connection" />
     </js-module>
 
     <js-module src="www/Connection.js" name="Connection">
@@ -68,21 +67,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <source-file src="src/ios/CDVConnection.m" />
         <header-file src="src/ios/CDVReachability.h" />
 	    <source-file src="src/ios/CDVReachability.m" />
-	    <framework src="SystemConfiguration.framework" weak="true" />
-	    <framework src="CoreTelephony.framework" />
-    </platform>
-    <!-- osx -->
-    <platform name="osx">
-        <config-file target="config.xml" parent="/*">
-            <feature name="NetworkStatus">
-                <param name="osx-package" value="CDVConnection" />
-            </feature>
-        </config-file>
-
-        <header-file src="src/osx/CDVConnection.h" />
-        <source-file src="src/osx/CDVConnection.m" />
-        <header-file src="src/osx/CDVReachability.h" />
-	    <source-file src="src/osx/CDVReachability.m" />
 	    <framework src="SystemConfiguration.framework" weak="true" />
 	    <framework src="CoreTelephony.framework" />
     </platform>

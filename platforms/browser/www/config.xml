@@ -12,11 +12,8 @@
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
     <vs:toolsetVersion>6.3.1</vs:toolsetVersion>
-    <preference name="phonegap-version" value="cli-9.0.0" />
     <preference name="SplashScreen" value="screen" />
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="StatusBarBackgroundColor" value="#000000" />

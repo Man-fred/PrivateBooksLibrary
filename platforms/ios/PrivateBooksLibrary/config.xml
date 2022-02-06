@@ -32,9 +32,6 @@
     <feature name="Keyboard">
         <param name="ios-package" onload="true" value="CDVKeyboard" />
     </feature>
-    <feature name="NetworkStatus">
-        <param name="ios-package" value="CDVConnection" />
-    </feature>
     <feature name="Printer">
         <param name="ios-package" value="APPPrinter" />
     </feature>
@@ -54,6 +51,9 @@
     <feature name="PushNotification">
         <param name="ios-package" value="PushNotification" />
     </feature>
+    <feature name="NetworkStatus">
+        <param name="ios-package" value="CDVConnection" />
+    </feature>
     <name>PrivateBooksLibrary</name>
     <description>Verwalten Sie Ihre private Büchersammlung und eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.</description>
     <author email="dev@bcss.de" href="https://www.bcss.de/dev">Manfred Bielemeier (BCSS Software &amp; Beratung GmbH)</author>
@@ -66,9 +66,7 @@
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
-    <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
     <vs:toolsetVersion>6.3.1</vs:toolsetVersion>
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
@@ -124,7 +122,6 @@
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
     <preference name="CameraUsesGeolocation" value="false" />
-    <preference name="phonegap-version" value="cli-9.0.0" />
     <preference name="SplashScreen" value="screen" />
     <preference name="StatusBarOverlaysWebView" value="true" />
     <preference name="StatusBarBackgroundColor" value="#000000" />

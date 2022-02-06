@@ -19,9 +19,6 @@
     "cordova-plugin-keyboard": {
       "PACKAGE_NAME": "Private Books Library"
     },
-    "cordova-plugin-network-information": {
-      "PACKAGE_NAME": "Private Books Library"
-    },
     "cordova-plugin-printer": {
       "PACKAGE_NAME": "Private Books Library"
     },
@@ -41,6 +38,9 @@
       "PACKAGE_NAME": "Private Books Library"
     },
     "cordova-plugin-push-notifications": {
+      "PACKAGE_NAME": "Private Books Library"
+    },
+    "cordova-plugin-network-information": {
       "PACKAGE_NAME": "Private Books Library"
     }
   },
