@@ -1,0 +1,6 @@
+{
+	"appId": "de.bcss.pbl",
+	"appName": "Private Books Library",
+	"webDir": "www",
+	"bundledWebRuntime": true
+}

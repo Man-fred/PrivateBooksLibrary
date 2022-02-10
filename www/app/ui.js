@@ -1,4 +1,4 @@
-/* global app, MSApp */
+/* global app, MSApp,Capacitor */
 
 //https://purecss.io/layouts/side-menu/#
 /*
@@ -63,7 +63,7 @@ define(function (require) {
                 this.mRefresh.addEventListener("click", this.dropdown); 
                 document.getElementById("appAdd").addEventListener("click", this.dropdown); 
                 // windows + android
-                if (cordova.platformId === 'android' || cordova.platformId === 'windows') {
+                if (Capacitor.getPlatform() === 'android' || Capacitor.getPlatform() === 'windows') {
                     var ok = document.addEventListener("backbutton", this.getVerlauf, false);
                     this.appReturn.innerHTML = '';
                 } else {
@@ -356,7 +356,7 @@ define(function (require) {
             });
         },
         print: function () {
-            if (cordova.platformId === 'broxwser') {
+            if (cCapacitor.getPlatform() === 'web') {
                 window.print();
             } else {
                 /*/ Get document source to print
@@ -366,7 +366,7 @@ define(function (require) {
                 */
                 var page = document.documentElement;
 
-                cordova.plugins.printer.print(page, 'Private Books Library');
+                //cordova.plugins.printer.print(page, 'Private Books Library');
             }
         },
         load: function (dom, seite, cb = null) {

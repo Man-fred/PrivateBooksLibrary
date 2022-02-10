@@ -1,8 +1,24 @@
 {
-  "name": "PrivateBooksLibrary",
+  "name": "private-books-library",
   "version": "1.0.0",
   "private": true,
+  "author": "Manfred Bielemeier",
+  "homepage": "https://github.com/Man-fred",
+  "scripts": {
+    "assets": "node ../scripts/pack-cli-assets.mjs",
+    "build": "npm run clean && npm run assets && tsc",
+    "clean": "rimraf ./dist",
+    "prepublishOnly": "npm run build",
+    "test": "jest -i",
+    "watch": "npm run assets && tsc -w"
+  },
   "dependencies": {
+    "@capacitor/android": "^3.4.0",
+    "@capacitor/cli": "^3.4.0",
+    "@capacitor/core": "^3.4.0",
+    "@capacitor/device": "^1.1.2",
+    "@capacitor/ios": "^3.4.0",
+    "@capacitor/network": "^1.0.7",
     "cord": "^1.0.0",
     "cordova-connectivity-monitor": "^1.2.2",
     "cordova-plugin": "1.0.0",
@@ -37,8 +53,7 @@
         "ANDROID_SUPPORT_V4_VERSION": "27.+"
       },
       "cordova-plugin-purchase": {},
-      "cordova-plugin-push-notifications": {},
-      "cordova-plugin-network-information": {}
+      "cordova-plugin-push-notifications": {}
     }
   },
   "devDependencies": {
@@ -46,8 +61,8 @@
     "cordova-browser": "^6.0.0",
     "cordova-ios": "^6.2.0",
     "cordova-plugin-add-swift-support": "^2.0.2",
-    "cordova-plugin-network-information": "^3.0.0",
     "cordova-plugin-push-notifications": "^1.1.4",
-    "cordova-windows": "^7.0.1"
+    "cordova-windows": "^7.0.1",
+    "typescript": "^4.5.5"
   }
 }

@@ -1,0 +1,1124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>ZV-NB-BL2019</Machine>
+    <WindowsUser>manfred</WindowsUser>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetOsVersion>10.0</TargetOsVersion>
+    <TargetOsDescription>Windows 10.0</TargetOsDescription>
+    <SolutionConfiguration>Debug|x64</SolutionConfiguration>
+    <PackageArchitecture>x64</PackageArchitecture>
+    <PackageIdentityName>ec1fabc0-fd8f-11e9-9b71-877cae4061fd</PackageIdentityName>
+    <PackageIdentityPublisher>CN=Apache Cordova Team</PackageIdentityPublisher>
+    <IntermediateOutputPath>C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\build\windows\bld\</IntermediateOutputPath>
+    <RemoteDeploymentType></RemoteDeploymentType>
+    <PackageRegistrationPath></PackageRegistrationPath>
+    <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
+    <DeployOptionalPackages>false</DeployOptionalPackages>
+    <WindowsSdkPath></WindowsSdkPath>
+    <LayoutDir>C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\build\windows\Debug\x64\win10\AppX</LayoutDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\build\windows\Debug\x64\win10\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\images\SplashScreen.scale-100.png">
+      <PackagePath>images\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\images\Square150x150Logo.scale-100.png">
+      <PackagePath>images\Square150x150Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\images\Square30x30Logo.scale-100.png">
+      <PackagePath>images\Square30x30Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\images\Square310x310Logo.scale-100.png">
+      <PackagePath>images\Square310x310Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\images\Square44x44Logo.scale-100.png">
+      <PackagePath>images\Square44x44Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\images\Square70x70Logo.scale-100.png">
+      <PackagePath>images\Square70x70Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\images\Square71x71Logo.scale-100.png">
+      <PackagePath>images\Square71x71Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\images\StoreLogo.scale-100.png">
+      <PackagePath>images\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\images\Wide310x150Logo.scale-100.png">
+      <PackagePath>images\Wide310x150Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\icons\icon-192x192.png">
+      <PackagePath>www\img\icons\icon-192x192.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\icons\icon-256x256.png">
+      <PackagePath>www\img\icons\icon-256x256.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\icons\icon-512x512.png">
+      <PackagePath>www\img\icons\icon-512x512.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\icons\icon-60-2x.png">
+      <PackagePath>www\img\icons\icon-60-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\icons\icon-72-2x.png">
+      <PackagePath>www\img\icons\icon-72-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\icons\icon-76-2x.png">
+      <PackagePath>www\img\icons\icon-76-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-114-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-114-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-120-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-120-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-144-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-144-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-152-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-152-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-16-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-16-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-24-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-24-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-32-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-32-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-48-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-48-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-57-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-57-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-64-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-64-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\polygon-flapping-bird-72-218918.png">
+      <PackagePath>www\img\polygon-flapping-bird-72-218918.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\vorlage.png">
+      <PackagePath>www\img\vorlage.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\a-icon.png">
+      <PackagePath>www\res\icons\a-icon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\android\icon-36.png">
+      <PackagePath>www\res\icons\android\icon-36.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\android\icon-48.png">
+      <PackagePath>www\res\icons\android\icon-48.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\android\icon-72.png">
+      <PackagePath>www\res\icons\android\icon-72.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\android\icon-96.png">
+      <PackagePath>www\res\icons\android\icon-96.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-1024.png">
+      <PackagePath>www\res\icons\ios\icon-1024.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-167.png">
+      <PackagePath>www\res\icons\ios\icon-167.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-2x.png">
+      <PackagePath>www\res\icons\ios\icon-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-40-2x.png">
+      <PackagePath>www\res\icons\ios\icon-40-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-40.png">
+      <PackagePath>www\res\icons\ios\icon-40.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-50-2x.png">
+      <PackagePath>www\res\icons\ios\icon-50-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-50.png">
+      <PackagePath>www\res\icons\ios\icon-50.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-57-2x.png">
+      <PackagePath>www\res\icons\ios\icon-57-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-57.png">
+      <PackagePath>www\res\icons\ios\icon-57.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-60-2x.png">
+      <PackagePath>www\res\icons\ios\icon-60-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-60-3x.png">
+      <PackagePath>www\res\icons\ios\icon-60-3x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-60.png">
+      <PackagePath>www\res\icons\ios\icon-60.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-72-2x.png">
+      <PackagePath>www\res\icons\ios\icon-72-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-72.png">
+      <PackagePath>www\res\icons\ios\icon-72.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-76-2x.png">
+      <PackagePath>www\res\icons\ios\icon-76-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-76.png">
+      <PackagePath>www\res\icons\ios\icon-76.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-83.5-2x.png">
+      <PackagePath>www\res\icons\ios\icon-83.5-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-small-2x.png">
+      <PackagePath>www\res\icons\ios\icon-small-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-small-3x.png">
+      <PackagePath>www\res\icons\ios\icon-small-3x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon-small.png">
+      <PackagePath>www\res\icons\ios\icon-small.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\icon.png">
+      <PackagePath>www\res\icons\ios\icon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\ios\store-icon1024.png">
+      <PackagePath>www\res\icons\ios\store-icon1024.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\t-icon.png">
+      <PackagePath>www\res\icons\t-icon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\t16-icon.png">
+      <PackagePath>www\res\icons\t16-icon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Square150x150Logo.scale-100.png">
+      <PackagePath>www\res\icons\windows\Square150x150Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Square150x150Logo.scale-240.png">
+      <PackagePath>www\res\icons\windows\Square150x150Logo.scale-240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Square30x30Logo.scale-100.png">
+      <PackagePath>www\res\icons\windows\Square30x30Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Square310x310Logo.scale-100.png">
+      <PackagePath>www\res\icons\windows\Square310x310Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Square44x44Logo.scale-100.png">
+      <PackagePath>www\res\icons\windows\Square44x44Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Square44x44Logo.scale-240.png">
+      <PackagePath>www\res\icons\windows\Square44x44Logo.scale-240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Square70x70Logo.scale-100.png">
+      <PackagePath>www\res\icons\windows\Square70x70Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Square71x71Logo.scale-100.png">
+      <PackagePath>www\res\icons\windows\Square71x71Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Square71x71Logo.scale-240.png">
+      <PackagePath>www\res\icons\windows\Square71x71Logo.scale-240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\StoreLogo.scale-100.png">
+      <PackagePath>www\res\icons\windows\StoreLogo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\StoreLogo.scale-240.png">
+      <PackagePath>www\res\icons\windows\StoreLogo.scale-240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Wide310x150Logo.scale-100.png">
+      <PackagePath>www\res\icons\windows\Wide310x150Logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\windows\Wide310x150Logo.scale-240.png">
+      <PackagePath>www\res\icons\windows\Wide310x150Logo.scale-240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\android\screen-hdpi-landscape.png">
+      <PackagePath>www\res\screens\android\screen-hdpi-landscape.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\android\screen-hdpi-portrait.png">
+      <PackagePath>www\res\screens\android\screen-hdpi-portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\android\screen-ldpi-landscape.png">
+      <PackagePath>www\res\screens\android\screen-ldpi-landscape.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\android\screen-ldpi-portrait.png">
+      <PackagePath>www\res\screens\android\screen-ldpi-portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\android\screen-mdpi-landscape.png">
+      <PackagePath>www\res\screens\android\screen-mdpi-landscape.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\android\screen-mdpi-portrait.png">
+      <PackagePath>www\res\screens\android\screen-mdpi-portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\android\screen-xhdpi-landscape.png">
+      <PackagePath>www\res\screens\android\screen-xhdpi-landscape.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\android\screen-xhdpi-portrait.png">
+      <PackagePath>www\res\screens\android\screen-xhdpi-portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\Default%402x~universal~anyany.png">
+      <PackagePath>www\res\screens\ios\Default%402x~universal~anyany.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-ipad-landscape-2x.png">
+      <PackagePath>www\res\screens\ios\screen-ipad-landscape-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-ipad-landscape.png">
+      <PackagePath>www\res\screens\ios\screen-ipad-landscape.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-ipad-portrait-2x.png">
+      <PackagePath>www\res\screens\ios\screen-ipad-portrait-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-ipad-portrait.png">
+      <PackagePath>www\res\screens\ios\screen-ipad-portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-iphone-568h-2x.png">
+      <PackagePath>www\res\screens\ios\screen-iphone-568h-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-iphone-landscape-736h.png">
+      <PackagePath>www\res\screens\ios\screen-iphone-landscape-736h.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-iphone-portrait-2x.png">
+      <PackagePath>www\res\screens\ios\screen-iphone-portrait-2x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-iphone-portrait-667h.png">
+      <PackagePath>www\res\screens\ios\screen-iphone-portrait-667h.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-iphone-portrait-736h.png">
+      <PackagePath>www\res\screens\ios\screen-iphone-portrait-736h.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\screen-iphone-portrait.png">
+      <PackagePath>www\res\screens\ios\screen-iphone-portrait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\ios\store-icon1024.png">
+      <PackagePath>www\res\screens\ios\store-icon1024.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\windows\SplashScreen.scale-100.png">
+      <PackagePath>www\res\screens\windows\SplashScreen.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\windows\SplashScreen.scale-240.png">
+      <PackagePath>www\res\screens\windows\SplashScreen.scale-240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\screens\windows\SplashScreenPhone.scale-240.png">
+      <PackagePath>www\res\screens\windows\SplashScreenPhone.scale-240.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\vorlage.png">
+      <PackagePath>www\res\vorlage.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\vorlage220.png">
+      <PackagePath>www\res\vorlage220.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\Properties\Default.rd.xml">
+      <PackagePath>Properties\Default.rd.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\native\windows\Package.StoreAssociation.xml">
+      <PackagePath>www\res\native\windows\Package.StoreAssociation.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\config.xml">
+      <PackagePath>config.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\admobile.js">
+      <PackagePath>www\app\admobile.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\book.js">
+      <PackagePath>www\app\book.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\cookie.js">
+      <PackagePath>www\app\cookie.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\data.js">
+      <PackagePath>www\app\data.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\datalist.js">
+      <PackagePath>www\app\datalist.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\handlebars\all.js">
+      <PackagePath>www\app\handlebars\all.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\handlebars\de-de.js">
+      <PackagePath>www\app\handlebars\de-de.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\handlebars\de.js">
+      <PackagePath>www\app\handlebars\de.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\handlebars\en.js">
+      <PackagePath>www\app\handlebars\en.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\htmlConsole.js">
+      <PackagePath>www\app\htmlConsole.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\info.js">
+      <PackagePath>www\app\info.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\init.js">
+      <PackagePath>www\app\init.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\menu.js">
+      <PackagePath>www\app\menu.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\nls\de\lang.js">
+      <PackagePath>www\app\nls\de\lang.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\nls\fr\lang.js">
+      <PackagePath>www\app\nls\fr\lang.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\nls\lang.js">
+      <PackagePath>www\app\nls\lang.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\nls\root\lang.js">
+      <PackagePath>www\app\nls\root\lang.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\password.js">
+      <PackagePath>www\app\password.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\pbl.js">
+      <PackagePath>www\app\pbl.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\position.js">
+      <PackagePath>www\app\position.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\pouch.js">
+      <PackagePath>www\app\pouch.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\purchase.js">
+      <PackagePath>www\app\purchase.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\search.js">
+      <PackagePath>www\app\search.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\slide.js">
+      <PackagePath>www\app\slide.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\tables.js">
+      <PackagePath>www\app\tables.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\app\ui.js">
+      <PackagePath>www\app\ui.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\cordova-js-src\confighelper.js">
+      <PackagePath>www\cordova-js-src\confighelper.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\cordova-js-src\exec.js">
+      <PackagePath>www\cordova-js-src\exec.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\cordova-js-src\platform.js">
+      <PackagePath>www\cordova-js-src\platform.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\cordova-js-src\splashscreen.js">
+      <PackagePath>www\cordova-js-src\splashscreen.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\cordova.js">
+      <PackagePath>www\cordova.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\cordova_plugins.js">
+      <PackagePath>www\cordova_plugins.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\apac\apac.js">
+      <PackagePath>www\lib\apac\apac.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\js\bootstrap.bundle.js">
+      <PackagePath>www\lib\bootstrap\js\bootstrap.bundle.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\js\bootstrap.bundle.min.js">
+      <PackagePath>www\lib\bootstrap\js\bootstrap.bundle.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\js\bootstrap.js">
+      <PackagePath>www\lib\bootstrap\js\bootstrap.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\js\bootstrap.min.js">
+      <PackagePath>www\lib\bootstrap\js\bootstrap.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\aes-min.js">
+      <PackagePath>www\lib\crypto\components\aes-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\aes.js">
+      <PackagePath>www\lib\crypto\components\aes.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\cipher-core-min.js">
+      <PackagePath>www\lib\crypto\components\cipher-core-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\cipher-core.js">
+      <PackagePath>www\lib\crypto\components\cipher-core.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\core-min.js">
+      <PackagePath>www\lib\crypto\components\core-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\core.js">
+      <PackagePath>www\lib\crypto\components\core.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\enc-base64-min.js">
+      <PackagePath>www\lib\crypto\components\enc-base64-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\enc-base64.js">
+      <PackagePath>www\lib\crypto\components\enc-base64.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\enc-utf16-min.js">
+      <PackagePath>www\lib\crypto\components\enc-utf16-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\enc-utf16.js">
+      <PackagePath>www\lib\crypto\components\enc-utf16.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\evpkdf-min.js">
+      <PackagePath>www\lib\crypto\components\evpkdf-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\evpkdf.js">
+      <PackagePath>www\lib\crypto\components\evpkdf.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\format-hex-min.js">
+      <PackagePath>www\lib\crypto\components\format-hex-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\format-hex.js">
+      <PackagePath>www\lib\crypto\components\format-hex.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\hmac-min.js">
+      <PackagePath>www\lib\crypto\components\hmac-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\hmac.js">
+      <PackagePath>www\lib\crypto\components\hmac.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\lib-typedarrays-min.js">
+      <PackagePath>www\lib\crypto\components\lib-typedarrays-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\lib-typedarrays.js">
+      <PackagePath>www\lib\crypto\components\lib-typedarrays.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\md5-min.js">
+      <PackagePath>www\lib\crypto\components\md5-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\md5.js">
+      <PackagePath>www\lib\crypto\components\md5.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-cfb-min.js">
+      <PackagePath>www\lib\crypto\components\mode-cfb-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-cfb.js">
+      <PackagePath>www\lib\crypto\components\mode-cfb.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-ctr-gladman-min.js">
+      <PackagePath>www\lib\crypto\components\mode-ctr-gladman-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-ctr-gladman.js">
+      <PackagePath>www\lib\crypto\components\mode-ctr-gladman.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-ctr-min.js">
+      <PackagePath>www\lib\crypto\components\mode-ctr-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-ctr.js">
+      <PackagePath>www\lib\crypto\components\mode-ctr.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-ecb-min.js">
+      <PackagePath>www\lib\crypto\components\mode-ecb-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-ecb.js">
+      <PackagePath>www\lib\crypto\components\mode-ecb.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-ofb-min.js">
+      <PackagePath>www\lib\crypto\components\mode-ofb-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\mode-ofb.js">
+      <PackagePath>www\lib\crypto\components\mode-ofb.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-ansix923-min.js">
+      <PackagePath>www\lib\crypto\components\pad-ansix923-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-ansix923.js">
+      <PackagePath>www\lib\crypto\components\pad-ansix923.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-iso10126-min.js">
+      <PackagePath>www\lib\crypto\components\pad-iso10126-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-iso10126.js">
+      <PackagePath>www\lib\crypto\components\pad-iso10126.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-iso97971-min.js">
+      <PackagePath>www\lib\crypto\components\pad-iso97971-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-iso97971.js">
+      <PackagePath>www\lib\crypto\components\pad-iso97971.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-nopadding-min.js">
+      <PackagePath>www\lib\crypto\components\pad-nopadding-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-nopadding.js">
+      <PackagePath>www\lib\crypto\components\pad-nopadding.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-zeropadding-min.js">
+      <PackagePath>www\lib\crypto\components\pad-zeropadding-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pad-zeropadding.js">
+      <PackagePath>www\lib\crypto\components\pad-zeropadding.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pbkdf2-min.js">
+      <PackagePath>www\lib\crypto\components\pbkdf2-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\pbkdf2.js">
+      <PackagePath>www\lib\crypto\components\pbkdf2.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\rabbit-legacy-min.js">
+      <PackagePath>www\lib\crypto\components\rabbit-legacy-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\rabbit-legacy.js">
+      <PackagePath>www\lib\crypto\components\rabbit-legacy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\rabbit-min.js">
+      <PackagePath>www\lib\crypto\components\rabbit-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\rabbit.js">
+      <PackagePath>www\lib\crypto\components\rabbit.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\rc4-min.js">
+      <PackagePath>www\lib\crypto\components\rc4-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\rc4.js">
+      <PackagePath>www\lib\crypto\components\rc4.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\ripemd160-min.js">
+      <PackagePath>www\lib\crypto\components\ripemd160-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\ripemd160.js">
+      <PackagePath>www\lib\crypto\components\ripemd160.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha1-min.js">
+      <PackagePath>www\lib\crypto\components\sha1-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha1.js">
+      <PackagePath>www\lib\crypto\components\sha1.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha224-min.js">
+      <PackagePath>www\lib\crypto\components\sha224-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha224.js">
+      <PackagePath>www\lib\crypto\components\sha224.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha256-min.js">
+      <PackagePath>www\lib\crypto\components\sha256-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha256.js">
+      <PackagePath>www\lib\crypto\components\sha256.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha3-min.js">
+      <PackagePath>www\lib\crypto\components\sha3-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha3.js">
+      <PackagePath>www\lib\crypto\components\sha3.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha384-min.js">
+      <PackagePath>www\lib\crypto\components\sha384-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha384.js">
+      <PackagePath>www\lib\crypto\components\sha384.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha512-min.js">
+      <PackagePath>www\lib\crypto\components\sha512-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\sha512.js">
+      <PackagePath>www\lib\crypto\components\sha512.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\tripledes-min.js">
+      <PackagePath>www\lib\crypto\components\tripledes-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\tripledes.js">
+      <PackagePath>www\lib\crypto\components\tripledes.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\x64-core-min.js">
+      <PackagePath>www\lib\crypto\components\x64-core-min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\components\x64-core.js">
+      <PackagePath>www\lib\crypto\components\x64-core.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\core.js">
+      <PackagePath>www\lib\crypto\core.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\core.min.js">
+      <PackagePath>www\lib\crypto\core.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\enc-base64.min.js">
+      <PackagePath>www\lib\crypto\enc-base64.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\hmac.min.js">
+      <PackagePath>www\lib\crypto\hmac.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\aes.js">
+      <PackagePath>www\lib\crypto\rollups\aes.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\hmac-md5.js">
+      <PackagePath>www\lib\crypto\rollups\hmac-md5.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\hmac-ripemd160.js">
+      <PackagePath>www\lib\crypto\rollups\hmac-ripemd160.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\hmac-sha1.js">
+      <PackagePath>www\lib\crypto\rollups\hmac-sha1.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\hmac-sha224.js">
+      <PackagePath>www\lib\crypto\rollups\hmac-sha224.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\hmac-sha256.js">
+      <PackagePath>www\lib\crypto\rollups\hmac-sha256.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\hmac-sha3.js">
+      <PackagePath>www\lib\crypto\rollups\hmac-sha3.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\hmac-sha384.js">
+      <PackagePath>www\lib\crypto\rollups\hmac-sha384.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\hmac-sha512.js">
+      <PackagePath>www\lib\crypto\rollups\hmac-sha512.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\md5.js">
+      <PackagePath>www\lib\crypto\rollups\md5.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\pbkdf2.js">
+      <PackagePath>www\lib\crypto\rollups\pbkdf2.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\rabbit-legacy.js">
+      <PackagePath>www\lib\crypto\rollups\rabbit-legacy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\rabbit.js">
+      <PackagePath>www\lib\crypto\rollups\rabbit.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\rc4.js">
+      <PackagePath>www\lib\crypto\rollups\rc4.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\ripemd160.js">
+      <PackagePath>www\lib\crypto\rollups\ripemd160.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\sha1.js">
+      <PackagePath>www\lib\crypto\rollups\sha1.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\sha224.js">
+      <PackagePath>www\lib\crypto\rollups\sha224.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\sha256.js">
+      <PackagePath>www\lib\crypto\rollups\sha256.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\sha3.js">
+      <PackagePath>www\lib\crypto\rollups\sha3.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\sha384.js">
+      <PackagePath>www\lib\crypto\rollups\sha384.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\sha512.js">
+      <PackagePath>www\lib\crypto\rollups\sha512.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\rollups\tripledes.js">
+      <PackagePath>www\lib\crypto\rollups\tripledes.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\crypto\sha256.min.js">
+      <PackagePath>www\lib\crypto\sha256.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\handlebars.runtime.js">
+      <PackagePath>www\lib\handlebars.runtime.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\i18n.js">
+      <PackagePath>www\lib\i18n.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\jquery.js">
+      <PackagePath>www\lib\jquery.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\jquery\jquery-3.3.1.js">
+      <PackagePath>www\lib\jquery\jquery-3.3.1.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\jquery\jquery-3.3.1.min.js">
+      <PackagePath>www\lib\jquery\jquery-3.3.1.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\log\console-log-html.js">
+      <PackagePath>www\lib\log\console-log-html.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\log\console-log-html.min.js">
+      <PackagePath>www\lib\log\console-log-html.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\popper.js">
+      <PackagePath>www\lib\popper.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pouchdb-6.3.4.js">
+      <PackagePath>www\lib\pouchdb-6.3.4.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pouchdb-replication-stream.js">
+      <PackagePath>www\lib\pouchdb-replication-stream.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pouchdb.authentication.js">
+      <PackagePath>www\lib\pouchdb.authentication.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pouchdb.cordova-sqlite-2.0.2.js">
+      <PackagePath>www\lib\pouchdb.cordova-sqlite-2.0.2.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pouchdb.cordova-sqlite.js">
+      <PackagePath>www\lib\pouchdb.cordova-sqlite.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pouchdb.find.js">
+      <PackagePath>www\lib\pouchdb.find.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pouchdb.find.min.js">
+      <PackagePath>www\lib\pouchdb.find.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pouchdb.js">
+      <PackagePath>www\lib\pouchdb.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pouchdb.load.min.js">
+      <PackagePath>www\lib\pouchdb.load.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\require.js">
+      <PackagePath>www\lib\require.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\socket.io.js">
+      <PackagePath>www\lib\socket.io.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\touchSwipe\jquery.touchSwipe.js">
+      <PackagePath>www\lib\touchSwipe\jquery.touchSwipe.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\touchSwipe\jquery.touchSwipe.min.js">
+      <PackagePath>www\lib\touchSwipe\jquery.touchSwipe.min.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\xml2json\xml2json.js">
+      <PackagePath>www\lib\xml2json\xml2json.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\zxcvbn.js">
+      <PackagePath>www\lib\zxcvbn.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\main.js">
+      <PackagePath>www\main.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-network-information\src\windows\NetworkInfoProxy.js">
+      <PackagePath>www\plugins\cordova-plugin-network-information\src\windows\NetworkInfoProxy.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-network-information\www\Connection.js">
+      <PackagePath>www\plugins\cordova-plugin-network-information\www\Connection.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\plugins\cordova-plugin-network-information\www\network.js">
+      <PackagePath>www\plugins\cordova-plugin-network-information\www\network.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\scripts\platformOverrides.js">
+      <PackagePath>www\scripts\platformOverrides.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\scripts\winstore-jscompat.js">
+      <PackagePath>www\scripts\winstore-jscompat.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\sw.js">
+      <PackagePath>www\sw.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\WinJS\js\base.js">
+      <PackagePath>www\WinJS\js\base.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\blank.jpg">
+      <PackagePath>www\blank.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\vorlage.jpg">
+      <PackagePath>www\img\vorlage.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\icons\a-icon.jpg">
+      <PackagePath>www\res\icons\a-icon.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\colors.html">
+      <PackagePath>www\colors.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\index.html">
+      <PackagePath>www\index.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\zxcvbn.js.html">
+      <PackagePath>www\lib\zxcvbn.js.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\palette.html">
+      <PackagePath>www\palette.html</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\css\app.css">
+      <PackagePath>www\css\app.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\css\splashscreen.css">
+      <PackagePath>www\css\splashscreen.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\css\styles.css">
+      <PackagePath>www\css\styles.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\css\ui.css">
+      <PackagePath>www\css\ui.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap-grid.css">
+      <PackagePath>www\lib\bootstrap\css\bootstrap-grid.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap-grid.min.css">
+      <PackagePath>www\lib\bootstrap\css\bootstrap-grid.min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap-reboot.css">
+      <PackagePath>www\lib\bootstrap\css\bootstrap-reboot.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap-reboot.min.css">
+      <PackagePath>www\lib\bootstrap\css\bootstrap-reboot.min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap.css">
+      <PackagePath>www\lib\bootstrap\css\bootstrap.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap.min.css">
+      <PackagePath>www\lib\bootstrap\css\bootstrap.min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\base-context-min.css">
+      <PackagePath>www\lib\pure\base-context-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\base-context.css">
+      <PackagePath>www\lib\pure\base-context.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\base-min.css">
+      <PackagePath>www\lib\pure\base-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\base.css">
+      <PackagePath>www\lib\pure\base.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\buttons-core-min.css">
+      <PackagePath>www\lib\pure\buttons-core-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\buttons-core.css">
+      <PackagePath>www\lib\pure\buttons-core.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\buttons-min.css">
+      <PackagePath>www\lib\pure\buttons-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\buttons.css">
+      <PackagePath>www\lib\pure\buttons.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\forms-min.css">
+      <PackagePath>www\lib\pure\forms-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\forms-nr-min.css">
+      <PackagePath>www\lib\pure\forms-nr-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\forms-nr.css">
+      <PackagePath>www\lib\pure\forms-nr.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\forms.css">
+      <PackagePath>www\lib\pure\forms.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids-core-min.css">
+      <PackagePath>www\lib\pure\grids-core-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids-core.css">
+      <PackagePath>www\lib\pure\grids-core.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids-min.css">
+      <PackagePath>www\lib\pure\grids-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids-responsive-min.css">
+      <PackagePath>www\lib\pure\grids-responsive-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids-responsive-old-ie-min.css">
+      <PackagePath>www\lib\pure\grids-responsive-old-ie-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids-responsive-old-ie.css">
+      <PackagePath>www\lib\pure\grids-responsive-old-ie.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids-responsive.css">
+      <PackagePath>www\lib\pure\grids-responsive.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids-units-min.css">
+      <PackagePath>www\lib\pure\grids-units-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids-units.css">
+      <PackagePath>www\lib\pure\grids-units.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\grids.css">
+      <PackagePath>www\lib\pure\grids.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-core-min.css">
+      <PackagePath>www\lib\pure\menus-core-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-core.css">
+      <PackagePath>www\lib\pure\menus-core.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-dropdown-min.css">
+      <PackagePath>www\lib\pure\menus-dropdown-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-dropdown.css">
+      <PackagePath>www\lib\pure\menus-dropdown.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-horizontal-min.css">
+      <PackagePath>www\lib\pure\menus-horizontal-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-horizontal.css">
+      <PackagePath>www\lib\pure\menus-horizontal.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-min.css">
+      <PackagePath>www\lib\pure\menus-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-scrollable-min.css">
+      <PackagePath>www\lib\pure\menus-scrollable-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-scrollable.css">
+      <PackagePath>www\lib\pure\menus-scrollable.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-skin-min.css">
+      <PackagePath>www\lib\pure\menus-skin-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus-skin.css">
+      <PackagePath>www\lib\pure\menus-skin.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\menus.css">
+      <PackagePath>www\lib\pure\menus.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\pure-min.css">
+      <PackagePath>www\lib\pure\pure-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\pure-nr-min.css">
+      <PackagePath>www\lib\pure\pure-nr-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\pure-nr.css">
+      <PackagePath>www\lib\pure\pure-nr.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\pure.css">
+      <PackagePath>www\lib\pure\pure.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\tables-min.css">
+      <PackagePath>www\lib\pure\tables-min.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\tables.css">
+      <PackagePath>www\lib\pure\tables.css</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\css\app.css.map">
+      <PackagePath>www\css\app.css.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap-grid.css.map">
+      <PackagePath>www\lib\bootstrap\css\bootstrap-grid.css.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap-grid.min.css.map">
+      <PackagePath>www\lib\bootstrap\css\bootstrap-grid.min.css.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap-reboot.css.map">
+      <PackagePath>www\lib\bootstrap\css\bootstrap-reboot.css.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap-reboot.min.css.map">
+      <PackagePath>www\lib\bootstrap\css\bootstrap-reboot.min.css.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap.css.map">
+      <PackagePath>www\lib\bootstrap\css\bootstrap.css.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\css\bootstrap.min.css.map">
+      <PackagePath>www\lib\bootstrap\css\bootstrap.min.css.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\js\bootstrap.bundle.js.map">
+      <PackagePath>www\lib\bootstrap\js\bootstrap.bundle.js.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\js\bootstrap.bundle.min.js.map">
+      <PackagePath>www\lib\bootstrap\js\bootstrap.bundle.min.js.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\js\bootstrap.js.map">
+      <PackagePath>www\lib\bootstrap\js\bootstrap.js.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\bootstrap\js\bootstrap.min.js.map">
+      <PackagePath>www\lib\bootstrap\js\bootstrap.min.js.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\zxcvbn.js.map">
+      <PackagePath>www\lib\zxcvbn.js.map</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\readme.txt">
+      <PackagePath>www\img\readme.txt</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\angle-down-blue.svg">
+      <PackagePath>www\img\svg\solid\angle-down-blue.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\angle-down-white.svg">
+      <PackagePath>www\img\svg\solid\angle-down-white.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\arrow-alt-circle-left-blue.svg">
+      <PackagePath>www\img\svg\solid\arrow-alt-circle-left-blue.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\arrow-alt-circle-left-white.svg">
+      <PackagePath>www\img\svg\solid\arrow-alt-circle-left-white.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\barcode.svg">
+      <PackagePath>www\img\svg\solid\barcode.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\bars.svg">
+      <PackagePath>www\img\svg\solid\bars.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\cog-white.svg">
+      <PackagePath>www\img\svg\solid\cog-white.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\cog.svg">
+      <PackagePath>www\img\svg\solid\cog.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\eye-slash.svg">
+      <PackagePath>www\img\svg\solid\eye-slash.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\eye.svg">
+      <PackagePath>www\img\svg\solid\eye.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\plus-circle.svg">
+      <PackagePath>www\img\svg\solid\plus-circle.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\print-white.svg">
+      <PackagePath>www\img\svg\solid\print-white.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\search.svg">
+      <PackagePath>www\img\svg\solid\search.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\sort-down.svg">
+      <PackagePath>www\img\svg\solid\sort-down.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\sort-up.svg">
+      <PackagePath>www\img\svg\solid\sort-up.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\sort.svg">
+      <PackagePath>www\img\svg\solid\sort.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\sync.svg">
+      <PackagePath>www\img\svg\solid\sync.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\times-circle-gray.svg">
+      <PackagePath>www\img\svg\solid\times-circle-gray.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\img\svg\solid\times-circle.svg">
+      <PackagePath>www\img\svg\solid\times-circle.svg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\log\LICENSE">
+      <PackagePath>www\lib\log\LICENSE</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\touchSwipe\LICENSE">
+      <PackagePath>www\lib\touchSwipe\LICENSE</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\log\MIGRATING.md">
+      <PackagePath>www\lib\log\MIGRATING.md</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\log\README.md">
+      <PackagePath>www\lib\log\README.md</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\HISTORY.md">
+      <PackagePath>www\lib\pure\HISTORY.md</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\LICENSE.md">
+      <PackagePath>www\lib\pure\LICENSE.md</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\README.md">
+      <PackagePath>www\lib\pure\README.md</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\touchSwipe\README.md">
+      <PackagePath>www\lib\touchSwipe\README.md</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\log\package.json">
+      <PackagePath>www\lib\log\package.json</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\lib\pure\bower.json">
+      <PackagePath>www\lib\pure\bower.json</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\manifest.webmanifest">
+      <PackagePath>www\manifest.webmanifest</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\pbl.manifest">
+      <PackagePath>www\pbl.manifest</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\native\android\ant.properties">
+      <PackagePath>www\res\native\android\ant.properties</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\www\res\pbl.ico">
+      <PackagePath>www\res\pbl.ico</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\manfred\Documents\GitHub\PrivateBooksLibrary\platforms\windows\build\windows\Debug\x64\win10\ReverseMap\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

@@ -1,3 +1,5 @@
+/* global Capacitor */
+
 ﻿define(function (require) {
 
     var htmlConsole = {
@@ -7,7 +9,7 @@
         methods: ['log', 'error', 'warn', 'info', 'debug' ],
         original: [],
         initialize: function (level = 5) {
-            if (this.active && cordova.platformId !== 'brows_er') {
+            if (this.active && Capacitor.getPlatform() !== 'brows_er') {
                 this.loglevel = level;
                 this.console = window.console;
                 if (!this.console) return;

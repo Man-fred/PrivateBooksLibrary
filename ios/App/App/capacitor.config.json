@@ -1,0 +1,13 @@
+{
+	"appId": "de.bcss.pbl",
+	"appName": "PrivateBooksLibrary",
+	"webDir": "www",
+	"bundledWebRuntime": false,
+	"cordova": {
+		"preferences": {
+			"SplashScreen": "screen",
+			"StatusBarOverlaysWebView": "true",
+			"StatusBarBackgroundColor": "#000000"
+		}
+	}
+}

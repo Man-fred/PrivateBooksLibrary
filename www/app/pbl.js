@@ -124,7 +124,7 @@ define(function (require) {
         backgroundState: false,       // app im Hintergrund?
         onDeviceReady: function () {
             pbl.dbReady--;
-            //console.log(pbl.dbReady);
+            console.log(pbl.dbReady);
             if (pbl.dbReady === 0) {
                 //app.ui.load(document.getElementById("action"), 'data_action', app.data.data_action);
                 app.info.initialize();

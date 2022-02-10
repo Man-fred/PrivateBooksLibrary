@@ -3,6 +3,7 @@
 //const fs = require('fs');
 
 var app = null;
+console.log(window.Capacitor);
 // Configure loading modules from the lib directory,
 // except for 'app' ones, which are in a sibling
 // directory.
@@ -43,7 +44,7 @@ requirejs(['jquery/jquery-3.3.1', 'pouchdb.authentication', 'pouchdb-replication
             document.getElementById("body").innerHTML = app.handlebars['body']({ str: app.lang });
             htmlConsole.initialize();
             pbl.initialize(lang);
-            //app.onDeviceReady();
+            app.onDeviceReady();
         });
     }
 );
