@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget defaultlocale="DE" id="de.bcss.pbl" version="0.10.5" windows-packageVersion="0.10.5.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
+<widget defaultlocale="de" id="de.bcss.pbl" version="0.10.5" windows-packageVersion="0.10.5.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
@@ -14,7 +14,6 @@
     <access origin="https://pbl.bcss.de" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
     <allow-intent href="mailto:*" />
     <vs:toolsetVersion>6.3.1</vs:toolsetVersion>
     <icon height="150" src="res/icons/windows/Square150x150Logo.scale-100.png" width="150" />

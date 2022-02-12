@@ -32,7 +32,7 @@
     </Applications>
     <Capabilities>
         <Capability Name="internetClient" />
-        <DeviceCapability Name="microphone" />
         <DeviceCapability Name="webcam" />
+        <DeviceCapability Name="microphone" />
     </Capabilities>
 </Package>
