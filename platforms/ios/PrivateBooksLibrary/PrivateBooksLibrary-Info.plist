@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>DE</string>
+	<string>de</string>
 	<key>CFBundleDisplayName</key>
 	<string>PrivateBooksLibrary</string>
 	<key>CFBundleExecutable</key>
@@ -28,6 +28,8 @@
 	<string/>
 	<key>NSMainNibFile~ipad</key>
 	<string/>
+	<key>UILaunchStoryboardName</key>
+	<string>CDVLaunchScreen</string>
 	<key>UIRequiresFullScreen</key>
 	<true/>
 	<key>UISupportedInterfaceOrientations</key>
@@ -51,8 +53,6 @@
 			<dict/>
 		</dict>
 	</dict>
-	<key>UILaunchStoryboardName</key>
-	<string>CDVLaunchScreen</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>NSPhotoLibraryUsageDescription</key>

@@ -1,5 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget defaultlocale="DE" id="de.bcss.pbl" version="0.10.5" windows-packageVersion="0.10.5.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
+<widget defaultlocale="de" id="de.bcss.pbl" version="0.10.5" windows-packageVersion="0.10.5.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
+    <feature name="CDVWebViewEngine">
+        <param name="ios-package" value="CDVWebViewEngine" />
+    </feature>
+    <feature name="LaunchScreen">
+        <param name="ios-package" value="CDVLaunchScreen" />
+    </feature>
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
@@ -32,12 +38,18 @@
     <feature name="Keyboard">
         <param name="ios-package" onload="true" value="CDVKeyboard" />
     </feature>
+    <feature name="NetworkStatus">
+        <param name="ios-package" value="CDVConnection" />
+    </feature>
     <feature name="Printer">
         <param name="ios-package" value="APPPrinter" />
     </feature>
     <feature name="InAppPurchase">
         <param name="ios-package" value="InAppPurchase" />
         <param name="onload" value="true" />
+    </feature>
+    <feature name="PushNotification">
+        <param name="ios-package" value="PushNotification" />
     </feature>
     <feature name="TapticEngine">
         <param name="ios-package" value="TapticEngine" />
@@ -47,12 +59,6 @@
     </feature>
     <feature name="BarcodeScanner">
         <param name="ios-package" value="CDVBarcodeScanner" />
-    </feature>
-    <feature name="PushNotification">
-        <param name="ios-package" value="PushNotification" />
-    </feature>
-    <feature name="NetworkStatus">
-        <param name="ios-package" value="CDVConnection" />
     </feature>
     <name>PrivateBooksLibrary</name>
     <description>Verwalten Sie Ihre private Büchersammlung und eBooks. Das Programm arbeitet ohne Daten im Internet zu speichern, es gibt aber die Möglichkeit zum zentralen Speichern und dann mehrere Geräte zu synchronisieren.</description>
@@ -65,7 +71,6 @@
     <access origin="https://pbl.bcss.de" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
-    <allow-intent href="tel:*" />
     <allow-intent href="mailto:*" />
     <vs:toolsetVersion>6.3.1</vs:toolsetVersion>
     <allow-intent href="itms:*" />
@@ -113,7 +118,7 @@
     <preference name="DisallowOverscroll" value="false" />
     <preference name="EnableViewportScale" value="false" />
     <preference name="KeyboardDisplayRequiresUserAction" value="true" />
-    <preference name="MediaPlaybackRequiresUserAction" value="false" />
+    <preference name="MediaTypesRequiringUserActionForPlayback" value="none" />
     <preference name="SuppressesIncrementalRendering" value="false" />
     <preference name="SuppressesLongPressGesture" value="false" />
     <preference name="Suppresses3DTouchGesture" value="false" />
