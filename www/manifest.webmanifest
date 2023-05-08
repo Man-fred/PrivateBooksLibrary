@@ -1,8 +1,17 @@
 {
-        "manifest_version": 10104,
         "name": "PrivateBooksLibrary",
-        "version": "1.1.4",
         "short_name": "PBL",
+        "description": "Niemals wieder den Überblick über gekaufte Bücher verlieren",
+        "categories":["business"],
+        "id": "/index.html",
+        "start_url": "/index.html",
+        "display": "standalone",
+        "display_override": [
+          "window-controls-overlay"
+        ],
+        "scope": "/",
+        "background_color": "#2196F3",
+        "theme_color": "#2196F3",
         "icons": [{
             "src": "img/icons/icon-60-2x.png",
             "sizes": "120x120",
@@ -27,10 +36,5 @@
             "src": "img/icons/icon-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
-            }],
-        "id": "/index.html",
-        "start_url": "/index.html",
-        "display": "standalone",
-        "background_color": "#2196F3",
-        "theme_color": "#2196F3"
+            }]
 }

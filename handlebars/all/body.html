@@ -1,9 +1,3 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
 <body>
     <div id="iosStatusbar"></div>
     <div id="top">
@@ -14,13 +8,13 @@
         <div class="dropdown">
             <button id="appAdd" class="dropbtn title-button" state="add" title="{{str.newEntry}}">&nbsp;</button>
         </div>
-        <div id="appTitle"></div>
-        <div class="dropdown">
+        <div class="dropdownleft">
             <button id="appInstall" class="dropbtn title-button" disabled="disabled"></button>
         </div>
-        <div class="dropdown">
+        <div class="dropdownleft">
             <button id="appReturn" class="dropbtn title-button" disabled="disabled"></button>
         </div>
+        <div id="appTitle"></div>
     </div>
     <div id="dataformBooks" class="header">
         <div id="topMessage">&nbsp;</div>
@@ -120,10 +114,10 @@
         </div>
         <div id="info-dev" class="blink">Connecting to Device</div>
         <div id="info-sync">no Server</div>
+        <div id="info-version">V0</div>
     </footer>
     <div id="infoMessage"></div>
     <div id="loading"></div>
     <div id="overlay"></div>
     <div id="overlayRestore"></div>
 </body>
-</html>

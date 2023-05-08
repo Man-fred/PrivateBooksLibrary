@@ -130,7 +130,12 @@ define(function (require) {
                 app.info.initialize();
                 app.pouch.infoSync = document.getElementById('info-sync');
                 app.pouch.infoSync.innerHTML = 'initialize';
-
+                fetch("version").then(res => res.text()).then(txt => {
+                    console.log('version', txt);
+                    var infoVersion = document.getElementById('info-version');
+                    if (infoVersion) 
+                        infoVersion.innerHTML = txt;
+                });
                 //console.log(cordova.file);
                 //pbl.takeOverConsole(pbl.loglevel);
                 $('#appSettings').click(function () {
@@ -197,6 +202,7 @@ define(function (require) {
            if (pbl.orientation !== window.orientation) {
                pbl.orientation = window.orientation;
                //ios iPhone 11
+               /* automatisch!
                document.documentElement.style.setProperty('--safe-bottom', "env(safe-area-inset-bottom)");
                switch (window.orientation) {
                     case 90 :
@@ -221,7 +227,7 @@ define(function (require) {
                         +"-"+document.documentElement.style.getPropertyValue('--safe-top')
                         +"-"+document.documentElement.style.getPropertyValue('--safe-right')
                         +"-"+document.documentElement.style.getPropertyValue('--safe-bottom'));
-
+*/
             }
         },
         onPause: function () {

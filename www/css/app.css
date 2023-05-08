@@ -1,19 +1,9 @@
 /* mit Werbung @partner-right: 120px;*/
 :root {
-  --safe-top: 0px;
-  --safe-left: 0px;
-  --safe-right: 0px;
-  --safe-bottom: 0px;
-  /*
-    --safe-top: env(safe-area-inset-top);
-    --safe-left: env(safe-area-inset-left);
-    --safe-right: env(safe-area-inset-right);
-    --safe-bottom: env(safe-area-inset-bottom);
-    --safe-top: env(safe-area-inset-top);
-    --safe-left: env(safe-area-inset-left);
-    --safe-right: env(safe-area-inset-right);
-    --safe-bottom: env(safe-area-inset-bottom);
-    */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 @keyframes spin {
   0% {
@@ -53,6 +43,7 @@ body {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+  -webkit-touch-callout: none;
 }
 header {
   clear: left;
@@ -93,28 +84,16 @@ footer {
   border-bottom: 1px solid hsl(0, 0%, 96.4%);
   top: 52px;
   left: var(--safe-left);
-  width: calc(100% - var(--safe-left) -  30px);
+  width: calc(100% - var(--safe-left) - var(--safe-right) -  30px);
   height: 60px;
   position: fixed !important;
   z-index: 800;
-  padding-top: 0px;
   padding-top: calc(var(--safe-top) + 0px);
 }
 @media only screen and (min-width: 568px) {
   .header {
     left: calc(150px + var(--safe-left));
-    width: calc(100% - var(--safe-left) -  175px);
-  }
-}
-@supports (-webkit-overflow-scrolling: touch) {
-  .header {
-    /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 
-                padding-top: @top-padding-ios + @add;
-                /* Status bar height on iOS 11.0 
-                padding-top: calc( ~"constant(safe-area-inset-top) + " @add );
-                /* Status bar height on iOS 11+ */
-    padding-top: calc(var(--safe-top) + 0px);
+    width: calc(100% - var(--safe-left) - var(--safe-right) -  175px);
   }
 }
 .pure-flex-rw {
@@ -140,33 +119,19 @@ main3 {
 }
 #iosStatusbar {
   top: 0px;
-  height: 0px;
   height: var(--safe-top);
   width: 100%;
   background-color: #6EAFDA;
   position: fixed !important;
   z-index: 1001;
 }
-@supports (-webkit-overflow-scrolling: touch) {
-  #iosStatusbar {
-    /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 /
-        height: @top-padding-ios;
-        /* Status bar height on iOS 11.0 /
-        height: constant(safe-area-inset-left);
-        /* Status bar height on iOS 11+ */
-    height: var(--safe-top);
-  }
-}
 #top {
-  padding-top: 0px;
-  padding-top: calc(var(--safe-top) + 0px);
-  top: 0px;
-  left: 52px;
   position: fixed !important;
+  top: calc(var(--safe-top) + 0px);
+  left: calc(var(--safe-left) + 52px);
   z-index: 900;
   /* so the menu or its navicon stays above all content */
-  width: calc(100%  -  52px);
+  width: calc(100%  - var(--safe-left) - var(--safe-right) -  52px);
   background: #0965A0;
   font-size: 110%;
   text-transform: uppercase;
@@ -176,21 +141,10 @@ main3 {
   display: table-cell;
   vertical-align: middle;
 }
-@supports (-webkit-overflow-scrolling: touch) {
-  #top {
-    /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 
-                padding-top: @top-padding-ios + @add;
-                /* Status bar height on iOS 11.0 
-                padding-top: calc( ~"constant(safe-area-inset-top) + " @add );
-                /* Status bar height on iOS 11+ */
-    padding-top: calc(var(--safe-top) + 0px);
-  }
-}
 @media only screen and (min-width: 568px) {
   #top {
     left: calc(var(--safe-left) +  150px);
-    width: calc(100% - var(--safe-left) -  150px);
+    width: calc(100% - var(--safe-left) - var(--safe-right) -  150px);
   }
 }
 footer {
@@ -201,9 +155,10 @@ footer {
   bottom: 0;
   position: fixed !important;
   position: absolute;
-  height: calc(var(--safe-bottom) +  52px);
-  /* width: calc(100% - var(--safe-left)); */
-  width: 100%;
+  left: var(--safe-left);
+  bottom: var(--safe-bottom);
+  height: 52px;
+  width: calc(100% - var(--safe-left) - var(--safe-right));
   /* padding: 0 10px 0 10px; */
 }
 #infoMessage {
@@ -270,7 +225,7 @@ footer {
 }
 #info-sync {
   float: left;
-  width: calc(100% -  146px);
+  width: 52%;
   display: block;
   padding: 2px 0 2px 18px;
   overflow: hidden;
@@ -279,13 +234,17 @@ footer {
 }
 #info-dev {
   float: left;
-  width: calc(100% -  146px);
+  width: 52%;
   display: block;
   padding: 2px 0 2px 18px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   background-color: hsl(0, 0%, 64.3%);
+}
+#info-version {
+  float: left;
+  width: 20%;
 }
 #info-dev[state=offline] {
   background-color: #FFA6A9;
@@ -318,7 +277,7 @@ footer {
 #appTitle {
   float: right;
   padding-top: 0.6em;
-  width: calc(100% -  204px);
+  width: calc(100% -  352px);
   white-space: nowrap;
   text-align: center;
 }
@@ -384,20 +343,9 @@ div.container {
   /*max-width: 34em;*/
   float: left;
   margin: 0;
-  padding: 0 0 var(--safe-bottom) 0;
-  padding-top: 112px;
+  padding: 0 0 0 0;
   padding-top: calc(var(--safe-top) + 112px);
-}
-@supports (-webkit-overflow-scrolling: touch) {
-  #singledata {
-    /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 
-                padding-top: @top-padding-ios + @add;
-                /* Status bar height on iOS 11.0 
-                padding-top: calc( ~"constant(safe-area-inset-top) + " @add );
-                /* Status bar height on iOS 11+ */
-    padding-top: calc(var(--safe-top) + 112px);
-  }
+  padding-bottom: calc(var(--safe-bottom) + 52px);
 }
 #bc1,
 #as1 {
@@ -421,23 +369,12 @@ div.container {
   float: left;
 }
 #datalist {
-  padding: 0 0 52px 0;
-  padding-top: 112px;
+  padding: 0;
   padding-top: calc(var(--safe-top) + 112px);
+  padding-bottom: calc(var(--safe-bottom) + 104px);
   /*margin-left: 34em;
-    border-left: 1px solid gray;*/
+border-left: 1px solid gray;*/
   overflow: auto;
-}
-@supports (-webkit-overflow-scrolling: touch) {
-  #datalist {
-    /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 
-                padding-top: @top-padding-ios + @add;
-                /* Status bar height on iOS 11.0 
-                padding-top: calc( ~"constant(safe-area-inset-top) + " @add );
-                /* Status bar height on iOS 11+ */
-    padding-top: calc(var(--safe-top) + 112px);
-  }
 }
 #datalistScroll {
   width: 100%;
@@ -466,7 +403,7 @@ th {
 }
 /*
 tr:nth-child(even) {
-    background-color: @grayDD;
+background-color: @grayDD;
 }
 */
 form div {
@@ -739,14 +676,14 @@ input[type="reset"]:active {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: calc(50% -  0px);
+  width: calc(50% -  0px / 2);
   float: left;
 }
 .books-series {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: calc(50% -  0px);
+  width: calc(50% -  0px / 2);
   float: left;
 }
 .books-date {
@@ -814,7 +751,7 @@ input[type="reset"]:active {
   text-decoration: none;
 }
 /* https://codepen.io/SitePoint/pen/hewAv 
-   schönes Scrollverhalten bei horizontalem Menü und sticky header*/
+schönes Scrollverhalten bei horizontalem Menü und sticky header*/
 /*https://purecss.io/layouts/side-menu/# */
 /* side-menu.css */
 body {
@@ -840,58 +777,36 @@ Add transition to containers so they can push in and out.
 This is the parent `<div>` that contains the menu and the content area.
 */
 #layout {
-  position: relative;
-  left: 0;
-  padding-left: 0px;
-  padding-left: calc(var(--safe-left) + 0px);
-  padding-bottom: 52px;
-  height: 100%;
-  width: calc(100% - var(--safe-left) -  1px);
-}
-@supports (-webkit-overflow-scrolling: touch) {
-  #layout {
-    /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 /
-                padding-left: @top-padding-ios + @add;
-                /* Status bar height on iOS 11.0 /
-                padding-left: calc( ~"constant(safe-area-inset-left) + " @add );
-                /* Status bar height on iOS 11+ */
-    padding-left: calc(var(--safe-left) + 0px);
-  }
+  position: absolute;
+  top: calc(var(--safe-top) + 0px);
+  left: calc(var(--safe-left) + 0px);
+  bottom: calc(var(--safe-bottom) + 52px);
+  right: calc(var(--safe-right) + 1px);
+  /* padding-left: 0; */
+  /* padding-bottom: @footer-height; */
+  /* height: 100%; */
+  /* width: calc(~"100% - var(--safe-left) - " @layout-abzug ); */
 }
 @media only screen and (min-width: 568px) {
   #layout {
     padding-left: 150px;
-    padding-left: calc(var(--safe-left) + 150px);
     /* left col width "#menu" */
-    width: calc(100% - var(--safe-left) -  150px);
-  }
-  @supports (-webkit-overflow-scrolling: touch) {
-    #layout {
-      /* CSS specific to iOS devices */
-      /* Status bar height on iOS 10 /
-                padding-left: @top-padding-ios + @add;
-                /* Status bar height on iOS 11.0 /
-                padding-left: calc( ~"constant(safe-area-inset-left) + " @add );
-                /* Status bar height on iOS 11+ */
-      padding-left: calc(var(--safe-left) + 150px);
-    }
+    /* width: calc(~"100% - var(--safe-left) - " @top-abzug-sm); */
   }
 }
 /* Only apply this when the window is small. Otherwise, the following case results in extra padding on the left:
-    * Make the window small.
-    * Tap the menu to trigger the active state.
-    * Make the window large again.
+* Make the window small.
+* Tap the menu to trigger the active state.
+* Make the window large again.
 */
 @media only screen and (max-width: 567px) {
   #layout.active {
     position: relative;
-    left: 150px;
+    /*left: @menu-left;*/
   }
 }
 #layout.active #menu {
-  left: 150px;
-  /* width: @menu-left; */
+  left: 0;
 }
 #layout.active .menu-link {
   left: 150px;
@@ -909,12 +824,13 @@ The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
 appears on the left side of the page.
 */
 #menu {
-  margin-left: -150px;
-  width: calc(150px + var(--safe-left));
+  /*margin-left: -@menu-left ;*/
+  /*width: calc(@menu-left + var(--safe-left));*/
   position: fixed;
-  top: 0;
-  left: 0;
-  bottom: calc(var(--safe-bottom) +  52px);
+  top: calc(var(--safe-top) + 0px);
+  left: -150px;
+  bottom: calc(var(--safe-bottom) + 52px);
+  width: 150px;
   z-index: 950;
   /* so the menu or its navicon stays above all content */
   background: hsl(0, 0%, 25%);
@@ -923,24 +839,12 @@ appears on the left side of the page.
 }
 @media only screen and (orientation: portrait) {
   #menu {
-    padding-top: 0px;
-    padding-top: calc(var(--safe-top) + 0px);
-  }
-  @supports (-webkit-overflow-scrolling: touch) {
-    #menu {
-      /* CSS specific to iOS devices */
-      /* Status bar height on iOS 10 
-                padding-top: @top-padding-ios + @add;
-                /* Status bar height on iOS 11.0 
-                padding-top: calc( ~"constant(safe-area-inset-top) + " @add );
-                /* Status bar height on iOS 11+ */
-      padding-top: calc(var(--safe-top) + 0px);
-    }
+    /*.safe-padding-top();*/
   }
 }
 @media only screen and (min-width: 568px) {
   #menu {
-    left: 150px;
+    left: calc(var(--safe-left) + 0px);
   }
 }
 .right {
@@ -1029,34 +933,20 @@ how it works:
 small screens.
 */
 .menu-link {
+  left: calc(var(--safe-left) + 0px);
   position: fixed;
   display: block;
   /* show this only on small screens */
-  left: 0;
   background: hsl(0, 0%, 25%);
   font-size: 10px;
   /* change this value to increase/decrease button size */
   z-index: 1000;
-  padding: 21px 16px 21px 16px;
+  padding: calc((52px - 10px) / 2) 16px calc((52px - 10px) / 2) 16px;
+  /*@media @portrait {
+        .safe-padding-top(22px);padding: 21px 16px 21px 16px;
+    }*/
   width: 20px;
   height: 10px;
-}
-@media only screen and (orientation: portrait) {
-  .menu-link {
-    padding-top: 22px;
-    padding-top: calc(var(--safe-top) + 22px);
-  }
-  @supports (-webkit-overflow-scrolling: touch) {
-    .menu-link {
-      /* CSS specific to iOS devices */
-      /* Status bar height on iOS 10 
-                padding-top: @top-padding-ios + @add;
-                /* Status bar height on iOS 11.0 
-                padding-top: calc( ~"constant(safe-area-inset-top) + " @add );
-                /* Status bar height on iOS 11+ */
-      padding-top: calc(var(--safe-top) + 22px);
-    }
-  }
 }
 @media only screen and (min-width: 568px) {
   .menu-link {
@@ -1105,10 +995,9 @@ small screens.
 /************ rechte Sortierleiste ***********/
 #mySearchAZ {
   background: hsl(0, 0%, 89.3%);
-  top: 52px;
   top: calc(var(--safe-top) + 52px);
-  right: 0;
-  bottom: 52px;
+  right: calc(var(--safe-right) + 0px);
+  bottom: calc(var(--safe-bottom) + 52px);
   z-index: 800;
   /* so the menu or its navicon stays above all content */
   position: fixed !important;
@@ -1121,20 +1010,9 @@ small screens.
   -moz-flex-direction: column;
   -webkit-flex-direction: column;
 }
-@supports (-webkit-overflow-scrolling: touch) {
-  #mySearchAZ {
-    /* CSS specific to iOS devices */
-    /* Status bar height on iOS 10 /
-                top: @top-padding-ios + @add;
-                /* Status bar height on iOS 11.0 /
-                top: calc( ~"constant(safe-area-inset-top) + " @add );
-                /* Status bar height on iOS 11+ */
-    top: calc(var(--safe-top) + 52px);
-  }
-}
 @media only screen and (min-width: 568px) {
   #mySearchAZ {
-    right: 0px;
+    right: calc(var(--safe-right) + 0px);
     width: 25px;
   }
 }
@@ -1230,6 +1108,11 @@ Hides the menu at `48em`, but modify this based on your app's needs.
   position: relative;
   display: inline-block;
   float: right;
+}
+.dropdownleft {
+  position: relative;
+  display: inline-block;
+  float: left;
 }
 .inactive {
   pointer-events: none;
