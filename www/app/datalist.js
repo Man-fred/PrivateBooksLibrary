@@ -1,6 +1,6 @@
 /* global app */
 
-﻿define(function (require) {
+define(function (require) {
 
     var datalist = {
         dbReady: 2,

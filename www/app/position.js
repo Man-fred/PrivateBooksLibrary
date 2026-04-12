@@ -1,6 +1,6 @@
 /* global app, TapticEngine */
 
-﻿define(function (require) {
+define(function (require) {
 
     var position = {
         init: true,

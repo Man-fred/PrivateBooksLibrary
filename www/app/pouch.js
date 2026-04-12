@@ -1,6 +1,6 @@
 /* global app */
 
-﻿define(function () { //  
+define(function () { //  
 
     var pouch = {
         cookie: require(['app/cookie'], function (cookie) {

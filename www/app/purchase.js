@@ -1,6 +1,6 @@
 /* global app, store */
 
-﻿/*
+/*
     https://github.com/j3k0/cordova-plugin-purchase
 */
 define(function (require) {

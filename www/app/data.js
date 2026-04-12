@@ -1,6 +1,6 @@
 /* global app */
 
-﻿define(function (require) {
+define(function (require) {
 
     var data = {
         book: require('./book'),

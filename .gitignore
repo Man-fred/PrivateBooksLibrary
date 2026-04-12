@@ -11,3 +11,4 @@ build.json
 /node_modules/
 /nbproject/private/
 /platforms/
+.vs/

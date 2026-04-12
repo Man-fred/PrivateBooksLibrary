@@ -1,6 +1,6 @@
 /* global app, Connection */
 
-﻿define(function (require) {
+define(function (require) {
 
     var info = {
         network: {},

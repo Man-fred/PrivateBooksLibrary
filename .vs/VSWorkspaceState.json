@@ -1,9 +1,15 @@
 {
   "ExpandedNodes": [
     "",
+    "\\platforms",
+    "\\platforms\\windows",
+    "\\platforms\\windows\\AppPackages",
+    "\\platforms\\windows\\AppPackages\\CordovaApp.Windows10_0.10.5.0_x64_debug_Test",
+    "\\platforms\\windows\\build",
+    "\\platforms\\windows\\build\\windows",
     "\\www",
     "\\www\\app"
   ],
-  "SelectedNode": "\\www\\app\\book.js",
+  "SelectedNode": "\\platforms\\windows\\CordovaApp.sln",
   "PreviewInSolutionExplorer": false
 }

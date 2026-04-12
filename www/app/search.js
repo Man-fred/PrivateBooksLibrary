@@ -1,6 +1,6 @@
 /* global app, Camera */
 
-﻿define(function (require) {
+define(function (require) {
 
     var search = {
         init: true,

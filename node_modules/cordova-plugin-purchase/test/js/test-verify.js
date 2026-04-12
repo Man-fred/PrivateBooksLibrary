@@ -5,7 +5,7 @@ var store = require("../tmp/store-test");
 var helper = require("./helper");
 
 describe('Verify', function() {
-    
+
 
     var ajaxCopy = store.utils.ajax;
     before(function() {
@@ -139,7 +139,7 @@ describe('Verify', function() {
 
           var p = store.get("pf-consumable");
           p.set('state', store.APPROVED);
-          helper.setTimeoutFactor(4000);
+          helper.setTimeoutFactor(2000);
 
           p.verify()
           .success(function() {
