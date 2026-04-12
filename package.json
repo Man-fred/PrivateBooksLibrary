@@ -19,10 +19,8 @@
   },
   "cordova": {
     "platforms": [
-      "windows",
-      "ios",
       "browser",
-      "android"
+      "ios"
     ],
     "plugins": {
       "cordova-plugin-taptic-engine": {},
@@ -42,12 +40,10 @@
     }
   },
   "devDependencies": {
-    "cordova-android": "^10.1.1",
     "cordova-browser": "^6.0.0",
     "cordova-ios": "^6.2.0",
     "cordova-plugin-add-swift-support": "^2.0.2",
     "cordova-plugin-network-information": "^3.0.0",
-    "cordova-plugin-push-notifications": "^1.1.4",
-    "cordova-windows": "^7.0.1"
+    "cordova-plugin-push-notifications": "^1.1.4"
   }
 }
